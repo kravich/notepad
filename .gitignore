@@ -23,3 +23,5 @@ build-notepadqq-Desktop*
 /src/ui-tests/moc_predefs.h
 
 /src/translations/*.qm
+
+*.user
