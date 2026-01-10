@@ -1,6 +1,6 @@
 #include "include/Extensions/runtimesupport.h"
 
-#include "include/Extensions/Stubs/notepadqqstub.h"
+#include "include/Extensions/Stubs/notepadstub.h"
 #include "include/Extensions/extensionsloader.h"
 #include "include/Extensions/extensionsserver.h"
 

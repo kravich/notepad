@@ -1,4 +1,4 @@
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include "include/Extensions/extensionsloader.h"
 #include "include/Extensions/runtimesupport.h"

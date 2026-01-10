@@ -1,7 +1,7 @@
 #include "include/stats.h"
 
 #include "include/Extensions/extensionsloader.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include <QJsonDocument>
 #include <QNetworkAccessManager>

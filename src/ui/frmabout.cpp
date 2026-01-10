@@ -1,7 +1,7 @@
 #include "include/frmabout.h"
 
 #include "include/iconprovider.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "ui_frmabout.h"
 
 #include <QDesktopServices>

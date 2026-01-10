@@ -1,7 +1,7 @@
 #include "include/Extensions/installextension.h"
 
 #include "include/Extensions/extension.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "ui_installextension.h"
 
 #include <QDebug>

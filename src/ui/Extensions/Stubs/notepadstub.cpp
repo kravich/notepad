@@ -1,9 +1,9 @@
-#include "include/Extensions/Stubs/notepadqqstub.h"
+#include "include/Extensions/Stubs/notepadstub.h"
 
 #include "include/Extensions/Stubs/windowstub.h"
 #include "include/Extensions/runtimesupport.h"
 #include "include/globals.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include <QApplication>
 

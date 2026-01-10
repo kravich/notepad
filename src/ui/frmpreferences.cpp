@@ -5,7 +5,7 @@
 #include "include/Sessions/backupservice.h"
 #include "include/keygrabber.h"
 #include "include/mainwindow.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "include/stats.h"
 #include "ui_frmpreferences.h"
 

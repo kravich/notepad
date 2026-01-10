@@ -1,6 +1,6 @@
 #include "include/Extensions/extension.h"
 
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include <QDebug>
 #include <QFile>

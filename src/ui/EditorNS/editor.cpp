@@ -1,6 +1,6 @@
 #include "include/EditorNS/editor.h"
 
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "include/nqqsettings.h"
 
 #include <QDir>

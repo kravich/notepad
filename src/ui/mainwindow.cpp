@@ -18,7 +18,7 @@
 #include "include/frmlinenumberchooser.h"
 #include "include/frmpreferences.h"
 #include "include/iconprovider.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "include/nqqrun.h"
 #include "ui_mainwindow.h"
 

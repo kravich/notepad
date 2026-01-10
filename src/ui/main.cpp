@@ -5,7 +5,7 @@
 #include "include/Sessions/sessions.h"
 #include "include/globals.h"
 #include "include/mainwindow.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "include/nqqsettings.h"
 #include "include/singleapplication.h"
 #include "include/stats.h"

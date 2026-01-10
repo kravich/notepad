@@ -1,7 +1,7 @@
 #include "include/Extensions/extensionsloader.h"
 
 #include "include/mainwindow.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include <QDateTime>
 #include <QDirIterator>

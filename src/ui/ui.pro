@@ -8,8 +8,8 @@ QT       += core gui svg widgets printsupport network webenginewidgets webchanne
 CONFIG += c++14 link_pkgconfig
 PKGCONFIG += uchardet
 
-!macx: TARGET = notepadqq-bin
-macx: TARGET = notepadqq
+!macx: TARGET = notepad-bin
+macx: TARGET = notepad
 
 TEMPLATE = app
 
@@ -68,7 +68,7 @@ SOURCES += main.cpp\
     editortabwidget.cpp \
     docengine.cpp \
     frmabout.cpp \
-    notepadqq.cpp \
+    notepad.cpp \
     frmpreferences.cpp \
     iconprovider.cpp \
     EditorNS/editor.cpp \
@@ -92,7 +92,7 @@ SOURCES += main.cpp\
     Extensions/Stubs/stub.cpp \
     Extensions/runtimesupport.cpp \
     Extensions/Stubs/windowstub.cpp \
-    Extensions/Stubs/notepadqqstub.cpp \
+    Extensions/Stubs/notepadstub.cpp \
     Extensions/Stubs/editorstub.cpp \
     Extensions/extensionsloader.cpp \
     globals.cpp \
@@ -101,7 +101,7 @@ SOURCES += main.cpp\
     keygrabber.cpp \
     Sessions/sessions.cpp \
     Sessions/persistentcache.cpp \
-    nqqsettings.cpp \  
+    nqqsettings.cpp \
     nqqrun.cpp \
     Search/filesearcher.cpp \
     Search/filereplacer.cpp \
@@ -116,7 +116,7 @@ HEADERS  += include/mainwindow.h \
     include/editortabwidget.h \
     include/docengine.h \
     include/frmabout.h \
-    include/notepadqq.h \
+    include/notepad.h \
     include/frmpreferences.h \
     include/iconprovider.h \
     include/EditorNS/editor.h \
@@ -141,7 +141,7 @@ HEADERS  += include/mainwindow.h \
     include/Extensions/Stubs/stub.h \
     include/Extensions/runtimesupport.h \
     include/Extensions/Stubs/windowstub.h \
-    include/Extensions/Stubs/notepadqqstub.h \
+    include/Extensions/Stubs/notepadstub.h \
     include/Extensions/Stubs/editorstub.h \
     include/Extensions/extensionsloader.h \
     include/globals.h \
@@ -173,37 +173,37 @@ FORMS    += mainwindow.ui \
 RESOURCES += \
     resources.qrc
 
-ICON = ../../images/notepadqq.icns
+ICON = ../../images/notepad.icns
 
 TRANSLATIONS = \
-    ../translations/notepadqq_de.ts \
-    ../translations/notepadqq_es.ts \
-    ../translations/notepadqq_fr.ts \
-    ../translations/notepadqq_hu.ts \
-    ../translations/notepadqq_it.ts \
-    ../translations/notepadqq_ja.ts \
-    ../translations/notepadqq_pl.ts \
-    ../translations/notepadqq_pt.ts \
-    ../translations/notepadqq_ru.ts \
-    ../translations/notepadqq_sl.ts \
-    ../translations/notepadqq_sv.ts \
-    ../translations/notepadqq_uk.ts \
-    ../translations/notepadqq_zh.ts 
+    ../translations/notepad_de.ts \
+    ../translations/notepad_es.ts \
+    ../translations/notepad_fr.ts \
+    ../translations/notepad_hu.ts \
+    ../translations/notepad_it.ts \
+    ../translations/notepad_ja.ts \
+    ../translations/notepad_pl.ts \
+    ../translations/notepad_pt.ts \
+    ../translations/notepad_ru.ts \
+    ../translations/notepad_sl.ts \
+    ../translations/notepad_sv.ts \
+    ../translations/notepad_uk.ts \
+    ../translations/notepad_zh.ts
 
 QMAKE_CLEAN += \
-    ../translations/notepadqq_de.qm \
-    ../translations/notepadqq_es.qm \
-    ../translations/notepadqq_fr.qm \
-    ../translations/notepadqq_hu.qm \
-    ../translations/notepadqq_it.qm \
-    ../translations/notepadqq_ja.qm \
-    ../translations/notepadqq_pl.qm \
-    ../translations/notepadqq_pt.qm \
-    ../translations/notepadqq_ru.qm \
-    ../translations/notepadqq_sl.qm \
-    ../translations/notepadqq_sv.qm \
-    ../translations/notepadqq_uk.qm \
-    ../translations/notepadqq_zh.qm
+    ../translations/notepad_de.qm \
+    ../translations/notepad_es.qm \
+    ../translations/notepad_fr.qm \
+    ../translations/notepad_hu.qm \
+    ../translations/notepad_it.qm \
+    ../translations/notepad_ja.qm \
+    ../translations/notepad_pl.qm \
+    ../translations/notepad_pt.qm \
+    ../translations/notepad_ru.qm \
+    ../translations/notepad_sl.qm \
+    ../translations/notepad_sv.qm \
+    ../translations/notepad_uk.qm \
+    ../translations/notepad_zh.qm
 
 
 # Build translations so that qmake doesn't complain about missing files in resources.qrc
@@ -236,8 +236,8 @@ unix:!macx {
     launchTarget.target = make_launch
     launchTarget.commands = (cd \"$$PWD\" && \
                              $${QMAKE_MKDIR} \"$$BINDIR/\" && \
-                             $${QMAKE_COPY} \"$$INSTALLFILESDIR/launch/notepadqq\" \"$$BINDIR/\" && \
-                             chmod 755 \"$$BINDIR/notepadqq\")
+                             $${QMAKE_COPY} \"$$INSTALLFILESDIR/launch/notepad\" \"$$BINDIR/\" && \
+                             chmod 755 \"$$BINDIR/notepad\")
 
     QMAKE_EXTRA_TARGETS += launchTarget
     PRE_TARGETDEPS += make_launch
@@ -249,55 +249,55 @@ unix:!macx {
         PREFIX = /usr/local
     }
 
-    target.path = "$$INSTALL_ROOT$$PREFIX/lib/notepadqq/"
+    target.path = "$$INSTALL_ROOT$$PREFIX/lib/notepad/"
     target.files += "$$DESTDIR/$$TARGET"
 
     icon_h16.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/16x16/apps/"
-    icon_h16.files += "$$INSTALLFILESDIR/icons/hicolor/16x16/apps/notepadqq.png"
+    icon_h16.files += "$$INSTALLFILESDIR/icons/hicolor/16x16/apps/notepad.png"
     icon_h22.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/22x22/apps/"
-    icon_h22.files += "$$INSTALLFILESDIR/icons/hicolor/22x22/apps/notepadqq.png"
+    icon_h22.files += "$$INSTALLFILESDIR/icons/hicolor/22x22/apps/notepad.png"
     icon_h24.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/24x24/apps/"
-    icon_h24.files += "$$INSTALLFILESDIR/icons/hicolor/24x24/apps/notepadqq.png"
+    icon_h24.files += "$$INSTALLFILESDIR/icons/hicolor/24x24/apps/notepad.png"
     icon_h32.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/32x32/apps/"
-    icon_h32.files += "$$INSTALLFILESDIR/icons/hicolor/32x32/apps/notepadqq.png"
+    icon_h32.files += "$$INSTALLFILESDIR/icons/hicolor/32x32/apps/notepad.png"
     icon_h48.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/48x48/apps/"
-    icon_h48.files += "$$INSTALLFILESDIR/icons/hicolor/48x48/apps/notepadqq.png"
+    icon_h48.files += "$$INSTALLFILESDIR/icons/hicolor/48x48/apps/notepad.png"
     icon_h64.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/64x64/apps/"
-    icon_h64.files += "$$INSTALLFILESDIR/icons/hicolor/64x64/apps/notepadqq.png"
+    icon_h64.files += "$$INSTALLFILESDIR/icons/hicolor/64x64/apps/notepad.png"
     icon_h96.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/96x96/apps/"
-    icon_h96.files += "$$INSTALLFILESDIR/icons/hicolor/96x96/apps/notepadqq.png"
+    icon_h96.files += "$$INSTALLFILESDIR/icons/hicolor/96x96/apps/notepad.png"
     icon_h128.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/128x128/apps/"
-    icon_h128.files += "$$INSTALLFILESDIR/icons/hicolor/128x128/apps/notepadqq.png"
+    icon_h128.files += "$$INSTALLFILESDIR/icons/hicolor/128x128/apps/notepad.png"
     icon_h256.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/256x256/apps/"
-    icon_h256.files += "$$INSTALLFILESDIR/icons/hicolor/256x256/apps/notepadqq.png"
+    icon_h256.files += "$$INSTALLFILESDIR/icons/hicolor/256x256/apps/notepad.png"
     icon_h512.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/512x512/apps/"
-    icon_h512.files += "$$INSTALLFILESDIR/icons/hicolor/512x512/apps/notepadqq.png"
+    icon_h512.files += "$$INSTALLFILESDIR/icons/hicolor/512x512/apps/notepad.png"
     icon_hscalable.path = "$$INSTALL_ROOT$$PREFIX/share/icons/hicolor/scalable/apps/"
-    icon_hscalable.files += "$$INSTALLFILESDIR/icons/hicolor/scalable/apps/notepadqq.svg"
+    icon_hscalable.files += "$$INSTALLFILESDIR/icons/hicolor/scalable/apps/notepad.svg"
 
     # Make sure that the folders exists, otherwise qmake won't create the misc_data install rule
     system($${QMAKE_MKDIR} \"$$APPDATADIR/editor\")
     system($${QMAKE_MKDIR} \"$$APPDATADIR/extension_tools\")
 
-    misc_data.path = "$$INSTALL_ROOT$$PREFIX/share/notepadqq/"
+    misc_data.path = "$$INSTALL_ROOT$$PREFIX/share/notepad/"
     misc_data.files += "$$APPDATADIR/editor"
     misc_data.files += "$$APPDATADIR/extension_tools"
 
     launch.path = "$$INSTALL_ROOT$$PREFIX/bin/"
-    launch.files += "$$BINDIR/notepadqq"
+    launch.files += "$$BINDIR/notepad"
     launch.CONFIG = no_check_exist     # Create the install rule even if the file doesn't exists when qmake is run
 
     shortcuts.path = "$$INSTALL_ROOT$$PREFIX/share/applications/"
-    shortcuts.files += "$$INSTALLFILESDIR/shortcuts/notepadqq.desktop"
-    
+    shortcuts.files += "$$INSTALLFILESDIR/shortcuts/notepad.desktop"
+
     appstream.path = "$$INSTALL_ROOT$$PREFIX/share/metainfo/"
-    appstream.files += "$$INSTALLFILESDIR/notepadqq.appdata.xml"
+    appstream.files += "$$INSTALLFILESDIR/notepad.appdata.xml"
 
     # == Dummy target used to fix permissions at the end of the install ==
     # A random path. Without one, qmake refuses to create the rule.
     set_permissions.path = "$$INSTALL_ROOT$$PREFIX/bin/"
     # We want to keep $$INSTALL_ROOT as a variable in the makefile, so we use $(INSTALL_ROOT)
-    unix:set_permissions.extra = chmod 755 $(INSTALL_ROOT)\"$$PREFIX/bin/notepadqq\"
+    unix:set_permissions.extra = chmod 755 $(INSTALL_ROOT)\"$$PREFIX/bin/notepad\"
 
     # MAKE INSTALL
     INSTALLS += target \

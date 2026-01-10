@@ -1,6 +1,6 @@
 #include "include/EditorNS/languageservice.h"
 
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include <QFileInfo>
 #include <QJsonDocument>

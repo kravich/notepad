@@ -1,8 +1,8 @@
 #include <QString>
 #include <QtTest>
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "nqqsettings.cpp"
-#include "notepadqq.cpp"
+#include "notepad.cpp"
 
 class NotepadqqTest : public QObject
 {
@@ -27,4 +27,4 @@ void NotepadqqTest::editorPathIsHtml()
 
 QTEST_GUILESS_MAIN(NotepadqqTest)
 
-#include "tst_notepadqqtest.moc"
+#include "tst_notepadtest.moc"
