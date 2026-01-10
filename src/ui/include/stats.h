@@ -38,7 +38,7 @@ private:
      *        to the second run. This variable is set to true and *stays true*
      *        iff the user never opened nqq before.
      */
-    static bool m_isFirstNotepadqqRun;
+    static bool m_isFirstNotepadRun;
 };
 
 #endif // STATS_H

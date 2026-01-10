@@ -9,16 +9,16 @@
 #include <QFileInfo>
 #include <QMessageBox>
 
-const QString Notepadqq::version = POINTVERSION;
-const QString Notepadqq::contributorsUrl = "https://github.com/notepad/notepad/graphs/contributors";
-const QString Notepadqq::website = "https://notepad.com";
+const QString Notepad::version = POINTVERSION;
+const QString Notepad::contributorsUrl = "https://github.com/notepad/notepad/graphs/contributors";
+const QString Notepad::website = "https://notepad.com";
 
-QString Notepadqq::copyright()
+QString Notepad::copyright()
 {
     return QObject::trUtf8("Copyright © 2010-%1, Daniele Di Sarli").arg(COPYRIGHT_YEAR);
 }
 
-QString Notepadqq::appDataPath(QString fileName)
+QString Notepad::appDataPath(QString fileName)
 {
 #ifdef Q_OS_MACX
     QString def = QString("%1/../Resources/").
@@ -40,27 +40,27 @@ QString Notepadqq::appDataPath(QString fileName)
     return def;
 }
 
-QString Notepadqq::editorPath()
+QString Notepad::editorPath()
 {
     return appDataPath("editor/index.html");
 }
 
-QString Notepadqq::extensionToolsPath()
+QString Notepad::extensionToolsPath()
 {
     return appDataPath("extension_tools");
 }
 
-QString Notepadqq::nodejsPath() {
+QString Notepad::nodejsPath() {
     NqqSettings& s = NqqSettings::getInstance();
     return s.Extensions.getRuntimeNodeJS();
 }
 
-QString Notepadqq::npmPath() {
+QString Notepad::npmPath() {
     NqqSettings& s = NqqSettings::getInstance();
     return s.Extensions.getRuntimeNpm();
 }
 
-QString Notepadqq::fileNameFromUrl(const QUrl &url)
+QString Notepad::fileNameFromUrl(const QUrl &url)
 {
     return QFileInfo(url.toDisplayString(
                          QUrl::RemoveScheme |
@@ -74,7 +74,7 @@ QString Notepadqq::fileNameFromUrl(const QUrl &url)
                      ).fileName();
 }
 
-QSharedPointer<QCommandLineParser> Notepadqq::getCommandLineArgumentsParser(const QStringList &arguments)
+QSharedPointer<QCommandLineParser> Notepad::getCommandLineArgumentsParser(const QStringList &arguments)
 {
     QSharedPointer<QCommandLineParser> parser =
             QSharedPointer<QCommandLineParser>(new QCommandLineParser());
@@ -100,7 +100,7 @@ QSharedPointer<QCommandLineParser> Notepadqq::getCommandLineArgumentsParser(cons
                               "0");
     parser->addOption(setCol);
 
-    QCommandLineOption allowRootOption("allow-root", QObject::tr("Allows Notepadqq to be run as root."));
+    QCommandLineOption allowRootOption("allow-root", QObject::tr("Allows Notepad to be run as root."));
     parser->addOption(allowRootOption);
 
     QCommandLineOption printDebugOption("print-debug-info", QObject::tr("Print system information for debugging."));
@@ -115,7 +115,7 @@ QSharedPointer<QCommandLineParser> Notepadqq::getCommandLineArgumentsParser(cons
     return parser;
 }
 
-QString Notepadqq::extensionsPath()
+QString Notepad::extensionsPath()
 {
     QSettings settings;
 
@@ -123,7 +123,7 @@ QString Notepadqq::extensionsPath()
     return f.absoluteDir().absoluteFilePath("extensions");
 }
 
-QList<QString> Notepadqq::translations()
+QList<QString> Notepad::translations()
 {
     QList<QString> out;
 
@@ -146,9 +146,9 @@ QList<QString> Notepadqq::translations()
     return out;
 }
 
-void Notepadqq::printEnvironmentInfo()
+void Notepad::printEnvironmentInfo()
 {
-    qDebug() << QString("Notepadqq: %1").arg(POINTVERSION).toStdString().c_str();
+    qDebug() << QString("Notepad: %1").arg(POINTVERSION).toStdString().c_str();
 #ifdef BUILD_SNAP
     qDebug() << "Snap build: yes";
 #else

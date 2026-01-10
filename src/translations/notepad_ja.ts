@@ -257,8 +257,8 @@
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="14"/>
-        <source>This file has been changed outside of Notepadqq.</source>
-        <translation>Notepadqq 以外でファイルが更新されました。</translation>
+        <source>This file has been changed outside of Notepad.</source>
+        <translation>Notepad 以外でファイルが更新されました。</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="16"/>
@@ -354,10 +354,10 @@
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="661"/>
-        <source>Notepadqq asks permission to overwrite the following file:
+        <source>Notepad asks permission to overwrite the following file:
 
 %1</source>
-        <translation>Notepadqq が次のファイルを上書きする許可を求めています:
+        <translation>Notepad が次のファイルを上書きする許可を求めています:
 
 %1</translation>
     </message>
@@ -495,8 +495,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="53"/>
@@ -810,8 +810,8 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="475"/>
-        <source>About &amp;Notepadqq...</source>
-        <translation>Notepadqq について(&amp;N)...</translation>
+        <source>About &amp;Notepad...</source>
+        <translation>Notepad について(&amp;N)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="483"/>
@@ -866,7 +866,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="569"/>
         <source>&amp;Math Rendering</source>
-        <translatorcomment>Google で &quot;Math Rendering&quot; &quot;Notepadqq&quot; と検索するとスクリーンキャストが載っている公式ブログの記事がヒットするので、どういう機能なのか調べやすくするために、このテキストは未翻訳のままにしています。</translatorcomment>
+        <translatorcomment>Google で &quot;Math Rendering&quot; &quot;Notepad&quot; と検索するとスクリーンキャストが載っている公式ブログの記事がヒットするので、どういう機能なのか調べやすくするために、このテキストは未翻訳のままにしています。</translatorcomment>
         <translation>Math Rendering(&amp;M)</translation>
     </message>
     <message>
@@ -1707,8 +1707,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/notepad.cpp" line="103"/>
-        <source>Allows Notepadqq to be run as root.</source>
-        <translation>Notepadqq をルートとして実行します。</translation>
+        <source>Allows Notepad to be run as root.</source>
+        <translation>Notepad をルートとして実行します。</translation>
     </message>
     <message>
         <location filename="../ui/notepad.cpp" line="107"/>
@@ -1727,8 +1727,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="498"/>
-        <source>You need to restart Notepadqq for the localization changes to take effect.</source>
-        <translation>言語設定の変更を有効にするには、Notepadqq を再起動する必要があります。</translation>
+        <source>You need to restart Notepad for the localization changes to take effect.</source>
+        <translation>言語設定の変更を有効にするには、Notepad を再起動する必要があります。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="51"/>
@@ -1742,8 +1742,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="143"/>
-        <source>Notepadqq supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
-        <translation>&apos;正規表現を使用&apos; にチェックが入っている場合、Notepadqq は &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl 正規表現&lt;/a&gt;のほとんどをサポートします。</translation>
+        <source>Notepad supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
+        <translation>&apos;正規表現を使用&apos; にチェックが入っている場合、Notepad は &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl 正規表現&lt;/a&gt;のほとんどをサポートします。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="144"/>
@@ -1822,8 +1822,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/Sessions/backupservice.cpp" line="107"/>
-        <source>Notepadqq was not closed properly. Do you want to recover unsaved changes?</source>
-        <translation>Notepadqq が正常に終了しませんでした。未保存の変更を復元しますか?</translation>
+        <source>Notepad was not closed properly. Do you want to recover unsaved changes?</source>
+        <translation>Notepad が正常に終了しませんでした。未保存の変更を復元しますか?</translation>
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="111"/>
@@ -1842,8 +1842,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/main.cpp" line="92"/>
-        <source>Notepadqq will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepadqq as root is not recommended. Use --allow-root if you really want to.</source>
-        <translation>&apos;gksu&apos; や &apos;kdesu&apos; がインストールされている場合、Notepadq は必要に応じて root 権限を要求します。Notepadqq を root として実行することはお勧めできません。権限が本当に必要な場合は --allow-root を使用してください。</translation>
+        <source>Notepad will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepad as root is not recommended. Use --allow-root if you really want to.</source>
+        <translation>&apos;gksu&apos; や &apos;kdesu&apos; がインストールされている場合、Notepadq は必要に応じて root 権限を要求します。Notepad を root として実行することはお勧めできません。権限が本当に必要な場合は --allow-root を使用してください。</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="126"/>
@@ -1852,8 +1852,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="128"/>
-        <source>You can help to improve Notepadqq by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
-        <translation>&lt;b&gt;匿名の統計&lt;/b&gt;の収集を許可することで、Notepadqq の改善を手伝うことができます。</translation>
+        <source>You can help to improve Notepad by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
+        <translation>&lt;b&gt;匿名の統計&lt;/b&gt;の収集を許可することで、Notepad の改善を手伝うことができます。</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="129"/>
@@ -1862,8 +1862,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="130"/>
-        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepadqq is open source, so you can %1check by yourself%2 😊</source>
-        <translation>Qt のバージョン、OS のバージョン、拡張機能の数などの情報を収集します。&lt;br&gt;私達を信用する必要はありません。Notepadqq はオープンソースですので、%1あなた自身の目で確認する%2ことができます 😊</translation>
+        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepad is open source, so you can %1check by yourself%2 😊</source>
+        <translation>Qt のバージョン、OS のバージョン、拡張機能の数などの情報を収集します。&lt;br&gt;私達を信用する必要はありません。Notepad はオープンソースですので、%1あなた自身の目で確認する%2ことができます 😊</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="137"/>
@@ -1936,8 +1936,8 @@ Do you want to save it anyway?</source>
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="20"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="42"/>
@@ -2059,8 +2059,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="110"/>
-        <source>Collect and transmit anonymous statistics to improve Notepadqq</source>
-        <translation>Notepadqq の改善のために匿名の統計を収集して送信する</translation>
+        <source>Collect and transmit anonymous statistics to improve Notepad</source>
+        <translation>Notepad の改善のために匿名の統計を収集して送信する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="117"/>
@@ -2069,13 +2069,13 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="124"/>
-        <source>Remember open tabs when closing Notepadqq</source>
-        <translation>Notepadqq を閉じる際に開いているタブを記憶する</translation>
+        <source>Remember open tabs when closing Notepad</source>
+        <translation>Notepad を閉じる際に開いているタブを記憶する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="133"/>
-        <source>This option allows Notepadqq to recover your documents after a crash even if they were not explicitly saved.</source>
-        <translation>このオプションは、Notepadqq がクラッシュした際にドキュメントを保存していなかった場合でも、ドキュメントの復元を可能にします。</translation>
+        <source>This option allows Notepad to recover your documents after a crash even if they were not explicitly saved.</source>
+        <translation>このオプションは、Notepad がクラッシュした際にドキュメントを保存していなかった場合でも、ドキュメントの復元を可能にします。</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="136"/>
@@ -2089,8 +2089,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="171"/>
-        <source>Exit Notepadqq when closing the last Tab</source>
-        <translation>最後のタブを閉じた際に Notepadqq を終了する</translation>
+        <source>Exit Notepad when closing the last Tab</source>
+        <translation>最後のタブを閉じた際に Notepad を終了する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="180"/>

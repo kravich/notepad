@@ -8,7 +8,7 @@ public:
 
     /**
      * @brief Returns the path to where the session file is/should be located
-     *        that contains all tabs when the main Notepadqq instance is closed.
+     *        that contains all tabs when the main Notepad instance is closed.
      */
     static QString cacheSessionPath();
 

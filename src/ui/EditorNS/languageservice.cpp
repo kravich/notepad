@@ -12,7 +12,7 @@ namespace EditorNS {
 
 LanguageService::LanguageService()
 {
-    QFileInfo fileInfo(Notepadqq::editorPath());
+    QFileInfo fileInfo(Notepad::editorPath());
     QString fileName = fileInfo.absolutePath() + "/Languages.json";
     QFile scriptFile(fileName);
     scriptFile.open(QIODevice::ReadOnly | QIODevice::Text);

@@ -1,4 +1,4 @@
-# Notepadqq
+# Notepad
 
 Represents the entire application.
 
@@ -6,11 +6,11 @@ Represents the entire application.
 
 ## nqq.commandLineArguments()
 
-Returns the list of command line arguments passed to Notepadqq.
+Returns the list of command line arguments passed to Notepad.
 
 ## nqq.version()
 
-Returns the version of Notepadqq.
+Returns the version of Notepad.
 
 ## nqq.windows()
 

@@ -1,4 +1,4 @@
-site_name: Notepadqq API
+site_name: Notepad API
 theme_dir: 'theme'
 markdown_extensions:
     - toc:

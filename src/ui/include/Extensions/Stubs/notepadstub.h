@@ -7,14 +7,14 @@
 namespace Extensions {
     namespace Stubs {
 
-        class NotepadqqStub : public Stub
+        class NotepadStub : public Stub
         {
             Q_OBJECT
         public:
-            NotepadqqStub(RuntimeSupport *rts);
-            ~NotepadqqStub();
+            NotepadStub(RuntimeSupport *rts);
+            ~NotepadStub();
 
-            NQQ_STUB_NAME("Notepadqq")
+            NQQ_STUB_NAME("Notepad")
 
         private:
             NQQ_DECLARE_EXTENSION_METHOD(commandLineArguments)

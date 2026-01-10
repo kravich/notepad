@@ -10,7 +10,7 @@ namespace Extensions {
 
     RuntimeSupport::RuntimeSupport(QObject *parent) : QObject(parent)
     {
-        QSharedPointer<Stubs::Stub> nqqStub = QSharedPointer<Stubs::Stub>(new Stubs::NotepadqqStub(this));
+        QSharedPointer<Stubs::Stub> nqqStub = QSharedPointer<Stubs::Stub>(new Stubs::NotepadStub(this));
         m_pointers.insert(NQQ_STUB_ID, nqqStub);
     }
 

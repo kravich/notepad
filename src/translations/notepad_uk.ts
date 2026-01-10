@@ -257,8 +257,8 @@
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="13"/>
-        <source>This file has been changed outside of Notepadqq.</source>
-        <translation>Цей файл був змінений поза Notepadqq.</translation>
+        <source>This file has been changed outside of Notepad.</source>
+        <translation>Цей файл був змінений поза Notepad.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="15"/>
@@ -359,10 +359,10 @@
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="441"/>
-        <source>Notepadqq asks permission to overwrite the following file:
+        <source>Notepad asks permission to overwrite the following file:
 
 %1</source>
-        <translation>Notepadqq запитує дозвіл на перезапис наступного файлу:
+        <translation>Notepad запитує дозвіл на перезапис наступного файлу:
 
 %1</translation>
     </message>
@@ -500,8 +500,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="53"/>
@@ -815,8 +815,8 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="473"/>
-        <source>About &amp;Notepadqq...</source>
-        <translation>Про &amp;Notepadqq...</translation>
+        <source>About &amp;Notepad...</source>
+        <translation>Про &amp;Notepad...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="481"/>
@@ -1702,8 +1702,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/notepad.cpp" line="102"/>
-        <source>Allows Notepadqq to be run as root.</source>
-        <translation>Дозволяє запускати Notepadqq як root.</translation>
+        <source>Allows Notepad to be run as root.</source>
+        <translation>Дозволяє запускати Notepad як root.</translation>
     </message>
     <message>
         <location filename="../ui/notepad.cpp" line="106"/>
@@ -1717,8 +1717,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/notepad.cpp" line="135"/>
-        <source>Notepadqq will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
-        <translation>Notepadqq намагатиметься робити все можливе, але &lt;b&gt;деякі функції не працюватимуть належним чином&lt;/b&gt;.</translation>
+        <source>Notepad will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
+        <translation>Notepad намагатиметься робити все можливе, але &lt;b&gt;деякі функції не працюватимуть належним чином&lt;/b&gt;.</translation>
     </message>
     <message>
         <location filename="../ui/notepad.cpp" line="136"/>
@@ -1737,8 +1737,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="502"/>
-        <source>You need to restart Notepadqq for the localization changes to take effect.</source>
-        <translation>Потрібно перезапустити Notepadqq, щоб зміни локалізації набрали чинності.</translation>
+        <source>You need to restart Notepad for the localization changes to take effect.</source>
+        <translation>Потрібно перезапустити Notepad, щоб зміни локалізації набрали чинності.</translation>
     </message>
     <message>
         <location filename="../ui/Sessions/sessions.cpp" line="130"/>
@@ -1757,8 +1757,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="144"/>
-        <source>Notepadqq supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
-        <translation>Notepadqq підтримує більшість синтаксів &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Регулярних виразів Perl&lt;/a&gt; якщо відзначено пункт &apos;Використовувати регулярні вирази&apos;.</translation>
+        <source>Notepad supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
+        <translation>Notepad підтримує більшість синтаксів &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Регулярних виразів Perl&lt;/a&gt; якщо відзначено пункт &apos;Використовувати регулярні вирази&apos;.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="145"/>
@@ -1837,8 +1837,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/main.cpp" line="88"/>
-        <source>Running Notepadqq as root is not recommended. Use --allow-root if you really want to.</source>
-        <translation>Запускати Notepadqq як root не рекомендовано. Використовуйте --allow-root якщо ви все ж бажаєте зробити це.</translation>
+        <source>Running Notepad as root is not recommended. Use --allow-root if you really want to.</source>
+        <translation>Запускати Notepad як root не рекомендовано. Використовуйте --allow-root якщо ви все ж бажаєте зробити це.</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="120"/>
@@ -1847,8 +1847,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="122"/>
-        <source>You can help to improve Notepadqq by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
-        <translation>Ви можете допомогти вдосконалити Notepadqq дозволивши збирати нам &lt;b&gt;анонімну статистику&lt;/b&gt;.</translation>
+        <source>You can help to improve Notepad by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
+        <translation>Ви можете допомогти вдосконалити Notepad дозволивши збирати нам &lt;b&gt;анонімну статистику&lt;/b&gt;.</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="123"/>
@@ -1857,8 +1857,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="124"/>
-        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepadqq is open source, so you can %1check by yourself%2 :)</source>
-        <translation>Ми збираємо таку інформацію, як версія Qt, версія ОС або кількість розширень.&lt;br&gt;Ви можете не довіряти нам: Notepadqq має відкритий вихідний код, тому ви можете %1перевірити самостійно%2 :)</translation>
+        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepad is open source, so you can %1check by yourself%2 :)</source>
+        <translation>Ми збираємо таку інформацію, як версія Qt, версія ОС або кількість розширень.&lt;br&gt;Ви можете не довіряти нам: Notepad має відкритий вихідний код, тому ви можете %1перевірити самостійно%2 :)</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="131"/>
@@ -1872,8 +1872,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/Sessions/backupservice.cpp" line="105"/>
-        <source>Notepadqq was not closed properly. Do you want to recover unsaved changes?</source>
-        <translation>Notepadqq не було закрито належним чином. Бажаєте відновити незбережені зміни?</translation>
+        <source>Notepad was not closed properly. Do you want to recover unsaved changes?</source>
+        <translation>Notepad не було закрито належним чином. Бажаєте відновити незбережені зміни?</translation>
     </message>
 </context>
 <context>
@@ -1936,8 +1936,8 @@ Do you want to save it anyway?</source>
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="17"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="39"/>
@@ -2064,8 +2064,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="117"/>
-        <source>Collect and transmit anonymous statistics to improve Notepadqq</source>
-        <translation>Збирати та передавати анонімну статистику для покращення Notepadqq</translation>
+        <source>Collect and transmit anonymous statistics to improve Notepad</source>
+        <translation>Збирати та передавати анонімну статистику для покращення Notepad</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="124"/>
@@ -2074,13 +2074,13 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="131"/>
-        <source>Remember open tabs when closing Notepadqq</source>
-        <translation>Пам&apos;ятати відкриті вкладки перед закриттям Notepadqq</translation>
+        <source>Remember open tabs when closing Notepad</source>
+        <translation>Пам&apos;ятати відкриті вкладки перед закриттям Notepad</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="140"/>
-        <source>This option allows Notepadqq to recover your documents after a crash even if they were not explicitly saved.</source>
-        <translation>Ця опція дозволяє Notepadqq відновити ваші документи після аварії, навіть якщо їх не було збережено.</translation>
+        <source>This option allows Notepad to recover your documents after a crash even if they were not explicitly saved.</source>
+        <translation>Ця опція дозволяє Notepad відновити ваші документи після аварії, навіть якщо їх не було збережено.</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="143"/>
@@ -2094,8 +2094,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="178"/>
-        <source>Exit Notepadqq when closing the last Tab</source>
-        <translation>Вийти з Notepadqq при закритті останньої вкладки</translation>
+        <source>Exit Notepad when closing the last Tab</source>
+        <translation>Вийти з Notepad при закритті останньої вкладки</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="187"/>

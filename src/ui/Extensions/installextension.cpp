@@ -48,7 +48,7 @@ namespace Extensions {
             ui->lblDescription->setText(manifest.value("description").toString());
 
             // Tell the user if this is an update
-            QString alreadyInstalledPath = getAbsoluteExtensionFolder(Notepadqq::extensionsPath(), m_uniqueName);
+            QString alreadyInstalledPath = getAbsoluteExtensionFolder(Notepad::extensionsPath(), m_uniqueName);
             if (!alreadyInstalledPath.isNull()) {
                 QJsonObject manifest = Extension::getManifest(alreadyInstalledPath);
                 if (!manifest.isEmpty()) {
@@ -139,20 +139,20 @@ namespace Extensions {
         });
 
         this->setEnabled(false);
-        process->setWorkingDirectory(Notepadqq::extensionToolsPath());
-        process->start(Notepadqq::nodejsPath(), QStringList()
+        process->setWorkingDirectory(Notepad::extensionToolsPath());
+        process->start(Notepad::nodejsPath(), QStringList()
                       << "install.js"
                       << packagePath
-                      << Notepadqq::extensionsPath()
-                      << Notepadqq::npmPath());
+                      << Notepad::extensionsPath()
+                      << Notepad::npmPath());
     }
 
     QString InstallExtension::readExtensionManifest(const QString &archivePath)
     {
         QProcess process;
         QByteArray output;
-        process.setWorkingDirectory(Notepadqq::extensionToolsPath());
-        process.start(Notepadqq::nodejsPath(), QStringList() << "readmanifest.js" << archivePath);
+        process.setWorkingDirectory(Notepad::extensionToolsPath());
+        process.start(Notepad::nodejsPath(), QStringList() << "readmanifest.js" << archivePath);
 
         if (process.waitForStarted(20000)) {
             while (process.waitForReadyRead(30000)) {

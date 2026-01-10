@@ -48,7 +48,7 @@ namespace EditorNS
         query.addQueryItem("themePath", theme.path);
         query.addQueryItem("themeName", theme.name);
 
-        QUrl url = QUrl("file://" + Notepadqq::editorPath());
+        QUrl url = QUrl("file://" + Notepad::editorPath());
         url.setQuery(query);
 
         QWebChannel * channel = new QWebChannel(this);
@@ -60,7 +60,7 @@ namespace EditorNS
 
         // To load the page in the background (http://stackoverflow.com/a/10520029):
         // (however, no noticeable improvement here on an i5, september 2014)
-        //QString content = QString("<html><body onload='setTimeout(function() { window.location=\"%1\"; }, 1);'>Loading...</body></html>").arg("file://" + Notepadqq::editorPath());
+        //QString content = QString("<html><body onload='setTimeout(function() { window.location=\"%1\"; }, 1);'>Loading...</body></html>").arg("file://" + Notepad::editorPath());
         //m_webView->setContent(content.toUtf8());
 
         m_webView->pageAction(QWebEnginePage::InspectElement)->setVisible(false);
@@ -665,7 +665,7 @@ namespace EditorNS
         if (name == "default" || name.isEmpty())
             return Theme();
 
-        QFileInfo editorPath(Notepadqq::editorPath());
+        QFileInfo editorPath(Notepad::editorPath());
         QDir bundledThemesDir(editorPath.absolutePath() + "/libs/codemirror/theme/");
 
         if (bundledThemesDir.exists(name + ".css"))
@@ -676,7 +676,7 @@ namespace EditorNS
 
     QList<Editor::Theme> Editor::themes()
     {
-        auto editorPath = QFileInfo(Notepadqq::editorPath());
+        auto editorPath = QFileInfo(Notepad::editorPath());
         QDir bundledThemesDir(editorPath.absolutePath() + "/libs/codemirror/theme/", "*.css");
 
         QList<Theme> out;

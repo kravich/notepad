@@ -895,7 +895,7 @@ bool DocEngine::trySudoSave(QString sudoProgram, QUrl outFileName, QSharedPointe
     } else if (sudoBinaryName == "gksu") {
         arguments = QStringList({"-S",
             "-m",
-            tr("Notepadqq asks permission to overwrite the following file:\n\n%1").arg(outFileName.toLocalFile())});
+            tr("Notepad asks permission to overwrite the following file:\n\n%1").arg(outFileName.toLocalFile())});
     }
     arguments.append({"cp", filePath, outFileName.toLocalFile()});
 

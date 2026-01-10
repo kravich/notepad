@@ -1,22 +1,22 @@
-# NotepadqqApi
+# NotepadApi
 
-Provides access to the Notepadqq API.
+Provides access to the Notepad API.
 
 [TOC]
 
-## NotepadqqApi.connect()
-## NotepadqqApi.connect(connectedCallback)
-## NotepadqqApi.connect(socketPath, extensionId)
-## NotepadqqApi.connect(socketPath, extensionId, connectedCallback)
+## NotepadApi.connect()
+## NotepadApi.connect(connectedCallback)
+## NotepadApi.connect(socketPath, extensionId)
+## NotepadApi.connect(socketPath, extensionId, connectedCallback)
 
-Connects to Notepadqq and returns a new [`NotepadqqApi`](NotepadqqApi)
+Connects to Notepad and returns a new [`NotepadApi`](NotepadApi)
 instance.
 
 If a function is provided with `connectedCallback`, it will be called
 as soon as the connection is completed. The parameters passed to the
 callback are:
 
-  - `api`: the constructed [`NotepadqqApi`](NotepadqqApi) object.
+  - `api`: the constructed [`NotepadApi`](NotepadApi) object.
   
 If `socketPath` and `extensionId` are provided, they'll be used for the
 connection. Otherwise, their values are taken respectively from the first and
@@ -25,9 +25,9 @@ the second command line argument (with Node, they correspond to
 
 For example:
 
-    var NotepadqqApi = require("notepad-api").NotepadqqApi
+    var NotepadApi = require("notepad-api").NotepadApi
 
-    NotepadqqApi.connect(function(api) {
+    NotepadApi.connect(function(api) {
         // Connected
     });
 
@@ -35,16 +35,16 @@ For example:
 
 Launch a callback for each currently open window and for each future window.
 
-This is preferable to the `'newWindow'` event of Notepadqq, because it could
+This is preferable to the `'newWindow'` event of Notepad, because it could
 happen that the extension isn't ready soon enough to receive the `'newWindow'`
 event for the first window. This method, instead, ensures that the passed
 callback will be called once and only once for each current or future window.
 
 Example:
 
-    var NotepadqqApi = require("notepad-api").NotepadqqApi
+    var NotepadApi = require("notepad-api").NotepadApi
 
-    NotepadqqApi.connect(function(api) {
+    NotepadApi.connect(function(api) {
         api.onWindowInitialization(function(window) {
             // Do something
         });
@@ -52,8 +52,8 @@ Example:
 
 ## api.extensionId
 
-Get the id assigned to this extension by Notepadqq.
+Get the id assigned to this extension by Notepad.
 
 ## api.notepad
 
-Get an instance of the main [`Notepadqq`](Notepadqq) object.
+Get an instance of the main [`Notepad`](Notepad) object.

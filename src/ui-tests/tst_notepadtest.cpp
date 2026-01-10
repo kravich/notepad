@@ -4,27 +4,27 @@
 #include "nqqsettings.cpp"
 #include "notepad.cpp"
 
-class NotepadqqTest : public QObject
+class NotepadTest : public QObject
 {
     Q_OBJECT
 
 public:
-    NotepadqqTest();
+    NotepadTest();
 
 private Q_SLOTS:
     void editorPathIsHtml();
 };
 
-NotepadqqTest::NotepadqqTest()
+NotepadTest::NotepadTest()
 {
     //QApplication a();
 }
 
-void NotepadqqTest::editorPathIsHtml()
+void NotepadTest::editorPathIsHtml()
 {
-    QVERIFY(Notepadqq::editorPath().endsWith(".html"));
+    QVERIFY(Notepad::editorPath().endsWith(".html"));
 }
 
-QTEST_GUILESS_MAIN(NotepadqqTest)
+QTEST_GUILESS_MAIN(NotepadTest)
 
 #include "tst_notepadtest.moc"

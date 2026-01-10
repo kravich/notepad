@@ -1,8 +1,8 @@
 /*
  *
- * This file is part of the Notepadqq text editor.
+ * This file is part of the Notepad text editor.
  *
- * Copyright(c) 2010 Notepadqq team.
+ * Copyright(c) 2010 Notepad team.
  * http://notepad.sourceforge.net/
  *
  * This program is free software: you can redistribute it and/or modify
@@ -43,14 +43,14 @@
 /**
  * @brief Global information and utility functions.
  */
-class Notepadqq : public QObject
+class Notepad : public QObject
 {
     Q_OBJECT
 public:
 
-    static Notepadqq& getInstance()
+    static Notepad& getInstance()
     {
-        static Notepadqq instance;
+        static Notepad instance;
         return instance;
     }
 
@@ -81,9 +81,9 @@ signals:
     void newWindow(MainWindow *window);
 
 private:
-    Notepadqq() {}
-    Notepadqq(Notepadqq const&);      // Don't implement
-    void operator=(Notepadqq const&); // Don't implement
+    Notepad() {}
+    Notepad(Notepad const&);      // Don't implement
+    void operator=(Notepad const&); // Don't implement
 };
 
 #endif // NOTEPADQQ_H

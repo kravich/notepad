@@ -244,7 +244,7 @@ void frmPreferences::saveAppearanceTab()
 
 void frmPreferences::loadTranslations()
 {
-    QList<QString> translations = Notepadqq::translations();
+    QList<QString> translations = Notepad::translations();
 
     QString localizationSetting = m_settings.General.getLocalization();
 
@@ -513,7 +513,7 @@ void frmPreferences::on_localizationComboBox_activated(int /*index*/)
     msgBox.setWindowTitle(QCoreApplication::applicationName());
     msgBox.setIcon(QMessageBox::Information);
     msgBox.setText("<h3>" + QObject::tr("Restart required") + "</h3>");
-    msgBox.setInformativeText(QObject::tr("You need to restart Notepadqq for the localization changes to take effect."));
+    msgBox.setInformativeText(QObject::tr("You need to restart Notepad for the localization changes to take effect."));
     msgBox.exec();
 }
 

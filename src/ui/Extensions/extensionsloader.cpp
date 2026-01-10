@@ -73,7 +73,7 @@ namespace Extensions {
 
     bool ExtensionsLoader::extensionRuntimePresent()
     {
-        QFileInfo f = QFileInfo(Notepadqq::nodejsPath());
+        QFileInfo f = QFileInfo(Notepad::nodejsPath());
         // FIXME Check if version is correct
         return f.exists() && f.isExecutable();
     }

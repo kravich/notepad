@@ -5,8 +5,8 @@
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="13"/>
-        <source>This file has been changed outside of Notepadqq.</source>
-        <translation>Denna fil har ändrats utanför Notepadqq.</translation>
+        <source>This file has been changed outside of Notepad.</source>
+        <translation>Denna fil har ändrats utanför Notepad.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="15"/>
@@ -227,8 +227,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="53"/>
@@ -552,8 +552,8 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="531"/>
-        <source>About &amp;Notepadqq...</source>
-        <translation>Om &amp;Notepadqq...</translation>
+        <source>About &amp;Notepad...</source>
+        <translation>Om &amp;Notepad...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="539"/>
@@ -1397,8 +1397,8 @@ Vill du spara den i alla fall?</translation>
     </message>
     <message>
         <location filename="../ui/notepad.cpp" line="120"/>
-        <source>Notepadqq will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
-        <translation>Notepadqq försöker göra sitt bästa, men &lt;b&gt;vissa saker kommer inte att fungera korrekt&lt;/b&gt;.</translation>
+        <source>Notepad will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
+        <translation>Notepad försöker göra sitt bästa, men &lt;b&gt;vissa saker kommer inte att fungera korrekt&lt;/b&gt;.</translation>
     </message>
     <message>
         <location filename="../ui/notepad.cpp" line="121"/>
@@ -1417,8 +1417,8 @@ Vill du spara den i alla fall?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="430"/>
-        <source>You need to restart Notepadqq for the localization changes to take effect.</source>
-        <translation>Du måste starta om Notepadqq för att tillämpa språkändringen.</translation>
+        <source>You need to restart Notepad for the localization changes to take effect.</source>
+        <translation>Du måste starta om Notepad för att tillämpa språkändringen.</translation>
     </message>
     <message>
         <location filename="../ui/Sessions/sessions.cpp" line="127"/>
@@ -1464,8 +1464,8 @@ Vill du spara den i alla fall?</translation>
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="17"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="39"/>
@@ -1592,8 +1592,8 @@ Vill du spara den i alla fall?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="119"/>
-        <source>Remember open tabs when closing Notepadqq</source>
-        <translation>Kom ihåg öppna flikar när Notepadqq avslutas</translation>
+        <source>Remember open tabs when closing Notepad</source>
+        <translation>Kom ihåg öppna flikar när Notepad avslutas</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="128"/>

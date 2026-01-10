@@ -18,7 +18,7 @@ public:
     void startServer();
 
     /**
-     * @brief If another instance of Notepadqq is opened, sends it
+     * @brief If another instance of Notepad is opened, sends it
      *        the current command line arguments.
      * @return true if another instance was found and received the arguments,
      *         false otherwise.
