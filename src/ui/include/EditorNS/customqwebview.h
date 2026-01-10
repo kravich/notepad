@@ -19,7 +19,6 @@ namespace EditorNS
         void gotFocus();
 
     protected:
-        void wheelEvent(QWheelEvent *ev) override;
         void keyPressEvent(QKeyEvent *ev) override;
         void dropEvent(QDropEvent *ev) override;
         void focusInEvent(QFocusEvent* event) override;
