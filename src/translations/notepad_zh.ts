@@ -1681,32 +1681,32 @@ Do you want to save it anyway?</source>
         <translation>你需要重启Notepadqq以使本地化更改生效。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="18"/>
+        <location filename="../ui/notepad.cpp" line="18"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="87"/>
+        <location filename="../ui/notepad.cpp" line="87"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>在一个已经存在的实例%1中打开一个新窗口。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="92"/>
+        <location filename="../ui/notepad.cpp" line="92"/>
         <source>Open file at specified line.</source>
         <translation>打开文件到指定的行。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="98"/>
+        <location filename="../ui/notepad.cpp" line="98"/>
         <source>Open file at specified column.</source>
         <translation>打开文件到指定的列。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="103"/>
+        <location filename="../ui/notepad.cpp" line="103"/>
         <source>Allows Notepadqq to be run as root.</source>
         <translation>允许Notepadqq在root下运行。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="107"/>
+        <location filename="../ui/notepad.cpp" line="107"/>
         <source>Files to open.</source>
         <translation>待打开文件。</translation>
     </message>

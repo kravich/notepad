@@ -1376,37 +1376,37 @@ Vill du spara den i alla fall?</translation>
 <context>
     <name>QObject</name>
     <message utf8="true">
-        <location filename="../ui/notepadqq.cpp" line="17"/>
+        <location filename="../ui/notepad.cpp" line="17"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="86"/>
+        <location filename="../ui/notepad.cpp" line="86"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>Öppna ett nytt fönster i en befintlig instans av %1.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="91"/>
+        <location filename="../ui/notepad.cpp" line="91"/>
         <source>Files to open.</source>
         <translation>Filer att öppna</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="118"/>
+        <location filename="../ui/notepad.cpp" line="118"/>
         <source>You are using an old version of Qt (%1)</source>
         <translation>Du använder en gammal version av Qt (%1)</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="120"/>
+        <location filename="../ui/notepad.cpp" line="120"/>
         <source>Notepadqq will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
         <translation>Notepadqq försöker göra sitt bästa, men &lt;b&gt;vissa saker kommer inte att fungera korrekt&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="121"/>
+        <location filename="../ui/notepad.cpp" line="121"/>
         <source>Install a newer Qt version (&amp;ge; %1) from the official repositories of your distribution.&lt;br&gt;&lt;br&gt;If it&apos;s not available, download Qt (&amp;ge; %1) from %2 and install it to &quot;%3&quot; or to &quot;%4&quot;.</source>
         <translation>Installera en nyare Qt-version (&amp;ge; %1) från det officiella förrådet för din distribution.&lt;br&gt;&lt;br&gt;Om det inte finns tillgängligt, kan du ladda ner Qt (&amp;ge; %1) från %2 och installera den i &quot;%3&quot; eller i &quot;%4&quot;.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="135"/>
+        <location filename="../ui/notepad.cpp" line="135"/>
         <source>Don&apos;t show me this warning again</source>
         <translation>Visa inte denna varning igen</translation>
     </message>

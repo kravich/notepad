@@ -10,7 +10,7 @@ Thanks for helping to make Notepadqq better! As a contributor, here are the guid
 
 ## <a name="question"></a> Got a Question or Problem?
 
-Please, do not open issues for the general support questions as we want to keep GitHub issues for bug reports and feature requests. You've got much better chances of getting your question answered on our [Facebook group](https://www.facebook.com/groups/notepadqq/).
+Please, do not open issues for the general support questions as we want to keep GitHub issues for bug reports and feature requests. You've got much better chances of getting your question answered on our [Facebook group](https://www.facebook.com/groups/notepad/).
 
 ## <a name="issue"></a> Found a Bug?
 If you find a bug in the source code, you can help us by
@@ -40,13 +40,13 @@ We want to fix all the issues as soon as possible, but before fixing a bug we ne
 - version of Qt (menu `? -> About Qt...`)
 - version of Notepadqq (menu `? -> About Notepadqq...`)
 
-You can file new issues by filling out our [new issue form](https://github.com/notepadqq/notepadqq/issues/new).
+You can file new issues by filling out our [new issue form](https://github.com/notepad/notepad/issues/new).
 
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
 Before you submit your Pull Request (PR) consider the following guidelines:
 
-* Search [GitHub](https://github.com/notepadqq/notepadqq/pulls) for an open or closed PR
+* Search [GitHub](https://github.com/notepad/notepad/pulls) for an open or closed PR
   that relates to your submission. You don't want to duplicate effort.
 * Create a new git branch in which you'll make your changes:
 
@@ -69,7 +69,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     git push origin my-fix-branch
     ```
 
-* In GitHub, send a pull request to `notepadqq:master`. Always include an explanation about *what* your code does and *why*.
+* In GitHub, send a pull request to `notepad:master`. Always include an explanation about *what* your code does and *why*.
 * If we suggest changes then:
   * Make the required updates.
   * Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
@@ -125,4 +125,4 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
    In general, keep the number of changes at the minimum necessary.
 
 
-[github]: https://github.com/notepadqq/notepadqq
+[github]: https://github.com/notepad/notepad

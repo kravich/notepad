@@ -97,7 +97,7 @@ void Stats::check() {
 }
 
 void Stats::remoteApiSend(const QJsonObject &data) {
-    QUrl url("https://notepadqq.com/api/stat/post.php");
+    QUrl url("https://notepad.com/api/stat/post.php");
     QNetworkRequest request(url);
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/javascript");
@@ -130,7 +130,7 @@ void Stats::askUserPermission() {
             QObject::tr(
                 "We will collect information such as the version of Qt, the version of the OS, or the number of extensions.<br>"
                 "You don't have to trust us: Notepadqq is open source, so you can %1check by yourself%2 😊").
-                      arg("<a href=\"https://github.com/notepadqq/notepadqq/blob/master/src/ui/stats.cpp\">").
+                      arg("<a href=\"https://github.com/notepad/notepad/blob/master/src/ui/stats.cpp\">").
                       arg("</a>") +
             "</body></html>");
 

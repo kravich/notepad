@@ -50,13 +50,13 @@ function addBundleDepsToPackageJSON(fileName) {
 }
 
 
-var tmpdir = path.join(os.tmpdir(), '_notepadqq_ext_' + crypto.randomBytes(4).readUInt32LE(0));
+var tmpdir = path.join(os.tmpdir(), '_notepad_ext_' + crypto.randomBytes(4).readUInt32LE(0));
 var tmpdir_ext = path.join(tmpdir, 'ext');
 var tmpdir_pkg = path.join(tmpdir, 'pkg');
 
-sh.mkdir('-p', tmpdir);     // /tmp/_notepadqq_ext_xxxxx/
+sh.mkdir('-p', tmpdir);     // /tmp/_notepad_ext_xxxxx/
 failtest(sh.error());
-sh.mkdir('-p', tmpdir_pkg); // Contains the notepadqq extension files
+sh.mkdir('-p', tmpdir_pkg); // Contains the notepad extension files
 failtest(sh.error());
 sh.mkdir('-p', tmpdir_ext); // Contains a copy of the extension code
 failtest(sh.error());
@@ -101,7 +101,7 @@ function buildArchive(callback) {
 
 function prepare_npm_package(callback) {
     
-    // Remove notepadqq files
+    // Remove notepad files
     sh.rm(path.join(tmpdir_ext, MANIFEST_FILENAME));
     failtest(sh.error());
     

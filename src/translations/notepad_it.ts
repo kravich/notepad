@@ -1684,32 +1684,32 @@ Vuoi salvare comunque?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="18"/>
+        <location filename="../ui/notepad.cpp" line="18"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="87"/>
+        <location filename="../ui/notepad.cpp" line="87"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>Aprire una nuova finestra in un&apos;istanza esistente di %1.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="92"/>
+        <location filename="../ui/notepad.cpp" line="92"/>
         <source>Open file at specified line.</source>
         <translation>Apri il file alla riga specificata.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="98"/>
+        <location filename="../ui/notepad.cpp" line="98"/>
         <source>Open file at specified column.</source>
         <translation>Apri il file alla colonna specificata.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="103"/>
+        <location filename="../ui/notepad.cpp" line="103"/>
         <source>Allows Notepadqq to be run as root.</source>
         <translation>Permette a Notepadqq di essere eseguito come root.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="107"/>
+        <location filename="../ui/notepad.cpp" line="107"/>
         <source>Files to open.</source>
         <translation>Il file da aprire.</translation>
     </message>

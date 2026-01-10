@@ -25,7 +25,7 @@ the second command line argument (with Node, they correspond to
 
 For example:
 
-    var NotepadqqApi = require("notepadqq-api").NotepadqqApi
+    var NotepadqqApi = require("notepad-api").NotepadqqApi
 
     NotepadqqApi.connect(function(api) {
         // Connected
@@ -42,7 +42,7 @@ callback will be called once and only once for each current or future window.
 
 Example:
 
-    var NotepadqqApi = require("notepadqq-api").NotepadqqApi
+    var NotepadqqApi = require("notepad-api").NotepadqqApi
 
     NotepadqqApi.connect(function(api) {
         api.onWindowInitialization(function(window) {
@@ -54,6 +54,6 @@ Example:
 
 Get the id assigned to this extension by Notepadqq.
 
-## api.notepadqq
+## api.notepad
 
 Get an instance of the main [`Notepadqq`](Notepadqq) object.

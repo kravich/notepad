@@ -10,8 +10,8 @@
 #include <QMessageBox>
 
 const QString Notepadqq::version = POINTVERSION;
-const QString Notepadqq::contributorsUrl = "https://github.com/notepadqq/notepadqq/graphs/contributors";
-const QString Notepadqq::website = "https://notepadqq.com";
+const QString Notepadqq::contributorsUrl = "https://github.com/notepad/notepad/graphs/contributors";
+const QString Notepadqq::website = "https://notepad.com";
 
 QString Notepadqq::copyright()
 {
@@ -128,7 +128,7 @@ QList<QString> Notepadqq::translations()
     QList<QString> out;
 
     QDir dir(":/translations");
-    QStringList fileNames = dir.entryList(QStringList("notepadqq_*.qm"));
+    QStringList fileNames = dir.entryList(QStringList("notepad_*.qm"));
 
     // FIXME this can be removed if we create a .qm file for English too, which should exist for consistency purposes
     out.append("en");
@@ -136,8 +136,8 @@ QList<QString> Notepadqq::translations()
     for (int i = 0; i < fileNames.size(); ++i) {
         // get locale extracted by filename
         QString langCode;
-        langCode = fileNames[i]; // "notepadqq_de.qm"
-        langCode.truncate(langCode.lastIndexOf('.')); // "notepadqq_de"
+        langCode = fileNames[i]; // "notepad_de.qm"
+        langCode.truncate(langCode.lastIndexOf('.')); // "notepad_de"
         langCode.remove(0, langCode.indexOf('_') + 1); // "de"
 
         out.append(langCode);

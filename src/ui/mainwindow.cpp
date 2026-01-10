@@ -321,7 +321,7 @@ void MainWindow::loadIcons()
 
     // '?' menu
     ui->actionAbout_Qt->setIcon(IconProvider::fromTheme("help-about"));
-    ui->actionAbout_Notepadqq->setIcon(IconProvider::fromTheme("notepadqq"));
+    ui->actionAbout_Notepadqq->setIcon(IconProvider::fromTheme("notepad"));
 
     // Macros in toolbar
     ui->action_Start_Recording->setIcon(IconProvider::fromTheme("media-record"));
@@ -841,7 +841,7 @@ void MainWindow::on_actionOpen_triggered()
     if (defaultUrl.isEmpty())
         defaultUrl = QUrl::fromLocalFile(m_settings.General.getLastSelectedDir());
 
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     auto dialogOption =
@@ -865,7 +865,7 @@ void MainWindow::on_actionOpen_Folder_triggered()
     if (defaultUrl.isEmpty())
         defaultUrl = QUrl::fromLocalFile(m_settings.General.getLastSelectedDir());
 
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     auto dialogOption =
@@ -1049,7 +1049,7 @@ int MainWindow::save(EditorTabWidget *tabWidget, int tab)
 
 int MainWindow::saveAs(EditorTabWidget *tabWidget, int tab, bool copy)
 {
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     auto dialogOption =
@@ -2275,7 +2275,7 @@ void MainWindow::on_actionPrint_triggered()
     QPageSetupDialog dlg;
     if (dlg.exec() == QDialog::Accepted) {
         currentEditor()->printToPdf(dlg.printer()->pageLayout()).then([this](QByteArray data) {
-            QFile file(QDir::tempPath() + "/notepadqq.print." +
+            QFile file(QDir::tempPath() + "/notepad.print." +
                        QString::number(QDateTime::currentMSecsSinceEpoch(), 16) + ".pdf");
 
             if (file.open(QIODevice::WriteOnly)) { // FIXME: Delete the file when we're done
@@ -2518,7 +2518,7 @@ void MainWindow::on_actionGo_to_Line_triggered()
 
 void MainWindow::on_actionInstall_Extension_triggered()
 {
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     QString file = QFileDialog::getOpenFileName(this, tr("Extension"), QString(), "Notepadqq extensions (*.nqqext)");
@@ -2593,7 +2593,7 @@ void MainWindow::on_actionToggle_Smart_Indent_toggled(bool on)
 
 void MainWindow::on_actionLoad_Session_triggered()
 {
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     QString recentFolder = QUrl::fromLocalFile(
@@ -2616,7 +2616,7 @@ void MainWindow::on_actionLoad_Session_triggered()
 
 void MainWindow::on_actionSave_Session_triggered()
 {
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     QString recentFolder = QUrl::fromLocalFile(

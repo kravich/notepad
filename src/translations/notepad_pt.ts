@@ -1692,37 +1692,37 @@ Você deseja salvá-lo mesmo assim?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="18"/>
+        <location filename="../ui/notepad.cpp" line="18"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="87"/>
+        <location filename="../ui/notepad.cpp" line="87"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>Abra uma nova janela em uma instância existente de %1.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="92"/>
+        <location filename="../ui/notepad.cpp" line="92"/>
         <source>Open file at specified line.</source>
         <translation>Abra o arquivo na linha especificada.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="98"/>
+        <location filename="../ui/notepad.cpp" line="98"/>
         <source>Open file at specified column.</source>
         <translation>Abra o arquivo na coluna especificada.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="103"/>
+        <location filename="../ui/notepad.cpp" line="103"/>
         <source>Allows Notepadqq to be run as root.</source>
         <translation>Permite que o Notepadqq seja executado como root.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="106"/>
+        <location filename="../ui/notepad.cpp" line="106"/>
         <source>Print system information for debugging.</source>
         <translation>Imprime informações do sistema para depuração.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="110"/>
+        <location filename="../ui/notepad.cpp" line="110"/>
         <source>Files to open.</source>
         <translation>Arquivos para abrir.</translation>
     </message>

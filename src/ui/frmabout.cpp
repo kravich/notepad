@@ -14,7 +14,7 @@ frmAbout::frmAbout(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->lblIcon->setPixmap(IconProvider::fromTheme("notepadqq")
+    ui->lblIcon->setPixmap(IconProvider::fromTheme("notepad")
                            .pixmap(ui->lblIcon->width(),
                                    ui->lblIcon->height()));
 

@@ -23,7 +23,7 @@ namespace Extensions {
 
     QSharedPointer<Extensions::ExtensionsServer> ExtensionsLoader::startExtensionsServer()
     {
-        QString name = "notepadqq-exts-";
+        QString name = "notepad-exts-";
         name += QString::number(QDateTime::currentMSecsSinceEpoch());
         name += "-";
         name += QString::number(qrand());

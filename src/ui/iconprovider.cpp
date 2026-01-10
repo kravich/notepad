@@ -12,7 +12,7 @@ QIcon IconProvider::fromTheme(const QString &name)
 {
     // FIXME Cache the icons
 
-    QString basePath = ":/icons/notepadqq/%1/%2.%3";
+    QString basePath = ":/icons/notepad/%1/%2.%3";
 
     if (QIcon::hasThemeIcon(name)) {
         return QIcon::fromTheme(name);
@@ -21,7 +21,7 @@ QIcon IconProvider::fromTheme(const QString &name)
         return QIcon(SVGIconEngine::fromFile(basePath.arg("scalable").arg(name).arg("svg")));
 
     } else {
-        // QIcon::setThemeName("notepadqq");
+        // QIcon::setThemeName("notepad");
         QIcon icon;
 
         QList<QPair<int, QString>> sizes {

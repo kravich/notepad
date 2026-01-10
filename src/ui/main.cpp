@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationVersion(Notepadqq::version);
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
-    QGuiApplication::setDesktopFileName("notepadqq");
+    QGuiApplication::setDesktopFileName("notepad");
 #endif
 
     QSettings::setDefaultFormat(QSettings::IniFormat);

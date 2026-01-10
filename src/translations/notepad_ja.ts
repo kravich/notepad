@@ -1686,32 +1686,32 @@ Do you want to save it anyway?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="18"/>
+        <location filename="../ui/notepad.cpp" line="18"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="87"/>
+        <location filename="../ui/notepad.cpp" line="87"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>%1 の既存のインスタンスで新しいウィンドウを開きます。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="92"/>
+        <location filename="../ui/notepad.cpp" line="92"/>
         <source>Open file at specified line.</source>
         <translation>行を指定してファイルを開きます。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="98"/>
+        <location filename="../ui/notepad.cpp" line="98"/>
         <source>Open file at specified column.</source>
         <translation>列を指定してファイルを開きます。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="103"/>
+        <location filename="../ui/notepad.cpp" line="103"/>
         <source>Allows Notepadqq to be run as root.</source>
         <translation>Notepadqq をルートとして実行します。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="107"/>
+        <location filename="../ui/notepad.cpp" line="107"/>
         <source>Files to open.</source>
         <translation>開くファイル</translation>
     </message>
