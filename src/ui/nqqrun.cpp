@@ -20,7 +20,7 @@ using namespace NqqRun;
 RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     QDialog(parent, f),
     m_settings(NqqSettings::getInstance())
-{ 
+{
     QVBoxLayout *v1 = new QVBoxLayout;
     QHBoxLayout *h1 = new QHBoxLayout;
     QHBoxLayout *h2 = new QHBoxLayout;
@@ -51,7 +51,7 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     v1->addWidget(info);
     v1->addWidget(m_commands);
     v1->addItem(h3);
-    
+
     h2->addWidget(btnOk);
     h2->addWidget(btnCancel);
     h2->setAlignment(Qt::AlignRight);
@@ -60,7 +60,7 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
 
     setLayout(v1);
     setMinimumSize(500, 200);
-    
+
     QMap <QString, QString> cmdData = m_settings.Run.getCommands();
     QSortFilterProxyModel *pModel = new QSortFilterProxyModel(this);
     pModel->setSourceModel(m_commands->model());
@@ -168,11 +168,11 @@ RunDelegate::RunDelegate(QObject *parent)
 {
 }
 
-void RunDelegate::paint(QPainter *painter, 
+void RunDelegate::paint(QPainter *painter,
         const QStyleOptionViewItem &option,
         const QModelIndex &index) const
-{   
-        
+{
+
     if (index.column() == 1) {
         painter->save();
         QStyleOptionButton btnOpen;
@@ -185,7 +185,7 @@ void RunDelegate::paint(QPainter *painter,
         btnOpen.iconSize = QSize(14, 14);
         btnOpen.state = QStyle::State_Enabled;
         r.setWidth(r.width() - 32);
-        
+
         // Elide Text
         QFontMetrics fm(option.font);
         QString editText = fm.elidedText(index.data(Qt::EditRole).toString(),
@@ -247,7 +247,7 @@ bool RunDelegate::editorEvent(QEvent *event,
                     return true;
                 }
             }
- 
+
 
         }
     }
@@ -258,7 +258,7 @@ RunDialog::RunDialog(QWidget *parent, Qt::WindowFlags f) :
     QDialog(parent, f),
     m_settings(NqqSettings::getInstance()),
     m_saved(false)
-{    
+{
     QVBoxLayout *v1 = new QVBoxLayout;
     QHBoxLayout *h1 = new QHBoxLayout;
     QHBoxLayout *h2 = new QHBoxLayout;
@@ -312,11 +312,11 @@ RunDialog::~RunDialog()
 void RunDialog::slotSave()
 {
     bool ok;
-    QString name = QInputDialog::getText(this, 
+    QString name = QInputDialog::getText(this,
             tr("Choose the name to be displayed in the run menu."),
             tr("Command Name:"),
             QLineEdit::Normal,
-            m_command->text(), 
+            m_command->text(),
             &ok);
     if (ok && !name.isEmpty() && !m_command->text().isEmpty()) {
         m_settings.Run.setCommand(name, m_command->text());

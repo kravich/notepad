@@ -54,7 +54,7 @@ struct TabData {
     qint64 lastModified = 0;
     bool customIndent = false;
     bool useTabs = false;
-    int tabSize = 0; 
+    int tabSize = 0;
 };
 
 struct ViewData {
@@ -325,7 +325,7 @@ bool saveSession(DocEngine* docEngine, TopEditorContainer* editorContainer, QStr
             td.scrollY = scrollPos.second;
             td.active = tabWidget->currentEditor() == editor;
             td.language = editor->getLanguage()->id;
-            
+
             // Cache the custom indentation state of the file
             if (editor->isUsingCustomIndentationMode()) {
                 td.customIndent = true;

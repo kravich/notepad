@@ -74,7 +74,7 @@ class LanguageService
          * @return const QVector<Language>
          */
         const LanguageList& languages() {return m_languages;}
-        
+
     private:
         LanguageService();
         LanguageList m_languages;

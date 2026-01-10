@@ -123,11 +123,11 @@ void KeyGrabber::keyPressEvent(QKeyEvent* event)
     if (modifiers & Qt::AltModifier) grab.append("Alt+");
     if (modifiers & Qt::MetaModifier) grab.append("Meta+");
     if (modifiers & Qt::ShiftModifier) grab.append("Shift+");
-    
+
     switch(event->key()) {
         case Qt::Key_Alt:
         case Qt::Key_Control:
-        case Qt::Key_Meta: 
+        case Qt::Key_Meta:
         case Qt::Key_Shift:
             return;
 

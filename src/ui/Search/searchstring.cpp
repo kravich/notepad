@@ -22,7 +22,7 @@ QString SearchString::format(QString regex, SearchHelpers::SearchMode searchMode
 }
 
 QString SearchString::unescape(const QString &data)
-{ 
+{
     const int dataLength = data.size();
     QString unescaped;
     unescaped.reserve(dataLength);

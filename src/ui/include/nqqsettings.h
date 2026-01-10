@@ -209,7 +209,7 @@ public:
             _m_settings.endGroup();
             return ret;
         }
-        
+
         void setCommand(const QString &cmdName, const QString &cmdRun)
         {
             _m_settings.beginGroup("Run");

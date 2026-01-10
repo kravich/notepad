@@ -52,11 +52,11 @@ std::vector<int> getLinePositions(const QString &data)
             linePosition.push_back(i+1);
         }
     }
-    
+
     // Check the last char manually
     if (dataSize > 0 && (*data.end() == '\r' || *data.end() == '\n'))
         linePosition.push_back(dataSize);
-    
+
 
     linePosition.push_back(dataSize);
     return linePosition;

@@ -99,7 +99,7 @@ private:
     int rawAddEditorTab(const bool setFocus, const QString &title, EditorTabWidget *source, const int sourceTabIndex);
 
 private slots:
-    void on_cleanChanged(bool isClean); 
+    void on_cleanChanged(bool isClean);
     void on_editorMouseWheel(QWheelEvent *ev);
     void on_fileNameChanged(const QUrl &, const QUrl &newFileName);
     void on_currentTabChanged(int index);
