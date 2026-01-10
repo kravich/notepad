@@ -1,3 +1,23 @@
+find_package(Qt5
+    COMPONENTS
+        Core
+        Gui
+        Svg
+        Widgets
+        PrintSupport
+        Network
+        WebEngineWidgets
+        WebChannel
+        WebSockets
+        DBus
+        LinguistTools
+    REQUIRED
+)
+
+find_package(PkgConfig REQUIRED)
+
+pkg_check_modules(uchardet REQUIRED IMPORTED_TARGET uchardet)
+
 set(notepad_SRCS
     main.cpp
     mainwindow.cpp
@@ -134,4 +154,43 @@ set(notepad_TRANSLATIONS
     ../translations/notepad_sv.ts
     ../translations/notepad_uk.ts
     ../translations/notepad_zh.ts
+)
+
+qt_add_translation(notepad_QMS ${notepad_TRANSLATIONS})
+
+add_executable(notepad
+    ${notepad_SRCS}
+    ${notepad_HEADERS}
+    ${notepad_FORMS}
+    ${notepad_RESOURCES}
+    ${notepad_ICON}
+    ${notepad_QMS}
+)
+
+set_target_properties(notepad
+    PROPERTIES
+        AUTOMOC ON
+        AUTORCC ON
+        AUTOUIC ON
+)
+
+target_include_directories(notepad
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        libs/qtpromise/include
+)
+
+target_link_libraries(notepad
+    PRIVATE
+        Qt5::Core
+        Qt5::Gui
+        Qt5::Svg
+        Qt5::Widgets
+        Qt5::PrintSupport
+        Qt5::Network
+        Qt5::WebEngineWidgets
+        Qt5::WebChannel
+        Qt5::WebSockets
+        Qt5::DBus
+        PkgConfig::uchardet
 )
