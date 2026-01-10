@@ -1,5 +1,5 @@
-#ifndef EXTENSIONS_STUBS_NOTEPADQQ_H
-#define EXTENSIONS_STUBS_NOTEPADQQ_H
+#ifndef EXTENSIONS_STUBS_NOTEPAD_H
+#define EXTENSIONS_STUBS_NOTEPAD_H
 
 #include "include/Extensions/Stubs/stub.h"
 #include "include/mainwindow.h"
@@ -28,4 +28,4 @@ namespace Extensions {
     }
 }
 
-#endif // EXTENSIONS_STUBS_NOTEPADQQ_H
+#endif // EXTENSIONS_STUBS_NOTEPAD_H

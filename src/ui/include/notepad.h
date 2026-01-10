@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef NOTEPADQQ_H
-#define NOTEPADQQ_H
+#ifndef NOTEPAD_H
+#define NOTEPAD_H
 
 #include "include/mainwindow.h"
 
@@ -86,4 +86,4 @@ private:
     void operator=(Notepad const&); // Don't implement
 };
 
-#endif // NOTEPADQQ_H
+#endif // NOTEPAD_H
