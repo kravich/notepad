@@ -366,7 +366,7 @@ void MainWindow::loadToolBar()
         toolbarItems = getDefaultToolBarString();
 
     auto actions = getActions();
-    auto parts = toolbarItems.split('|', QString::SkipEmptyParts);
+    auto parts = toolbarItems.split('|', Qt::SkipEmptyParts);
 
     for (const auto& part : parts) {
         if(part == "Separator") {
