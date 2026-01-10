@@ -194,3 +194,45 @@ target_link_libraries(notepad
         Qt5::DBus
         PkgConfig::uchardet
 )
+
+set_target_properties(notepad PROPERTIES OUTPUT_NAME notepad-bin)
+
+set(notepad_SUPPORT_FILES ../../support_files)
+
+install(TARGETS notepad
+    RUNTIME DESTINATION lib/notepad
+)
+
+install(PROGRAMS ${notepad_SUPPORT_FILES}/launch/notepad
+    DESTINATION bin
+)
+
+install(CODE
+    "execute_process(COMMAND rm -rf ${CMAKE_INSTALL_PREFIX}/share/notepad/editor)"
+)
+
+install(CODE
+    "execute_process(COMMAND make DESTDIR=${CMAKE_INSTALL_PREFIX}/share/notepad/editor
+                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/editor)"
+)
+
+install(FILES ${notepad_SUPPORT_FILES}/shortcuts/notepad.desktop
+    DESTINATION share/applications
+)
+
+install(DIRECTORY ${notepad_SUPPORT_FILES}/icons
+    DESTINATION share
+)
+
+install(FILES ${notepad_SUPPORT_FILES}/notepad.appdata.xml
+    DESTINATION share/metainfo
+)
+
+install(CODE
+    "execute_process(COMMAND rm -rf ${CMAKE_INSTALL_PREFIX}/share/notepad/extension_tools)"
+)
+
+install(CODE
+    "execute_process(COMMAND make DESTDIR=${CMAKE_INSTALL_PREFIX}/share/notepad/extension_tools
+                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/extension_tools)"
+)
