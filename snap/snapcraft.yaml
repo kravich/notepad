@@ -1,5 +1,5 @@
-name: notepad 
-version: '2.0.0-beta+git'
+name: notepad
+version: '0.0.99'
 summary: A Notepad++-like editor for Linux.
 description: |
   It helps developers by providing all you can expect from a general purpose text editor, such as syntax highlighting for more than 100 different languages, code folding, color schemes, file monitoring, multiple selection and much more.
@@ -10,7 +10,7 @@ icon: support_files/icons/hicolor/scalable/apps/notepad.svg
 base: core18
 
 apps:
-  notepad: 
+  notepad:
     command: bin/desktop-launch $SNAP/usr/local/lib/notepad/notepad-bin
     environment:
       DISABLE_WAYLAND: 1  # See https://github.com/notepad/notepad/issues/806
@@ -84,7 +84,7 @@ parts:
       - libqt5svg5-dev
       - qttools5-dev-tools
       - libuchardet-dev
-    stage-packages: 
+    stage-packages:
       - adwaita-icon-theme-full
       - bamfdaemon
       - coreutils
@@ -102,7 +102,7 @@ parts:
       - numix-gtk-theme
       - overlay-scrollbar-gtk2
       - packagekit-gtk3-module
-      - qtbase5-dev 
+      - qtbase5-dev
       - unity-gtk-module-common
       - unity-schemas
       - libnss3
@@ -112,8 +112,8 @@ parts:
       - libqt5webenginewidgets5
       - libuchardet0
       - qtwayland5
-      
-    source: . 
+
+    source: .
     after: [desktop-qt5]
     plugin: qmake
     options:
