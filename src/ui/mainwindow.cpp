@@ -18,7 +18,7 @@
 #include "include/frmlinenumberchooser.h"
 #include "include/frmpreferences.h"
 #include "include/iconprovider.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "include/nqqrun.h"
 #include "ui_mainwindow.h"
 
@@ -155,7 +155,7 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
     }
 
     //Register our meta types for signal/slot calls here.
-    emit Notepadqq::getInstance().newWindow(this);
+    emit Notepad::getInstance().newWindow(this);
 }
 
 MainWindow::MainWindow(const QStringList &arguments, QWidget *parent)
@@ -321,7 +321,7 @@ void MainWindow::loadIcons()
 
     // '?' menu
     ui->actionAbout_Qt->setIcon(IconProvider::fromTheme("help-about"));
-    ui->actionAbout_Notepadqq->setIcon(IconProvider::fromTheme("notepadqq"));
+    ui->actionAbout_Notepad->setIcon(IconProvider::fromTheme("notepad"));
 
     // Macros in toolbar
     ui->action_Start_Recording->setIcon(IconProvider::fromTheme("media-record"));
@@ -520,7 +520,7 @@ void MainWindow::openCommandLineProvidedUrls(const QString &workingDirectory, co
         return;
     }
 
-    QSharedPointer<QCommandLineParser> parser = Notepadqq::getCommandLineArgumentsParser(arguments);
+    QSharedPointer<QCommandLineParser> parser = Notepad::getCommandLineArgumentsParser(arguments);
 
     QStringList rawUrls = parser->positionalArguments();
 
@@ -841,7 +841,7 @@ void MainWindow::on_actionOpen_triggered()
     if (defaultUrl.isEmpty())
         defaultUrl = QUrl::fromLocalFile(m_settings.General.getLastSelectedDir());
 
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     auto dialogOption =
@@ -865,7 +865,7 @@ void MainWindow::on_actionOpen_Folder_triggered()
     if (defaultUrl.isEmpty())
         defaultUrl = QUrl::fromLocalFile(m_settings.General.getLastSelectedDir());
 
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     auto dialogOption =
@@ -1049,7 +1049,7 @@ int MainWindow::save(EditorTabWidget *tabWidget, int tab)
 
 int MainWindow::saveAs(EditorTabWidget *tabWidget, int tab, bool copy)
 {
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     auto dialogOption =
@@ -1349,7 +1349,7 @@ void MainWindow::refreshEditorUiInfo(QSharedPointer<Editor> editor)
                                            );
 
         newTitle = QString("%1%2 (%3) - %4")
-                       .arg(Notepadqq::fileNameFromUrl(editor->filePath()))
+                       .arg(Notepad::fileNameFromUrl(editor->filePath()))
                        .arg(editor->isClean() ? "" : "*")
                        .arg(path)
                        .arg(QApplication::applicationName());
@@ -1413,7 +1413,7 @@ void MainWindow::on_actionSelect_All_triggered()
     currentEditor()->sendMessage("C_CMD_SELECT_ALL");
 }
 
-void MainWindow::on_actionAbout_Notepadqq_triggered()
+void MainWindow::on_actionAbout_Notepad_triggered()
 {
     frmAbout *_about;
     _about = new frmAbout(this);
@@ -1517,7 +1517,7 @@ void MainWindow::on_actionCurrent_Filename_to_Clipboard_triggered()
         EditorTabWidget *tabWidget = m_topEditorContainer->currentTabWidget();
         QApplication::clipboard()->setText(tabWidget->tabText(tabWidget->indexOf(editor.data())));
     } else {
-        QApplication::clipboard()->setText(Notepadqq::fileNameFromUrl(editor->filePath()));
+        QApplication::clipboard()->setText(Notepad::fileNameFromUrl(editor->filePath()));
     }
 }
 
@@ -1895,7 +1895,7 @@ void MainWindow::updateRecentDocsInMenu()
     QList<QAction *> actions;
     for (QVariant recentDoc : recentDocs) {
         QUrl url = recentDoc.toUrl();
-        QAction *action = new QAction(Notepadqq::fileNameFromUrl(url), this);
+        QAction *action = new QAction(Notepad::fileNameFromUrl(url), this);
         connect(action, &QAction::triggered, this, [this, url]() {
             openRecentFileEntry(url);
         });
@@ -2275,7 +2275,7 @@ void MainWindow::on_actionPrint_triggered()
     QPageSetupDialog dlg;
     if (dlg.exec() == QDialog::Accepted) {
         currentEditor()->printToPdf(dlg.printer()->pageLayout()).then([this](QByteArray data) {
-            QFile file(QDir::tempPath() + "/notepadqq.print." +
+            QFile file(QDir::tempPath() + "/notepad.print." +
                        QString::number(QDateTime::currentMSecsSinceEpoch(), 16) + ".pdf");
 
             if (file.open(QIODevice::WriteOnly)) { // FIXME: Delete the file when we're done
@@ -2518,10 +2518,10 @@ void MainWindow::on_actionGo_to_Line_triggered()
 
 void MainWindow::on_actionInstall_Extension_triggered()
 {
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
-    QString file = QFileDialog::getOpenFileName(this, tr("Extension"), QString(), "Notepadqq extensions (*.nqqext)");
+    QString file = QFileDialog::getOpenFileName(this, tr("Extension"), QString(), "Notepad extensions (*.nqqext)");
     if (!file.isNull()) {
         Extensions::InstallExtension *installExt = new Extensions::InstallExtension(file, this);
         installExt->exec();
@@ -2593,7 +2593,7 @@ void MainWindow::on_actionToggle_Smart_Indent_toggled(bool on)
 
 void MainWindow::on_actionLoad_Session_triggered()
 {
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     QString recentFolder = QUrl::fromLocalFile(
@@ -2616,7 +2616,7 @@ void MainWindow::on_actionLoad_Session_triggered()
 
 void MainWindow::on_actionSave_Session_triggered()
 {
-    // See https://github.com/notepadqq/notepadqq/issues/654
+    // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
     QString recentFolder = QUrl::fromLocalFile(

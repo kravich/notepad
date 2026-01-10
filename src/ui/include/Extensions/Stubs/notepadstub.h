@@ -1,5 +1,5 @@
-#ifndef EXTENSIONS_STUBS_NOTEPADQQ_H
-#define EXTENSIONS_STUBS_NOTEPADQQ_H
+#ifndef EXTENSIONS_STUBS_NOTEPAD_H
+#define EXTENSIONS_STUBS_NOTEPAD_H
 
 #include "include/Extensions/Stubs/stub.h"
 #include "include/mainwindow.h"
@@ -7,14 +7,14 @@
 namespace Extensions {
     namespace Stubs {
 
-        class NotepadqqStub : public Stub
+        class NotepadStub : public Stub
         {
             Q_OBJECT
         public:
-            NotepadqqStub(RuntimeSupport *rts);
-            ~NotepadqqStub();
+            NotepadStub(RuntimeSupport *rts);
+            ~NotepadStub();
 
-            NQQ_STUB_NAME("Notepadqq")
+            NQQ_STUB_NAME("Notepad")
 
         private:
             NQQ_DECLARE_EXTENSION_METHOD(commandLineArguments)
@@ -28,4 +28,4 @@ namespace Extensions {
     }
 }
 
-#endif // EXTENSIONS_STUBS_NOTEPADQQ_H
+#endif // EXTENSIONS_STUBS_NOTEPAD_H

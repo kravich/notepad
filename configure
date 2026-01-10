@@ -181,4 +181,4 @@ QMAKE_CXXFLAGS="$CXXFLAGS $CPPFLAGS" \
 QMAKE_LFLAGS="$LDFLAGS" \
 LRELEASE="$LRELEASE" \
 CONFIG+="$BUILDMODE" \
-"$@" notepadqq.pro && echo "done" || errorExit "error!" 1
+"$@" notepad.pro && echo "done" || errorExit "error!" 1

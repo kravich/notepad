@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-LABEL maintainer="Notepadqq"
+LABEL maintainer="Notepad"
 
 RUN apt-get -qq update && apt-get --no-install-recommends -y install \
     build-essential \

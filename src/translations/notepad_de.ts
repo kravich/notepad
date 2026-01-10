@@ -1,274 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="uk_UA">
+<TS version="2.1" language="de_DE">
 <context>
     <name>AdvancedSearchDock</name>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="162"/>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="649"/>
         <source>Advanced Search</source>
-        <translation>Розширений пошук</translation>
+        <translation>Erweiterte Suche</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="167"/>
         <source>Clear Search History</source>
-        <translation>Очистити історію пошуків</translation>
+        <translation>Suchverlauf löschen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="176"/>
         <source>Go To Previous Result (Shift+F4)</source>
-        <translation>Перейти до попереднього результату (Shift+F4)</translation>
+        <translation>Zum vorherigen Ergebnis (Umschalt+F4)</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="181"/>
         <source>Go To Next Result (F4)</source>
-        <translation>Перейти до наступного результату (F4)</translation>
+        <translation>Zum nächsten Ergebnis (F4)</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="185"/>
         <source>Expand/Collapse All</source>
-        <translation>Розгорнути/згорнути все</translation>
+        <translation>Alle aus-/zusammenklappen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="187"/>
         <source>Redo Search</source>
-        <translation>Повернути цей пошук</translation>
+        <translation>Erneut suchen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="188"/>
         <source>Copy Selected Contents To Clipboard</source>
-        <translation>Копіювати виділений вміст до буфера обміну</translation>
+        <translation>Auswahl in Zwischenablage kopieren</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="189"/>
         <source>Show Full Lines</source>
-        <translation>Показувати рядки повністю</translation>
+        <translation>Ganze Zeilen anzeigen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="191"/>
         <source>Remove This Search</source>
-        <translation>Видалити цей пошук</translation>
+        <translation>Entferne Suche</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="196"/>
         <source>More Options</source>
-        <translation>Більше параметрів</translation>
+        <translation>Mehr Optionen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="201"/>
         <source>Replace Options</source>
-        <translation>Замінити параметри</translation>
+        <translation>Ersetze Optionen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="227"/>
         <source>Dock/Undock this panel</source>
-        <translation>Закріпити/відкріпити цю панель</translation>
+        <translation>Panel andocken/abkoppeln</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="253"/>
         <source>Replace Text</source>
-        <translation>Замінити текст</translation>
+        <translation>Text ersetzen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="261"/>
         <source>Replace Selected</source>
-        <translation>Замінити виділене</translation>
+        <translation>Auswahl ersetzen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="262"/>
         <source>Replace all selected search results.</source>
-        <translation>Замінити усі виділені результати пошуків.</translation>
+        <translation>Alle ausgewählten Suchergebnisse ersetzen.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="264"/>
         <source>Use Special Characters (&apos;\n&apos;, &apos;\t&apos;, ...)</source>
-        <translation>Використовувати спеціальні символи (&apos;\n&apos;, &apos;\t&apos;, ...)</translation>
+        <translation>Verwende Escape-Sequenzen (&apos;\n&apos;, &apos;\t&apos;, ...)</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="265"/>
         <source>Replace strings like &apos;\n&apos; with their respective special characters.</source>
-        <translation>Замінити рядки типу &apos;\ n&apos; відповідними спеціальними символами.</translation>
+        <translation>Ersetze Escape-Sequenzen wie &apos;\n&apos; mit entsprechenden Sonderzeichen.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="301"/>
         <source>Search String</source>
-        <translation>Рядок пошуку</translation>
+        <translation>Suchbegriff</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="308"/>
         <source>Search in Current Document</source>
-        <translation>Шукати в поточному документі</translation>
+        <translation>Suche in aktuellem Dokument</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="309"/>
         <source>Search in All Open Documents</source>
-        <translation>Шукати в усіх відкритих документах</translation>
+        <translation>Suche in allen offenen Dokumenten</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="310"/>
         <source>Search in Files on File System</source>
-        <translation>Шукати в файлах у файловій системі</translation>
+        <translation>Suche in Dateien auf Datenträger</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="325"/>
         <source>Directory</source>
-        <translation>Каталог</translation>
+        <translation>Verzeichnis</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="334"/>
         <source>Select Directory of active Document</source>
-        <translation>Виберіть каталог активного документа</translation>
+        <translation>Wähle Verzeichnis des aktuellen Dokuments</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="338"/>
         <source>Select Search Directory</source>
-        <translation>Виберіть каталог для пошуку</translation>
+        <translation>Suchverzeichnis auswählen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="345"/>
         <source>Search</source>
-        <translation>Пошук</translation>
+        <translation>Suche</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="348"/>
         <source>Scope:</source>
-        <translation>Діапазон:</translation>
+        <translation>Bereich:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="350"/>
         <source>Search:</source>
-        <translation>Пошук:</translation>
+        <translation>Suche:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="352"/>
         <source>Pattern:</source>
-        <translation>Шаблон:</translation>
+        <translation>Muster:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="354"/>
         <source>Location:</source>
-        <translation>Розміщення:</translation>
+        <translation>Ort:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="357"/>
         <source>Match Case</source>
-        <translation>Враховувати регістр</translation>
+        <translation>Groß-/Kleinschreibung</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="358"/>
         <source>Match Whole Words Only</source>
-        <translation>Шукати лише цілі слова</translation>
+        <translation>Nur ganze Wörter</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="359"/>
         <source>Use Regular Expressions</source>
-        <translation>Використовувати регулярні вирази</translation>
+        <translation>Reguläre Ausdrücke verwenden</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="360"/>
         <source>Use Special Characters (&apos;\t&apos;, &apos;\n&apos;, ...)</source>
-        <translation>Використовувати спеціальні символи (&apos;\t&apos;, &apos;\n&apos;, ...)</translation>
+        <translation>Verwende Sonderzeichen (&apos;\n&apos;, &apos;\t&apos;, ...)</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="361"/>
         <source>If set, character sequences like &apos;\t&apos; will be replaced by their respective special characters.</source>
-        <translation>Якщо встановлено, символьні послідовності типу &apos;\t&apos; будуть замінені відповідними спеціальними символами.</translation>
+        <translation>Ersetze Sequenzen wie &apos;\t&apos; mit ihren entsprechenden Sonderzeichen.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="362"/>
         <source>Include Subdirectories</source>
-        <translation>Включаючи вкладені каталоги</translation>
+        <translation>Unterverzeichnisse mit einbeziehen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="423"/>
         <source>&lt;h3&gt;One or more searches are still in progress&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Один або більше пошуків все ще тривають&lt;/h3&gt;</translation>
+        <translation>&lt;h3&gt;Ein oder mehr Suchvorgänge laufen noch&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="424"/>
         <source>All searches will be canceled and their results discarded if you continue.</source>
-        <translation>Якщо ви продовжите, усі пошуки буде скасовано і їх результати будуть відхилені.</translation>
+        <translation>Falls Sie fortfahren werden alle Suchvorgänge beendet und die Ergebnisse verworfen.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="438"/>
         <source>New Search</source>
-        <translation>Новий пошук</translation>
+        <translation>Neue Suche</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="740"/>
         <source>Search in progress</source>
-        <translation>Триває пошук</translation>
+        <translation>Suche</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="741"/>
         <source>&lt;h3&gt;This search is still in progress.&lt;/h3&gt; The search will be canceled and all results discarded if you continue.</source>
-        <translation>&lt;h3&gt;Цей пошук все ще триває.&lt;/h3&gt; Якщо ви продовжите, пошук буде скасовано і всі результати будуть відхилені.</translation>
+        <translation>&lt;h3&gt;Suchvorgang noch nicht beendet.&lt;/h3&gt; Falls Sie fortfahren, wird die Suche abgebrochen und die Ergebnisse verworfen.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="852"/>
         <source>Error</source>
-        <translation>Помилка</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="853"/>
         <source>Specified directory does not exist.</source>
-        <translation>Вказаного каталогу не існує.</translation>
+        <translation>Gewähltes Verzeichnis nicht vorhanden.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="883"/>
         <source>Matches in %1 of %2 files replaced.</source>
-        <translation>Збіги в %1 з %2 файлів замінено.</translation>
+        <translation>Treffer in %1 von %2 Dateien ersetzt.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="891"/>
         <source>&lt;h3&gt;Replacing selected matches...&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Заміна виділених збігів...&lt;/h3&gt;</translation>
+        <translation>&lt;h3&gt;Ersetze ausgewählte Treffer...&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="892"/>
         <source>Replacing in progress</source>
-        <translation>Триває заміна</translation>
+        <translation>Ersetze</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="904"/>
         <source>Replacing was unsuccessful for %1 file(s):
 </source>
-        <translation>Невдала заміна для %1 файлу(ів):
+        <translation>Konnte Treffer in %1 Datei(en) nicht ersetzen:
 </translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="910"/>
         <source>And %1 more.</source>
-        <translation>І ще %1.</translation>
+        <translation>Und %1 weitere.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="913"/>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="916"/>
         <source>Replacement Results</source>
-        <translation>Результати заміни</translation>
+        <translation>Ergebnis</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="917"/>
         <source>All selected matches successfully replaced.</source>
-        <translation>Всі виділені збіги успішно замінені.</translation>
+        <translation>Alle gewählten Treffer erfoglreich ersetzt.</translation>
     </message>
 </context>
 <context>
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="13"/>
-        <source>This file has been changed outside of Notepadqq.</source>
-        <translation>Цей файл був змінений поза Notepadqq.</translation>
+        <source>This file has been changed outside of Notepad.</source>
+        <translation>Die Datei wurde außerhalb von Notepad verändert.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="15"/>
         <source>Reload</source>
-        <translation>Перезавантажити</translation>
+        <translation>Erneut laden</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="18"/>
         <source>Ignore</source>
-        <translation>Ігнорувати</translation>
+        <translation>Ignorieren</translation>
     </message>
 </context>
 <context>
@@ -276,17 +276,17 @@
     <message>
         <location filename="../ui/EditorNS/bannerfileremoved.cpp" line="13"/>
         <source>This file has been deleted from the file system.</source>
-        <translation>Цей файл був видалений з файлової системи.</translation>
+        <translation>Die Datei wurde vom Datenträger gelöscht.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfileremoved.cpp" line="15"/>
         <source>Save</source>
-        <translation>Зберегти</translation>
+        <translation>Speichern</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfileremoved.cpp" line="18"/>
         <source>Ignore</source>
-        <translation>Ігнорувати</translation>
+        <translation>Ignorieren</translation>
     </message>
 </context>
 <context>
@@ -294,44 +294,44 @@
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="18"/>
         <source>This file is indented with %1, but your current settings specify to use %2.</source>
-        <translation>Цей файл має відступи %1, але в ваших поточних параметрах вказано %2.</translation>
+        <translation>Diese Datei verwendet %1 für den Einzug, laut Ihren Einstellungen sollten es %2 sein.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="20"/>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="25"/>
         <source>spaces</source>
-        <translation>пробіли</translation>
+        <translation>Leerzeichen</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="20"/>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="25"/>
         <source>tabs</source>
-        <translation>табуляції</translation>
+        <translation>Tabulatoren</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="22"/>
         <source>Use spaces</source>
-        <translation>З пробілами</translation>
+        <translation>Verwende Leerzeichen</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="27"/>
         <source>Use tabs</source>
-        <translation>З табуляціями</translation>
+        <translation>Verwende Tabulatoren</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="31"/>
         <source>This file is indented with %1 spaces, but your current settings specify to use %2 spaces.</source>
-        <translation>Цей файл має відступи %1 пробілів, але в ваших поточних параметрах вказано %2 пробілів.</translation>
+        <translation>Diese Datei verwendet %1 Leerzeichen für den Einzug, laut Ihren Einstellungen sollten es %2 sein.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="34"/>
         <source>Use %1 spaces</source>
-        <translation>З %1 пробілами</translation>
+        <translation>Benutze %1 Leerzeichen</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="38"/>
         <source>Ignore</source>
-        <translation>Ігнорувати</translation>
+        <translation>Ignorieren</translation>
     </message>
 </context>
 <context>
@@ -339,52 +339,53 @@
     <message>
         <location filename="../ui/docengine.cpp" line="37"/>
         <source>new %1</source>
-        <translation>новий %1</translation>
+        <translatorcomment>Unbenannt %1 ??</translatorcomment>
+        <translation>neu %1</translation>
+    </message>
+    <message>
+        <location filename="../ui/docengine.cpp" line="158"/>
+        <source>The file &quot;%1&quot; you are trying to open is %2 MiB in size. Do you want to continue?</source>
+        <translation>Die Datei &quot;%1&quot; ist größer als %2 MiB. Wollen Sie dennoch fortfahren?</translation>
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="208"/>
         <source>Error trying to open &quot;%1&quot;</source>
-        <translation>Помилка при спробі відкрити &quot;%1&quot;</translation>
+        <translation>Fehler beim Versuch &quot;%1&quot; zu öffnen</translation>
+    </message>
+    <message>
+        <location filename="../ui/docengine.cpp" line="479"/>
+        <source>Abort</source>
+        <translation>Abbrechen</translation>
+    </message>
+    <message>
+        <location filename="../ui/docengine.cpp" line="480"/>
+        <source>Retry</source>
+        <translation>Erneut versuchen</translation>
+    </message>
+    <message>
+        <location filename="../ui/docengine.cpp" line="482"/>
+        <source>Retry as Root</source>
+        <translation>Erneut versuchen als Root</translation>
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="126"/>
         <location filename="../ui/docengine.cpp" line="527"/>
         <source>Protocol not supported for file &quot;%1&quot;.</source>
-        <translation>Протокол не підтримується для файлу &quot;%1&quot;.</translation>
-    </message>
-    <message>
-        <location filename="../ui/docengine.cpp" line="158"/>
-        <source>The file &quot;%1&quot; you are trying to open is %2 MiB in size. Do you want to continue?</source>
-        <translation>Файл &quot;%1&quot;, який ви намагалися відкрити, має розмір %2 Мб. Продовжити?</translation>
+        <translation>Protokoll wird von Datei &quot;%1&quot; nicht unterstützt.</translation>
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="441"/>
-        <source>Notepadqq asks permission to overwrite the following file:
+        <source>Notepad asks permission to overwrite the following file:
 
 %1</source>
-        <translation>Notepadqq запитує дозвіл на перезапис наступного файлу:
+        <translation>Notepad möchte die folgende Datei überschreiben:
 
 %1</translation>
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="477"/>
         <source>Error trying to write to &quot;%1&quot;</source>
-        <translation>Помилка при спробі запису в &quot;%1&quot;</translation>
-    </message>
-    <message>
-        <location filename="../ui/docengine.cpp" line="479"/>
-        <source>Abort</source>
-        <translation>Перервати</translation>
-    </message>
-    <message>
-        <location filename="../ui/docengine.cpp" line="480"/>
-        <source>Retry</source>
-        <translation>Повторити</translation>
-    </message>
-    <message>
-        <location filename="../ui/docengine.cpp" line="482"/>
-        <source>Retry as Root</source>
-        <translation>Повторити як Root</translation>
+        <translation>Fehler beim Versuch in die Datei &quot;%1&quot; zu schreiben</translation>
     </message>
 </context>
 <context>
@@ -392,22 +393,22 @@
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="22"/>
         <source>name missing or invalid</source>
-        <translation>ім&apos;я відсутнє або неправильне</translation>
+        <translation>ungültiger oder fehlender Name</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="50"/>
         <source>unable to read nqq-manifest.json</source>
-        <translation>неможливо прочитати nqq-manifest.json</translation>
+        <translation>kann nqq-manifest.json nicht lesen</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="97"/>
         <source>failed to start. Check your runtime: %1</source>
-        <translation>неможливо запустити. Перевірте середовище виконання: %1</translation>
+        <translation>Konnte nicht gestartet werden. Überprüfen Sie Ihre Laufzeitumgebung: %1</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="106"/>
         <source>Failed to load %1: %2</source>
-        <translation>Неможливо завантажити %1: %2</translation>
+        <translation>Konnte %1 nicht laden: %2</translation>
     </message>
 </context>
 <context>
@@ -415,12 +416,12 @@
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="178"/>
         <source>Error</source>
-        <translation>Помилка</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="178"/>
         <source>Unsupported runtime: %1</source>
-        <translation>Непідтримуване середовище виконання: %1</translation>
+        <translation>Laufzeit wird nicht unterstützt: %1</translation>
     </message>
 </context>
 <context>
@@ -428,59 +429,59 @@
     <message>
         <location filename="../ui/Extensions/installextension.ui" line="14"/>
         <source>Install Extension</source>
-        <translation>Встановлення розширення</translation>
+        <translation>Erweiterung installieren</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.ui" line="102"/>
         <source>Cancel</source>
-        <translation>Скасувати</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.ui" line="109"/>
         <source>Install</source>
-        <translation>Встановити</translation>
+        <translation>Installieren</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="43"/>
         <source>Version %1, %2</source>
-        <translation>Версія %1, %2</translation>
+        <translation>Version %1, %2</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="44"/>
         <location filename="../ui/Extensions/installextension.cpp" line="53"/>
         <source>unknown version</source>
-        <translation>невідома версія</translation>
+        <translation>Version unbekannt</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="45"/>
         <source>unknown author</source>
-        <translation>невідомий автор</translation>
+        <translation>Autor unbekannt</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="55"/>
         <source>(current version is %1)</source>
-        <translation>(поточна версія - %1)</translation>
+        <translation>(aktuelle Version ist %1)</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="56"/>
         <source>Update</source>
-        <translation>Оновити</translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="105"/>
         <location filename="../ui/Extensions/installextension.cpp" line="127"/>
         <source>Error installing the extension</source>
-        <translation>Помилка під час встановлення розширення</translation>
+        <translation>Fehler beim Installieren der Erweiterung</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="116"/>
         <source>Extension installed</source>
-        <translation>Розширення встановлене</translation>
+        <translation>Erweiterung installiert</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="117"/>
         <source>The extension has been successfully installed!</source>
-        <translation>Розширення успішно встановлене!</translation>
+        <translation>Die Erweiterung wurde erfolgreich installiert!</translation>
     </message>
 </context>
 <context>
@@ -488,50 +489,50 @@
     <message>
         <location filename="../ui/keygrabber.cpp" line="9"/>
         <source>Action</source>
-        <translation>Дія</translation>
+        <translation>Aktion</translation>
     </message>
     <message>
         <location filename="../ui/keygrabber.cpp" line="9"/>
         <source>Keyboard Shortcut</source>
-        <translation>Сполучення клавіш</translation>
+        <translation>Tastenkürzel</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="53"/>
         <source>&amp;File</source>
-        <translation>&amp;Файл</translation>
+        <translation>&amp;Datei</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="57"/>
         <source>Recent Files</source>
-        <translation>Останні файли</translation>
+        <translation>Zuletzt geöffnet</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="84"/>
         <source>&amp;Edit</source>
-        <translation>&amp;Редагувати</translation>
+        <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="158"/>
         <source>&amp;Search</source>
-        <translation>По&amp;шук</translation>
+        <translation>&amp;Suche</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="171"/>
         <source>&amp;View</source>
-        <translation>&amp;Вигляд</translation>
+        <translation>&amp;Ansicht</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="232"/>
         <source>&amp;Language</source>
-        <translation>&amp;Мова</translation>
+        <translation>S&amp;prache</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="248"/>
@@ -541,12 +542,12 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="262"/>
         <source>&amp;Window</source>
-        <translation>Ві&amp;кно</translation>
+        <translation>&amp;Fenster</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="288"/>
         <source>&amp;Open...</source>
-        <translation>&amp;Відкрити...</translation>
+        <translation>Ö&amp;ffnen...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="291"/>
@@ -556,7 +557,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="296"/>
         <source>&amp;New</source>
-        <translation>&amp;Новий</translation>
+        <translation>&amp;Neu</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="299"/>
@@ -566,7 +567,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="309"/>
         <source>&amp;Save</source>
-        <translation>&amp;Зберегти</translation>
+        <translation>&amp;Speichern</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="312"/>
@@ -576,12 +577,12 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="317"/>
         <source>Save &amp;As...</source>
-        <translation>Зберегти &amp;як...</translation>
+        <translation>Speichern &amp;unter...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="320"/>
         <source>Save As...</source>
-        <translation>Зберегти як...</translation>
+        <translation>Speichern unter...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="323"/>
@@ -591,7 +592,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="333"/>
         <source>Sav&amp;e All</source>
-        <translation>Зберегти &amp;все</translation>
+        <translation>&amp;Alles speichern</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="336"/>
@@ -606,17 +607,17 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="354"/>
         <source>C&amp;lose All</source>
-        <translation>З&amp;акрити все</translation>
+        <translation>A&amp;lles schließen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="364"/>
         <source>Load Session...</source>
-        <translation>Завантажити сеанс...</translation>
+        <translation>Sitzung laden...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="369"/>
         <source>Save Session...</source>
-        <translation>Зберегти сеанс...</translation>
+        <translation>Sitzung speichern...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="380"/>
@@ -626,117 +627,117 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="88"/>
         <source>&amp;End of line</source>
-        <translation>&amp;Кінець рядка</translation>
+        <translation>&amp;Zeilenende</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="96"/>
         <source>C&amp;opy to Clipboard</source>
-        <translation>К&amp;опіювати до буфера обміну</translation>
+        <translation>In &amp;Zwischenablage kopieren</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="104"/>
         <source>Co&amp;nvert Case to</source>
-        <translation>Пере&amp;творити регістр</translation>
+        <translation>Ä&amp;ndere Schreibweise in</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="111"/>
         <source>&amp;Indentation</source>
-        <translation>&amp;Відступи</translation>
+        <translation>&amp;Einrückung</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="120"/>
         <source>&amp;Line Operations</source>
-        <translation>&amp;Операції з рядком</translation>
+        <translation>Zei&amp;len bearbeiten</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="129"/>
         <source>&amp;Blank Operations</source>
-        <translation>&amp;Операції з пробілами</translation>
+        <translation>Leerzeichen &amp;bearbeiten</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="175"/>
         <source>&amp;Show Symbol</source>
-        <translation>&amp;Показувати символи</translation>
+        <translation>&amp;Alle Schriftzeichen anzeigen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="187"/>
         <source>&amp;Zoom</source>
-        <translation>&amp;Масштаб</translation>
+        <translation>&amp;Zoom</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="195"/>
         <source>&amp;Move/Clone Current Document</source>
-        <translation>&amp;Перемістити/Клонувати поточний документ</translation>
+        <translation>&amp;Verschiebe/Klone aktuelles Dokument</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="214"/>
         <source>En&amp;coding</source>
-        <translation>Коду&amp;вання</translation>
+        <translation>Zeichen&amp;kodierung</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="239"/>
         <source>Settin&amp;gs</source>
-        <translation>Пара&amp;метри</translation>
+        <translation>&amp;Einstellungen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="255"/>
         <source>&amp;Run</source>
-        <translation>&amp;Запустити</translation>
+        <translation>A&amp;usführen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="268"/>
         <source>E&amp;xtensions</source>
-        <translation>Роз&amp;ширення</translation>
+        <translation>E&amp;rweiterungen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="304"/>
         <source>&amp;Reload from Disk</source>
-        <translation>&amp;Перезавантажити з диска</translation>
+        <translation>&amp;Lade erneut von Datenträger</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="328"/>
         <source>Sa&amp;ve a Copy As...</source>
-        <translation>Зб&amp;ерегти копію як...</translation>
+        <translation>Speichere Ko&amp;pie als...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="341"/>
         <source>Rena&amp;me...</source>
-        <translation>Перей&amp;менувати...</translation>
+        <translation>U&amp;mbenennen...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="346"/>
         <source>&amp;Close</source>
-        <translation>&amp;Закрити</translation>
+        <translation>S&amp;chließen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="359"/>
         <source>Close All &amp;BUT Current Document</source>
-        <translation>Закрити все окрім &amp;поточного документа</translation>
+        <translation>Alles a&amp;ußer aktuellem Dokument schließen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="377"/>
         <source>&amp;Print...</source>
-        <translation>&amp;Друк...</translation>
+        <translation>&amp;Drucken...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="391"/>
         <source>Pr&amp;int Now</source>
-        <translation>Н&amp;адрукувати зараз</translation>
+        <translation>S&amp;ofort drucken</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="399"/>
         <source>Open All Recent Files</source>
-        <translation>Відкрити всі останні файли</translation>
+        <translation>Lade alle zuletzt geöffneten Dokumente</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="404"/>
         <source>Empty Recent Files List</source>
-        <translation>Очистити список останніх файлів</translation>
+        <translation>Verlauf zuletzt geöffneter Dokumente leeren</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="409"/>
         <source>E&amp;xit</source>
-        <translation>Ви&amp;хід</translation>
+        <translation>&amp;Beenden</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="412"/>
@@ -746,7 +747,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="417"/>
         <source>&amp;Undo</source>
-        <translation>&amp;Скасувати</translation>
+        <translation>&amp;Rückgängig</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="420"/>
@@ -756,7 +757,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="425"/>
         <source>&amp;Redo</source>
-        <translation>Повер&amp;нути</translation>
+        <translation>&amp;Wiederherstellen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="428"/>
@@ -766,7 +767,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="433"/>
         <source>Cu&amp;t</source>
-        <translation>В&amp;ирізати</translation>
+        <translation>&amp;Ausschneiden</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="436"/>
@@ -776,7 +777,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="441"/>
         <source>&amp;Copy</source>
-        <translation>&amp;Копіювати</translation>
+        <translation>&amp;Kopieren</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="444"/>
@@ -786,7 +787,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="449"/>
         <source>&amp;Paste</source>
-        <translation>Вст&amp;авити</translation>
+        <translation>&amp;Einfügen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="452"/>
@@ -796,7 +797,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="457"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Видалити</translation>
+        <translation>&amp;Löschen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="460"/>
@@ -806,7 +807,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="465"/>
         <source>Select &amp;All</source>
-        <translation>Виділити &amp;все</translation>
+        <translation>Alles &amp;markieren</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="468"/>
@@ -815,283 +816,263 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="473"/>
-        <source>About &amp;Notepadqq...</source>
-        <translation>Про &amp;Notepadqq...</translation>
+        <source>About &amp;Notepad...</source>
+        <translation>Über &amp;Notepad...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="481"/>
         <source>&amp;About Qt...</source>
-        <translation>&amp;Про Qt...</translation>
+        <translation>Über &amp;Qt...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="489"/>
         <source>&amp;Windows Format</source>
-        <translation>&amp;Формат Windows</translation>
+        <translation>&amp;Windows</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="500"/>
         <source>&amp;UNIX / OS X Format</source>
-        <translation>&amp;Формат UNIX / MAC OS X</translation>
+        <translation>&amp;UNIX / OS X</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="508"/>
         <source>&amp;Old Mac Format</source>
-        <translation>&amp;Старий формат Mac</translation>
+        <translation>&amp;Mac (klassisch)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="516"/>
         <source>Show &amp;End of Line</source>
-        <translation>Показувати &amp;кінець рядка</translation>
+        <translation>Zeilen&amp;ende anzeigen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="524"/>
         <source>&amp;Show Tabs</source>
-        <translation>&amp;Показувати табуляції</translation>
+        <translation>&amp;Tabulatoren anzeigen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="532"/>
         <source>Show All &amp;Characters</source>
-        <translation>Показувати всі &amp;символи</translation>
+        <translation>&amp;Alle Zeichen anzeigen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="543"/>
         <source>Show &amp;Indent Guide</source>
-        <translation>Показувати лінію &amp;відступу</translation>
+        <translation>E&amp;inzughilfe einblenden</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="551"/>
         <source>Show &amp;Wrap Symbol</source>
-        <translation>Показувати &amp;символ перенесення рядка</translation>
+        <translation>Symbol für &amp;Umbruch anzeigen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="559"/>
         <source>&amp;Word wrap</source>
-        <translation>&amp;Перенесення рядків</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="567"/>
-        <source>&amp;Math Rendering</source>
-        <translation>Математична &amp;інтерпретація</translation>
+        <translation>&amp;Zeilenumbruch</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="572"/>
         <source>&amp;Copy Full Path to Clipboard</source>
-        <translation>&amp;Копіювати повний шлях до буфера обміну</translation>
+        <translation>&amp;Kopiere absoluten Pfad in Zwischenablage</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="577"/>
         <source>Copy &amp;Filename to Clipboard</source>
-        <translation>Копіювати &amp;ім&apos;я файлу до буфера обміну</translation>
+        <translation>Kopiere &amp;Dateinamen in Zwischenablage</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="582"/>
         <source>Copy &amp;Directory to Clipboard</source>
-        <translation>Копіювати &amp;каталог до буфера обміну</translation>
+        <translation>Kopiere &amp;Verzeichnisnamen in Zwischenablage</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="603"/>
         <source>&amp;Restore Default Zoom</source>
-        <translation>&amp;Скинути масштаб</translation>
+        <translation>&amp;Standard wiederherstellen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="611"/>
         <source>&amp;Move to Other View</source>
-        <translation>&amp;Перемістити в іншу область</translation>
+        <translation>&amp;Verschiebe in andere Ansicht</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="616"/>
         <source>&amp;Clone to Other View</source>
-        <translation>&amp;Клонувати в іншу область</translation>
+        <translation>&amp;Klone in andere Ansicht</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="621"/>
         <source>Move to a &amp;New Window</source>
-        <translation>Перемістити в нове &amp;вікно</translation>
+        <translation>In &amp;neuem Fenster verschieben</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="626"/>
         <source>&amp;Open in a New Window</source>
-        <translation>&amp;Відкрити в новому вікні</translation>
+        <translation>Ö&amp;ffne in neuem Fenster</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="690"/>
         <source>&amp;UPPERCASE</source>
-        <translation>&amp;ПРОПИСНІ БУКВИ</translation>
+        <translation>&amp;Großbuchstaben</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="698"/>
         <source>&amp;lowercase</source>
-        <translation>р&amp;ядкові букви</translation>
+        <translation>&amp;Kleinbuchstaben</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="706"/>
         <source>&amp;Convert to UTF-8</source>
-        <translation>&amp;Перетворити в UTF-8</translation>
+        <translation>Nach &amp;UTF-8 umwandeln</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="711"/>
         <source>Convert to UTF-&amp;16BE (UCS-2 Big Endian)</source>
-        <translation>Перетворити в UTF-&amp;16BE (UCS-2 Big Endian)</translation>
+        <translation>Nach UTF-&amp;16BE (UCS-2 Big Endian) umwandeln</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="716"/>
         <source>Convert to UTF-16LE (UCS-&amp;2 Little Endian)</source>
-        <translation>Перетворити в UTF-16LE (UCS-&amp;2 Little Endian)</translation>
+        <translation>Nach UTF-16LE (UCS-&amp;2 Little Endian) umwandeln</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="721"/>
         <source>Convert to &amp;UTF-8 without BOM</source>
-        <translation>Перетворити в &amp;UTF-8 без BOM</translation>
+        <translation>Nach UTF-8 ohne &amp;BOM umwandeln</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="771"/>
         <source>&amp;Preferences...</source>
-        <translation>&amp;Налаштування...</translation>
+        <translation>&amp;Einstellungen...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="800"/>
         <source>&amp;Plain text</source>
-        <translation>&amp;Простий текст</translation>
+        <translation>Einfacher &amp;Text</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="805"/>
         <source>&amp;Replace...</source>
-        <translation>&amp;Замінити...</translation>
+        <translation>E&amp;rsetze...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="813"/>
         <source>&amp;Reload file interpreted as...</source>
-        <translation>&amp;Перезавантажити і інтерпретувати як...</translation>
+        <translation>&amp;Datei erneut laden als...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="818"/>
         <source>C&amp;onvert to...</source>
-        <translation>П&amp;еретворити в...</translation>
+        <translation>U&amp;mwandeln nach...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="823"/>
         <source>Interpret as UTF-16BE (UCS-2 &amp;Big Endian)</source>
-        <translation>Інтерпретувати як UTF-16BE (UCS-2 &amp;Big Endian)</translation>
+        <translation>Als UTF-16BE (UCS-2 &amp;Big Endian) interpretieren</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="828"/>
         <source>Interpret as UTF-&amp;8 without BOM</source>
-        <translation>Інтерпретувати як UTF-&amp;8 без BOM</translation>
+        <translation>Als UTF-&amp;8 ohne BOM interpretieren</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="833"/>
         <source>&amp;Interpret as UTF-8</source>
-        <translation>&amp;Інтерпретувати як UTF-8</translation>
+        <translation>Als UTF-8 &amp;interpretieren</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="838"/>
         <source>Interpret as UTF-16LE (UCS-2 &amp;Little Endian)</source>
-        <translation>Інтерпретувати як UTF-16LE (UCS-2 &amp;Little Endian)</translation>
+        <translation>Als UTF-16LE (UCS-2 &amp;Little Endian) interpretieren</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="849"/>
         <source>&amp;Default settings</source>
-        <translation>&amp;За умовчанням</translation>
+        <translation>&amp;Standardeinstellungen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="857"/>
         <source>&amp;Custom...</source>
-        <translation>&amp;Власні...</translation>
+        <translation>&amp;Anpassen...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="862"/>
         <source>I&amp;nterpret as...</source>
-        <translation>І&amp;нтерпретувати як...</translation>
+        <translation>I&amp;nterpretieren als...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="872"/>
         <source>&amp;Open a New Window</source>
-        <translation>&amp;Відкрити в новому вікні</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="1024"/>
-        <source>&amp;Show Menubar</source>
-        <translation>&amp;Показувати панель меню</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="1035"/>
-        <source>S&amp;how Toolbar</source>
-        <translation>П&amp;оказувати панель інструментів</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="1027"/>
-        <source>Ctrl+M</source>
-        <translation>Ctrl+M</translation>
+        <translation>I&amp;n neuem Fenster öffnen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="885"/>
         <source>Delete &amp;Current Line</source>
-        <translation>Видалити &amp;поточний рядок</translation>
+        <translation>Aktuelle &amp;Zeile löschen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="896"/>
         <source>&amp;Duplicate Current Line</source>
-        <translation>&amp;Дублювати поточний рядок</translation>
+        <translation>Aktuelle Zeile ver&amp;doppeln</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="907"/>
         <source>&amp;Move Line Up</source>
-        <translation>&amp;Перемістити рядок вгору</translation>
+        <translation>Zeile nach &amp;oben verschieben</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="918"/>
         <source>Move &amp;Line Down</source>
-        <translation>Перемістити рядок &amp;вниз</translation>
+        <translation>Zeile nach &amp;unten verschieben</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="945"/>
         <source>T&amp;rim Leading and Trailing Space</source>
-        <translation>При&amp;брати пробіли на початку і в кінці рядка</translation>
+        <translation>Lösche Leerzeichen an Anfang &amp;und Ende</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="950"/>
         <source>&amp;EOL to Space</source>
-        <translation>&amp;Кінець рядка в пробіл</translation>
+        <translation>Zeilen&amp;ende in Leerzeichen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="955"/>
         <source>TA&amp;B to Space</source>
-        <translation>Та&amp;буляцію в пробіл</translation>
+        <translation>Ta&amp;bulator in Leerzeichen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="960"/>
         <source>&amp;Space to TAB (All)</source>
-        <translation>&amp;Пробіл в табуляцію (всі)</translation>
+        <translation>&amp;Leerzeichen in Tabulator (alle)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="965"/>
         <source>S&amp;pace to TAB (Leading)</source>
-        <translation>Пр&amp;обіл в табуляцію (початкові)</translation>
+        <translation>Leer&amp;zeichen in Tabulator (Zeilenanfang)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="970"/>
         <source>Open &amp;Folder...</source>
-        <translation>Відкрити &amp;каталог...</translation>
+        <translation>&amp;Verzeichnis öffnen...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="975"/>
         <source>&amp;Go to line...</source>
-        <translation>&amp;Перейти до рядка...</translation>
+        <translation>&amp;Gehe zu Zeile...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="983"/>
         <source>&amp;Install Extension...</source>
-        <translation>&amp;Встановити розширення...</translation>
+        <translation>Erweiterung &amp;installieren...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="991"/>
         <source>&amp;Full Screen</source>
-        <translation>&amp;На весь екран</translation>
+        <translation>Ganzer &amp;Bildschirm</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1016"/>
         <source>&amp;Enable Smart Indent</source>
-        <translation>&amp;Увімкнути розумні відступи</translation>
+        <translation>Intelligenten Einzug &amp;aktivieren</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="476"/>
@@ -1099,9 +1080,14 @@
         <translation>F1</translation>
     </message>
     <message>
+        <location filename="../ui/mainwindow.ui" line="567"/>
+        <source>&amp;Math Rendering</source>
+        <translation>&amp;Berechne Rendering</translation>
+    </message>
+    <message>
         <location filename="../ui/mainwindow.ui" line="587"/>
         <source>Zoom &amp;In</source>
-        <translation>Збіль&amp;шити</translation>
+        <translation>Ver&amp;größern</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="590"/>
@@ -1111,7 +1097,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="595"/>
         <source>Zoom &amp;Out</source>
-        <translation>Зменш&amp;ити</translation>
+        <translation>Ver&amp;kleinern</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="598"/>
@@ -1126,37 +1112,38 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="631"/>
         <source>&amp;Start Recording</source>
-        <translation>&amp;Розпочати запис</translation>
+        <translation>&amp;Aufnahme starten</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="642"/>
         <source>&amp;Stop Recording</source>
-        <translation>&amp;Зупинити запис</translation>
+        <translation>&amp;Aufnahme beenden</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="653"/>
         <source>&amp;Playback</source>
-        <translation>&amp;Відтворити</translation>
+        <translation>&amp;Wiedergabe</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="664"/>
         <source>Save Currently Recorded Macro</source>
-        <translation>Зберегти поточний записаний макрос</translation>
+        <translation>Aufgenommenes Makro speichern</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="672"/>
         <source>Run a Macro Multiple Times...</source>
-        <translation>Відтворити макрос кілька разів...</translation>
+        <translation>Makro mehrmals ausführen...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="680"/>
         <source>Trim Trailing and save</source>
-        <translation>Прибрати пробіли в кінці і зберегти</translation>
+        <translatorcomment>Trailing spaces?</translatorcomment>
+        <translation>Entferne Leerzeichen vom Zeilenende und speichere</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="685"/>
         <source>Modify Shortcut/Delete Macro...</source>
-        <translation>Налаштувати ярлик/Видалити макрос...</translation>
+        <translation>Bearbeite Kürzel / Lösche Makro...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="693"/>
@@ -1171,52 +1158,52 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="726"/>
         <source>&amp;Run...</source>
-        <translation>&amp;Запустити...</translation>
+        <translation>&amp;Ausführen...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="731"/>
         <source>Launch in Firefox</source>
-        <translation>Запустити в Firefox</translation>
+        <translation>Starte in Firefox</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="736"/>
         <source>Launch in Chromium</source>
-        <translation>Запустити в Chromium</translation>
+        <translation>Starte in Chromium</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="741"/>
         <source>Get PHP help</source>
-        <translation>Отримати довідку по PHP</translation>
+        <translation>Hilfe zu PHP</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="746"/>
         <source>Google Search</source>
-        <translation>Шукати в Google</translation>
+        <translation>Google-Suche</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="751"/>
         <source>Wikipedia Search</source>
-        <translation>Шукати в Wikipedia</translation>
+        <translation>Wikipedia-Suche</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="756"/>
         <source>Open file(s)</source>
-        <translation>Відкрити файл(и)</translation>
+        <translation>Datei(en) öffnen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="761"/>
         <source>Open file(s) in a new window</source>
-        <translation>Відкрити файл(и) в новому вікні</translation>
+        <translation>Datei(en) in neuem Fenster öffnen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="766"/>
         <source>Modify Shortcut / Delete Command...</source>
-        <translation>Налаштувати ярлик / Видалити команду...</translation>
+        <translation>Bearbeite Kürzel / Lösche Befehl...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="776"/>
         <source>&amp;Find...</source>
-        <translation>&amp;Знайти...</translation>
+        <translation>&amp;Suchen...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="779"/>
@@ -1226,7 +1213,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="784"/>
         <source>Find &amp;Next</source>
-        <translation>Знайти &amp;наступне</translation>
+        <translation>&amp;Nächsten suchen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="787"/>
@@ -1236,7 +1223,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="792"/>
         <source>Find &amp;Previous</source>
-        <translation>Знайти &amp;попереднє</translation>
+        <translation>&amp;Vorherigen suchen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="795"/>
@@ -1251,12 +1238,12 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="867"/>
         <source>Launch in Chrome</source>
-        <translation>Запустити в Chrome</translation>
+        <translation>Öffne in Chrome</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="877"/>
         <source>&amp;Advanced Search</source>
-        <translation>&amp;Розширений пошук</translation>
+        <translation>&amp;Erweiterte Suche</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="880"/>
@@ -1266,7 +1253,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="888"/>
         <source>Delete the current line</source>
-        <translation>Видалити поточний рядок</translation>
+        <translation>Lösche aktuelle Zeile</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="891"/>
@@ -1276,7 +1263,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="899"/>
         <source>Duplicate the current line</source>
-        <translation>Дублювати поточний рядок</translation>
+        <translation>Verdopple aktuelle Zeile</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="902"/>
@@ -1286,7 +1273,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="910"/>
         <source>Move the current line up</source>
-        <translation>Перемістити поточний рядок вгору</translation>
+        <translation>Aktuelle Zeile nach oben verschieben</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="913"/>
@@ -1296,7 +1283,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="921"/>
         <source>Move the current line down</source>
-        <translation>Перемістити поточний рядок вниз</translation>
+        <translation>Aktuelle Zeile nach unten verschieben</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="924"/>
@@ -1306,22 +1293,22 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="929"/>
         <source>&amp;Trim Trailing Space</source>
-        <translation>&amp;Прибрати пробіл в кінці рядка</translation>
+        <translation>Lösche Leerzeichen am Zeilen&amp;ende</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="932"/>
         <source>Trim Trailing Space</source>
-        <translation>Прибрати пробіл в кінці рядка</translation>
+        <translation>Lösche Leerzeichen am Zeilenende</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="937"/>
         <source>Trim &amp;Leading Space</source>
-        <translation>Прибрати &amp;пробіл на початку рядка</translation>
+        <translation>Lösche Leerzeichen am Zeilen&amp;anfang</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="940"/>
         <source>Trim Leading Space</source>
-        <translation>Прибрати пробіл на початку рядка</translation>
+        <translation>Lösche Leerzeichen am Zeilenanfang</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="978"/>
@@ -1336,222 +1323,237 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1002"/>
         <source>S&amp;how Spaces</source>
-        <translation>П&amp;оказувати пробіли</translation>
+        <translation>Leerzeic&amp;hen anzeigen</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1005"/>
         <source>Show Spaces</source>
-        <translation>Показувати пробіли</translation>
+        <translation>Leerzeichen anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1024"/>
+        <source>&amp;Show Menubar</source>
+        <translation>&amp;Menüleiste einblenden</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1027"/>
+        <source>Ctrl+M</source>
+        <translation>Ctrl+M</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1035"/>
+        <source>S&amp;how Toolbar</source>
+        <translation>&amp;Werkzeugleiste einblenden</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="405"/>
         <location filename="../ui/mainwindow.cpp" line="765"/>
         <source>INS</source>
-        <translation>INS</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="763"/>
-        <source>OVR</source>
-        <translation>OVR</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="902"/>
-        <source>Reload</source>
-        <translation>Перезавантажити</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="950"/>
-        <source>Open</source>
-        <translation>Відкрити</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="952"/>
-        <source>All files (*)</source>
-        <translation>Всі файли (*)</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="971"/>
-        <source>Open Folder</source>
-        <translation>Відкрити каталог</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="1010"/>
-        <source>Don&apos;t Save</source>
-        <translation>Не зберігати</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="901"/>
-        <source>Your changes to «%1» will be discarded.</source>
-        <translation>Ваші зміни в «%1» було відхилено.</translation>
+        <translation>EINF</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="459"/>
         <source>Error while trying to save this session. Please ensure the following directory is accessible:
 
 </source>
-        <translation>Помилка при спробі збереження сеансу. Переконайтеся, що даний каталог доступний:
+        <translation>Sitzung konnte nicht gespeichert werden. Schreibrechte für folgendes Verzeichnis werden benötigt:
 
 </translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="461"/>
         <source>By choosing &quot;ignore&quot; your session won&apos;t be saved.</source>
-        <translation>При виборі &quot;ігнорувати&quot; ваш сеанс не буде збережено.</translation>
+        <translation>Wählen Sie &quot;Ignorieren&quot; falls Sie Ihre Sitzung nicht speichern möchten.</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="618"/>
         <source>The &apos;--line&apos; and &apos;--column&apos; arguments will be ignored since more than one file is opened.</source>
-        <translation>Аргументи &apos;--line&apos; та &apos;--column&apos; ігноруватимуться, оскільки відкрито більше одного файлу.</translation>
+        <translation>Die Argumente &apos;--line&apos; und &apos;--column&apos; werden ignoriert, da mehr als eine Datei geöffnet wurde.</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="628"/>
         <source>Invalid value for &apos;--line&apos; argument: %1</source>
-        <translation>Неправильне значення аргументу &apos;--line&apos;: %1</translation>
+        <translation>Ungültiger Wert für- &apos;--line&apos;: %1</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="637"/>
         <source>Invalid value for &apos;--column&apos; argument: %1</source>
-        <translation>Неправильне значення аргументу &apos;--column&apos;: %1</translation>
+        <translation>Ungültiger Wert für- &apos;--column&apos;: %1</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="763"/>
+        <source>OVR</source>
+        <translation>ÜBS</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="902"/>
+        <source>Reload</source>
+        <translation>Erneut laden</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="950"/>
+        <source>Open</source>
+        <translation>Öffnen</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="952"/>
+        <source>All files (*)</source>
+        <translation>Alle Dateien (*)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="971"/>
+        <source>Open Folder</source>
+        <translation>Verzeichnis öffnen</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1010"/>
+        <source>Don&apos;t Save</source>
+        <translation>Nicht speichern</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="901"/>
+        <source>Your changes to Â«%1Â» will be discarded.</source>
+        <translation>Alle Änderungen an «%1» werden verworfen.</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1009"/>
-        <source>Do you want to save changes to «%1»?</source>
-        <translation>Бажаєте зберегти зміни в «%1»?</translation>
+        <source>Do you want to save changes to Â«%1Â»?</source>
+        <translation>Wollen Sie die Änderungen an «%1» speichern?</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1013"/>
-        <source>Do you want to save changes to «%1» before closing?</source>
-        <translation>Бажаєте зберегти зміни в «%1» перед закриттям?</translation>
+        <source>Do you want to save changes to Â«%1Â» before closing?</source>
+        <translation>Wollen Sie die Änderungen an «%1» vor dem Schließen speichern?</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1017"/>
         <source>If you don&apos;t save the changes you made, you&apos;ll lose them forever.</source>
-        <translation>Всі незбережені зміни будуть втрачені назавжди.</translation>
+        <translation>Falls Sie Ihre Änderungen nicht speichern, gehen diese für immer verloren.</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1129"/>
         <source>The file on disk has changed since the last read.
 Do you want to save it anyway?</source>
-        <translation>Файл на диску змінився з моменту останнього читання.
-Бажаєте зберегти його все одно?</translation>
+        <translation>Die Datei wurde seit ihrem letzen Einlesen verändert.
+Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1132"/>
         <source>Saving the file might cause loss of external data.</source>
-        <translation>Збереження файлу може призвести до втрати зовнішніх даних.</translation>
+        <translation>Die Datei zu speichern könnte den Verlust externer Daten bedeuten.</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1151"/>
         <source>Save as</source>
-        <translation>Зберегти як</translation>
+        <translation>Speichern als</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="1153"/>
         <source>Any file (*)</source>
-        <translation>Всі файли (*)</translation>
+        <translation>Alle Dateien (*)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1327"/>
+        <location filename="../ui/mainwindow.cpp" line="1332"/>
         <source>%1 chars, %2 lines</source>
-        <translation>%1 символів, %2 рядків</translation>
+        <translation>%1 Zeichen, %2 Zeilen</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1338"/>
+        <location filename="../ui/mainwindow.cpp" line="1343"/>
         <source>Ln %1, col %2</source>
-        <translation>Рядок %1, стовп %2</translation>
+        <translation>Z. %1, Sp. %2</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1342"/>
+        <location filename="../ui/mainwindow.cpp" line="1347"/>
         <source>Sel %1 (%2)</source>
-        <translation>Виб %1 (%2)</translation>
+        <translation>Mark. %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1468"/>
+        <location filename="../ui/mainwindow.cpp" line="1473"/>
         <source>Windows</source>
         <translation>Windows</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1471"/>
+        <location filename="../ui/mainwindow.cpp" line="1476"/>
         <source>UNIX / OS X</source>
         <translation>UNIX / OS X</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1474"/>
+        <location filename="../ui/mainwindow.cpp" line="1479"/>
         <source>Old Mac</source>
-        <translation>Old Mac</translation>
+        <translation>Mac (klassisch)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1481"/>
+        <location filename="../ui/mainwindow.cpp" line="1486"/>
         <source>%1 w/o BOM</source>
-        <translation>%1 без BOM</translation>
+        <translation>%1 o. BOM</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1958"/>
+        <location filename="../ui/mainwindow.cpp" line="1963"/>
         <source>No recent files</source>
-        <translation>Останні файли відсутні</translation>
+        <translation>Keine zuletzt geöffneten Dateien</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2050"/>
+        <location filename="../ui/mainwindow.cpp" line="2055"/>
         <source>The following files do not exist anymore. Do you want to open them anyway?
 </source>
-        <translation>Наступних файлів більше не існує. Бажаєте відкрити їх все одно?
+        <translation>Die folgenden Dateien existieren nicht mehr. Sollen sie dennoch geöffnet werden?
 </translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2161"/>
+        <location filename="../ui/mainwindow.cpp" line="2166"/>
         <source>Convert to:</source>
-        <translation>Перетворити в:</translation>
+        <translation>Umwandeln nach:</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2175"/>
+        <location filename="../ui/mainwindow.cpp" line="2180"/>
         <source>Reload as:</source>
-        <translation>Перезавантажити як:</translation>
+        <translation>Erneut laden als:</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2217"/>
+        <location filename="../ui/mainwindow.cpp" line="2222"/>
         <source>Interpret as:</source>
-        <translation>Інтерпретувати як:</translation>
+        <translation>Interpretieren als:</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2232"/>
+        <location filename="../ui/mainwindow.cpp" line="2237"/>
         <source>Run...</source>
-        <translation>Запустити...</translation>
+        <translation>Ausführen...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2244"/>
+        <location filename="../ui/mainwindow.cpp" line="2249"/>
         <source>Modify Run Commands</source>
-        <translation>Змінити команди запуску</translation>
+        <translation>Befehle bearbeiten</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2363"/>
+        <location filename="../ui/mainwindow.cpp" line="2368"/>
         <source>The file &quot;%1&quot; does not exist. Do you want to re-create it?</source>
-        <translation>Файл &quot;%1&quot; більше не існує. Бажаєте відновити його?</translation>
+        <translation>Die Datei &quot;%1&quot; existiert nicht. Soll sie erzeugt werden?</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2526"/>
+        <location filename="../ui/mainwindow.cpp" line="2531"/>
         <source>Extension</source>
-        <translation>Розширення</translation>
+        <translation>Erweiterung</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2604"/>
+        <location filename="../ui/mainwindow.cpp" line="2609"/>
         <source>Open Session...</source>
-        <translation>Відкрити сеанс...</translation>
+        <translation>Sitzung öffnen...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2606"/>
-        <location filename="../ui/mainwindow.cpp" line="2626"/>
+        <location filename="../ui/mainwindow.cpp" line="2611"/>
+        <location filename="../ui/mainwindow.cpp" line="2631"/>
         <source>Session file (*.xml);;Any file (*)</source>
-        <translation>Файл сеансу (*.xml);;Всі файли (*)</translation>
+        <translation>Gespeicherte Sitzung (*.xml);;Alle Dateien (*)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2624"/>
+        <location filename="../ui/mainwindow.cpp" line="2629"/>
         <source>Save Session as...</source>
-        <translation>Зберегти сеанс як...</translation>
+        <translation>Speichere Sitzung als...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2650"/>
+        <location filename="../ui/mainwindow.cpp" line="2655"/>
         <source>Error while trying to save this session. Please try a different file name.</source>
-        <translation>Помилка при спробі зберегти сеанс. Спробуйте інше ім&apos;я файлу.</translation>
+        <translation>Sitzung konnte nicht gespeichert werden. Versuchen Sie einen anderen Dateinamen.</translation>
     </message>
 </context>
 <context>
@@ -1559,7 +1561,7 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/nqqrun.cpp" line="232"/>
         <source>Open File</source>
-        <translation>Відкрити файл</translation>
+        <translation>Datei öffnen</translation>
     </message>
 </context>
 <context>
@@ -1572,57 +1574,57 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/nqqrun.cpp" line="265"/>
         <source>Cancel</source>
-        <translation>Скасувати</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="266"/>
         <source>Save...</source>
-        <translation>Зберегти...</translation>
+        <translation>Speichern...</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="269"/>
         <source>Special placeholders</source>
-        <translation>Спеціальні заповнювачі</translation>
+        <translation>Spezielle Platzhalter</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="270"/>
         <source>Full URL of the currently active file.</source>
-        <translation>Повна адреса поточного активного файлу.</translation>
+        <translation>Vollständige URL zur aktuellen Datei.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="271"/>
         <source>Full path of the currently active file.</source>
-        <translation>Повний шлях поточного активного файлу.</translation>
+        <translation>Vollständiger Pfad zur aktuellen Datei.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="272"/>
         <source>Directory of the currently active file.</source>
-        <translation>Каталог поточного активного файлу.</translation>
+        <translation>Verzeichnis der aktuellen Datei.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="273"/>
         <source>Name of the currently active file.</source>
-        <translation>Ім&apos;я поточного активного файлу.</translation>
+        <translation>Name der aktuellen Datei.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="274"/>
         <source>Currently selected text.</source>
-        <translation>Поточний виділений текст.</translation>
+        <translation>Momentan markierter Text.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="314"/>
         <source>Choose the name to be displayed in the run menu.</source>
-        <translation>Виберіть ім&apos;я для відображення в меню запуску.</translation>
+        <translation>Wählen Sie einen Namen der im Menü angezeigt werden soll.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="315"/>
         <source>Command Name:</source>
-        <translation>Ім&apos;я команди:</translation>
+        <translation>Name des Befehls:</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="324"/>
         <source>Command saved...</source>
-        <translation>Команду збережено...</translation>
+        <translation>Befehl gespeichert...</translation>
     </message>
 </context>
 <context>
@@ -1635,245 +1637,245 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/nqqrun.cpp" line="27"/>
         <source>Cancel</source>
-        <translation>Скасувати</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="32"/>
         <source>Special placeholders</source>
-        <translation>Спеціальні заповнювачі</translation>
+        <translation>Spezielle Platzhalter</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="33"/>
         <source>Full URL of the currently active file.</source>
-        <translation>Повна адреса поточного активного файлу.</translation>
+        <translation>Vollständige URL zur aktuellen Datei.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="34"/>
         <source>Full path of the currently active file.</source>
-        <translation>Повний шлях поточного активного файлу.</translation>
+        <translation>Vollständiger Pfad zur aktuellen Datei.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="35"/>
         <source>Directory of the currently active file.</source>
-        <translation>Каталог поточного активного файлу.</translation>
+        <translation>Verzeichnis der aktuellen Datei.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="36"/>
         <source>Name of the currently active file.</source>
-        <translation>Ім&apos;я поточного активного файлу.</translation>
+        <translation>Name der aktuellen Datei.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="37"/>
         <source>Currently selected text.</source>
-        <translation>Поточний виділений текст.</translation>
+        <translation>Momentan markierter Text.</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="68"/>
         <source>Text</source>
-        <translation>Текст</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="68"/>
         <source>Command</source>
-        <translation>Команда</translation>
+        <translation>Befehl</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="17"/>
+        <location filename="../ui/notepad.cpp" line="17"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="86"/>
+        <location filename="../ui/notepad.cpp" line="86"/>
         <source>Open a new window in an existing instance of %1.</source>
-        <translation>Відкрити в новому вікні в існуючому екземплярі %1.</translation>
+        <translation>Öffne neues Fenster in vorhandener Instanz von %1.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="91"/>
+        <location filename="../ui/notepad.cpp" line="91"/>
         <source>Open file at specified line.</source>
-        <translation>Відкрити файл за вказаним рядком.</translation>
+        <translation>Öffne Datei bei bestimmter Zeile.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="97"/>
+        <location filename="../ui/notepad.cpp" line="97"/>
         <source>Open file at specified column.</source>
-        <translation>Відкрити файл за вказаним стовпчиком.</translation>
+        <translation>Öffne Datei bei bestimmter Spalte.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="102"/>
-        <source>Allows Notepadqq to be run as root.</source>
-        <translation>Дозволяє запускати Notepadqq як root.</translation>
+        <location filename="../ui/notepad.cpp" line="102"/>
+        <source>Allows Notepad to be run as root.</source>
+        <translation>Ermöglicht es Notepad als Root auszuführen.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="106"/>
+        <location filename="../ui/notepad.cpp" line="106"/>
         <source>Files to open.</source>
-        <translation>Файли для відкриття.</translation>
+        <translation>Zu öffnende Dateien.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="133"/>
+        <location filename="../ui/notepad.cpp" line="133"/>
         <source>You are using an old version of Qt (%1)</source>
-        <translation>Ви використовуєте застарілу версію Qt (%1)</translation>
+        <translation>Sie verwenden eine alte Version von Qt (%1)</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="135"/>
-        <source>Notepadqq will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
-        <translation>Notepadqq намагатиметься робити все можливе, але &lt;b&gt;деякі функції не працюватимуть належним чином&lt;/b&gt;.</translation>
+        <location filename="../ui/notepad.cpp" line="135"/>
+        <source>Notepad will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
+        <translation>Notepad wird sein Bestes versuchen, dennoch könnte &lt;b&gt;nicht alles reibungslos funktionieren&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="136"/>
+        <location filename="../ui/notepad.cpp" line="136"/>
         <source>Install a newer Qt version (&amp;ge; %1) from the official repositories of your distribution.&lt;br&gt;&lt;br&gt;If it&apos;s not available, download Qt (&amp;ge; %1) from %2 and install it to &quot;%3&quot; or to &quot;%4&quot;.</source>
-        <translation>Встановіть новішу версію Qt (&amp;ge; %1) з офіційних репозиторіїв вашого дистрибутиву.&lt;br&gt;&lt;br&gt;Якщо вона недоступна, завантажте Qt (&amp;ge; %1) з %2 і встановіть в &quot;%3&quot; або в &quot;%4&quot;.</translation>
+        <translation>Installieren Sie eine neuere Version von Qt (&amp;ge; %1) aus den offiziellen Paketquellen Ihrer Distribution.&lt;br&gt;&lt;br&gt;Falls nicht verfügbar, laden Sie Qt (&amp;ge; %1) von %2 und installieren Sie es nach &quot;%3&quot; oder &quot;%4&quot;.</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="150"/>
+        <location filename="../ui/notepad.cpp" line="150"/>
         <source>Don&apos;t show me this warning again</source>
-        <translation>Не показувати надалі це повідомлення</translation>
+        <translation>Warnung nicht erneut anzeigen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="501"/>
         <source>Restart required</source>
-        <translation>Потрібен перезапуск</translation>
+        <translation>Neustart erforderlich</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="502"/>
-        <source>You need to restart Notepadqq for the localization changes to take effect.</source>
-        <translation>Потрібно перезапустити Notepadqq, щоб зміни локалізації набрали чинності.</translation>
+        <source>You need to restart Notepad for the localization changes to take effect.</source>
+        <translation>Sie müssen Notepad neustarten um die Einstellungen zu übernehmen.</translation>
     </message>
     <message>
         <location filename="../ui/Sessions/sessions.cpp" line="130"/>
         <source>Error reading session file</source>
-        <translation>Помилка читання файлу сеансу</translation>
+        <translation>Sitzung konnte nicht geladen werden</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="52"/>
         <source>Confirm Replacement</source>
-        <translation>Підтвердіити заміну</translation>
+        <translation>Ersetzen bestätigen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="53"/>
         <source>This will replace %1 selected matches with &quot;%2&quot;. Continue?</source>
-        <translation>Буде замінено %1 виділених збігів на &quot;%2&quot;. Продовжити?</translation>
+        <translation>Ersetze %1 ausgewählte Treffer mit &quot;%2&quot;. Fortfahren?</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="144"/>
-        <source>Notepadqq supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
-        <translation>Notepadqq підтримує більшість синтаксів &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Регулярних виразів Perl&lt;/a&gt; якщо відзначено пункт &apos;Використовувати регулярні вирази&apos;.</translation>
+        <source>Notepad supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
+        <translation>Notepad unterstützt die meisten regulären Ausdrücke aus &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl&lt;/a&gt;, sofern &apos;Reguläre Ausdrücke verwenden&apos; gewählt wurde.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="145"/>
         <source>Here is a quick reference:</source>
-        <translation>Ось короткий довідник:</translation>
+        <translation>Hier ein kurzes Beispiel:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="147"/>
         <source>Matches a word character</source>
-        <translation>Відповідність символів слів</translation>
+        <translation>Entspricht einem Zeichen in einem Wort</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="148"/>
         <source>Matches a 0-9 digit</source>
-        <translation>Відповідність цифр 0-9</translation>
+        <translation>Entspricht einer Ziffer von 0-9</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="149"/>
         <source>Matches any of a, b, or c</source>
-        <translation>Відповідність будь-яких a, b або c</translation>
+        <translation>Enspricht entweder a, b oder c</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="150"/>
         <source>Matches anything but a, b, or c</source>
-        <translation>Відповідність будь-чому, окрім a, b або c</translation>
+        <translation>Entspricht allem außer a, b oder c</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="151"/>
         <source>Matches the beginning of a line</source>
-        <translation>Відповідність початку рядка</translation>
+        <translation>Entspricht dem Zeilenanfang</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="152"/>
         <source>Matches the end of a line</source>
-        <translation>Відповідність кінцю рядка</translation>
+        <translation>Entspricht dem Zeilenende</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="153"/>
         <source>Matches &apos;abc&apos; and captures it as a group</source>
-        <translation>Відповідність &apos;abc&apos; та інтерпретація їх як групи</translation>
+        <translation>Entspricht &apos;abc&apos; und erfasst es als Gruppe</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="154"/>
         <source>Use in a replace operation to refer to the n&apos;th capture group</source>
-        <translation>Використовувати в операції заміни для позначення n-ї групи результатів</translation>
+        <translation>Im Ersetzungs-Vorgang verwenden, um auf die n&apos;te erfasste Gruppe zu verweisen</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="704"/>
         <source>Search in...</source>
-        <translation>Шукати в...</translation>
+        <translation>Suche in...</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="27"/>
         <source>&lt;b&gt;%1&lt;/b&gt; Results for:   &apos;&lt;b&gt;%2&lt;/b&gt;&apos;</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; Результати для:   &apos;&lt;b&gt;%2&lt;/b&gt;&apos;</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; Ergebnisse für:   &apos;&lt;b&gt;%2&lt;/b&gt;&apos;</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchobjects.cpp" line="10"/>
         <source>Current Document</source>
-        <translation>Поточний документ</translation>
+        <translation>Aktuelles Dokument</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchobjects.cpp" line="11"/>
         <source>All Documents</source>
-        <translation>Всі документи</translation>
+        <translation>Alle Dokumente</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchobjects.cpp" line="12"/>
         <source>File System</source>
-        <translation>Файлова система</translation>
+        <translation>Dateisystem</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchobjects.cpp" line="13"/>
         <source>Invalid</source>
-        <translation>Недійсний</translation>
+        <translation>Ungültig</translation>
+    </message>
+    <message>
+        <location filename="../ui/Sessions/backupservice.cpp" line="105"/>
+        <source>Notepad was not closed properly. Do you want to recover unsaved changes?</source>
+        <translation>Notepad wurde nicht ordnungsgemäß beendet. Ungesicherte Änderungen wiederherstellen?</translation>
     </message>
     <message>
         <location filename="../ui/main.cpp" line="88"/>
-        <source>Running Notepadqq as root is not recommended. Use --allow-root if you really want to.</source>
-        <translation>Запускати Notepadqq як root не рекомендовано. Використовуйте --allow-root якщо ви все ж бажаєте зробити це.</translation>
+        <source>Running Notepad as root is not recommended. Use --allow-root if you really want to.</source>
+        <translation>Es wird nicht empfohlen Notepad als Root auszuführen. Verwenden Sie --allow-root falls Sie das wirklich wollen.</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="120"/>
         <source>Do you want to help?</source>
-        <translation>Потрібна допомога?</translation>
+        <translation>Wollen Sie helfen?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="122"/>
-        <source>You can help to improve Notepadqq by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
-        <translation>Ви можете допомогти вдосконалити Notepadqq дозволивши збирати нам &lt;b&gt;анонімну статистику&lt;/b&gt;.</translation>
+        <source>You can help to improve Notepad by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
+        <translation>Sie können uns helfen Notepad zu verbessern, indem Sie uns erlauben &lt;b&gt;anonyme Statistiken&lt;/b&gt; zu sammeln.</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="123"/>
         <source>What will we collect?</source>
-        <translation>Що ми збираємо?</translation>
+        <translation>Welche Daten werden wir sammeln?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="124"/>
-        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepadqq is open source, so you can %1check by yourself%2 :)</source>
-        <translation>Ми збираємо таку інформацію, як версія Qt, версія ОС або кількість розширень.&lt;br&gt;Ви можете не довіряти нам: Notepadqq має відкритий вихідний код, тому ви можете %1перевірити самостійно%2 :)</translation>
+        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepad is open source, so you can %1check by yourself%2 :)</source>
+        <translation>Wir sammeln Informationen wie die Version von Qt, das Betriebssystem oder die Anzahl der Erweiterungen.&lt;br&gt;Sie müssen uns nicht vertrauen: Notepad ist Quelloffen, überzeugen Sie %1sich selbst%2 :)</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="131"/>
         <source>Okay, I agree</source>
-        <translation>Добре, я згоден</translation>
+        <translation>Ich bin einverstanden</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="132"/>
         <source>No</source>
-        <translation>Ні</translation>
-    </message>
-    <message>
-        <location filename="../ui/Sessions/backupservice.cpp" line="105"/>
-        <source>Notepadqq was not closed properly. Do you want to recover unsaved changes?</source>
-        <translation>Notepadqq не було закрито належним чином. Бажаєте відновити незбережені зміни?</translation>
+        <translation>Nein</translation>
     </message>
 </context>
 <context>
@@ -1881,42 +1883,42 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="115"/>
         <source>current document</source>
-        <translation>поточний документ</translation>
+        <translation>aktuelles Dokument</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="117"/>
         <source>open documents</source>
-        <translation>відкриті документи</translation>
+        <translation>alle geöffneten Dokumente</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="125"/>
         <source>Copy Line to Clipboard</source>
-        <translation>Копіювати рядок до буфера обміну</translation>
+        <translation>Zeile in Zwischenablage kopieren</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="133"/>
         <source>Open Document</source>
-        <translation>Відкрити документ</translation>
+        <translation>Öffne Dokument</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="142"/>
         <source>Open Folder in File Browser</source>
-        <translation>Відкрити каталог в Оглядачі файлів</translation>
+        <translation>Öffne Verzeichnis in Dateimanager</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="155"/>
         <source>Search Results in: %1</source>
-        <translation>Шукати результати в: %1</translation>
+        <translation>Suchergebisse in: %1</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="231"/>
         <source>Calculating...</source>
-        <translation>Обчислення...</translation>
+        <translation>Berechne...</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="388"/>
         <source>Search in progress [%1/%2 finished]</source>
-        <translation>Триває пошук [%1/%2 завершено]</translation>
+        <translation>Suche [%1/%2 beendet]</translation>
     </message>
 </context>
 <context>
@@ -1924,40 +1926,40 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/Search/dlgsearching.ui" line="17"/>
         <source>Dialog</source>
-        <translation>Діалог</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../ui/Search/dlgsearching.ui" line="77"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Скасувати</translation>
+        <translation>&amp;Abbrechen</translation>
     </message>
 </context>
 <context>
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="17"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="39"/>
         <source>Close</source>
-        <translation>Закрити</translation>
+        <translation>Schließen</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="108"/>
         <source>License</source>
-        <translation>Ліцензія</translation>
+        <translation>Lizenz</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.cpp" line="23"/>
         <source>Contributors:</source>
-        <translation>Учасники:</translation>
+        <translation>Mitwirkende:</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.cpp" line="23"/>
         <source>GitHub Contributors</source>
-        <translation>Учасники GitHub</translation>
+        <translation>Mitwirkende auf GitHub</translation>
     </message>
 </context>
 <context>
@@ -1965,12 +1967,12 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/frmencodingchooser.ui" line="17"/>
         <source>Encoding</source>
-        <translation>Кодування</translation>
+        <translation>Kodierung</translation>
     </message>
     <message>
         <location filename="../ui/frmencodingchooser.ui" line="30"/>
         <source>Encoding:</source>
-        <translation>Кодування:</translation>
+        <translation>Kodierung:</translation>
     </message>
 </context>
 <context>
@@ -1978,22 +1980,22 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/frmindentationmode.ui" line="14"/>
         <source>Indentation</source>
-        <translation>Відступи</translation>
+        <translation>Zeileneinzug</translation>
     </message>
     <message>
         <location filename="../ui/frmindentationmode.ui" line="26"/>
         <source>Tabs</source>
-        <translation>Табуляції</translation>
+        <translation>Tabulatoren</translation>
     </message>
     <message>
         <location filename="../ui/frmindentationmode.ui" line="36"/>
         <source>Spaces</source>
-        <translation>Пробіли</translation>
+        <translation>Leerzeichen</translation>
     </message>
     <message>
         <location filename="../ui/frmindentationmode.ui" line="60"/>
         <source>Indentation width:</source>
-        <translation>Ширина відступів:</translation>
+        <translation>Breite des Einzugs:</translation>
     </message>
 </context>
 <context>
@@ -2002,12 +2004,12 @@ Do you want to save it anyway?</source>
         <location filename="../ui/frmlinenumberchooser.ui" line="14"/>
         <location filename="../ui/frmlinenumberchooser.ui" line="24"/>
         <source>Go to line</source>
-        <translation>Перейти до рядка</translation>
+        <translation>Gehe zu Zeile</translation>
     </message>
     <message>
         <location filename="../ui/frmlinenumberchooser.ui" line="53"/>
         <source>Line number:</source>
-        <translation>Номер рядка:</translation>
+        <translation>Zeilennummer:</translation>
     </message>
 </context>
 <context>
@@ -2015,233 +2017,237 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/frmpreferences.ui" line="14"/>
         <source>Preferences</source>
-        <translation>Налаштування</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="51"/>
         <source>1</source>
+        <translatorcomment>??</translatorcomment>
         <translation>1</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="56"/>
         <source>General</source>
-        <translation>Загальні</translation>
+        <translation>Allgemein</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="61"/>
         <source>Appearance</source>
-        <translation>Оформлення</translation>
+        <translation>Erscheinungsbild</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="66"/>
         <source>Languages</source>
-        <translation>Мови</translation>
+        <translation>Sprachen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="71"/>
         <source>Search</source>
-        <translation>Пошук</translation>
+        <translation>Suchen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="76"/>
         <source>Shortcuts</source>
-        <translation>Сполучення клавіш</translation>
+        <translation>Tastenkürzel</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="81"/>
         <source>Toolbar</source>
-        <translation>Панель інструментів</translation>
+        <translation>Werkzeugleiste</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="86"/>
         <source>Extensions</source>
-        <translation>Розширення</translation>
+        <translation>Erweiterungen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="110"/>
         <source>Check Qt version at startup</source>
-        <translation>Перевіряти версію Qt при запуску</translation>
+        <translation>Qt-Version beim Start überprüfen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="117"/>
-        <source>Collect and transmit anonymous statistics to improve Notepadqq</source>
-        <translation>Збирати та передавати анонімну статистику для покращення Notepadqq</translation>
+        <source>Collect and transmit anonymous statistics to improve Notepad</source>
+        <translation>Sammle und übermittle anonyme Statistiken zur Verbesserung von Notepad</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="124"/>
         <source>Warn when the indentation doesn&apos;t match the settings</source>
-        <translation>Попереджати коли відступи не відповідають налаштуванням</translation>
+        <translation>Warnen falls Einzug nicht mit Einstellungen übereinstimmt</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="131"/>
-        <source>Remember open tabs when closing Notepadqq</source>
-        <translation>Пам&apos;ятати відкриті вкладки перед закриттям Notepadqq</translation>
+        <source>Remember open tabs when closing Notepad</source>
+        <translatorcomment>Geöffnete Reiter beim Schließen [von Notepad] merken</translatorcomment>
+        <translation>Sitzung beim nächsten Mal wiederherstellen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="140"/>
-        <source>This option allows Notepadqq to recover your documents after a crash even if they were not explicitly saved.</source>
-        <translation>Ця опція дозволяє Notepadqq відновити ваші документи після аварії, навіть якщо їх не було збережено.</translation>
+        <source>This option allows Notepad to recover your documents after a crash even if they were not explicitly saved.</source>
+        <translation>Hilft dabei Dokumente nach einem Absturz wieder herzustellen, auch ohne diese vorher explizit zu sichern.</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="143"/>
         <source>Backup open documents every</source>
-        <translation>Резервувати відкриті документи кожні</translation>
+        <translation>Erstelle Sicherheitskopie alle</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="150"/>
         <source> seconds</source>
-        <translation> секунд</translation>
+        <translation> Sekunden</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="178"/>
-        <source>Exit Notepadqq when closing the last Tab</source>
-        <translation>Вийти з Notepadqq при закритті останньої вкладки</translation>
+        <source>Exit Notepad when closing the last Tab</source>
+        <translation>Beende Notepad beim schließen der letzen Registerkarte</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="187"/>
         <source>Localization:</source>
-        <translation>Локалізація:</translation>
+        <translation>Sprache:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="244"/>
         <source>Color scheme:</source>
-        <translation>Колірна схема:</translation>
+        <translation>Farbschema:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="276"/>
         <source>Override Font Family</source>
-        <translation>Перевизначити шрифт</translation>
+        <translation>Schriftart</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="299"/>
         <source>Override Font Size</source>
-        <translation>Перевизначити розмір шрифту</translation>
+        <translation>Schriftgröße</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="328"/>
         <source>Override Line Height</source>
-        <translation>Перевизначити висоту рядка</translation>
+        <translation>Zeilenabstand</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="344"/>
         <source>em</source>
+        <translatorcomment>What does &quot;em&quot; mean?</translatorcomment>
         <translation>em</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="365"/>
         <source>Preview</source>
-        <translation>Передперегляд</translation>
+        <translation>Vorschau</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="448"/>
         <source>Tab size:</source>
-        <translation>Розмір табуляції:</translation>
+        <translation>Tabulatorengröße:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="461"/>
         <source>Use spaces instead of tabs</source>
-        <translation>Використовувати пропуски замість табуляцій</translation>
+        <translation>Benutze Leerzeichen anstelle von Tabulatoren</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="485"/>
         <source>Use default settings</source>
-        <translation>Використовувати параметри за умовчанням</translation>
+        <translation>Standardeinstellungen verwenden</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="521"/>
         <source>Search as I type</source>
-        <translation>Шукати як тільки я вводжу</translation>
+        <translation>Als I-Typ suchen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="528"/>
         <source>Save search history</source>
-        <translation>Зберігати історію пошуків</translation>
+        <translation>Suchverlauf sichern</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="576"/>
         <source>Add</source>
-        <translation>Додати</translation>
+        <translation>Hinzufügen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="587"/>
         <source>Remove</source>
-        <translation>Видалити</translation>
+        <translation>Entfernen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="616"/>
         <source>Move Up</source>
-        <translation>Вище</translation>
+        <translation>Nach oben</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="627"/>
         <source>Move Down</source>
-        <translation>Нижче</translation>
+        <translation>Nach unten</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="657"/>
         <source>Reset to Default</source>
-        <translation>Скинути на умовчання</translation>
+        <translation>Auf Standard zurücksetzen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="704"/>
         <source>Node.js runtime</source>
-        <translation>Середовище виконання Node.js</translation>
+        <translation>Node.js Laufzeit</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="710"/>
         <source>Supported Node versions: 0.10, 0.11, 0.12</source>
-        <translation>Підтримувані версії Node: 0.10, 0.11, 0.12</translation>
+        <translation>Unterstützte Node-Versionen: 0.10, 0.11, 0.12</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="717"/>
         <source>Node.js path:</source>
-        <translation>Шлях до Node.js:</translation>
+        <translation>Pfad zu Node.js:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="729"/>
         <location filename="../ui/frmpreferences.ui" line="750"/>
         <source>Browse...</source>
-        <translation>Огляд...</translation>
+        <translation>Durchsuchen...</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="738"/>
         <source>NPM path:</source>
-        <translation>Шлях до NPM:</translation>
+        <translation>Pfad zu NPM:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="759"/>
         <source>WARNING: support for extensions is EXPERIMENTAL.</source>
-        <translation>ПОПЕРЕДЖЕННЯ: підтримка розширень є ЕКСПЕРИМЕНТАЛЬНОЮ.</translation>
+        <translation>ACHTUNG: die Unterstützung für
+Erweiterungen ist EXPERIMENTELL.</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="280"/>
         <source>Reset Selected</source>
-        <translation>Скинути виділене</translation>
+        <translation>Auswahl zurücksetzen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="281"/>
         <source>Reset All</source>
-        <translation>Скинути все</translation>
+        <translation>Alles zurücksetzen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="378"/>
         <source>Keyboard shortcut conflict</source>
-        <translation>Конфлікт сполучень клавіш</translation>
+        <translation>Tastenkürzel bereits in Verwendung</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="379"/>
         <source>Two or more actions share the same shortcut. These conflicts must be resolved before your changes can be saved.</source>
-        <translation>Дві або більше дій використовують одне і те ж сполучення клавіш. Ці конфлікти мають бути вирішені перед збереженням ваших змін.</translation>
+        <translation>Zwei oder mehr Aktionen verwenden dasselbe Tastenkürzel. Einstellungen können erst gespeichert werden, wenn der Konflikt behoben wurde.</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="508"/>
         <source>Browse</source>
-        <translation>Огляд</translation>
+        <translation>Durchsuchen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="594"/>
         <source>Would you like to clear the existing history now?</source>
-        <translation>Очистити існуючу історію зараз?</translation>
+        <translation>Soll der Verlauf jetzt gelöscht werden?</translation>
     </message>
 </context>
 <context>
@@ -2249,115 +2255,115 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="14"/>
         <source>Search</source>
-        <translation>Пошук</translation>
+        <translation>Suchen</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="50"/>
         <source>Find</source>
-        <translation>Знайти</translation>
+        <translation>Suche</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="63"/>
         <source>Replace with</source>
-        <translation>Замінити на</translation>
+        <translation>Ersetze mit</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="110"/>
         <source>Show advanced options</source>
-        <translation>Показати додаткові параметри</translation>
+        <translation>Erweiterte Optionen einblenden</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="117"/>
         <source>Advanced</source>
-        <translation>Додатково</translation>
+        <translation>Erweitert</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="149"/>
         <source>Match whole word only</source>
-        <translation>Шукати лише цілі слова</translation>
+        <translation>Nur ganze Worte</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="156"/>
         <source>Match case</source>
-        <translation>Враховувати регістр</translation>
+        <translation>Groß-/Kleinschreibung beachten</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="123"/>
         <source>Search &amp;plain text</source>
-        <translation>&amp;Шукати простий текст</translation>
+        <translation>&amp;Einfache Textsuche</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="163"/>
         <source>Search &amp;with special characters (\n, \r, \t, \0, \u..., \x...)</source>
-        <translation>Шукати &amp;зі спеціальними символами (\n, \r, \t, \0, \u..., \x...)</translation>
+        <translation>Suche mit &amp;Sonderzeichen (\n, \r, \t, \0, \u..., \x...)</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="170"/>
         <source>Search with &amp;regular expressions</source>
-        <translation>&amp;Шукати з регулярними виразами</translation>
+        <translation>Suche mithilfe &amp;regulärer Ausdrücke</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="198"/>
         <source>Find ⇩</source>
-        <translation>Знайти ⇩</translation>
+        <translation>Suche ⇩</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="208"/>
         <location filename="../ui/Search/frmsearchreplace.cpp" line="288"/>
         <source>Select all</source>
-        <translation>Виділити все</translation>
+        <translation>Alle markieren</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="218"/>
         <source>Replace ⇧</source>
-        <translation>Замінити ⇧</translation>
+        <translation>Ersetze ⇧</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="228"/>
         <source>Replace ⇩</source>
-        <translation>Замінити ⇩</translation>
+        <translation>Ersetze ⇩</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="238"/>
         <location filename="../ui/Search/frmsearchreplace.cpp" line="276"/>
         <source>Replace all</source>
-        <translation>Замінити все</translation>
+        <translation>Alle ersetzen</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="334"/>
         <location filename="../ui/Search/frmsearchreplace.ui" line="337"/>
         <source>Advanced Search</source>
-        <translation>Розширений пошук</translation>
+        <translation>Erweiterte Suche</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="255"/>
         <source>Find ⇧</source>
-        <translation>Знайти ⇧</translation>
+        <translation>Suche ⇧</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="284"/>
         <source>Toolbar</source>
-        <translation>Панель інструментів</translation>
+        <translation>Wergzeugleiste</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="318"/>
         <source>&amp;Replace</source>
-        <translation>&amp;Замінити</translation>
+        <translation>&amp;Ersetzen</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="326"/>
         <source>&amp;Find</source>
-        <translation>&amp;Знайти</translation>
+        <translation>&amp;Suchen</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.cpp" line="276"/>
         <source>%1 occurrences have been replaced.</source>
-        <translation>%1 збігів було замінено.</translation>
+        <translation>%1 Treffer wurde(n) ersetzt.</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.cpp" line="288"/>
         <source>No results found</source>
-        <translation>Результатів не знайдено</translation>
+        <translation>Keine Übereinstimmungen</translation>
     </message>
 </context>
 </TS>

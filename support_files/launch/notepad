@@ -18,18 +18,18 @@ if [ -z "$XDG_CURRENT_DESKTOP" ]; then
     export XDG_CURRENT_DESKTOP="GNOME"
 fi
 
-if [ -f "$SCRIPTPATH"/../lib/notepadqq/notepadqq-bin ]; then
+if [ -f "$SCRIPTPATH"/../lib/notepad/notepad-bin ]; then
     # Nqq is installed: this script is in bin/
-    exec "$SCRIPTPATH"/../lib/notepadqq/notepadqq-bin "$@"
-elif [ -f "$SCRIPTPATH"/../lib/notepadqq-bin ]; then
+    exec "$SCRIPTPATH"/../lib/notepad/notepad-bin "$@"
+elif [ -f "$SCRIPTPATH"/../lib/notepad-bin ]; then
     # Nqq is not installed: this script is in bin/
-    exec "$SCRIPTPATH"/../lib/notepadqq-bin "$@"
-elif [ -f "$SCRIPTPATH"/../../usr/libexec/notepadqq/notepadqq-bin ]; then
+    exec "$SCRIPTPATH"/../lib/notepad-bin "$@"
+elif [ -f "$SCRIPTPATH"/../../usr/libexec/notepad/notepad-bin ]; then
     # Nqq installed via rpm package (Fedora):
-    # Script is installed in /usr/libexec/notepadqq folder for comply with FHS and run without changing much
-    exec "$SCRIPTPATH"/../../usr/libexec/notepadqq/notepadqq-bin "$@"
+    # Script is installed in /usr/libexec/notepad folder for comply with FHS and run without changing much
+    exec "$SCRIPTPATH"/../../usr/libexec/notepad/notepad-bin "$@"
 else
     # Nqq is installed via deb package:
     # this script is in the same directory as the binary file.
-    exec "$SCRIPTPATH"/notepadqq-bin "$@"
+    exec "$SCRIPTPATH"/notepad-bin "$@"
 fi

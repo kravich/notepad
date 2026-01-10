@@ -86,7 +86,7 @@ public:
         NQQ_SETTING(RecentDocuments,                QList<QVariant>, QList<QVariant>())
         NQQ_SETTING(WarnIfFileLargerThan,           int,        1)
 
-        NQQ_SETTING(NotepadqqVersion,               QString,    QString())
+        NQQ_SETTING(NotepadVersion,               QString,    QString())
         NQQ_SETTING(SmartIndentation,               bool,       true)
         NQQ_SETTING(MathRendering,                  bool,       true)
         NQQ_SETTING(UseNativeFilePicker,            bool,       true)

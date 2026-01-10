@@ -140,7 +140,7 @@ void showRegexInfo() {
     QString str;
 
     str =
-    QObject::tr("Notepadqq supports most of the <a href='http://perldoc.perl.org/perlre.html'>Perl Regular Expression</a> syntax when 'Use Regular Expressions' is checked.") + "<br>" +
+    QObject::tr("Notepad supports most of the <a href='http://perldoc.perl.org/perlre.html'>Perl Regular Expression</a> syntax when 'Use Regular Expressions' is checked.") + "<br>" +
     QObject::tr("Here is a quick reference:") + "<br>"
     "<table>"
     "<tr><td width=20%><b>\\w</b></td><td>" + QObject::tr("Matches a word character") + "</td></tr>"

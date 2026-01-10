@@ -1,6 +1,6 @@
 #include "include/Extensions/extension.h"
 
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include <QDebug>
 #include <QFile>
@@ -40,7 +40,7 @@ namespace Extensions {
                 args << serverSocketPath;
                 args << m_extensionId;
 
-                QString runtimePath = Notepadqq::nodejsPath();
+                QString runtimePath = Notepad::nodejsPath();
 
                 connect(process, SIGNAL(error(QProcess::ProcessError)), this, SLOT(on_processError(QProcess::ProcessError)));
 

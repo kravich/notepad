@@ -12,4 +12,4 @@ INCLUDEPATH += ../ui/
 include(../ui/libs/qtpromise/qtpromise.pri)
 
 # Input
-SOURCES += tst_notepadqqtest.cpp
+SOURCES += tst_notepadtest.cpp

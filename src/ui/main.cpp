@@ -5,7 +5,7 @@
 #include "include/Sessions/sessions.h"
 #include "include/globals.h"
 #include "include/mainwindow.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "include/nqqsettings.h"
 #include "include/singleapplication.h"
 #include "include/stats.h"
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     __aet_timer.start();
     qDebug() << "Start-time benchmark started.";
 
-    printerrln("WARNING: Notepadqq is running in DEBUG mode.");
+    printerrln("WARNING: Notepad is running in DEBUG mode.");
 #endif
 
     // Initialize random number generator
@@ -46,12 +46,12 @@ int main(int argc, char *argv[])
 #endif
     SingleApplication a(argc, argv);
 
-    QCoreApplication::setOrganizationName("Notepadqq");
-    QCoreApplication::setApplicationName("Notepadqq");
-    QCoreApplication::setApplicationVersion(Notepadqq::version);
+    QCoreApplication::setOrganizationName("Notepad");
+    QCoreApplication::setApplicationName("Notepad");
+    QCoreApplication::setApplicationVersion(Notepad::version);
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
-    QGuiApplication::setDesktopFileName("notepadqq");
+    QGuiApplication::setDesktopFileName("notepad");
 #endif
 
     QSettings::setDefaultFormat(QSettings::IniFormat);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 
     NqqSettings::ensureBackwardsCompatibility();
     NqqSettings& settings = NqqSettings::getInstance();
-    settings.General.setNotepadqqVersion(POINTVERSION);
+    settings.General.setNotepadVersion(POINTVERSION);
 
     forceDefaultSettings();
 
@@ -85,18 +85,18 @@ int main(int argc, char *argv[])
         settings.General.setLocalization("en");
     }
     // Check for "run-and-exit" options like -h or -v
-    const auto parser = Notepadqq::getCommandLineArgumentsParser(QApplication::arguments());
+    const auto parser = Notepad::getCommandLineArgumentsParser(QApplication::arguments());
 
     if (parser->isSet("print-debug-info")) {
-        Notepadqq::printEnvironmentInfo();
+        Notepad::printEnvironmentInfo();
         return EXIT_SUCCESS;
     }
 
     // Check if we're running as root
     if( getuid() == 0 && !parser->isSet("allow-root") ) {
         qWarning() << QObject::tr(
-            "Notepadqq will ask for root privileges whenever they are needed if either 'kdesu' or 'gksu' are installed."
-            " Running Notepadqq as root is not recommended. Use --allow-root if you really want to.");
+            "Notepad will ask for root privileges whenever they are needed if either 'kdesu' or 'gksu' are installed."
+            " Running Notepad as root is not recommended. Use --allow-root if you really want to.");
 
         return EXIT_SUCCESS;
     }
@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
 
     // Arguments received from another instance
     QObject::connect(&a, &SingleApplication::receivedArguments, &a, [=](const QString &workingDirectory, const QStringList &arguments) {
-        QSharedPointer<QCommandLineParser> parser = Notepadqq::getCommandLineArgumentsParser(arguments);
+        QSharedPointer<QCommandLineParser> parser = Notepad::getCommandLineArgumentsParser(arguments);
         if (parser->isSet("new-window")) {
             // Open a new window
             MainWindow *win = new MainWindow(workingDirectory, arguments, nullptr);
@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
     // There are no other instances: start a new server.
     a.startServer();
 
-    QFileInfo finfo(Notepadqq::editorPath());
+    QFileInfo finfo(Notepad::editorPath());
     if (!finfo.isReadable()) {
         qCritical() << "Can't open file: " + finfo.filePath();
         return EXIT_FAILURE;
@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
 
     if (Extensions::ExtensionsLoader::extensionRuntimePresent()) {
         Extensions::ExtensionsLoader::startExtensionsServer();
-        Extensions::ExtensionsLoader::loadExtensions(Notepadqq::extensionsPath());
+        Extensions::ExtensionsLoader::loadExtensions(Notepad::extensionsPath());
     } else {
 #ifdef QT_DEBUG
         qDebug() << "Extension support is not installed.";

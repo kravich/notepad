@@ -33,9 +33,9 @@ jobs:
         provider: releases
         edge: true  # https://docs.travis-ci.com/user/deployment-v2
         file:
-          - "out/release/notepadqq-${NQQ_VERSION}.dmg"
+          - "out/release/notepad-${NQQ_VERSION}.dmg"
         skip_cleanup: true
         draft: true
         on:
-          repo: notepadqq/notepadqq
+          repo: notepad/notepad
           tags: true

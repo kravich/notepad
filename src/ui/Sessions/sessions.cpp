@@ -15,7 +15,7 @@
 
 /* Session XML structure:
  *
- * <Notepadqq>
+ * <Notepad>
  *      <View>
  *          <Tab filePath="xxx" .../>
  *          <Tab filePath="xxx" .../>
@@ -24,7 +24,7 @@
  *          ...
  *      </View>
  *      ...
- * <Notepadqq>
+ * <Notepad>
  *
  *
  * All currently available attributes for <Tab>:
@@ -128,7 +128,7 @@ std::vector<ViewData> SessionReader::readData(bool* outSuccess) {
     std::vector<ViewData> result;
 
     if (m_reader.readNextStartElement()) {
-        if (m_reader.name() == "Notepadqq") {
+        if (m_reader.name() == "Notepad") {
             result = readViewData();
         }
         else
@@ -200,7 +200,7 @@ SessionWriter::SessionWriter(QFile& destination)
     m_writer.setAutoFormatting(true);
 
     m_writer.writeStartDocument();
-    m_writer.writeStartElement("Notepadqq");
+    m_writer.writeStartElement("Notepad");
 }
 
 SessionWriter::~SessionWriter(){

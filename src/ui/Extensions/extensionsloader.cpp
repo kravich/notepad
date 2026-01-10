@@ -1,7 +1,7 @@
 #include "include/Extensions/extensionsloader.h"
 
 #include "include/mainwindow.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include <QDateTime>
 #include <QDirIterator>
@@ -23,7 +23,7 @@ namespace Extensions {
 
     QSharedPointer<Extensions::ExtensionsServer> ExtensionsLoader::startExtensionsServer()
     {
-        QString name = "notepadqq-exts-";
+        QString name = "notepad-exts-";
         name += QString::number(QDateTime::currentMSecsSinceEpoch());
         name += "-";
         name += QString::number(qrand());
@@ -73,7 +73,7 @@ namespace Extensions {
 
     bool ExtensionsLoader::extensionRuntimePresent()
     {
-        QFileInfo f = QFileInfo(Notepadqq::nodejsPath());
+        QFileInfo f = QFileInfo(Notepad::nodejsPath());
         // FIXME Check if version is correct
         return f.exists() && f.isExecutable();
     }

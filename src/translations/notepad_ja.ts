@@ -1,274 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es">
+<TS version="2.1" language="ja_JP">
 <context>
     <name>AdvancedSearchDock</name>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="161"/>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="651"/>
         <source>Advanced Search</source>
-        <translation>Búsqueda avanzada</translation>
+        <translation>高度な検索</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="166"/>
         <source>Clear Search History</source>
-        <translation>Borrar el historial de búsquedas</translation>
+        <translation>検索履歴を消去</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="175"/>
         <source>Go To Previous Result (Shift+F4)</source>
-        <translation>Ir al resultado anterior (Mayús+F4)</translation>
+        <translation>前の検索結果に移動 (Shift+F4)</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="180"/>
         <source>Go To Next Result (F4)</source>
-        <translation>Ir al resultado siguiente (F4)</translation>
+        <translation>次の検索結果に移動 (F4)</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="184"/>
         <source>Expand/Collapse All</source>
-        <translation>Expandir/Contraer todo</translation>
+        <translation>すべて展開/折り畳む</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="186"/>
         <source>Redo Search</source>
-        <translation>Rehacer la búsqueda</translation>
+        <translation>検索のやり直し</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="187"/>
         <source>Copy Selected Contents To Clipboard</source>
-        <translation>Copiar el contenido seleccionado al portapapeles</translation>
+        <translation>選択された内容をクリップボードにコピー</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="188"/>
         <source>Show Full Lines</source>
-        <translation>Mostrar las líneas completas</translation>
+        <translation>行をすべて表示</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="190"/>
         <source>Remove This Search</source>
-        <translation>Eliminar esta búsqueda</translation>
+        <translation>この検索を削除</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="195"/>
         <source>More Options</source>
-        <translation>Más opciones</translation>
+        <translation>追加のオプション</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="200"/>
         <source>Replace Options</source>
-        <translation>Opciones de reemplazo</translation>
+        <translation>置換オプション</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="226"/>
         <source>Dock/Undock this panel</source>
-        <translation>Anclar/Desanclar este panel</translation>
+        <translation>このパネルをドッキング/ドッキング解除</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="252"/>
         <source>Replace Text</source>
-        <translation>Reemplazar texto</translation>
+        <translation>置換テキスト</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="260"/>
         <source>Replace Selected</source>
-        <translation>Reemplazar la selección</translation>
+        <translation>選択されたものを置換</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="261"/>
         <source>Replace all selected search results.</source>
-        <translation>Reemplazar todos los resultados de búsqueda seleccionados.</translation>
+        <translation>すべての選択された検索結果を置換します。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="263"/>
         <source>Use Special Characters (&apos;\n&apos;, &apos;\t&apos;, ...)</source>
-        <translation>Usar caracteres especiales (&apos;\n&apos;, &apos;\t&apos;, ...)</translation>
+        <translation>特殊文字を使用 (&apos;\n&apos;, &apos;\t&apos;, ...)</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="264"/>
         <source>Replace strings like &apos;\n&apos; with their respective special characters.</source>
-        <translation>Reemplazar cadenas como &apos;\n&apos; con sus respectivos caracteres especiales.</translation>
+        <translation>&apos;\n&apos; のような文字列をそれぞれの特殊文字に置換します。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="300"/>
         <source>Search String</source>
-        <translation>Cadena de búsqueda</translation>
+        <translation>検索文字列</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="307"/>
         <source>Search in Current Document</source>
-        <translation>Buscar en el documento actual</translation>
+        <translation>現在のドキュメントを検索</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="308"/>
         <source>Search in All Open Documents</source>
-        <translation>Buscar en todos los documentos abiertos</translation>
+        <translation>開いているすべてのドキュメントを検索</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="309"/>
         <source>Search in Files on File System</source>
-        <translation>Buscar en archivos en el sistema de archivos</translation>
+        <translation>ファイルシステム上のファイルを検索</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="324"/>
         <source>Directory</source>
-        <translation>Directorio</translation>
+        <translation>ディレクトリ</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="333"/>
         <source>Select the directory of the active document</source>
-        <translation>Seleccionar el directorio del documento activo</translation>
+        <translation>アクティブなドキュメントのディレクトリを選択</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="337"/>
         <source>Select search directory</source>
-        <translation>Seleccionar el directorio de búsqueda</translation>
+        <translation>検索ディレクトリを選択</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="344"/>
         <source>Search</source>
-        <translation>Buscar</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="347"/>
         <source>Scope:</source>
-        <translation>Ámbito:</translation>
+        <translation>スコープ:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="349"/>
         <source>Search:</source>
-        <translation>Buscar:</translation>
+        <translation>検索:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="351"/>
         <source>Pattern:</source>
-        <translation>Patrón:</translation>
+        <translation>パターン:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="353"/>
         <source>Location:</source>
-        <translation>Ubicación:</translation>
+        <translation>場所:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="356"/>
         <source>Match Case</source>
-        <translation>Distinguir mayúsculas de minúsculas</translation>
+        <translation>大文字/小文字を区別</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="357"/>
         <source>Match Whole Words Only</source>
-        <translation>Buscar solo palabras completas</translation>
+        <translation>単語単位で一致</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="358"/>
         <source>Use Regular Expressions</source>
-        <translation>Usar expresiones regulares</translation>
+        <translation>正規表現を使用</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="359"/>
         <source>Use Special Characters (&apos;\t&apos;, &apos;\n&apos;, ...)</source>
-        <translation>Usar caracteres especiales (&apos;\t&apos;, &apos;\n&apos;, ...)</translation>
+        <translation>特殊文字を使用 (&apos;\t&apos;, &apos;\n&apos;, ...)</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="360"/>
         <source>If set, character sequences like &apos;\t&apos; will be replaced by their respective special characters.</source>
-        <translation>Si se activa, las secuencias de caracteres como &apos;\t&apos; se sustituyen por sus caracacteres especiales correspondientes.</translation>
+        <translation>設定した場合、&apos;\t&apos; のような文字シーケンスはそれぞれの特殊文字に置換されます。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="361"/>
         <source>Include Subdirectories</source>
-        <translation>Incluir subdirectorios</translation>
+        <translation>サブディレクトリを含む</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="425"/>
         <source>&lt;h3&gt;One or more searches are still in progress&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Una o más búsquedas están aún en curso&lt;/h3&gt;</translation>
+        <translation>&lt;h3&gt;まだ1つ以上の検索を実行中です&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="426"/>
         <source>All searches will be canceled and their results discarded if you continue.</source>
-        <translation>Todas las búsquedas serán canceladas y se decherarán sus resultados si continúa.</translation>
+        <translation>続行するとすべての検索がキャンセルされ、検索結果は破棄されます。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="440"/>
         <source>New Search</source>
-        <translation>Nueva búsqueda</translation>
+        <translation>新規検索</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="742"/>
         <source>Search in progress</source>
-        <translation>Búsqueda en curso</translation>
+        <translation>検索中</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="743"/>
         <source>&lt;h3&gt;This search is still in progress.&lt;/h3&gt; The search will be canceled and all results discarded if you continue.</source>
-        <translation>&lt;h3&gt;Esta búsqueda está aún en curso.&lt;/h3&gt; La búsqueda será cancelada y se desecharán todos los resultados si continúa.</translation>
+        <translation>&lt;h3&gt;この検索はまだ実行中です。&lt;/h3&gt; 続行すると検索はキャンセルされ、すべての検索結果が破棄されます。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="854"/>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="855"/>
         <source>Specified directory does not exist.</source>
-        <translation>El directorio especificado no existe.</translation>
+        <translation>指定されたディレクトリは存在しません。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="885"/>
         <source>Matches in %1 of %2 files replaced.</source>
-        <translation>Reemplazadas las coincidencias en %1 de %2 archivos.</translation>
+        <translation>一致した%1/%2ファイルを置換しました。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="893"/>
         <source>&lt;h3&gt;Replacing selected matches...&lt;/h3&gt;</source>
-        <translation>&lt;h3&gt;Reemplazando las coincidencias seleccionadas...&lt;/h3&gt;</translation>
+        <translation>&lt;h3&gt;選択された一致を置換しています...&lt;/h3&gt;</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="894"/>
         <source>Replacing in progress</source>
-        <translation>Reemplazo en curso</translation>
+        <translation>置換中</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="906"/>
         <source>Replacing was unsuccessful for %1 file(s):
 </source>
-        <translation>Error al reemplazar en %1 archivo(s):
+        <translation>%1ファイルの置換に失敗しました:
 </translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="912"/>
         <source>And %1 more.</source>
-        <translation>Y %1 más.</translation>
+        <translation>さらに%1個の置換に失敗しました。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="915"/>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="918"/>
         <source>Replacement Results</source>
-        <translation>Resultados del reemplazo</translation>
+        <translation>置換結果</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="919"/>
         <source>All selected matches successfully replaced.</source>
-        <translation>Todas las coincidencias seleccionadas han sido reemplazadas con éxito.</translation>
+        <translation>選択されたすべての一致の置換に成功しました。</translation>
     </message>
 </context>
 <context>
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="14"/>
-        <source>This file has been changed outside of Notepadqq.</source>
-        <translation>Este archivo ha sido modificado fuera de Notepadqq.</translation>
+        <source>This file has been changed outside of Notepad.</source>
+        <translation>Notepad 以外でファイルが更新されました。</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="16"/>
         <source>Reload</source>
-        <translation>Recargar</translation>
+        <translation>再読み込み</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="19"/>
         <source>Ignore</source>
-        <translation>Ignorar</translation>
+        <translation>無視</translation>
     </message>
 </context>
 <context>
@@ -276,17 +276,17 @@
     <message>
         <location filename="../ui/EditorNS/bannerfileremoved.cpp" line="14"/>
         <source>This file has been deleted from the file system.</source>
-        <translation>Este archivo ha sido eliminado del sistema.</translation>
+        <translation>このファイルは、ファイルシステムから削除されました。</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfileremoved.cpp" line="16"/>
         <source>Save</source>
-        <translation>Guardar</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfileremoved.cpp" line="19"/>
         <source>Ignore</source>
-        <translation>Ignorar</translation>
+        <translation>無視</translation>
     </message>
 </context>
 <context>
@@ -294,92 +294,92 @@
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="19"/>
         <source>This file is indented with %1, but your current settings specify to use %2.</source>
-        <translation>Este archivo está sangrado con %1, pero su configuración actual especifica que use %2.</translation>
+        <translation>このファイルは%1でインデント (字下げ) されていますが、現在の設定では%2を使用するように指定されています。</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="21"/>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="26"/>
         <source>spaces</source>
-        <translation>espacios</translation>
+        <translation>スペース</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="21"/>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="26"/>
         <source>tabs</source>
-        <translation>tabulaciones</translation>
+        <translation>タブ</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="23"/>
         <source>Use spaces</source>
-        <translation>Usar espacios</translation>
+        <translation>スペースを使用する</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="28"/>
         <source>Use tabs</source>
-        <translation>Usar tabulaciones</translation>
+        <translation>タブを使用する</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="32"/>
         <source>This file is indented with %1 spaces, but your current settings specify to use %2 spaces.</source>
-        <translation>Este archivo está sangrado con %1 espacios, pero su configuración actual especifica usar %2 espacios.</translation>
+        <translation>このファイルはスペース%1文字でインデント (字下げ) されていますが、現在の設定ではスペース%2文字を使用するように指定されています。</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="35"/>
         <source>Use %1 spaces</source>
-        <translation>Usar %1 espacios</translation>
+        <translation>スペース%1文字を使用する</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerindentationdetected.cpp" line="39"/>
         <source>Ignore</source>
-        <translation>Ignorar</translation>
+        <translation>無視</translation>
     </message>
 </context>
 <context>
     <name>DocEngine</name>
     <message>
-        <location filename="../ui/docengine.cpp" line="43"/>
+        <location filename="../ui/docengine.cpp" line="40"/>
         <source>new %1</source>
-        <translation>nuevo %1</translation>
+        <translation>新規 %1</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="255"/>
+        <location filename="../ui/docengine.cpp" line="250"/>
         <source>Error trying to open &quot;%1&quot;</source>
-        <translation>Error intentando abrir &quot;%1&quot;</translation>
+        <translation>&quot;%1&quot; を開く際にエラーが発生しました</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="167"/>
-        <location filename="../ui/docengine.cpp" line="761"/>
+        <location filename="../ui/docengine.cpp" line="164"/>
+        <location filename="../ui/docengine.cpp" line="755"/>
         <source>Protocol not supported for file &quot;%1&quot;.</source>
-        <translation>Protocolo no soportado para el archivo &quot;%1&quot;.</translation>
+        <translation>ファイル &quot;%1&quot; のプロトコルはサポートされていません。</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="667"/>
-        <source>Notepadqq asks permission to overwrite the following file:
+        <location filename="../ui/docengine.cpp" line="661"/>
+        <source>Notepad asks permission to overwrite the following file:
 
 %1</source>
-        <translation>Notepadqq pide permiso para sobrescribir el siguiente archivo: 
+        <translation>Notepad が次のファイルを上書きする許可を求めています:
 
 %1</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="705"/>
+        <location filename="../ui/docengine.cpp" line="699"/>
         <source>Error trying to write to &quot;%1&quot;</source>
-        <translation>Error intentando escrirbir en &quot;%1&quot;</translation>
+        <translation>&quot;%1&quot; に書き込む際にエラーが発生しました</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="707"/>
+        <location filename="../ui/docengine.cpp" line="701"/>
         <source>Abort</source>
-        <translation>Cancelar</translation>
+        <translation>中断</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="708"/>
+        <location filename="../ui/docengine.cpp" line="702"/>
         <source>Retry</source>
-        <translation>Reintentar</translation>
+        <translation>再試行</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="710"/>
+        <location filename="../ui/docengine.cpp" line="704"/>
         <source>Retry as Root</source>
-        <translation>Reintentar como root</translation>
+        <translation>ルートとして再試行</translation>
     </message>
 </context>
 <context>
@@ -387,22 +387,22 @@
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="24"/>
         <source>name missing or invalid</source>
-        <translation>Nombre en blanco o inválido</translation>
+        <translation>名前が無い、または不正です</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="52"/>
         <source>unable to read nqq-manifest.json</source>
-        <translation>No se puede leer nqq-manifest.json</translation>
+        <translation>nqq-manifest.json を読み取れません</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="99"/>
         <source>failed to start. Check your runtime: %1</source>
-        <translation>Error al iniciar. Verifique su entorno de ejecución: %1</translation>
+        <translation>起動に失敗しました。ランタイムをご確認ください: %1</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="108"/>
         <source>Failed to load %1: %2</source>
-        <translation>Error al cargar %1: %2</translation>
+        <translation>%1 の読み込みに失敗しました: %2</translation>
     </message>
 </context>
 <context>
@@ -410,12 +410,12 @@
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="180"/>
         <source>Error</source>
-        <translation>Error</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="180"/>
         <source>Unsupported runtime: %1</source>
-        <translation>Entorno de ejecución sin soporte: %1</translation>
+        <translation>サポートされているランタイムではありません: %1</translation>
     </message>
 </context>
 <context>
@@ -423,59 +423,59 @@
     <message>
         <location filename="../ui/Extensions/installextension.ui" line="14"/>
         <source>Install Extension</source>
-        <translation>Instalar extensión</translation>
+        <translation>拡張機能をインストール</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.ui" line="102"/>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.ui" line="109"/>
         <source>Install</source>
-        <translation>Instalar</translation>
+        <translation>インストール</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="45"/>
         <source>Version %1, %2</source>
-        <translation>Versión %1, %2</translation>
+        <translation>バージョン %1, %2</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="46"/>
         <location filename="../ui/Extensions/installextension.cpp" line="55"/>
         <source>unknown version</source>
-        <translation>versión desconocida</translation>
+        <translation>未知のバージョン</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="47"/>
         <source>unknown author</source>
-        <translation>autor desconocido</translation>
+        <translation>作者不明</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="57"/>
         <source>(current version is %1)</source>
-        <translation>(la versión actual es %1)</translation>
+        <translation>(現在のバージョンは %1)</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="58"/>
         <source>Update</source>
-        <translation>Actualizar</translation>
+        <translation>更新</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="107"/>
         <location filename="../ui/Extensions/installextension.cpp" line="129"/>
         <source>Error installing the extension</source>
-        <translation>Error al instalar la extensión</translation>
+        <translation>拡張機能のインストール時にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="118"/>
         <source>Extension installed</source>
-        <translation>Extensión instalada</translation>
+        <translation>拡張機能がインストールされました</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/installextension.cpp" line="119"/>
         <source>The extension has been successfully installed!</source>
-        <translation>¡La extensión ha sido instalada con éxito!</translation>
+        <translation>拡張機能は正常にインストールされました!</translation>
     </message>
 </context>
 <context>
@@ -483,50 +483,50 @@
     <message>
         <location filename="../ui/keygrabber.cpp" line="10"/>
         <source>Action</source>
-        <translation>Acción</translation>
+        <translation>アクション</translation>
     </message>
     <message>
         <location filename="../ui/keygrabber.cpp" line="10"/>
         <source>Keyboard Shortcut</source>
-        <translation>Atajo de teclado</translation>
+        <translation>キーボードショートカット</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="53"/>
         <source>&amp;File</source>
-        <translation>&amp;Archivo</translation>
+        <translation>ファイル(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="57"/>
         <source>Recent Files</source>
-        <translation>Archivos recientes</translation>
+        <translation>最近使用したファイル</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="84"/>
         <source>&amp;Edit</source>
-        <translation>&amp;Editar</translation>
+        <translation>編集(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="159"/>
         <source>&amp;Search</source>
-        <translation>&amp;Buscar</translation>
+        <translation>検索(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="172"/>
         <source>&amp;View</source>
-        <translation>&amp;Vista</translation>
+        <translation>表示(&amp;V)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="234"/>
         <source>&amp;Language</source>
-        <translation>&amp;Lenguaje</translation>
+        <translation>言語(&amp;L)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="250"/>
@@ -536,12 +536,12 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="264"/>
         <source>&amp;Window</source>
-        <translation>&amp;Ventana</translation>
+        <translation>ウィンドウ(&amp;W)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="290"/>
         <source>&amp;Open...</source>
-        <translation>&amp;Abrir...</translation>
+        <translation>開く(&amp;O)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="293"/>
@@ -551,7 +551,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="298"/>
         <source>&amp;New</source>
-        <translation>&amp;Nuevo</translation>
+        <translation>新規(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="301"/>
@@ -561,7 +561,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="311"/>
         <source>&amp;Save</source>
-        <translation>&amp;Guardar</translation>
+        <translation>保存(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="314"/>
@@ -571,12 +571,12 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="319"/>
         <source>Save &amp;As...</source>
-        <translation>Guardar &amp;como...</translation>
+        <translation>名前を付けて保存(&amp;A)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="322"/>
         <source>Save As...</source>
-        <translation>Guardar como...</translation>
+        <translation>名前を付けて保存...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="325"/>
@@ -586,12 +586,12 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="335"/>
         <source>Sav&amp;e All</source>
-        <translation>Guarda&amp;r todo</translation>
+        <translation>すべて保存(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="338"/>
         <source>Ctrl+Shift+S</source>
-        <translation>Ctrl+Mayús+S</translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="351"/>
@@ -601,17 +601,17 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="356"/>
         <source>C&amp;lose All</source>
-        <translation>Cerrar &amp;todo</translation>
+        <translation>すべて閉じる(&amp;L)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="366"/>
         <source>Load Session...</source>
-        <translation>Cargar sesión...</translation>
+        <translation>セッションを読み込む...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="371"/>
         <source>Save Session...</source>
-        <translation>Guardar sesión...</translation>
+        <translation>セッションを保存...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="382"/>
@@ -621,117 +621,117 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="88"/>
         <source>&amp;End of line</source>
-        <translation>&amp;Fin de línea</translation>
+        <translation>改行(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="96"/>
         <source>C&amp;opy to Clipboard</source>
-        <translation>C&amp;opiar al portapapeles</translation>
+        <translation>クリップボードにコピー(&amp;O)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="104"/>
         <source>Co&amp;nvert Case to</source>
-        <translation>Co&amp;nvertir la selección a</translation>
+        <translation>大文字/小文字を変換(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="111"/>
         <source>&amp;Indentation</source>
-        <translation>&amp;Sangría</translation>
+        <translation>インデント(&amp;I)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="120"/>
         <source>&amp;Line Operations</source>
-        <translation>&amp;Operaciones de línea</translation>
+        <translation>行の操作(&amp;L)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="129"/>
         <source>&amp;Blank Operations</source>
-        <translation>&amp;Operaciones de espacios en blanco</translation>
+        <translation>空白の操作(&amp;B)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="176"/>
         <source>&amp;Show Symbol</source>
-        <translation>&amp;Mostrar símbolo</translation>
+        <translation>シンボルの表示(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="188"/>
         <source>&amp;Zoom</source>
-        <translation>&amp;Tamaño de letra</translation>
+        <translation>ズーム(&amp;Z)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="196"/>
         <source>&amp;Move/Clone Current Document</source>
-        <translation>&amp;Mover/Clonar el documento actual</translation>
+        <translation>現在のドキュメントの移動/複製(&amp;M)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="216"/>
         <source>En&amp;coding</source>
-        <translation>Co&amp;dificacion</translation>
+        <translation>エンコーディング(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="241"/>
         <source>Settin&amp;gs</source>
-        <translation>Preferenci&amp;as</translation>
+        <translation>設定(&amp;G)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="257"/>
         <source>&amp;Run</source>
-        <translation>&amp;Ejecutar</translation>
+        <translation>実行(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="270"/>
         <source>E&amp;xtensions</source>
-        <translation>E&amp;xtensiones</translation>
+        <translation>拡張機能(&amp;X)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="306"/>
         <source>&amp;Reload from Disk</source>
-        <translation>&amp;Recargar desde disco</translation>
+        <translation>ディスクから再読み込み(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="330"/>
         <source>Sa&amp;ve a Copy As...</source>
-        <translation>Guar&amp;dar una copia como...</translation>
+        <translation>コピーを別名で保存(&amp;V)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="343"/>
         <source>Rena&amp;me...</source>
-        <translation>Reno&amp;mbrar...</translation>
+        <translation>名前を変更(&amp;M)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="348"/>
         <source>&amp;Close</source>
-        <translation>&amp;Cerrar</translation>
+        <translation>閉じる(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="361"/>
         <source>Close All &amp;BUT Current Document</source>
-        <translation>Cerrar todo &amp;excepto el documento actual</translation>
+        <translation>現在のドキュメント以外をすべて閉じる(&amp;B)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="379"/>
         <source>&amp;Print...</source>
-        <translation>&amp;Imprimir...</translation>
+        <translation>印刷(&amp;P)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="393"/>
         <source>Pr&amp;int Now</source>
-        <translation>Impr&amp;mir ahora</translation>
+        <translation>すぐに印刷(&amp;I)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="401"/>
         <source>Open All Recent Files</source>
-        <translation>Abrir todos los archivos recientes</translation>
+        <translation>最近使用したファイルをすべて開く</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="406"/>
         <source>Empty Recent Files List</source>
-        <translation>Vaciar la lista de archivos recientes</translation>
+        <translation>最近使用したファイル一覧を空にする</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="411"/>
         <source>E&amp;xit</source>
-        <translation>S&amp;alir</translation>
+        <translation>終了(&amp;X)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="414"/>
@@ -741,7 +741,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="419"/>
         <source>&amp;Undo</source>
-        <translation>&amp;Deshacer</translation>
+        <translation>元に戻す(&amp;U)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="422"/>
@@ -751,7 +751,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="427"/>
         <source>&amp;Redo</source>
-        <translation>&amp;Rehacer</translation>
+        <translation>やり直し(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="430"/>
@@ -761,7 +761,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="435"/>
         <source>Cu&amp;t</source>
-        <translation>Cor&amp;tar</translation>
+        <translation>切り取り(&amp;T)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="438"/>
@@ -771,7 +771,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="443"/>
         <source>&amp;Copy</source>
-        <translation>&amp;Copiar</translation>
+        <translation>コピー(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="446"/>
@@ -781,7 +781,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="451"/>
         <source>&amp;Paste</source>
-        <translation>&amp;Pegar</translation>
+        <translation>貼り付け(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="454"/>
@@ -791,17 +791,17 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="459"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Eliminar</translation>
+        <translation>削除(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="462"/>
         <source>Del</source>
-        <translation>Borrar</translation>
+        <translation>Del</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="467"/>
         <source>Select &amp;All</source>
-        <translation>&amp;Seleccionar todo</translation>
+        <translation>すべて選択(&amp;A)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="470"/>
@@ -810,263 +810,309 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="475"/>
-        <source>About &amp;Notepadqq...</source>
-        <translation>Acerca de &amp;Notepadqq...</translation>
+        <source>About &amp;Notepad...</source>
+        <translation>Notepad について(&amp;N)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="483"/>
         <source>&amp;About Qt...</source>
-        <translation>&amp;Acerca de Qt...</translation>
+        <translation>Qt について(&amp;A)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="491"/>
         <source>&amp;Windows Format</source>
-        <translation>&amp;Formato Windows</translation>
+        <translation>Windows 形式(&amp;W)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="502"/>
         <source>&amp;UNIX / OS X Format</source>
-        <translation>&amp;Formato UNIX / OS X</translation>
+        <translation>UNIX / OS X 形式(&amp;U)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="510"/>
         <source>&amp;Old Mac Format</source>
-        <translation>&amp;Antiguo formato de Mac</translation>
+        <translation>旧 Mac 形式 (&amp;O)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="518"/>
         <source>Show &amp;End of Line</source>
-        <translation>Mostrar el &amp;fin de línea</translation>
+        <translation>改行を表示(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="526"/>
         <source>&amp;Show Tabs</source>
-        <translation>&amp;Mostrar las pestañas</translation>
+        <translation>タブを表示(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="534"/>
         <source>Show All &amp;Characters</source>
-        <translation>Mostrar todos los &amp;caracteres</translation>
+        <translation>すべての文字を表示(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="545"/>
         <source>Show &amp;Indent Guide</source>
-        <translation>Mostrar la guía de &amp;sangría</translation>
+        <translation>インデントガイドを表示(&amp;I)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="553"/>
         <source>Show &amp;Wrap Symbol</source>
-        <translation>Mostrar el símbolo de &amp;ajuste de línea</translation>
+        <translation>ラップシンボルを表示(&amp;W)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="561"/>
         <source>&amp;Word wrap</source>
-        <translation>&amp;Ajuste de línea</translation>
+        <translation>ワードラップ(&amp;W)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="569"/>
+        <source>&amp;Math Rendering</source>
+        <translatorcomment>Google で &quot;Math Rendering&quot; &quot;Notepad&quot; と検索するとスクリーンキャストが載っている公式ブログの記事がヒットするので、どういう機能なのか調べやすくするために、このテキストは未翻訳のままにしています。</translatorcomment>
+        <translation>Math Rendering(&amp;M)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="574"/>
         <source>&amp;Copy Full Path to Clipboard</source>
-        <translation>&amp;Copiar la ruta completa al portapapeles</translation>
+        <translation>クリップボードにフルパスをコピー(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="579"/>
         <source>Copy &amp;Filename to Clipboard</source>
-        <translation>Copiar el &amp;nombre del archivo al portapapeles</translation>
+        <translation>クリップボードにファイル名をコピー(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="584"/>
         <source>Copy &amp;Directory to Clipboard</source>
-        <translation>Copiar el &amp;directorio al portapapeles</translation>
+        <translation>クリップボードにディレクトリをコピー(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="605"/>
         <source>&amp;Restore Default Zoom</source>
-        <translation>&amp;Restaurar al tamaño por defecto</translation>
+        <translation>デフォルトのズームを復元(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="613"/>
         <source>&amp;Move to Other View</source>
-        <translation>&amp;Mover a otra vista</translation>
+        <translation>別のビューに移動(&amp;M)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="618"/>
         <source>&amp;Clone to Other View</source>
-        <translation>&amp;Clonar a otra vista</translation>
+        <translation>別のビューに複製(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="626"/>
         <source>Move to a &amp;New Window</source>
-        <translation>Mover a una &amp;ventana nueva</translation>
+        <translation>新規ウィンドウに移動(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="631"/>
         <source>&amp;Open in a New Window</source>
-        <translation>&amp;Abrir en una ventana nueva</translation>
+        <translation>新規ウィンドウで開く(&amp;O)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="695"/>
         <source>&amp;UPPERCASE</source>
-        <translation>&amp;Mayúsculas</translation>
+        <translation>大文字にする(&amp;U)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="703"/>
         <source>&amp;lowercase</source>
-        <translation>Mi&amp;núsculas</translation>
+        <translation>小文字にする(&amp;L)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="711"/>
         <source>&amp;Convert to UTF-8</source>
-        <translation>&amp;Convertir a UTF-8</translation>
+        <translation>UTF-8 に変換(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="716"/>
         <source>Convert to UTF-&amp;16BE (UCS-2 Big Endian)</source>
-        <translation>Covertir a UTF-&amp;16BE (UCS-2 Big Endian)</translation>
+        <translation>UTF-16BE に変換 (UCS-2 ビッグエンディアン)(&amp;1)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="721"/>
         <source>Convert to UTF-16LE (UCS-&amp;2 Little Endian)</source>
-        <translation>Convertir a UTF-16LE (UCS-&amp;2 Little Endian)</translation>
+        <translation>UTF-16LE に変換 (UCS-2 リトルエンディアン)(&amp;2)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="726"/>
         <source>Convert to &amp;UTF-8 without BOM</source>
-        <translation>Convertir a &amp;UTF-8 sin BOM</translation>
+        <translation>UTF-8 に変換 (BOM 無し)(&amp;U)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="776"/>
         <source>&amp;Preferences...</source>
-        <translation>&amp;Preferencias...</translation>
+        <translation>環境設定(&amp;P)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="805"/>
         <source>&amp;Plain text</source>
-        <translation>&amp;Texto plano</translation>
+        <translation>プレーンテキスト(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="810"/>
         <source>&amp;Replace...</source>
-        <translation>&amp;Reemplazar...</translation>
+        <translation>置換(&amp;R)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="818"/>
         <source>&amp;Reload file interpreted as...</source>
-        <translation>&amp;Recargar el archivo interpretándolo como...</translation>
+        <translation>文字コードを指定して再読み込み(&amp;R)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="823"/>
         <source>C&amp;onvert to...</source>
-        <translation>C&amp;onvertir a...</translation>
+        <translation>次に変換(&amp;O)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="828"/>
         <source>Interpret as UTF-16BE (UCS-2 &amp;Big Endian)</source>
-        <translation>Interpretar como UTF-16BE (UCS-2 &amp;Big Endian)</translation>
+        <translation>UTF-16BE として解釈 (UCS-2 ビッグエンディアン)(&amp;B)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="833"/>
         <source>Interpret as UTF-&amp;8 without BOM</source>
-        <translation>Interpretar como UTF-&amp;8 sin BOM</translation>
+        <translation>UTF-8 として解釈 (BOM 無し)(&amp;8)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="838"/>
         <source>&amp;Interpret as UTF-8</source>
-        <translation>&amp;Interpretar como UTF-8</translation>
+        <translation>UTF-8 として解釈(&amp;I)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="843"/>
         <source>Interpret as UTF-16LE (UCS-2 &amp;Little Endian)</source>
-        <translation>Interpretar como UTF-16LE (UCS-2 &amp;Little Endian)</translation>
+        <translation>UTF-16LE として解釈 (UCS-2 リトルエンディアン)(&amp;L)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="854"/>
         <source>&amp;Default settings</source>
-        <translation>&amp;Configuración por defecto</translation>
+        <translation>デフォルトの設定(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="862"/>
         <source>&amp;Custom...</source>
-        <translation>&amp;Personalizar...</translation>
+        <translation>カスタム(&amp;C)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="867"/>
         <source>I&amp;nterpret as...</source>
-        <translation>I&amp;nterpretar como...</translation>
+        <translation>次で解釈(&amp;N)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="877"/>
         <source>&amp;Open a New Window</source>
-        <translation>&amp;Abrir una ventana nueva</translation>
+        <translation>新規ウィンドウを開く(&amp;O)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="882"/>
+        <source>&amp;Advanced Search</source>
+        <translation>高度な検索(&amp;A)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="890"/>
         <source>Delete &amp;Current Line</source>
-        <translation>Eliminar la &amp;línea actual</translation>
+        <translation>現在の行を削除(&amp;C)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="901"/>
         <source>&amp;Duplicate Current Line</source>
-        <translation>&amp;Duplicar la línea actual</translation>
+        <translation>現在の行を複製(&amp;D)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="912"/>
         <source>&amp;Move Line Up</source>
-        <translation>&amp;Mover la línea hacia arriba</translation>
+        <translation>行を上に移動(&amp;M)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="923"/>
         <source>Move &amp;Line Down</source>
-        <translation>Mover la &amp;línea hacia abajo</translation>
+        <translation>行を下に移動(&amp;L)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="950"/>
         <source>T&amp;rim Leading and Trailing Space</source>
-        <translation>Elimina&amp;r los espacios iniciales y finales</translation>
+        <translation>行頭と行末にあるスペースを除去(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="955"/>
         <source>&amp;EOL to Space</source>
-        <translation>&amp;Fin de línea a espacio</translation>
+        <translation>EOL をスペースに変換(&amp;E)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="960"/>
         <source>TA&amp;B to Space</source>
-        <translation>Ta&amp;bulaciones a espacios</translation>
+        <translation>タブをスペースに変換(&amp;B)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="965"/>
         <source>&amp;Space to TAB (All)</source>
-        <translation>&amp;Espacios a tabulaciones (todos)</translation>
+        <translation>すべてのスペースをタブに変換(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="970"/>
         <source>S&amp;pace to TAB (Leading)</source>
-        <translation>Es&amp;pacios a tabulaciones (iniciales)</translation>
+        <translation>行頭のスペースをタブに変換(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="975"/>
         <source>Open &amp;Folder...</source>
-        <translation>Abrir &amp;directorio...</translation>
+        <translation>フォルダーを開く(&amp;F)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="980"/>
         <source>&amp;Go to line...</source>
-        <translation>&amp;Ir a la línea...</translation>
+        <translation>行へ移動(&amp;G)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="988"/>
         <source>&amp;Install Extension...</source>
-        <translation>&amp;Instalar extensión...</translation>
+        <translation>拡張機能をインストール(&amp;I)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="996"/>
         <source>&amp;Full Screen</source>
-        <translation>&amp;Pantalla completa</translation>
+        <translation>フルスクリーン(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1021"/>
         <source>&amp;Enable Smart Indent</source>
-        <translation>&amp;Habilitar la sangría inteligente</translation>
+        <translation>スマートインデントを有効化(&amp;E)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1029"/>
+        <source>&amp;Show Menubar</source>
+        <translation>メニューバーを表示(&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1032"/>
+        <source>Ctrl+M</source>
+        <translation>Ctrl+M</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1040"/>
+        <source>S&amp;how Toolbar</source>
+        <translation>ツールバーを表示(&amp;H)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1048"/>
+        <source>Begin/End Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1053"/>
+        <source>Toggle To Former Tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1056"/>
+        <source>Toggle Back to Former Tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="1059"/>
+        <source>Ctrl+T</source>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="478"/>
@@ -1074,14 +1120,9 @@
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="569"/>
-        <source>&amp;Math Rendering</source>
-        <translation>Representación de &amp;Math</translation>
-    </message>
-    <message>
         <location filename="../ui/mainwindow.ui" line="589"/>
         <source>Zoom &amp;In</source>
-        <translation>&amp;Aumentar</translation>
+        <translation>拡大(&amp;I)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="592"/>
@@ -1091,7 +1132,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="597"/>
         <source>Zoom &amp;Out</source>
-        <translation>&amp;Reducir</translation>
+        <translation>縮小(&amp;O)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="600"/>
@@ -1106,42 +1147,42 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="636"/>
         <source>&amp;Start Recording</source>
-        <translation>&amp;Comenzar a grabar</translation>
+        <translation>録画開始(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="647"/>
         <source>&amp;Stop Recording</source>
-        <translation>&amp;Detener la grabación</translation>
+        <translation>録画終了(&amp;S)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="658"/>
         <source>&amp;Playback</source>
-        <translation>&amp;Ejecutar la macro</translation>
+        <translation>再生(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="669"/>
         <source>Save Currently Recorded Macro</source>
-        <translation>Guardar la macro actualmente grabada</translation>
+        <translation>録画された現在のマクロを保存</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="677"/>
         <source>Run a Macro Multiple Times...</source>
-        <translation>Ejecutar una macro varias veces...</translation>
+        <translation>マクロを複数回実行...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="685"/>
         <source>Trim Trailing and save</source>
-        <translation>Eliminar los espacios finales y guardar</translation>
+        <translation>末尾を除去して保存</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="690"/>
         <source>Modify Shortcut/Delete Macro...</source>
-        <translation>Modificar atajo/Eliminar macro...</translation>
+        <translation>ショートカットを変更/マクロを削除...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="698"/>
         <source>Ctrl+Shift+U</source>
-        <translation>Ctrl+Mayús+U</translation>
+        <translation>Ctrl+Shift+U</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="706"/>
@@ -1151,52 +1192,52 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="731"/>
         <source>&amp;Run...</source>
-        <translation>&amp;Ejecutar...</translation>
+        <translation>実行(&amp;R)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="736"/>
         <source>Launch in Firefox</source>
-        <translation>Lanzar en Firefox</translation>
+        <translation>Firefox で起動</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="741"/>
         <source>Launch in Chromium</source>
-        <translation>Lanzar en Chromium</translation>
+        <translation>Chromium で起動</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="746"/>
         <source>Get PHP help</source>
-        <translation>Obtener ayuda de PHP</translation>
+        <translation>PHP のヘルプを見る</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="751"/>
         <source>Google Search</source>
-        <translation>Buscar en Google</translation>
+        <translation>Google 検索</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="756"/>
         <source>Wikipedia Search</source>
-        <translation>Buscar en Wikipedia</translation>
+        <translation>Wikipedia 検索</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="761"/>
         <source>Open file(s)</source>
-        <translation>Abrir archivo(s)</translation>
+        <translation>ファイルを開く</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="766"/>
         <source>Open file(s) in a new window</source>
-        <translation>Abrir archivo en una ventana nueva</translation>
+        <translation>ファイルを新しいウィンドウで開く</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="771"/>
         <source>Modify Shortcut / Delete Command...</source>
-        <translation>Modificar atajo / Eliminar comando...</translation>
+        <translation>ショートカットを変更/コマンドを削除...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="781"/>
         <source>&amp;Find...</source>
-        <translation>&amp;Buscar...</translation>
+        <translation>検索(&amp;F)...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="784"/>
@@ -1206,7 +1247,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="789"/>
         <source>Find &amp;Next</source>
-        <translation>Buscar &amp;siguiente</translation>
+        <translation>次を検索(&amp;N)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="792"/>
@@ -1216,12 +1257,12 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="797"/>
         <source>Find &amp;Previous</source>
-        <translation>Buscar &amp;anterior</translation>
+        <translation>前を検索(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="800"/>
         <source>Shift+F3</source>
-        <translation>Mayús+F3</translation>
+        <translation>Shift+F3</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="813"/>
@@ -1231,22 +1272,17 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="872"/>
         <source>Launch in Chrome</source>
-        <translation>Lanzar en Chrome</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="882"/>
-        <source>&amp;Advanced Search</source>
-        <translation>Búsqueda &amp;avanzada</translation>
+        <translation>Chrome で起動</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="885"/>
         <source>Ctrl+Shift+F</source>
-        <translation>Ctrl+Mayús+F</translation>
+        <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="893"/>
         <source>Delete the current line</source>
-        <translation>Elimina la línea actual</translation>
+        <translation>現在の行を削除</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="896"/>
@@ -1256,7 +1292,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="904"/>
         <source>Duplicate the current line</source>
-        <translation>Duplicar la línea actual</translation>
+        <translation>現在の行を複製</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="907"/>
@@ -1266,42 +1302,42 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="915"/>
         <source>Move the current line up</source>
-        <translation>Mover la línea actual hacia arriba</translation>
+        <translation>現在の行を上に移動</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="918"/>
         <source>Ctrl+Shift+Up</source>
-        <translation>Ctrl+Mayús+Arriba</translation>
+        <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="926"/>
         <source>Move the current line down</source>
-        <translation>Mover la línea actual hacia abajo</translation>
+        <translation>現在の行を下に移動</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="929"/>
         <source>Ctrl+Shift+Down</source>
-        <translation>Ctrl+Mayús+Abajo</translation>
+        <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="934"/>
         <source>&amp;Trim Trailing Space</source>
-        <translation>&amp;Eliminar los espacios finales</translation>
+        <translation>行末のスペースを除去(&amp;T)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="937"/>
         <source>Trim Trailing Space</source>
-        <translation>Eliminar los espacios finales</translation>
+        <translation>行末のスペースを除去</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="942"/>
         <source>Trim &amp;Leading Space</source>
-        <translation>Eliminar los espacios &amp;iniciales</translation>
+        <translation>行頭のスペースを除去(&amp;L)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="945"/>
         <source>Trim Leading Space</source>
-        <translation>Eliminar los espacios iniciales</translation>
+        <translation>行頭のスペースを除去</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="983"/>
@@ -1316,253 +1352,211 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="1007"/>
         <source>S&amp;how Spaces</source>
-        <translation>M&amp;ostrar los espacios</translation>
+        <translation>スペースを表示(&amp;H)</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="1010"/>
         <source>Show Spaces</source>
-        <translation>Mostrar los espacios</translation>
+        <translation>スペースを表示</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="1029"/>
-        <source>&amp;Show Menubar</source>
-        <translation>Mo&amp;strar la barra de menú</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="1032"/>
-        <source>Ctrl+M</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="1040"/>
-        <source>S&amp;how Toolbar</source>
-        <translation>Mostrar la barra de &amp;herramientas</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="1048"/>
-        <source>Begin/End Select</source>
-        <translation>Iniciar/Finalizar selección</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="1053"/>
-        <source>Toggle To Former Tab</source>
-        <translation>Cambiar a la pestaña anterior</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="1056"/>
-        <source>Toggle Back to Former Tab</source>
-        <translation>Volver a cambiar a la pestaña anterior</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.ui" line="1059"/>
-        <source>Ctrl+T</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="697"/>
+        <location filename="../ui/mainwindow.cpp" line="695"/>
         <source>INS</source>
         <translation>INS</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="695"/>
-        <source>OVR</source>
-        <translation>SOB</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="849"/>
-        <source>Open</source>
-        <translation>Abrir</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="849"/>
-        <source>All files (*)</source>
-        <translation>Todos los archivos (*)</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="873"/>
-        <source>Open Folder</source>
-        <translation>Abrir carpeta</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="912"/>
-        <source>Don&apos;t Save</source>
-        <translation>No guardar</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="390"/>
+        <location filename="../ui/mainwindow.cpp" line="388"/>
         <source>Error while trying to save this session. Please ensure the following directory is accessible:
 
 </source>
-        <translation>Error al intentar guardar esta sesión. Asegúrese de tener acceso al siguiente directorio:
+        <translation>このセッションの保存中にエラーが発生しました。次のディレクトリにアクセス可能であることを確認してください:
 
 </translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="392"/>
+        <location filename="../ui/mainwindow.cpp" line="390"/>
         <source>By choosing &quot;ignore&quot; your session won&apos;t be saved.</source>
-        <translation>Al elegir &quot;ignorar&quot;, su sesión no se guardará.</translation>
+        <translation>&quot;無視&quot; を選択するとセッションは保存されません。</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="919"/>
-        <source>If you don&apos;t save the changes you made, you&apos;ll lose them forever.</source>
-        <translation>Si no guarda los cambios, se perderán de forma permanente.</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="1031"/>
-        <source>The file on disk has changed since the last read.
-Do you want to save it anyway?</source>
-        <translation>El archivo en el disco ha cambiado desde la última lectura.
-¿Quiere guardarlo de todos modos?</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="1034"/>
-        <source>Saving the file might cause loss of external data.</source>
-        <translation>Guardar el archivo puede causar la pérdida de datos externos.</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="1058"/>
-        <source>Save as</source>
-        <translation>Guardar como</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="1060"/>
-        <source>Any file (*)</source>
-        <translation>Cualquier archivo (*)</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="550"/>
+        <location filename="../ui/mainwindow.cpp" line="548"/>
         <source>The &apos;--line&apos; and &apos;--column&apos; arguments will be ignored since more than one file is opened.</source>
-        <translation>Los argumentos &apos;--line&apos; y &apos;--column&apos; serán ignorados por haber más de un archivo abierto.</translation>
+        <translation>複数のファイルが開かれているため、引数 &apos;--line&apos; と &apos;--column&apos; は無視されます。</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="560"/>
+        <location filename="../ui/mainwindow.cpp" line="558"/>
         <source>Invalid value for &apos;--line&apos; argument: %1</source>
-        <translation>Valor incorrecto para el argumento &apos;--line&apos;: %1</translation>
+        <translation>引数 &apos;--line&apos; の値が不正です: %1</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="569"/>
+        <location filename="../ui/mainwindow.cpp" line="567"/>
         <source>Invalid value for &apos;--column&apos; argument: %1</source>
-        <translation>Valor incorrecto para el argumento &apos;--column&apos;: %1</translation>
+        <translation>引数 &apos;--column&apos; の値が不正です: %1</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="693"/>
+        <source>OVR</source>
+        <translation>OVR</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="845"/>
+        <source>Open</source>
+        <translation>開く</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="847"/>
+        <source>All files (*)</source>
+        <translation>すべてのファイル (*)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="869"/>
+        <source>Open Folder</source>
+        <translation>フォルダーを開く</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="907"/>
+        <source>Do you want to save changes to «%1»?</source>
+        <translation>«%1» への変更を保存しますか?</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="908"/>
+        <source>Don&apos;t Save</source>
+        <translation>保存しない</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="911"/>
-        <source>Do you want to save changes to «%1»?</source>
-        <translation>¿Quiere guardar los cambios en «%1»?</translation>
+        <source>Do you want to save changes to «%1» before closing?</source>
+        <translation>閉じる前に «%1» への変更を保存しますか?</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.cpp" line="915"/>
-        <source>Do you want to save changes to «%1» before closing?</source>
-        <translation>¿Quiere guardar los cambios en «%1» antes de cerrar?</translation>
+        <source>If you don&apos;t save the changes you made, you&apos;ll lose them forever.</source>
+        <translation>変更を保存しない場合、編集内容は永久に失われます。</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1243"/>
+        <location filename="../ui/mainwindow.cpp" line="1027"/>
+        <source>The file on disk has changed since the last read.
+Do you want to save it anyway?</source>
+        <translation>最後の読み取り以降にディスク上のファイルが変更されました。
+とにかく保存しますか?</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1030"/>
+        <source>Saving the file might cause loss of external data.</source>
+        <translation>ファイルを保存すると、外部データが失われる可能性があります。</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1052"/>
+        <source>Save as</source>
+        <translation>名前を付けて保存</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1054"/>
+        <source>Any file (*)</source>
+        <translation>すべてのファイル (*)</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.cpp" line="1235"/>
         <source>Ln %1, Col %2</source>
-        <translation>Lín. %1, col. %2</translation>
+        <translation>行 %1, 文字 %2</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1244"/>
+        <location filename="../ui/mainwindow.cpp" line="1236"/>
         <source>    Sel %1 (%2)</source>
-        <translation>    Sel. %1 (%2)</translation>
+        <translation>    セル %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1245"/>
+        <location filename="../ui/mainwindow.cpp" line="1237"/>
         <source>    %1 chars, %2 lines</source>
-        <translation>    %1 caracteres, %2 líneas</translation>
+        <translation>    %1 文字, %2 行</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1383"/>
+        <location filename="../ui/mainwindow.cpp" line="1375"/>
         <source>Windows</source>
         <translation>Windows</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1386"/>
+        <location filename="../ui/mainwindow.cpp" line="1378"/>
         <source>UNIX / OS X</source>
-        <translation>Formato UNIX / OS X</translation>
+        <translation>UNIX / OS X</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1389"/>
+        <location filename="../ui/mainwindow.cpp" line="1381"/>
         <source>Old Mac</source>
-        <translation>Mac antiguo</translation>
+        <translation>旧 Mac</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1396"/>
+        <location filename="../ui/mainwindow.cpp" line="1388"/>
         <source>%1 w/o BOM</source>
-        <translation>%1 sin BOM</translation>
+        <translation>%1 w/o BOM</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1881"/>
+        <location filename="../ui/mainwindow.cpp" line="1873"/>
         <source>No recent files</source>
-        <translation>No hay archivos recientes</translation>
+        <translation>最近開いたファイルはありません</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="1978"/>
+        <location filename="../ui/mainwindow.cpp" line="1970"/>
         <source>The following files do not exist anymore. Do you want to open them anyway?
 </source>
-        <translation>Los siguientes archivos ya no existen. ¿Quiere abrirlos de todos modos?
+        <translation>次のファイルはすでに存在しません。それでも開きますか?
 </translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2089"/>
+        <location filename="../ui/mainwindow.cpp" line="2081"/>
         <source>Convert to:</source>
-        <translation>Convertir a:</translation>
+        <translation>次に変換:</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2107"/>
+        <location filename="../ui/mainwindow.cpp" line="2099"/>
         <source>Reload as:</source>
-        <translation>Recargar como:</translation>
+        <translation>次で再読み込み:</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2154"/>
+        <location filename="../ui/mainwindow.cpp" line="2146"/>
         <source>Interpret as:</source>
-        <translation>Interpretar como:</translation>
+        <translation>次で解釈:</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2169"/>
+        <location filename="../ui/mainwindow.cpp" line="2161"/>
         <source>Run...</source>
-        <translation>Ejecutar...</translation>
+        <translation>実行...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2181"/>
+        <location filename="../ui/mainwindow.cpp" line="2173"/>
         <source>Modify Run Commands</source>
-        <translation>Modificar los comandos de ejecución</translation>
+        <translation>実行コマンドの変更</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2261"/>
-        <source>%1 wasn&apos;t able to open the produced pdf file:
-%2</source>
-        <translation>%1 ha sido incapaz de abrir el archivo pdf producido:
-%2</translation>
-    </message>
-    <message>
-        <location filename="../ui/mainwindow.cpp" line="2328"/>
+        <location filename="../ui/mainwindow.cpp" line="2297"/>
         <source>The file &quot;%1&quot; does not exist. Do you want to re-create it?</source>
-        <translation>El archivo &quot;%1&quot; no existe ¿Quiere recrearlo?</translation>
+        <translation>ファイル &quot;%1&quot; は存在しません。再作成しますか?</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2497"/>
+        <location filename="../ui/mainwindow.cpp" line="2466"/>
         <source>Extension</source>
-        <translation>Extensión</translation>
+        <translation>拡張機能</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2580"/>
+        <location filename="../ui/mainwindow.cpp" line="2547"/>
         <source>Open Session...</source>
-        <translation>Abrir sesión...</translation>
+        <translation>セッションを開く...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2580"/>
-        <location filename="../ui/mainwindow.cpp" line="2602"/>
+        <location filename="../ui/mainwindow.cpp" line="2549"/>
+        <location filename="../ui/mainwindow.cpp" line="2572"/>
         <source>Session file (*.xml);;Any file (*)</source>
-        <translation>Archivos de sesión (*.xml);;Todos los archivos (*)</translation>
+        <translation>セッションファイル (*.xml);;すべてのファイル (*)</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2600"/>
+        <location filename="../ui/mainwindow.cpp" line="2570"/>
         <source>Save Session as...</source>
-        <translation>Guardar sesión como...</translation>
+        <translation>セッションを保存...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.cpp" line="2627"/>
+        <location filename="../ui/mainwindow.cpp" line="2596"/>
         <source>Error while trying to save this session. Please try a different file name.</source>
-        <translation>Error al intentar guardar esta sesión. Pruebe con un nombre de archivo diferente.</translation>
+        <translation>このセッションの保存中にエラーが発生しました。別のファイル名を入力してください。</translation>
     </message>
 </context>
 <context>
@@ -1570,7 +1564,7 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/nqqrun.cpp" line="234"/>
         <source>Open File</source>
-        <translation>Abrir archivo</translation>
+        <translation>ファイルを開く</translation>
     </message>
 </context>
 <context>
@@ -1578,62 +1572,62 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/nqqrun.cpp" line="266"/>
         <source>OK</source>
-        <translation>Aceptar</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="267"/>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="268"/>
         <source>Save...</source>
-        <translation>Guardar...</translation>
+        <translation>保存...</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="271"/>
         <source>Special placeholders</source>
-        <translation>Marcadores de posición especiales</translation>
+        <translation>特殊なプレースホルダー</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="272"/>
         <source>Full URL of the currently active file.</source>
-        <translation>URL completo del archivo activo actual.</translation>
+        <translation>現在アクティブなファイルの完全な URL。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="273"/>
         <source>Full path of the currently active file.</source>
-        <translation>Ruta completa del archivo activo actual.</translation>
+        <translation>現在アクティブなファイルのフルパス。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="274"/>
         <source>Directory of the currently active file.</source>
-        <translation>Directorio del archivo activo actual.</translation>
+        <translation>現在アクティブなファイルのディレクトリ。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="275"/>
         <source>Name of the currently active file.</source>
-        <translation>Nombre del archivo activo actual.</translation>
+        <translation>現在アクティブなファイルの名前。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="276"/>
         <source>Currently selected text.</source>
-        <translation>Texto actualmente seleccionado.</translation>
+        <translation>現在選択しているテキスト。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="316"/>
         <source>Choose the name to be displayed in the run menu.</source>
-        <translation>Elija el nombre a mostrar en el menú de ejecución.</translation>
+        <translation>実行メニューに表示する名前を選択します。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="317"/>
         <source>Command Name:</source>
-        <translation>Nombre del comando:</translation>
+        <translation>コマンド名:</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="326"/>
         <source>Command saved...</source>
-        <translation>Comando guardado...</translation>
+        <translation>コマンドを保存しました...</translation>
     </message>
 </context>
 <context>
@@ -1641,250 +1635,245 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/nqqrun.cpp" line="28"/>
         <source>OK</source>
-        <translation>Aceptar</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="29"/>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="34"/>
         <source>Special placeholders</source>
-        <translation>Marcadores de posición especiales</translation>
+        <translation>特殊なプレースホルダー</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="35"/>
         <source>Full URL of the currently active file.</source>
-        <translation>URL completo del archivo activo actual.</translation>
+        <translation>現在アクティブなファイルの完全な URL。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="36"/>
         <source>Full path of the currently active file.</source>
-        <translation>Ruta completa del archivo activo actual.</translation>
+        <translation>現在アクティブなファイルのフルパス。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="37"/>
         <source>Directory of the currently active file.</source>
-        <translation>Directorio del archivo activo actual.</translation>
+        <translation>現在アクティブなファイルのディレクトリ。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="38"/>
         <source>Name of the currently active file.</source>
-        <translation>Nombre del archivo activo actual.</translation>
+        <translation>現在アクティブなファイルの名前。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="39"/>
         <source>Currently selected text.</source>
-        <translation>Texto actualmente seleccionado.</translation>
+        <translation>現在選択しているテキスト。</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="70"/>
         <source>Text</source>
-        <translation>Texto</translation>
+        <translation>テキスト</translation>
     </message>
     <message>
         <location filename="../ui/nqqrun.cpp" line="70"/>
         <source>Command</source>
-        <translation>Comando</translation>
+        <translation>コマンド</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="18"/>
+        <location filename="../ui/notepad.cpp" line="18"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="87"/>
+        <location filename="../ui/notepad.cpp" line="87"/>
         <source>Open a new window in an existing instance of %1.</source>
-        <translation>Abrir una ventana nueva en una instancia existente de %1.</translation>
+        <translation>%1 の既存のインスタンスで新しいウィンドウを開きます。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="92"/>
+        <location filename="../ui/notepad.cpp" line="92"/>
         <source>Open file at specified line.</source>
-        <translation>Abrir archivo en la línea especificada.</translation>
+        <translation>行を指定してファイルを開きます。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="98"/>
+        <location filename="../ui/notepad.cpp" line="98"/>
         <source>Open file at specified column.</source>
-        <translation>Abrir archivo en la columna especificada.</translation>
+        <translation>列を指定してファイルを開きます。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="103"/>
-        <source>Allows Notepadqq to be run as root.</source>
-        <translation>Permite ejecutar Notepadqq como root.</translation>
+        <location filename="../ui/notepad.cpp" line="103"/>
+        <source>Allows Notepad to be run as root.</source>
+        <translation>Notepad をルートとして実行します。</translation>
     </message>
     <message>
-        <location filename="../ui/notepadqq.cpp" line="106"/>
-        <source>Print system information for debugging.</source>
-        <translation>Imprimir la información del sistema para depuración.</translation>
-    </message>
-    <message>
-        <location filename="../ui/notepadqq.cpp" line="110"/>
+        <location filename="../ui/notepad.cpp" line="107"/>
         <source>Files to open.</source>
-        <translation>Archivos para abrir.</translation>
+        <translation>開くファイル</translation>
     </message>
     <message>
-        <location filename="../ui/Sessions/sessions.cpp" line="132"/>
+        <location filename="../ui/Sessions/sessions.cpp" line="130"/>
         <source>Error reading session file</source>
-        <translation>Error al leer el archivo de sesión</translation>
+        <translation>セッションファイルの読み取り中にエラーが発生しました</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="497"/>
         <source>Restart required</source>
-        <translation>Reinicio requerido</translation>
+        <translation>再起動が必要です</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="498"/>
-        <source>You need to restart Notepadqq for the localization changes to take effect.</source>
-        <translation>Debe reiniciar Notepadqq para que los cambios de idioma surtan efecto.</translation>
+        <source>You need to restart Notepad for the localization changes to take effect.</source>
+        <translation>言語設定の変更を有効にするには、Notepad を再起動する必要があります。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="51"/>
         <source>Confirm Replacement</source>
-        <translation>Confirmar el reemplazo</translation>
+        <translation>置換の確認</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="52"/>
         <source>This will replace %1 selected matches with &quot;%2&quot;. Continue?</source>
-        <translation>Va a reemplazar %1 coincidencias seleccionadas con &quot;%2&quot;. ¿Quiere continuar?</translation>
+        <translation>選択した%1個を &quot;%2&quot; に置換します。続行しますか?</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="143"/>
-        <source>Notepadqq supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
-        <translation>Notepadqq admite la mayor parte de la sintaxis de las &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;expresiones regulares de Perl&lt;/a&gt; al habilitar &apos;Usar expresiones regulares&apos;.</translation>
+        <source>Notepad supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
+        <translation>&apos;正規表現を使用&apos; にチェックが入っている場合、Notepad は &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl 正規表現&lt;/a&gt;のほとんどをサポートします。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="144"/>
         <source>Here is a quick reference:</source>
-        <translation>Aquí hay una referencia rápida:</translation>
+        <translation>以下はクイックリファレンスです:</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="146"/>
         <source>Matches a word character</source>
-        <translation>Coincide con un carácter de palabra</translation>
+        <translation>単語の文字にマッチ</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="147"/>
         <source>Matches a 0-9 digit</source>
-        <translation>Coincide con un número de 0 a 9</translation>
+        <translation>0から9までの数字にマッチ</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="148"/>
         <source>Matches any of a, b, or c</source>
-        <translation>Coincide con &apos;a&apos;, &apos;b&apos; o &apos;c&apos;</translation>
+        <translation>a、b、c のいずれかにマッチ</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="149"/>
         <source>Matches anything but a, b, or c</source>
-        <translation>Coincide con todo menos con &apos;a&apos;, &apos;b&apos; o &apos;c&apos;</translation>
+        <translation>a、b、c 以外にマッチ</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="150"/>
         <source>Matches the beginning of a line</source>
-        <translation>Coincide con el inicio de línea</translation>
+        <translation>行の先頭にマッチ</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="151"/>
         <source>Matches the end of a line</source>
-        <translation>Coincide con el fin de línea</translation>
+        <translation>行の末尾にマッチ</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="152"/>
         <source>Matches &apos;abc&apos; and captures it as a group</source>
-        <translation>Coincide con &apos;abc&apos; y lo captura como un grupo</translation>
+        <translation>&apos;abc&apos; をグループとしてマッチ</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="153"/>
         <source>Use in a replace operation to refer to the n&apos;th capture group</source>
-        <translation>Usar en una operación de reemplazo para hacer referencia al enésimo grupo de captura</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="706"/>
         <source>Search in...</source>
-        <translation>Buscar en...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="27"/>
         <source>&lt;b&gt;%1&lt;/b&gt; Results for:   &apos;&lt;b&gt;%2&lt;/b&gt;&apos;</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; resultados para:   &apos;&lt;b&gt;%2&lt;/b&gt;&apos;</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;個の一致:   &apos;&lt;b&gt;%2&lt;/b&gt;&apos;</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchobjects.cpp" line="10"/>
         <source>Current Document</source>
-        <translation>Documento actual</translation>
+        <translation>現在のドキュメント</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchobjects.cpp" line="11"/>
         <source>All Documents</source>
-        <translation>Todos los documentos</translation>
+        <translation>すべてのドキュメント</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchobjects.cpp" line="12"/>
         <source>File System</source>
-        <translation>Sistema de archivos</translation>
+        <translation>ファイルシステム</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchobjects.cpp" line="13"/>
         <source>Invalid</source>
-        <translation>Inválido</translation>
+        <translation>不正</translation>
     </message>
     <message>
         <location filename="../ui/Sessions/backupservice.cpp" line="107"/>
-        <source>Notepadqq was not closed properly. Do you want to recover unsaved changes?</source>
-        <translation>Notepadqq no se cerró correctamente. ¿Quiere recuperar los cambios sin guardar?</translation>
+        <source>Notepad was not closed properly. Do you want to recover unsaved changes?</source>
+        <translation>Notepad が正常に終了しませんでした。未保存の変更を復元しますか?</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="114"/>
+        <location filename="../ui/docengine.cpp" line="111"/>
         <source>The file &quot;%1&quot; you are trying to open is %2 MiB in size. Do you want to continue?</source>
-        <translation>El archivo &quot;%1&quot; que intenta abrir es de tamaño %2 MiB. ¿Quiere continuar?</translation>
+        <translation>開こうとしているファイル &quot;%1&quot; のサイズは %2 MiB あります。続行しますか?</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="128"/>
+        <location filename="../ui/docengine.cpp" line="125"/>
         <source>Do you want to reload «%1»?</source>
-        <translation>¿Quiere recargar «%1»?</translation>
+        <translation>«%1» を再読み込みしますか?</translation>
     </message>
     <message>
-        <location filename="../ui/docengine.cpp" line="129"/>
+        <location filename="../ui/docengine.cpp" line="126"/>
         <source>Any changes made by you to this document will be lost.</source>
-        <translation>Se perderá cualquier cambio hecho por usted a este documento.</translation>
+        <translation>このドキュメントに対して、あなたが行った変更は失われます。</translation>
     </message>
     <message>
-        <location filename="../ui/main.cpp" line="97"/>
-        <source>Notepadqq will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepadqq as root is not recommended. Use --allow-root if you really want to.</source>
-        <translation>Notepadqq solicitará privilegios de root cuando sea necesario si &apos;kdesu&apos; o &apos;gksu&apos; están instalados. No se recomienda ejecutar Notepadqq como root. Use --allow-root si realmente quiere hacerlo.</translation>
+        <location filename="../ui/main.cpp" line="92"/>
+        <source>Notepad will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepad as root is not recommended. Use --allow-root if you really want to.</source>
+        <translation>&apos;gksu&apos; や &apos;kdesu&apos; がインストールされている場合、Notepadq は必要に応じて root 権限を要求します。Notepad を root として実行することはお勧めできません。権限が本当に必要な場合は --allow-root を使用してください。</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="126"/>
         <source>Would you like to help?</source>
-        <translation>¿Le gustaría ayudar?</translation>
+        <translation>手伝っていただけますか?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="128"/>
-        <source>You can help to improve Notepadqq by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
-        <translation>Puede ayudar a mejorar Notepadqq permitiéndonos recopilar &lt;b&gt;estadísticas anónimas&lt;/b&gt;.</translation>
+        <source>You can help to improve Notepad by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
+        <translation>&lt;b&gt;匿名の統計&lt;/b&gt;の収集を許可することで、Notepad の改善を手伝うことができます。</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="129"/>
         <source>What will we collect?</source>
-        <translation>¿Qué recopilamos?</translation>
+        <translation>私達は何を収集するのでしょうか?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="130"/>
-        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepadqq is open source, so you can %1check by yourself%2 😊</source>
-        <translation>Recopilamos informaciones tales como la versión de Qt, la versión del SO, o el número de extensiones.&lt;br&gt;No tiene por qué creernos: Notepadqq es software de código abierto, así que puede %1 comprobarlo por sí mismo%2 😊</translation>
+        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepad is open source, so you can %1check by yourself%2 😊</source>
+        <translation>Qt のバージョン、OS のバージョン、拡張機能の数などの情報を収集します。&lt;br&gt;私達を信用する必要はありません。Notepad はオープンソースですので、%1あなた自身の目で確認する%2ことができます 😊</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="137"/>
         <source>Okay, I agree</source>
-        <translation>Bien, estoy de acuerdo</translation>
+        <translation>はい、同意します</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="138"/>
         <source>No</source>
-        <translation>No</translation>
+        <translation>いいえ</translation>
     </message>
 </context>
 <context>
@@ -1892,42 +1881,42 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="115"/>
         <source>current document</source>
-        <translation>documento actual</translation>
+        <translation>現在のドキュメント</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="117"/>
         <source>open documents</source>
-        <translation>documentos abiertos</translation>
+        <translation>開いているドキュメント</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="125"/>
         <source>Copy Line to Clipboard</source>
-        <translation>Copiar la línea al portapapeles</translation>
+        <translation>行をクリップボードにコピー</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="133"/>
         <source>Open Document</source>
-        <translation>Abrir documento</translation>
+        <translation>ドキュメントを開く</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="142"/>
         <source>Open Folder in File Browser</source>
-        <translation>Abrir carpeta en el administrador de archivos</translation>
+        <translation>ファイルブラウザーでフォルダーを開く</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="155"/>
         <source>Search Results in: %1</source>
-        <translation>Resultados de la búsqueda en: %1</translation>
+        <translation>次の検索結果: %1</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="231"/>
         <source>Calculating...</source>
-        <translation>Calculando...</translation>
+        <translation>計算中...</translation>
     </message>
     <message>
         <location filename="../ui/Search/searchinstance.cpp" line="388"/>
         <source>Search in progress [%1/%2 finished]</source>
-        <translation>Búsqueda en curso [%1/%2 terminada(s)]</translation>
+        <translation>検索中 [%1/%2 完了]</translation>
     </message>
 </context>
 <context>
@@ -1935,40 +1924,40 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/Search/dlgsearching.ui" line="17"/>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation>ダイアログ</translation>
     </message>
     <message>
         <location filename="../ui/Search/dlgsearching.ui" line="77"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Cancelar</translation>
+        <translation>キャンセル(&amp;C)</translation>
     </message>
 </context>
 <context>
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="20"/>
-        <source>Notepadqq</source>
-        <translation>Notepadqq</translation>
+        <source>Notepad</source>
+        <translation>Notepad</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="42"/>
         <source>Close</source>
-        <translation>Cerrar</translation>
+        <translation>閉じる</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="114"/>
         <source>License</source>
-        <translation>Licencia</translation>
+        <translation>ライセンス</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.cpp" line="25"/>
         <source>Contributors:</source>
-        <translation>Colaboradores:</translation>
+        <translation>貢献者:</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.cpp" line="25"/>
         <source>GitHub Contributors</source>
-        <translation>Colaboradores de GitHub</translation>
+        <translation>GitHub の貢献者</translation>
     </message>
 </context>
 <context>
@@ -1976,12 +1965,12 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/frmencodingchooser.ui" line="17"/>
         <source>Encoding</source>
-        <translation>Codificación</translation>
+        <translation>エンコーディング</translation>
     </message>
     <message>
         <location filename="../ui/frmencodingchooser.ui" line="30"/>
         <source>Encoding:</source>
-        <translation>Codificación:</translation>
+        <translation>エンコーディング:</translation>
     </message>
 </context>
 <context>
@@ -1989,22 +1978,22 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/frmindentationmode.ui" line="14"/>
         <source>Indentation</source>
-        <translation>Sangría</translation>
+        <translation>インデント</translation>
     </message>
     <message>
         <location filename="../ui/frmindentationmode.ui" line="26"/>
         <source>Tabs</source>
-        <translation>Tabulaciones</translation>
+        <translation>タブ</translation>
     </message>
     <message>
         <location filename="../ui/frmindentationmode.ui" line="36"/>
         <source>Spaces</source>
-        <translation>Espacios</translation>
+        <translation>スペース</translation>
     </message>
     <message>
         <location filename="../ui/frmindentationmode.ui" line="60"/>
         <source>Indentation width:</source>
-        <translation>Ancho de la sangría:</translation>
+        <translation>インデント幅:</translation>
     </message>
 </context>
 <context>
@@ -2013,12 +2002,12 @@ Do you want to save it anyway?</source>
         <location filename="../ui/frmlinenumberchooser.ui" line="14"/>
         <location filename="../ui/frmlinenumberchooser.ui" line="24"/>
         <source>Go to line</source>
-        <translation>Ir a la línea</translation>
+        <translation>指定行へ移動</translation>
     </message>
     <message>
         <location filename="../ui/frmlinenumberchooser.ui" line="53"/>
         <source>Line number:</source>
-        <translation>Número de línea:</translation>
+        <translation>行番号:</translation>
     </message>
 </context>
 <context>
@@ -2026,7 +2015,7 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/frmpreferences.ui" line="14"/>
         <source>Preferences</source>
-        <translation>Preferencias</translation>
+        <translation>環境設定</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="51"/>
@@ -2036,97 +2025,97 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/frmpreferences.ui" line="56"/>
         <source>General</source>
-        <translation>General</translation>
+        <translation>一般</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="61"/>
         <source>Appearance</source>
-        <translation>Apariencia</translation>
+        <translation>外観</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="66"/>
         <source>Languages</source>
-        <translation>Lenguajes</translation>
+        <translation>言語</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="71"/>
         <source>Search</source>
-        <translation>Buscar</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="76"/>
         <source>Shortcuts</source>
-        <translation>Atajos</translation>
+        <translation>ショートカット</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="81"/>
         <source>Toolbar</source>
-        <translation>Barra de herramientas</translation>
+        <translation>ツールバー</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="86"/>
         <source>Extensions</source>
-        <translation>Extensiones</translation>
+        <translation>拡張機能</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="110"/>
-        <source>Collect and transmit anonymous statistics to improve Notepadqq</source>
-        <translation>Recopilar y enviar estadísticas anónimas para mejorar Notepadqq</translation>
+        <source>Collect and transmit anonymous statistics to improve Notepad</source>
+        <translation>Notepad の改善のために匿名の統計を収集して送信する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="117"/>
         <source>Warn when the indentation doesn&apos;t match the settings</source>
-        <translation>Advertir cuando la sangría no coincida con la configuración</translation>
+        <translation>インデントと設定が一致しない場合に警告する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="124"/>
-        <source>Remember open tabs when closing Notepadqq</source>
-        <translation>Recordar pestañas abiertas al cerrar Notepadqq</translation>
+        <source>Remember open tabs when closing Notepad</source>
+        <translation>Notepad を閉じる際に開いているタブを記憶する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="133"/>
-        <source>This option allows Notepadqq to recover your documents after a crash even if they were not explicitly saved.</source>
-        <translation>Esta opción permite que Notepadqq recupere sus documentos después de un fallo del programa cuando no se guardaron explícitamente.</translation>
+        <source>This option allows Notepad to recover your documents after a crash even if they were not explicitly saved.</source>
+        <translation>このオプションは、Notepad がクラッシュした際にドキュメントを保存していなかった場合でも、ドキュメントの復元を可能にします。</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="136"/>
         <source>Backup open documents every</source>
-        <translation>Respaldar los archivos abiertos cada</translation>
+        <translation>開いているドキュメントを次の間隔でバックアップする:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="143"/>
         <source> seconds</source>
-        <translation> segundos</translation>
+        <translation>秒</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="171"/>
-        <source>Exit Notepadqq when closing the last Tab</source>
-        <translation>Salir de Notepadqq al cerrar la última pestaña</translation>
+        <source>Exit Notepad when closing the last Tab</source>
+        <translation>最後のタブを閉じた際に Notepad を終了する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="180"/>
         <source>Localization:</source>
-        <translation>Idioma:</translation>
+        <translation>使用言語:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="237"/>
         <source>Color scheme:</source>
-        <translation>Esquema de color:</translation>
+        <translation>カラースキーマ:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="269"/>
         <source>Override Font Family</source>
-        <translation>Personalizar el tipo de letra</translation>
+        <translation>フォントファミリーを上書きする</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="292"/>
         <source>Override Font Size</source>
-        <translation>Personalizar el tamaño de letra</translation>
+        <translation>フォントサイズを上書きする</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="321"/>
         <source>Override Line Height</source>
-        <translation>Personalizar la altura de línea</translation>
+        <translation>行間隔を上書きする</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="337"/>
@@ -2136,118 +2125,118 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/frmpreferences.ui" line="358"/>
         <source>Preview</source>
-        <translation>Previsualizacion</translation>
+        <translation>プレビュー</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="441"/>
         <source>Tab size:</source>
-        <translation>Tamaño de tabulación:</translation>
+        <translation>タブの幅:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="454"/>
         <source>Use spaces instead of tabs</source>
-        <translation>Usar espacios en lugar de tabulaciones</translation>
+        <translation>タブの代わりにスペースを使用する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="478"/>
         <source>Use default settings</source>
-        <translation>Utilizar la configuracion por defecto</translation>
+        <translation>デフォルトの設定を使用する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="514"/>
         <source>Search as I type</source>
-        <translation>Buscar mientras se escribe</translation>
+        <translation>入力毎に検索する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="521"/>
         <source>Save search history</source>
-        <translation>Guardar el historial de búsquedas</translation>
+        <translation>検索履歴を保存する</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="569"/>
         <source>Add</source>
-        <translation>Añadir</translation>
+        <translation>追加</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="580"/>
         <source>Remove</source>
-        <translation>Borrar</translation>
+        <translation>削除</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="609"/>
         <source>Move Up</source>
-        <translation>Subir</translation>
+        <translation>上に移動</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="620"/>
         <source>Move Down</source>
-        <translation>Bajar</translation>
+        <translation>下に移動</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="650"/>
         <source>Reset to Default</source>
-        <translation>Restaurar los valores por defecto</translation>
+        <translation>デフォルトに戻す</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="697"/>
         <source>Node.js runtime</source>
-        <translation>Entorno de ejecución de Node.js</translation>
+        <translation>Node.js ランタイム</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="703"/>
         <source>Supported Node versions: 0.10, 0.11, 0.12</source>
-        <translation>Versiones soportadas de Node: 0.10, 0.11, 0.12</translation>
+        <translation>サポートされている Node のバージョン: 0.10, 0.11, 0.12</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="710"/>
         <source>Node.js path:</source>
-        <translation>Ruta a Node.js:</translation>
+        <translation>Node.js のパス:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="722"/>
         <location filename="../ui/frmpreferences.ui" line="743"/>
         <source>Browse...</source>
-        <translation>Explorar...</translation>
+        <translation>参照...</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="731"/>
         <source>NPM path:</source>
-        <translation>Ruta a NPM:</translation>
+        <translation>NPM のパス:</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="752"/>
         <source>WARNING: support for extensions is EXPERIMENTAL.</source>
-        <translation>ADVERTENCIA: el soporte para extensiones es EXPERIMENTAL.</translation>
+        <translation>警告: 拡張機能のサポートは実験的なものです。</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="277"/>
         <source>Reset Selected</source>
-        <translation>Reiniciar la selección</translation>
+        <translation>選択したものをリセット</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="278"/>
         <source>Reset All</source>
-        <translation>Reiniciar todo</translation>
+        <translation>すべてリセット</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="375"/>
         <source>Keyboard shortcut conflict</source>
-        <translation>Uno o más atajos están en conflicto</translation>
+        <translation>キーボードショートカットの競合</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="376"/>
         <source>Two or more actions share the same shortcut. These conflicts must be resolved before your changes can be saved.</source>
-        <translation>Dos o más acciones comparten el mismo atajo. Estos conflictos deben ser resueltos antes de que sus cambios puedan ser guardados.</translation>
+        <translation>2つ以上のアクションが同じショートカットに割り当てられています。これらの競合は、変更を保存する前に解決する必要があります。</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="504"/>
         <source>Browse</source>
-        <translation>Explorar</translation>
+        <translation>参照</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="590"/>
         <source>Would you like to clear the existing history now?</source>
-        <translation>¿Quiere limpiar el historial existente ahora?</translation>
+        <translation>既存の履歴を消去しますか?</translation>
     </message>
 </context>
 <context>
@@ -2255,115 +2244,115 @@ Do you want to save it anyway?</source>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="14"/>
         <source>Search</source>
-        <translation>Buscar</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="50"/>
         <source>Find</source>
-        <translation>Buscar</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="63"/>
         <source>Replace with</source>
-        <translation>Reemplazar con</translation>
+        <translation>置換</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="110"/>
         <source>Show advanced options</source>
-        <translation>Mostrar opciones avanzadas</translation>
+        <translation>高度なオプションを表示</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="117"/>
         <source>Advanced</source>
-        <translation>Avanzado</translation>
+        <translation>高度</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="149"/>
         <source>Match whole word only</source>
-        <translation>Buscar solo palabras completas</translation>
+        <translation>単語単位で一致</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="156"/>
         <source>Match case</source>
-        <translation>Distinguir mayúsculas de minúsculas</translation>
+        <translation>大文字/小文字を区別</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="123"/>
         <source>Search &amp;plain text</source>
-        <translation>Buscar texto &amp;plano</translation>
+        <translation>プレーンテキストを検索(&amp;P)</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="163"/>
         <source>Search &amp;with special characters (\n, \r, \t, \0, \u..., \x...)</source>
-        <translation>Buscar usando caracteres &amp;especiales (\n, \r, \t, \0, \u..., \x...)</translation>
+        <translation>特殊文字で検索 (\n, \r, \t, \0, \u..., \x...)(&amp;W)</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="170"/>
         <source>Search with &amp;regular expressions</source>
-        <translation>Buscar usando expresiones &amp;regulares</translation>
+        <translation>正規表現で検索(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="198"/>
         <source>Find ⇩</source>
-        <translation>Buscar ⇩</translation>
+        <translation>検索 ⇩</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="208"/>
         <location filename="../ui/Search/frmsearchreplace.cpp" line="290"/>
         <source>Select all</source>
-        <translation>Seleccionar todo</translation>
+        <translation>すべて選択</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="218"/>
         <source>Replace ⇧</source>
-        <translation>Reemplazar ⇧</translation>
+        <translation>置換 ⇧</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="228"/>
         <source>Replace ⇩</source>
-        <translation>Reemplazar ⇩</translation>
+        <translation>置換 ⇩</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="238"/>
         <location filename="../ui/Search/frmsearchreplace.cpp" line="278"/>
         <source>Replace all</source>
-        <translation>Reemplazar todo</translation>
+        <translation>すべて置換</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="334"/>
         <location filename="../ui/Search/frmsearchreplace.ui" line="337"/>
         <source>Advanced Search</source>
-        <translation>Búsqueda avanzada</translation>
+        <translation>高度な検索</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="255"/>
         <source>Find ⇧</source>
-        <translation>Buscar ⇧</translation>
+        <translation>検索 ⇧</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="284"/>
         <source>Toolbar</source>
-        <translation>Barra de herramientas</translation>
+        <translation>ツールバー</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="318"/>
         <source>&amp;Replace</source>
-        <translation>&amp;Reemplazar</translation>
+        <translation>置換(&amp;R)</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.ui" line="326"/>
         <source>&amp;Find</source>
-        <translation>&amp;Buscar</translation>
+        <translation>検索(&amp;F)</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.cpp" line="278"/>
         <source>%1 occurrences have been replaced.</source>
-        <translation>%1 apariciones han sido reemplazadas.</translation>
+        <translation>%1件の一致した語句が置換されました。</translation>
     </message>
     <message>
         <location filename="../ui/Search/frmsearchreplace.cpp" line="290"/>
         <source>No results found</source>
-        <translation>No se han encontrado resultados</translation>
+        <translation>何も見つかりませんでした</translation>
     </message>
 </context>
 </TS>

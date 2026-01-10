@@ -1,6 +1,6 @@
 # Editor
 
-Represents the content of a standard tab in Notepadqq.
+Represents the content of a standard tab in Notepad.
 
 [TOC]
 
@@ -11,7 +11,7 @@ Get the file name associated with this editor.
 ## editor.fileOnDiskChanged()
 
 Returns `true` if the file has been changed or deleted from outside of
-Notepadqq since the last time we read it.
+Notepad since the last time we read it.
 
 ## editor.isClean()
 
@@ -49,9 +49,9 @@ For example:
 ## editor.setFileOnDiskChanged(changed)
 
 Behave as if the file was changed or deleted (or, if `changed == false`, the
-opposite) from outside of Notepadqq since the last time we read it.
+opposite) from outside of Notepad since the last time we read it.
 
-For example, if `changed == false` Notepadqq will not ask to save the file
+For example, if `changed == false` Notepad will not ask to save the file
 when the editor will close.
 
 ## editor.setFocus()

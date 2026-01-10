@@ -1,7 +1,7 @@
 #include "include/stats.h"
 
 #include "include/Extensions/extensionsloader.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include <QJsonDocument>
 #include <QNetworkAccessManager>
@@ -13,7 +13,7 @@
 #include <QUrl>
 
 bool Stats::m_longTimerRunning = false;
-bool Stats::m_isFirstNotepadqqRun = false;
+bool Stats::m_isFirstNotepadRun = false;
 
 #define DIALOG_NEVER_SHOWN 0
 #define DIALOG_ALREADY_SHOWN 1
@@ -97,7 +97,7 @@ void Stats::check() {
 }
 
 void Stats::remoteApiSend(const QJsonObject &data) {
-    QUrl url("https://notepadqq.com/api/stat/post.php");
+    QUrl url("https://notepad.com/api/stat/post.php");
     QNetworkRequest request(url);
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/javascript");
@@ -118,19 +118,19 @@ void Stats::askUserPermission() {
     NqqSettings &settings = NqqSettings::getInstance();
     int dialogShown = settings.General.getStatisticsDialogShown();
 
-    if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadqqRun) {
+    if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadRun) {
 
         QMessageBox msgBox;
         msgBox.setWindowTitle(QCoreApplication::applicationName());
         msgBox.setIcon(QMessageBox::Question);
         msgBox.setText("<h3>" + QObject::tr("Would you like to help?") + "</h3>");
         msgBox.setInformativeText("<html><body>"
-            "<p>" + QObject::tr("You can help to improve Notepadqq by allowing us to collect <b>anonymous statistics</b>.") + "</p>" +
+            "<p>" + QObject::tr("You can help to improve Notepad by allowing us to collect <b>anonymous statistics</b>.") + "</p>" +
             "<b>" + QObject::tr("What will we collect?") + "</b><br>" +
             QObject::tr(
                 "We will collect information such as the version of Qt, the version of the OS, or the number of extensions.<br>"
-                "You don't have to trust us: Notepadqq is open source, so you can %1check by yourself%2 😊").
-                      arg("<a href=\"https://github.com/notepadqq/notepadqq/blob/master/src/ui/stats.cpp\">").
+                "You don't have to trust us: Notepad is open source, so you can %1check by yourself%2 😊").
+                      arg("<a href=\"https://github.com/notepad/notepad/blob/master/src/ui/stats.cpp\">").
                       arg("</a>") +
             "</body></html>");
 
@@ -148,10 +148,10 @@ void Stats::askUserPermission() {
         }
 
     } else if (dialogShown == DIALOG_NEVER_SHOWN) {
-        // Set m_isFirstNotepadqqRun to true, so that next executions of this method within
+        // Set m_isFirstNotepadRun to true, so that next executions of this method within
         // the current process won't show the dialog even if we're setting
         // statisticsDialogShown = DIALOG_FIRST_TIME_IGNORED.
-        m_isFirstNotepadqqRun = true;
+        m_isFirstNotepadRun = true;
         settings.General.setStatisticsDialogShown(DIALOG_FIRST_TIME_IGNORED);
     }
 }

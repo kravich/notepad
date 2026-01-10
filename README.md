@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/4319621/36906314-e3f99680-1e35-11e8-90fd-f959c9641f36.png" alt="Notepadqq" width="32" height="32" /> Notepadqq [![Build Status](https://travis-ci.com/notepadqq/notepadqq.svg?branch=master)](https://travis-ci.com/notepadqq/notepadqq) [![notepadqq](https://snapcraft.io/notepadqq/badge.svg)](https://snapcraft.io/notepadqq)
+# <img src="https://user-images.githubusercontent.com/4319621/36906314-e3f99680-1e35-11e8-90fd-f959c9641f36.png" alt="Notepad" width="32" height="32" /> Notepad [![Build Status](https://travis-ci.com/notepad/notepad.svg?branch=master)](https://travis-ci.com/notepad/notepad) [![notepad](https://snapcraft.io/notepad/badge.svg)](https://snapcraft.io/notepad)
 
 > [!WARNING]  
 > This project is not actively maintained anymore. New maintainers are welcome.
@@ -15,11 +15,11 @@
 
 #### What is it?
 
-Notepadqq is a text editor designed by developers, for developers. 
+Notepad is a text editor designed by developers, for developers. 
 
-![screenshot_20180302_163505](https://notepadqq.com/s/images/snapshot1.png)
+![screenshot_20180302_163505](https://notepad.com/s/images/snapshot1.png)
 
-Please visit our [Wiki](https://github.com/notepadqq/notepadqq/wiki) for more screenshots and details.
+Please visit our [Wiki](https://github.com/notepad/notepad/wiki) for more screenshots and details.
 
 Build it yourself
 -----
@@ -36,13 +36,13 @@ Build it yourself
 
 #### Get the source
 
-    $ git clone --recursive https://github.com/notepadqq/notepadqq.git
-    $ cd notepadqq
+    $ git clone --recursive https://github.com/notepad/notepad.git
+    $ cd notepad
 
 #### Build
 
-    notepadqq$ ./configure --prefix /usr
-    notepadqq$ make
+    notepad$ ./configure --prefix /usr
+    notepad$ make
 
 If you encounter errors make sure to have the necessary libraries installed. For Ubuntu you can do that using apt-get:
 
@@ -54,54 +54,54 @@ For CentOS:
 
 #### Install
 
-You can run notepadqq from its build output folder. If however you want to install it, first build it
+You can run notepad from its build output folder. If however you want to install it, first build it
 by following the above steps, then run:
 
-    notepadqq$ sudo make install
+    notepad$ sudo make install
 
 #### Qt
 
-If the newest version of Qt isn't available on your distribution, you can use the [online installer](http://www.qt.io/download-open-source) to get the latest libraries and install them into your home directory (`$HOME/Qt`). Notepadqq will automatically use them.
+If the newest version of Qt isn't available on your distribution, you can use the [online installer](http://www.qt.io/download-open-source) to get the latest libraries and install them into your home directory (`$HOME/Qt`). Notepad will automatically use them.
 
 Distribution Packages
 ---------------------
 
 #### Ubuntu, Debian, and others:
 
-    sudo apt install notepadqq
+    sudo apt install notepad
 
 #### Snap
 
 To install the latest stable version:
 
-    sudo snap install notepadqq
+    sudo snap install notepad
 
-You don't have the `snap` command? Follow the instructions at https://docs.snapcraft.io/core/install and then install Notepadqq as shown above.
+You don't have the `snap` command? Follow the instructions at https://docs.snapcraft.io/core/install and then install Notepad as shown above.
 
 You can follow the unstable development releases from the "edge" channel.
 
 #### Arch Linux (community-maintained)
-Notepadqq is available from Arch's [community repositories](https://www.archlinux.org/packages/community/x86_64/notepadqq/). To install using pacman:
+Notepad is available from Arch's [community repositories](https://www.archlinux.org/packages/community/x86_64/notepad/). To install using pacman:
 
-    sudo pacman -S notepadqq
+    sudo pacman -S notepad
 
 Alternatively it can be found in the AUR:
 
- * Development (git version): [notepadqq-git](https://aur.archlinux.org/packages/notepadqq-git/)
+ * Development (git version): [notepad-git](https://aur.archlinux.org/packages/notepad-git/)
 
 #### OpenSUSE (community-maintained)
-Notepadqq is avilable in OpenSUSE's main repository:
+Notepad is avilable in OpenSUSE's main repository:
 
-     sudo zypper in notepadqq
+     sudo zypper in notepad
 
 #### Solus (community-maintained)
-Notepadqq is available in the `shannon` (stable) repository:
+Notepad is available in the `shannon` (stable) repository:
 
-     sudo eopkg it notepadqq
+     sudo eopkg it notepad
 
 #### Others
-Use a package for a compatible distribution, or build from [source](https://github.com/notepadqq/notepadqq.git).
-If you want to submit a package: https://github.com/notepadqq/notepadqq-packaging
+Use a package for a compatible distribution, or build from [source](https://github.com/notepad/notepad.git).
+If you want to submit a package: https://github.com/notepad/notepad-packaging
 
 #### Compiling on macOS
-Instructions can be found [here](https://github.com/notepadqq/notepadqq/wiki/Compiling-Notepadqq-on-macOS).
+Instructions can be found [here](https://github.com/notepad/notepad/wiki/Compiling-Notepad-on-macOS).

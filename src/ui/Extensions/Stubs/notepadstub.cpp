@@ -1,26 +1,26 @@
-#include "include/Extensions/Stubs/notepadqqstub.h"
+#include "include/Extensions/Stubs/notepadstub.h"
 
 #include "include/Extensions/Stubs/windowstub.h"
 #include "include/Extensions/runtimesupport.h"
 #include "include/globals.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 
 #include <QApplication>
 
 namespace Extensions {
     namespace Stubs {
 
-        NotepadqqStub::NotepadqqStub(RuntimeSupport *rts) : Stub(rts)
+        NotepadStub::NotepadStub(RuntimeSupport *rts) : Stub(rts)
         {
-            connect(&Notepadqq::getInstance(), &Notepadqq::newWindow, this, &NotepadqqStub::on_newWindow);
+            connect(&Notepad::getInstance(), &Notepad::newWindow, this, &NotepadStub::on_newWindow);
         }
 
-        NotepadqqStub::~NotepadqqStub()
+        NotepadStub::~NotepadStub()
         {
 
         }
 
-        void NotepadqqStub::on_newWindow(MainWindow *window)
+        void NotepadStub::on_newWindow(MainWindow *window)
         {
             RuntimeSupport *rts = runtimeSupport();
             QSharedPointer<Extensions::Stubs::WindowStub> windowStub =
@@ -33,18 +33,18 @@ namespace Extensions {
             rts->emitEvent(this, "newWindow", args);
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(NotepadqqStub, commandLineArguments, )
+        NQQ_DEFINE_EXTENSION_METHOD(NotepadStub, commandLineArguments, )
         {
             QJsonArray arr = QJsonArray::fromStringList(QApplication::arguments());
             return StubReturnValue(arr);
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(NotepadqqStub, version, )
+        NQQ_DEFINE_EXTENSION_METHOD(NotepadStub, version, )
         {
-            return StubReturnValue(QJsonValue(::Notepadqq::version));
+            return StubReturnValue(QJsonValue(::Notepad::version));
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(NotepadqqStub, print, args)
+        NQQ_DEFINE_EXTENSION_METHOD(NotepadStub, print, args)
         {
             QString output = "";
 
@@ -76,7 +76,7 @@ namespace Extensions {
             return StubReturnValue();
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(NotepadqqStub, windows, )
+        NQQ_DEFINE_EXTENSION_METHOD(NotepadStub, windows, )
         {
             QList<MainWindow *> windows = MainWindow::instances();
             RuntimeSupport *rts = runtimeSupport();

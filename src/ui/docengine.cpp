@@ -4,7 +4,7 @@
 #include "include/globals.h"
 #include "include/iconprovider.h"
 #include "include/mainwindow.h"
-#include "include/notepadqq.h"
+#include "include/notepad.h"
 #include "include/nqqsettings.h"
 
 #include <QCoreApplication>
@@ -318,7 +318,7 @@ QList<std::pair<QSharedPointer<Editor>, QPromise<QSharedPointer<Editor>>>> DocEn
                     if (!file.exists()) {
                         // If it's a file that doesn't exists,
                         // set it as if it has changed. This way, if someone
-                        // creates that file from outside of notepadqq,
+                        // creates that file from outside of notepad,
                         // when the user tries to save over it he gets a warning.
                         editor->setFileOnDiskChanged(true);
                         editor->markDirty();
@@ -505,7 +505,7 @@ QPromise<void> DocEngine::loadDocuments(const DocEngine::DocumentLoader& docLoad
         if (!file.exists()) {
             // If it's a file that doesn't exists,
             // set it as if it has changed. This way, if someone
-            // creates that file from outside of notepadqq,
+            // creates that file from outside of notepad,
             // when the user tries to save over it he gets a warning.
             editor->setFileOnDiskChanged(true);
             editor->markDirty();
@@ -673,7 +673,7 @@ QPromise<void> DocEngine::loadDocuments(const DocEngine::DocumentLoader& docLoad
         if (!file.exists()) {
             // If it's a file that doesn't exists,
             // set it as if it has changed. This way, if someone
-            // creates that file from outside of notepadqq,
+            // creates that file from outside of notepad,
             // when the user tries to save over it he gets a warning.
             editor->setFileOnDiskChanged(true);
             editor->markDirty();
@@ -895,7 +895,7 @@ bool DocEngine::trySudoSave(QString sudoProgram, QUrl outFileName, QSharedPointe
     } else if (sudoBinaryName == "gksu") {
         arguments = QStringList({"-S",
             "-m",
-            tr("Notepadqq asks permission to overwrite the following file:\n\n%1").arg(outFileName.toLocalFile())});
+            tr("Notepad asks permission to overwrite the following file:\n\n%1").arg(outFileName.toLocalFile())});
     }
     arguments.append({"cp", filePath, outFileName.toLocalFile()});
 
