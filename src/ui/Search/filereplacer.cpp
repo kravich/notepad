@@ -4,6 +4,7 @@
 
 #include <QFile>
 #include <QTextStream>
+#include <QStringRef>
 
 FileReplacer::FileReplacer(const SearchResult& results, const QString &replacement)
     : m_searchResult(results),
