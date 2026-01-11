@@ -60,7 +60,7 @@ void FileReplacer::replaceAll(const DocResult& doc, QString& content, const QStr
 
         int len = result.positionInFile - lastEnd;
         if (len > 0) {
-            chunks << copy.midRef(lastEnd, len);
+            chunks << QStringRef(&copy, lastEnd, len);
             newLength += len;
         }
 
@@ -71,14 +71,14 @@ void FileReplacer::replaceAll(const DocResult& doc, QString& content, const QStr
             // part of "after" before the backreference
             len = backReference.pos - lastEnd;
             if (len > 0) {
-                chunks << replacement.midRef(lastEnd, len);
+                chunks << QStringRef(&replacement, lastEnd, len);
                 newLength += len;
             }
 
             // backreference itself
             len = result.regexMatch.capturedLength(backReference.num);
             if (len > 0) {
-                chunks << copy.midRef(result.regexMatch.capturedStart(backReference.num),
+                chunks << QStringRef(&copy, result.regexMatch.capturedStart(backReference.num),
                                       len);
                 newLength += len;
             }
@@ -89,7 +89,7 @@ void FileReplacer::replaceAll(const DocResult& doc, QString& content, const QStr
         // add the last part of the after string
         len = replacement.length() - lastEnd;
         if (len > 0) {
-            chunks << replacement.midRef(lastEnd, len);
+            chunks << QStringRef(&replacement, lastEnd, len);
             newLength += len;
         }
 
@@ -98,7 +98,7 @@ void FileReplacer::replaceAll(const DocResult& doc, QString& content, const QStr
 
     // 3. trailing string after the last match
     if (copy.length() > lastEnd) {
-        chunks << copy.midRef(lastEnd);
+        chunks << QStringRef(&copy, lastEnd, copy.length() - lastEnd);
         newLength += copy.length() - lastEnd;
     }
 
