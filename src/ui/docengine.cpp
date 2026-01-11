@@ -725,14 +725,14 @@ QPair<int, int> DocEngine::findOpenEditorByUrl(const QUrl &filename) const
     return QPair<int, int>(-1, -1);
 }
 
-QByteArray DocEngine::getBomForCodec(QTextCodec *codec)
+QByteArray DocEngine::getBomForUtf8()
 {
     QByteArray bom;
     int tmpSize;
     int aSize; // Size of the "a" character
 
     QTextStream stream(&bom);
-    stream.setCodec(codec);
+    stream.setEncoding(QStringConverter::Utf8);
     stream.setGenerateByteOrderMark(true);
 
     // Write an 'a' so that the BOM gets written.
@@ -775,7 +775,7 @@ bool DocEngine::writeFromString(QIODevice *io, const DecodedText &write)
         // we prepend it to the output of our QIODevice.
 
         if (write.codec->mibEnum() == MIB_UTF_8) { // UTF-8
-            manualBom = getBomForCodec(write.codec);
+            manualBom = getBomForUtf8();
         }
     }
 

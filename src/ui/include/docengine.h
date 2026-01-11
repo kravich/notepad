@@ -236,7 +236,7 @@ private:
      */
     static DecodedText decodeText(const QByteArray &contents, QTextCodec *codec, bool contentHasBOM);
 
-    static QByteArray getBomForCodec(QTextCodec *codec);
+    static QByteArray getBomForUtf8();
 
     /**
      * @brief getAvailableSudoProgram Queries the system to find a supported graphical sudo tool.
