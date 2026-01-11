@@ -77,7 +77,7 @@ QSize QSearchDockTitleButton::sizeHint() const
     return QSize(size, size);
 }
 
-void QSearchDockTitleButton::enterEvent(QEvent *event)
+void QSearchDockTitleButton::enterEvent(QEnterEvent *event)
 {
     if (isEnabled()) update();
     QAbstractButton::enterEvent(event);
