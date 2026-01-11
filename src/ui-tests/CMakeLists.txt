@@ -16,6 +16,7 @@ find_package(Qt6
         WebChannel
         WebSockets
         DBus
+        Core5Compat
         LinguistTools
     REQUIRED
 )
@@ -51,6 +52,7 @@ target_link_libraries(ui-tests
         Qt6::WebChannel
         Qt6::WebSockets
         Qt6::DBus
+        Qt6::Core5Compat
 )
 
 set_target_properties(ui-tests
