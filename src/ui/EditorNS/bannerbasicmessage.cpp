@@ -42,7 +42,7 @@ namespace EditorNS
     void BannerBasicMessage::setMessage(QString text)
     {
         m_message->setText(text);
-        m_message->setMaximumWidth( fontMetrics().width(text)+30 );
+        m_message->setMaximumWidth( fontMetrics().horizontalAdvance(text)+30 );
     }
 
     void BannerBasicMessage::setImportance(Importance importance)

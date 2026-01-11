@@ -15,7 +15,7 @@ const QString Notepad::website = "https://notepad.com";
 
 QString Notepad::copyright()
 {
-    return QObject::trUtf8("Copyright © 2010-%1, Daniele Di Sarli").arg(COPYRIGHT_YEAR);
+    return QString::fromUtf8("Copyright © 2010-%1, Daniele Di Sarli").arg(COPYRIGHT_YEAR);
 }
 
 QString Notepad::appDataPath(QString fileName)

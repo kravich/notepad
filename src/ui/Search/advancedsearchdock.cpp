@@ -109,8 +109,8 @@ void QSearchDockTitleButton::paintEvent(QPaintEvent* /*evt*/)
     }
 
     opt.icon = icon();
-    opt.subControls = 0;
-    opt.activeSubControls = 0;
+    opt.subControls = QStyle::SubControls();
+    opt.activeSubControls = QStyle::SubControls();
     opt.features = QStyleOptionToolButton::None;
     opt.arrowType = Qt::NoArrow;
     int size = style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this);
@@ -159,7 +159,7 @@ void showRegexInfo() {
 QLayout* AdvancedSearchDock::buildLeftTitlebar() {
 
     QLabel* label = new QLabel(tr("Advanced Search"));
-    label->setMaximumWidth(label->fontMetrics().width(label->text()));
+    label->setMaximumWidth(label->fontMetrics().horizontalAdvance(label->text()));
 
     m_btnClearHistory = new QToolButton;
     m_btnClearHistory->setIcon(IconProvider::fromTheme("edit-clear"));
