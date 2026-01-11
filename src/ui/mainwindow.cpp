@@ -37,6 +37,7 @@
 #include <QToolBar>
 #include <QToolButton>
 #include <QUrl>
+#include <QActionGroup>
 #include <QtPrintSupport/QPrintDialog>
 #include <QtPrintSupport/QPrintPreviewDialog>
 #include <QtPromise>
