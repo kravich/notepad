@@ -178,7 +178,7 @@ set_target_properties(notepad
 target_include_directories(notepad
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
-        libs/qtpromise/include
+        libs/qtpromise-0.7.0/include
 )
 
 target_link_libraries(notepad

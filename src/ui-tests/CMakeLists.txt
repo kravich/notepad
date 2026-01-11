@@ -32,7 +32,7 @@ add_executable(ui-tests
 target_include_directories(ui-tests
     PRIVATE
         ../ui
-        ../ui/libs/qtpromise/include
+        ../ui/libs/qtpromise-0.7.0/include
 )
 
 target_link_libraries(ui-tests
