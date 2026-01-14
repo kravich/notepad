@@ -9,6 +9,7 @@
 #include <QJsonObject>
 #include <QJsonParseError>
 #include <QProcess>
+#include <QRegularExpression>
 
 namespace Extensions {
 
@@ -74,7 +75,7 @@ namespace Extensions {
         if (extensionUniqueName.isEmpty())
             return QString();
 
-        if (!extensionUniqueName.contains(QRegExp(R"(^[-_0-9a-z]+(\.[-_0-9a-z]+)+$)", Qt::CaseSensitive))) {
+        if (!extensionUniqueName.contains(QRegularExpression(R"(^[-_0-9a-z]+(\.[-_0-9a-z]+)+$)"))) {
             return QString();
         }
 

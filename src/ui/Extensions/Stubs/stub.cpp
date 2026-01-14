@@ -211,7 +211,7 @@ namespace Extensions {
 
             QVariant returnValue;
             if (QString(metaMethod.typeName()) != "void") {
-                returnValue = QVariant(QMetaType::type(metaMethod.typeName()),
+                returnValue = QVariant(QMetaType::fromName(metaMethod.typeName()),
                     static_cast<void*>(NULL));
             }
 

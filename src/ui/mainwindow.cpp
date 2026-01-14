@@ -37,11 +37,10 @@
 #include <QToolBar>
 #include <QToolButton>
 #include <QUrl>
+#include <QActionGroup>
 #include <QtPrintSupport/QPrintDialog>
 #include <QtPrintSupport/QPrintPreviewDialog>
 #include <QtPromise>
-
-using namespace QtPromise;
 
 QList<MainWindow*> MainWindow::m_instances = QList<MainWindow*>();
 
@@ -2311,7 +2310,7 @@ void MainWindow::on_actionLaunch_in_Chrome_triggered()
     }
 }
 */
-QPromise<QStringList> MainWindow::currentWordOrSelections()
+QtPromise::QPromise<QStringList> MainWindow::currentWordOrSelections()
 {
     auto editor = currentEditor();
     return editor->selectedTexts().then([=](QStringList selection){
@@ -2320,12 +2319,12 @@ QPromise<QStringList> MainWindow::currentWordOrSelections()
                 return QStringList(word);
             });
         } else {
-            return QPromise<QStringList>::resolve(selection);
+            return QtPromise::QPromise<QStringList>::resolve(selection);
         }
     });
 }
 
-QPromise<QString> MainWindow::currentWordOrSelection()
+QtPromise::QPromise<QString> MainWindow::currentWordOrSelection()
 {
     return currentWordOrSelections().then([=](QStringList terms){
         if (terms.isEmpty()) {

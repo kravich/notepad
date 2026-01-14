@@ -77,7 +77,7 @@ QSize QSearchDockTitleButton::sizeHint() const
     return QSize(size, size);
 }
 
-void QSearchDockTitleButton::enterEvent(QEvent *event)
+void QSearchDockTitleButton::enterEvent(QEnterEvent *event)
 {
     if (isEnabled()) update();
     QAbstractButton::enterEvent(event);
@@ -94,7 +94,7 @@ void QSearchDockTitleButton::paintEvent(QPaintEvent* /*evt*/)
     QPainter p(this);
 
     QStyleOptionToolButton opt;
-    opt.init(this);
+    opt.initFrom(this);
     opt.state |= QStyle::State_AutoRaise;
 
     if (style()->styleHint(QStyle::SH_DockWidget_ButtonsHaveFrame, 0, this))

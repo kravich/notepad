@@ -1,4 +1,4 @@
-find_package(Qt5
+find_package(Qt6
     COMPONENTS
         Core
         Gui
@@ -10,6 +10,7 @@ find_package(Qt5
         WebChannel
         WebSockets
         DBus
+        Core5Compat
         LinguistTools
     REQUIRED
 )
@@ -177,21 +178,22 @@ set_target_properties(notepad
 target_include_directories(notepad
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
-        libs/qtpromise/include
+        libs/qtpromise-0.7.0/include
 )
 
 target_link_libraries(notepad
     PRIVATE
-        Qt5::Core
-        Qt5::Gui
-        Qt5::Svg
-        Qt5::Widgets
-        Qt5::PrintSupport
-        Qt5::Network
-        Qt5::WebEngineWidgets
-        Qt5::WebChannel
-        Qt5::WebSockets
-        Qt5::DBus
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Svg
+        Qt6::Widgets
+        Qt6::PrintSupport
+        Qt6::Network
+        Qt6::WebEngineWidgets
+        Qt6::WebChannel
+        Qt6::WebSockets
+        Qt6::DBus
+        Qt6::Core5Compat
         PkgConfig::uchardet
 )
 
