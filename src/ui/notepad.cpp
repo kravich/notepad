@@ -29,7 +29,7 @@ QString Notepad::appDataPath(QString fileName)
 #endif
 
     if(!QDir(def).exists())
-        def = QString("%1/../../share/%2/").
+        def = QString("%1/../share/%2/").
                 arg(qApp->applicationDirPath()).
                 arg(qApp->applicationName().toLower());
 

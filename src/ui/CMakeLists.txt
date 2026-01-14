@@ -197,17 +197,9 @@ target_link_libraries(notepad
         PkgConfig::uchardet
 )
 
-set_target_properties(notepad PROPERTIES OUTPUT_NAME notepad-bin)
-
 set(notepad_SUPPORT_FILES ../../support_files)
 
-install(TARGETS notepad
-    RUNTIME DESTINATION lib/notepad
-)
-
-install(PROGRAMS ${notepad_SUPPORT_FILES}/launch/notepad
-    DESTINATION bin
-)
+install(TARGETS notepad)
 
 install(CODE
     "execute_process(COMMAND rm -rf ${CMAKE_INSTALL_PREFIX}/share/notepad/editor)"
