@@ -2,7 +2,7 @@
 
 #include "include/Extensions/extensionsloader.h"
 #include "include/Extensions/runtimesupport.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 
 #include <QCheckBox>
 #include <QDir>

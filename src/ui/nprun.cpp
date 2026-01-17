@@ -1,4 +1,4 @@
-#include "include/nqqrun.h"
+#include "include/nprun.h"
 
 #include "include/iconprovider.h"
 

@@ -59,8 +59,8 @@ set(notepad_SRCS
     keygrabber.cpp
     Sessions/sessions.cpp
     Sessions/persistentcache.cpp
-    nqqsettings.cpp
-    nqqrun.cpp
+    npsettings.cpp
+    nprun.cpp
     Search/filesearcher.cpp
     Search/filereplacer.cpp
     Search/searchobjects.cpp
@@ -110,8 +110,8 @@ set(notepad_HEADERS
     include/keygrabber.h
     include/Sessions/sessions.h
     include/Sessions/persistentcache.h
-    include/nqqsettings.h
-    include/nqqrun.h
+    include/npsettings.h
+    include/nprun.h
     include/Search/filesearcher.h
     include/Search/searchobjects.h
     include/Search/filereplacer.h

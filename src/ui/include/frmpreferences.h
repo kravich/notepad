@@ -2,7 +2,7 @@
 #define FRMPREFERENCES_H
 
 #include "include/keygrabber.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 #include "include/topeditorcontainer.h"
 
 #include <QDialog>

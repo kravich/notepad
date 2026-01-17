@@ -1,4 +1,4 @@
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 
 #include "include/notepad.h"
 

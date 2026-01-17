@@ -1,7 +1,7 @@
 #include "include/EditorNS/editor.h"
 
 #include "include/notepad.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 
 #include <QDir>
 #include <QEventLoop>

@@ -5,7 +5,7 @@
 #include "include/Extensions/extension.h"
 #include "include/Search/advancedsearchdock.h"
 #include "include/Search/frmsearchreplace.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 #include "include/topeditorcontainer.h"
 
 #include "QtPrintSupport/QPrinter"

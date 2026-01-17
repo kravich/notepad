@@ -5,7 +5,7 @@
 #include "include/iconprovider.h"
 #include "include/mainwindow.h"
 #include "include/notepad.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 
 #include <QCoreApplication>
 #include <QFileInfo>

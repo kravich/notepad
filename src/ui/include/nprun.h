@@ -1,7 +1,7 @@
 #ifndef _NPRUN_H_
 #define _NPRUN_H_
 
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 
 #include <QDialog>
 #include <QLabel>

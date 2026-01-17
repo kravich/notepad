@@ -19,7 +19,7 @@
 #include "include/frmpreferences.h"
 #include "include/iconprovider.h"
 #include "include/notepad.h"
-#include "include/nqqrun.h"
+#include "include/nprun.h"
 #include "ui_mainwindow.h"
 
 #include <QClipboard>
