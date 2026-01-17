@@ -18,10 +18,10 @@ namespace Extensions {
             MenuItemStub(QAction *object, RuntimeSupport *rts);
             ~MenuItemStub();
 
-            NQQ_STUB_NAME("MenuItem")
+            NP_STUB_NAME("MenuItem")
 
         private:
-            NQQ_DECLARE_EXTENSION_METHOD(setShortcut)
+            NP_DECLARE_EXTENSION_METHOD(setShortcut)
 
         };
 

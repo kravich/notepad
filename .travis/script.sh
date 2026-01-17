@@ -32,7 +32,7 @@ compile()
 }
 
 
-if [ "$NQQ_BUILD_TYPE" == "FORMAT" ]; then
+if [ "$NP_BUILD_TYPE" == "FORMAT" ]; then
     check_format
 else
     compile

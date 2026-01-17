@@ -33,18 +33,18 @@ namespace Extensions {
             rts->emitEvent(this, "newWindow", args);
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(NotepadStub, commandLineArguments, )
+        NP_DEFINE_EXTENSION_METHOD(NotepadStub, commandLineArguments, )
         {
             QJsonArray arr = QJsonArray::fromStringList(QApplication::arguments());
             return StubReturnValue(arr);
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(NotepadStub, version, )
+        NP_DEFINE_EXTENSION_METHOD(NotepadStub, version, )
         {
             return StubReturnValue(QJsonValue(::Notepad::version));
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(NotepadStub, print, args)
+        NP_DEFINE_EXTENSION_METHOD(NotepadStub, print, args)
         {
             QString output = "";
 
@@ -76,7 +76,7 @@ namespace Extensions {
             return StubReturnValue();
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(NotepadStub, windows, )
+        NP_DEFINE_EXTENSION_METHOD(NotepadStub, windows, )
         {
             QList<MainWindow *> windows = MainWindow::instances();
             RuntimeSupport *rts = runtimeSupport();

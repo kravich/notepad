@@ -11,7 +11,7 @@ namespace Extensions {
     RuntimeSupport::RuntimeSupport(QObject *parent) : QObject(parent)
     {
         QSharedPointer<Stubs::Stub> nqqStub = QSharedPointer<Stubs::Stub>(new Stubs::NotepadStub(this));
-        m_pointers.insert(NQQ_STUB_ID, nqqStub);
+        m_pointers.insert(NP_STUB_ID, nqqStub);
     }
 
     RuntimeSupport::~RuntimeSupport()
@@ -118,7 +118,7 @@ namespace Extensions {
     QJsonObject RuntimeSupport::getCurrentExtensionStartedEvent()
     {
         QJsonObject retJson;
-        retJson.insert("objectId", NQQ_STUB_ID);
+        retJson.insert("objectId", NP_STUB_ID);
         retJson.insert("event", QStringLiteral("currentExtensionStarted"));
         retJson.insert("args", QJsonArray());
         return retJson;

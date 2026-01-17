@@ -17,7 +17,7 @@ namespace Extensions {
 
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(WindowStub, currentEditor, )
+        NP_DEFINE_EXTENSION_METHOD(WindowStub, currentEditor, )
         {
             RuntimeSupport *rts = runtimeSupport();
             MainWindow *window = static_cast<MainWindow*>(objectUnmanagedPtr());
@@ -28,7 +28,7 @@ namespace Extensions {
             return StubReturnValue(rts->getJSONStub(stubId, stub->stubName_()));
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(WindowStub, addExtensionMenuItem, args)
+        NP_DEFINE_EXTENSION_METHOD(WindowStub, addExtensionMenuItem, args)
         {
             if (!(args.count() >= 2))
                 return StubReturnValue(ErrorCode::INVALID_ARGUMENT_NUMBER);

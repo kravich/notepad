@@ -1,5 +1,5 @@
-#ifndef _NQQRUN_H_
-#define _NQQRUN_H_
+#ifndef _NPRUN_H_
+#define _NPRUN_H_
 
 #include "include/nqqsettings.h"
 

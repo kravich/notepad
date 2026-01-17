@@ -25,7 +25,7 @@ namespace Extensions {
             rts->emitEvent(this, "triggered", args);
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(MenuItemStub, setShortcut, args)
+        NP_DEFINE_EXTENSION_METHOD(MenuItemStub, setShortcut, args)
         {
             if (!(args.count() == 1))
                 return StubReturnValue(ErrorCode::INVALID_ARGUMENT_NUMBER);
