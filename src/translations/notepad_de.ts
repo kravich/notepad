@@ -1557,7 +1557,7 @@ Wollen Sie dennoch speichern?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunDelegate</name>
+    <name>NpRun::RunDelegate</name>
     <message>
         <location filename="../ui/nqqrun.cpp" line="232"/>
         <source>Open File</source>
@@ -1565,7 +1565,7 @@ Wollen Sie dennoch speichern?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunDialog</name>
+    <name>NpRun::RunDialog</name>
     <message>
         <location filename="../ui/nqqrun.cpp" line="264"/>
         <source>OK</source>
@@ -1628,7 +1628,7 @@ Wollen Sie dennoch speichern?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunPreferences</name>
+    <name>NpRun::RunPreferences</name>
     <message>
         <location filename="../ui/nqqrun.cpp" line="26"/>
         <source>OK</source>

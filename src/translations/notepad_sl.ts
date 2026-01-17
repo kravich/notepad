@@ -1229,7 +1229,7 @@ Ali želite spremembe vseeno shraniti?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunDelegate</name>
+    <name>NpRun::RunDelegate</name>
     <message>
         <location filename="../ui/nqqrun.cpp" line="231"/>
         <source>Open File</source>
@@ -1237,7 +1237,7 @@ Ali želite spremembe vseeno shraniti?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunDialog</name>
+    <name>NpRun::RunDialog</name>
     <message>
         <location filename="../ui/nqqrun.cpp" line="263"/>
         <source>OK</source>
@@ -1275,7 +1275,7 @@ Ali želite spremembe vseeno shraniti?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunPreferences</name>
+    <name>NpRun::RunPreferences</name>
     <message>
         <location filename="../ui/nqqrun.cpp" line="26"/>
         <source>OK</source>

@@ -29,7 +29,7 @@ frmSearchReplace::frmSearchReplace(TopEditorContainer *topEditorContainer, QWidg
     ui->cmbSearch->completer()->setCaseSensitivity(Qt::CaseSensitive);
     ui->cmbReplace->completer()->setCaseSensitivity(Qt::CaseSensitive);
 
-    NqqSettings& s = NqqSettings::getInstance();
+    NpSettings& s = NpSettings::getInstance();
 
     ui->cmbSearch->addItems(s.Search.getSearchHistory());
     ui->cmbSearch->setCurrentText("");
@@ -358,7 +358,7 @@ void frmSearchReplace::on_radSearchWithSpecialChars_toggled(bool checked)
 
 void frmSearchReplace::on_searchStringEdited(const QString &/*text*/)
 {
-    NqqSettings& s = NqqSettings::getInstance();
+    NpSettings& s = NpSettings::getInstance();
 
     if (s.Search.getSearchAsIType()) {
         if (ui->actionFind->isChecked()) {
@@ -411,7 +411,7 @@ static QStringList getComboBoxContents(const QComboBox* cb) {
 
 void frmSearchReplace::addToSearchHistory(QString string)
 {
-    NqqSettings& s = NqqSettings::getInstance();
+    NpSettings& s = NpSettings::getInstance();
 
     auto history = s.Search.getSaveHistory() ?
                 s.Search.getSearchHistory() :
@@ -426,7 +426,7 @@ void frmSearchReplace::addToSearchHistory(QString string)
 
 void frmSearchReplace::addToReplaceHistory(QString string)
 {
-    NqqSettings& s = NqqSettings::getInstance();
+    NpSettings& s = NpSettings::getInstance();
 
     auto history = s.Search.getSaveHistory() ?
                 s.Search.getReplaceHistory() :

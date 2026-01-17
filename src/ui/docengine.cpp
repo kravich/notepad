@@ -149,7 +149,7 @@ QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Edito
         return QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>>();
 
     if (rememberLastSelectedDir)
-        NqqSettings::getInstance().General.setLastSelectedDir(QFileInfo(fileNames[0].toLocalFile()).absolutePath());
+        NpSettings::getInstance().General.setLastSelectedDir(QFileInfo(fileNames[0].toLocalFile()).absolutePath());
 
     QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> loadedEditors;
 
@@ -188,7 +188,7 @@ QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Edito
             continue;
         }
 
-        const int warnAtSize = NqqSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
+        const int warnAtSize = NpSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
         const auto fileSize = fi.size();
 
         // Only warn if warnAtSize is at least 1. Otherwise the warning is disabled.
@@ -373,7 +373,7 @@ QtPromise::QPromise<void> DocEngine::loadDocuments(const DocEngine::DocumentLoad
         return QtPromise::QPromise<void>::resolve();
 
     if (rememberLastSelectedDir)
-        NqqSettings::getInstance().General.setLastSelectedDir(QFileInfo(fileNames[0].toLocalFile()).absolutePath());
+        NpSettings::getInstance().General.setLastSelectedDir(QFileInfo(fileNames[0].toLocalFile()).absolutePath());
 
     // Used to know if the document that we're loading is
     // the first one in the list.
@@ -412,7 +412,7 @@ QtPromise::QPromise<void> DocEngine::loadDocuments(const DocEngine::DocumentLoad
             return _continue;
         }
 
-        const int warnAtSize = NqqSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
+        const int warnAtSize = NpSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
         const auto fileSize = fi.size();
 
         // Only warn if warnAtSize is at least 1. Otherwise the warning is disabled.
@@ -584,7 +584,7 @@ QtPromise::QPromise<void> DocEngine::loadDocuments(const DocEngine::DocumentLoad
             continue;
         }
 
-        const int warnAtSize = NqqSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
+        const int warnAtSize = NpSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
         const auto fileSize = fi.size();
 
         // Only warn if warnAtSize is at least 1. Otherwise the warning is disabled.

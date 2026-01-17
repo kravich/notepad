@@ -239,7 +239,7 @@ QLayout* AdvancedSearchDock::buildUpperTitlebarLayout() {
 }
 
 QLayout* AdvancedSearchDock::buildReplaceOptionsLayout() {
-    NqqSettings& settings = NqqSettings::getInstance();
+    NpSettings& settings = NpSettings::getInstance();
 
     m_replaceOptionsLayout = new QVBoxLayout;
 
@@ -291,7 +291,7 @@ QWidget* AdvancedSearchDock::buildTitlebarWidget() {
 }
 
 QWidget* AdvancedSearchDock::buildSearchPanelWidget() {
-    NqqSettings& settings = NqqSettings::getInstance();
+    NpSettings& settings = NpSettings::getInstance();
 
     QGridLayout* gl = new QGridLayout;
 
@@ -715,7 +715,7 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow* mainWindow)
     connect(m_btnSelectSearchDirectory, &QToolButton::clicked, [this](){
         QString defaultDir = m_cmbSearchDirectory->currentText();
         if (defaultDir.isEmpty()) {
-            defaultDir = NqqSettings::getInstance().General.getLastSelectedDir();
+            defaultDir = NpSettings::getInstance().General.getLastSelectedDir();
         }
 
         QString dir = QFileDialog::getExistingDirectory(QApplication::activeWindow(),
@@ -794,7 +794,7 @@ static QStringList getComboBoxContents(const QComboBox* cb) {
 void AdvancedSearchDock::updateSearchHistory(const QString& item) {
     if (item.isEmpty()) return;
 
-    NqqSettings& settings = NqqSettings::getInstance();
+    NpSettings& settings = NpSettings::getInstance();
     const QStringList& currHistory = settings.Search.getSaveHistory() ?
                 settings.Search.getSearchHistory() :
                 getComboBoxContents(m_cmbSearchTerm) ;
@@ -810,7 +810,7 @@ void AdvancedSearchDock::updateSearchHistory(const QString& item) {
 void AdvancedSearchDock::updateReplaceHistory(const QString& item) {
     if (item.isEmpty()) return;
 
-    NqqSettings& settings = NqqSettings::getInstance();
+    NpSettings& settings = NpSettings::getInstance();
     const QStringList& currHistory = settings.Search.getSaveHistory() ?
                 settings.Search.getReplaceHistory() :
                 getComboBoxContents(m_cmbReplaceText) ;
@@ -826,7 +826,7 @@ void AdvancedSearchDock::updateReplaceHistory(const QString& item) {
 void AdvancedSearchDock::updateDirectoryhHistory(const QString& item) {
     if (item.isEmpty()) return;
 
-    NqqSettings& settings = NqqSettings::getInstance();
+    NpSettings& settings = NpSettings::getInstance();
     const QStringList& currHistory = settings.Search.getSaveHistory() ?
                 settings.Search.getFileHistory() :
                 getComboBoxContents(m_cmbSearchDirectory) ;
@@ -840,7 +840,7 @@ void AdvancedSearchDock::updateDirectoryhHistory(const QString& item) {
 }
 
 void AdvancedSearchDock::updateFilterHistory(const QString& item) {
-    NqqSettings& settings = NqqSettings::getInstance();
+    NpSettings& settings = NpSettings::getInstance();
     const QStringList& currHistory = settings.Search.getSaveHistory() ?
                 settings.Search.getFilterHistory() :
                 getComboBoxContents(m_cmbSearchPattern) ;

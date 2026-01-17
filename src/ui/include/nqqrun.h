@@ -11,13 +11,13 @@
 #include <QStyledItemDelegate>
 #include <QTableWidget>
 
-namespace NqqRun {
+namespace NpRun {
 class RunPreferences : public QDialog
 {
     Q_OBJECT
 
 private:
-    NqqSettings &m_settings;
+    NpSettings &m_settings;
     QTableWidget *m_commands;
 public:
     RunPreferences(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
@@ -50,7 +50,7 @@ class RunDialog : public QDialog
 {
     Q_OBJECT
 private:
-    NqqSettings &m_settings;
+    NpSettings &m_settings;
     QLabel *m_status;
     QLineEdit *m_command;
     bool m_saved;

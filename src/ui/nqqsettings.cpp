@@ -6,11 +6,11 @@
 #include <QDebug>
 #endif
 
-void NqqSettings::ensureBackwardsCompatibility()
+void NpSettings::ensureBackwardsCompatibility()
 {
     QSettings s;
 
-    // Check the Nqq version, if it's below 0.53.0 we're using the old settings.
+    // Check the Np version, if it's below 0.53.0 we're using the old settings.
     const QString nqqVersion = s.value("NotepadVersion").toString();
     const QStringList versionList = nqqVersion.split(".");
 
@@ -82,7 +82,7 @@ void NqqSettings::ensureBackwardsCompatibility()
 
 }
 
-NqqSettings&NqqSettings::getInstance(){
-    static NqqSettings settings;
+NpSettings&NpSettings::getInstance(){
+    static NpSettings settings;
     return settings;
 }

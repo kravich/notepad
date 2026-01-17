@@ -1559,7 +1559,7 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunDelegate</name>
+    <name>NpRun::RunDelegate</name>
     <message>
         <location filename="../ui/nqqrun.cpp" line="234"/>
         <source>Open File</source>
@@ -1567,7 +1567,7 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunDialog</name>
+    <name>NpRun::RunDialog</name>
     <message>
         <location filename="../ui/nqqrun.cpp" line="266"/>
         <source>OK</source>
@@ -1630,7 +1630,7 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunPreferences</name>
+    <name>NpRun::RunPreferences</name>
     <message>
         <location filename="../ui/nqqrun.cpp" line="28"/>
         <source>OK</source>
