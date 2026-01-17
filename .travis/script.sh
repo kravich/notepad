@@ -23,12 +23,12 @@ check_format()
 
 compile()
 {
-    docker build -t nqq .
-    docker run -e TRAVIS_PULL_REQUEST -e TRAVIS_BRANCH --name nqq -v $(pwd):/build -d -it nqq
+    docker build -t np .
+    docker run -e TRAVIS_PULL_REQUEST -e TRAVIS_BRANCH --name np -v $(pwd):/build -d -it np
     git pull --depth=500
-    docker exec nqq ./configure
-    docker exec nqq make || return 1
-    docker exec nqq src/ui-tests/ui-tests || return 1
+    docker exec np ./configure
+    docker exec np make || return 1
+    docker exec np src/ui-tests/ui-tests || return 1
 }
 
 

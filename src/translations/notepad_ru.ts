@@ -115,8 +115,8 @@
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="50"/>
-        <source>unable to read nqq-manifest.json</source>
-        <translation>не удалось прочитать nqq-manifest.json</translation>
+        <source>unable to read np-manifest.json</source>
+        <translation>не удалось прочитать np-manifest.json</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="97"/>
@@ -1234,7 +1234,7 @@ Do you want to save it anyway?</source>
 <context>
     <name>NpRun::RunDelegate</name>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="231"/>
+        <location filename="../ui/nprun.cpp" line="231"/>
         <source>Open File</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1242,37 +1242,37 @@ Do you want to save it anyway?</source>
 <context>
     <name>NpRun::RunDialog</name>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="263"/>
+        <location filename="../ui/nprun.cpp" line="263"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="264"/>
+        <location filename="../ui/nprun.cpp" line="264"/>
         <source>Cancel</source>
         <translation type="unfinished">Отмена</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="265"/>
+        <location filename="../ui/nprun.cpp" line="265"/>
         <source>Save...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="267"/>
+        <location filename="../ui/nprun.cpp" line="267"/>
         <source>    &lt;h3&gt;Special placeholders&lt;/h3&gt;&lt;ul&gt;    &lt;li&gt;&lt;em&gt;%fullpath%&lt;/em&gt; - Full path of the currently active file.&lt;/li&gt;    &lt;li&gt;&lt;em&gt;%directory%&lt;/em&gt; - Directory of the currently active file.&lt;/li&gt;    &lt;li&gt;&lt;em&gt;%filename%&lt;/em&gt; - Name of the currently active file.&lt;/li&gt;    &lt;li&gt;&lt;em&gt;%selection%&lt;/em&gt; - Currently selected text.&lt;/li&gt;    &lt;/ul&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="312"/>
+        <location filename="../ui/nprun.cpp" line="312"/>
         <source>Choose the name to be displayed in the run menu.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="313"/>
+        <location filename="../ui/nprun.cpp" line="313"/>
         <source>Command Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="322"/>
+        <location filename="../ui/nprun.cpp" line="322"/>
         <source>Command saved...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1280,27 +1280,27 @@ Do you want to save it anyway?</source>
 <context>
     <name>NpRun::RunPreferences</name>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="26"/>
+        <location filename="../ui/nprun.cpp" line="26"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="27"/>
+        <location filename="../ui/nprun.cpp" line="27"/>
         <source>Cancel</source>
         <translation type="unfinished">Отмена</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="31"/>
+        <location filename="../ui/nprun.cpp" line="31"/>
         <source>    &lt;h3&gt;Special placeholders&lt;/h3&gt;&lt;ul&gt;    &lt;li&gt;&lt;em&gt;%fullpath%&lt;/em&gt; - Full path of the currently active file.&lt;/li&gt;    &lt;li&gt;&lt;em&gt;%directory%&lt;/em&gt; - Directory of the currently active file.&lt;/li&gt;    &lt;li&gt;&lt;em&gt;%filename%&lt;/em&gt; - Name of the currently active file.&lt;/li&gt;    &lt;li&gt;&lt;em&gt;%selection%&lt;/em&gt; - Currently selected text.&lt;/li&gt;    &lt;/ul&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="67"/>
+        <location filename="../ui/nprun.cpp" line="67"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="67"/>
+        <location filename="../ui/nprun.cpp" line="67"/>
         <source>Command</source>
         <translation type="unfinished"></translation>
     </message>

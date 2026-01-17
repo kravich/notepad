@@ -8,7 +8,7 @@ if (process.argv.length !== 2+1) {
     process.exit(1);
 }
 
-var MANIFEST_FILENAME = "nqq-manifest.json";
+var MANIFEST_FILENAME = "np-manifest.json";
 
 var zip = new AdmZip(package);
 var manifest = zip.readAsText(MANIFEST_FILENAME);

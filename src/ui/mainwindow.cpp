@@ -2514,7 +2514,7 @@ void MainWindow::on_actionInstall_Extension_triggered()
     // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
-    QString file = QFileDialog::getOpenFileName(this, tr("Extension"), QString(), "Notepad extensions (*.nqqext)");
+    QString file = QFileDialog::getOpenFileName(this, tr("Extension"), QString(), "Notepad extensions (*.npext)");
     if (!file.isNull()) {
         Extensions::InstallExtension *installExt = new Extensions::InstallExtension(file, this);
         installExt->exec();

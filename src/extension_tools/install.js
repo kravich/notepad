@@ -15,7 +15,7 @@ if (process.argv.length !== 2+3) {
     process.exit(1);
 }
 
-var MANIFEST_FILENAME = "nqq-manifest.json";
+var MANIFEST_FILENAME = "np-manifest.json";
 
 function exec(name, args, options, callback) {
     var cp = require('child_process');

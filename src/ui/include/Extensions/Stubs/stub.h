@@ -4,7 +4,7 @@
  */
 #define NP_DECLARE_EXTENSION_METHOD(method_name) \
     StubReturnValue method_name(const QJsonArray &); \
-    bool __nqqmeta__##method_name = registerMethod(QString(#method_name), \
+    bool __npmeta__##method_name = registerMethod(QString(#method_name), \
               [&](const QJsonArray &args) -> Stub::StubReturnValue { \
         return method_name(args); \
     });
