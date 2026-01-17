@@ -21,6 +21,8 @@ find_package(Qt6
     REQUIRED
 )
 
+find_package(QScintilla REQUIRED)
+
 set(ui-tests_SRCS
     tst_notepadtest.cpp
 )
@@ -53,6 +55,7 @@ target_link_libraries(ui-tests
         Qt6::WebSockets
         Qt6::DBus
         Qt6::Core5Compat
+        QScintilla::QScintilla
 )
 
 set_target_properties(ui-tests

@@ -15,6 +15,8 @@ find_package(Qt6
     REQUIRED
 )
 
+find_package(QScintilla REQUIRED)
+
 find_package(PkgConfig REQUIRED)
 
 pkg_check_modules(uchardet REQUIRED IMPORTED_TARGET uchardet)
@@ -170,6 +172,7 @@ target_link_libraries(notepad
         Qt6::WebSockets
         Qt6::DBus
         Qt6::Core5Compat
+        QScintilla::QScintilla
         PkgConfig::uchardet
 )
 

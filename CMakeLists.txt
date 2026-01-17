@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(notepad)
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Modules")
+
 add_subdirectory(src/ui)
 
 include(CTest)
