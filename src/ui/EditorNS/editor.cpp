@@ -763,7 +763,6 @@ namespace EditorNS
         return QtPromise::QPromise<QByteArray>(
             [&](const QtPromise::QPromiseResolve<QByteArray>& resolve, const QtPromise::QPromiseReject<QByteArray>& reject) {
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
                 QColor prevBackgroundColor = m_webView->page()->backgroundColor();
                 QString prevStylesheet = m_webView->styleSheet();
 
@@ -790,10 +789,6 @@ namespace EditorNS
                         }
                     },
                     pageLayout);
-
-#else
-                reject(QByteArray());
-#endif
             });
     }
 
