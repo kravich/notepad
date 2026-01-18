@@ -36,18 +36,18 @@ public:
      * Describes the result of a tab closing process.
      */
     enum tabCloseResult {
-         tabCloseResult_Saved        /** The tab was closed and the file was saved */
-        ,tabCloseResult_NotSaved     /** The tab was closed and the file wasn't saved */
-        ,tabCloseResult_AlreadySaved /** The tab was closed and the file was already saved */
-        ,tabCloseResult_Canceled     /** The close process was canceled */
+        tabCloseResult_Saved,        /** The tab was closed and the file was saved */
+        tabCloseResult_NotSaved,     /** The tab was closed and the file wasn't saved */
+        tabCloseResult_AlreadySaved, /** The tab was closed and the file was already saved */
+        tabCloseResult_Canceled,     /** The close process was canceled */
     };
 
     /**
      * Reasons for asking to save changes
      */
     enum askToSaveChangesReason {
-         askToSaveChangesReason_tabClosing  /** The tab is closing */
-        ,askToSaveChangesReason_generic     /** Generic reason */
+        askToSaveChangesReason_tabClosing,  /** The tab is closing */
+        askToSaveChangesReason_generic,     /** Generic reason */
     };
 
     TopEditorContainer *topEditorContainer();
