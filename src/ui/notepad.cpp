@@ -21,17 +21,13 @@ QString Notepad::copyright()
 QString Notepad::appDataPath(QString fileName)
 {
 #ifdef Q_OS_MACX
-    QString def = QString("%1/../Resources/").
-            arg(qApp->applicationDirPath());
+    QString def = QString("%1/../Resources/").arg(qApp->applicationDirPath());
 #else
-    QString def = QString("%1/../appdata/").
-            arg(qApp->applicationDirPath());
+    QString def = QString("%1/../appdata/").arg(qApp->applicationDirPath());
 #endif
 
-    if(!QDir(def).exists())
-        def = QString("%1/../share/%2/").
-                arg(qApp->applicationDirPath()).
-                arg(qApp->applicationName().toLower());
+    if (!QDir(def).exists())
+        def = QString("%1/../share/%2/").arg(qApp->applicationDirPath()).arg(qApp->applicationName().toLower());
 
     if (!fileName.isNull()) {
         def.append(fileName);
@@ -50,13 +46,15 @@ QString Notepad::extensionToolsPath()
     return appDataPath("extension_tools");
 }
 
-QString Notepad::nodejsPath() {
-    NpSettings& s = NpSettings::getInstance();
+QString Notepad::nodejsPath()
+{
+    NpSettings &s = NpSettings::getInstance();
     return s.Extensions.getRuntimeNodeJS();
 }
 
-QString Notepad::npmPath() {
-    NpSettings& s = NpSettings::getInstance();
+QString Notepad::npmPath()
+{
+    NpSettings &s = NpSettings::getInstance();
     return s.Extensions.getRuntimeNpm();
 }
 
@@ -70,22 +68,22 @@ QString Notepad::fileNameFromUrl(const QUrl &url)
                          QUrl::RemoveAuthority |
                          QUrl::RemoveQuery |
                          QUrl::RemoveFragment |
-                         QUrl::PreferLocalFile )
-                     ).fileName();
+                         QUrl::PreferLocalFile))
+        .fileName();
 }
 
 QSharedPointer<QCommandLineParser> Notepad::getCommandLineArgumentsParser(const QStringList &arguments)
 {
     QSharedPointer<QCommandLineParser> parser =
-            QSharedPointer<QCommandLineParser>(new QCommandLineParser());
+        QSharedPointer<QCommandLineParser>(new QCommandLineParser());
 
     parser->setApplicationDescription("Text editor for developers");
     parser->addHelpOption();
     parser->addVersionOption();
 
     QCommandLineOption newWindowOption("new-window",
-                                         QObject::tr("Open a new window in an existing instance of %1.")
-                                         .arg(QCoreApplication::applicationName()));
+                                       QObject::tr("Open a new window in an existing instance of %1.")
+                                           .arg(QCoreApplication::applicationName()));
     parser->addOption(newWindowOption);
 
     QCommandLineOption setLine({"l", "line"},
@@ -107,8 +105,8 @@ QSharedPointer<QCommandLineParser> Notepad::getCommandLineArgumentsParser(const 
     parser->addOption(printDebugOption);
 
     parser->addPositionalArgument("urls",
-                                 QObject::tr("Files to open."),
-                                 "[urls...]");
+                                  QObject::tr("Files to open."),
+                                  "[urls...]");
 
     parser->process(arguments);
 

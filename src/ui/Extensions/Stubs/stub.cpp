@@ -8,7 +8,6 @@ namespace Extensions {
             m_rts(rts),
             m_pointerType(PointerType::DETACHED)
         {
-
         }
 
         Stub::Stub(const QWeakPointer<QObject> &object, RuntimeSupport *rts) :
@@ -17,7 +16,6 @@ namespace Extensions {
             m_pointerType(PointerType::WEAK_POINTER),
             m_weakPointer(object)
         {
-
         }
 
         Stub::Stub(const QSharedPointer<QObject> &object, RuntimeSupport *rts) :
@@ -26,7 +24,6 @@ namespace Extensions {
             m_pointerType(PointerType::SHARED_POINTER),
             m_sharedPointer(object)
         {
-
         }
 
         Stub::Stub(QObject *object, RuntimeSupport *rts) :
@@ -51,7 +48,6 @@ namespace Extensions {
 
         Stub::~Stub()
         {
-
         }
 
         QWeakPointer<QObject> Stub::objectWeakPtr()
@@ -106,7 +102,6 @@ namespace Extensions {
                                             QString("Method not found for %1: %2").arg(stubName_(), method));
                 return false;
             } else {
-
                 ErrorCode err = ErrorCode::NONE;
 
                 QObject *obj = objectUnmanagedPtr();
@@ -123,9 +118,9 @@ namespace Extensions {
                         continue;
 
                     QVariant retval = genericCall(obj,
-                                      metaMethod,
-                                      args.toVariantList(),
-                                      err);
+                                                  metaMethod,
+                                                  args.toVariantList(),
+                                                  err);
 
                     if (err == ErrorCode::NONE) {
                         // Ok!!
@@ -139,13 +134,14 @@ namespace Extensions {
 
                 ret = Stub::StubReturnValue(ErrorCode::METHOD_NOT_FOUND,
                                             QString("Method not found for %1: %2 with %3 args")
-                                            .arg(stubName_(), method).arg(args.count()));
+                                                .arg(stubName_(), method)
+                                                .arg(args.count()));
                 return false;
             }
         }
 
         // https://gist.github.com/andref/2838534
-        QVariant Stub::genericCall(QObject* object, QMetaMethod metaMethod, QVariantList args, ErrorCode &error)
+        QVariant Stub::genericCall(QObject *object, QMetaMethod metaMethod, QVariantList args, ErrorCode &error)
         {
             // Convert the arguments
 
@@ -161,7 +157,7 @@ namespace Extensions {
             }
 
             for (int i = 0; i < methodTypes.size(); i++) {
-                const QVariant& arg = args.at(i);
+                const QVariant &arg = args.at(i);
 
                 QByteArray methodTypeName = methodTypes.at(i);
                 //QByteArray argTypeName = arg.typeName();
@@ -191,20 +187,18 @@ namespace Extensions {
             QList<QGenericArgument> arguments;
 
             for (int i = 0; i < converted.size(); i++) {
-
                 // Notice that we have to take a reference to the argument, else
                 // we'd be pointing to a copy that will be destroyed when this
                 // loop exits.
 
-                QVariant& argument = converted[i];
+                QVariant &argument = converted[i];
 
                 // A const_cast is needed because calling data() would detach
                 // the QVariant.
 
                 QGenericArgument genericArgument(
                     QMetaType::typeName(argument.userType()),
-                    const_cast<void*>(argument.constData())
-                );
+                    const_cast<void *>(argument.constData()));
 
                 arguments << genericArgument;
             }
@@ -212,13 +206,12 @@ namespace Extensions {
             QVariant returnValue;
             if (QString(metaMethod.typeName()) != "void") {
                 returnValue = QVariant(QMetaType::fromName(metaMethod.typeName()),
-                    static_cast<void*>(NULL));
+                                       static_cast<void *>(NULL));
             }
 
             QGenericReturnArgument returnArgument(
                 metaMethod.typeName(),
-                const_cast<void*>(returnValue.constData())
-            );
+                const_cast<void *>(returnValue.constData()));
 
             // Perform the call
 
@@ -236,8 +229,7 @@ namespace Extensions {
                 arguments.value(6),
                 arguments.value(7),
                 arguments.value(8),
-                arguments.value(9)
-            );
+                arguments.value(9));
 
             if (!ok) {
                 //qWarning() << "Calling" << metaMethod.signature() << "failed.";
@@ -248,7 +240,7 @@ namespace Extensions {
             }
         }
 
-        bool Stub::registerMethod(const QString &methodName, std::function<Stub::StubReturnValue (const QJsonArray &)> method)
+        bool Stub::registerMethod(const QString &methodName, std::function<Stub::StubReturnValue(const QJsonArray &)> method)
         {
             m_methods.insert(methodName, method);
             return true;

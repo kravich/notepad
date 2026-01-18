@@ -24,7 +24,7 @@ namespace EditorNS {
 
         bool hasPlainText = false;
         // Begin iterating our QJsonDocument's object and adding languages.
-        for (auto&& key : json.object().keys()) {
+        for (auto &&key : json.object().keys()) {
             if (key == "plaintext") hasPlainText = true;
             auto mode = json.object().value(key).toObject();
             Language newMode;
@@ -33,47 +33,50 @@ namespace EditorNS {
             newMode.mime = mode.value("mime").toString();
             newMode.mode = mode.value("mode").toString();
             newMode.fileNames = mode.value("fileNames")
-                .toVariant().toStringList();
+                                    .toVariant()
+                                    .toStringList();
             newMode.fileExtensions = mode.value("fileExtensions")
-                .toVariant().toStringList();
+                                         .toVariant()
+                                         .toStringList();
             newMode.firstNonBlankLine = mode.value("firstNonBlankLine")
-                .toVariant().toStringList();
+                                            .toVariant()
+                                            .toStringList();
             m_languages.append(std::move(newMode));
         }
 
         Q_ASSERT(hasPlainText);
     }
 
-    const Language* LanguageService::lookupById(const QString& id)
+    const Language *LanguageService::lookupById(const QString &id)
     {
-        auto it = std::find_if (m_languages.begin(), m_languages.end(), [&id] (const Language& l) {
+        auto it = std::find_if(m_languages.begin(), m_languages.end(), [&id](const Language &l) {
             return (l.id == id);
         });
         if (it == m_languages.end()) return nullptr;
         return &(*it);
     }
 
-    const Language* LanguageService::lookupByFileName(const QString& fileName)
+    const Language *LanguageService::lookupByFileName(const QString &fileName)
     {
-        auto it = std::find_if(m_languages.begin(), m_languages.end(), [&fileName] (const Language& l) {
+        auto it = std::find_if(m_languages.begin(), m_languages.end(), [&fileName](const Language &l) {
             return (l.fileNames.contains(fileName));
         });
         if (it == m_languages.end()) return nullptr;
         return &(*it);
     }
 
-    const Language* LanguageService::lookupByExtension(const QString& fileName)
+    const Language *LanguageService::lookupByExtension(const QString &fileName)
     {
         QFileInfo fi(fileName);
         auto ext = fi.suffix();
-        auto it = std::find_if(m_languages.begin(), m_languages.end(), [&ext] (const Language& l) {
-            return (l.fileExtensions.contains(ext,Qt::CaseInsensitive));
+        auto it = std::find_if(m_languages.begin(), m_languages.end(), [&ext](const Language &l) {
+            return (l.fileExtensions.contains(ext, Qt::CaseInsensitive));
         });
         if (it == m_languages.end()) return nullptr;
         return &(*it);
     }
 
-    const Language* LanguageService::lookupByContent(QString content)
+    const Language *LanguageService::lookupByContent(QString content)
     {
         if (content.isEmpty()) {
             return nullptr;
@@ -81,9 +84,9 @@ namespace EditorNS {
         QTextStream stream(&content);
         stream.skipWhiteSpace();
         auto test = stream.readLine();
-        for (auto&& l : m_languages) {
+        for (auto &&l : m_languages) {
             if (l.firstNonBlankLine.isEmpty()) continue;
-            for (auto&& t : l.firstNonBlankLine) {
+            for (auto &&t : l.firstNonBlankLine) {
                 if (test.contains(QRegularExpression(t))) {
                     return &l;
                 }
@@ -92,7 +95,7 @@ namespace EditorNS {
         return nullptr;
     }
 
-    LanguageService& LanguageService::getInstance()
+    LanguageService &LanguageService::getInstance()
     {
         static LanguageService instance;
         return instance;

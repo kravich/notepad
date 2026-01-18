@@ -10,12 +10,10 @@ namespace Extensions {
         QObject(parent),
         m_extensionsRTS(extensionsRTS)
     {
-
     }
 
     ExtensionsServer::~ExtensionsServer()
     {
-
     }
 
     bool ExtensionsServer::startServer(QString name)
@@ -24,9 +22,10 @@ namespace Extensions {
 
         m_server = new QLocalServer(this);
         if (!m_server->listen(name)) {
-
             qCritical() << QString("Unable to start extensions server %1. Extensions will not be loaded.")
-                           .arg(name).toStdString().c_str();
+                               .arg(name)
+                               .toStdString()
+                               .c_str();
 
             return false;
         }
@@ -73,8 +72,8 @@ namespace Extensions {
 
             QJsonObject response = m_extensionsRTS->handleRequest(request.object());
             QString jsonResponse = QString(
-                        QJsonDocument(response).toJson(QJsonDocument::Compact))
-                    .trimmed();
+                                       QJsonDocument(response).toJson(QJsonDocument::Compact))
+                                       .trimmed();
 
             stream << jsonResponse << "\n";
         }
@@ -90,8 +89,8 @@ namespace Extensions {
     void ExtensionsServer::broadcastMessage(const QJsonObject &message)
     {
         QString jsonMessage = QString(
-                    QJsonDocument(message).toJson(QJsonDocument::Compact))
-                .trimmed();
+                                  QJsonDocument(message).toJson(QJsonDocument::Compact))
+                                  .trimmed();
 
         for (QLocalSocket *socket : m_sockets) {
             if (socket->isOpen()) {
@@ -105,8 +104,8 @@ namespace Extensions {
     {
         if (socket->isOpen()) {
             QString jsonMessage = QString(
-                        QJsonDocument(message).toJson(QJsonDocument::Compact))
-                    .trimmed();
+                                      QJsonDocument(message).toJson(QJsonDocument::Compact))
+                                      .trimmed();
 
             QTextStream stream(socket);
             stream << jsonMessage << "\n";

@@ -10,22 +10,22 @@
 namespace Extensions {
     namespace Stubs {
 
-        NotepadStub::NotepadStub(RuntimeSupport *rts) : Stub(rts)
+        NotepadStub::NotepadStub(RuntimeSupport *rts) :
+            Stub(rts)
         {
             connect(&Notepad::getInstance(), &Notepad::newWindow, this, &NotepadStub::on_newWindow);
         }
 
         NotepadStub::~NotepadStub()
         {
-
         }
 
         void NotepadStub::on_newWindow(MainWindow *window)
         {
             RuntimeSupport *rts = runtimeSupport();
             QSharedPointer<Extensions::Stubs::WindowStub> windowStub =
-                    QSharedPointer<Extensions::Stubs::WindowStub>(
-                        new Extensions::Stubs::WindowStub(window, rts));
+                QSharedPointer<Extensions::Stubs::WindowStub>(
+                    new Extensions::Stubs::WindowStub(window, rts));
 
             QJsonArray args;
             args.append(rts->getJSONStub(rts->presentObject(windowStub), windowStub->stubName()));
@@ -85,8 +85,8 @@ namespace Extensions {
 
             for (int i = 0; i < windows.length(); i++) {
                 QSharedPointer<Extensions::Stubs::WindowStub> windowStub =
-                        QSharedPointer<Extensions::Stubs::WindowStub>(
-                            new Extensions::Stubs::WindowStub(windows[i], rts));
+                    QSharedPointer<Extensions::Stubs::WindowStub>(
+                        new Extensions::Stubs::WindowStub(windows[i], rts));
 
                 QJsonObject stub = rts->getJSONStub(rts->presentObject(windowStub), windowStub->stubName());
                 jsonWindows.append(stub);

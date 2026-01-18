@@ -4,8 +4,7 @@
 #include "include/EditorNS/bannerbasicmessage.h"
 #include "include/EditorNS/editor.h"
 
-namespace EditorNS
-{
+namespace EditorNS {
 
     class BannerIndentationDetected : public BannerBasicMessage
     {

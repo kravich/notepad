@@ -3,9 +3,7 @@
 
 class SearchHelpers
 {
-
 public:
-
     enum class SearchMode {
         PlainText = 1,
         SpecialChars = 2,
@@ -18,10 +16,14 @@ public:
         unsigned SearchFromStart : 1;
         unsigned IncludeSubDirs : 1;
 
-        SearchOptions() : MatchCase(0), MatchWholeWord(0),
-        SearchFromStart(0), IncludeSubDirs(0) { }
+        SearchOptions() :
+            MatchCase(0),
+            MatchWholeWord(0),
+            SearchFromStart(0),
+            IncludeSubDirs(0)
+        {
+        }
     };
-
 };
 
 #endif // SEARCHHELPERS_H

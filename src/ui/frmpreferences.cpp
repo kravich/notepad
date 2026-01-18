@@ -76,11 +76,12 @@ frmPreferences::~frmPreferences()
     delete ui;
 }
 
-void frmPreferences::resetAllShortcuts() {
-    auto& bindings = m_keyGrabber->getAllBindings();
+void frmPreferences::resetAllShortcuts()
+{
+    auto &bindings = m_keyGrabber->getAllBindings();
 
-    for (auto& item : bindings) {
-        const QString& objName = item.getAction()->objectName();
+    for (auto &item : bindings) {
+        const QString &objName = item.getAction()->objectName();
         const QKeySequence seq = m_settings.Shortcuts.getDefaultShortcut(objName);
         item.setText(seq.toString());
     }
@@ -90,14 +91,14 @@ void frmPreferences::resetAllShortcuts() {
 
 void frmPreferences::resetSelectedShortcut()
 {
-    auto& bindings = m_keyGrabber->getAllBindings();
+    auto &bindings = m_keyGrabber->getAllBindings();
     auto currItem = m_keyGrabber->currentItem();
 
     // Search for the selected item and set its key sequence to the default one.
-    for (auto& item : bindings) {
+    for (auto &item : bindings) {
         if (currItem != item.getTreeItem()) continue;
 
-        const QString& objName = item.getAction()->objectName();
+        const QString &objName = item.getAction()->objectName();
         const QKeySequence seq = m_settings.Shortcuts.getDefaultShortcut(objName);
         item.setText(seq.toString());
         break;
@@ -132,7 +133,6 @@ void frmPreferences::on_treeWidget_currentItemChanged(QTreeWidgetItem *current, 
     }
 }
 
-
 void frmPreferences::on_buttonBox_clicked(QAbstractButton *button)
 {
     // Accept and Reject buttons are handled separately. Other buttons need to use this generic clicked() event.
@@ -156,18 +156,16 @@ void frmPreferences::loadLanguages()
         "default",
         ls.getTabSize("default"),
         ls.getIndentWithSpaces("default"),
-        ls.getUseDefaultSettings("default")
-    };
+        ls.getUseDefaultSettings("default")};
     m_tempLangSettings.push_back(lang);
 
-    for (const auto& l : LanguageService::getInstance().languages()) {
+    for (const auto &l : LanguageService::getInstance().languages()) {
         ui->cmbLanguages->addItem(l.name.isEmpty() ? "?" : l.name, l.id);
         LanguageSettings lang = {
             l.id,
             ls.getTabSize(l.id),
             ls.getIndentWithSpaces(l.id),
-            ls.getUseDefaultSettings(l.id)
-        };
+            ls.getUseDefaultSettings(l.id)};
 
         m_tempLangSettings.push_back(lang);
     }
@@ -179,7 +177,7 @@ void frmPreferences::loadLanguages()
 void frmPreferences::saveLanguages()
 {
     // Write all temporary language settings back into the settings file.
-    for (auto&& lang : m_tempLangSettings) {
+    for (auto &&lang : m_tempLangSettings) {
         m_settings.Languages.setTabSize(lang.langId, lang.tabSize);
         m_settings.Languages.setIndentWithSpaces(lang.langId, lang.indentWithSpaces);
         m_settings.Languages.setUseDefaultSettings(lang.langId, lang.useDefaultSettings);
@@ -194,7 +192,7 @@ void frmPreferences::loadAppearanceTab()
 
     QString themeSetting = m_settings.Appearance.getColorScheme();
 
-    for (const auto& theme : themes) {
+    for (const auto &theme : themes) {
         ui->cmbColorScheme->addItem(theme.name, theme.name); // First is display text, second is item data.
 
         if (themeSetting == theme.name) {
@@ -249,20 +247,20 @@ void frmPreferences::loadTranslations()
 
     QString localizationSetting = m_settings.General.getLocalization();
 
-    for (const auto& langCode : translations) {
+    for (const auto &langCode : translations) {
         QString langName = QLocale::languageToString(QLocale(langCode).language());
         ui->localizationComboBox->addItem(langName, langCode);
     }
 
-    QSortFilterProxyModel* proxy = new QSortFilterProxyModel(ui->localizationComboBox);
+    QSortFilterProxyModel *proxy = new QSortFilterProxyModel(ui->localizationComboBox);
     proxy->setSourceModel(ui->localizationComboBox->model());
     ui->localizationComboBox->model()->setParent(proxy);
     ui->localizationComboBox->setModel(proxy);
     ui->localizationComboBox->model()->sort(0);
 
     ui->localizationComboBox->setCurrentIndex(
-                ui->localizationComboBox->findData(
-                    QLocale::languageToString(QLocale(localizationSetting).language()), Qt::DisplayRole));
+        ui->localizationComboBox->findData(
+            QLocale::languageToString(QLocale(localizationSetting).language()), Qt::DisplayRole));
 }
 
 void frmPreferences::saveTranslation()
@@ -273,11 +271,11 @@ void frmPreferences::saveTranslation()
 
 void frmPreferences::loadShortcuts()
 {
-    MainWindow* mw = qobject_cast<MainWindow*>(parent());
+    MainWindow *mw = qobject_cast<MainWindow *>(parent());
 
     m_keyGrabber = new KeyGrabber();
 
-    const auto& menus = mw->getMenus();
+    const auto &menus = mw->getMenus();
 
     //addMenus() intentionally skips the Language menu since it would just clutter up everything.
     m_keyGrabber->addMenus(menus);
@@ -310,10 +308,10 @@ void frmPreferences::loadShortcuts()
 
 void frmPreferences::saveShortcuts()
 {
-    auto& bindings = m_keyGrabber->getAllBindings();
+    auto &bindings = m_keyGrabber->getAllBindings();
 
-    for (auto& item : bindings) {
-        const QString& objName = item.getAction()->objectName();
+    for (auto &item : bindings) {
+        const QString &objName = item.getAction()->objectName();
         QKeySequence seq = item.text();
 
         m_settings.Shortcuts.setShortcut(objName, seq);
@@ -323,11 +321,11 @@ void frmPreferences::saveShortcuts()
 
 void frmPreferences::loadToolbar()
 {
-    auto* wnd = MainWindow::lastActiveInstance();
+    auto *wnd = MainWindow::lastActiveInstance();
 
     auto actions = wnd->getActions();
 
-    auto* widgetItem = new QListWidgetItem("-- Separator --");
+    auto *widgetItem = new QListWidgetItem("-- Separator --");
     widgetItem->setData(Qt::UserRole, "Separator");
     ui->listToolbarAll->addItem(widgetItem);
 
@@ -336,21 +334,20 @@ void frmPreferences::loadToolbar()
             continue;
 
         QString text = item->text().replace("&", "");
-        auto* widgetItem = new QListWidgetItem(item->icon(), text);
+        auto *widgetItem = new QListWidgetItem(item->icon(), text);
         widgetItem->setData(Qt::UserRole, item->objectName());
         ui->listToolbarAll->addItem(widgetItem);
     }
 
-    auto* toolbar = wnd->getToolBar();
+    auto *toolbar = wnd->getToolBar();
     for (auto item : toolbar->actions()) {
         if (item->isSeparator()) {
-            auto* widgetItem = new QListWidgetItem("-- Separator --");
+            auto *widgetItem = new QListWidgetItem("-- Separator --");
             widgetItem->setData(Qt::UserRole, "Separator");
             ui->listToolbarCurrent->addItem(widgetItem);
-        }
-        else {
+        } else {
             QString text = item->text().replace("&", "");
-            auto* widgetItem = new QListWidgetItem(item->icon(), text);
+            auto *widgetItem = new QListWidgetItem(item->icon(), text);
             widgetItem->setData(Qt::UserRole, item->objectName());
             ui->listToolbarCurrent->addItem(widgetItem);
         }
@@ -360,8 +357,8 @@ void frmPreferences::loadToolbar()
 void frmPreferences::saveToolbar()
 {
     QStringList list;
-    for (int i=0; i<ui->listToolbarCurrent->count(); ++i) {
-        auto* item = ui->listToolbarCurrent->item(i);
+    for (int i = 0; i < ui->listToolbarCurrent->count(); ++i) {
+        auto *item = ui->listToolbarCurrent->item(i);
         list << item->data(Qt::UserRole).toString();
     }
 
@@ -373,7 +370,7 @@ void frmPreferences::saveToolbar()
 
     m_settings.MainWindow.setToolBarItems(string);
 
-    for (auto* wnd : MainWindow::instances())
+    for (auto *wnd : MainWindow::instances())
         wnd->loadToolBar();
 }
 
@@ -393,14 +390,12 @@ bool frmPreferences::applySettings()
         return false;
     }
 
-
     m_settings.General.setCollectStatistics(ui->chkCollectStatistics->isChecked());
     m_settings.General.setWarnForDifferentIndentation(ui->chkWarnForDifferentIndentation->isChecked());
     m_settings.General.setRememberTabsOnExit(ui->chkRememberSession->isChecked());
     m_settings.General.setExitOnLastTabClose(ui->chkExitOnLastTabClose->isChecked());
 
-    const int autosaveInSeconds = ui->chkAutosave->isChecked() ?
-                                     ui->sbAutosaveInterval->value() : 0;
+    const int autosaveInSeconds = ui->chkAutosave->isChecked() ? ui->sbAutosaveInterval->value() : 0;
     m_settings.General.setAutosaveInterval(autosaveInSeconds);
 
     saveLanguages();
@@ -415,7 +410,7 @@ bool frmPreferences::applySettings()
     m_settings.Extensions.setRuntimeNodeJS(ui->txtNodejs->text());
     m_settings.Extensions.setRuntimeNpm(ui->txtNpm->text());
 
-    const Editor::Theme& newTheme = Editor::themeFromName(ui->cmbColorScheme->currentData().toString());
+    const Editor::Theme &newTheme = Editor::themeFromName(ui->cmbColorScheme->currentData().toString());
     const QString fontFamily = ui->cmbFontFamilies->isEnabled() ? ui->cmbFontFamilies->currentFont().family() : "";
     const int fontSize = ui->spnFontSize->isEnabled() ? ui->spnFontSize->value() : 0;
     const double lineHeight = ui->spnLineHeight->isEnabled() ? ui->spnLineHeight->value() : 0;
@@ -426,7 +421,6 @@ bool frmPreferences::applySettings()
         w->showExtensionsMenu(Extensions::ExtensionsLoader::extensionRuntimePresent());
 
         w->topEditorContainer()->forEachEditor([&](const int, const int, EditorTabWidget *, QSharedPointer<Editor> editor) {
-
             // Set new theme
             editor->setTheme(newTheme);
 
@@ -451,7 +445,6 @@ bool frmPreferences::applySettings()
     // Check if we need to send stats
     Stats::init();
 
-
     if (autosaveInSeconds > 0)
         BackupService::enableAutosave(autosaveInSeconds);
     else
@@ -470,7 +463,7 @@ void frmPreferences::on_cmbLanguages_currentIndexChanged(int index)
     if (m_tempLangSettings.size() <= index)
         return;
 
-    const LanguageSettings& ls = m_tempLangSettings[index];
+    const LanguageSettings &ls = m_tempLangSettings[index];
 
     if (ls.langId == "default") {
         // Hide "use default settings" checkbox, and enable the other stuff
@@ -575,7 +568,7 @@ void frmPreferences::on_spnFontSize_valueChanged(int /*arg1*/)
     updatePreviewEditorFont();
 }
 
-void frmPreferences::on_cmbFontFamilies_currentFontChanged(const QFont& /*f*/)
+void frmPreferences::on_cmbFontFamilies_currentFontChanged(const QFont & /*f*/)
 {
     updatePreviewEditorFont();
 }
@@ -607,7 +600,6 @@ void frmPreferences::on_chkSearch_SaveHistory_toggled(bool checked)
         m_settings.Search.getFilterHistory().isEmpty())
         return;
 
-
     QMessageBox msgBox(qApp->activeWindow());
     msgBox.setWindowTitle(QCoreApplication::applicationName());
     msgBox.setIcon(QMessageBox::Question);
@@ -617,7 +609,7 @@ void frmPreferences::on_chkSearch_SaveHistory_toggled(bool checked)
 
     auto result = msgBox.exec();
 
-    if(result == QMessageBox::Cancel) {
+    if (result == QMessageBox::Cancel) {
         ui->chkSearch_SaveHistory->setChecked(true);
         return;
     }
@@ -632,23 +624,23 @@ void frmPreferences::on_chkSearch_SaveHistory_toggled(bool checked)
 
 void frmPreferences::on_btnToolbarAdd_clicked()
 {
-    auto* item = ui->listToolbarAll->currentItem();
+    auto *item = ui->listToolbarAll->currentItem();
 
     if (!item) return;
 
     auto idx = ui->listToolbarCurrent->currentRow();
 
-    QListWidgetItem* newItem = new QListWidgetItem(item->icon(), item->text());
+    QListWidgetItem *newItem = new QListWidgetItem(item->icon(), item->text());
     newItem->setData(Qt::UserRole, item->data(Qt::UserRole));
 
-    ui->listToolbarCurrent->insertItem(idx+1, newItem);
-    ui->listToolbarCurrent->setCurrentRow(idx+1);
+    ui->listToolbarCurrent->insertItem(idx + 1, newItem);
+    ui->listToolbarCurrent->setCurrentRow(idx + 1);
     //ui->listToolbarCurrent->scrollToItem(ui->listToolbarCurrent->currentItem());
 }
 
 void frmPreferences::on_btnToolbarRemove_clicked()
 {
-    auto* item = ui->listToolbarCurrent->currentItem();
+    auto *item = ui->listToolbarCurrent->currentItem();
 
     if (item)
         delete item;
@@ -659,19 +651,19 @@ void frmPreferences::on_btnToolbarUp_clicked()
     auto idx = ui->listToolbarCurrent->currentRow();
 
     if (idx > 0) {
-        ui->listToolbarCurrent->insertItem(idx-1, ui->listToolbarCurrent->takeItem(idx));
-        ui->listToolbarCurrent->setCurrentRow(idx-1);
+        ui->listToolbarCurrent->insertItem(idx - 1, ui->listToolbarCurrent->takeItem(idx));
+        ui->listToolbarCurrent->setCurrentRow(idx - 1);
     }
 }
 
 void frmPreferences::on_btnToolbarDown_clicked()
 {
     auto idx = ui->listToolbarCurrent->currentRow();
-    auto max =ui->listToolbarCurrent->count();
+    auto max = ui->listToolbarCurrent->count();
 
-    if (idx < max-1) {
-        ui->listToolbarCurrent->insertItem(idx+1, ui->listToolbarCurrent->takeItem(idx));
-        ui->listToolbarCurrent->setCurrentRow(idx+1);
+    if (idx < max - 1) {
+        ui->listToolbarCurrent->insertItem(idx + 1, ui->listToolbarCurrent->takeItem(idx));
+        ui->listToolbarCurrent->setCurrentRow(idx + 1);
     }
 }
 
@@ -683,22 +675,22 @@ void frmPreferences::on_btnToolbarReset_clicked()
     auto actions = MainWindow::lastActiveInstance()->getActions();
     auto parts = toolbarItems.split('|', Qt::SkipEmptyParts);
 
-    for (const auto& part : parts) {
+    for (const auto &part : parts) {
         if (part == "Separator") {
-            auto* widgetItem = new QListWidgetItem("-- Separator --");
+            auto *widgetItem = new QListWidgetItem("-- Separator --");
             widgetItem->setData(Qt::UserRole, "Separator");
             ui->listToolbarCurrent->addItem(widgetItem);
             continue;
         }
 
-        auto it = std::find_if(actions.begin(), actions.end(), [&part](QAction* ac) {
+        auto it = std::find_if(actions.begin(), actions.end(), [&part](QAction *ac) {
             return ac->objectName() == part;
         });
 
         if (it != actions.end()) {
-            auto* item = *it;
+            auto *item = *it;
             QString text = item->text().replace("&", "");
-            auto* widgetItem = new QListWidgetItem(item->icon(), text);
+            auto *widgetItem = new QListWidgetItem(item->icon(), text);
             widgetItem->setData(Qt::UserRole, item->objectName());
             ui->listToolbarCurrent->addItem(widgetItem);
         }

@@ -9,7 +9,7 @@
 namespace Extensions {
     namespace Stubs {
 
-        class MenuItemStub  : public Stub
+        class MenuItemStub : public Stub
         {
             Q_OBJECT
             void on_triggered(bool checked = false);
@@ -22,7 +22,6 @@ namespace Extensions {
 
         private:
             NP_DECLARE_EXTENSION_METHOD(setShortcut)
-
         };
 
     }

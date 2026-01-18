@@ -45,7 +45,7 @@
     QSettings& _m_settings; \
     const QString _m_category = #Name"/"; \
     public: \
-    _Category##Name(QSettings& settings) : _m_settings(settings) {} \
+    _Category##Name(QSettings& settings) : _m_settings(settings) {}
 
 #define BEGIN_GENERAL_CATEGORY(Name) \
     class _Category##Name { \
@@ -53,14 +53,13 @@
     QSettings& _m_settings; \
     const QString _m_category; \
     public: \
-    _Category##Name(QSettings& settings) : _m_settings(settings) {} \
+    _Category##Name(QSettings& settings) : _m_settings(settings) {}
 
 #define END_CATEGORY(Name) \
     }; _Category##Name Name = _Category##Name(_m_settings);
 
-
-class NpSettings {
-
+class NpSettings
+{
 public:
     BEGIN_GENERAL_CATEGORY(General)
         /* clang-format off */
@@ -139,7 +138,6 @@ public:
         /* clang-format on */
     END_CATEGORY(MainWindow)
 
-
     //A few of the more involved settings can't be handled like above.
     BEGIN_CATEGORY(Shortcuts)
 
@@ -147,22 +145,23 @@ public:
          * @brief Since default shortcuts aren't stored in the settings, we have to set them manually.
          * @param actions List of actions that have or could have shortcuts.
          */
-        void initShortcuts(const QList<QAction*>& actions){
-            for (QAction* a : actions){
+        void initShortcuts(const QList<QAction *> &actions)
+        {
+            for (QAction *a : actions) {
                 if (a->objectName().isEmpty())
                     continue;
 
                 const QString key = "Shortcuts/" + a->objectName();
 
                 //Only update the current shortcut if it's actually set in the settings.
-                QKeySequence shortcut = _m_settings.contains(key) ?
-                                            _m_settings.value(key).toString() : a->shortcut();
+                QKeySequence shortcut = _m_settings.contains(key) ? _m_settings.value(key).toString() : a->shortcut();
 
-                _m_shortcuts.insert( a->objectName(), _ActionItem{a->shortcut(), shortcut} );
+                _m_shortcuts.insert(a->objectName(), _ActionItem{a->shortcut(), shortcut});
             }
         }
 
-        QKeySequence getDefaultShortcut(const QString& actionName) const {
+        QKeySequence getDefaultShortcut(const QString &actionName) const
+        {
             auto it = _m_shortcuts.find(actionName);
 
             if (it == _m_shortcuts.end())
@@ -171,7 +170,8 @@ public:
             return it.value().defaultSequence;
         }
 
-        QKeySequence getShortcut(const QString& actionName) const {
+        QKeySequence getShortcut(const QString &actionName) const
+        {
             auto it = _m_shortcuts.find(actionName);
 
             if (it == _m_shortcuts.end())
@@ -180,7 +180,8 @@ public:
             return it.value().sequence;
         }
 
-        void setShortcut(const QString& actionName, const QKeySequence& sequence){
+        void setShortcut(const QString &actionName, const QKeySequence &sequence)
+        {
             auto it = _m_shortcuts.find(actionName);
 
             if (it == _m_shortcuts.end())
@@ -206,15 +207,15 @@ public:
             _m_settings.endGroup();
         }
 
-        QMap <QString, QString> getCommands()
+        QMap<QString, QString> getCommands()
         {
-            QMap <QString, QString> ret;
+            QMap<QString, QString> ret;
             _m_settings.beginGroup("Run");
             QStringList groups = _m_settings.childGroups();
             for (int i = 0; i < groups.size(); ++i) {
                 _m_settings.beginGroup(groups.at(i));
-                const QString& name = _m_settings.value("name","").toString();
-                const QString& cmd = _m_settings.value("command","").toString();
+                const QString &name = _m_settings.value("name", "").toString();
+                const QString &cmd = _m_settings.value("command", "").toString();
                 ret.insert(name, cmd);
                 _m_settings.endGroup();
             }
@@ -225,7 +226,7 @@ public:
         void setCommand(const QString &cmdName, const QString &cmdRun)
         {
             _m_settings.beginGroup("Run");
-            const int pos = _m_settings.childGroups().size()+1;
+            const int pos = _m_settings.childGroups().size() + 1;
             QString group = "c" + QString::number(pos);
             _m_settings.setValue(group + "/name", cmdName);
             _m_settings.setValue(group + "/command", cmdRun);
@@ -241,13 +242,13 @@ public:
      */
     static void ensureBackwardsCompatibility();
 
-    static NpSettings& getInstance();
+    static NpSettings &getInstance();
 
 private:
     QSettings _m_settings;
 
-    NpSettings(){}
-    NpSettings& operator=(NpSettings&) = delete;
+    NpSettings() {}
+    NpSettings &operator=(NpSettings &) = delete;
 };
 
 #endif // NPSETTINGS_H

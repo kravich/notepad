@@ -3,8 +3,7 @@
 
 #include "include/EditorNS/bannerbasicmessage.h"
 
-namespace EditorNS
-{
+namespace EditorNS {
 
     class BannerFileRemoved : public BannerBasicMessage
     {
@@ -17,7 +16,6 @@ namespace EditorNS
         void ignore();
 
     public slots:
-
     };
 
 }

@@ -31,9 +31,9 @@ void Stats::init()
     }
 
     // Start a timer that will check very soon if we need to send stats.
-    QTimer* t = new QTimer();
+    QTimer *t = new QTimer();
     t->setTimerType(Qt::VeryCoarseTimer);
-    QObject::connect(t, &QTimer::timeout, [t](){
+    QObject::connect(t, &QTimer::timeout, [t]() {
         Stats::check();
         t->deleteLater();
     });
@@ -42,23 +42,23 @@ void Stats::init()
     // and we want the extensions to be fully loaded.
     t->start(10000);
 
-
     // Also start another timer that will periodically check if a week has passed and
     // it's time to transmit new information.
     if (!m_longTimerRunning) {
-        QTimer* tlong = new QTimer();
+        QTimer *tlong = new QTimer();
         tlong->setTimerType(Qt::VeryCoarseTimer);
-        QObject::connect(tlong, &QTimer::timeout, [t](){
+        QObject::connect(tlong, &QTimer::timeout, [t]() {
             Stats::check();
         });
 
-        tlong->start(12*60*60*1000); // Check every ~12 hours.
+        tlong->start(12 * 60 * 60 * 1000); // Check every ~12 hours.
 
         m_longTimerRunning = true;
     }
 }
 
-void Stats::check() {
+void Stats::check()
+{
     // Check whether the user wants us to collect stats. If not, return.
     NpSettings &settings = NpSettings::getInstance();
     if (!settings.General.getCollectStatistics()) {
@@ -71,7 +71,6 @@ void Stats::check() {
         return;
     }
     settings.General.setLastStatisticTransmissionTime(currentUnixTimestamp());
-
 
     QJsonObject data;
     data["version"] = QString(POINTVERSION);
@@ -96,7 +95,8 @@ void Stats::check() {
     Stats::remoteApiSend(data);
 }
 
-void Stats::remoteApiSend(const QJsonObject &data) {
+void Stats::remoteApiSend(const QJsonObject &data)
+{
     QUrl url("https://notepad.com/api/stat/post.php");
     QNetworkRequest request(url);
 
@@ -104,7 +104,7 @@ void Stats::remoteApiSend(const QJsonObject &data) {
 
     QNetworkAccessManager *manager = new QNetworkAccessManager();
 
-    QObject::connect(manager, &QNetworkAccessManager::finished, [=](QNetworkReply *){
+    QObject::connect(manager, &QNetworkAccessManager::finished, [=](QNetworkReply *) {
         manager->deleteLater();
     });
 
@@ -114,12 +114,12 @@ void Stats::remoteApiSend(const QJsonObject &data) {
     manager->post(request, doc.toJson(QJsonDocument::Compact));
 }
 
-void Stats::askUserPermission() {
+void Stats::askUserPermission()
+{
     NpSettings &settings = NpSettings::getInstance();
     int dialogShown = settings.General.getStatisticsDialogShown();
 
     if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadRun) {
-
         QMessageBox msgBox;
         msgBox.setWindowTitle(QCoreApplication::applicationName());
         msgBox.setIcon(QMessageBox::Question);
@@ -160,12 +160,14 @@ void Stats::askUserPermission() {
     }
 }
 
-bool Stats::isTimeToSendStats() {
+bool Stats::isTimeToSendStats()
+{
     NpSettings &settings = NpSettings::getInstance();
-    return (currentUnixTimestamp() - settings.General.getLastStatisticTransmissionTime()) >= 7*24*60*60*1000;
+    return (currentUnixTimestamp() - settings.General.getLastStatisticTransmissionTime()) >= 7 * 24 * 60 * 60 * 1000;
 }
 
-qint64 Stats::currentUnixTimestamp() {
+qint64 Stats::currentUnixTimestamp()
+{
 #if QT_VERSION >= 0x050800
     return QDateTime::currentDateTime().toSecsSinceEpoch();
 #else

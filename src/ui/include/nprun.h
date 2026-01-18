@@ -19,6 +19,7 @@ namespace NpRun {
     private:
         NpSettings &m_settings;
         QTableWidget *m_commands;
+
     public:
         RunPreferences(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
         ~RunPreferences();
@@ -34,10 +35,9 @@ namespace NpRun {
         Q_OBJECT
     public:
         RunDelegate(QObject *parent = nullptr);
-        void paint(QPainter *painter, const QStyleOptionViewItem &option,
-                const QModelIndex &index) const override;
-        bool editorEvent(QEvent *event, QAbstractItemModel *model,
-                const QStyleOptionViewItem &option, const QModelIndex &index) override;
+        void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+        bool editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index) override;
+
     private:
         QIcon openIcon;
         QIcon rmIcon;

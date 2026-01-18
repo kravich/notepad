@@ -32,7 +32,8 @@
  *        This is just a helper used in the updateXHistory functions.
  * @return The updated list, with item added and duplicates removed.
  */
-QStringList addUniqueToList(QStringList list, const QString& item) {
+QStringList addUniqueToList(QStringList list, const QString &item)
+{
     list.prepend(item);
     list.removeDuplicates();
     list = list.mid(0, 10);
@@ -46,19 +47,19 @@ QStringList addUniqueToList(QStringList list, const QString& item) {
  * @param numReplacements The number of instances that will be replaced.
  * @return True if the user wants to continue. False otherwise.
  */
-bool askConfirmationForReplace(QString replaceText, int numReplacements) {
+bool askConfirmationForReplace(QString replaceText, int numReplacements)
+{
     return QMessageBox::information(QApplication::activeWindow(),
                                     QObject::tr("Confirm Replacement"),
                                     QObject::tr("This will replace %1 selected matches with \"%2\". Continue?")
-                                    .arg(numReplacements)
-                                    .arg(replaceText),
+                                        .arg(numReplacements)
+                                        .arg(replaceText),
                                     QMessageBox::Ok | QMessageBox::Cancel,
                                     QMessageBox::Cancel) == QMessageBox::Ok;
 }
 
-
-QSearchDockTitleButton::QSearchDockTitleButton(QDockWidget *dockWidget)
-    : QAbstractButton(dockWidget)
+QSearchDockTitleButton::QSearchDockTitleButton(QDockWidget *dockWidget) :
+    QAbstractButton(dockWidget)
 {
     setFocusPolicy(Qt::NoFocus);
 }
@@ -67,7 +68,7 @@ QSize QSearchDockTitleButton::sizeHint() const
 {
     ensurePolished();
 
-    int size = 2*style()->pixelMetric(QStyle::PM_DockWidgetTitleBarButtonMargin, 0, this);
+    int size = 2 * style()->pixelMetric(QStyle::PM_DockWidgetTitleBarButtonMargin, 0, this);
     if (!icon().isNull()) {
         int iconSize = style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this);
         QSize sz = icon().actualSize(QSize(iconSize, iconSize));
@@ -89,7 +90,7 @@ void QSearchDockTitleButton::leaveEvent(QEvent *event)
     QAbstractButton::leaveEvent(event);
 }
 
-void QSearchDockTitleButton::paintEvent(QPaintEvent* /*evt*/)
+void QSearchDockTitleButton::paintEvent(QPaintEvent * /*evt*/)
 {
     QPainter p(this);
 
@@ -97,8 +98,7 @@ void QSearchDockTitleButton::paintEvent(QPaintEvent* /*evt*/)
     opt.initFrom(this);
     opt.state |= QStyle::State_AutoRaise;
 
-    if (style()->styleHint(QStyle::SH_DockWidget_ButtonsHaveFrame, 0, this))
-    {
+    if (style()->styleHint(QStyle::SH_DockWidget_ButtonsHaveFrame, 0, this)) {
         if (isEnabled() && underMouse() && !isChecked() && !isDown())
             opt.state |= QStyle::State_Raised;
         if (isChecked())
@@ -123,8 +123,9 @@ void QSearchDockTitleButton::paintEvent(QPaintEvent* /*evt*/)
  * @param shape Either QFrame::HLine or QFrame::VLine to determine the line's orientation
  * @param length Sets the maximum length of the divider.
  */
-QFrame* makeDivider(QFrame::Shape shape, int length=0) {
-    QFrame* line = new QFrame();
+QFrame *makeDivider(QFrame::Shape shape, int length = 0)
+{
+    QFrame *line = new QFrame();
     line->setFrameShape(shape);
     line->setFrameShadow(QFrame::Sunken);
     if (length > 0) {
@@ -136,7 +137,8 @@ QFrame* makeDivider(QFrame::Shape shape, int length=0) {
     return line;
 }
 
-void showRegexInfo() {
+void showRegexInfo()
+{
     QString str;
 
     /* clang-format off */
@@ -158,9 +160,9 @@ void showRegexInfo() {
     QMessageBox::information(nullptr, "", str);
 }
 
-QLayout* AdvancedSearchDock::buildLeftTitlebar() {
-
-    QLabel* label = new QLabel(tr("Advanced Search"));
+QLayout *AdvancedSearchDock::buildLeftTitlebar()
+{
+    QLabel *label = new QLabel(tr("Advanced Search"));
     label->setMaximumWidth(label->fontMetrics().horizontalAdvance(label->text()));
 
     m_btnClearHistory = new QToolButton;
@@ -182,14 +184,14 @@ QLayout* AdvancedSearchDock::buildLeftTitlebar() {
     m_btnNextResult->setToolTip(tr("Go To Next Result (F4)"));
     m_btnNextResult->setShortcut(QKeySequence(Qt::Key_F4));
 
-    QMenu* menu = new QMenu();
+    QMenu *menu = new QMenu();
     m_actExpandAll = menu->addAction(tr("Expand/Collapse All"));
     m_actExpandAll->setCheckable(true);
     m_actRedoSearch = menu->addAction(tr("Redo Search"));
     m_actCopyContents = menu->addAction(tr("Copy Selected Contents To Clipboard"));
     m_actShowFullLines = menu->addAction(tr("Show Full Lines"));
     m_actShowFullLines->setCheckable(true);
-    m_actRemoveSearch= menu->addAction(tr("Remove This Search"));
+    m_actRemoveSearch = menu->addAction(tr("Remove This Search"));
 
     m_btnMoreOptions = new QToolButton;
     m_btnMoreOptions->setIcon(IconProvider::fromTheme("preferences-other"));
@@ -202,7 +204,7 @@ QLayout* AdvancedSearchDock::buildLeftTitlebar() {
     m_btnToggleReplaceOptions->setText(tr("Replace Options"));
     m_btnToggleReplaceOptions->setCheckable(true);
 
-    QHBoxLayout* layout = new QHBoxLayout;
+    QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(label);
     layout->addWidget(m_btnClearHistory);
     layout->addWidget(m_cmbSearchHistory);
@@ -216,11 +218,12 @@ QLayout* AdvancedSearchDock::buildLeftTitlebar() {
     return layout;
 }
 
-QLayout* AdvancedSearchDock::buildUpperTitlebarLayout() {
-    QHBoxLayout* top = new QHBoxLayout;
+QLayout *AdvancedSearchDock::buildUpperTitlebarLayout()
+{
+    QHBoxLayout *top = new QHBoxLayout;
 
     // Construct left side. Buttons etc.
-    QLayout* leftSide = buildLeftTitlebar();
+    QLayout *leftSide = buildLeftTitlebar();
 
     // Replacing a dock's titlebar means we have to add the top-right button manually
     m_btnDockUndock = new QSearchDockTitleButton(m_dockWidget.data());
@@ -240,13 +243,14 @@ QLayout* AdvancedSearchDock::buildUpperTitlebarLayout() {
     return top;
 }
 
-QLayout* AdvancedSearchDock::buildReplaceOptionsLayout() {
-    NpSettings& settings = NpSettings::getInstance();
+QLayout *AdvancedSearchDock::buildReplaceOptionsLayout()
+{
+    NpSettings &settings = NpSettings::getInstance();
 
     m_replaceOptionsLayout = new QVBoxLayout;
 
     // Create the bar with replace options.
-    QHBoxLayout* replaceOptions = new QHBoxLayout;
+    QHBoxLayout *replaceOptions = new QHBoxLayout;
 
     m_cmbReplaceText = new QComboBox;
     m_cmbReplaceText->setEditable(true);
@@ -278,24 +282,26 @@ QLayout* AdvancedSearchDock::buildReplaceOptionsLayout() {
     return m_replaceOptionsLayout;
 }
 
-QWidget* AdvancedSearchDock::buildTitlebarWidget() {
-    QLayout* upperBar = buildUpperTitlebarLayout();
-    /*QLayout* lowerBar =*/ buildReplaceOptionsLayout(); // <- Hidden by default, aka not added yet
+QWidget *AdvancedSearchDock::buildTitlebarWidget()
+{
+    QLayout *upperBar = buildUpperTitlebarLayout();
+    /*QLayout* lowerBar =*/buildReplaceOptionsLayout(); // <- Hidden by default, aka not added yet
 
     m_titlebarLayout = new QVBoxLayout;
     m_titlebarLayout->addLayout(upperBar);
 
     // Create the actual titlebar widget
-    QWidget* titlebar = new QWidget();
+    QWidget *titlebar = new QWidget();
     titlebar->setLayout(m_titlebarLayout);
 
     return titlebar;
 }
 
-QWidget* AdvancedSearchDock::buildSearchPanelWidget() {
-    NpSettings& settings = NpSettings::getInstance();
+QWidget *AdvancedSearchDock::buildSearchPanelWidget()
+{
+    NpSettings &settings = NpSettings::getInstance();
 
-    QGridLayout* gl = new QGridLayout;
+    QGridLayout *gl = new QGridLayout;
 
     m_cmbSearchTerm = new QComboBox;
     m_cmbSearchTerm->setEditable(true);
@@ -342,7 +348,7 @@ QWidget* AdvancedSearchDock::buildSearchPanelWidget() {
     m_btnSelectSearchDirectory->setIcon(IconProvider::fromTheme("edit-find"));
     m_btnSelectSearchDirectory->setToolTip(tr("Select search directory"));
 
-    QHBoxLayout* m2 = new QHBoxLayout;
+    QHBoxLayout *m2 = new QHBoxLayout;
     m2->addWidget(m_cmbSearchDirectory);
     m2->addWidget(m_btnSelectSearchDirectory);
 
@@ -350,13 +356,13 @@ QWidget* AdvancedSearchDock::buildSearchPanelWidget() {
     m_btnSearch->setText(tr("Search"));
     m_btnSearch->setEnabled(false);
 
-    QLabel* scl = new QLabel(tr("Scope:"));
+    QLabel *scl = new QLabel(tr("Scope:"));
     scl->setMaximumWidth(80);
-    QLabel* srl = new QLabel(tr("Search:"));
+    QLabel *srl = new QLabel(tr("Search:"));
     srl->setMaximumWidth(80);
-    QLabel* srp = new QLabel(tr("Pattern:"));
+    QLabel *srp = new QLabel(tr("Pattern:"));
     srp->setMaximumWidth(80);
-    QLabel* srd = new QLabel(tr("Location:"));
+    QLabel *srd = new QLabel(tr("Location:"));
     srd->setMaximumWidth(80);
 
     m_chkMatchCase = new QCheckBox(tr("Match Case"));
@@ -367,13 +373,13 @@ QWidget* AdvancedSearchDock::buildSearchPanelWidget() {
     m_chkIncludeSubdirs = new QCheckBox(tr("Include Subdirectories"));
     m_chkIncludeSubdirs->setChecked(true);
 
-    m_chkMatchCase->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    m_chkMatchWords->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    m_chkUseRegex->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    m_chkUseSpecialChars->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-    m_chkIncludeSubdirs->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    m_chkMatchCase->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    m_chkMatchWords->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    m_chkUseRegex->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    m_chkUseSpecialChars->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    m_chkIncludeSubdirs->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
-    QGridLayout* mini = new QGridLayout;
+    QGridLayout *mini = new QGridLayout;
     mini->addWidget(m_chkMatchCase, 0, 0);
     mini->addWidget(m_chkMatchWords, 1, 0);
     mini->addWidget(m_chkUseRegex, 2, 0);
@@ -382,32 +388,31 @@ QWidget* AdvancedSearchDock::buildSearchPanelWidget() {
     mini->addWidget(m_chkIncludeSubdirs, 5, 0);
     mini->addItem(new QSpacerItem(1, 1, QSizePolicy::Minimum, QSizePolicy::Expanding), 6, 0);
 
-    QLabel* regexInfo = new QLabel("(<a href='info'>?</a>)");
+    QLabel *regexInfo = new QLabel("(<a href='info'>?</a>)");
     QObject::connect(regexInfo, &QLabel::linkActivated, &showRegexInfo);
     mini->addWidget(regexInfo, 2, 1);
 
-    gl->addWidget(srl, 0,0);
-    gl->addWidget(scl, 1,0);
-    gl->addWidget(srd, 2,0);
-    gl->addWidget(srp, 3,0);
+    gl->addWidget(srl, 0, 0);
+    gl->addWidget(scl, 1, 0);
+    gl->addWidget(srd, 2, 0);
+    gl->addWidget(srp, 3, 0);
 
-    gl->addWidget(m_cmbSearchTerm, 0,1);
-    gl->addWidget(m_btnSearch, 0,2);
-    gl->addWidget(m_cmbSearchScope, 1,1);
-    gl->addLayout(m2, 2,1);
-    gl->addWidget(m_cmbSearchPattern, 3,1);
+    gl->addWidget(m_cmbSearchTerm, 0, 1);
+    gl->addWidget(m_btnSearch, 0, 2);
+    gl->addWidget(m_cmbSearchScope, 1, 1);
+    gl->addLayout(m2, 2, 1);
+    gl->addWidget(m_cmbSearchPattern, 3, 1);
 
     gl->addLayout(mini, 0, 3, 4, 1);
     gl->addWidget(m_btnSelectCurrentDirectory, 2, 2);
 
     gl->addItem(new QSpacerItem(1, 1, QSizePolicy::Minimum, QSizePolicy::Expanding), 4, 0);
 
-
     gl->setSizeConstraint(QGridLayout::SetNoConstraint);
 
     // Put the gridview into a vbox with a stretcher so the gridview doesn't stretch when the panelwidget is resized.
-    QVBoxLayout* top = new QVBoxLayout();
-    top->addWidget( makeDivider(QFrame::HLine) );
+    QVBoxLayout *top = new QVBoxLayout();
+    top->addWidget(makeDivider(QFrame::HLine));
     top->addLayout(gl);
     top->addStretch();
 
@@ -420,9 +425,9 @@ void AdvancedSearchDock::clearHistory()
 {
     const bool anySearchInProgess = std::any_of(m_searchInstances.begin(),
                                                 m_searchInstances.end(),
-                                                [](const std::unique_ptr<SearchInstance>& inst) {
-        return inst->isSearchInProgress();
-    });
+                                                [](const std::unique_ptr<SearchInstance> &inst) {
+                                                    return inst->isSearchInProgress();
+                                                });
 
     if (anySearchInProgess) {
         QMessageBox msgBox(nullptr);
@@ -450,21 +455,19 @@ void AdvancedSearchDock::clearHistory()
 
 void AdvancedSearchDock::selectSearchFromHistory(int index)
 {
-    if (index==-1)
+    if (index == -1)
         return;
 
     // These signals were connected farther down this function in a previous invocation.
     if (m_currentSearchInstance && m_currentSearchInstance->isSearchInProgress()) {
-        disconnect(m_currentSearchInstance, &SearchInstance::searchCompleted,
-                   this, &AdvancedSearchDock::onCurrentSearchInstanceCompleted);
+        disconnect(m_currentSearchInstance, &SearchInstance::searchCompleted, this, &AdvancedSearchDock::onCurrentSearchInstanceCompleted);
     }
 
     if (m_currentSearchInstance) {
-        disconnect(m_currentSearchInstance, &SearchInstance::itemInteracted,
-                   this, &AdvancedSearchDock::itemInteracted);
+        disconnect(m_currentSearchInstance, &SearchInstance::itemInteracted, this, &AdvancedSearchDock::itemInteracted);
     }
 
-    if (index==0) {
+    if (index == 0) {
         m_currentSearchInstance = nullptr;
 
         m_dockWidget->setWidget(m_searchPanelWidget);
@@ -475,23 +478,21 @@ void AdvancedSearchDock::selectSearchFromHistory(int index)
         m_btnNextResult->setVisible(false);
         m_cmbSearchTerm->setFocus();
     } else {
-        m_currentSearchInstance = m_searchInstances[index-1].get();
+        m_currentSearchInstance = m_searchInstances[index - 1].get();
 
         if (m_currentSearchInstance->isSearchInProgress()) {
-            connect(m_currentSearchInstance, &SearchInstance::searchCompleted,
-                       this, &AdvancedSearchDock::onCurrentSearchInstanceCompleted);
+            connect(m_currentSearchInstance, &SearchInstance::searchCompleted, this, &AdvancedSearchDock::onCurrentSearchInstanceCompleted);
         }
 
-        connect(m_currentSearchInstance, &SearchInstance::itemInteracted,
-                   this, &AdvancedSearchDock::itemInteracted);
+        connect(m_currentSearchInstance, &SearchInstance::itemInteracted, this, &AdvancedSearchDock::itemInteracted);
 
-        m_dockWidget->setWidget( m_currentSearchInstance->getResultTreeWidget() );
+        m_dockWidget->setWidget(m_currentSearchInstance->getResultTreeWidget());
         m_btnToggleReplaceOptions->setVisible(true);
         m_btnMoreOptions->setVisible(true);
         m_btnPrevResult->setVisible(true);
         m_btnNextResult->setVisible(true);
-        m_actExpandAll->setChecked( m_currentSearchInstance->areResultsExpanded() );
-        m_actShowFullLines->setChecked( m_currentSearchInstance->getShowFullLines() );
+        m_actExpandAll->setChecked(m_currentSearchInstance->areResultsExpanded());
+        m_actShowFullLines->setChecked(m_currentSearchInstance->getShowFullLines());
 
         updateSearchInProgressUi();
     }
@@ -521,8 +522,7 @@ void AdvancedSearchDock::onChangeSearchScope(int index)
 
 void AdvancedSearchDock::onCurrentSearchInstanceCompleted()
 {
-    disconnect(m_currentSearchInstance, &SearchInstance::searchCompleted,
-               this, &AdvancedSearchDock::onCurrentSearchInstanceCompleted);
+    disconnect(m_currentSearchInstance, &SearchInstance::searchCompleted, this, &AdvancedSearchDock::onCurrentSearchInstanceCompleted);
 
     updateSearchInProgressUi();
 }
@@ -572,18 +572,18 @@ void AdvancedSearchDock::startReplace()
     if (m_chkReplaceWithSpecialChars->isChecked())
         replaceText = SearchString::unescape(replaceText);
 
-    const SearchConfig& config = m_currentSearchInstance->getSearchConfig();
+    const SearchConfig &config = m_currentSearchInstance->getSearchConfig();
     const SearchConfig::SearchScope scope = config.searchScope;
 
     if (scope == SearchConfig::ScopeCurrentDocument || scope == SearchConfig::ScopeAllOpenDocuments) {
         // Since doc management is a mess we've got to go through all DocResults manually here.
-        TopEditorContainer* tec = config.targetWindow->topEditorContainer();
+        TopEditorContainer *tec = config.targetWindow->topEditorContainer();
 
-        for (const DocResult& res : filteredResults.results) {
+        for (const DocResult &res : filteredResults.results) {
             QSharedPointer<Editor> ed = res.editor;
 
             // The editor might not be open anymore. Try to find it first
-            if(!tec->tabWidgetFromEditor(ed)) continue;
+            if (!tec->tabWidgetFromEditor(ed)) continue;
 
             QString content = ed->value();
             FileReplacer::replaceAll(res, content, replaceText);
@@ -616,7 +616,7 @@ SearchConfig AdvancedSearchDock::getConfigFromInputs()
     return config;
 }
 
-void AdvancedSearchDock::setInputsFromConfig(const SearchConfig& config)
+void AdvancedSearchDock::setInputsFromConfig(const SearchConfig &config)
 {
     m_cmbSearchDirectory->setCurrentText(config.directory);
     m_cmbSearchPattern->setCurrentText(config.filePattern);
@@ -660,25 +660,24 @@ void AdvancedSearchDock::show(bool show, bool setFocus)
         m_cmbSearchTerm->setFocus();
 }
 
-AdvancedSearchDock::AdvancedSearchDock(MainWindow* mainWindow)
-    : QObject(mainWindow),
-      m_mainWindow(mainWindow),
-      m_dockWidget(new QDockWidget())
+AdvancedSearchDock::AdvancedSearchDock(MainWindow *mainWindow) :
+    QObject(mainWindow),
+    m_mainWindow(mainWindow),
+    m_dockWidget(new QDockWidget())
 {
-    QDockWidget* dockWidget = m_dockWidget.data();
+    QDockWidget *dockWidget = m_dockWidget.data();
     dockWidget->setWindowTitle(tr("Advanced Search"));
     dockWidget->setObjectName("advancedSearchDockWidget");
 
-    dockWidget->setTitleBarWidget( buildTitlebarWidget() );
-    dockWidget->setWidget( buildSearchPanelWidget() );
+    dockWidget->setTitleBarWidget(buildTitlebarWidget());
+    dockWidget->setWidget(buildSearchPanelWidget());
 
     // Titlebar connections
     connect(m_btnClearHistory, &QToolButton::clicked, this, &AdvancedSearchDock::clearHistory);
-    connect(m_cmbSearchHistory, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &AdvancedSearchDock::selectSearchFromHistory);
+    connect(m_cmbSearchHistory, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &AdvancedSearchDock::selectSearchFromHistory);
     connect(m_btnPrevResult, &QToolButton::clicked, this, &AdvancedSearchDock::selectPrevResult);
     connect(m_btnNextResult, &QToolButton::clicked, this, &AdvancedSearchDock::selectNextResult);
-    connect(m_btnToggleReplaceOptions, &QToolButton::toggled, [this](bool checked){
+    connect(m_btnToggleReplaceOptions, &QToolButton::toggled, [this](bool checked) {
         if (checked) {
             m_titlebarLayout->addLayout(m_replaceOptionsLayout);
             m_cmbReplaceText->setCurrentText("");
@@ -692,19 +691,18 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow* mainWindow)
 
     // Search panel connections
     connect(m_cmbSearchTerm->lineEdit(), &QLineEdit::textChanged, this, &AdvancedSearchDock::onUserInput);
-    connect(m_cmbSearchTerm->lineEdit(), &QLineEdit::returnPressed, [this](){
+    connect(m_cmbSearchTerm->lineEdit(), &QLineEdit::returnPressed, [this]() {
         startSearch(getConfigFromInputs());
     });
-    connect(m_cmbSearchScope, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-            this, &AdvancedSearchDock::onChangeSearchScope);
-    connect(m_btnSearch, &QToolButton::clicked, [this](){
+    connect(m_cmbSearchScope, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &AdvancedSearchDock::onChangeSearchScope);
+    connect(m_btnSearch, &QToolButton::clicked, [this]() {
         startSearch(getConfigFromInputs());
     });
     connect(m_cmbSearchDirectory->lineEdit(), &QLineEdit::textChanged, this, &AdvancedSearchDock::onUserInput);
-    connect(m_cmbSearchDirectory->lineEdit(), &QLineEdit::returnPressed, [this](){
+    connect(m_cmbSearchDirectory->lineEdit(), &QLineEdit::returnPressed, [this]() {
         startSearch(getConfigFromInputs());
     });
-    connect(m_btnSelectCurrentDirectory, &QToolButton::clicked, [this, mainWindow](){
+    connect(m_btnSelectCurrentDirectory, &QToolButton::clicked, [this, mainWindow]() {
         auto tabW = mainWindow->topEditorContainer()->currentTabWidget();
         auto editor = tabW->currentEditor();
 
@@ -714,58 +712,59 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow* mainWindow)
         }
         m_cmbSearchDirectory->setCurrentText(dir);
     });
-    connect(m_btnSelectSearchDirectory, &QToolButton::clicked, [this](){
+    connect(m_btnSelectSearchDirectory, &QToolButton::clicked, [this]() {
         QString defaultDir = m_cmbSearchDirectory->currentText();
         if (defaultDir.isEmpty()) {
             defaultDir = NpSettings::getInstance().General.getLastSelectedDir();
         }
 
         QString dir = QFileDialog::getExistingDirectory(QApplication::activeWindow(),
-                                                        QObject::tr("Search in..."), defaultDir,
+                                                        QObject::tr("Search in..."),
+                                                        defaultDir,
                                                         QFileDialog::ShowDirsOnly | QFileDialog::ReadOnly | QFileDialog::DontResolveSymlinks);
 
         if (!dir.isEmpty()) {
             m_cmbSearchDirectory->setCurrentText(dir);
         }
     });
-    connect(m_chkUseRegex, &QCheckBox::toggled, [this](bool checked){
+    connect(m_chkUseRegex, &QCheckBox::toggled, [this](bool checked) {
         m_chkUseSpecialChars->setEnabled(!checked);
-        if(checked) m_chkUseSpecialChars->setChecked(false);
+        if (checked) m_chkUseSpecialChars->setChecked(false);
     });
-    connect(m_chkUseSpecialChars, &QCheckBox::toggled, [this](bool checked){
+    connect(m_chkUseSpecialChars, &QCheckBox::toggled, [this](bool checked) {
         m_chkUseRegex->setEnabled(!checked);
-        if(checked) m_chkUseRegex->setChecked(false);
+        if (checked) m_chkUseRegex->setChecked(false);
     });
 
     // "More Options" menu connections
-    connect(m_actExpandAll, &QAction::toggled, [this](bool checked){
-        if(checked) m_currentSearchInstance->expandAllResults();
+    connect(m_actExpandAll, &QAction::toggled, [this](bool checked) {
+        if (checked) m_currentSearchInstance->expandAllResults();
         else m_currentSearchInstance->collapseAllResults();
     });
-    connect(m_actShowFullLines, &QAction::toggled, [this](bool checked){
+    connect(m_actShowFullLines, &QAction::toggled, [this](bool checked) {
         m_currentSearchInstance->showFullLines(checked);
     });
-    connect(m_actRedoSearch, &QAction::triggered, [this](){
-        setInputsFromConfig( m_currentSearchInstance->getSearchConfig() );
+    connect(m_actRedoSearch, &QAction::triggered, [this]() {
+        setInputsFromConfig(m_currentSearchInstance->getSearchConfig());
         m_cmbSearchHistory->setCurrentIndex(0);
     });
-    connect(m_actCopyContents, &QAction::triggered, [this](){
+    connect(m_actCopyContents, &QAction::triggered, [this]() {
         m_currentSearchInstance->copySelectedLinesToClipboard();
     });
-    connect(m_actRemoveSearch, &QAction::triggered, [this](){
+    connect(m_actRemoveSearch, &QAction::triggered, [this]() {
         if (m_currentSearchInstance->isSearchInProgress()) {
             const auto response = QMessageBox::warning(
-                        QApplication::activeWindow(),
-                        tr("Search in progress"),
-                        tr("<h3>This search is still in progress.</h3> " \
-                        "The search will be canceled and all results discarded if you continue."),
-                        QMessageBox::Ok | QMessageBox::Cancel,
-                        QMessageBox::Cancel);
+                QApplication::activeWindow(),
+                tr("Search in progress"),
+                tr("<h3>This search is still in progress.</h3> "
+                   "The search will be canceled and all results discarded if you continue."),
+                QMessageBox::Ok | QMessageBox::Cancel,
+                QMessageBox::Cancel);
 
             if (response == QMessageBox::Cancel) return;
         }
 
-        m_searchInstances.erase(m_searchInstances.begin() + m_cmbSearchHistory->currentIndex()-1);
+        m_searchInstances.erase(m_searchInstances.begin() + m_cmbSearchHistory->currentIndex() - 1);
         m_currentSearchInstance = nullptr;
         m_cmbSearchHistory->removeItem(m_cmbSearchHistory->currentIndex());
         onSearchHistorySizeChange();
@@ -777,13 +776,14 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow* mainWindow)
     onChangeSearchScope(0); // Initializes the status of the search panel
 }
 
-QDockWidget* AdvancedSearchDock::getDockWidget() const
+QDockWidget *AdvancedSearchDock::getDockWidget() const
 {
     return m_dockWidget.data();
 }
 
 // Returns a QStringList of all items in the combo box.
-static QStringList getComboBoxContents(const QComboBox* cb) {
+static QStringList getComboBoxContents(const QComboBox *cb)
+{
     QStringList list;
     const int size = cb->count();
     for (int index = 0; index < size; index++) {
@@ -792,65 +792,61 @@ static QStringList getComboBoxContents(const QComboBox* cb) {
     return list;
 }
 
-void AdvancedSearchDock::updateSearchHistory(const QString& item) {
+void AdvancedSearchDock::updateSearchHistory(const QString &item)
+{
     if (item.isEmpty()) return;
 
-    NpSettings& settings = NpSettings::getInstance();
-    const QStringList& currHistory = settings.Search.getSaveHistory() ?
-                settings.Search.getSearchHistory() :
-                getComboBoxContents(m_cmbSearchTerm) ;
+    NpSettings &settings = NpSettings::getInstance();
+    const QStringList &currHistory = settings.Search.getSaveHistory() ? settings.Search.getSearchHistory() : getComboBoxContents(m_cmbSearchTerm);
 
     const QStringList newHistory = addUniqueToList(currHistory, item);
     m_cmbSearchTerm->clear();
     m_cmbSearchTerm->addItems(newHistory);
 
-    if(settings.Search.getSaveHistory())
+    if (settings.Search.getSaveHistory())
         settings.Search.setSearchHistory(newHistory);
 }
 
-void AdvancedSearchDock::updateReplaceHistory(const QString& item) {
+void AdvancedSearchDock::updateReplaceHistory(const QString &item)
+{
     if (item.isEmpty()) return;
 
-    NpSettings& settings = NpSettings::getInstance();
-    const QStringList& currHistory = settings.Search.getSaveHistory() ?
-                settings.Search.getReplaceHistory() :
-                getComboBoxContents(m_cmbReplaceText) ;
+    NpSettings &settings = NpSettings::getInstance();
+    const QStringList &currHistory = settings.Search.getSaveHistory() ? settings.Search.getReplaceHistory() : getComboBoxContents(m_cmbReplaceText);
 
     const QStringList newHistory = addUniqueToList(currHistory, item);
     m_cmbReplaceText->clear();
     m_cmbReplaceText->addItems(newHistory);
 
-    if(settings.Search.getSaveHistory())
+    if (settings.Search.getSaveHistory())
         settings.Search.setReplaceHistory(newHistory);
 }
 
-void AdvancedSearchDock::updateDirectoryhHistory(const QString& item) {
+void AdvancedSearchDock::updateDirectoryhHistory(const QString &item)
+{
     if (item.isEmpty()) return;
 
-    NpSettings& settings = NpSettings::getInstance();
-    const QStringList& currHistory = settings.Search.getSaveHistory() ?
-                settings.Search.getFileHistory() :
-                getComboBoxContents(m_cmbSearchDirectory) ;
+    NpSettings &settings = NpSettings::getInstance();
+    const QStringList &currHistory = settings.Search.getSaveHistory() ? settings.Search.getFileHistory() : getComboBoxContents(m_cmbSearchDirectory);
 
     const QStringList newHistory = addUniqueToList(currHistory, item);
     m_cmbSearchDirectory->clear();
     m_cmbSearchDirectory->addItems(newHistory);
 
-    if(settings.Search.getSaveHistory())
+    if (settings.Search.getSaveHistory())
         settings.Search.setFileHistory(newHistory);
 }
 
-void AdvancedSearchDock::updateFilterHistory(const QString& item) {
-    NpSettings& settings = NpSettings::getInstance();
-    const QStringList& currHistory = settings.Search.getSaveHistory() ?
-                settings.Search.getFilterHistory() :
-                getComboBoxContents(m_cmbSearchPattern) ;
+void AdvancedSearchDock::updateFilterHistory(const QString &item)
+{
+    NpSettings &settings = NpSettings::getInstance();
+    const QStringList &currHistory = settings.Search.getSaveHistory() ? settings.Search.getFilterHistory() : getComboBoxContents(m_cmbSearchPattern);
 
     const QStringList newHistory = addUniqueToList(currHistory, item);
     m_cmbSearchPattern->clear();
     m_cmbSearchPattern->addItems(newHistory);
 
-    if(settings.Search.getSaveHistory())
+    if (settings.Search.getSaveHistory())
         settings.Search.setFilterHistory(newHistory);
 }
 
@@ -868,8 +864,7 @@ void AdvancedSearchDock::startSearch(SearchConfig cfg)
         QDir dir(cfg.directory);
 
         if (!dir.exists()) {
-            QMessageBox::warning(QApplication::activeWindow(), tr("Error"),
-                                 tr("Specified directory does not exist."), QMessageBox::Ok);
+            QMessageBox::warning(QApplication::activeWindow(), tr("Error"), tr("Specified directory does not exist."), QMessageBox::Ok);
             return;
         }
 
@@ -883,19 +878,18 @@ void AdvancedSearchDock::startSearch(SearchConfig cfg)
         updateFilterHistory(cfg.filePattern);
     }
 
-    m_searchInstances.push_back( std::unique_ptr<SearchInstance>(new SearchInstance(cfg)) );
+    m_searchInstances.push_back(std::unique_ptr<SearchInstance>(new SearchInstance(cfg)));
 
-    m_cmbSearchHistory->addItem( cfg.getScopeAsString() + ": \"" + cfg.searchString + "\"" );
-    m_cmbSearchHistory->setCurrentIndex( m_cmbSearchHistory->count()-1 );
+    m_cmbSearchHistory->addItem(cfg.getScopeAsString() + ": \"" + cfg.searchString + "\"");
+    m_cmbSearchHistory->setCurrentIndex(m_cmbSearchHistory->count() - 1);
 
     onSearchHistorySizeChange();
 }
 
-
-void AdvancedSearchDock::showReplaceDialog(const SearchResult& filteredResults, const QString& replaceText) const
+void AdvancedSearchDock::showReplaceDialog(const SearchResult &filteredResults, const QString &replaceText) const
 {
-    FileReplacer* w = new FileReplacer(filteredResults, replaceText);
-    QMessageBox* msgBox = new QMessageBox(QApplication::activeWindow());
+    FileReplacer *w = new FileReplacer(filteredResults, replaceText);
+    QMessageBox *msgBox = new QMessageBox(QApplication::activeWindow());
 
     connect(w, &FileReplacer::resultReady, msgBox, &QMessageBox::close);
     connect(w, &FileReplacer::resultProgress, msgBox, [msgBox](int curr, int total) {
@@ -917,23 +911,26 @@ void AdvancedSearchDock::showReplaceDialog(const SearchResult& filteredResults, 
     const bool success = !w->hasErrors();
 
     if (!success) {
-        const QVector<QString>& errors = w->getErrors();
+        const QVector<QString> &errors = w->getErrors();
         const int numErrors = errors.size();
         const int maxCount = std::min(numErrors, 8);
         QString errorString = tr("Replacing was unsuccessful for %1 file(s):\n").arg(numErrors);
 
-        for (int i=0; i<maxCount; i++) {
+        for (int i = 0; i < maxCount; i++) {
             errorString += "\"" + errors[i] + "\"\n";
         }
         if (numErrors > 8)
-            errorString += tr("And %1 more.").arg(numErrors-8);
+            errorString += tr("And %1 more.").arg(numErrors - 8);
 
         QMessageBox::warning(QApplication::activeWindow(),
-                             tr("Replacement Results"), errorString, QMessageBox::Ok);
+                             tr("Replacement Results"),
+                             errorString,
+                             QMessageBox::Ok);
     } else {
         QMessageBox::information(QApplication::activeWindow(),
                                  tr("Replacement Results"),
-                                 tr("All selected matches successfully replaced."), QMessageBox::Ok);
+                                 tr("All selected matches successfully replaced."),
+                                 QMessageBox::Ok);
     }
 
     delete w;

@@ -4,10 +4,11 @@
 #include <QKeyEvent>
 #include <QTreeWidget>
 
-class KeyGrabber : public QTreeWidget {
-Q_OBJECT
+class KeyGrabber : public QTreeWidget
+{
+    Q_OBJECT
 public:
-    KeyGrabber(QWidget* parent = nullptr);
+    KeyGrabber(QWidget *parent = nullptr);
 
     /**
      * @brief findConflicts Checks the entire tree for conflicting shortcuts.
@@ -30,7 +31,7 @@ public:
      *        the tree.
      * @param listOfMenus
      */
-    void addMenus(const QList<const QMenu*>& listOfMenus);
+    void addMenus(const QList<const QMenu *> &listOfMenus);
 
     /**
      * @brief Convenience class that contains the tree item and corresponding
@@ -41,41 +42,45 @@ public:
     struct NodeItem {
     private:
         friend class KeyGrabber;
-        QTreeWidgetItem* treeItem;
-        QAction* action;
+        QTreeWidgetItem *treeItem;
+        QAction *action;
 
     public:
-        QAction* getAction() { return action; }
-        QTreeWidgetItem* getTreeItem() { return treeItem; }
+        QAction *getAction() { return action; }
+        QTreeWidgetItem *getTreeItem() { return treeItem; }
 
-        void setText(const QString& seq) { treeItem->setText(1,seq); }
+        void setText(const QString &seq) { treeItem->setText(1, seq); }
         QString text() const { return treeItem->text(1); }
 
-        NodeItem(QAction* a, QTreeWidgetItem* item) : treeItem(item), action(a) {}
+        NodeItem(QAction *a, QTreeWidgetItem *item) :
+            treeItem(item),
+            action(a)
+        {
+        }
     };
 
     /**
      * @brief getAllBindings Returns a list of NodeItems, one for each action/keysquence
      *        pair.
      */
-    QList<NodeItem>& getAllBindings();
+    QList<NodeItem> &getAllBindings();
 
 protected:
-    void keyPressEvent(QKeyEvent* key);
+    void keyPressEvent(QKeyEvent *key);
 
 public slots:
-    void itemChanged(QTreeWidgetItem* item);
+    void itemChanged(QTreeWidgetItem *item);
 
 private:
     /**
      * @brief populateNode traverses the given QMenu recursively and adds its children to
      *        the rootItem as new nodes.
      */
-    void populateNode(QTreeWidgetItem*& rootItem, const QMenu*);
+    void populateNode(QTreeWidgetItem *&rootItem, const QMenu *);
 
     QList<NodeItem> m_allActions;
     bool m_testingForConflicts = false;
-    QTreeWidgetItem* m_firstConflict = nullptr;
+    QTreeWidgetItem *m_firstConflict = nullptr;
 };
 
 #endif

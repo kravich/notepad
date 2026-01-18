@@ -3,18 +3,18 @@
 #include "include/docengine.h"
 
 #include <QFile>
-#include <QTextStream>
 #include <QStringRef>
+#include <QTextStream>
 
-FileReplacer::FileReplacer(const SearchResult& results, const QString &replacement)
-    : m_searchResult(results),
-      m_replacement(replacement)
-{ }
-
-void FileReplacer::replaceAll(const DocResult& doc, QString& content, const QString& replacement)
+FileReplacer::FileReplacer(const SearchResult &results, const QString &replacement) :
+    m_searchResult(results),
+    m_replacement(replacement)
 {
-    struct BackReference
-    {
+}
+
+void FileReplacer::replaceAll(const DocResult &doc, QString &content, const QString &replacement)
+{
+    struct BackReference {
         int pos;
         int num;
     };
@@ -30,10 +30,10 @@ void FileReplacer::replaceAll(const DocResult& doc, QString& content, const QStr
     if (doc.regexCaptureGroupCount > 0) {
         const int alen = replacement.length();
         int idx = 0;
-        while ((idx = replacement.indexOf('\\', idx)) != -1){
-            if (idx==alen-1) break;
+        while ((idx = replacement.indexOf('\\', idx)) != -1) {
+            if (idx == alen - 1) break;
 
-            const auto val = replacement.at(idx+1).digitValue();
+            const auto val = replacement.at(idx + 1).digitValue();
 
             if (val > 0 && val <= doc.regexCaptureGroupCount) {
                 BackReference ref;
@@ -56,8 +56,7 @@ void FileReplacer::replaceAll(const DocResult& doc, QString& content, const QStr
     QVector<QStringRef> chunks;
     const QString copy = content;
 
-    for (const auto& result : doc.results) {
-
+    for (const auto &result : doc.results) {
         int len = result.positionInFile - lastEnd;
         if (len > 0) {
             chunks << QStringRef(&copy, lastEnd, len);
@@ -67,7 +66,7 @@ void FileReplacer::replaceAll(const DocResult& doc, QString& content, const QStr
         lastEnd = 0;
 
         // add the after string, with replacements for the backreferences
-        for (const BackReference& backReference : backReferences) {
+        for (const BackReference &backReference : backReferences) {
             // part of "after" before the backreference
             len = backReference.pos - lastEnd;
             if (len > 0) {
@@ -78,8 +77,7 @@ void FileReplacer::replaceAll(const DocResult& doc, QString& content, const QStr
             // backreference itself
             len = result.regexMatch.capturedLength(backReference.num);
             if (len > 0) {
-                chunks << QStringRef(&copy, result.regexMatch.capturedStart(backReference.num),
-                                      len);
+                chunks << QStringRef(&copy, result.regexMatch.capturedStart(backReference.num), len);
                 newLength += len;
             }
 
@@ -117,8 +115,8 @@ void FileReplacer::run()
 {
     int count = 0;
 
-    for (const DocResult& docResult : m_searchResult.results) {
-        if(m_wantToStop)
+    for (const DocResult &docResult : m_searchResult.results) {
+        if (m_wantToStop)
             return;
 
         if (++count % 10 == 0)

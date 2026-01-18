@@ -30,7 +30,7 @@ public:
     ~MainWindow();
 
     static QList<MainWindow *> instances();
-    static MainWindow * lastActiveInstance();
+    static MainWindow *lastActiveInstance();
 
     /**
      * Describes the result of a tab closing process.
@@ -57,7 +57,7 @@ public:
     void openCommandLineProvidedUrls(const QString &workingDirectory, const QStringList &arguments);
 
     QSharedPointer<Editor> currentEditor();
-    QAction*  addExtensionMenuItem(QString extensionId, QString text);
+    QAction *addExtensionMenuItem(QString extensionId, QString text);
     void showExtensionsMenu(bool show);
 
     /**
@@ -66,14 +66,14 @@ public:
      */
     QString getDefaultToolBarString() const;
 
-    QToolBar* getToolBar() const;
-    QList<QAction*> getActions() const;
-    QList<const QMenu*> getMenus() const;
+    QToolBar *getToolBar() const;
+    QList<QAction *> getActions() const;
+    QList<const QMenu *> getMenus() const;
 
     // Creates or re-creates the window's main tool bar.
     void loadToolBar();
 
-    DocEngine*  getDocEngine() const;
+    DocEngine *getDocEngine() const;
     void generateRunMenu();
 public slots:
     void refreshEditorUiInfo(QSharedPointer<Editor> editor);
@@ -89,13 +89,13 @@ protected:
 private slots:
     void runCommand();
     void modifyRunCommands();
-    void searchDockItemInteracted(const DocResult& doc, const MatchResult* result, SearchUserInteraction type);
+    void searchDockItemInteracted(const DocResult &doc, const MatchResult *result, SearchUserInteraction type);
     void on_actionNew_triggered();
     void on_customTabContextMenuRequested(QPoint point, EditorTabWidget *tabWidget, int tabIndex);
     void on_actionMove_to_Other_View_triggered();
     void on_actionOpen_triggered();
     void on_actionOpen_Folder_triggered();
-    void on_tabCloseRequested(EditorTabWidget* tabWidget, int tab);
+    void on_tabCloseRequested(EditorTabWidget *tabWidget, int tab);
     void on_actionSave_triggered();
     void on_actionSave_as_triggered();
     void on_actionSave_a_Copy_As_triggered();
@@ -103,8 +103,8 @@ private slots:
     void on_actionPaste_triggered();
     void on_actionCut_triggered();
     void on_actionBegin_End_Select_triggered();
-    void on_currentEditorChanged(EditorTabWidget* tabWidget, int tab);
-    void on_editorAdded(EditorTabWidget* tabWidget, int tab);
+    void on_currentEditorChanged(EditorTabWidget *tabWidget, int tab);
+    void on_editorAdded(EditorTabWidget *tabWidget, int tab);
     void on_cursorActivity(QMap<QString, QVariant> data);
     void on_actionDelete_triggered();
     void on_actionSelect_All_triggered();
@@ -199,34 +199,34 @@ private slots:
     void on_actionToggle_To_Former_Tab_triggered();
 
 private:
-    static QList<MainWindow*> m_instances;
+    static QList<MainWindow *> m_instances;
 
-    Ui::MainWindow*       ui;
-    QToolBar*             m_mainToolBar = nullptr;
-    TopEditorContainer*   m_topEditorContainer;
-    DocEngine*            m_docEngine;
-    QMenu*                m_tabContextMenu;
-    QList<QAction *>      m_tabContextMenuActions;
-    QLabel* m_sbDocumentInfoLabel;
-    QPushButton* m_sbFileFormatBtn;
-    QPushButton* m_sbEOLFormatBtn;
-    QPushButton* m_sbTextFormatBtn;
-    QPushButton* m_sbOvertypeBtn;
-    NpSettings&          m_settings;
-    frmSearchReplace*     m_frmSearchReplace = nullptr;
-    bool                  m_overwrite = false; // Overwrite mode vs Insert mode
-    QString               m_workingDirectory;
-    QMap<QSharedPointer<Extensions::Extension>, QMenu*> m_extensionMenus;
-    QPair<int, int>       beginSelectPosition;
-    bool                  beginSelectPositionSet = false;
+    Ui::MainWindow *ui;
+    QToolBar *m_mainToolBar = nullptr;
+    TopEditorContainer *m_topEditorContainer;
+    DocEngine *m_docEngine;
+    QMenu *m_tabContextMenu;
+    QList<QAction *> m_tabContextMenuActions;
+    QLabel *m_sbDocumentInfoLabel;
+    QPushButton *m_sbFileFormatBtn;
+    QPushButton *m_sbEOLFormatBtn;
+    QPushButton *m_sbTextFormatBtn;
+    QPushButton *m_sbOvertypeBtn;
+    NpSettings &m_settings;
+    frmSearchReplace *m_frmSearchReplace = nullptr;
+    bool m_overwrite = false; // Overwrite mode vs Insert mode
+    QString m_workingDirectory;
+    QMap<QSharedPointer<Extensions::Extension>, QMenu *> m_extensionMenus;
+    QPair<int, int> beginSelectPosition;
+    bool beginSelectPositionSet = false;
 
-    AdvancedSearchDock*  m_advSearchDock;
+    AdvancedSearchDock *m_advSearchDock;
 
     /**
      * @brief saveTabsToCache Saves tabs to cache. Utilizes the saveSession function and
      *        saves all unsaved progress in the cache.
      */
-    bool                saveTabsToCache();
+    bool saveTabsToCache();
 
     /**
      * @brief Acts like closing all tabs, asking to the user for input before discarding
@@ -235,9 +235,9 @@ private:
      *        is unnecessary.
      * @return Whether all files would have been properly closed.
      */
-    bool                finalizeAllTabs();
+    bool finalizeAllTabs();
 
-    int                 askIfWantToSave(EditorTabWidget *tabWidget, int tab, int reason);
+    int askIfWantToSave(EditorTabWidget *tabWidget, int tab, int reason);
 
     /**
      * @brief Removes the specified tab. Doesn't remove the tab if it's the
@@ -255,8 +255,8 @@ private:
      *              to save changes.
      * @return tabCloseResult
      */
-    int                 closeTab(EditorTabWidget *tabWidget, int tab, bool remove, bool force);
-    int                 closeTab(EditorTabWidget *tabWidget, int tab);
+    int closeTab(EditorTabWidget *tabWidget, int tab, bool remove, bool force);
+    int closeTab(EditorTabWidget *tabWidget, int tab);
 
     /**
      * @brief Save a document. If the document has not an associated path,
@@ -265,34 +265,34 @@ private:
      * @param tab
      * @return a saveFileResult
      */
-    int                 save(EditorTabWidget *tabWidget, int tab);
-    int                 saveAs(EditorTabWidget *tabWidget, int tab, bool copy);
-    QUrl                getSaveDialogDefaultFileName(EditorTabWidget *tabWidget, int tab);
-    void                setupLanguagesMenu();
-    void                transformSelectedText(std::function<QString (const QString &)> func);
-    void                restoreWindowSettings();
-    void                loadIcons();
-    void                updateRecentDocsInMenu();
-    void                convertEditorEncoding(QSharedPointer<Editor> editor, QTextCodec *codec, bool bom);
-    void                toggleOverwrite();
-    void                checkIndentationMode(QSharedPointer<Editor> editor);
+    int save(EditorTabWidget *tabWidget, int tab);
+    int saveAs(EditorTabWidget *tabWidget, int tab, bool copy);
+    QUrl getSaveDialogDefaultFileName(EditorTabWidget *tabWidget, int tab);
+    void setupLanguagesMenu();
+    void transformSelectedText(std::function<QString(const QString &)> func);
+    void restoreWindowSettings();
+    void loadIcons();
+    void updateRecentDocsInMenu();
+    void convertEditorEncoding(QSharedPointer<Editor> editor, QTextCodec *codec, bool bom);
+    void toggleOverwrite();
+    void checkIndentationMode(QSharedPointer<Editor> editor);
     QtPromise::QPromise<QStringList> currentWordOrSelections();
-    QtPromise::QPromise<QString>     currentWordOrSelection();
-    void                currentWordOnlineSearch(const QString &searchUrl);
+    QtPromise::QPromise<QString> currentWordOrSelection();
+    void currentWordOnlineSearch(const QString &searchUrl);
 
     /**
      * @brief Attempts to open a file from the recent history. Prompts the user if the file does not exist and
      *        removes it from the recent history if applicable.
      * @param url Url of file to open.
      */
-    void                openRecentFileEntry(QUrl url);
+    void openRecentFileEntry(QUrl url);
 
     /**
      * @brief Workaround for this bug: https://bugs.launchpad.net/ubuntu/+source/appmenu-qt5/+bug/1313248
      */
-    void                fixKeyboardShortcuts();
-    void                instantiateFrmSearchReplace();
-    QUrl                stringToUrl(QString fileName, QString workingDirectory = QString());
+    void fixKeyboardShortcuts();
+    void instantiateFrmSearchReplace();
+    QUrl stringToUrl(QString fileName, QString workingDirectory = QString());
 
     /**
      * @brief Initialize UI from settings

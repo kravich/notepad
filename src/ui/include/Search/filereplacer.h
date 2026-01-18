@@ -15,13 +15,12 @@ class FileReplacer : public QThread
     Q_OBJECT
 
 public:
-
     /**
      * @brief FileReplacer Constructs a FileReplacer to replace all matches in the given SearchResult.
      *                     Use this to replace in ScopeFileSystem for ScopeFileSystem searches, and use
      *                     the static replaceAll() for replacing in documents.
      */
-    FileReplacer(const SearchResult& results, const QString &replacement);
+    FileReplacer(const SearchResult &results, const QString &replacement);
 
     /**
      * @brief cancel Orders the FileSearcher to stop searching at the earliest convenience.
@@ -36,7 +35,7 @@ public:
     /**
      * @brief getErrors Returns a vector containing the file paths where replacing created errors.
      */
-    const QVector<QString>& getErrors() const { return m_failedFiles; }
+    const QVector<QString> &getErrors() const { return m_failedFiles; }
 
     /**
      * @brief replaceAll Replaces all matches in 'content' with 'replacement'.
@@ -45,7 +44,7 @@ public:
      * @param replacement This is the replacement string
      * @return The number of successful replacements
      */
-    static void replaceAll(const DocResult& doc, QString& content, const QString& replacement);
+    static void replaceAll(const DocResult &doc, QString &content, const QString &replacement);
 
 protected:
     void run() override;

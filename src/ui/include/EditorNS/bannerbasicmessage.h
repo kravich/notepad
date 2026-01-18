@@ -6,8 +6,7 @@
 #include <QPushButton>
 #include <QWidget>
 
-namespace EditorNS
-{
+namespace EditorNS {
 
     class BannerBasicMessage : public QWidget
     {
@@ -31,6 +30,7 @@ namespace EditorNS
 
     protected:
         void paintEvent(QPaintEvent *ev);
+
     private:
         QHBoxLayout *m_layout;
         QLabel *m_message;

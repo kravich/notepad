@@ -5,8 +5,7 @@
 #include <QPushButton>
 #include <QStyleOption>
 
-namespace EditorNS
-{
+namespace EditorNS {
 
     BannerFileRemoved::BannerFileRemoved(QWidget *parent) :
         BannerBasicMessage(parent)

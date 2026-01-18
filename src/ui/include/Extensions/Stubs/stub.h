@@ -66,13 +66,23 @@ namespace Extensions {
 
                 StubReturnValue() {}
                 StubReturnValue(const QJsonValue &_result) :
-                    result(_result) {}
+                    result(_result)
+                {
+                }
                 StubReturnValue(const ErrorCode &_error, const QString &_errorString = QString()) :
-                    error(_error), errorString(_errorString) {}
+                    error(_error),
+                    errorString(_errorString)
+                {
+                }
                 StubReturnValue(const QJsonValue &_result, const ErrorCode &_error, const QString &_errorString = QString()) :
-                    result(_result), error(_error), errorString(_errorString) {}
+                    result(_result),
+                    error(_error),
+                    errorString(_errorString)
+                {
+                }
 
-                QJsonObject toJsonObject() {
+                QJsonObject toJsonObject()
+                {
                     QJsonObject ret;
                     ret.insert("result", result.isUndefined() ? QJsonValue() : result);
                     ret.insert("err", static_cast<int>(error));
@@ -109,8 +119,8 @@ namespace Extensions {
 
             QString convertToString(const QJsonValue &value);
 
-            bool operator ==(const Stub &other) const;
-            bool operator !=(const Stub &other) const;
+            bool operator==(const Stub &other) const;
+            bool operator!=(const Stub &other) const;
         signals:
 
         public slots:
@@ -121,7 +131,7 @@ namespace Extensions {
             QObject *objectUnmanagedPtr();
             PointerType pointerType();
 
-            bool registerMethod(const QString &methodName, std::function<StubReturnValue (const QJsonArray &)> method);
+            bool registerMethod(const QString &methodName, std::function<StubReturnValue(const QJsonArray &)> method);
             RuntimeSupport *runtimeSupport();
 
         private:
@@ -130,7 +140,7 @@ namespace Extensions {
             QWeakPointer<QObject> m_weakPointer;
             QSharedPointer<QObject> m_sharedPointer;
             QObject *m_unmanagedPointer = nullptr;
-            QHash<QString, std::function<StubReturnValue (const QJsonArray &)>> m_methods;
+            QHash<QString, std::function<StubReturnValue(const QJsonArray &)>> m_methods;
             QVariant genericCall(QObject *object, QMetaMethod metaMethod, QVariantList args, ErrorCode &error);
             bool invokeOnRealObject(const QString &method, Stub::StubReturnValue &ret, const QJsonArray &args);
         };

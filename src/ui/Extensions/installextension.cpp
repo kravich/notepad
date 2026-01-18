@@ -44,8 +44,8 @@ namespace Extensions {
             m_runtime = manifest.value("runtime").toString();
             ui->lblName->setText(manifest.value("name").toString());
             ui->lblVersionAuthor->setText(tr("Version %1, %2")
-                                          .arg(manifest.value("version").toString(tr("unknown version")))
-                                          .arg(manifest.value("author").toString(tr("unknown author"))));
+                                              .arg(manifest.value("version").toString(tr("unknown version")))
+                                              .arg(manifest.value("author").toString(tr("unknown author"))));
             ui->lblDescription->setText(manifest.value("description").toString());
 
             // Tell the user if this is an update
@@ -81,7 +81,6 @@ namespace Extensions {
 
         QDir path(extensionsPath);
         return path.absoluteFilePath(extensionUniqueName);
-
     }
 
     void InstallExtension::setUIClean(bool success)
@@ -90,7 +89,6 @@ namespace Extensions {
         ui->progressBar->setMinimum(0);
         ui->progressBar->setMaximum(100);
         ui->progressBar->setValue(success ? 100 : 0);
-
     }
 
     void InstallExtension::installNodejsExtension(const QString &packagePath)
@@ -101,7 +99,7 @@ namespace Extensions {
 
         QProcess *process = new QProcess(this);
 
-        connect(process, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), [=](){
+        connect(process, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), [=]() {
             setUIClean(false);
 
             QMessageBox infoBox;
@@ -111,7 +109,7 @@ namespace Extensions {
             infoBox.exec();
         });
 
-        connect(process, static_cast<void (QProcess::*)(int,QProcess::ExitStatus)>(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus) {
+        connect(process, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus) {
             if (exitCode == 0) {
                 setUIClean(true);
 
@@ -141,11 +139,7 @@ namespace Extensions {
 
         this->setEnabled(false);
         process->setWorkingDirectory(Notepad::extensionToolsPath());
-        process->start(Notepad::nodejsPath(), QStringList()
-                      << "install.js"
-                      << packagePath
-                      << Notepad::extensionsPath()
-                      << Notepad::npmPath());
+        process->start(Notepad::nodejsPath(), QStringList() << "install.js" << packagePath << Notepad::extensionsPath() << Notepad::npmPath());
     }
 
     QString InstallExtension::readExtensionManifest(const QString &archivePath)
@@ -181,5 +175,4 @@ void Extensions::InstallExtension::on_btnInstall_clicked()
         QMessageBox::critical(this, tr("Error"), tr("Unsupported runtime: %1").arg(m_runtime));
         return;
     }
-
 }

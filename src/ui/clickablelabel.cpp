@@ -8,7 +8,6 @@ ClickableLabel::ClickableLabel(QWidget *parent) :
 ClickableLabel::ClickableLabel(const QString &text, QWidget *parent) :
     QLabel(text, parent)
 {
-
 }
 
 void ClickableLabel::mousePressEvent(QMouseEvent *)

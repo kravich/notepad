@@ -47,8 +47,7 @@ class Notepad : public QObject
 {
     Q_OBJECT
 public:
-
-    static Notepad& getInstance()
+    static Notepad &getInstance()
     {
         static Notepad instance;
         return instance;
@@ -82,8 +81,8 @@ signals:
 
 private:
     Notepad() {}
-    Notepad(Notepad const&);      // Don't implement
-    void operator=(Notepad const&); // Don't implement
+    Notepad(Notepad const &);      // Don't implement
+    void operator=(Notepad const &); // Don't implement
 };
 
 #endif // NOTEPAD_H

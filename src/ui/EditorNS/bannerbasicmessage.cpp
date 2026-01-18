@@ -3,8 +3,7 @@
 #include <QPainter>
 #include <QStyleOption>
 
-namespace EditorNS
-{
+namespace EditorNS {
 
     BannerBasicMessage::BannerBasicMessage(QWidget *parent) :
         QWidget(parent)
@@ -27,11 +26,11 @@ namespace EditorNS
         m_message->setStyleSheet(".QLabel { margin-left: 5px; margin-right: 10px; color: white } ");
         m_message->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         m_message->setMinimumWidth(150);
-        m_message->setMaximumHeight( fontMetrics().height() * 6 );
+        m_message->setMaximumHeight(fontMetrics().height() * 6);
 
         m_message->setWordWrap(true);
 
-        m_layout->addWidget(m_message,1);
+        m_layout->addWidget(m_message, 1);
         m_layout->addStretch(0);
 
         m_topWidget->setLayout(m_layout);
@@ -41,28 +40,28 @@ namespace EditorNS
     void BannerBasicMessage::setMessage(QString text)
     {
         m_message->setText(text);
-        m_message->setMaximumWidth( fontMetrics().horizontalAdvance(text)+30 );
+        m_message->setMaximumWidth(fontMetrics().horizontalAdvance(text) + 30);
     }
 
     void BannerBasicMessage::setImportance(Importance importance)
     {
         if (importance == Importance::Warning) {
             m_topWidget->setStyleSheet("#BannerBasicMessage_base {"
-                                     "   background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0 stop:0 rgba(227, 115, 0, 255), stop:1 rgba(245, 144, 39, 255));"
-                                     "}");
+                                       "   background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0 stop:0 rgba(227, 115, 0, 255), stop:1 rgba(245, 144, 39, 255));"
+                                       "}");
         } else if (importance == Importance::Question) {
             m_topWidget->setStyleSheet("#BannerBasicMessage_base {"
-                                     "   background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0 stop:0 rgba(58, 146, 222, 255), stop:1 rgba(112, 189, 255, 255));"
-                                     "}");
+                                       "   background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0 stop:0 rgba(58, 146, 222, 255), stop:1 rgba(112, 189, 255, 255));"
+                                       "}");
         }
     }
 
-    QPushButton * BannerBasicMessage::addButton(QString text)
+    QPushButton *BannerBasicMessage::addButton(QString text)
     {
         QPushButton *button = new QPushButton(this);
         button->setText(text);
         button->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        m_layout->insertWidget(m_layout->count()-1, button);
+        m_layout->insertWidget(m_layout->count() - 1, button);
 
         button->setStyleSheet("QPushButton { border: 1px solid white; background: transparent; padding: 5px; color: white }"
                               "QPushButton:hover { background: rgba(0, 0, 0, 60); }"

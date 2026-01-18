@@ -46,9 +46,8 @@ int main(int argc, char *argv[])
 
     QSettings::setDefaultFormat(QSettings::IniFormat);
 
-
     NpSettings::ensureBackwardsCompatibility();
-    NpSettings& settings = NpSettings::getInstance();
+    NpSettings &settings = NpSettings::getInstance();
     settings.General.setNotepadVersion(POINTVERSION);
 
     forceDefaultSettings();
@@ -83,7 +82,7 @@ int main(int argc, char *argv[])
     }
 
     // Check if we're running as root
-    if( getuid() == 0 && !parser->isSet("allow-root") ) {
+    if (getuid() == 0 && !parser->isSet("allow-root")) {
         qWarning() << QObject::tr(
             "Notepad will ask for root privileges whenever they are needed if either 'kdesu' or 'gksu' are installed."
             " Running Notepad as root is not recommended. Use --allow-root if you really want to.");
@@ -146,7 +145,7 @@ int main(int argc, char *argv[])
 
     // If we don't have a window by now (e.g. through restoring backup), we'll create one normally.
     if (MainWindow::instances().isEmpty()) {
-        MainWindow* wnd = new MainWindow(QStringList(), nullptr);
+        MainWindow *wnd = new MainWindow(QStringList(), nullptr);
 
         if (settings.General.getRememberTabsOnExit()) {
             Sessions::loadSession(wnd->getDocEngine(), wnd->topEditorContainer(), PersistentCache::cacheSessionPath());
@@ -166,7 +165,7 @@ int main(int argc, char *argv[])
 
     // Initialize stats, but delay so that we are sure that
     // any dialog will open on top of MainWindow without blocking it.
-    QTimer::singleShot(0, [](){
+    QTimer::singleShot(0, []() {
         Stats::init();
     });
 
@@ -181,20 +180,18 @@ int main(int argc, char *argv[])
 
 void forceDefaultSettings()
 {
-    NpSettings& s = NpSettings::getInstance();
+    NpSettings &s = NpSettings::getInstance();
 
     // Use tabs to indent makefile by default
-    if(!s.Languages.hasUseDefaultSettings("makefile")) {
+    if (!s.Languages.hasUseDefaultSettings("makefile")) {
         s.Languages.setUseDefaultSettings("makefile", false);
         s.Languages.setIndentWithSpaces("makefile", false);
     }
 
     // Use two spaces to indent ruby by default
-    if(!s.Languages.hasUseDefaultSettings("ruby")) {
+    if (!s.Languages.hasUseDefaultSettings("ruby")) {
         s.Languages.setUseDefaultSettings("ruby", false);
         s.Languages.setTabSize("ruby", 2);
-        s.Languages.setIndentWithSpaces("ruby",true);
+        s.Languages.setIndentWithSpaces("ruby", true);
     }
-
-
 }

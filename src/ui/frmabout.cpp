@@ -15,8 +15,8 @@ frmAbout::frmAbout(QWidget *parent) :
     ui->setupUi(this);
 
     ui->lblIcon->setPixmap(IconProvider::fromTheme("notepad")
-                           .pixmap(ui->lblIcon->width(),
-                                   ui->lblIcon->height()));
+                               .pixmap(ui->lblIcon->width(),
+                                       ui->lblIcon->height()));
 
     ui->lblVersion->setText("v" + QApplication::applicationVersion());
     ui->lblCopyright->setText(Notepad::copyright());
@@ -29,7 +29,7 @@ frmAbout::frmAbout(QWidget *parent) :
     ui->pushButton->setStyleSheet("QPushButton {color: black;}");
 
     setFixedSize(this->width(), this->height());
-    setWindowFlags( (windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowMaximizeButtonHint);
+    setWindowFlags((windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowMaximizeButtonHint);
 }
 
 frmAbout::~frmAbout()

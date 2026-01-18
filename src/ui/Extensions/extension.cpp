@@ -6,13 +6,14 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QRandomGenerator>
 #include <QTextStream>
 #include <QTime>
-#include <QRandomGenerator>
 
 namespace Extensions {
 
-    Extension::Extension(QString path, QString serverSocketPath) : QObject(0)
+    Extension::Extension(QString path, QString serverSocketPath) :
+        QObject(0)
     {
         m_extensionId = path + "-" + QString::number(QTime::currentTime().msec()) + "-" + QString::number(QRandomGenerator::global()->generate());
 
@@ -30,7 +31,6 @@ namespace Extensions {
             QString main = manifest.value("main").toString();
 
             if (m_runtime == "nodejs") {
-
                 process = new QProcess();
                 process->setProcessChannelMode(QProcess::ForwardedChannels);
                 process->setWorkingDirectory(path);
@@ -46,7 +46,6 @@ namespace Extensions {
                 connect(process, SIGNAL(error(QProcess::ProcessError)), this, SLOT(on_processError(QProcess::ProcessError)));
 
                 process->start(runtimePath, args);
-
             }
 
         } else {

@@ -1,4 +1,5 @@
 #include "include/iconprovider.h"
+
 #include "include/svgiconengine.h"
 
 #include <QDebug>
@@ -24,10 +25,10 @@ QIcon IconProvider::fromTheme(const QString &name)
         // QIcon::setThemeName("notepad");
         QIcon icon;
 
-        QList<QPair<int, QString>> sizes {
-                    QPair<int, QString>(16, "16x16"),
-                    QPair<int, QString>(64, "64x64"),
-                    QPair<int, QString>(128, "128x128"),
+        QList<QPair<int, QString>> sizes{
+            QPair<int, QString>(16, "16x16"),
+            QPair<int, QString>(64, "64x64"),
+            QPair<int, QString>(128, "128x128"),
         };
 
         if (QFileInfo(basePath.arg("scalable").arg(name).arg("svg")).exists()) {
@@ -35,7 +36,7 @@ QIcon IconProvider::fromTheme(const QString &name)
                          QSize(512, 512));
         }
 
-        for (const QPair<int, QString> & size : sizes) {
+        for (const QPair<int, QString> &size : sizes) {
             icon.addFile(basePath.arg(size.second).arg(name).arg("png"),
                          QSize(size.first, size.first));
         }

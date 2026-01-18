@@ -12,7 +12,7 @@
 #if defined(Q_OS_WIN)
 #include <QLibrary>
 #include <qt_windows.h>
-typedef BOOL(WINAPI*PProcessIdToSessionId)(DWORD,DWORD*);
+typedef BOOL(WINAPI *PProcessIdToSessionId)(DWORD, DWORD *);
 static PProcessIdToSessionId pProcessIdToSessionId = 0;
 #endif
 #if defined(Q_OS_UNIX)
@@ -33,9 +33,9 @@ SingleApplication::SingleApplication(int &argc, char **argv) :
 void SingleApplication::startServer()
 {
     if (!QDBusConnection::sessionBus().isConnected()) {
-        qDebug() <<  "Cannot connect to the D-Bus session bus.\n"
-                        "To start it, run:\n"
-                        "\teval `dbus-launch --auto-syntax`\n";
+        qDebug() << "Cannot connect to the D-Bus session bus.\n"
+                    "To start it, run:\n"
+                    "\teval `dbus-launch --auto-syntax`\n";
         Q_ASSERT(true);
     }
 
@@ -48,7 +48,8 @@ void SingleApplication::startServer()
     qDebug() << "Started and object registered: " << ok;
 }
 
-bool SingleApplication::attachToOtherInstance() {
+bool SingleApplication::attachToOtherInstance()
+{
     QDBusInterface iface(SERVICE_NAME, "/", "", QDBusConnection::sessionBus());
     if (!iface.isValid())
         return false;
@@ -57,11 +58,12 @@ bool SingleApplication::attachToOtherInstance() {
     if (reply.isValid())
         return true;
 
-    qDebug() <<  "Call to SingleApplication::receive() failed: " << reply.error().message();
+    qDebug() << "Call to SingleApplication::receive() failed: " << reply.error().message();
     return false;
 }
 
-void SingleApplication::receive(const QString& workingDirectory, const QStringList& arguments) {
+void SingleApplication::receive(const QString &workingDirectory, const QStringList &arguments)
+{
     if (arguments.isEmpty()) {
         qWarning() << "Invalid DBus message with empty arguments parameter received.";
         return;
@@ -69,7 +71,6 @@ void SingleApplication::receive(const QString& workingDirectory, const QStringLi
 
     emit receivedArguments(workingDirectory, arguments);
 }
-
 
 #else //ifdef USE_DBUS
 
@@ -91,12 +92,11 @@ void SingleApplication::receive(const QString& workingDirectory, const QStringLi
  *                            [working_dir, arg0, ..., argn]
  */
 
-QLocalSocket * SingleApplication::alreadyRunningInstance()
+QLocalSocket *SingleApplication::alreadyRunningInstance()
 {
     QLocalSocket *socket = new QLocalSocket(this);
     socket->connectToServer(socketNameForUser());
-    if (socket->waitForConnected(2000))
-    {
+    if (socket->waitForConnected(2000)) {
         LocalCommunication::send("NEW_CLIENT", socket);
         QString reply = LocalCommunication::receive(socket);
 
@@ -126,12 +126,9 @@ void SingleApplication::newConnection()
         connect(conn, &QLocalSocket::readyRead, this, [=]() {
             QString message = LocalCommunication::receive(conn);
 
-            if (message == "NEW_CLIENT")
-            {
+            if (message == "NEW_CLIENT") {
                 LocalCommunication::send("HELLO", conn);
-            }
-            else if (message == "ARGS")
-            {
+            } else if (message == "ARGS") {
                 LocalCommunication::send("OK", conn);
                 QByteArray ar = LocalCommunication::receiveRaw(conn);
 
@@ -164,8 +161,7 @@ QString SingleApplication::socketNameForUser()
 
     QByteArray idc = id.toUtf8();
     quint16 idNum = qChecksum(idc.constData(), idc.size());
-    QString socketName = QLatin1String("qtsingleapp-") + prefix
-            + QLatin1Char('-') + QString::number(idNum, 16);
+    QString socketName = QLatin1String("qtsingleapp-") + prefix + QLatin1Char('-') + QString::number(idNum, 16);
 
 #if defined(Q_OS_WIN)
     if (!pProcessIdToSessionId) {

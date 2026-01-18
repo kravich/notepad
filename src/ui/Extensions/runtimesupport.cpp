@@ -8,7 +8,8 @@
 
 namespace Extensions {
 
-    RuntimeSupport::RuntimeSupport(QObject *parent) : QObject(parent)
+    RuntimeSupport::RuntimeSupport(QObject *parent) :
+        QObject(parent)
     {
         QSharedPointer<Stubs::Stub> npStub = QSharedPointer<Stubs::Stub>(new Stubs::NotepadStub(this));
         m_pointers.insert(NP_STUB_ID, npStub);
@@ -16,7 +17,6 @@ namespace Extensions {
 
     RuntimeSupport::~RuntimeSupport()
     {
-
     }
 
     QJsonObject RuntimeSupport::handleRequest(const QJsonObject &request)
@@ -27,9 +27,9 @@ namespace Extensions {
         // Fail if some fields are missing
         if (objectId <= 0 || method.isEmpty()) {
             return Stubs::Stub::StubReturnValue(
-                        Stubs::Stub::ErrorCode::INVALID_REQUEST,
-                        QString("Invalid request (objectId: %1, method: %2)").arg(objectId).arg(method)
-                        ).toJsonObject();
+                       Stubs::Stub::ErrorCode::INVALID_REQUEST,
+                       QString("Invalid request (objectId: %1, method: %2)").arg(objectId).arg(method))
+                .toJsonObject();
         }
 
         Q_ASSERT(objectId >= 0 && method.length() > 0);
@@ -37,7 +37,6 @@ namespace Extensions {
         QSharedPointer<Stubs::Stub> object = m_pointers.value(objectId);
 
         if (!object.isNull()) {
-
             if (object->isAlive()) {
                 QJsonArray jsonArgs = request.value("args").toArray();
 
@@ -49,17 +48,17 @@ namespace Extensions {
             } else {
                 m_pointers.remove(objectId);
                 return Stubs::Stub::StubReturnValue(
-                            Stubs::Stub::ErrorCode::OBJECT_DEALLOCATED,
-                            QString("Object id %1 is deallocated.").arg(objectId)
-                            ).toJsonObject();
+                           Stubs::Stub::ErrorCode::OBJECT_DEALLOCATED,
+                           QString("Object id %1 is deallocated.").arg(objectId))
+                    .toJsonObject();
             }
 
         } else {
             m_pointers.remove(objectId);
             return Stubs::Stub::StubReturnValue(
-                        Stubs::Stub::ErrorCode::OBJECT_NOT_FOUND,
-                        QString("Object id %1 doesn't exist.").arg(objectId)
-                        ).toJsonObject();
+                       Stubs::Stub::ErrorCode::OBJECT_NOT_FOUND,
+                       QString("Object id %1 doesn't exist.").arg(objectId))
+                .toJsonObject();
         }
     }
 

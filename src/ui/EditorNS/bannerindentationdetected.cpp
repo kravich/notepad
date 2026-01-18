@@ -5,8 +5,7 @@
 #include <QPushButton>
 #include <QStyleOption>
 
-namespace EditorNS
-{
+namespace EditorNS {
 
     BannerIndentationDetected::BannerIndentationDetected(bool mode, Editor::IndentationMode detected, Editor::IndentationMode current, QWidget *parent) :
         BannerBasicMessage(parent)

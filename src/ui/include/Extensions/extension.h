@@ -22,6 +22,7 @@ namespace Extensions {
 
     private slots:
         void on_processError(QProcess::ProcessError error);
+
     private:
         QString m_extensionId;
         QString m_name;

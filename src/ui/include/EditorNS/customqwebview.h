@@ -4,8 +4,7 @@
 #include <QWebEngineView>
 #include <QWheelEvent>
 
-namespace EditorNS
-{
+namespace EditorNS {
 
     class CustomQWebView : public QWebEngineView
     {
@@ -21,15 +20,15 @@ namespace EditorNS
     protected:
         void keyPressEvent(QKeyEvent *ev) override;
         void dropEvent(QDropEvent *ev) override;
-        void focusInEvent(QFocusEvent* event) override;
-        void contextMenuEvent(QContextMenuEvent* ev) override;
+        void focusInEvent(QFocusEvent *event) override;
+        void contextMenuEvent(QContextMenuEvent *ev) override;
 
         /*
          * QWebEngineView eats various types of events. Since we still need them
          * we'll have to install a custom event filter on the WebView's child delegate
          * QOpenGLWidget.
          */
-        bool event(QEvent* evt) override;
+        bool event(QEvent *evt) override;
         bool eventFilter(QObject *obj, QEvent *ev) override;
 
     private:

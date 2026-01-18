@@ -30,7 +30,6 @@ EditorTabWidget::EditorTabWidget(QWidget *parent) :
     QString style = QString("QTabBar::tab{min-width:100px; height:24px;}");
     setStyleSheet(style);
 #endif
-
 }
 
 EditorTabWidget::~EditorTabWidget()
@@ -52,30 +51,24 @@ int EditorTabWidget::addEditorTab(bool setFocus, const QString &title)
 
 void EditorTabWidget::connectEditorSignals(Editor *editor)
 {
-    connect(editor, &Editor::cleanChanged,
-            this, &EditorTabWidget::on_cleanChanged);
+    connect(editor, &Editor::cleanChanged, this, &EditorTabWidget::on_cleanChanged);
 
     connect(editor, &Editor::gotFocus, this, &EditorTabWidget::gotFocus);
 
-    connect(editor, &Editor::mouseWheel,
-            this, &EditorTabWidget::on_editorMouseWheel);
+    connect(editor, &Editor::mouseWheel, this, &EditorTabWidget::on_editorMouseWheel);
 
-    connect(editor, &Editor::fileNameChanged,
-            this, &EditorTabWidget::on_fileNameChanged);
+    connect(editor, &Editor::fileNameChanged, this, &EditorTabWidget::on_fileNameChanged);
 }
 
 void EditorTabWidget::disconnectEditorSignals(Editor *editor)
 {
-    disconnect(editor, &Editor::cleanChanged,
-               this, &EditorTabWidget::on_cleanChanged);
+    disconnect(editor, &Editor::cleanChanged, this, &EditorTabWidget::on_cleanChanged);
 
     disconnect(editor, &Editor::gotFocus, this, &EditorTabWidget::gotFocus);
 
-    disconnect(editor, &Editor::mouseWheel,
-               this, &EditorTabWidget::on_editorMouseWheel);
+    disconnect(editor, &Editor::mouseWheel, this, &EditorTabWidget::on_editorMouseWheel);
 
-    disconnect(editor, &Editor::fileNameChanged,
-               this, &EditorTabWidget::on_fileNameChanged);
+    disconnect(editor, &Editor::fileNameChanged, this, &EditorTabWidget::on_fileNameChanged);
 }
 
 int EditorTabWidget::indexOf(QSharedPointer<Editor> editor) const
@@ -88,7 +81,7 @@ int EditorTabWidget::indexOf(QWidget *widget) const
     return QTabWidget::indexOf(widget);
 }
 
-QString EditorTabWidget::tabText(Editor* editor) const
+QString EditorTabWidget::tabText(Editor *editor) const
 {
     return editor->tabName();
 }
@@ -98,18 +91,17 @@ QString EditorTabWidget::tabText(int index) const
     return editor(index)->tabName();
 }
 
-void EditorTabWidget::setTabText(int index, const QString& text)
+void EditorTabWidget::setTabText(int index, const QString &text)
 {
     QTabWidget::setTabText(index, text);
     editor(index)->setTabName(text);
 }
 
-
-void EditorTabWidget::setTabText(Editor* editor, const QString& text)
+void EditorTabWidget::setTabText(Editor *editor, const QString &text)
 {
     int idx = indexOf(editor);
 
-    if(idx >= 0) {
+    if (idx >= 0) {
         QTabWidget::setTabText(idx, text);
         editor->setTabName(text);
     }
@@ -157,7 +149,7 @@ int EditorTabWidget::rawAddEditorTab(const bool setFocus, const QString &title, 
 
     // Calling adTab() triggers MainWindow::refreshEditorUiInfo. We want to set the tab title
     // before that happens so it can be displayed properly.
-    const QString& tabTitle = create ? title : oldText;
+    const QString &tabTitle = create ? title : oldText;
     editor->setTabName(tabTitle);
     int index = addTab(editor.data(), tabTitle);
 
@@ -166,7 +158,7 @@ int EditorTabWidget::rawAddEditorTab(const bool setFocus, const QString &title, 
     }
     this->connectEditorSignals(editor.data());
 
-    if(setFocus) {
+    if (setFocus) {
         this->setCurrentIndex(index);
         editor->setFocus();
     }
@@ -223,7 +215,7 @@ void EditorTabWidget::tabRemoved(int)
 {
     // FIXME Find a more efficient way to get the deleted editor
 
-    QList<QWidget*> tabs;
+    QList<QWidget *> tabs;
     for (int i = 0; i < this->count(); i++) {
         tabs.append(widget(i));
     }
@@ -251,7 +243,7 @@ QSharedPointer<Editor> EditorTabWidget::currentEditor()
 
 QString EditorTabWidget::tabTextFromEditor(QSharedPointer<EditorNS::Editor> ed)
 {
-    for(int i=0; i<count(); ++i)
+    for (int i = 0; i < count(); ++i)
         if (editor(i) == ed) return tabText(i);
 
     return QString();
@@ -276,8 +268,9 @@ void EditorTabWidget::deleteIfEmpty()
     EditorTabWidget::deleteIfEmpty(this);
 }
 
-void EditorTabWidget::deleteIfEmpty(EditorTabWidget *tabWidget) {
-    if(tabWidget->count() == 0) {
+void EditorTabWidget::deleteIfEmpty(EditorTabWidget *tabWidget)
+{
+    if (tabWidget->count() == 0) {
         delete tabWidget;
     }
 }
@@ -310,7 +303,7 @@ void EditorTabWidget::on_cleanChanged(bool isClean)
         return;
 
     int index = indexOf(editor);
-    if(index >= 0)
+    if (index >= 0)
         setSavedIcon(index, isClean);
 }
 
@@ -341,14 +334,14 @@ void EditorTabWidget::mouseReleaseEvent(QMouseEvent *ev)
 QString EditorTabWidget::generateTabTitleForUrl(const QUrl &filename) const
 {
     QString fileName = QFileInfo(filename.toDisplayString(QUrl::RemoveScheme |
-                                                   QUrl::RemovePassword |
-                                                   QUrl::RemoveUserInfo |
-                                                   QUrl::RemovePort |
-                                                   QUrl::RemoveAuthority |
-                                                   QUrl::RemoveQuery |
-                                                   QUrl::RemoveFragment |
-                                                   QUrl::PreferLocalFile
-                                                   )).fileName();
+                                                          QUrl::RemovePassword |
+                                                          QUrl::RemoveUserInfo |
+                                                          QUrl::RemovePort |
+                                                          QUrl::RemoveAuthority |
+                                                          QUrl::RemoveQuery |
+                                                          QUrl::RemoveFragment |
+                                                          QUrl::PreferLocalFile))
+                           .fileName();
     return fileName;
 }
 

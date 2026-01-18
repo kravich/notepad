@@ -25,7 +25,7 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     QHBoxLayout *h1 = new QHBoxLayout;
     QHBoxLayout *h2 = new QHBoxLayout;
     QHBoxLayout *h3 = new QHBoxLayout;
-    QPushButton *btnOk   = new QPushButton(tr("OK"));
+    QPushButton *btnOk = new QPushButton(tr("OK"));
     QPushButton *btnCancel = new QPushButton(tr("Cancel"));
     RunDelegate *delegate = new RunDelegate(this);
     QShortcut *keyDelete = new QShortcut(QKeySequence("Delete"), this);
@@ -51,7 +51,6 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     vh->setDefaultSectionSize(20);
     hh->setStretchLastSection(true);
 
-
     v1->addWidget(info);
     v1->addWidget(m_commands);
     v1->addItem(h3);
@@ -65,7 +64,7 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     setLayout(v1);
     setMinimumSize(500, 200);
 
-    QMap <QString, QString> cmdData = m_settings.Run.getCommands();
+    QMap<QString, QString> cmdData = m_settings.Run.getCommands();
     QSortFilterProxyModel *pModel = new QSortFilterProxyModel(this);
     pModel->setSourceModel(m_commands->model());
 
@@ -78,8 +77,7 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
 
     int workRow = 0;
     QMapIterator<QString, QString> it(cmdData);
-    while(it.hasNext())
-    {
+    while (it.hasNext()) {
         it.next();
         QTableWidgetItem *item = new QTableWidgetItem(it.key());
         m_commands->setItem(workRow, 0, item);
@@ -165,18 +163,17 @@ void RunPreferences::slotRemove()
     }
 }
 
-RunDelegate::RunDelegate(QObject *parent)
-    : QStyledItemDelegate(parent),
-      openIcon(IconProvider::fromTheme("document-open")),
-      rmIcon(IconProvider::fromTheme("edit-delete"))
+RunDelegate::RunDelegate(QObject *parent) :
+    QStyledItemDelegate(parent),
+    openIcon(IconProvider::fromTheme("document-open")),
+    rmIcon(IconProvider::fromTheme("edit-delete"))
 {
 }
 
 void RunDelegate::paint(QPainter *painter,
-        const QStyleOptionViewItem &option,
-        const QModelIndex &index) const
+                        const QStyleOptionViewItem &option,
+                        const QModelIndex &index) const
 {
-
     if (index.column() == 1) {
         painter->save();
         QStyleOptionButton btnOpen;
@@ -193,8 +190,8 @@ void RunDelegate::paint(QPainter *painter,
         // Elide Text
         QFontMetrics fm(option.font);
         QString editText = fm.elidedText(index.data(Qt::EditRole).toString(),
-                Qt::ElideRight,
-                r.width());
+                                         Qt::ElideRight,
+                                         r.width());
 
         QPen oldPen = painter->pen();
         if (option.state & QStyle::State_Selected) {
@@ -202,7 +199,7 @@ void RunDelegate::paint(QPainter *painter,
         }
         painter->drawText(r, Qt::AlignLeft | Qt::AlignVCenter, editText);
         painter->setPen(oldPen);
-        option.widget->style()->drawControl (QStyle::CE_PushButtonLabel, &btnOpen, painter);
+        option.widget->style()->drawControl(QStyle::CE_PushButtonLabel, &btnOpen, painter);
 
         QStyleOptionButton btnRm;
         x += 16;
@@ -210,7 +207,7 @@ void RunDelegate::paint(QPainter *painter,
         btnRm.icon = rmIcon;
         btnRm.iconSize = QSize(14, 14);
         btnRm.state = QStyle::State_Enabled;
-        option.widget->style()->drawControl (QStyle::CE_PushButtonLabel, &btnRm, painter);
+        option.widget->style()->drawControl(QStyle::CE_PushButtonLabel, &btnRm, painter);
 
         painter->restore();
     } else {
@@ -219,13 +216,13 @@ void RunDelegate::paint(QPainter *painter,
 }
 
 bool RunDelegate::editorEvent(QEvent *event,
-        QAbstractItemModel *model,
-        const QStyleOptionViewItem &option,
-        const QModelIndex &index)
+                              QAbstractItemModel *model,
+                              const QStyleOptionViewItem &option,
+                              const QModelIndex &index)
 {
     if (index.column() == 1) {
         if (event->type() == QEvent::MouseButtonRelease) {
-            QMouseEvent *e = static_cast<QMouseEvent*>(event);
+            QMouseEvent *e = static_cast<QMouseEvent *>(event);
             int clickX = e->x();
             int clickY = e->y();
             int x, y;
@@ -234,8 +231,8 @@ bool RunDelegate::editorEvent(QEvent *event,
             y = r.top();
             if (clickX > x && clickX < x + 16) {
                 if (clickY > y && clickY < y + 16) {
-                    QString f = QFileDialog::getOpenFileName(qobject_cast<QWidget*>(parent()),
-                            tr("Open File"));
+                    QString f = QFileDialog::getOpenFileName(qobject_cast<QWidget *>(parent()),
+                                                             tr("Open File"));
                     QString oldData = model->data(index, Qt::EditRole).toString();
                     oldData.prepend(f);
                     model->setData(index, oldData, Qt::EditRole);
@@ -251,8 +248,6 @@ bool RunDelegate::editorEvent(QEvent *event,
                     return true;
                 }
             }
-
-
         }
     }
     return false;
@@ -321,11 +316,11 @@ void RunDialog::slotSave()
 {
     bool ok;
     QString name = QInputDialog::getText(this,
-            tr("Choose the name to be displayed in the run menu."),
-            tr("Command Name:"),
-            QLineEdit::Normal,
-            m_command->text(),
-            &ok);
+                                         tr("Choose the name to be displayed in the run menu."),
+                                         tr("Command Name:"),
+                                         QLineEdit::Normal,
+                                         m_command->text(),
+                                         &ok);
     if (ok && !name.isEmpty() && !m_command->text().isEmpty()) {
         m_settings.Run.setCommand(name, m_command->text());
         m_saved = 1;
@@ -359,7 +354,8 @@ QString RunDialog::getCommandInput()
     return m_command->text();
 }
 
-QStringList RunDialog::parseCommandString(QString cmd) {
+QStringList RunDialog::parseCommandString(QString cmd)
+{
     QStringList parts;
     const char OUT = '\0';
     char quote = OUT;
@@ -388,8 +384,7 @@ QStringList RunDialog::parseCommandString(QString cmd) {
             }
 
         } else if (cmd[i] == '\\') {
-
-            if (i+1 < cmd.length()) {
+            if (i + 1 < cmd.length()) {
                 i++;
                 if (quote == '\'') {
                     if (cmd[i] == '\'') {

@@ -2,7 +2,7 @@
 
 #include <QRegularExpression>
 
-QString SearchString::format(QString regex, SearchHelpers::SearchMode searchMode, const SearchHelpers::SearchOptions& searchOptions)
+QString SearchString::format(QString regex, SearchHelpers::SearchMode searchMode, const SearchHelpers::SearchOptions &searchOptions)
 {
     // CodeMirror only knows regex search. So if user asks for "regular" search
     // we'll have to escape all regex characters.
@@ -38,12 +38,12 @@ QString SearchString::unescape(const QString &data)
             else if (data[i] == 'r') c = '\r';
             else if (data[i] == 't') c = '\t';
             else if (data[i] == 'v') c = '\v';
-            else if (data[i] == 'x' && i+2 <= dataLength) {
+            else if (data[i] == 'x' && i + 2 <= dataLength) {
                 int nHex = data.mid(++i, 2).toInt(0, 16);
                 c = QChar(nHex);
                 i += 1;
-            } else if (data[i] == 'u' && i+4 <= dataLength) {
-                int nHex = data.mid(++i,4).toInt(0, 16);
+            } else if (data[i] == 'u' && i + 4 <= dataLength) {
+                int nHex = data.mid(++i, 4).toInt(0, 16);
                 c = QChar(nHex);
                 i += 3;
             }

@@ -3,19 +3,18 @@
 namespace Extensions {
     namespace Stubs {
 
-        EditorStub::EditorStub(const QWeakPointer<QObject> &object, RuntimeSupport *rts) : Stub(object, rts)
+        EditorStub::EditorStub(const QWeakPointer<QObject> &object, RuntimeSupport *rts) :
+            Stub(object, rts)
         {
-
         }
 
         EditorStub::~EditorStub()
         {
-
         }
 
         EditorNS::Editor *EditorStub::editor()
         {
-            return static_cast<EditorNS::Editor*>(objectUnmanagedPtr());
+            return static_cast<EditorNS::Editor *>(objectUnmanagedPtr());
         }
 
         NP_DEFINE_EXTENSION_METHOD(EditorStub, setValue, args)

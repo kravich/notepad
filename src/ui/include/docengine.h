@@ -48,32 +48,68 @@ public:
      */
     struct DocumentLoader {
         // Set the URL(s) of files to be loaded
-        DocumentLoader& setUrl(const QUrl& url) { this->urls << url; return *this; }
-        DocumentLoader& setUrls(const QList<QUrl>& urls) { this->urls = urls; return *this; }
+        DocumentLoader &setUrl(const QUrl &url)
+        {
+            this->urls << url;
+            return *this;
+        }
+        DocumentLoader &setUrls(const QList<QUrl> &urls)
+        {
+            this->urls = urls;
+            return *this;
+        }
 
         // Set how files should be handled that trigger a file-size warning.
-        DocumentLoader& setFileSizeWarning(FileSizeAction fsa) { fileSizeAction = fsa; return *this; }
+        DocumentLoader &setFileSizeWarning(FileSizeAction fsa)
+        {
+            fileSizeAction = fsa;
+            return *this;
+        }
 
         // If true, the documents' parent directory will be remembered as the last opened dir.
-        DocumentLoader& setRememberLastDir(bool rld) { rememberLastDir = rld; return *this; }
+        DocumentLoader &setRememberLastDir(bool rld)
+        {
+            rememberLastDir = rld;
+            return *this;
+        }
 
         // Set if document has Byte Order Marks set
-        DocumentLoader& setBOM(bool setBom) { bom = setBom; return *this; }
+        DocumentLoader &setBOM(bool setBom)
+        {
+            bom = setBom;
+            return *this;
+        }
 
         // Sets the TextCodec to decode the file as.
-        DocumentLoader& setTextCodec(QTextCodec* codec) { textCodec = codec; return *this; }
+        DocumentLoader &setTextCodec(QTextCodec *codec)
+        {
+            textCodec = codec;
+            return *this;
+        }
 
         // Set the TabWidget the documents should be loaded into
-        DocumentLoader& setTabWidget(EditorTabWidget* tw) { tabWidget = tw; return *this; }
+        DocumentLoader &setTabWidget(EditorTabWidget *tw)
+        {
+            tabWidget = tw;
+            return *this;
+        }
 
         // Determines how already opened documents should be treated.
-        DocumentLoader& setReloadAction(ReloadAction reload) { reloadAction = reload; return *this; }
+        DocumentLoader &setReloadAction(ReloadAction reload)
+        {
+            reloadAction = reload;
+            return *this;
+        }
 
         // Index of the URL that must be loaded with highest priority, for example because
         // it will be the one with user focus. With constants ALL_MINIMUM_PRIORITY and
         // ALL_MAXIMUM_PRIORITY, all URLs will be loaded with the same low or high priority.
         // This parameter has effect only for background executions (i.e. executeInBackground()).
-        DocumentLoader& setPriorityIdx(int idx) { priorityIdx = idx; return *this; }
+        DocumentLoader &setPriorityIdx(int idx)
+        {
+            priorityIdx = idx;
+            return *this;
+        }
 
         // Set whether, after an Editor has been created and his content has been loaded,
         // the document loader should take care of things like assigning a file path to the
@@ -89,20 +125,24 @@ public:
         // If this function is called, it will be called asynchronously. However, the function
         // itself must be synchronous so that the DocumentLoader knows when to emit the
         // DocumentLoaded event.
-        DocumentLoader& setManualEditorInitialization(
-                std::function<void(QSharedPointer<Editor> editor, const QUrl& url)> f) {
-            manualEditorInitialization = f; return *this;
+        DocumentLoader &setManualEditorInitialization(
+            std::function<void(QSharedPointer<Editor> editor, const QUrl &url)> f)
+        {
+            manualEditorInitialization = f;
+            return *this;
         }
 
         /**
          * @brief execute Runs the load operation.
          */
-        QtPromise::QPromise<void> execute() {
+        QtPromise::QPromise<void> execute()
+        {
             Q_ASSERT(tabWidget != nullptr);
             return docEngine.loadDocuments(*this);
         }
 
-        QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> executeInBackground() {
+        QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> executeInBackground()
+        {
             Q_ASSERT(tabWidget != nullptr);
             return docEngine.loadDocumentsInBackground(*this);
         }
@@ -112,19 +152,22 @@ public:
 
         // See here for the arguments' default values
         QList<QUrl> urls;
-        EditorTabWidget* tabWidget      = nullptr;
-        QTextCodec* textCodec           = nullptr;
-        ReloadAction reloadAction       = ReloadActionAsk;
-        bool rememberLastDir            = true;
-        bool bom                        = false;
-        FileSizeAction fileSizeAction   = FileSizeActionAsk;
-        int priorityIdx                 = ALL_MAXIMUM_PRIORITY;
-        std::function<void(QSharedPointer<Editor> editor, const QUrl& url)> manualEditorInitialization = nullptr;
+        EditorTabWidget *tabWidget = nullptr;
+        QTextCodec *textCodec = nullptr;
+        ReloadAction reloadAction = ReloadActionAsk;
+        bool rememberLastDir = true;
+        bool bom = false;
+        FileSizeAction fileSizeAction = FileSizeActionAsk;
+        int priorityIdx = ALL_MAXIMUM_PRIORITY;
+        std::function<void(QSharedPointer<Editor> editor, const QUrl &url)> manualEditorInitialization = nullptr;
 
     private:
         friend class DocEngine;
-        DocumentLoader(DocEngine& eng) : docEngine(eng) {}
-        DocEngine& docEngine;
+        DocumentLoader(DocEngine &eng) :
+            docEngine(eng)
+        {
+        }
+        DocEngine &docEngine;
     };
 
     /**
@@ -138,7 +181,7 @@ public:
      * For example, if the user cancels the save dialog, \p saveFileResult_Canceled is returned.
      */
     enum saveFileResult {
-         saveFileResult_Saved,      /** The file was saved  */
+        saveFileResult_Saved,      /** The file was saved  */
         saveFileResult_Canceled     /** The save process was canceled */
     };
 
@@ -207,7 +250,7 @@ private:
      * @brief loadDocuments Responsible for loading or reloading a number of text files.
      * @param docLoader Contains parameters for document loading. See DocumentLoader class for info.
      */
-    QtPromise::QPromise<void> loadDocuments(const DocumentLoader& docLoader);
+    QtPromise::QPromise<void> loadDocuments(const DocumentLoader &docLoader);
 
     /**
      * @brief Loads documents in background. Experimental API that needs to be integrated
@@ -215,7 +258,7 @@ private:
      * @param docLoader
      * @return
      */
-    QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> loadDocumentsInBackground(const DocumentLoader& docLoader);
+    QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> loadDocumentsInBackground(const DocumentLoader &docLoader);
 
     void monitorDocument(const QString &fileName);
     void unmonitorDocument(const QString &fileName);
