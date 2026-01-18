@@ -272,12 +272,12 @@ namespace Extensions {
 
         bool Stub::operator==(const Stub &other) const
         {
-            return m_pointerType == other.m_pointerType
-                    && m_sharedPointer == other.m_sharedPointer
-                    && m_weakPointer == other.m_weakPointer
-                    && m_unmanagedPointer == other.m_unmanagedPointer
-                    && m_rts == other.m_rts
-                    && stubName_() == other.stubName_();
+            return m_pointerType == other.m_pointerType &&
+                   m_sharedPointer == other.m_sharedPointer &&
+                   m_weakPointer == other.m_weakPointer &&
+                   m_unmanagedPointer == other.m_unmanagedPointer &&
+                   m_rts == other.m_rts &&
+                   stubName_() == other.stubName_();
         }
 
         bool Stub::operator!=(const Stub &other) const
