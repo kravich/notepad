@@ -4,14 +4,14 @@ Represents the entire application.
 
 [TOC]
 
-## nqq.commandLineArguments()
+## np.commandLineArguments()
 
 Returns the list of command line arguments passed to Notepad.
 
-## nqq.version()
+## np.version()
 
 Returns the version of Notepad.
 
-## nqq.windows()
+## np.windows()
 
 Returns a list of [`Window`](Window) object, one for each open window.

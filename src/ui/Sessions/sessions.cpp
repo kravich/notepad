@@ -333,7 +333,7 @@ bool saveSession(DocEngine* docEngine, TopEditorContainer* editorContainer, QStr
                 td.tabSize = indentInfo.size;
             }
             // If we're caching and there's a file opened in the tab we want to inform the
-            // user whether the file's contents have changed since Nqq was last opened.
+            // user whether the file's contents have changed since Np was last opened.
             // For this we save and later compare the modification date.
             if (!isOrphan && cacheModifiedFiles) {
                 // As a special case, if the file has *already* changed we set the modification
@@ -441,7 +441,7 @@ void loadSession(DocEngine* docEngine, TopEditorContainer* editorContainer, QStr
                     }
 
                     // If we're loading an existing file from cache we want to inform the user whether
-                    // the file has changed since Nqq was last closed. For this we can compare the
+                    // the file has changed since Np was last closed. For this we can compare the
                     // file's last modification date.
                     if (fileExists && cacheFileExists && tab.lastModified != 0) {
                         auto lastModified = fileInfo.lastModified().toMSecsSinceEpoch();

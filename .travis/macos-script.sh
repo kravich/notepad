@@ -30,10 +30,10 @@ deploy()
     mkdir dmgfolder
     mv notepad.app dmgfolder
     ln -s /Applications ./dmgfolder/Applications
-    hdiutil create -fs HFS+ -format UDBZ -srcfolder ./dmgfolder -volname Notepad notepad-${NQQ_VERSION}.dmg || return 1
+    hdiutil create -fs HFS+ -format UDBZ -srcfolder ./dmgfolder -volname Notepad notepad-${NP_VERSION}.dmg || return 1
 }
 
-if [ "$NQQ_BUILD_TYPE" == "DEPLOY" ]; then
+if [ "$NP_BUILD_TYPE" == "DEPLOY" ]; then
     deploy
 else
     compile

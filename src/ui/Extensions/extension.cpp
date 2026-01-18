@@ -50,7 +50,7 @@ namespace Extensions {
             }
 
         } else {
-            failedToLoadExtension(path, tr("unable to read nqq-manifest.json"));
+            failedToLoadExtension(path, tr("unable to read np-manifest.json"));
             return;
         }
 
@@ -74,7 +74,7 @@ namespace Extensions {
 
     QJsonObject Extension::getManifest(const QString &extensionPath)
     {
-        QFile fManifest(extensionPath + "/nqq-manifest.json");
+        QFile fManifest(extensionPath + "/np-manifest.json");
         if (fManifest.open(QFile::ReadOnly | QFile::Text)) {
             QTextStream in(&fManifest);
             QString content = in.readAll();

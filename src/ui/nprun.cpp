@@ -1,4 +1,4 @@
-#include "include/nqqrun.h"
+#include "include/nprun.h"
 
 #include "include/iconprovider.h"
 
@@ -15,11 +15,11 @@
 #include <QSortFilterProxyModel>
 #include <QVBoxLayout>
 
-using namespace NqqRun;
+using namespace NpRun;
 
 RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     QDialog(parent, f),
-    m_settings(NqqSettings::getInstance())
+    m_settings(NpSettings::getInstance())
 {
     QVBoxLayout *v1 = new QVBoxLayout;
     QHBoxLayout *h1 = new QHBoxLayout;
@@ -256,7 +256,7 @@ bool RunDelegate::editorEvent(QEvent *event,
 
 RunDialog::RunDialog(QWidget *parent, Qt::WindowFlags f) :
     QDialog(parent, f),
-    m_settings(NqqSettings::getInstance()),
+    m_settings(NpSettings::getInstance()),
     m_saved(false)
 {
     QVBoxLayout *v1 = new QVBoxLayout;

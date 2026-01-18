@@ -18,7 +18,7 @@ namespace Extensions {
             return static_cast<EditorNS::Editor*>(objectUnmanagedPtr());
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(EditorStub, setValue, args)
+        NP_DEFINE_EXTENSION_METHOD(EditorStub, setValue, args)
         {
             if (!(args.count() >= 1))
                 return StubReturnValue(ErrorCode::INVALID_ARGUMENT_NUMBER);
@@ -29,12 +29,12 @@ namespace Extensions {
             return StubReturnValue();
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(EditorStub, value, )
+        NP_DEFINE_EXTENSION_METHOD(EditorStub, value, )
         {
             return StubReturnValue(editor()->value());
         }
 
-        NQQ_DEFINE_EXTENSION_METHOD(EditorStub, setSelectionsText, args)
+        NP_DEFINE_EXTENSION_METHOD(EditorStub, setSelectionsText, args)
         {
             if (!args.at(0).isArray())
                 return StubReturnValue(ErrorCode::INVALID_ARGUMENT_TYPE);

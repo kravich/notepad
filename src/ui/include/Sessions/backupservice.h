@@ -30,7 +30,7 @@ public:
 
     /**
      * @brief detectImproperShutdown
-     * @return True if the system suspects that Nqq has crashed. This means backup data was found.
+     * @return True if the system suspects that Np has crashed. This means backup data was found.
      */
     static bool detectImproperShutdown();
 

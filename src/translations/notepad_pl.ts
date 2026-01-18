@@ -391,8 +391,8 @@
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="52"/>
-        <source>unable to read nqq-manifest.json</source>
-        <translation>nie można odczytać nqq-manifest.json</translation>
+        <source>unable to read np-manifest.json</source>
+        <translation>nie można odczytać np-manifest.json</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="99"/>
@@ -1559,125 +1559,125 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunDelegate</name>
+    <name>NpRun::RunDelegate</name>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="234"/>
+        <location filename="../ui/nprun.cpp" line="234"/>
         <source>Open File</source>
         <translation>Otwórz plik</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunDialog</name>
+    <name>NpRun::RunDialog</name>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="266"/>
+        <location filename="../ui/nprun.cpp" line="266"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="267"/>
+        <location filename="../ui/nprun.cpp" line="267"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="268"/>
+        <location filename="../ui/nprun.cpp" line="268"/>
         <source>Save...</source>
         <translation>Zapisz...</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="271"/>
+        <location filename="../ui/nprun.cpp" line="271"/>
         <source>Special placeholders</source>
         <translation>Specjalne symbole zastępcze</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="272"/>
+        <location filename="../ui/nprun.cpp" line="272"/>
         <source>Full URL of the currently active file.</source>
         <translation>Pełny URL obecnie aktywnego pliku.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="273"/>
+        <location filename="../ui/nprun.cpp" line="273"/>
         <source>Full path of the currently active file.</source>
         <translation>Pełna ścieżka obecnie aktywnego pliku.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="274"/>
+        <location filename="../ui/nprun.cpp" line="274"/>
         <source>Directory of the currently active file.</source>
         <translation>Katalog obecnie aktywnego pliku.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="275"/>
+        <location filename="../ui/nprun.cpp" line="275"/>
         <source>Name of the currently active file.</source>
         <translation>Nazwa obecnie aktywnego pliku.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="276"/>
+        <location filename="../ui/nprun.cpp" line="276"/>
         <source>Currently selected text.</source>
         <translation>Obecnie zaznaczony tekst.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="316"/>
+        <location filename="../ui/nprun.cpp" line="316"/>
         <source>Choose the name to be displayed in the run menu.</source>
         <translation>Wybierz nazwę, która będzie wyświetlana w menu uruchamiania.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="317"/>
+        <location filename="../ui/nprun.cpp" line="317"/>
         <source>Command Name:</source>
         <translation>Nazwa polecenia:</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="326"/>
+        <location filename="../ui/nprun.cpp" line="326"/>
         <source>Command saved...</source>
         <translation>Polecenie zapisane...</translation>
     </message>
 </context>
 <context>
-    <name>NqqRun::RunPreferences</name>
+    <name>NpRun::RunPreferences</name>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="28"/>
+        <location filename="../ui/nprun.cpp" line="28"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="29"/>
+        <location filename="../ui/nprun.cpp" line="29"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="34"/>
+        <location filename="../ui/nprun.cpp" line="34"/>
         <source>Special placeholders</source>
         <translation>Specjalne symbole zastępcze</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="35"/>
+        <location filename="../ui/nprun.cpp" line="35"/>
         <source>Full URL of the currently active file.</source>
         <translation>Pełny URL obecnie aktywnego pliku.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="36"/>
+        <location filename="../ui/nprun.cpp" line="36"/>
         <source>Full path of the currently active file.</source>
         <translation>Pełna ścieżka obecnie aktywnego pliku.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="37"/>
+        <location filename="../ui/nprun.cpp" line="37"/>
         <source>Directory of the currently active file.</source>
         <translation>Katalog obecnie aktywnego pliku.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="38"/>
+        <location filename="../ui/nprun.cpp" line="38"/>
         <source>Name of the currently active file.</source>
         <translation>Nazwa obecnie aktywnego pliku.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="39"/>
+        <location filename="../ui/nprun.cpp" line="39"/>
         <source>Currently selected text.</source>
         <translation>Obecnie zaznaczony tekst.</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="70"/>
+        <location filename="../ui/nprun.cpp" line="70"/>
         <source>Text</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../ui/nqqrun.cpp" line="70"/>
+        <location filename="../ui/nprun.cpp" line="70"/>
         <source>Command</source>
         <translation>Polecenie</translation>
     </message>

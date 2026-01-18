@@ -1,4 +1,4 @@
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 
 #include "include/notepad.h"
 
@@ -6,13 +6,13 @@
 #include <QDebug>
 #endif
 
-void NqqSettings::ensureBackwardsCompatibility()
+void NpSettings::ensureBackwardsCompatibility()
 {
     QSettings s;
 
-    // Check the Nqq version, if it's below 0.53.0 we're using the old settings.
-    const QString nqqVersion = s.value("NotepadVersion").toString();
-    const QStringList versionList = nqqVersion.split(".");
+    // Check the Np version, if it's below 0.53.0 we're using the old settings.
+    const QString npVersion = s.value("NotepadVersion").toString();
+    const QStringList versionList = npVersion.split(".");
 
     // Only proceed with checking version if the key seems valid
     if (versionList.size() < 3)
@@ -82,7 +82,7 @@ void NqqSettings::ensureBackwardsCompatibility()
 
 }
 
-NqqSettings&NqqSettings::getInstance(){
-    static NqqSettings settings;
+NpSettings&NpSettings::getInstance(){
+    static NpSettings settings;
     return settings;
 }

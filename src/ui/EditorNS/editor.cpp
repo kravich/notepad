@@ -1,7 +1,7 @@
 #include "include/EditorNS/editor.h"
 
 #include "include/notepad.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 
 #include <QDir>
 #include <QEventLoop>
@@ -23,7 +23,7 @@ namespace EditorNS
         QWidget(parent)
     {
 
-        QString themeName = NqqSettings::getInstance().Appearance.getColorScheme();
+        QString themeName = NpSettings::getInstance().Appearance.getColorScheme();
 
         fullConstructor(themeFromName(themeName));
     }
@@ -301,7 +301,7 @@ namespace EditorNS
 
     QtPromise::QPromise<void> Editor::setIndentationMode(const Language* lang)
     {
-        const auto& s = NqqSettings::getInstance().Languages;
+        const auto& s = NpSettings::getInstance().Languages;
         const bool useDefaults = s.getUseDefaultSettings(lang->id);
         const auto& langId = useDefaults ? "default" : lang->id;
 
@@ -778,8 +778,8 @@ namespace EditorNS
                             asyncSendMessageWithResultP("C_CMD_DISPLAY_NORMAL_STYLE").wait();
                             m_webView->setStyleSheet(prevStylesheet);
                             m_webView->page()->setBackgroundColor(prevBackgroundColor);
-                            setTheme(themeFromName(NqqSettings::getInstance().Appearance.getColorScheme()));
-                            this->setLineWrap(NqqSettings::getInstance().General.getWordWrap());
+                            setTheme(themeFromName(NpSettings::getInstance().Appearance.getColorScheme()));
+                            this->setLineWrap(NpSettings::getInstance().General.getWordWrap());
                         });
 
                         if (data.isEmpty() || data.isNull()) {

@@ -6,7 +6,7 @@
 #include "include/globals.h"
 #include "include/mainwindow.h"
 #include "include/notepad.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 #include "include/singleapplication.h"
 #include "include/stats.h"
 
@@ -47,8 +47,8 @@ int main(int argc, char *argv[])
     QSettings::setDefaultFormat(QSettings::IniFormat);
 
 
-    NqqSettings::ensureBackwardsCompatibility();
-    NqqSettings& settings = NqqSettings::getInstance();
+    NpSettings::ensureBackwardsCompatibility();
+    NpSettings& settings = NpSettings::getInstance();
     settings.General.setNotepadVersion(POINTVERSION);
 
     forceDefaultSettings();
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
 #endif
     }
 
-    // Check whether Nqq was properly shut down. If not, attempt to restore from the last autosave backup if enabled.
+    // Check whether Np was properly shut down. If not, attempt to restore from the last autosave backup if enabled.
     const bool wantToRestore = settings.General.getAutosaveInterval() > 0 && BackupService::detectImproperShutdown();
     if (wantToRestore) {
         // Attempt to restore from backup. Don't forget to handle commandline arguments.
@@ -181,7 +181,7 @@ int main(int argc, char *argv[])
 
 void forceDefaultSettings()
 {
-    NqqSettings& s = NqqSettings::getInstance();
+    NpSettings& s = NpSettings::getInstance();
 
     // Use tabs to indent makefile by default
     if(!s.Languages.hasUseDefaultSettings("makefile")) {

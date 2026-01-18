@@ -1,21 +1,21 @@
 /** Declare a method that can be called by the extensions. Add this macro
  *  to the private section of a stub.
- *  For example: NQQ_DECLARE_EXTENSION_METHOD(setValue)
+ *  For example: NP_DECLARE_EXTENSION_METHOD(setValue)
  */
-#define NQQ_DECLARE_EXTENSION_METHOD(method_name) \
+#define NP_DECLARE_EXTENSION_METHOD(method_name) \
     StubReturnValue method_name(const QJsonArray &); \
-    bool __nqqmeta__##method_name = registerMethod(QString(#method_name), \
+    bool __npmeta__##method_name = registerMethod(QString(#method_name), \
               [&](const QJsonArray &args) -> Stub::StubReturnValue { \
         return method_name(args); \
     });
 
-#define NQQ_DEFINE_EXTENSION_METHOD(class_name, method_name, args_name) \
+#define NP_DEFINE_EXTENSION_METHOD(class_name, method_name, args_name) \
     Stub::StubReturnValue class_name::method_name(const QJsonArray &args_name)
 
 /** Set the current stub name. Add this macro to the public section of a stub.
- *  For example: NQQ_STUB_NAME("Editor")
+ *  For example: NP_STUB_NAME("Editor")
  */
-#define NQQ_STUB_NAME(stub_name) \
+#define NP_STUB_NAME(stub_name) \
     inline static QString stubName() { return stub_name; } \
     inline QString stubName_() const { return stubName(); }
 
@@ -98,7 +98,7 @@ namespace Extensions {
 
             /**
              * @brief Invoke a registered method. This method must have been registered with
-             *        registerMethod(), or using the NQQ_DECLARE_EXTENSION_METHOD macro.
+             *        registerMethod(), or using the NP_DECLARE_EXTENSION_METHOD macro.
              * @param method method name
              * @param ret return value of the method
              * @param args arguments for the method

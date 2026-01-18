@@ -15,12 +15,12 @@ namespace Extensions {
             EditorStub(const QWeakPointer<QObject> &object, RuntimeSupport *rts);
             ~EditorStub();
 
-            NQQ_STUB_NAME("Editor")
+            NP_STUB_NAME("Editor")
 
         private:
-            NQQ_DECLARE_EXTENSION_METHOD(setValue)
-            NQQ_DECLARE_EXTENSION_METHOD(value)
-            NQQ_DECLARE_EXTENSION_METHOD(setSelectionsText)
+            NP_DECLARE_EXTENSION_METHOD(setValue)
+            NP_DECLARE_EXTENSION_METHOD(value)
+            NP_DECLARE_EXTENSION_METHOD(setSelectionsText)
 
             EditorNS::Editor *editor();
         };

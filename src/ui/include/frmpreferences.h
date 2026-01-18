@@ -2,7 +2,7 @@
 #define FRMPREFERENCES_H
 
 #include "include/keygrabber.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 #include "include/topeditorcontainer.h"
 
 #include <QDialog>
@@ -78,7 +78,7 @@ private:
 
     KeyGrabber *m_keyGrabber;
 
-    NqqSettings& m_settings;
+    NpSettings& m_settings;
     Ui::frmPreferences *ui;
     TopEditorContainer *m_topEditorContainer;
     QSharedPointer<Editor> m_previewEditor;

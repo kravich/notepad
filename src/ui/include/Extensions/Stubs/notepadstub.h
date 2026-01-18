@@ -14,13 +14,13 @@ namespace Extensions {
             NotepadStub(RuntimeSupport *rts);
             ~NotepadStub();
 
-            NQQ_STUB_NAME("Notepad")
+            NP_STUB_NAME("Notepad")
 
         private:
-            NQQ_DECLARE_EXTENSION_METHOD(commandLineArguments)
-            NQQ_DECLARE_EXTENSION_METHOD(version)
-            NQQ_DECLARE_EXTENSION_METHOD(print)
-            NQQ_DECLARE_EXTENSION_METHOD(windows)
+            NP_DECLARE_EXTENSION_METHOD(commandLineArguments)
+            NP_DECLARE_EXTENSION_METHOD(version)
+            NP_DECLARE_EXTENSION_METHOD(print)
+            NP_DECLARE_EXTENSION_METHOD(windows)
 
             void on_newWindow(MainWindow *window);
         };

@@ -21,7 +21,7 @@ bool Stats::m_isFirstNotepadRun = false;
 
 void Stats::init()
 {
-    NqqSettings &settings = NqqSettings::getInstance();
+    NpSettings &settings = NpSettings::getInstance();
 
     Stats::askUserPermission();
 
@@ -60,7 +60,7 @@ void Stats::init()
 
 void Stats::check() {
     // Check whether the user wants us to collect stats. If not, return.
-    NqqSettings &settings = NqqSettings::getInstance();
+    NpSettings &settings = NpSettings::getInstance();
     if (!settings.General.getCollectStatistics()) {
         return;
     }
@@ -115,7 +115,7 @@ void Stats::remoteApiSend(const QJsonObject &data) {
 }
 
 void Stats::askUserPermission() {
-    NqqSettings &settings = NqqSettings::getInstance();
+    NpSettings &settings = NpSettings::getInstance();
     int dialogShown = settings.General.getStatisticsDialogShown();
 
     if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadRun) {
@@ -157,7 +157,7 @@ void Stats::askUserPermission() {
 }
 
 bool Stats::isTimeToSendStats() {
-    NqqSettings &settings = NqqSettings::getInstance();
+    NpSettings &settings = NpSettings::getInstance();
     return (currentUnixTimestamp() - settings.General.getLastStatisticTransmissionTime()) >= 7*24*60*60*1000;
 }
 

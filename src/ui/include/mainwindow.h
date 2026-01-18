@@ -5,7 +5,7 @@
 #include "include/Extensions/extension.h"
 #include "include/Search/advancedsearchdock.h"
 #include "include/Search/frmsearchreplace.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 #include "include/topeditorcontainer.h"
 
 #include "QtPrintSupport/QPrinter"
@@ -212,7 +212,7 @@ private:
     QPushButton* m_sbEOLFormatBtn;
     QPushButton* m_sbTextFormatBtn;
     QPushButton* m_sbOvertypeBtn;
-    NqqSettings&          m_settings;
+    NpSettings&          m_settings;
     frmSearchReplace*     m_frmSearchReplace = nullptr;
     bool                  m_overwrite = false; // Overwrite mode vs Insert mode
     QString               m_workingDirectory;

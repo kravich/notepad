@@ -19,7 +19,7 @@
 #include "include/frmpreferences.h"
 #include "include/iconprovider.h"
 #include "include/notepad.h"
-#include "include/nqqrun.h"
+#include "include/nprun.h"
 #include "ui_mainwindow.h"
 
 #include <QClipboard>
@@ -48,7 +48,7 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_topEditorContainer(new TopEditorContainer(this)),
-    m_settings(NqqSettings::getInstance()),
+    m_settings(NpSettings::getInstance()),
     m_workingDirectory(workingDirectory),
     m_advSearchDock(new AdvancedSearchDock(this))
 {
@@ -131,7 +131,7 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
 
     showExtensionsMenu(Extensions::ExtensionsLoader::extensionRuntimePresent());
 
-    //Registers all actions so that NqqSettings knows their default and current shortcuts.
+    //Registers all actions so that NpSettings knows their default and current shortcuts.
     const QList<QAction*> allActions = getActions();
 
     m_settings.Shortcuts.initShortcuts(allActions);
@@ -933,7 +933,7 @@ int MainWindow::closeTab(EditorTabWidget *tabWidget, int tab, bool remove, bool 
     if ( m_topEditorContainer->count()==1 && tabWidget->count()==1 &&
          editor->filePath().isEmpty() && editor->value().isEmpty()) {
 
-        // If user tried to close last open (clean) tab, check if Nqq should just quit.
+        // If user tried to close last open (clean) tab, check if Np should just quit.
         if(m_settings.General.getExitOnLastTabClose())
             close();
 
@@ -2205,7 +2205,7 @@ void MainWindow::generateRunMenu()
 
 void MainWindow::modifyRunCommands()
 {
-    NqqRun::RunPreferences p;
+    NpRun::RunPreferences p;
     if(p.exec() == 1) {
         generateRunMenu();
     }
@@ -2219,7 +2219,7 @@ void MainWindow::runCommand()
     if (a->data().toString().size()) {
         command = a->data().toString();
     } else {
-        NqqRun::RunDialog rd;
+        NpRun::RunDialog rd;
         int ok = rd.exec();
 
         if (rd.saved()) {
@@ -2247,7 +2247,7 @@ void MainWindow::runCommand()
         if (!selection.first().isEmpty()) {
             cmd.replace("\%selection\%",selection.first());
         }
-        QStringList args = NqqRun::RunDialog::parseCommandString(cmd);
+        QStringList args = NpRun::RunDialog::parseCommandString(cmd);
         if (!args.isEmpty()) {
             cmd = args.takeFirst();
             if(!QProcess::startDetached(cmd, args)) {
@@ -2514,7 +2514,7 @@ void MainWindow::on_actionInstall_Extension_triggered()
     // See https://github.com/notepad/notepad/issues/654
     BackupServicePauser bsp; bsp.pause();
 
-    QString file = QFileDialog::getOpenFileName(this, tr("Extension"), QString(), "Notepad extensions (*.nqqext)");
+    QString file = QFileDialog::getOpenFileName(this, tr("Extension"), QString(), "Notepad extensions (*.npext)");
     if (!file.isNull()) {
         Extensions::InstallExtension *installExt = new Extensions::InstallExtension(file, this);
         installExt->exec();

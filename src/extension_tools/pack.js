@@ -16,7 +16,7 @@ if (process.argv.length !== 2+2) {
     process.exit(1);
 }
 
-var MANIFEST_FILENAME = "nqq-manifest.json";
+var MANIFEST_FILENAME = "np-manifest.json";
 
 function exec(name, args, options, callback) {
     var cp = require('child_process');
@@ -68,7 +68,7 @@ function buildArchive(callback) {
     var output = fs.createWriteStream(temporaryArchive);
     var archive = archiver('zip');
 
-    var definitiveArchive = "_____.nqqext";
+    var definitiveArchive = "_____.npext";
     
     output.on('close', function() {
         console.log('Written ' + archive.pointer() + ' bytes');
@@ -89,7 +89,7 @@ function buildArchive(callback) {
     // Add package
     var files = fs.readdirSync(tmpdir_pkg);
     if (files.length == 1) {
-        definitiveArchive = files[0].replace(/(\.tar\.gz|\.[^\.]+)$/gi, "") + ".nqqext";
+        definitiveArchive = files[0].replace(/(\.tar\.gz|\.[^\.]+)$/gi, "") + ".npext";
         archive.append(fs.createReadStream(path.join(tmpdir_pkg, files[0])), { name: files[0] });
     } else {
         throw "Unexpected files found in " + tmpdir_pkg;

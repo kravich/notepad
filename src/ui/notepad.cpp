@@ -2,7 +2,7 @@
 
 #include "include/Extensions/extensionsloader.h"
 #include "include/Extensions/runtimesupport.h"
-#include "include/nqqsettings.h"
+#include "include/npsettings.h"
 
 #include <QCheckBox>
 #include <QDir>
@@ -51,12 +51,12 @@ QString Notepad::extensionToolsPath()
 }
 
 QString Notepad::nodejsPath() {
-    NqqSettings& s = NqqSettings::getInstance();
+    NpSettings& s = NpSettings::getInstance();
     return s.Extensions.getRuntimeNodeJS();
 }
 
 QString Notepad::npmPath() {
-    NqqSettings& s = NqqSettings::getInstance();
+    NpSettings& s = NpSettings::getInstance();
     return s.Extensions.getRuntimeNpm();
 }
 
