@@ -722,8 +722,7 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow* mainWindow)
 
         QString dir = QFileDialog::getExistingDirectory(QApplication::activeWindow(),
                                                         QObject::tr("Search in..."), defaultDir,
-                                                        QFileDialog::ShowDirsOnly | QFileDialog::ReadOnly |
-                                                        QFileDialog::DontResolveSymlinks);
+                                                        QFileDialog::ShowDirsOnly | QFileDialog::ReadOnly | QFileDialog::DontResolveSymlinks);
 
         if (!dir.isEmpty()) {
             m_cmbSearchDirectory->setCurrentText(dir);
