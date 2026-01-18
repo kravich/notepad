@@ -10,7 +10,7 @@
 #include <tuple>
 
 namespace EditorNS{
-class Editor;
+    class Editor;
 }
 class MainWindow;
 

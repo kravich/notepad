@@ -5,7 +5,7 @@
 #include <QTextCodec>
 
 namespace Ui {
-class frmEncodingChooser;
+    class frmEncodingChooser;
 }
 
 class frmEncodingChooser : public QDialog

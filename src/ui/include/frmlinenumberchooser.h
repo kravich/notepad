@@ -4,7 +4,7 @@
 #include <QDialog>
 
 namespace Ui {
-class frmLineNumberChooser;
+    class frmLineNumberChooser;
 }
 
 class frmLineNumberChooser : public QDialog

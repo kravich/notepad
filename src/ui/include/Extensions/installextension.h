@@ -4,7 +4,7 @@
 #include <QDialog>
 
 namespace Ui {
-class InstallExtension;
+    class InstallExtension;
 }
 
 namespace Extensions {

@@ -77,7 +77,9 @@ private:
     static const int CUTOFF_LENGTH; //Number of characters before/after match result that will be shown in preview
 };
 
-namespace EditorNS { class Editor; }
+namespace EditorNS {
+    class Editor;
+}
 
 struct DocResult {
     enum DocType {
