@@ -126,64 +126,64 @@ void KeyGrabber::keyPressEvent(QKeyEvent* event)
     if (modifiers & Qt::ShiftModifier) grab.append("Shift+");
 
     switch(event->key()) {
-        case Qt::Key_Alt:
-        case Qt::Key_Control:
-        case Qt::Key_Meta:
-        case Qt::Key_Shift:
-            return;
+    case Qt::Key_Alt:
+    case Qt::Key_Control:
+    case Qt::Key_Meta:
+    case Qt::Key_Shift:
+        return;
 
-        case Qt::Key_F1:
-        case Qt::Key_F2:
-        case Qt::Key_F3:
-        case Qt::Key_F4:
-        case Qt::Key_F5:
-        case Qt::Key_F6:
-        case Qt::Key_F7:
-        case Qt::Key_F8:
-        case Qt::Key_F9:
-        case Qt::Key_F10:
-        case Qt::Key_F11:
-        case Qt::Key_F12:
-        case Qt::Key_F13:
-        case Qt::Key_F14:
-        case Qt::Key_F15:
-        case Qt::Key_F16:
-        case Qt::Key_F17:
-        case Qt::Key_F18:
-        case Qt::Key_F19:
-        case Qt::Key_F20:
-        case Qt::Key_F21:
-        case Qt::Key_F22:
-        case Qt::Key_F23:
-        case Qt::Key_F24:
-        case Qt::Key_F25:
-        case Qt::Key_F26:
-        case Qt::Key_F27:
-        case Qt::Key_F28:
-        case Qt::Key_F29:
-        case Qt::Key_F30:
-        case Qt::Key_F31:
-        case Qt::Key_F32:
-        case Qt::Key_F33:
-        case Qt::Key_F34:
-        case Qt::Key_F35:
+    case Qt::Key_F1:
+    case Qt::Key_F2:
+    case Qt::Key_F3:
+    case Qt::Key_F4:
+    case Qt::Key_F5:
+    case Qt::Key_F6:
+    case Qt::Key_F7:
+    case Qt::Key_F8:
+    case Qt::Key_F9:
+    case Qt::Key_F10:
+    case Qt::Key_F11:
+    case Qt::Key_F12:
+    case Qt::Key_F13:
+    case Qt::Key_F14:
+    case Qt::Key_F15:
+    case Qt::Key_F16:
+    case Qt::Key_F17:
+    case Qt::Key_F18:
+    case Qt::Key_F19:
+    case Qt::Key_F20:
+    case Qt::Key_F21:
+    case Qt::Key_F22:
+    case Qt::Key_F23:
+    case Qt::Key_F24:
+    case Qt::Key_F25:
+    case Qt::Key_F26:
+    case Qt::Key_F27:
+    case Qt::Key_F28:
+    case Qt::Key_F29:
+    case Qt::Key_F30:
+    case Qt::Key_F31:
+    case Qt::Key_F32:
+    case Qt::Key_F33:
+    case Qt::Key_F34:
+    case Qt::Key_F35:
+        grab.append(key);
+        break;
+
+    case Qt::Key_Backspace:
+        if (modifiers) {
             grab.append(key);
-            break;
+        } else {
+            currentItem()->setText(1, "");
+            return;
+        }
+        break;
 
-        case Qt::Key_Backspace:
-            if (modifiers) {
-                grab.append(key);
-            } else {
-                currentItem()->setText(1, "");
-                return;
-            }
-            break;
-
-        default:
-            if (modifiers) {
-                grab.append(key);
-            }
-            break;
+    default:
+        if (modifiers) {
+            grab.append(key);
+        }
+        break;
     }
 
     currentItem()->setText(1, grab);
