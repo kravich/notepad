@@ -124,7 +124,9 @@ void Stats::askUserPermission() {
         msgBox.setWindowTitle(QCoreApplication::applicationName());
         msgBox.setIcon(QMessageBox::Question);
         msgBox.setText("<h3>" + QObject::tr("Would you like to help?") + "</h3>");
-        msgBox.setInformativeText("<html><body>"
+        msgBox.setInformativeText(
+            /* clang-format off */
+            "<html><body>"
             "<p>" + QObject::tr("You can help to improve Notepad by allowing us to collect <b>anonymous statistics</b>.") + "</p>" +
             "<b>" + QObject::tr("What will we collect?") + "</b><br>" +
             QObject::tr(
@@ -132,7 +134,9 @@ void Stats::askUserPermission() {
                 "You don't have to trust us: Notepad is open source, so you can %1check by yourself%2 😊").
                       arg("<a href=\"https://github.com/notepad/notepad/blob/master/src/ui/stats.cpp\">").
                       arg("</a>") +
-            "</body></html>");
+            "</body></html>"
+            /* clang-format on */
+        );
 
         QAbstractButton *ok = msgBox.addButton(QObject::tr("Okay, I agree"), QMessageBox::AcceptRole);
         msgBox.addButton(QObject::tr("No"), QMessageBox::RejectRole);

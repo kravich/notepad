@@ -30,14 +30,18 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     RunDelegate *delegate = new RunDelegate(this);
     QShortcut *keyDelete = new QShortcut(QKeySequence("Delete"), this);
 
-    QLabel *info = new QLabel("\
+    QLabel *info = new QLabel(
+    /* clang-format off */
+    "\
     <h3>" + tr("Special placeholders") + "</h3><ul>\
     <li><em>\%url\%</em> - " + tr("Full URL of the currently active file.") + "</li>\
     <li><em>\%path\%</em> - " + tr("Full path of the currently active file.") + "</li>\
     <li><em>\%directory\%</em> - " + tr("Directory of the currently active file.") + "</li>\
     <li><em>\%filename\%</em> - " + tr("Name of the currently active file.") + "</li>\
     <li><em>\%selection\%</em> - " + tr("Currently selected text.") + "</li>\
-    </ul>");
+    </ul>"
+    /* clang-format on */
+    );
 
     m_commands = new QTableWidget(1, 2);
 
@@ -267,14 +271,18 @@ RunDialog::RunDialog(QWidget *parent, Qt::WindowFlags f) :
     QPushButton *btnCancel = new QPushButton(tr("Cancel"));
     QPushButton *btnSave = new QPushButton(tr("Save..."));
 
-    QLabel *info = new QLabel("\
+    QLabel *info = new QLabel(
+    /* clang-format off */
+    "\
     <h3>" + tr("Special placeholders") + "</h3><ul>\
     <li><em>\%url\%</em> - " + tr("Full URL of the currently active file.") + "</li>\
     <li><em>\%path\%</em> - " + tr("Full path of the currently active file.") + "</li>\
     <li><em>\%directory\%</em> - " + tr("Directory of the currently active file.") + "</li>\
     <li><em>\%filename\%</em> - " + tr("Name of the currently active file.") + "</li>\
     <li><em>\%selection\%</em> - " + tr("Currently selected text.") + "</li>\
-    </ul>");
+    </ul>"
+    /* clang-format on */
+    );
 
     m_command = new QLineEdit(this);
     m_status = new QLabel;

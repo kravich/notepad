@@ -30,7 +30,8 @@ frmPreferences::frmPreferences(TopEditorContainer *topEditorContainer, QWidget *
 
     m_previewEditor = Editor::getNewEditor(this);
     m_previewEditor->setLanguageFromFilePath("test.js");
-    m_previewEditor->setValue(R"(var enabled = false;)" "\n"
+    m_previewEditor->setValue(/* clang-format off */
+                              R"(var enabled = false;)" "\n"
                               R"()" "\n"
                               R"(function example(a, b) {)" "\n"
                               R"(    if (b == 0 && enabled) {)" "\n"
@@ -40,7 +41,7 @@ frmPreferences::frmPreferences(TopEditorContainer *topEditorContainer, QWidget *
                               R"()" "\n"
                               R"(    return example(a + 1, 0);)" "\n"
                               R"(})" "\n"
-                              );
+                              /* clang-format on */);
 
     // Update the preview editor so that the editor's current settings are applied and shown properly
     // in the editor preview

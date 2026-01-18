@@ -41,6 +41,7 @@ void NpSettings::ensureBackwardsCompatibility()
             const char* newName;
         };
 
+        /* clang-format off */
         Pair arr[] =
         {
             {"actionC_lose_All","actionClose_All"},
@@ -59,8 +60,8 @@ void NpSettings::ensureBackwardsCompatibility()
             {"actionCurrent_Full_File_path_to_Clipboard","actionCurrent_Full_File_Path_to_Clipboard"},
             {"actionIndentation_Default_settings","actionIndentation_Default_Settings"},
             {"actionInterpret_as","actionInterpret_As"},
-
         };
+        /* clang-format on */
 
         for (const QString& key : s.allKeys()){
             if (key.isEmpty() || !key.startsWith("Shortcuts/"))

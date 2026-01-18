@@ -139,6 +139,7 @@ QFrame* makeDivider(QFrame::Shape shape, int length=0) {
 void showRegexInfo() {
     QString str;
 
+    /* clang-format off */
     str =
     QObject::tr("Notepad supports most of the <a href='http://perldoc.perl.org/perlre.html'>Perl Regular Expression</a> syntax when 'Use Regular Expressions' is checked.") + "<br>" +
     QObject::tr("Here is a quick reference:") + "<br>"
@@ -152,6 +153,7 @@ void showRegexInfo() {
     "<tr><td><b>(abc)</b></td><td>" + QObject::tr("Matches 'abc' and captures it as a group") + "</td></tr>"
     "<tr><td><b>\\n</b></td><td>" + QObject::tr("Use in a replace operation to refer to the n'th capture group") + "</td></tr>"
     "</table>";
+    /* clang-format on */
 
     QMessageBox::information(nullptr, "", str);
 }

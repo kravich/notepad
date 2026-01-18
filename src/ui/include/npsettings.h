@@ -58,11 +58,12 @@
 #define END_CATEGORY(Name) \
     }; _Category##Name Name = _Category##Name(_m_settings);
 
+
 class NpSettings {
 
 public:
-
     BEGIN_GENERAL_CATEGORY(General)
+        /* clang-format off */
         NP_SETTING(Localization,                   QString,    "")
         NP_SETTING(WarnForDifferentIndentation,    bool,       true)
         NP_SETTING(ExitOnLastTabClose,             bool,       false)
@@ -90,41 +91,52 @@ public:
         NP_SETTING(SmartIndentation,               bool,       true)
         NP_SETTING(MathRendering,                  bool,       true)
         NP_SETTING(UseNativeFilePicker,            bool,       true)
+        /* clang-format on */
     END_CATEGORY(General)
 
     BEGIN_CATEGORY(Appearance)
+        /* clang-format off */
         NP_SETTING(ColorScheme,        QString,    "")
         NP_SETTING(OverrideFontFamily, QString,    "")
         NP_SETTING(OverrideFontSize,   int,        0)
         NP_SETTING(OverrideLineHeight, double,     0)
         NP_SETTING(ShowLineNumbers, bool,       true)
+        /* clang-format on */
     END_CATEGORY(Appearance)
 
     BEGIN_CATEGORY(Search)
+        /* clang-format off */
         NP_SETTING(SearchAsIType,  bool,           true)
         NP_SETTING(SaveHistory,    bool,           true)
         NP_SETTING(SearchHistory,  QStringList,    QStringList())
         NP_SETTING(ReplaceHistory, QStringList,    QStringList())
         NP_SETTING(FileHistory,    QStringList,    QStringList())
         NP_SETTING(FilterHistory,  QStringList,    QStringList())
+        /* clang-format on */
     END_CATEGORY(Search)
 
     BEGIN_CATEGORY(Extensions)
+        /* clang-format off */
         NP_SETTING(RuntimeNodeJS,  QString, QString())
         NP_SETTING(RuntimeNpm,     QString, QString())
+        /* clang-format on */
     END_CATEGORY(Extensions)
 
     BEGIN_CATEGORY(Languages)
+        /* clang-format off */
         NP_SETTING_WITH_KEY(IndentWithSpaces,      bool,   false)
         NP_SETTING_WITH_KEY(TabSize,               int,    4)
         NP_SETTING_WITH_KEY(UseDefaultSettings,    bool,   true)
+        /* clang-format on */
     END_CATEGORY(Languages)
 
     BEGIN_CATEGORY(MainWindow)
+        /* clang-format off */
         NP_SETTING(Geometry,       QByteArray, QByteArray())
         NP_SETTING(WindowState,    QByteArray, QByteArray())
         NP_SETTING(MenuBarVisible, bool,       true)
         NP_SETTING(ToolBarItems,   QString,    QString())
+        /* clang-format on */
     END_CATEGORY(MainWindow)
 
 
@@ -221,6 +233,7 @@ public:
         }
 
     END_CATEGORY(Run)
+
     /**
      * @brief Some keys have changed since v0.53. To maintain compatibility, this function
      *        parses through the QSettings file and fixes these entries.
