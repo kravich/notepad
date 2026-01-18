@@ -8,7 +8,8 @@
 #include <QJsonValue>
 #include <QTextStream>
 
-namespace EditorNS {
+namespace EditorNS
+{
 
     LanguageService::LanguageService()
     {
@@ -24,7 +25,8 @@ namespace EditorNS {
 
         bool hasPlainText = false;
         // Begin iterating our QJsonDocument's object and adding languages.
-        for (auto &&key : json.object().keys()) {
+        for (auto &&key : json.object().keys())
+        {
             if (key == "plaintext") hasPlainText = true;
             auto mode = json.object().value(key).toObject();
             Language newMode;
@@ -78,16 +80,20 @@ namespace EditorNS {
 
     const Language *LanguageService::lookupByContent(QString content)
     {
-        if (content.isEmpty()) {
+        if (content.isEmpty())
+        {
             return nullptr;
         }
         QTextStream stream(&content);
         stream.skipWhiteSpace();
         auto test = stream.readLine();
-        for (auto &&l : m_languages) {
+        for (auto &&l : m_languages)
+        {
             if (l.firstNonBlankLine.isEmpty()) continue;
-            for (auto &&t : l.firstNonBlankLine) {
-                if (test.contains(QRegularExpression(t))) {
+            for (auto &&t : l.firstNonBlankLine)
+            {
+                if (test.contains(QRegularExpression(t)))
+                {
                     return &l;
                 }
             }
@@ -101,4 +107,4 @@ namespace EditorNS {
         return instance;
     }
 
-}
+} //namespace EditorNS

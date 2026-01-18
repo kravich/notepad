@@ -32,14 +32,16 @@ SingleApplication::SingleApplication(int &argc, char **argv) :
 
 void SingleApplication::startServer()
 {
-    if (!QDBusConnection::sessionBus().isConnected()) {
+    if (!QDBusConnection::sessionBus().isConnected())
+    {
         qDebug() << "Cannot connect to the D-Bus session bus.\n"
                     "To start it, run:\n"
                     "\teval `dbus-launch --auto-syntax`\n";
         Q_ASSERT(true);
     }
 
-    if (!QDBusConnection::sessionBus().registerService(SERVICE_NAME)) {
+    if (!QDBusConnection::sessionBus().registerService(SERVICE_NAME))
+    {
         qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
         Q_ASSERT(true);
     }
@@ -64,7 +66,8 @@ bool SingleApplication::attachToOtherInstance()
 
 void SingleApplication::receive(const QString &workingDirectory, const QStringList &arguments)
 {
-    if (arguments.isEmpty()) {
+    if (arguments.isEmpty())
+    {
         qWarning() << "Invalid DBus message with empty arguments parameter received.";
         return;
     }
@@ -96,11 +99,13 @@ QLocalSocket *SingleApplication::alreadyRunningInstance()
 {
     QLocalSocket *socket = new QLocalSocket(this);
     socket->connectToServer(socketNameForUser());
-    if (socket->waitForConnected(2000)) {
+    if (socket->waitForConnected(2000))
+    {
         LocalCommunication::send("NEW_CLIENT", socket);
         QString reply = LocalCommunication::receive(socket);
 
-        if (reply == "HELLO") {
+        if (reply == "HELLO")
+        {
             return socket;
         }
     }
@@ -110,7 +115,8 @@ QLocalSocket *SingleApplication::alreadyRunningInstance()
 
 void SingleApplication::startServer()
 {
-    if (m_localServer == nullptr) {
+    if (m_localServer == nullptr)
+    {
         m_localServer = new QLocalServer(this);
         connect(m_localServer, &QLocalServer::newConnection, this, &SingleApplication::newConnection);
         QString socketName = socketNameForUser();
@@ -121,14 +127,18 @@ void SingleApplication::startServer()
 
 void SingleApplication::newConnection()
 {
-    while (m_localServer->hasPendingConnections()) {
+    while (m_localServer->hasPendingConnections())
+    {
         QLocalSocket *conn = m_localServer->nextPendingConnection();
         connect(conn, &QLocalSocket::readyRead, this, [=]() {
             QString message = LocalCommunication::receive(conn);
 
-            if (message == "NEW_CLIENT") {
+            if (message == "NEW_CLIENT")
+            {
                 LocalCommunication::send("HELLO", conn);
-            } else if (message == "ARGS") {
+            }
+            else if (message == "ARGS")
+            {
                 LocalCommunication::send("OK", conn);
                 QByteArray ar = LocalCommunication::receiveRaw(conn);
 
@@ -136,7 +146,8 @@ void SingleApplication::newConnection()
                 QStringList argList;
                 args >> argList;
 
-                if (!argList.isEmpty()) {
+                if (!argList.isEmpty())
+                {
                     QString workingDir = argList.takeFirst();
                     emit receivedArguments(workingDir, argList);
                 }
@@ -149,7 +160,8 @@ QString SingleApplication::socketNameForUser()
 {
     QString id = "notepad";
     QString prefix = id;
-    if (id.isEmpty()) {
+    if (id.isEmpty())
+    {
         id = QCoreApplication::applicationFilePath();
 #if defined(Q_OS_WIN)
         id = id.toLower();
@@ -164,11 +176,13 @@ QString SingleApplication::socketNameForUser()
     QString socketName = QLatin1String("qtsingleapp-") + prefix + QLatin1Char('-') + QString::number(idNum, 16);
 
 #if defined(Q_OS_WIN)
-    if (!pProcessIdToSessionId) {
+    if (!pProcessIdToSessionId)
+    {
         QLibrary lib("kernel32");
         pProcessIdToSessionId = (PProcessIdToSessionId)lib.resolve("ProcessIdToSessionId");
     }
-    if (pProcessIdToSessionId) {
+    if (pProcessIdToSessionId)
+    {
         DWORD sessionId = 0;
         pProcessIdToSessionId(GetCurrentProcessId(), &sessionId);
         socketName += QLatin1Char('-') + QString::number(sessionId, 16);
@@ -183,7 +197,8 @@ QString SingleApplication::socketNameForUser()
 bool SingleApplication::sendCommandLineArguments(QLocalSocket *socket)
 {
     LocalCommunication::send("ARGS", socket);
-    if (LocalCommunication::receive(socket) == "OK") {
+    if (LocalCommunication::receive(socket) == "OK")
+    {
         QStringList data = QApplication::arguments();
         data.prepend(QDir::currentPath());
 
@@ -205,7 +220,8 @@ bool SingleApplication::attachToOtherInstance()
 {
     // See if there are other instances open, and send them the arguments.
     QLocalSocket *sck = alreadyRunningInstance();
-    if (sck != nullptr) {
+    if (sck != nullptr)
+    {
         bool ret = sendCommandLineArguments(sck);
         sck->disconnectFromServer();
         return ret;

@@ -11,7 +11,8 @@
 
 class MainWindow;
 
-struct SearchConfig {
+struct SearchConfig
+{
     /**
      * @brief setScopeFromInt Sets searchScope to the given int. Helper function to avoid int<->SearchScope cast.
      * @param scopeAsInt Must be between 0 and 3.
@@ -32,14 +33,16 @@ struct SearchConfig {
     bool matchWord = false;
     bool includeSubdirs = false; // Only used if searchMode==ScopeFileSystem.
 
-    enum SearchScope {
+    enum SearchScope
+    {
         ScopeCurrentDocument = 0,
         ScopeAllOpenDocuments = 1,
         ScopeFileSystem = 2
     };
     SearchScope searchScope = ScopeCurrentDocument;
 
-    enum SearchMode {
+    enum SearchMode
+    {
         ModePlainText = 0,
         ModePlainTextSpecialChars = 1,
         ModeRegex = 2
@@ -47,7 +50,8 @@ struct SearchConfig {
     SearchMode searchMode = ModePlainText;
 };
 
-struct MatchResult {
+struct MatchResult
+{
     /**
      * @brief getMatchString Returns the match as a string
      */
@@ -76,12 +80,15 @@ private:
     static const int CUTOFF_LENGTH; //Number of characters before/after match result that will be shown in preview
 };
 
-namespace EditorNS {
+namespace EditorNS
+{
     class Editor;
 }
 
-struct DocResult {
-    enum DocType {
+struct DocResult
+{
+    enum DocType
+    {
         TypeNone,       // No source; don't try to open it and don't allow replacement
         TypeFile,       // It's a file on the user's file system
         TypeDocument    // It's one of MainWindow's open documents
@@ -95,12 +102,14 @@ struct DocResult {
     int regexCaptureGroupCount = 0;     // Only used when DocResult was created by a regex search
 };
 
-enum class SearchUserInteraction {
+enum class SearchUserInteraction
+{
     OpenDocument,
     OpenContainingFolder
 };
 
-struct SearchResult {
+struct SearchResult
+{
     /**
      * @brief countResults Returns the total number of MatchResults in all DocResults combined.
      */

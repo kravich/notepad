@@ -4,13 +4,15 @@
 class SearchHelpers
 {
 public:
-    enum class SearchMode {
+    enum class SearchMode
+    {
         PlainText = 1,
         SpecialChars = 2,
         Regex = 3
     };
 
-    struct SearchOptions {
+    struct SearchOptions
+    {
         unsigned MatchCase : 1;
         unsigned MatchWholeWord : 1;
         unsigned SearchFromStart : 1;

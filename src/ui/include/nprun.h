@@ -11,7 +11,8 @@
 #include <QStyledItemDelegate>
 #include <QTableWidget>
 
-namespace NpRun {
+namespace NpRun
+{
     class RunPreferences : public QDialog
     {
         Q_OBJECT
@@ -67,5 +68,5 @@ namespace NpRun {
         void slotHideStatus();
     };
 
-};
+}; //namespace NpRun
 #endif

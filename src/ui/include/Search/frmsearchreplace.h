@@ -10,7 +10,8 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 
-namespace Ui {
+namespace Ui
+{
     class frmSearchReplace;
 }
 
@@ -19,8 +20,11 @@ class frmSearchReplace : public QMainWindow
     Q_OBJECT
 
 public:
-    enum Tabs { TabSearch,
-                TabReplace };
+    enum Tabs
+    {
+        TabSearch,
+        TabReplace
+    };
     explicit frmSearchReplace(TopEditorContainer *topEditorContainer, QWidget *parent = nullptr);
     ~frmSearchReplace();
 

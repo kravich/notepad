@@ -8,7 +8,8 @@
 #include <QDialog>
 #include <QTreeWidgetItem>
 
-namespace Ui {
+namespace Ui
+{
     class frmPreferences;
 }
 
@@ -68,7 +69,8 @@ private:
      */
     static int s_lastSelectedTab;
 
-    struct LanguageSettings {
+    struct LanguageSettings
+    {
         QString langId;
         int tabSize;
         bool indentWithSpaces;

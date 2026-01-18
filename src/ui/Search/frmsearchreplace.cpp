@@ -67,7 +67,8 @@ frmSearchReplace::~frmSearchReplace()
 
 void frmSearchReplace::keyPressEvent(QKeyEvent *evt)
 {
-    switch (evt->key()) {
+    switch (evt->key())
+    {
     case Qt::Key_Escape:
         close();
         break;
@@ -92,9 +93,12 @@ void frmSearchReplace::setSearchText(QString string)
 
 void frmSearchReplace::setCurrentTab(Tabs tab)
 {
-    if (tab == TabSearch) {
+    if (tab == TabSearch)
+    {
         ui->actionFind->setChecked(true);
-    } else if (tab == TabReplace) {
+    }
+    else if (tab == TabReplace)
+    {
         ui->actionReplace->setChecked(true);
     }
 }
@@ -115,12 +119,14 @@ QString frmSearchReplace::regexModifiersFromSearchOptions(SearchHelpers::SearchO
 
 void frmSearchReplace::search(QString string, SearchHelpers::SearchMode searchMode, bool forward, SearchHelpers::SearchOptions searchOptions)
 {
-    if (!string.isEmpty()) {
+    if (!string.isEmpty())
+    {
         QString rawSearch = SearchString::format(string, searchMode, searchOptions);
 
         auto editor = currentEditor();
 
-        if (searchOptions.SearchFromStart) {
+        if (searchOptions.SearchFromStart)
+        {
             editor->setCursorPosition(0, 0);
         }
 
@@ -134,15 +140,18 @@ void frmSearchReplace::search(QString string, SearchHelpers::SearchMode searchMo
 
 void frmSearchReplace::replace(QString string, QString replacement, SearchHelpers::SearchMode searchMode, bool forward, SearchHelpers::SearchOptions searchOptions)
 {
-    if (!string.isEmpty()) {
+    if (!string.isEmpty())
+    {
         QString rawSearch = SearchString::format(string, searchMode, searchOptions);
-        if (searchMode == SearchHelpers::SearchMode::SpecialChars) {
+        if (searchMode == SearchHelpers::SearchMode::SpecialChars)
+        {
             replacement = SearchString::unescape(replacement);
         }
 
         auto editor = currentEditor();
 
-        if (searchOptions.SearchFromStart) {
+        if (searchOptions.SearchFromStart)
+        {
             editor->setCursorPosition(0, 0);
         }
 
@@ -159,7 +168,8 @@ void frmSearchReplace::replace(QString string, QString replacement, SearchHelper
 int frmSearchReplace::replaceAll(QString string, QString replacement, SearchHelpers::SearchMode searchMode, SearchHelpers::SearchOptions searchOptions)
 {
     QString rawSearch = SearchString::format(string, searchMode, searchOptions);
-    if (searchMode == SearchHelpers::SearchMode::SpecialChars) {
+    if (searchMode == SearchHelpers::SearchMode::SpecialChars)
+    {
         replacement = SearchString::unescape(replacement);
     }
 
@@ -280,9 +290,12 @@ void frmSearchReplace::on_btnSelectAll_clicked()
 
     addToSearchHistory(ui->cmbSearch->currentText());
 
-    if (count == 0) {
+    if (count == 0)
+    {
         QMessageBox::information(this, tr("Select all"), tr("No results found"));
-    } else {
+    }
+    else
+    {
         // Focus on main window
         this->m_topEditorContainer->activateWindow();
     }
@@ -332,7 +345,8 @@ void frmSearchReplace::on_chkShowAdvanced_toggled(bool checked)
 
 void frmSearchReplace::on_radSearchWithRegex_toggled(bool checked)
 {
-    if (checked) {
+    if (checked)
+    {
         ui->chkMatchWholeWord->setChecked(false);
         ui->chkMatchWholeWord->setEnabled(false);
 
@@ -342,7 +356,8 @@ void frmSearchReplace::on_radSearchWithRegex_toggled(bool checked)
 
 void frmSearchReplace::on_radSearchPlainText_toggled(bool checked)
 {
-    if (checked) {
+    if (checked)
+    {
         ui->chkMatchWholeWord->setEnabled(true);
 
         manualSizeAdjust();
@@ -351,7 +366,8 @@ void frmSearchReplace::on_radSearchPlainText_toggled(bool checked)
 
 void frmSearchReplace::on_radSearchWithSpecialChars_toggled(bool checked)
 {
-    if (checked) {
+    if (checked)
+    {
         ui->chkMatchWholeWord->setChecked(false);
         ui->chkMatchWholeWord->setEnabled(false);
 
@@ -363,12 +379,15 @@ void frmSearchReplace::on_searchStringEdited(const QString & /*text*/)
 {
     NpSettings &s = NpSettings::getInstance();
 
-    if (s.Search.getSearchAsIType()) {
-        if (ui->actionFind->isChecked()) {
+    if (s.Search.getSearchAsIType())
+    {
+        if (ui->actionFind->isChecked())
+        {
             auto editor = currentEditor();
 
             QList<Editor::Selection> selections = editor->selections();
-            if (selections.length() > 0) {
+            if (selections.length() > 0)
+            {
                 editor->setCursorPosition(
                     std::min(selections[0].from, selections[0].to));
             }
@@ -408,7 +427,8 @@ static QStringList getComboBoxContents(const QComboBox *cb)
 {
     QStringList list;
     const int size = cb->count();
-    for (int index = 0; index < size; index++) {
+    for (int index = 0; index < size; index++)
+    {
         list << cb->itemText(index);
     }
     return list;
@@ -422,7 +442,8 @@ void frmSearchReplace::addToSearchHistory(QString string)
 
     addToHistory(history, string, ui->cmbSearch);
 
-    if (s.Search.getSaveHistory()) {
+    if (s.Search.getSaveHistory())
+    {
         s.Search.setSearchHistory(history);
     }
 }
@@ -435,7 +456,8 @@ void frmSearchReplace::addToReplaceHistory(QString string)
 
     addToHistory(history, string, ui->cmbReplace);
 
-    if (s.Search.getSaveHistory()) {
+    if (s.Search.getSaveHistory())
+    {
         s.Search.setReplaceHistory(history);
     }
 }

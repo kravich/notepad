@@ -22,7 +22,8 @@ bool KeyGrabber::hasConflicts() const
 
 void KeyGrabber::scrollToConflict()
 {
-    if (!m_firstConflict) {
+    if (!m_firstConflict)
+    {
         return;
     }
 
@@ -33,7 +34,8 @@ void KeyGrabber::itemChanged(QTreeWidgetItem *)
 {
     // Don't do anything if it isn't active or we're in the middle of testing for conflicts
     // since item->setBackground() emits an itemChanged signal.
-    if (!currentItem() || m_testingForConflicts) {
+    if (!currentItem() || m_testingForConflicts)
+    {
         return;
     }
 
@@ -51,25 +53,30 @@ void KeyGrabber::checkForConflicts()
         return a.treeItem->text(1) < b.treeItem->text(1);
     });
 
-    for (const auto &n : allNodes) {
+    for (const auto &n : allNodes)
+    {
         n.treeItem->setBackground(1, QBrush());
     }
 
     m_firstConflict = nullptr;
 
-    for (int i = 0; i < allNodes.count() - 1; i++) {
+    for (int i = 0; i < allNodes.count() - 1; i++)
+    {
         QTreeWidgetItem *current = allNodes[i].treeItem;
         QTreeWidgetItem *next = allNodes[i + 1].treeItem;
 
-        if (current->text(1).isEmpty()) {
+        if (current->text(1).isEmpty())
+        {
             continue;
         }
 
-        if (current->text(1) == next->text(1)) {
+        if (current->text(1) == next->text(1))
+        {
             current->setBackground(1, QBrush(QColor(255, 100, 100, 64)));
             next->setBackground(1, QBrush(QColor(255, 100, 100, 64)));
 
-            if (!m_firstConflict) {
+            if (!m_firstConflict)
+            {
                 m_firstConflict = current;
             }
         }
@@ -80,8 +87,10 @@ void KeyGrabber::checkForConflicts()
 
 void KeyGrabber::addMenus(const QList<const QMenu *> &listOfMenus)
 {
-    for (const QMenu *menu : listOfMenus) {
-        if (menu->objectName() == "menu_Language" || menu->objectName().isEmpty()) {
+    for (const QMenu *menu : listOfMenus)
+    {
+        if (menu->objectName() == "menu_Language" || menu->objectName().isEmpty())
+        {
             continue;
         }
 
@@ -106,8 +115,10 @@ void KeyGrabber::keyPressEvent(QKeyEvent *event)
     int modifiers = event->modifiers();
 
     // Keys to ignore (e.g. navigation keys with no modifiers)
-    if (modifiers == 0) {
-        switch (event->key()) {
+    if (modifiers == 0)
+    {
+        switch (event->key())
+        {
         case Qt::Key_Up:
         case Qt::Key_Down:
             QTreeWidget::keyPressEvent(event);
@@ -116,7 +127,8 @@ void KeyGrabber::keyPressEvent(QKeyEvent *event)
     }
 
     const QVariant &data = currentItem()->data(0, Qt::UserRole);
-    if (!data.isValid()) {
+    if (!data.isValid())
+    {
         QTreeWidget::keyPressEvent(event);
         return;
     }
@@ -126,7 +138,8 @@ void KeyGrabber::keyPressEvent(QKeyEvent *event)
     if (modifiers & Qt::MetaModifier) grab.append("Meta+");
     if (modifiers & Qt::ShiftModifier) grab.append("Shift+");
 
-    switch (event->key()) {
+    switch (event->key())
+    {
     case Qt::Key_Alt:
     case Qt::Key_Control:
     case Qt::Key_Meta:
@@ -172,16 +185,20 @@ void KeyGrabber::keyPressEvent(QKeyEvent *event)
         break;
 
     case Qt::Key_Backspace:
-        if (modifiers) {
+        if (modifiers)
+        {
             grab.append(key);
-        } else {
+        }
+        else
+        {
             currentItem()->setText(1, "");
             return;
         }
         break;
 
     default:
-        if (modifiers) {
+        if (modifiers)
+        {
             grab.append(key);
         }
         break;
@@ -192,11 +209,14 @@ void KeyGrabber::keyPressEvent(QKeyEvent *event)
 
 void KeyGrabber::populateNode(QTreeWidgetItem *&rootItem, const QMenu *menu)
 {
-    for (QAction *action : menu->actions()) {
-        if (action->isSeparator()) {
+    for (QAction *action : menu->actions())
+    {
+        if (action->isSeparator())
+        {
             continue;
-
-        } else if (action->menu()) {
+        }
+        else if (action->menu())
+        {
             // If the action is a sub-menu, we add a new tree node and populate it with
             // the children of this menu. Exceptions that should not be added can be
             // specified here.
@@ -207,11 +227,14 @@ void KeyGrabber::populateNode(QTreeWidgetItem *&rootItem, const QMenu *menu)
             item->setText(0, action->iconText());
             populateNode(item, action->menu());
             rootItem->addChild(item);
-        } else {
+        }
+        else
+        {
             // Any action that does not have an object name or label won't be added.
             // This way we exclude things such as the entries in the recent documents
             // list.
-            if (action->objectName().isEmpty() || action->iconText().isEmpty()) {
+            if (action->objectName().isEmpty() || action->iconText().isEmpty())
+            {
                 continue;
             }
 

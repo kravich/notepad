@@ -69,7 +69,8 @@ QSize QSearchDockTitleButton::sizeHint() const
     ensurePolished();
 
     int size = 2 * style()->pixelMetric(QStyle::PM_DockWidgetTitleBarButtonMargin, 0, this);
-    if (!icon().isNull()) {
+    if (!icon().isNull())
+    {
         int iconSize = style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this);
         QSize sz = icon().actualSize(QSize(iconSize, iconSize));
         size += qMax(sz.width(), sz.height());
@@ -98,7 +99,8 @@ void QSearchDockTitleButton::paintEvent(QPaintEvent * /*evt*/)
     opt.initFrom(this);
     opt.state |= QStyle::State_AutoRaise;
 
-    if (style()->styleHint(QStyle::SH_DockWidget_ButtonsHaveFrame, 0, this)) {
+    if (style()->styleHint(QStyle::SH_DockWidget_ButtonsHaveFrame, 0, this))
+    {
         if (isEnabled() && underMouse() && !isChecked() && !isDown())
             opt.state |= QStyle::State_Raised;
         if (isChecked())
@@ -128,7 +130,8 @@ QFrame *makeDivider(QFrame::Shape shape, int length = 0)
     QFrame *line = new QFrame();
     line->setFrameShape(shape);
     line->setFrameShadow(QFrame::Sunken);
-    if (length > 0) {
+    if (length > 0)
+    {
         if (shape == QFrame::VLine)
             line->setMaximumHeight(length);
         else
@@ -429,7 +432,8 @@ void AdvancedSearchDock::clearHistory()
                                                     return inst->isSearchInProgress();
                                                 });
 
-    if (anySearchInProgess) {
+    if (anySearchInProgess)
+    {
         QMessageBox msgBox(nullptr);
         msgBox.setWindowTitle(QCoreApplication::applicationName());
         msgBox.setIcon(QMessageBox::Warning);
@@ -459,15 +463,18 @@ void AdvancedSearchDock::selectSearchFromHistory(int index)
         return;
 
     // These signals were connected farther down this function in a previous invocation.
-    if (m_currentSearchInstance && m_currentSearchInstance->isSearchInProgress()) {
+    if (m_currentSearchInstance && m_currentSearchInstance->isSearchInProgress())
+    {
         disconnect(m_currentSearchInstance, &SearchInstance::searchCompleted, this, &AdvancedSearchDock::onCurrentSearchInstanceCompleted);
     }
 
-    if (m_currentSearchInstance) {
+    if (m_currentSearchInstance)
+    {
         disconnect(m_currentSearchInstance, &SearchInstance::itemInteracted, this, &AdvancedSearchDock::itemInteracted);
     }
 
-    if (index == 0) {
+    if (index == 0)
+    {
         m_currentSearchInstance = nullptr;
 
         m_dockWidget->setWidget(m_searchPanelWidget);
@@ -477,10 +484,13 @@ void AdvancedSearchDock::selectSearchFromHistory(int index)
         m_btnPrevResult->setVisible(false);
         m_btnNextResult->setVisible(false);
         m_cmbSearchTerm->setFocus();
-    } else {
+    }
+    else
+    {
         m_currentSearchInstance = m_searchInstances[index - 1].get();
 
-        if (m_currentSearchInstance->isSearchInProgress()) {
+        if (m_currentSearchInstance->isSearchInProgress())
+        {
             connect(m_currentSearchInstance, &SearchInstance::searchCompleted, this, &AdvancedSearchDock::onCurrentSearchInstanceCompleted);
         }
 
@@ -500,7 +510,8 @@ void AdvancedSearchDock::selectSearchFromHistory(int index)
 
 void AdvancedSearchDock::onChangeSearchScope(int index)
 {
-    switch (index) {
+    switch (index)
+    {
     case 0: // Search current document
     case 1: // Search all open documents
         m_cmbSearchPattern->setEnabled(false);
@@ -530,7 +541,8 @@ void AdvancedSearchDock::onCurrentSearchInstanceCompleted()
 void AdvancedSearchDock::onUserInput()
 {
     // Dis- or enable the "Search" button depending on whether the necessary fields are filled out or not.
-    switch (m_cmbSearchScope->currentIndex()) {
+    switch (m_cmbSearchScope->currentIndex())
+    {
     case SearchConfig::ScopeCurrentDocument:
     case SearchConfig::ScopeAllOpenDocuments:
         m_btnSearch->setEnabled(!m_cmbSearchTerm->currentText().isEmpty());
@@ -575,11 +587,13 @@ void AdvancedSearchDock::startReplace()
     const SearchConfig &config = m_currentSearchInstance->getSearchConfig();
     const SearchConfig::SearchScope scope = config.searchScope;
 
-    if (scope == SearchConfig::ScopeCurrentDocument || scope == SearchConfig::ScopeAllOpenDocuments) {
+    if (scope == SearchConfig::ScopeCurrentDocument || scope == SearchConfig::ScopeAllOpenDocuments)
+    {
         // Since doc management is a mess we've got to go through all DocResults manually here.
         TopEditorContainer *tec = config.targetWindow->topEditorContainer();
 
-        for (const DocResult &res : filteredResults.results) {
+        for (const DocResult &res : filteredResults.results)
+        {
             QSharedPointer<Editor> ed = res.editor;
 
             // The editor might not be open anymore. Try to find it first
@@ -590,7 +604,9 @@ void AdvancedSearchDock::startReplace()
             ed->setValue(content);
         }
         return;
-    } else if (scope == SearchConfig::ScopeFileSystem) {
+    }
+    else if (scope == SearchConfig::ScopeFileSystem)
+    {
         showReplaceDialog(filteredResults, replaceText);
     }
 }
@@ -678,10 +694,12 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow *mainWindow) :
     connect(m_btnPrevResult, &QToolButton::clicked, this, &AdvancedSearchDock::selectPrevResult);
     connect(m_btnNextResult, &QToolButton::clicked, this, &AdvancedSearchDock::selectNextResult);
     connect(m_btnToggleReplaceOptions, &QToolButton::toggled, [this](bool checked) {
-        if (checked) {
+        if (checked)
+        {
             m_titlebarLayout->addLayout(m_replaceOptionsLayout);
             m_cmbReplaceText->setCurrentText("");
-        } else
+        }
+        else
             m_titlebarLayout->removeItem(m_replaceOptionsLayout);
     });
 
@@ -707,14 +725,16 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow *mainWindow) :
         auto editor = tabW->currentEditor();
 
         QString dir;
-        if (editor && !editor->filePath().isEmpty()) {
+        if (editor && !editor->filePath().isEmpty())
+        {
             dir = QFileInfo(editor->filePath().toLocalFile()).dir().path();
         }
         m_cmbSearchDirectory->setCurrentText(dir);
     });
     connect(m_btnSelectSearchDirectory, &QToolButton::clicked, [this]() {
         QString defaultDir = m_cmbSearchDirectory->currentText();
-        if (defaultDir.isEmpty()) {
+        if (defaultDir.isEmpty())
+        {
             defaultDir = NpSettings::getInstance().General.getLastSelectedDir();
         }
 
@@ -723,7 +743,8 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow *mainWindow) :
                                                         defaultDir,
                                                         QFileDialog::ShowDirsOnly | QFileDialog::ReadOnly | QFileDialog::DontResolveSymlinks);
 
-        if (!dir.isEmpty()) {
+        if (!dir.isEmpty())
+        {
             m_cmbSearchDirectory->setCurrentText(dir);
         }
     });
@@ -752,7 +773,8 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow *mainWindow) :
         m_currentSearchInstance->copySelectedLinesToClipboard();
     });
     connect(m_actRemoveSearch, &QAction::triggered, [this]() {
-        if (m_currentSearchInstance->isSearchInProgress()) {
+        if (m_currentSearchInstance->isSearchInProgress())
+        {
             const auto response = QMessageBox::warning(
                 QApplication::activeWindow(),
                 tr("Search in progress"),
@@ -786,7 +808,8 @@ static QStringList getComboBoxContents(const QComboBox *cb)
 {
     QStringList list;
     const int size = cb->count();
-    for (int index = 0; index < size; index++) {
+    for (int index = 0; index < size; index++)
+    {
         list << cb->itemText(index);
     }
     return list;
@@ -857,13 +880,15 @@ void AdvancedSearchDock::startSearch(SearchConfig cfg)
 
     const SearchConfig::SearchScope scope = cfg.searchScope;
 
-    if (scope == SearchConfig::ScopeFileSystem) {
+    if (scope == SearchConfig::ScopeFileSystem)
+    {
         // If we're searching the file system, check that the search dir is not empty and actually exists
         if (cfg.directory.isEmpty()) return;
 
         QDir dir(cfg.directory);
 
-        if (!dir.exists()) {
+        if (!dir.exists())
+        {
             QMessageBox::warning(QApplication::activeWindow(), tr("Error"), tr("Specified directory does not exist."), QMessageBox::Ok);
             return;
         }
@@ -873,7 +898,8 @@ void AdvancedSearchDock::startSearch(SearchConfig cfg)
 
     // Update history
     updateSearchHistory(cfg.searchString);
-    if (scope == SearchConfig::ScopeFileSystem) {
+    if (scope == SearchConfig::ScopeFileSystem)
+    {
         updateDirectoryhHistory(cfg.directory);
         updateFilterHistory(cfg.filePattern);
     }
@@ -910,13 +936,15 @@ void AdvancedSearchDock::showReplaceDialog(const SearchResult &filteredResults, 
 
     const bool success = !w->hasErrors();
 
-    if (!success) {
+    if (!success)
+    {
         const QVector<QString> &errors = w->getErrors();
         const int numErrors = errors.size();
         const int maxCount = std::min(numErrors, 8);
         QString errorString = tr("Replacing was unsuccessful for %1 file(s):\n").arg(numErrors);
 
-        for (int i = 0; i < maxCount; i++) {
+        for (int i = 0; i < maxCount; i++)
+        {
             errorString += "\"" + errors[i] + "\"\n";
         }
         if (numErrors > 8)
@@ -926,7 +954,9 @@ void AdvancedSearchDock::showReplaceDialog(const SearchResult &filteredResults, 
                              tr("Replacement Results"),
                              errorString,
                              QMessageBox::Ok);
-    } else {
+    }
+    else
+    {
         QMessageBox::information(QApplication::activeWindow(),
                                  tr("Replacement Results"),
                                  tr("All selected matches successfully replaced."),

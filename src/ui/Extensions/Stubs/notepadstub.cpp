@@ -7,8 +7,10 @@
 
 #include <QApplication>
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
         NotepadStub::NotepadStub(RuntimeSupport *rts) :
             Stub(rts)
@@ -48,26 +50,41 @@ namespace Extensions {
         {
             QString output = "";
 
-            for (int i = 0; i < args.count(); i++) {
+            for (int i = 0; i < args.count(); i++)
+            {
                 QJsonValue val = args.at(i);
 
-                if (i != 0) {
+                if (i != 0)
+                {
                     output += " ";
                 }
 
-                if (val.isString()) {
+                if (val.isString())
+                {
                     output += val.toString();
-                } else if (val.isDouble()) {
+                }
+                else if (val.isDouble())
+                {
                     output += QString::number(val.toDouble());
-                } else if (val.isBool()) {
+                }
+                else if (val.isBool())
+                {
                     output += val.toBool() ? "true" : "false";
-                } else if (val.isNull()) {
+                }
+                else if (val.isNull())
+                {
                     output += "null";
-                } else if (val.isUndefined()) {
+                }
+                else if (val.isUndefined())
+                {
                     output += "undefined";
-                } else if (val.isArray()) {
+                }
+                else if (val.isArray())
+                {
                     output += "[Array]";
-                } else if (val.isObject()) {
+                }
+                else if (val.isObject())
+                {
                     output += "[Object]";
                 }
             }
@@ -83,7 +100,8 @@ namespace Extensions {
 
             QJsonArray jsonWindows;
 
-            for (int i = 0; i < windows.length(); i++) {
+            for (int i = 0; i < windows.length(); i++)
+            {
                 QSharedPointer<Extensions::Stubs::WindowStub> windowStub =
                     QSharedPointer<Extensions::Stubs::WindowStub>(
                         new Extensions::Stubs::WindowStub(windows[i], rts));
@@ -96,5 +114,5 @@ namespace Extensions {
         }
 
         // TODO Implement messagebox
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions

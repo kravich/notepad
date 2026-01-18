@@ -28,14 +28,17 @@ void NpSettings::ensureBackwardsCompatibility()
     };
 
     // Just clear all settings if we're dealing with stone-age 0.53.0
-    if (major == 0 && (minor <= 53 || (minor == 53 && revision > 0))) {
+    if (major == 0 && (minor <= 53 || (minor == 53 && revision > 0)))
+    {
         s.clear();
         return;
     }
 
     // For versions of 1.2.0 and below we need to adjust action names
-    if (major == 1 && minor < 3) {
-        struct Pair {
+    if (major == 1 && minor < 3)
+    {
+        struct Pair
+        {
             const char *oldName;
             const char *newName;
         };
@@ -62,7 +65,8 @@ void NpSettings::ensureBackwardsCompatibility()
         };
         /* clang-format on */
 
-        for (const QString &key : s.allKeys()) {
+        for (const QString &key : s.allKeys())
+        {
             if (key.isEmpty() || !key.startsWith("Shortcuts/"))
                 continue;
 

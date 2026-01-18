@@ -11,8 +11,10 @@ void println(QString string);
 void printerr(QString string);
 void printerrln(QString string);
 
-namespace PForResult {
-    enum Enum {
+namespace PForResult
+{
+    enum Enum
+    {
         Continue,
         Break
     };

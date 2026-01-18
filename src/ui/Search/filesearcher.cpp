@@ -16,15 +16,19 @@ bool matchesWholeWord(int index, int matchLength, const QString &data)
 {
     QChar boundary;
 
-    if (index != 0) {
+    if (index != 0)
+    {
         boundary = data[index - 1];
-        if (!boundary.isPunct() && !boundary.isSpace() && !boundary.isSymbol()) {
+        if (!boundary.isPunct() && !boundary.isSpace() && !boundary.isSymbol())
+        {
             return false;
         }
     }
-    if (data.length() != index + matchLength) {
+    if (data.length() != index + matchLength)
+    {
         boundary = data[index + matchLength];
-        if (!boundary.isPunct() && !boundary.isSpace() && !boundary.isSymbol()) {
+        if (!boundary.isPunct() && !boundary.isSpace() && !boundary.isSymbol())
+        {
             return false;
         }
     }
@@ -43,11 +47,15 @@ std::vector<int> getLinePositions(const QString &data)
 
     // Finds line-breaks in the string. Doesn't check the last char so the loop
     // can be optimized.
-    for (int i = 0; i < dataSize - 1; i++) {
-        if (data[i] == '\r' && data[i + 1] == '\n') {
+    for (int i = 0; i < dataSize - 1; i++)
+    {
+        if (data[i] == '\r' && data[i + 1] == '\n')
+        {
             linePosition.push_back(i + 2);
             i++;
-        } else if (data[i] == '\r' || data[i] == '\n') {
+        }
+        else if (data[i] == '\r' || data[i] == '\n')
+        {
             linePosition.push_back(i + 1);
         }
     }
@@ -113,8 +121,10 @@ DocResult FileSearcher::searchPlainText(const SearchConfig &config, const QStrin
     const int matchLength = searchString.length();
     int offset = 0;
 
-    while ((offset = content.indexOf(searchString, offset, caseSense)) != -1) {
-        if (config.matchWord && !matchesWholeWord(offset, matchLength, content)) {
+    while ((offset = content.indexOf(searchString, offset, caseSense)) != -1)
+    {
+        if (config.matchWord && !matchesWholeWord(offset, matchLength, content))
+        {
             offset += matchLength;
             continue;
         }
@@ -148,7 +158,8 @@ DocResult FileSearcher::searchRegExp(const QRegularExpression &regex, const QStr
     std::vector<int> linePosition = getLinePositions(content);
 
     QRegularExpressionMatch match;
-    for (;;) {
+    for (;;)
+    {
         match = regex.match(content, offset);
 
         if (!match.hasMatch())
@@ -181,9 +192,12 @@ DocResult FileSearcher::searchRegExp(const QRegularExpression &regex, const QStr
 
 void FileSearcher::run()
 {
-    if (m_searchConfig.searchMode == SearchConfig::ModeRegex) {
+    if (m_searchConfig.searchMode == SearchConfig::ModeRegex)
+    {
         m_regex = createRegexFromConfig(m_searchConfig);
-    } else if (m_searchConfig.searchMode == SearchConfig::ModePlainTextSpecialChars) {
+    }
+    else if (m_searchConfig.searchMode == SearchConfig::ModePlainTextSpecialChars)
+    {
         m_searchConfig.searchString = SearchString::unescape(m_searchConfig.searchString);
     }
 
@@ -206,7 +220,8 @@ void FileSearcher::run()
 
     // Start the actual search
     int count = 0;
-    for (const auto &fileName : fileList) {
+    for (const auto &fileName : fileList)
+    {
         if (m_wantToStop)
             break;
 
@@ -218,14 +233,16 @@ void FileSearcher::run()
         decodedText = DocEngine::readToString(&f);
         f.close();
 
-        if (decodedText.error) {
+        if (decodedText.error)
+        {
             // File could not be read. We'll ignore this error since it should never happen. QDirIterator only iterates over
             // readable files and DocEngine only reads the file. But if it happens we can skip the rest, just in case.
             continue;
         }
 
         DocResult res;
-        switch (m_searchConfig.searchMode) {
+        switch (m_searchConfig.searchMode)
+        {
         case SearchConfig::ModePlainText:
         case SearchConfig::ModePlainTextSpecialChars:
             res = searchPlainText(m_searchConfig, decodedText.text);
@@ -235,7 +252,8 @@ void FileSearcher::run()
             break;
         }
 
-        if (!res.results.empty()) {
+        if (!res.results.empty())
+        {
             res.docType = DocResult::TypeFile;
             res.fileName = fileName;
             m_searchResult.results.push_back(res);

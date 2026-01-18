@@ -6,7 +6,8 @@
 
 #include <QObject>
 
-namespace Extensions {
+namespace Extensions
+{
 
     class ExtensionsLoader : public QObject
     {
@@ -35,6 +36,6 @@ namespace Extensions {
         static QMap<QString, QSharedPointer<Extension>> m_extensions;
     };
 
-}
+} //namespace Extensions
 
 #endif // EXTENSIONLOADER_H

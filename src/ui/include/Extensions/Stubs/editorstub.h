@@ -6,8 +6,10 @@
 
 #include <QObject>
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
         class EditorStub : public Stub
         {
@@ -25,7 +27,7 @@ namespace Extensions {
             EditorNS::Editor *editor();
         };
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions
 
 #endif // EDITORSTUB_H

@@ -19,7 +19,8 @@ void BackupService::executeBackup()
     std::set<WindowData> newData, savedData, temp;
 
     // Fill newData with up-to-date window data
-    for (const auto &wnd : MainWindow::instances()) {
+    for (const auto &wnd : MainWindow::instances())
+    {
         WindowData wd;
         wd.ptr = wnd;
         wnd->topEditorContainer()->forEachEditor([&wd](int, int, EditorTabWidget *, QSharedPointer<Editor> ed) {
@@ -34,7 +35,8 @@ void BackupService::executeBackup()
     // Find all closed windows and remove their backups
     std::set_difference(s_backupWindowData.begin(), s_backupWindowData.end(), newData.begin(), newData.end(), std::inserter(temp, temp.end()));
 
-    for (const auto &item : temp) {
+    for (const auto &item : temp)
+    {
         const auto ptrToInt = reinterpret_cast<uintptr_t>(item.ptr);
         const QString cachePath = backupPath + QString("/window_%1").arg(ptrToInt);
         QDir(cachePath).removeRecursively();
@@ -44,7 +46,8 @@ void BackupService::executeBackup()
     temp.clear();
     std::set_difference(newData.begin(), newData.end(), s_backupWindowData.begin(), s_backupWindowData.end(), std::inserter(temp, temp.end()));
 
-    for (const auto &item : temp) {
+    for (const auto &item : temp)
+    {
         // If writeBackup() fails we don't mark this window as saved. Another attempt at saving will be made
         // next time executeBackup() runs.
         if (writeBackup(item.ptr))
@@ -55,11 +58,13 @@ void BackupService::executeBackup()
     temp.clear();
     std::set_intersection(s_backupWindowData.begin(), s_backupWindowData.end(), newData.begin(), newData.end(), std::inserter(temp, temp.end()));
 
-    for (const auto &oldItem : temp) { // oldItem is always from the first set (s_backupWindowData)
+    for (const auto &oldItem : temp)
+    { // oldItem is always from the first set (s_backupWindowData)
         const auto &newItem = *newData.find(oldItem);
 
         // If oldItem and newItem are fully equal, their contents haven't changed and need not be backed up...
-        if (oldItem.isFullyEqual(newItem)) {
+        if (oldItem.isFullyEqual(newItem))
+        {
             savedData.insert(newItem);
             continue;
         }
@@ -106,7 +111,8 @@ bool BackupService::restoreFromBackup()
     if (ret == QMessageBox::No)
         return false;
 
-    for (const auto &dirInfo : dirs) {
+    for (const auto &dirInfo : dirs)
+    {
         const auto sessPath = dirInfo.filePath() + "/window.xml";
 
         MainWindow *wnd = new MainWindow(QStringList(), nullptr);
@@ -128,7 +134,8 @@ void BackupService::enableAutosave(int intervalInSeconds)
         return;
 
     static bool initializer = false;
-    if (!initializer) {
+    if (!initializer)
+    {
         // Only create this connection once. Since we're connecting to a plain old function we can't use
         // Qt::UniqueConnection or QObject::disconnect() to make things easier.
         initializer = true;
@@ -138,7 +145,8 @@ void BackupService::enableAutosave(int intervalInSeconds)
         QObject::connect(qApp, &QGuiApplication::applicationStateChanged, [](Qt::ApplicationState state) {
             if (!s_autosaveEnabled) return;
 
-            switch (state) {
+            switch (state)
+            {
             case Qt::ApplicationInactive: s_autosaveTimer.stop(); break;
             case Qt::ApplicationActive:   s_autosaveTimer.start(); break;
             default:                      break;
@@ -180,7 +188,8 @@ void BackupService::pause()
 
 void BackupService::resume()
 {
-    if (s_autosaveEnabled) {
+    if (s_autosaveEnabled)
+    {
         // The previous interval is persisted in s_autosaveTimer.interval()
         s_autosaveTimer.start();
     }

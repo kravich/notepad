@@ -6,7 +6,8 @@
 class DocEngine;
 class TopEditorContainer;
 
-namespace Sessions {
+namespace Sessions
+{
 
     /**
      * @brief Saves a session as an XML file
@@ -28,6 +29,6 @@ namespace Sessions {
      */
     void loadSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QString sessionPath);
 
-} // namespace Autosave
+} //namespace Sessions
 
 #endif // SESSIONS_H

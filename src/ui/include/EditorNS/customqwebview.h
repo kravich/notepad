@@ -4,7 +4,8 @@
 #include <QWebEngineView>
 #include <QWheelEvent>
 
-namespace EditorNS {
+namespace EditorNS
+{
 
     class CustomQWebView : public QWebEngineView
     {
@@ -35,6 +36,6 @@ namespace EditorNS {
         QObject *childObj = nullptr;
     };
 
-}
+} //namespace EditorNS
 
 #endif // CUSTOMQWEBVIEW_H

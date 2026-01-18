@@ -3,7 +3,8 @@
 #include <QPainter>
 #include <QStyleOption>
 
-namespace EditorNS {
+namespace EditorNS
+{
 
     BannerBasicMessage::BannerBasicMessage(QWidget *parent) :
         QWidget(parent)
@@ -45,11 +46,14 @@ namespace EditorNS {
 
     void BannerBasicMessage::setImportance(Importance importance)
     {
-        if (importance == Importance::Warning) {
+        if (importance == Importance::Warning)
+        {
             m_topWidget->setStyleSheet("#BannerBasicMessage_base {"
                                        "   background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0 stop:0 rgba(227, 115, 0, 255), stop:1 rgba(245, 144, 39, 255));"
                                        "}");
-        } else if (importance == Importance::Question) {
+        }
+        else if (importance == Importance::Question)
+        {
             m_topWidget->setStyleSheet("#BannerBasicMessage_base {"
                                        "   background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0 stop:0 rgba(58, 146, 222, 255), stop:1 rgba(112, 189, 255, 255));"
                                        "}");
@@ -82,4 +86,4 @@ namespace EditorNS {
         style()->drawPrimitive(QStyle::PE_Widget, &o, &p, this);
     }
 
-}
+} //namespace EditorNS

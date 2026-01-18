@@ -116,7 +116,8 @@ SearchInstance::SearchInstance(const SearchConfig &config) :
 
     QString searchLocation;
 
-    switch (config.searchScope) {
+    switch (config.searchScope)
+    {
     case SearchConfig::ScopeCurrentDocument:
         searchLocation = tr("current document");
         break;
@@ -170,7 +171,8 @@ SearchInstance::SearchInstance(const SearchConfig &config) :
         if (column != 0 || item->parent()) return;
         const Qt::CheckState checkState = item->checkState(0);
 
-        for (int i = 0; i < item->childCount(); i++) {
+        for (int i = 0; i < item->childCount(); i++)
+        {
             item->child(i)->setCheckState(0, checkState);
         }
     });
@@ -198,7 +200,8 @@ SearchInstance::SearchInstance(const SearchConfig &config) :
     // If we're searching through documents we'll just do the search right now. File System searches are
     // delegated to a FileSearcher instance because they can take a while to finish.
     if (config.searchScope == SearchConfig::ScopeCurrentDocument ||
-        config.searchScope == SearchConfig::ScopeAllOpenDocuments) {
+        config.searchScope == SearchConfig::ScopeAllOpenDocuments)
+    {
         // This is a mess because Np's Editor management is a mess.
         // We'll grab all Editors that want to be searched, then search them one-by-one and add the results
         // to our SearchResult instance.
@@ -213,8 +216,10 @@ SearchInstance::SearchInstance(const SearchConfig &config) :
             editorsToSearch = tec->getOpenEditors();
 
         if (config.searchMode == SearchConfig::ModePlainText ||
-            config.searchMode == SearchConfig::ModePlainTextSpecialChars) {
-            for (auto ed : editorsToSearch) {
+            config.searchMode == SearchConfig::ModePlainTextSpecialChars)
+        {
+            for (auto ed : editorsToSearch)
+            {
                 DocResult dr = FileSearcher::searchPlainText(config, ed->value());
                 dr.docType = DocResult::TypeDocument;
                 dr.fileName = tec->tabWidgetFromEditor(ed)->tabTextFromEditor(ed);
@@ -222,9 +227,12 @@ SearchInstance::SearchInstance(const SearchConfig &config) :
                 if (!dr.results.empty())
                     m_searchResult.results.push_back(dr);
             }
-        } else if (config.searchMode == SearchConfig::ModeRegex) {
+        }
+        else if (config.searchMode == SearchConfig::ModeRegex)
+        {
             QRegularExpression regex = FileSearcher::createRegexFromConfig(config);
-            for (auto ed : editorsToSearch) {
+            for (auto ed : editorsToSearch)
+            {
                 DocResult dr = FileSearcher::searchRegExp(regex, ed->value());
                 dr.docType = DocResult::TypeDocument;
                 dr.fileName = tec->tabWidgetFromEditor(ed)->tabTextFromEditor(ed);
@@ -234,7 +242,9 @@ SearchInstance::SearchInstance(const SearchConfig &config) :
             }
         }
         onSearchCompleted();
-    } else if (config.searchScope == SearchConfig::ScopeFileSystem) {
+    }
+    else if (config.searchScope == SearchConfig::ScopeFileSystem)
+    {
         QTreeWidgetItem *toplevelitem = new QTreeWidgetItem(treeWidget);
         toplevelitem->setText(0, tr("Calculating..."));
 
@@ -262,13 +272,15 @@ SearchResult SearchInstance::getFilteredSearchResult() const
     SearchResult result;
 
     const QTreeWidget *tree = getResultTreeWidget();
-    for (int i = 0; i < tree->topLevelItemCount(); i++) {
+    for (int i = 0; i < tree->topLevelItemCount(); i++)
+    {
         QTreeWidgetItem *docWidget = tree->topLevelItem(i);
         const DocResult *fullResult = m_docMap.at(docWidget);
         DocResult r = *fullResult;
         r.results.clear();
 
-        for (int c = 0; c < docWidget->childCount(); c++) {
+        for (int c = 0; c < docWidget->childCount(); c++)
+        {
             QTreeWidgetItem *it = tree->topLevelItem(i)->child(c);
             if (it->checkState(0) == Qt::Checked)
                 r.results.push_back(*m_resultMap.at(it));
@@ -289,7 +301,8 @@ void SearchInstance::showFullLines(bool showFullLines)
     if (m_isSearchInProgress)
         return;
 
-    for (auto &item : m_resultMap) {
+    for (auto &item : m_resultMap)
+    {
         QTreeWidgetItem *treeItem = item.first;
         const MatchResult &res = *item.second;
         treeItem->setText(0, getFormattedResultText(res, showFullLines));
@@ -319,15 +332,19 @@ void SearchInstance::selectNextResult()
 
     if (!curr)
         next = treeWidget->topLevelItem(0)->child(0);
-    else if (!curr->parent()) {
+    else if (!curr->parent())
+    {
         next = curr->child(0);
-    } else {
+    }
+    else
+    {
         QTreeWidgetItem *top = curr->parent();
         int nextIndex = top->indexOfChild(curr) + 1;
 
         if (nextIndex < top->childCount())
             next = top->child(nextIndex);
-        else {
+        else
+        {
             int nextTop = treeWidget->indexOfTopLevelItem(top) + 1;
             if (nextTop >= treeWidget->topLevelItemCount())
                 nextTop = 0;
@@ -346,18 +363,24 @@ void SearchInstance::selectPreviousResult()
     QTreeWidgetItem *curr = treeWidget->currentItem();
     QTreeWidgetItem *prev = nullptr;
 
-    if (!curr) {
+    if (!curr)
+    {
         QTreeWidgetItem *lastTop = treeWidget->topLevelItem(treeWidget->topLevelItemCount() - 1);
         prev = lastTop->child(lastTop->childCount() - 1);
-    } else if (!curr->parent()) {
+    }
+    else if (!curr->parent())
+    {
         prev = curr->child(curr->childCount() - 1);
-    } else {
+    }
+    else
+    {
         QTreeWidgetItem *top = curr->parent();
         int prevIndex = top->indexOfChild(curr) - 1;
 
         if (prevIndex >= 0)
             prev = top->child(prevIndex);
-        else {
+        else
+        {
             int prevTop = treeWidget->indexOfTopLevelItem(top) - 1;
             if (prevTop < 0)
                 prevTop = treeWidget->topLevelItemCount() - 1;
@@ -376,8 +399,10 @@ void SearchInstance::copySelectedLinesToClipboard() const
     //This loops through all QTreeWidgetItems and copies their
     //contents if they are checked. This way proper item order is preserved.
     const QTreeWidget *tree = getResultTreeWidget();
-    for (int i = 0; i < tree->topLevelItemCount(); i++) {
-        for (int c = 0; c < tree->topLevelItem(i)->childCount(); c++) {
+    for (int i = 0; i < tree->topLevelItemCount(); i++)
+    {
+        for (int c = 0; c < tree->topLevelItem(i)->childCount(); c++)
+        {
             QTreeWidgetItem *it = tree->topLevelItem(i)->child(c);
 
             if (it->checkState(0) == Qt::Checked)
@@ -402,18 +427,21 @@ void SearchInstance::onSearchCompleted()
 
     // m_fileSearcher is only instantiated when we've done a filesystem search. If so, get the results
     // from there. Otherwise all search results were already added to m_searchResult
-    if (m_fileSearcher) {
+    if (m_fileSearcher)
+    {
         m_searchResult = std::move(m_fileSearcher->getResult());
     }
 
     m_treeWidget->clear();
-    for (const auto &doc : m_searchResult.results) {
+    for (const auto &doc : m_searchResult.results)
+    {
         QTreeWidgetItem *toplevelitem = new QTreeWidgetItem(getResultTreeWidget());
         toplevelitem->setText(0, getFormattedLocationText(doc, m_searchConfig.directory));
         toplevelitem->setCheckState(0, Qt::Checked);
         m_docMap[toplevelitem] = &doc;
 
-        for (const auto &res : doc.results) {
+        for (const auto &res : doc.results)
+        {
             QTreeWidgetItem *it = new QTreeWidgetItem(toplevelitem);
             it->setText(0, getFormattedResultText(res, m_showFullLines));
             it->setCheckState(0, Qt::Checked);

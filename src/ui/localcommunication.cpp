@@ -10,7 +10,8 @@ bool LocalCommunication::sendRaw(QByteArray data, QLocalSocket *socket)
                             .toUtf8();
 
     int written = 0;
-    while (written < header.length()) {
+    while (written < header.length())
+    {
         int bytes = socket->write(header);
 
         if (bytes > -1)
@@ -20,7 +21,8 @@ bool LocalCommunication::sendRaw(QByteArray data, QLocalSocket *socket)
     }
 
     written = 0;
-    while (written < data.length()) {
+    while (written < data.length())
+    {
         int bytes = socket->write(data);
 
         if (bytes > -1)
@@ -42,7 +44,8 @@ QByteArray LocalCommunication::receiveRaw(QLocalSocket *socket)
     QByteArray header;
     int bytes = QString(numOfDigits(MAX_PKT_SIZE), '0').toUtf8().length();
 
-    while (header.length() < bytes) {
+    while (header.length() < bytes)
+    {
         header.append(socket->read(bytes - header.length()));
         socket->waitForReadyRead(100);
     }
@@ -51,15 +54,19 @@ QByteArray LocalCommunication::receiveRaw(QLocalSocket *socket)
     bool ok;
     int size = sizeStr.toInt(&ok);
 
-    if (ok) {
+    if (ok)
+    {
         QByteArray msgData;
 
-        while (msgData.length() < size) {
+        while (msgData.length() < size)
+        {
             msgData.append(socket->read(size - msgData.length()));
         }
 
         return msgData;
-    } else {
+    }
+    else
+    {
         return QByteArray();
     }
 }
@@ -72,11 +79,13 @@ QString LocalCommunication::receive(QLocalSocket *socket)
 int LocalCommunication::numOfDigits(int n)
 {
     int digits = 0;
-    if (n <= 0) {
+    if (n <= 0)
+    {
         n = -n;
         ++digits;
     }
-    while (n) {
+    while (n)
+    {
         n /= 10;
         ++digits;
     }

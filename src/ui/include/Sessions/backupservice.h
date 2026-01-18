@@ -8,7 +8,8 @@
 #include <set>
 #include <tuple>
 
-namespace EditorNS {
+namespace EditorNS
+{
     class Editor;
 }
 class MainWindow;
@@ -68,7 +69,8 @@ private:
      *        compared to the MainWindow's current list of Editor*'s and their history gens
      *        to determine whether the MainWindow has changed since the last save.
      */
-    struct WindowData {
+    struct WindowData
+    {
         MainWindow *ptr;
         std::vector<std::pair<QSharedPointer<EditorNS::Editor>, int>> editors;
 

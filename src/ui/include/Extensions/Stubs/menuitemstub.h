@@ -6,8 +6,10 @@
 #include <QAction>
 #include <QObject>
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
         class MenuItemStub : public Stub
         {
@@ -24,7 +26,7 @@ namespace Extensions {
             NP_DECLARE_EXTENSION_METHOD(setShortcut)
         };
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions
 
 #endif // MENUITEMSTUB_H

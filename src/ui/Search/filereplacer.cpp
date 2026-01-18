@@ -14,7 +14,8 @@ FileReplacer::FileReplacer(const SearchResult &results, const QString &replaceme
 
 void FileReplacer::replaceAll(const DocResult &doc, QString &content, const QString &replacement)
 {
-    struct BackReference {
+    struct BackReference
+    {
         int pos;
         int num;
     };
@@ -27,15 +28,18 @@ void FileReplacer::replaceAll(const DocResult &doc, QString &content, const QStr
     // Search the replacement string for occurrences of back references.
     // Leave any references to non-existing capture groups alone.
     // Only supports numbered references of up to 9. No named or relative references.
-    if (doc.regexCaptureGroupCount > 0) {
+    if (doc.regexCaptureGroupCount > 0)
+    {
         const int alen = replacement.length();
         int idx = 0;
-        while ((idx = replacement.indexOf('\\', idx)) != -1) {
+        while ((idx = replacement.indexOf('\\', idx)) != -1)
+        {
             if (idx == alen - 1) break;
 
             const auto val = replacement.at(idx + 1).digitValue();
 
-            if (val > 0 && val <= doc.regexCaptureGroupCount) {
+            if (val > 0 && val <= doc.regexCaptureGroupCount)
+            {
                 BackReference ref;
                 ref.pos = idx;
                 ref.num = val;
@@ -56,9 +60,11 @@ void FileReplacer::replaceAll(const DocResult &doc, QString &content, const QStr
     QVector<QStringRef> chunks;
     const QString copy = content;
 
-    for (const auto &result : doc.results) {
+    for (const auto &result : doc.results)
+    {
         int len = result.positionInFile - lastEnd;
-        if (len > 0) {
+        if (len > 0)
+        {
             chunks << QStringRef(&copy, lastEnd, len);
             newLength += len;
         }
@@ -66,17 +72,20 @@ void FileReplacer::replaceAll(const DocResult &doc, QString &content, const QStr
         lastEnd = 0;
 
         // add the after string, with replacements for the backreferences
-        for (const BackReference &backReference : backReferences) {
+        for (const BackReference &backReference : backReferences)
+        {
             // part of "after" before the backreference
             len = backReference.pos - lastEnd;
-            if (len > 0) {
+            if (len > 0)
+            {
                 chunks << QStringRef(&replacement, lastEnd, len);
                 newLength += len;
             }
 
             // backreference itself
             len = result.regexMatch.capturedLength(backReference.num);
-            if (len > 0) {
+            if (len > 0)
+            {
                 chunks << QStringRef(&copy, result.regexMatch.capturedStart(backReference.num), len);
                 newLength += len;
             }
@@ -86,7 +95,8 @@ void FileReplacer::replaceAll(const DocResult &doc, QString &content, const QStr
 
         // add the last part of the after string
         len = replacement.length() - lastEnd;
-        if (len > 0) {
+        if (len > 0)
+        {
             chunks << QStringRef(&replacement, lastEnd, len);
             newLength += len;
         }
@@ -95,7 +105,8 @@ void FileReplacer::replaceAll(const DocResult &doc, QString &content, const QStr
     }
 
     // 3. trailing string after the last match
-    if (copy.length() > lastEnd) {
+    if (copy.length() > lastEnd)
+    {
         chunks << QStringRef(&copy, lastEnd, copy.length() - lastEnd);
         newLength += copy.length() - lastEnd;
     }
@@ -104,7 +115,8 @@ void FileReplacer::replaceAll(const DocResult &doc, QString &content, const QStr
     content.resize(newLength);
     int i = 0;
     QChar *uc = content.data();
-    for (const QStringRef &chunk : chunks) {
+    for (const QStringRef &chunk : chunks)
+    {
         int len = chunk.length();
         memcpy(uc + i, chunk.unicode(), static_cast<ulong>(len) * sizeof(QChar));
         i += len;
@@ -115,7 +127,8 @@ void FileReplacer::run()
 {
     int count = 0;
 
-    for (const DocResult &docResult : m_searchResult.results) {
+    for (const DocResult &docResult : m_searchResult.results)
+    {
         if (m_wantToStop)
             return;
 
@@ -129,14 +142,16 @@ void FileReplacer::run()
         DocEngine::DecodedText decodedText;
 
         decodedText = DocEngine::readToString(&f);
-        if (decodedText.error) {
+        if (decodedText.error)
+        {
             m_failedFiles.push_back(docResult.fileName);
             continue;
         }
 
         replaceAll(docResult, decodedText.text, m_replacement);
 
-        if (!DocEngine::writeFromString(&f, decodedText)) {
+        if (!DocEngine::writeFromString(&f, decodedText))
+        {
             m_failedFiles.push_back(docResult.fileName);
             continue;
         }

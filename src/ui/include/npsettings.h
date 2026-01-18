@@ -147,7 +147,8 @@ public:
          */
         void initShortcuts(const QList<QAction *> &actions)
         {
-            for (QAction *a : actions) {
+            for (QAction *a : actions)
+            {
                 if (a->objectName().isEmpty())
                     continue;
 
@@ -192,7 +193,8 @@ public:
         }
 
     private:
-        struct _ActionItem {
+        struct _ActionItem
+        {
             QKeySequence defaultSequence;
             QKeySequence sequence;
         };
@@ -212,7 +214,8 @@ public:
             QMap<QString, QString> ret;
             _m_settings.beginGroup("Run");
             QStringList groups = _m_settings.childGroups();
-            for (int i = 0; i < groups.size(); ++i) {
+            for (int i = 0; i < groups.size(); ++i)
+            {
                 _m_settings.beginGroup(groups.at(i));
                 const QString &name = _m_settings.value("name", "").toString();
                 const QString &cmd = _m_settings.value("command", "").toString();

@@ -35,7 +35,8 @@ EditorTabWidget::EditorTabWidget(QWidget *parent) :
 EditorTabWidget::~EditorTabWidget()
 {
     // Manually remove each tab to keep m_editorPointers consistent
-    for (int i = this->count() - 1; i >= 0; i--) {
+    for (int i = this->count() - 1; i >= 0; i--)
+    {
         QSharedPointer<Editor> edt = editor(i);
         m_editorPointers.remove(edt.data());
         // Remove the parent so that QObject cannot destroy the
@@ -101,7 +102,8 @@ void EditorTabWidget::setTabText(Editor *editor, const QString &text)
 {
     int idx = indexOf(editor);
 
-    if (idx >= 0) {
+    if (idx >= 0)
+    {
         QTabWidget::setTabText(idx, text);
         editor->setTabName(text);
     }
@@ -135,9 +137,12 @@ int EditorTabWidget::rawAddEditorTab(const bool setFocus, const QString &title, 
     QIcon oldIcon;
     QString oldTooltip;
 
-    if (create) {
+    if (create)
+    {
         editor = Editor::getNewEditor(this);
-    } else {
+    }
+    else
+    {
         editor = source->editor(sourceTabIndex);
 
         oldText = source->tabText(sourceTabIndex);
@@ -153,19 +158,24 @@ int EditorTabWidget::rawAddEditorTab(const bool setFocus, const QString &title, 
     editor->setTabName(tabTitle);
     int index = addTab(editor.data(), tabTitle);
 
-    if (!create) {
+    if (!create)
+    {
         source->disconnectEditorSignals(editor.data());
     }
     this->connectEditorSignals(editor.data());
 
-    if (setFocus) {
+    if (setFocus)
+    {
         this->setCurrentIndex(index);
         editor->setFocus();
     }
 
-    if (create) {
+    if (create)
+    {
         this->setSavedIcon(index, true);
-    } else {
+    }
+    else
+    {
         this->setTabIcon(index, oldIcon);
         this->setTabToolTip(index, oldTooltip);
     }
@@ -191,7 +201,8 @@ int EditorTabWidget::findOpenEditorByUrl(const QUrl &filename)
     if (absFileName.isLocalFile())
         absFileName = QUrl::fromLocalFile(QFileInfo(filename.toLocalFile()).absoluteFilePath());
 
-    for (int i = 0; i < count(); i++) {
+    for (int i = 0; i < count(); i++)
+    {
         auto editor = this->editor(i);
         if (editor->filePath() == filename)
             return i;
@@ -216,14 +227,18 @@ void EditorTabWidget::tabRemoved(int)
     // FIXME Find a more efficient way to get the deleted editor
 
     QList<QWidget *> tabs;
-    for (int i = 0; i < this->count(); i++) {
+    for (int i = 0; i < this->count(); i++)
+    {
         tabs.append(widget(i));
     }
 
-    for (QSharedPointer<Editor> editor : m_editorPointers) {
-        if (!tabs.contains(editor.data())) {
+    for (QSharedPointer<Editor> editor : m_editorPointers)
+    {
+        if (!tabs.contains(editor.data()))
+        {
             // Editor is the one that has been removed!
-            if (editor.data() != nullptr) {
+            if (editor.data() != nullptr)
+            {
                 // Set no parent, so that QObject won't delete
                 // the editor: that's what QSharedPointer should do.
                 editor->setParent(nullptr);
@@ -258,7 +273,8 @@ void EditorTabWidget::setZoomFactor(const qreal &zoomFactor)
 {
     m_zoomFactor = zoomFactor;
 
-    for (int i = 0; i < count(); i++) {
+    for (int i = 0; i < count(); i++)
+    {
         editor(i)->setZoomFactor(zoomFactor);
     }
 }
@@ -270,7 +286,8 @@ void EditorTabWidget::deleteIfEmpty()
 
 void EditorTabWidget::deleteIfEmpty(EditorTabWidget *tabWidget)
 {
-    if (tabWidget->count() == 0) {
+    if (tabWidget->count() == 0)
+    {
         delete tabWidget;
     }
 }
@@ -318,10 +335,12 @@ void EditorTabWidget::on_editorMouseWheel(QWheelEvent *ev)
 
 void EditorTabWidget::mouseReleaseEvent(QMouseEvent *ev)
 {
-    if (ev->button() == Qt::MiddleButton) {
+    if (ev->button() == Qt::MiddleButton)
+    {
         int index = tabBar()->tabAt(ev->pos());
 
-        if (index != -1) {
+        if (index != -1)
+        {
             emit tabCloseRequested(index);
             ev->accept();
             return;
@@ -368,7 +387,8 @@ int EditorTabWidget::formerTabIndex()
 void EditorTabWidget::on_currentTabChanged(int index)
 {
     // Store current index to become former index on next tab change.
-    if (m_mostRecentTabIndex != index) {
+    if (m_mostRecentTabIndex != index)
+    {
         m_formerTabIndex = m_mostRecentTabIndex;
         m_mostRecentTabIndex = index;
     }

@@ -4,8 +4,10 @@
 #include "include/Extensions/Stubs/menuitemstub.h"
 #include "include/Extensions/runtimesupport.h"
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
         WindowStub::WindowStub(MainWindow *object, RuntimeSupport *rts) :
             Stub(object, rts)
@@ -45,5 +47,5 @@ namespace Extensions {
             return StubReturnValue(rts->getJSONStub(stubId, stub->stubName_()));
         }
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions

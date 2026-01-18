@@ -41,7 +41,8 @@
 constexpr int ALL_MAXIMUM_PRIORITY = DocEngine::DocumentLoader::ALL_MAXIMUM_PRIORITY;
 constexpr int ALL_MINIMUM_PRIORITY = DocEngine::DocumentLoader::ALL_MINIMUM_PRIORITY;
 
-struct TabData {
+struct TabData
+{
     QString filePath;
     QString cacheFilePath;
     int cursorX = 0;
@@ -56,7 +57,8 @@ struct TabData {
     int tabSize = 0;
 };
 
-struct ViewData {
+struct ViewData
+{
     std::vector<TabData> tabs;
 };
 
@@ -126,10 +128,13 @@ std::vector<ViewData> SessionReader::readData(bool *outSuccess)
 {
     std::vector<ViewData> result;
 
-    if (m_reader.readNextStartElement()) {
-        if (m_reader.name() == "Notepad") {
+    if (m_reader.readNextStartElement())
+    {
+        if (m_reader.name() == "Notepad")
+        {
             result = readViewData();
-        } else
+        }
+        else
             m_reader.raiseError(QObject::tr("Error reading session file"));
     };
 
@@ -148,12 +153,15 @@ std::vector<ViewData> SessionReader::readViewData()
 {
     std::vector<ViewData> result;
 
-    while (m_reader.readNextStartElement()) {
-        if (m_reader.name() == "View") {
+    while (m_reader.readNextStartElement())
+    {
+        if (m_reader.name() == "View")
+        {
             ViewData vd;
             vd.tabs = readTabData();
             result.push_back(vd);
-        } else
+        }
+        else
             m_reader.skipCurrentElement();
     }
 
@@ -164,8 +172,10 @@ std::vector<TabData> SessionReader::readTabData()
 {
     std::vector<TabData> result;
 
-    while (m_reader.readNextStartElement()) {
-        if (m_reader.name() == "Tab") {
+    while (m_reader.readNextStartElement())
+    {
+        if (m_reader.name() == "Tab")
+        {
             const QXmlStreamAttributes &attrs = m_reader.attributes();
 
             TabData td;
@@ -185,7 +195,8 @@ std::vector<TabData> SessionReader::readTabData()
             result.push_back(td);
 
             m_reader.readElementText();
-        } else
+        }
+        else
             m_reader.skipCurrentElement();
     }
 
@@ -243,7 +254,8 @@ void SessionWriter::addTabData(const TabData &td)
     if (td.active)
         attrs.push_back(QXmlStreamAttribute("active", "1"));
 
-    if (td.customIndent) {
+    if (td.customIndent)
+    {
         attrs.push_back(QXmlStreamAttribute("customIndent", "1"));
         attrs.push_back(QXmlStreamAttribute("useTabs", td.useTabs ? "1" : "0"));
         attrs.push_back(QXmlStreamAttribute("tabSize", QString::number(td.tabSize)));
@@ -254,7 +266,8 @@ void SessionWriter::addTabData(const TabData &td)
     m_writer.writeEndElement();
 }
 
-namespace Sessions {
+namespace Sessions
+{
 
     bool saveSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QString sessionPath, QString cacheDirPath)
     {
@@ -263,7 +276,8 @@ namespace Sessions {
         QDir cacheDir;
 
         // Clear the cache directory by deleting and recreating it.
-        if (cacheModifiedFiles) {
+        if (cacheModifiedFiles)
+        {
             cacheDir = QDir(cacheDirPath);
 
             bool success = false;
@@ -281,14 +295,16 @@ namespace Sessions {
 
         //Loop through all tabwidgets and their tabs
         const int tabWidgetsCount = editorContainer->count();
-        for (int i = 0; i < tabWidgetsCount; i++) {
+        for (int i = 0; i < tabWidgetsCount; i++)
+        {
             EditorTabWidget *tabWidget = editorContainer->tabWidget(i);
             const int tabCount = tabWidget->count();
 
             viewData.push_back(ViewData());
             ViewData &currentViewData = viewData.back();
 
-            for (int j = 0; j < tabCount; j++) {
+            for (int j = 0; j < tabCount; j++)
+            {
                 auto editor = tabWidget->editor(j);
                 bool isClean = true;
                 editor->isCleanP().wait().tap([&](bool _isClean) { isClean = _isClean; });
@@ -300,16 +316,20 @@ namespace Sessions {
 
                 TabData td;
 
-                if (!isClean && cacheModifiedFiles) {
+                if (!isClean && cacheModifiedFiles)
+                {
                     // Tab is dirty, meaning it needs to be cached.
                     QUrl cacheFilePath = PersistentCache::createValidCacheName(cacheDir, tabWidget->tabText(j));
 
                     td.cacheFilePath = cacheFilePath.toLocalFile();
 
-                    if (!docEngine->write(cacheFilePath, editor)) {
+                    if (!docEngine->write(cacheFilePath, editor))
+                    {
                         return false;
                     }
-                } else if (isOrphan) {
+                }
+                else if (isOrphan)
+                {
                     // Since we didn't cache the file and it is an orphan, we won't save it in the session.
                     continue;
                 }
@@ -328,7 +348,8 @@ namespace Sessions {
                 td.language = editor->getLanguage()->id;
 
                 // Cache the custom indentation state of the file
-                if (editor->isUsingCustomIndentationMode()) {
+                if (editor->isUsingCustomIndentationMode())
+                {
                     td.customIndent = true;
                     td.useTabs = indentInfo.useTabs;
                     td.tabSize = indentInfo.size;
@@ -336,7 +357,8 @@ namespace Sessions {
                 // If we're caching and there's a file opened in the tab we want to inform the
                 // user whether the file's contents have changed since Np was last opened.
                 // For this we save and later compare the modification date.
-                if (!isOrphan && cacheModifiedFiles) {
+                if (!isOrphan && cacheModifiedFiles)
+                {
                     // As a special case, if the file has *already* changed we set the modification
                     // time to 1 so we always trigger the warning.
                     if (editor->fileOnDiskChanged())
@@ -378,12 +400,14 @@ namespace Sessions {
         bool success = false;
         const auto &views = reader.readData(&success);
 
-        if (!success || views.empty()) {
+        if (!success || views.empty())
+        {
             return;
         }
 
         int viewCounter = 0;
-        for (const auto &view : views) {
+        for (const auto &view : views)
+        {
             // Each new view must be created if it does not yet exist.
             EditorTabWidget *tabW = editorContainer->tabWidget(viewCounter);
             QSharedPointer<Editor> activeEditor;
@@ -393,7 +417,8 @@ namespace Sessions {
 
             viewCounter++;
 
-            for (const TabData &tab : view.tabs) {
+            for (const TabData &tab : view.tabs)
+            {
                 const QFileInfo fileInfo(tab.filePath);
                 const bool fileExists = fileInfo.exists();
                 const bool cacheFileExists = QFileInfo(tab.cacheFilePath).exists();
@@ -419,22 +444,27 @@ namespace Sessions {
                                           editor->setCursorPosition(tab.cursorX, tab.cursorY);
                                           editor->setScrollPosition(tab.scrollX, tab.scrollY);
 
-                                          if (tab.customIndent) {
+                                          if (tab.customIndent)
+                                          {
                                               editor->setCustomIndentationMode(tab.useTabs, tab.tabSize);
                                           }
 
                         // DocEngine sets the editor's fileName to loadUrl since this is where the file
                         // was loaded from. Since loadUrl could point to a cached file we reset it here.
-                                          if (cacheFileExists) {
+                                          if (cacheFileExists)
+                                          {
                                               editor->markDirty();
                                               editor->setLanguageFromFilePath();
                                           }
 
-                                          if (tab.filePath.isEmpty()) {
+                                          if (tab.filePath.isEmpty())
+                                          {
                                               QString tabText = tabW->tabText(idx);
                                               editor->setFilePath(QUrl());
                                               tabW->setTabText(idx, tabText);
-                                          } else {
+                                          }
+                                          else
+                                          {
                                               editor->setFilePath(fileUrl);
                                               if (fileExists)
                                                   docEngine->monitorDocument(editor);
@@ -443,16 +473,19 @@ namespace Sessions {
                         // If we're loading an existing file from cache we want to inform the user whether
                         // the file has changed since Np was last closed. For this we can compare the
                         // file's last modification date.
-                                          if (fileExists && cacheFileExists && tab.lastModified != 0) {
+                                          if (fileExists && cacheFileExists && tab.lastModified != 0)
+                                          {
                                               auto lastModified = fileInfo.lastModified().toMSecsSinceEpoch();
 
-                                              if (lastModified > tab.lastModified) {
+                                              if (lastModified > tab.lastModified)
+                                              {
                                                   editor->setFileOnDiskChanged(true);
                                               }
                                           }
 
                         // If the orig. file does not exist but *should* exist, we inform the user of its removal.
-                                          if (!fileExists && !fileUrl.isEmpty()) {
+                                          if (!fileExists && !fileUrl.isEmpty())
+                                          {
                                               editor->setFileOnDiskChanged(true);
                                               emit docEngine->fileOnDiskChanged(tabW, idx, true);
                                           }
@@ -462,7 +495,8 @@ namespace Sessions {
                         // loadDocuments() explicitly calls setFocus() so we'll have to undo that.
                                           editor->clearFocus();
 
-                                          if (tab.active) {
+                                          if (tab.active)
+                                          {
                             // We need to trigger a final call to MainWindow::refreshEditorUiInfo to display the correct info
                             // on start-up. The easiest way is to emit a cleanChanged() event.
                                               editor->isCleanP().then([=](bool isClean) { emit editor->cleanChanged(isClean); });
@@ -470,7 +504,8 @@ namespace Sessions {
                                       })
                                       .executeInBackground();
 
-                if (loadedDocs.length() == 0) {
+                if (loadedDocs.length() == 0)
+                {
                     // For some reason it hasn't been loaded
                     continue;
                 }
@@ -480,14 +515,18 @@ namespace Sessions {
                 // are loading.
                 auto loadingEditor = loadedDocs.first().first;
                 QString tabText;
-                if (tab.filePath.isEmpty()) {
+                if (tab.filePath.isEmpty())
+                {
                     tabText = docEngine->getNewDocumentName();
-                } else {
+                }
+                else
+                {
                     tabText = tabW->generateTabTitleForUrl(QUrl(tab.filePath));
                 }
                 tabW->setTabText(loadingEditor.data(), tabText);
 
-                if (tab.active) {
+                if (tab.active)
+                {
                     activeEditor = loadingEditor;
                 }
 
@@ -495,9 +534,12 @@ namespace Sessions {
 
             // In case a new tabwidget was created but no tabs were actually added to it,
             // we'll attempt to re-use the widget for the next view.
-            if (tabW->count() == 0) {
+            if (tabW->count() == 0)
+            {
                 viewCounter--;
-            } else { // Otherwise we finish by making the right tab the currently open one.
+            }
+            else
+            { // Otherwise we finish by making the right tab the currently open one.
                 tabW->setCurrentIndex(tabW->indexOf(activeEditor));
             }
 

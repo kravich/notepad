@@ -26,7 +26,8 @@ void Stats::init()
     Stats::askUserPermission();
 
     // Check whether the user wants us to collect stats. If not, return.
-    if (!settings.General.getCollectStatistics()) {
+    if (!settings.General.getCollectStatistics())
+    {
         return;
     }
 
@@ -44,7 +45,8 @@ void Stats::init()
 
     // Also start another timer that will periodically check if a week has passed and
     // it's time to transmit new information.
-    if (!m_longTimerRunning) {
+    if (!m_longTimerRunning)
+    {
         QTimer *tlong = new QTimer();
         tlong->setTimerType(Qt::VeryCoarseTimer);
         QObject::connect(tlong, &QTimer::timeout, [t]() {
@@ -61,13 +63,15 @@ void Stats::check()
 {
     // Check whether the user wants us to collect stats. If not, return.
     NpSettings &settings = NpSettings::getInstance();
-    if (!settings.General.getCollectStatistics()) {
+    if (!settings.General.getCollectStatistics())
+    {
         return;
     }
 
     // Check if it is time to send the stats (i.e. a week has passed).
     // If not, return.
-    if (!isTimeToSendStats()) {
+    if (!isTimeToSendStats())
+    {
         return;
     }
     settings.General.setLastStatisticTransmissionTime(currentUnixTimestamp());
@@ -119,7 +123,8 @@ void Stats::askUserPermission()
     NpSettings &settings = NpSettings::getInstance();
     int dialogShown = settings.General.getStatisticsDialogShown();
 
-    if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadRun) {
+    if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadRun)
+    {
         QMessageBox msgBox;
         msgBox.setWindowTitle(QCoreApplication::applicationName());
         msgBox.setIcon(QMessageBox::Question);
@@ -145,13 +150,17 @@ void Stats::askUserPermission()
 
         settings.General.setStatisticsDialogShown(DIALOG_ALREADY_SHOWN);
 
-        if (msgBox.clickedButton() == ok) {
+        if (msgBox.clickedButton() == ok)
+        {
             settings.General.setCollectStatistics(true);
-        } else {
+        }
+        else
+        {
             settings.General.setCollectStatistics(false);
         }
-
-    } else if (dialogShown == DIALOG_NEVER_SHOWN) {
+    }
+    else if (dialogShown == DIALOG_NEVER_SHOWN)
+    {
         // Set m_isFirstNotepadRun to true, so that next executions of this method within
         // the current process won't show the dialog even if we're setting
         // statisticsDialogShown = DIALOG_FIRST_TIME_IGNORED.

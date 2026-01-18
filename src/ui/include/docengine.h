@@ -22,20 +22,23 @@ public:
     explicit DocEngine(TopEditorContainer *topEditorContainer, QObject *parent = nullptr);
     ~DocEngine();
 
-    struct DecodedText {
+    struct DecodedText
+    {
         QString text;
         QTextCodec *codec = nullptr;
         bool bom = false;
         bool error = false;
     };
 
-    enum FileSizeAction {
+    enum FileSizeAction
+    {
         FileSizeActionAsk,
         FileSizeActionYesToAll,
         FileSizeActionNoToAll
     };
 
-    enum ReloadAction {
+    enum ReloadAction
+    {
         ReloadActionDont,   // Don't reload documents, instead just focus them
         ReloadActionAsk,    // Ask user to reload if it would cause unsaved changes to be discarded
         ReloadActionDo      // Always reload documents
@@ -46,7 +49,8 @@ public:
      *        Only setTabWidget and setUrl(s) are necessary settings. All others have sensible defaults.
      *        Create new instances of this class using DocEngine::getDocumentLoader()
      */
-    struct DocumentLoader {
+    struct DocumentLoader
+    {
         // Set the URL(s) of files to be loaded
         DocumentLoader &setUrl(const QUrl &url)
         {
@@ -180,7 +184,8 @@ public:
      * Describes the result of a save process.
      * For example, if the user cancels the save dialog, \p saveFileResult_Canceled is returned.
      */
-    enum saveFileResult {
+    enum saveFileResult
+    {
         saveFileResult_Saved,      /** The file was saved  */
         saveFileResult_Canceled     /** The save process was canceled */
     };

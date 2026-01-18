@@ -18,7 +18,8 @@ SVGIconEngine::SVGIconEngine(const std::string &iconBuffer)
 SVGIconEngine *SVGIconEngine::fromFile(const QString &fileName)
 {
     QFile file(fileName);
-    if (!file.open(QIODevice::ReadOnly)) {
+    if (!file.open(QIODevice::ReadOnly))
+    {
         return new SVGIconEngine("<?xml version=\"1.0\" encoding=\"UTF-8\" ?><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"></svg>");
     }
     return new SVGIconEngine(file.readAll().toStdString());
@@ -61,7 +62,8 @@ QString SVGIconEngine::replaceSvgMainFillColor(const QString &svg, const QColor 
 
     // Try replacing the color within the already existing "fill" attribute, if it exists
     auto match = reFillTag.match(svg);
-    if (match.hasMatch()) {
+    if (match.hasMatch())
+    {
         auto a = match.capturedStart(1); // start of the attribute value
         auto b = match.capturedEnd(1); // end of the attribute value
         QString new_svg = svg.mid(0, a) + color.name(QColor::HexRgb) + svg.mid(b);
@@ -69,7 +71,8 @@ QString SVGIconEngine::replaceSvgMainFillColor(const QString &svg, const QColor 
     }
 
     match = reNoFillTag.match(svg);
-    if (match.hasMatch()) {
+    if (match.hasMatch())
+    {
         auto b = match.capturedEnd(0) - 1; // end of the opening <svg> tag
         QString new_svg = svg.mid(0, b) + " fill=\"" + color.name(QColor::HexRgb) + "\"" + svg.mid(b);
         return new_svg;

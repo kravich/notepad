@@ -3,7 +3,8 @@
 
 #include "include/EditorNS/bannerbasicmessage.h"
 
-namespace EditorNS {
+namespace EditorNS
+{
 
     class BannerFileChanged : public BannerBasicMessage
     {
@@ -18,6 +19,6 @@ namespace EditorNS {
     public slots:
     };
 
-}
+} //namespace EditorNS
 
 #endif // BANNERFILECHANGED_H

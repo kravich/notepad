@@ -1,7 +1,9 @@
 #include "include/Extensions/Stubs/stub.h"
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
         Stub::Stub(RuntimeSupport *rts) :
             QObject(0),
@@ -39,9 +41,12 @@ namespace Extensions {
 
         bool Stub::isAlive()
         {
-            if (m_pointerType == PointerType::DETACHED) {
+            if (m_pointerType == PointerType::DETACHED)
+            {
                 return true;
-            } else {
+            }
+            else
+            {
                 return m_unmanagedPointer != nullptr || !m_weakPointer.isNull() || !m_sharedPointer.isNull();
             }
         }
@@ -85,10 +90,13 @@ namespace Extensions {
         bool Stub::invoke(const QString &method, Stub::StubReturnValue &ret, const QJsonArray &args)
         {
             auto fun = m_methods.value(method);
-            if (fun == nullptr) {
+            if (fun == nullptr)
+            {
                 // No explicit stub method found: try to invoke it on the real object
                 return invokeOnRealObject(method, ret, args);
-            } else {
+            }
+            else
+            {
                 // Explicit stub method found: call it
                 ret = fun(args);
                 return true;
@@ -97,18 +105,22 @@ namespace Extensions {
 
         bool Stub::invokeOnRealObject(const QString &method, Stub::StubReturnValue &ret, const QJsonArray &args)
         {
-            if (m_pointerType == PointerType::DETACHED) {
+            if (m_pointerType == PointerType::DETACHED)
+            {
                 ret = Stub::StubReturnValue(ErrorCode::METHOD_NOT_FOUND,
                                             QString("Method not found for %1: %2").arg(stubName_(), method));
                 return false;
-            } else {
+            }
+            else
+            {
                 ErrorCode err = ErrorCode::NONE;
 
                 QObject *obj = objectUnmanagedPtr();
 
                 // Find a method with the same name of the one we're looking for
                 int methodCount = obj->metaObject()->methodCount();
-                for (int i = 0; i < methodCount; i++) {
+                for (int i = 0; i < methodCount; i++)
+                {
                     QMetaMethod metaMethod = obj->metaObject()->method(i);
 
                     if (metaMethod.access() != QMetaMethod::Public)
@@ -122,11 +134,14 @@ namespace Extensions {
                                                   args.toVariantList(),
                                                   err);
 
-                    if (err == ErrorCode::NONE) {
+                    if (err == ErrorCode::NONE)
+                    {
                         // Ok!!
                         ret = Stub::StubReturnValue(QJsonValue::fromVariant(retval));
                         return true;
-                    } else {
+                    }
+                    else
+                    {
                         // Keep searching: maybe it's another overload
                         continue;
                     }
@@ -150,13 +165,15 @@ namespace Extensions {
             // We need enough arguments to perform the conversion.
 
             QList<QByteArray> methodTypes = metaMethod.parameterTypes();
-            if (methodTypes.size() < args.size()) {
+            if (methodTypes.size() < args.size())
+            {
                 //qWarning() << "Insufficient arguments to call" << metaMethod.signature();
                 error = ErrorCode::INVALID_ARGUMENT_NUMBER;
                 return QVariant();
             }
 
-            for (int i = 0; i < methodTypes.size(); i++) {
+            for (int i = 0; i < methodTypes.size(); i++)
+            {
                 const QVariant &arg = args.at(i);
 
                 QByteArray methodTypeName = methodTypes.at(i);
@@ -170,9 +187,12 @@ namespace Extensions {
                 // If the types are not the same, attempt a conversion. If it
                 // fails, we cannot proceed.
 
-                if (copy.type() != methodType) {
-                    if (copy.canConvert(methodType)) {
-                        if (!copy.convert(methodType)) {
+                if (copy.type() != methodType)
+                {
+                    if (copy.canConvert(methodType))
+                    {
+                        if (!copy.convert(methodType))
+                        {
                             /*qWarning() << "Cannot convert" << argTypeName
                                        << "to" << methodTypeName;*/
                             error = ErrorCode::INVALID_ARGUMENT_TYPE;
@@ -186,7 +206,8 @@ namespace Extensions {
 
             QList<QGenericArgument> arguments;
 
-            for (int i = 0; i < converted.size(); i++) {
+            for (int i = 0; i < converted.size(); i++)
+            {
                 // Notice that we have to take a reference to the argument, else
                 // we'd be pointing to a copy that will be destroyed when this
                 // loop exits.
@@ -204,7 +225,8 @@ namespace Extensions {
             }
 
             QVariant returnValue;
-            if (QString(metaMethod.typeName()) != "void") {
+            if (QString(metaMethod.typeName()) != "void")
+            {
                 returnValue = QVariant(QMetaType::fromName(metaMethod.typeName()),
                                        static_cast<void *>(NULL));
             }
@@ -231,11 +253,14 @@ namespace Extensions {
                 arguments.value(8),
                 arguments.value(9));
 
-            if (!ok) {
+            if (!ok)
+            {
                 //qWarning() << "Calling" << metaMethod.signature() << "failed.";
                 error = ErrorCode::METHOD_NOT_FOUND;
                 return QVariant();
-            } else {
+            }
+            else
+            {
                 return returnValue;
             }
         }
@@ -253,11 +278,16 @@ namespace Extensions {
 
         QString Stub::convertToString(const QJsonValue &value)
         {
-            if (value.isString()) {
+            if (value.isString())
+            {
                 return value.toString();
-            } else if (value.isDouble()) {
+            }
+            else if (value.isDouble())
+            {
                 return QString::number(value.toDouble());
-            } else {
+            }
+            else
+            {
                 return QString();
             }
         }
@@ -277,5 +307,5 @@ namespace Extensions {
             return !(*this == other);
         }
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions

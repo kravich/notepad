@@ -4,8 +4,10 @@
 #include "include/Extensions/Stubs/stub.h"
 #include "include/mainwindow.h"
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
         class NotepadStub : public Stub
         {
@@ -25,7 +27,7 @@ namespace Extensions {
             void on_newWindow(MainWindow *window);
         };
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions
 
 #endif // EXTENSIONS_STUBS_NOTEPAD_H

@@ -6,7 +6,8 @@
 #include <QLocalServer>
 #include <QObject>
 
-namespace Extensions {
+namespace Extensions
+{
 
     class ExtensionsServer : public QObject
     {
@@ -37,6 +38,6 @@ namespace Extensions {
         void sendMessage(QLocalSocket *socket, const QJsonObject &message);
     };
 
-}
+} //namespace Extensions
 
 #endif // EXTENSIONSSERVER_H

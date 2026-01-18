@@ -29,7 +29,8 @@ QString Notepad::appDataPath(QString fileName)
     if (!QDir(def).exists())
         def = QString("%1/../share/%2/").arg(qApp->applicationDirPath()).arg(qApp->applicationName().toLower());
 
-    if (!fileName.isNull()) {
+    if (!fileName.isNull())
+    {
         def.append(fileName);
     }
 
@@ -131,7 +132,8 @@ QList<QString> Notepad::translations()
     // FIXME this can be removed if we create a .qm file for English too, which should exist for consistency purposes
     out.append("en");
 
-    for (int i = 0; i < fileNames.size(); ++i) {
+    for (int i = 0; i < fileNames.size(); ++i)
+    {
         // get locale extracted by filename
         QString langCode;
         langCode = fileNames[i]; // "notepad_de.qm"

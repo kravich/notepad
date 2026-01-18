@@ -39,7 +39,8 @@ public:
      *        This way, users of KeyGrabber do not have to interact with the
      *        QTreeWidget objects themselves.
      */
-    struct NodeItem {
+    struct NodeItem
+    {
     private:
         friend class KeyGrabber;
         QTreeWidgetItem *treeItem;

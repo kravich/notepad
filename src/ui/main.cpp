@@ -54,12 +54,16 @@ int main(int argc, char *argv[])
 
     // Initialize from system locale on first run, if no system locale is
     // set, our default will be used instead.
-    if (settings.General.getLocalization().isEmpty()) {
+    if (settings.General.getLocalization().isEmpty())
+    {
         QLocale locale;
         // ISO 639 dictates language code will always be 2 letters
-        if (locale.name().size() >= 2) {
+        if (locale.name().size() >= 2)
+        {
             settings.General.setLocalization(locale.name().left(2));
-        } else {
+        }
+        else
+        {
             settings.General.setLocalization("en");
         }
     }
@@ -68,21 +72,26 @@ int main(int argc, char *argv[])
     if (translator.load(QLocale(langCode),
                         QString("%1").arg(qApp->applicationName().toLower()),
                         QString("_"),
-                        QString(":/translations"))) {
+                        QString(":/translations")))
+    {
         a.installTranslator(&translator);
-    } else {
+    }
+    else
+    {
         settings.General.setLocalization("en");
     }
     // Check for "run-and-exit" options like -h or -v
     const auto parser = Notepad::getCommandLineArgumentsParser(QApplication::arguments());
 
-    if (parser->isSet("print-debug-info")) {
+    if (parser->isSet("print-debug-info"))
+    {
         Notepad::printEnvironmentInfo();
         return EXIT_SUCCESS;
     }
 
     // Check if we're running as root
-    if (getuid() == 0 && !parser->isSet("allow-root")) {
+    if (getuid() == 0 && !parser->isSet("allow-root"))
+    {
         qWarning() << QObject::tr(
             "Notepad will ask for root privileges whenever they are needed if either 'kdesu' or 'gksu' are installed."
             " Running Notepad as root is not recommended. Use --allow-root if you really want to.");
@@ -90,21 +99,26 @@ int main(int argc, char *argv[])
         return EXIT_SUCCESS;
     }
 
-    if (a.attachToOtherInstance()) {
+    if (a.attachToOtherInstance())
+    {
         return EXIT_SUCCESS;
     }
 
     // Arguments received from another instance
     QObject::connect(&a, &SingleApplication::receivedArguments, &a, [=](const QString &workingDirectory, const QStringList &arguments) {
         QSharedPointer<QCommandLineParser> parser = Notepad::getCommandLineArgumentsParser(arguments);
-        if (parser->isSet("new-window")) {
+        if (parser->isSet("new-window"))
+        {
             // Open a new window
             MainWindow *win = new MainWindow(workingDirectory, arguments, nullptr);
             win->show();
-        } else {
+        }
+        else
+        {
             // Send the args to the last focused window
             MainWindow *win = MainWindow::lastActiveInstance();
-            if (win != nullptr) {
+            if (win != nullptr)
+            {
                 win->openCommandLineProvidedUrls(workingDirectory, arguments);
 
                 // Activate the window
@@ -121,15 +135,19 @@ int main(int argc, char *argv[])
     a.startServer();
 
     QFileInfo finfo(Notepad::editorPath());
-    if (!finfo.isReadable()) {
+    if (!finfo.isReadable())
+    {
         qCritical() << "Can't open file: " + finfo.filePath();
         return EXIT_FAILURE;
     }
 
-    if (Extensions::ExtensionsLoader::extensionRuntimePresent()) {
+    if (Extensions::ExtensionsLoader::extensionRuntimePresent())
+    {
         Extensions::ExtensionsLoader::startExtensionsServer();
         Extensions::ExtensionsLoader::loadExtensions(Notepad::extensionsPath());
-    } else {
+    }
+    else
+    {
 #ifdef QT_DEBUG
         qDebug() << "Extension support is not installed.";
 #endif
@@ -137,17 +155,20 @@ int main(int argc, char *argv[])
 
     // Check whether Np was properly shut down. If not, attempt to restore from the last autosave backup if enabled.
     const bool wantToRestore = settings.General.getAutosaveInterval() > 0 && BackupService::detectImproperShutdown();
-    if (wantToRestore) {
+    if (wantToRestore)
+    {
         // Attempt to restore from backup. Don't forget to handle commandline arguments.
         if (BackupService::restoreFromBackup())
             MainWindow::instances().back()->openCommandLineProvidedUrls(QDir::currentPath(), QApplication::arguments());
     }
 
     // If we don't have a window by now (e.g. through restoring backup), we'll create one normally.
-    if (MainWindow::instances().isEmpty()) {
+    if (MainWindow::instances().isEmpty())
+    {
         MainWindow *wnd = new MainWindow(QStringList(), nullptr);
 
-        if (settings.General.getRememberTabsOnExit()) {
+        if (settings.General.getRememberTabsOnExit())
+        {
             Sessions::loadSession(wnd->getDocEngine(), wnd->topEditorContainer(), PersistentCache::cacheSessionPath());
         }
 
@@ -183,13 +204,15 @@ void forceDefaultSettings()
     NpSettings &s = NpSettings::getInstance();
 
     // Use tabs to indent makefile by default
-    if (!s.Languages.hasUseDefaultSettings("makefile")) {
+    if (!s.Languages.hasUseDefaultSettings("makefile"))
+    {
         s.Languages.setUseDefaultSettings("makefile", false);
         s.Languages.setIndentWithSpaces("makefile", false);
     }
 
     // Use two spaces to indent ruby by default
-    if (!s.Languages.hasUseDefaultSettings("ruby")) {
+    if (!s.Languages.hasUseDefaultSettings("ruby"))
+    {
         s.Languages.setUseDefaultSettings("ruby", false);
         s.Languages.setTabSize("ruby", 2);
         s.Languages.setIndentWithSpaces("ruby", true);

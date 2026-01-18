@@ -77,7 +77,8 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
 
     int workRow = 0;
     QMapIterator<QString, QString> it(cmdData);
-    while (it.hasNext()) {
+    while (it.hasNext())
+    {
         it.next();
         QTableWidgetItem *item = new QTableWidgetItem(it.key());
         m_commands->setItem(workRow, 0, item);
@@ -102,13 +103,16 @@ void RunPreferences::slotOk()
     hide();
     m_settings.Run.resetCommands();
     const int totalCommands = m_commands->rowCount();
-    for (int i = 0; i < totalCommands; ++i) {
-        if (!m_commands->item(i, 0) || !m_commands->item(i, 1)) {
+    for (int i = 0; i < totalCommands; ++i)
+    {
+        if (!m_commands->item(i, 0) || !m_commands->item(i, 1))
+        {
             continue;
         }
         const QString &cmdName = m_commands->item(i, 0)->text();
         const QString &cmdData = m_commands->item(i, 1)->text();
-        if (cmdName.size() && cmdData.size()) {
+        if (cmdName.size() && cmdData.size())
+        {
             m_settings.Run.setCommand(cmdName, cmdData);
         }
     }
@@ -119,29 +123,40 @@ void RunPreferences::slotInitCell(int row, int)
 {
     QTableWidgetItem *iText = m_commands->item(row, 0);
     QTableWidgetItem *iCmd = m_commands->item(row, 1);
-    if (!iText || !iCmd) {
+    if (!iText || !iCmd)
+    {
         return;
     }
 
-    if (m_commands->rowCount() - 1 == row) {
-        if (iText->text().length() && iCmd->text().length()) {
+    if (m_commands->rowCount() - 1 == row)
+    {
+        if (iText->text().length() && iCmd->text().length())
+        {
             m_commands->setRowCount(row + 2);
-        } else if (row == m_commands->rowCount() - 2) {
+        }
+        else if (row == m_commands->rowCount() - 2)
+        {
             m_commands->setRowCount(row + 1);
         }
-    } else if (m_commands->rowCount() - 2 == row) {
+    }
+    else if (m_commands->rowCount() - 2 == row)
+    {
         // Check to see if we can remove the last row safely.
-        if (!iText->text().length() || !iCmd->text().length()) {
+        if (!iText->text().length() || !iCmd->text().length())
+        {
             int rmLast = 0;
             QTableWidgetItem *iLastText = m_commands->item(row + 1, 0);
             QTableWidgetItem *iLastCmd = m_commands->item(row + 1, 1);
-            if (!iLastText || !iLastText->text().length()) {
+            if (!iLastText || !iLastText->text().length())
+            {
                 rmLast++;
             }
-            if (!iLastCmd || !iLastCmd->text().length()) {
+            if (!iLastCmd || !iLastCmd->text().length())
+            {
                 rmLast++;
             }
-            if (rmLast == 2) {
+            if (rmLast == 2)
+            {
                 m_commands->setRowCount(row + 1);
             }
         }
@@ -151,13 +166,18 @@ void RunPreferences::slotInitCell(int row, int)
 void RunPreferences::slotRemove()
 {
     int row = m_commands->currentRow();
-    if (m_commands->rowCount() > 1 && row != m_commands->rowCount() - 1) {
+    if (m_commands->rowCount() > 1 && row != m_commands->rowCount() - 1)
+    {
         m_commands->removeRow(row);
-    } else {
-        if (m_commands->item(row, 0)) {
+    }
+    else
+    {
+        if (m_commands->item(row, 0))
+        {
             m_commands->item(row, 0)->setText("");
         }
-        if (m_commands->item(row, 1)) {
+        if (m_commands->item(row, 1))
+        {
             m_commands->item(row, 1)->setText("");
         }
     }
@@ -174,7 +194,8 @@ void RunDelegate::paint(QPainter *painter,
                         const QStyleOptionViewItem &option,
                         const QModelIndex &index) const
 {
-    if (index.column() == 1) {
+    if (index.column() == 1)
+    {
         painter->save();
         QStyleOptionButton btnOpen;
         QRect r = option.rect;
@@ -194,7 +215,8 @@ void RunDelegate::paint(QPainter *painter,
                                          r.width());
 
         QPen oldPen = painter->pen();
-        if (option.state & QStyle::State_Selected) {
+        if (option.state & QStyle::State_Selected)
+        {
             painter->setPen(QPen(QColor(option.palette.highlightedText().color())));
         }
         painter->drawText(r, Qt::AlignLeft | Qt::AlignVCenter, editText);
@@ -210,7 +232,9 @@ void RunDelegate::paint(QPainter *painter,
         option.widget->style()->drawControl(QStyle::CE_PushButtonLabel, &btnRm, painter);
 
         painter->restore();
-    } else {
+    }
+    else
+    {
         QStyledItemDelegate::paint(painter, option, index);
     }
 }
@@ -220,8 +244,10 @@ bool RunDelegate::editorEvent(QEvent *event,
                               const QStyleOptionViewItem &option,
                               const QModelIndex &index)
 {
-    if (index.column() == 1) {
-        if (event->type() == QEvent::MouseButtonRelease) {
+    if (index.column() == 1)
+    {
+        if (event->type() == QEvent::MouseButtonRelease)
+        {
             QMouseEvent *e = static_cast<QMouseEvent *>(event);
             int clickX = e->x();
             int clickY = e->y();
@@ -229,8 +255,10 @@ bool RunDelegate::editorEvent(QEvent *event,
             QRect r = option.rect;
             x = r.left() + r.width() - 32;
             y = r.top();
-            if (clickX > x && clickX < x + 16) {
-                if (clickY > y && clickY < y + 16) {
+            if (clickX > x && clickX < x + 16)
+            {
+                if (clickY > y && clickY < y + 16)
+                {
                     QString f = QFileDialog::getOpenFileName(qobject_cast<QWidget *>(parent()),
                                                              tr("Open File"));
                     QString oldData = model->data(index, Qt::EditRole).toString();
@@ -242,8 +270,10 @@ bool RunDelegate::editorEvent(QEvent *event,
 
             x = r.left() + r.width() - 16;
             y = r.top();
-            if (clickX > x && clickX < x + 16) {
-                if (clickY > y && clickY < y + 16) {
+            if (clickX > x && clickX < x + 16)
+            {
+                if (clickY > y && clickY < y + 16)
+                {
                     emit needsRemoval();
                     return true;
                 }
@@ -321,7 +351,8 @@ void RunDialog::slotSave()
                                          QLineEdit::Normal,
                                          m_command->text(),
                                          &ok);
-    if (ok && !name.isEmpty() && !m_command->text().isEmpty()) {
+    if (ok && !name.isEmpty() && !m_command->text().isEmpty())
+    {
         m_settings.Run.setCommand(name, m_command->text());
         m_saved = 1;
 
@@ -360,69 +391,107 @@ QStringList RunDialog::parseCommandString(QString cmd)
     const char OUT = '\0';
     char quote = OUT;
     QString curr = "";
-    for (int i = 0; i < cmd.length(); i++) {
-        if (cmd[i] == '"') {
-            if (quote == '"') {
+    for (int i = 0; i < cmd.length(); i++)
+    {
+        if (cmd[i] == '"')
+        {
+            if (quote == '"')
+            {
                 quote = OUT;
                 parts.append(curr);
                 curr = "";
-            } else if (quote == '\'') {
+            }
+            else if (quote == '\'')
+            {
                 curr += '"';
-            } else {
+            }
+            else
+            {
                 quote = '"';
             }
-
-        } else if (cmd[i] == '\'') {
-            if (quote == '\'') {
+        }
+        else if (cmd[i] == '\'')
+        {
+            if (quote == '\'')
+            {
                 quote = OUT;
                 parts.append(curr);
                 curr = "";
-            } else if (quote == '"') {
+            }
+            else if (quote == '"')
+            {
                 curr += '\'';
-            } else {
+            }
+            else
+            {
                 quote = '\'';
             }
-
-        } else if (cmd[i] == '\\') {
-            if (i + 1 < cmd.length()) {
+        }
+        else if (cmd[i] == '\\')
+        {
+            if (i + 1 < cmd.length())
+            {
                 i++;
-                if (quote == '\'') {
-                    if (cmd[i] == '\'') {
+                if (quote == '\'')
+                {
+                    if (cmd[i] == '\'')
+                    {
                         curr += '\'';
-                    } else {
+                    }
+                    else
+                    {
                         curr += '\\';
                         curr += cmd[i];
                     }
-                } else if (quote == '"') {
-                    if (cmd[i] == '"') {
+                }
+                else if (quote == '"')
+                {
+                    if (cmd[i] == '"')
+                    {
                         curr += '"';
-                    } else if (cmd[i] == '\\') {
+                    }
+                    else if (cmd[i] == '\\')
+                    {
                         curr += '\\';
-                    } else {
+                    }
+                    else
+                    {
                         curr += '\\';
                         curr += cmd[i];
                     }
-                } else {
+                }
+                else
+                {
                     curr += cmd[i];
                 }
-            } else {
+            }
+            else
+            {
                 curr += '\\';
             }
-
-        } else if (cmd[i] == ' ') {
-            if (quote == OUT) {
-                if (curr.length() > 0) {
+        }
+        else if (cmd[i] == ' ')
+        {
+            if (quote == OUT)
+            {
+                if (curr.length() > 0)
+                {
                     parts.append(curr);
                     curr = "";
                 }
-            } else {
+            }
+            else
+            {
                 curr += ' ';
             }
-        } else {
+        }
+        else
+        {
             curr += cmd[i];
         }
     }
-    if (curr.length() > 0) {
+    if (curr.length() > 0)
+    {
         parts.append(curr);
     }
 

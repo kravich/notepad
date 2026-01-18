@@ -33,11 +33,13 @@
 
 #include <functional>
 
-namespace Extensions {
+namespace Extensions
+{
 
     class RuntimeSupport;
 
-    namespace Stubs {
+    namespace Stubs
+    {
 
         class Stub : public QObject
         {
@@ -49,7 +51,8 @@ namespace Extensions {
             explicit Stub(QObject *object, RuntimeSupport *rts);
             virtual ~Stub() = 0;
 
-            enum class ErrorCode {
+            enum class ErrorCode
+            {
                 NONE = 0,
                 INVALID_REQUEST = 1,
                 INVALID_ARGUMENT_NUMBER = 2,
@@ -59,7 +62,8 @@ namespace Extensions {
                 METHOD_NOT_FOUND = 6,
             };
 
-            struct StubReturnValue {
+            struct StubReturnValue
+            {
                 QJsonValue result;
                 ErrorCode error = ErrorCode::NONE;
                 QString errorString;
@@ -86,14 +90,16 @@ namespace Extensions {
                     QJsonObject ret;
                     ret.insert("result", result.isUndefined() ? QJsonValue() : result);
                     ret.insert("err", static_cast<int>(error));
-                    if (error != ErrorCode::NONE) {
+                    if (error != ErrorCode::NONE)
+                    {
                         ret.insert("errStr", errorString);
                     }
                     return ret;
                 }
             };
 
-            enum class PointerType {
+            enum class PointerType
+            {
                 DETACHED,
                 WEAK_POINTER,
                 SHARED_POINTER,
@@ -145,7 +151,7 @@ namespace Extensions {
             bool invokeOnRealObject(const QString &method, Stub::StubReturnValue &ret, const QJsonArray &args);
         };
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions
 
 #endif // EXTENSIONS_STUBS_STUB_H

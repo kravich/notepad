@@ -3,7 +3,8 @@
 #include <QMenu>
 #include <QMimeData>
 
-namespace EditorNS {
+namespace EditorNS
+{
 
     CustomQWebView::CustomQWebView(QWidget *parent) :
         QWebEngineView(parent)
@@ -12,7 +13,8 @@ namespace EditorNS {
 
     void CustomQWebView::keyPressEvent(QKeyEvent *ev)
     {
-        switch (ev->key()) {
+        switch (ev->key())
+        {
         case Qt::Key_Insert:
             ev->ignore();
             break;
@@ -23,10 +25,13 @@ namespace EditorNS {
 
     void CustomQWebView::dropEvent(QDropEvent *ev)
     {
-        if (ev->mimeData()->hasUrls()) {
+        if (ev->mimeData()->hasUrls())
+        {
             ev->ignore();
             emit urlsDropped(ev->mimeData()->urls());
-        } else {
+        }
+        else
+        {
             QWebEngineView::dropEvent(ev);
         }
     }
@@ -54,7 +59,8 @@ namespace EditorNS {
         if (obj != childObj)
             return QWebEngineView::eventFilter(obj, ev);
 
-        switch (ev->type()) {
+        switch (ev->type())
+        {
         case QEvent::FocusIn:
             focusInEvent(static_cast<QFocusEvent *>(ev));
             break;
@@ -70,15 +76,17 @@ namespace EditorNS {
 
     bool EditorNS::CustomQWebView::event(QEvent *evt)
     {
-        if (evt->type() == QEvent::ChildPolished) {
+        if (evt->type() == QEvent::ChildPolished)
+        {
             QChildEvent *child_ev = static_cast<QChildEvent *>(evt);
             childObj = child_ev->child();
 
-            if (childObj) {
+            if (childObj)
+            {
                 childObj->installEventFilter(this);
             }
         }
 
         return QWebEngineView::event(evt);
     }
-}
+} //namespace EditorNS

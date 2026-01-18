@@ -60,7 +60,8 @@ EditorTabWidget *TopEditorContainer::inactiveTabWidget(bool createIfNotExists)
 {
     const int currentViewCount = count();
 
-    if (currentViewCount >= 2) {
+    if (currentViewCount >= 2)
+    {
         //Two view panes are open. Pick the one not currently active.
         int viewId = widget(1) == currentTabWidget() ? 0 : 1;
         return tabWidget(viewId);
@@ -80,7 +81,8 @@ EditorTabWidget *TopEditorContainer::tabWidgetFromEditor(QSharedPointer<Editor> 
 
 EditorTabWidget *TopEditorContainer::tabWidgetFromEditor(Editor *editor)
 {
-    for (int i = 0; i < count(); i++) {
+    for (int i = 0; i < count(); i++)
+    {
         if (tabWidget(i)->indexOf(editor) > -1)
             return tabWidget(i);
     }
@@ -104,7 +106,8 @@ void TopEditorContainer::on_currentTabWidgetChanged()
     if (!tabWidget)
         return;
 
-    if (m_currentTabWidget != tabWidget) {
+    if (m_currentTabWidget != tabWidget)
+    {
         m_currentTabWidget = tabWidget;
         emit currentTabWidgetChanged(tabWidget);
         emit currentEditorChanged(tabWidget, tabWidget->currentIndex());
@@ -119,7 +122,8 @@ void TopEditorContainer::on_customContextMenuRequested(QPoint point)
 
     int index = tabWidget->tabBar()->tabAt(point);
 
-    if (index != -1) {
+    if (index != -1)
+    {
         tabWidget->setFocus();
         tabWidget->setCurrentIndex(index);
 
@@ -158,9 +162,11 @@ std::vector<QSharedPointer<Editor>> TopEditorContainer::getOpenEditors()
 {
     std::vector<QSharedPointer<Editor>> editors;
 
-    for (int i = 0; i < count(); i++) {
+    for (int i = 0; i < count(); i++)
+    {
         EditorTabWidget *tabW = tabWidget(i);
-        for (int j = 0; j < tabW->count(); j++) {
+        for (int j = 0; j < tabW->count(); j++)
+        {
             editors.push_back(tabW->editor(j));
         }
     }
@@ -180,7 +186,8 @@ int TopEditorContainer::getNumEditors()
 
 void TopEditorContainer::disconnectAllTabWidgets()
 {
-    for (int i = 0; i < count(); ++i) {
+    for (int i = 0; i < count(); ++i)
+    {
         tabWidget(i)->disconnect();
     }
 }
@@ -188,18 +195,25 @@ void TopEditorContainer::disconnectAllTabWidgets()
 void TopEditorContainer::forEachEditor(bool backwardIndexes,
                                        std::function<bool(const int tabWidgetId, const int editorId, EditorTabWidget *tabWidget, QSharedPointer<Editor> editor)> callback)
 {
-    if (backwardIndexes) {
-        for (int i = count() - 1; i >= 0; i--) {
+    if (backwardIndexes)
+    {
+        for (int i = count() - 1; i >= 0; i--)
+        {
             EditorTabWidget *tabW = tabWidget(i);
-            for (int j = tabW->count() - 1; j >= 0; j--) {
+            for (int j = tabW->count() - 1; j >= 0; j--)
+            {
                 bool ret = callback(i, j, tabW, tabW->editor(j));
                 if (ret == false) return;
             }
         }
-    } else {
-        for (int i = 0; i < count(); i++) {
+    }
+    else
+    {
+        for (int i = 0; i < count(); i++)
+        {
             EditorTabWidget *tabW = tabWidget(i);
-            for (int j = 0; j < tabW->count(); j++) {
+            for (int j = 0; j < tabW->count(); j++)
+            {
                 bool ret = callback(i, j, tabW, tabW->editor(j));
                 if (ret == false) return;
             }
@@ -211,15 +225,19 @@ QtPromise::QPromise<void> TopEditorContainer::forEachEditorAsync(bool backwardIn
                                                                  std::function<void(const int tabWidgetId, const int editorId, EditorTabWidget *tabWidget, QSharedPointer<Editor> editor, std::function<void()> goOn, std::function<void()> stop)> callback)
 {
     return QtPromise::QPromise<void>([=](const auto &resolve, const auto &) {
-        if (backwardIndices) {
+        if (backwardIndices)
+        {
             std::function<std::function<void()>(int, int)> iteration = [=](int i, int j) {
                 return [=]() {
-                    if (i < 0) {
+                    if (i < 0)
+                    {
                         resolve();
                         return;
                     }
-                    if (j < 0) {
-                        if (i - 1 >= 0) {
+                    if (j < 0)
+                    {
+                        if (i - 1 >= 0)
+                        {
                             iteration(i - 1, this->tabWidget(i - 1)->count() - 1);
                         }
                         return;
@@ -231,15 +249,18 @@ QtPromise::QPromise<void> TopEditorContainer::forEachEditorAsync(bool backwardIn
             };
 
             iteration(this->count() - 1, this->tabWidget(0)->count() - 1)();
-
-        } else {
+        }
+        else
+        {
             std::function<std::function<void()>(int, int)> iteration = [=](int i, int j) {
                 return [=]() {
-                    if (i >= this->count()) {
+                    if (i >= this->count())
+                    {
                         resolve();
                         return;
                     }
-                    if (j >= this->tabWidget(i)->count()) {
+                    if (j >= this->tabWidget(i)->count())
+                    {
                         iteration(i + 1, 0);
                         return;
                     }
@@ -259,9 +280,11 @@ QtPromise::QPromise<void> TopEditorContainer::forEachEditorConcurrent(std::funct
     return QtPromise::QPromise<void>([=](const auto &resolve, const auto &) {
         // Collect all the indices we're going to use
         std::vector<std::pair<int, int>> indices;
-        for (int i = 0; i < this->count(); i++) {
+        for (int i = 0; i < this->count(); i++)
+        {
             EditorTabWidget *tabW = this->tabWidget(i);
-            for (int j = 0; j < tabW->count(); j++) {
+            for (int j = 0; j < tabW->count(); j++)
+            {
                 indices.push_back(std::make_pair(i, j));
             }
         }
@@ -269,12 +292,14 @@ QtPromise::QPromise<void> TopEditorContainer::forEachEditorConcurrent(std::funct
         // Counts the number of iterations
         std::shared_ptr<int> cnt = std::make_shared<int>(indices.size());
 
-        for (const auto &idx : indices) {
+        for (const auto &idx : indices)
+        {
             int i = idx.first;
             int j = idx.second;
             callback(i, j, this->tabWidget(i), this->tabWidget(i)->editor(j), [cnt, resolve]() {
                 (*cnt)--;
-                if (*cnt == 0) {
+                if (*cnt == 0)
+                {
                     resolve();
                 }
             });

@@ -6,7 +6,8 @@
 
 #include <QJsonArray>
 
-namespace Extensions {
+namespace Extensions
+{
 
     RuntimeSupport::RuntimeSupport(QObject *parent) :
         QObject(parent)
@@ -25,7 +26,8 @@ namespace Extensions {
         QString method = request.value("method").toString();
 
         // Fail if some fields are missing
-        if (objectId <= 0 || method.isEmpty()) {
+        if (objectId <= 0 || method.isEmpty())
+        {
             return Stubs::Stub::StubReturnValue(
                        Stubs::Stub::ErrorCode::INVALID_REQUEST,
                        QString("Invalid request (objectId: %1, method: %2)").arg(objectId).arg(method))
@@ -36,24 +38,28 @@ namespace Extensions {
 
         QSharedPointer<Stubs::Stub> object = m_pointers.value(objectId);
 
-        if (!object.isNull()) {
-            if (object->isAlive()) {
+        if (!object.isNull())
+        {
+            if (object->isAlive())
+            {
                 QJsonArray jsonArgs = request.value("args").toArray();
 
                 Stubs::Stub::StubReturnValue ret;
                 object->invoke(method, ret, jsonArgs);
 
                 return ret.toJsonObject();
-
-            } else {
+            }
+            else
+            {
                 m_pointers.remove(objectId);
                 return Stubs::Stub::StubReturnValue(
                            Stubs::Stub::ErrorCode::OBJECT_DEALLOCATED,
                            QString("Object id %1 is deallocated.").arg(objectId))
                     .toJsonObject();
             }
-
-        } else {
+        }
+        else
+        {
             m_pointers.remove(objectId);
             return Stubs::Stub::StubReturnValue(
                        Stubs::Stub::ErrorCode::OBJECT_NOT_FOUND,
@@ -67,7 +73,8 @@ namespace Extensions {
         static qint64 counter = 100;
 
         qint64 oldId = findStubId(stub.data());
-        if (oldId != -1) {
+        if (oldId != -1)
+        {
             return oldId;
         }
 
@@ -91,9 +98,11 @@ namespace Extensions {
 
         QHashIterator<qint64, QSharedPointer<Stubs::Stub>> i(m_pointers);
 
-        while (i.hasNext()) {
+        while (i.hasNext())
+        {
             i.next();
-            if (*(i.value().data()) == *stub) {
+            if (*(i.value().data()) == *stub)
+            {
                 return i.key();
             }
         }
@@ -104,7 +113,8 @@ namespace Extensions {
     void RuntimeSupport::emitEvent(Stubs::Stub *sender, QString event, const QJsonArray &args)
     {
         qint64 objectId = findStubId(sender);
-        if (objectId != -1) {
+        if (objectId != -1)
+        {
             QJsonObject retJson;
             retJson.insert("objectId", objectId);
             retJson.insert("event", event);
@@ -123,4 +133,4 @@ namespace Extensions {
         return retJson;
     }
 
-}
+} //namespace Extensions

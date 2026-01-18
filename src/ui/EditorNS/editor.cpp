@@ -14,7 +14,8 @@
 #include <QWebChannel>
 #include <QWebEngineSettings>
 
-namespace EditorNS {
+namespace EditorNS
+{
 
     QQueue<QSharedPointer<Editor>> Editor::m_editorBuffer = QQueue<QSharedPointer<Editor>>();
 
@@ -90,13 +91,18 @@ namespace EditorNS {
     {
         QSharedPointer<Editor> out;
 
-        if (m_editorBuffer.length() == 0) {
+        if (m_editorBuffer.length() == 0)
+        {
             addEditorToBuffer(1);
             out = QSharedPointer<Editor>::create();
-        } else if (m_editorBuffer.length() == 1) {
+        }
+        else if (m_editorBuffer.length() == 1)
+        {
             addEditorToBuffer(1);
             out = m_editorBuffer.dequeue();
-        } else {
+        }
+        else
+        {
             out = m_editorBuffer.dequeue();
         }
 
@@ -117,7 +123,8 @@ namespace EditorNS {
 
     void Editor::waitAsyncLoad()
     {
-        if (!m_loaded) {
+        if (!m_loaded)
+        {
             QEventLoop loop;
             connect(this, &Editor::editorReady, &loop, &QEventLoop::quit);
             // Block until a J_EVT_READY message is received
@@ -130,7 +137,8 @@ namespace EditorNS {
         QTimer::singleShot(0, [msg, data, this] {
             emit messageReceived(msg, data);
 
-            if (msg.startsWith("[ASYNC_REPLY]")) {
+            if (msg.startsWith("[ASYNC_REPLY]"))
+            {
                 QRegExp rgx("\\[ID=(\\d+)\\]$");
 
                 if (rgx.indexIn(msg) == -1)
@@ -142,15 +150,19 @@ namespace EditorNS {
                 unsigned int id = rgx.capturedTexts()[1].toInt();
 
                 // Look into the list of callbacks
-                for (auto it = this->asyncReplies.begin(); it != this->asyncReplies.end(); ++it) {
-                    if (it->id == id) {
+                for (auto it = this->asyncReplies.begin(); it != this->asyncReplies.end(); ++it)
+                {
+                    if (it->id == id)
+                    {
                         AsyncReply r = *it;
-                        if (r.value) {
+                        if (r.value)
+                        {
                             r.value->set_value(data);
                         }
                         this->asyncReplies.erase(it);
 
-                        if (r.callback != nullptr) {
+                        if (r.callback != nullptr)
+                        {
                             QTimer::singleShot(0, [r, data] { r.callback(data); });
                         }
 
@@ -159,17 +171,22 @@ namespace EditorNS {
                         break;
                     }
                 }
-
-            } else if (msg == "J_EVT_READY") {
+            }
+            else if (msg == "J_EVT_READY")
+            {
                 m_loaded = true;
                 emit editorReady();
-            } else if (msg == "J_EVT_CONTENT_CHANGED")
+            }
+            else if (msg == "J_EVT_CONTENT_CHANGED")
                 emit contentChanged();
             else if (msg == "J_EVT_CLEAN_CHANGED")
                 emit cleanChanged(data.toBool());
-            else if (msg == "J_EVT_CURSOR_ACTIVITY") {
+            else if (msg == "J_EVT_CURSOR_ACTIVITY")
+            {
                 emit cursorActivity(data.toMap());
-            } else if (msg == "J_EVT_DOCUMENT_INFO") {
+            }
+            else if (msg == "J_EVT_DOCUMENT_INFO")
+            {
                 emit documentInfoRequested(data.toMap());
             }
         });
@@ -248,13 +265,16 @@ namespace EditorNS {
 
     void Editor::setLanguage(const Language *lang)
     {
-        if (lang == nullptr) {
+        if (lang == nullptr)
+        {
             lang = LanguageService::getInstance().lookupById("plaintext");
         }
-        if (m_currentLanguage == lang) {
+        if (m_currentLanguage == lang)
+        {
             return;
         }
-        if (!m_customIndentationMode) {
+        if (!m_customIndentationMode)
+        {
             setIndentationMode(lang);
         }
         m_currentLanguage = lang;
@@ -267,7 +287,8 @@ namespace EditorNS {
     {
         auto &cache = LanguageService::getInstance();
         auto lang = cache.lookupById(language);
-        if (lang != nullptr) {
+        if (lang != nullptr)
+        {
             setLanguage(lang);
         }
     }
@@ -278,12 +299,14 @@ namespace EditorNS {
 
         auto &cache = LanguageService::getInstance();
         auto lang = cache.lookupByFileName(name);
-        if (lang != nullptr) {
+        if (lang != nullptr)
+        {
             setLanguage(lang);
             return;
         }
         lang = cache.lookupByExtension(name);
-        if (lang != nullptr) {
+        if (lang != nullptr)
+        {
             setLanguage(lang);
         }
     }
@@ -360,7 +383,8 @@ namespace EditorNS {
     QtPromise::QPromise<void> Editor::setValue(const QString &value)
     {
         auto lang = LanguageService::getInstance().lookupByContent(value);
-        if (lang != nullptr) {
+        if (lang != nullptr)
+        {
             setLanguage(lang);
         }
         return asyncSendMessageWithResultP("C_CMD_SET_VALUE", value).then([]() {}).wait(); // FIXME Remove
@@ -407,7 +431,8 @@ namespace EditorNS {
                                                                                         const QtPromise::QPromiseReject<QVariant> & /* reject */) {
             auto conn = std::make_shared<QMetaObject::Connection>();
             *conn = QObject::connect(this, &Editor::asyncReplyReceived, this, [=](unsigned int id, QString, QVariant data) {
-                if (id == currentMsgIdentifier) {
+                if (id == currentMsgIdentifier)
+                {
                     QObject::disconnect(*conn);
                     resolve(data);
                 }
@@ -424,10 +449,13 @@ namespace EditorNS {
 
         QString message_id = "[ASYNC_REQUEST]" + msg + "[ID=" + QString::number(currentMsgIdentifier) + "]";
 
-        if (m_loaded) {
+        if (m_loaded)
+        {
             // Send it right now
             emit m_jsToCppProxy->messageReceivedByJs(message_id, data);
-        } else {
+        }
+        else
+        {
             // Send it as soon as the editor becomes ready
             auto conn = std::make_shared<QMetaObject::Connection>();
             *conn = QObject::connect(this, &Editor::editorReady, this, [=]() {
@@ -464,7 +492,8 @@ namespace EditorNS {
 
         std::shared_future<QVariant> fut = resultPromise->get_future().share();
 
-        while (fut.wait_for(std::chrono::seconds(0)) != std::future_status::ready) {
+        while (fut.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
+        {
             QCoreApplication::processEvents(QEventLoop::AllEvents);
             QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
         }
@@ -494,7 +523,8 @@ namespace EditorNS {
     void Editor::setSelectionsText(const QStringList &texts, SelectMode mode)
     {
         QVariantMap data{{"text", texts}};
-        switch (mode) {
+        switch (mode)
+        {
         case SelectMode::After:
             data.insert("select", "after");
             break;
@@ -520,7 +550,8 @@ namespace EditorNS {
 
     void Editor::removeBanner(QWidget *banner)
     {
-        if (banner != m_webView && m_layout->indexOf(banner) >= 0) {
+        if (banner != m_webView && m_layout->indexOf(banner) >= 0)
+        {
             m_layout->removeWidget(banner);
             emit bannerRemoved(banner);
         }
@@ -528,7 +559,8 @@ namespace EditorNS {
 
     void Editor::removeBanner(QString objectName)
     {
-        for (auto &&banner : findChildren<QWidget *>(objectName)) {
+        for (auto &&banner : findChildren<QWidget *>(objectName))
+        {
             removeBanner(banner);
         }
     }
@@ -674,7 +706,8 @@ namespace EditorNS {
         QDir bundledThemesDir(editorPath.absolutePath() + "/libs/codemirror/theme/", "*.css");
 
         QList<Theme> out;
-        for (auto &&theme : bundledThemesDir.entryInfoList()) {
+        for (auto &&theme : bundledThemesDir.entryInfoList())
+        {
             out.append(Theme(theme.completeBaseName(), theme.filePath()));
         }
         return out;
@@ -690,7 +723,8 @@ namespace EditorNS {
         QList<Selection> out;
 
         QList<QVariant> sels = asyncSendMessageWithResult("C_FUN_GET_SELECTIONS").get().toList();
-        for (int i = 0; i < sels.length(); i++) {
+        for (int i = 0; i < sels.length(); i++)
+        {
             QVariantMap selMap = sels[i].toMap();
             QVariantMap from = selMap.value("anchor").toMap();
             QVariantMap to = selMap.value("head").toMap();
@@ -731,7 +765,8 @@ namespace EditorNS {
 
             bool found = indent.value("found", false).toBool();
 
-            if (found) {
+            if (found)
+            {
                 out.useTabs = indent.value("useTabs", true).toBool();
                 out.size = indent.value("size", 4).toInt();
             }
@@ -775,9 +810,12 @@ namespace EditorNS {
                             this->setLineWrap(NpSettings::getInstance().General.getWordWrap());
                         });
 
-                        if (data.isEmpty() || data.isNull()) {
+                        if (data.isEmpty() || data.isNull())
+                        {
                             reject(QByteArray());
-                        } else {
+                        }
+                        else
+                        {
                             resolve(data);
                         }
                     },
@@ -796,4 +834,4 @@ namespace EditorNS {
         return asyncSendMessageWithResultP("C_FUN_GET_LINE_COUNT")
             .then([](QVariant v) { return v.toInt(); });
     }
-}
+} //namespace EditorNS

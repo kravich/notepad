@@ -4,7 +4,8 @@
 #include <QObject>
 #include <QProcess>
 
-namespace Extensions {
+namespace Extensions
+{
 
     class Extension : public QObject
     {
@@ -31,6 +32,6 @@ namespace Extensions {
         QProcess *process = nullptr;
     };
 
-}
+} //namespace Extensions
 
 #endif // EXTENSION_H

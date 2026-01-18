@@ -2,8 +2,10 @@
 
 #include "include/Extensions/runtimesupport.h"
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
         MenuItemStub::MenuItemStub(QAction *object, RuntimeSupport *rts) :
             Stub(object, rts)
@@ -38,5 +40,5 @@ namespace Extensions {
             return StubReturnValue();
         }
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions

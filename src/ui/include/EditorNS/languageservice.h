@@ -9,11 +9,13 @@
 /**
  * @brief Fast and efficient language cache/lookup for Notepad
  */
-namespace EditorNS {
+namespace EditorNS
+{
     /**
      * @brief Language struct containing all the language data
      */
-    struct Language {
+    struct Language
+    {
         QString id;
         QString name;
         QString mime;
@@ -80,5 +82,5 @@ namespace EditorNS {
         LanguageList m_languages;
     };
 
-}
+} //namespace EditorNS
 #endif//_LANGUAGECACHE_H_

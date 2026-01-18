@@ -8,7 +8,8 @@ void SearchConfig::setScopeFromInt(int scopeAsInt)
 
 QString SearchConfig::getScopeAsString() const
 {
-    switch (searchScope) {
+    switch (searchScope)
+    {
     case ScopeCurrentDocument:  return QObject::tr("Current Document");
     case ScopeAllOpenDocuments: return QObject::tr("All Documents");
     case ScopeFileSystem:       return QObject::tr("File System");

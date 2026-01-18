@@ -6,7 +6,8 @@
 #include <QPushButton>
 #include <QWidget>
 
-namespace EditorNS {
+namespace EditorNS
+{
 
     class BannerBasicMessage : public QWidget
     {
@@ -14,7 +15,8 @@ namespace EditorNS {
     public:
         explicit BannerBasicMessage(QWidget *parent = nullptr);
 
-        enum class Importance {
+        enum class Importance
+        {
             Warning,
             Question
         };
@@ -37,5 +39,5 @@ namespace EditorNS {
         QWidget *m_topWidget;
     };
 
-}
+} //namespace EditorNS
 #endif // BANNERBASICMESSAGE_H

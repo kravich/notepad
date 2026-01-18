@@ -8,7 +8,8 @@
 #include <QObject>
 #include <QSharedPointer>
 
-namespace Extensions {
+namespace Extensions
+{
 
     class ExtensionsServer;
 
@@ -37,6 +38,6 @@ namespace Extensions {
         qint64 findStubId(Stubs::Stub *stub);
     };
 
-}
+} //namespace Extensions
 
 #endif // EXTENSIONSRTS_H

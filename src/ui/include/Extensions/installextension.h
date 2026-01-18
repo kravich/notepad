@@ -3,11 +3,13 @@
 
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
     class InstallExtension;
 }
 
-namespace Extensions {
+namespace Extensions
+{
 
     class InstallExtension : public QDialog
     {
@@ -33,5 +35,5 @@ namespace Extensions {
         void setUIClean(bool success);
     };
 
-}
+} //namespace Extensions
 #endif // INSTALLEXTENSION_H

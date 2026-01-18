@@ -18,7 +18,8 @@
 
 class EditorTabWidget;
 
-namespace EditorNS {
+namespace EditorNS
+{
 
     /**
      * @brief An Object injectable into the javascript page, that allows
@@ -71,7 +72,8 @@ namespace EditorNS {
     {
         Q_OBJECT
     public:
-        struct Theme {
+        struct Theme
+        {
             QString name;
             QString path;
             Theme(const QString &name = "default", const QString &path = "")
@@ -92,7 +94,8 @@ namespace EditorNS {
 
         static void invalidateEditorBuffer();
 
-        struct Cursor {
+        struct Cursor
+        {
             int line;
             int column;
 
@@ -122,12 +125,14 @@ namespace EditorNS {
             }
         };
 
-        struct Selection {
+        struct Selection
+        {
             Cursor from;
             Cursor to;
         };
 
-        struct IndentationMode {
+        struct IndentationMode
+        {
             bool useTabs;
             int size;
         };
@@ -179,7 +184,8 @@ namespace EditorNS {
         Q_INVOKABLE bool fileOnDiskChanged() const;
         Q_INVOKABLE void setFileOnDiskChanged(bool fileOnDiskChanged);
 
-        enum class SelectMode {
+        enum class SelectMode
+        {
             Before,
             After,
             Selected
@@ -329,7 +335,8 @@ namespace EditorNS {
     private:
         friend class ::EditorTabWidget;
 
-        struct AsyncReply {
+        struct AsyncReply
+        {
             unsigned int id;
             QString message;
             std::shared_ptr<std::promise<QVariant>> value;
@@ -427,6 +434,6 @@ namespace EditorNS {
         QtPromise::QPromise<QByteArray> printToPdf(const QPageLayout &pageLayout = QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF()));
     };
 
-}
+} //namespace EditorNS
 
 #endif // EDITOR_H
