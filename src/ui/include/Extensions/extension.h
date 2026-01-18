@@ -4,7 +4,8 @@
 #include <QObject>
 #include <QProcess>
 
-namespace Extensions {
+namespace Extensions
+{
 
     class Extension : public QObject
     {
@@ -22,6 +23,7 @@ namespace Extensions {
 
     private slots:
         void on_processError(QProcess::ProcessError error);
+
     private:
         QString m_extensionId;
         QString m_name;
@@ -30,6 +32,6 @@ namespace Extensions {
         QProcess *process = nullptr;
     };
 
-}
+} //namespace Extensions
 
 #endif // EXTENSION_H

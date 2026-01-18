@@ -11,61 +11,62 @@
 #include <QStyledItemDelegate>
 #include <QTableWidget>
 
-namespace NpRun {
-class RunPreferences : public QDialog
+namespace NpRun
 {
-    Q_OBJECT
+    class RunPreferences : public QDialog
+    {
+        Q_OBJECT
 
-private:
-    NpSettings &m_settings;
-    QTableWidget *m_commands;
-public:
-    RunPreferences(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
-    ~RunPreferences();
+    private:
+        NpSettings &m_settings;
+        QTableWidget *m_commands;
 
-private slots:
-    void slotRemove();
-    void slotOk();
-    void slotInitCell(int row, int column);
-};
+    public:
+        RunPreferences(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
+        ~RunPreferences();
 
-class RunDelegate : public QStyledItemDelegate
-{
-    Q_OBJECT
-public:
-    RunDelegate(QObject *parent = nullptr);
-    void paint(QPainter *painter, const QStyleOptionViewItem &option,
-            const QModelIndex &index) const override;
-    bool editorEvent(QEvent *event, QAbstractItemModel *model,
-            const QStyleOptionViewItem &option, const QModelIndex &index) override;
-private:
-    QIcon openIcon;
-    QIcon rmIcon;
+    private slots:
+        void slotRemove();
+        void slotOk();
+        void slotInitCell(int row, int column);
+    };
 
-signals:
-    void needsRemoval();
-};
+    class RunDelegate : public QStyledItemDelegate
+    {
+        Q_OBJECT
+    public:
+        RunDelegate(QObject *parent = nullptr);
+        void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+        bool editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index) override;
 
-class RunDialog : public QDialog
-{
-    Q_OBJECT
-private:
-    NpSettings &m_settings;
-    QLabel *m_status;
-    QLineEdit *m_command;
-    bool m_saved;
+    private:
+        QIcon openIcon;
+        QIcon rmIcon;
 
-public:
-    RunDialog(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
-    ~RunDialog();
-    QString getCommandInput();
-    bool saved();
-    static QStringList parseCommandString(QString cmd);
+    signals:
+        void needsRemoval();
+    };
 
-private slots:
-    void slotSave();
-    void slotHideStatus();
-};
+    class RunDialog : public QDialog
+    {
+        Q_OBJECT
+    private:
+        NpSettings &m_settings;
+        QLabel *m_status;
+        QLineEdit *m_command;
+        bool m_saved;
 
-};
+    public:
+        RunDialog(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
+        ~RunDialog();
+        QString getCommandInput();
+        bool saved();
+        static QStringList parseCommandString(QString cmd);
+
+    private slots:
+        void slotSave();
+        void slotHideStatus();
+    };
+
+}; //namespace NpRun
 #endif

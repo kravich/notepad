@@ -4,25 +4,26 @@
 #include "include/Extensions/Stubs/menuitemstub.h"
 #include "include/Extensions/runtimesupport.h"
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
-        WindowStub::WindowStub(MainWindow *object, RuntimeSupport *rts) : Stub(object, rts)
+        WindowStub::WindowStub(MainWindow *object, RuntimeSupport *rts) :
+            Stub(object, rts)
         {
-
         }
 
         WindowStub::~WindowStub()
         {
-
         }
 
         NP_DEFINE_EXTENSION_METHOD(WindowStub, currentEditor, )
         {
             RuntimeSupport *rts = runtimeSupport();
-            MainWindow *window = static_cast<MainWindow*>(objectUnmanagedPtr());
+            MainWindow *window = static_cast<MainWindow *>(objectUnmanagedPtr());
             QSharedPointer<Stub> stub = QSharedPointer<Stub>(
-                        new EditorStub(window->currentEditor().toWeakRef(), rts));
+                new EditorStub(window->currentEditor().toWeakRef(), rts));
             qint32 stubId = rts->presentObject(stub);
 
             return StubReturnValue(rts->getJSONStub(stubId, stub->stubName_()));
@@ -34,17 +35,17 @@ namespace Extensions {
                 return StubReturnValue(ErrorCode::INVALID_ARGUMENT_NUMBER);
 
             RuntimeSupport *rts = runtimeSupport();
-            MainWindow *window = static_cast<MainWindow*>(objectUnmanagedPtr());
+            MainWindow *window = static_cast<MainWindow *>(objectUnmanagedPtr());
 
             Q_ASSERT(args.count() >= 2);
             QAction *menuItem = window->addExtensionMenuItem(args.at(0).toString(), convertToString(args.at(1)));
 
             QSharedPointer<Stub> stub = QSharedPointer<Stub>(
-                        new MenuItemStub(menuItem, rts));
+                new MenuItemStub(menuItem, rts));
             qint32 stubId = rts->presentObject(stub);
 
             return StubReturnValue(rts->getJSONStub(stubId, stub->stubName_()));
         }
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions

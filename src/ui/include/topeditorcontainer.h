@@ -48,8 +48,8 @@ public:
      * @param callback Callback function. It should return true to continue,
      *                 false to break the loop.
      */
-    void forEachEditor(bool backwardIndexes, std::function<bool (const int, const int, EditorTabWidget *, QSharedPointer<Editor>)> callback);
-    void forEachEditor(std::function<bool (const int, const int, EditorTabWidget *, QSharedPointer<Editor>)> callback);
+    void forEachEditor(bool backwardIndexes, std::function<bool(const int, const int, EditorTabWidget *, QSharedPointer<Editor>)> callback);
+    void forEachEditor(std::function<bool(const int, const int, EditorTabWidget *, QSharedPointer<Editor>)> callback);
 
     /**
      * @brief Executes the specified asynchronous function for each editor in this container, in order.
@@ -62,7 +62,7 @@ public:
      * @param callback
      * @return Returns a promise which is resolved when all the callbacks have finished.
      */
-    QtPromise::QPromise<void> forEachEditorAsync(bool backwardIndices, std::function<void (const int tabWidgetId, const int editorId, EditorTabWidget *tabWidget, QSharedPointer<Editor> editor, std::function<void()> goOn, std::function<void()> stop)> callback);
+    QtPromise::QPromise<void> forEachEditorAsync(bool backwardIndices, std::function<void(const int tabWidgetId, const int editorId, EditorTabWidget *tabWidget, QSharedPointer<Editor> editor, std::function<void()> goOn, std::function<void()> stop)> callback);
 
     /**
      * @brief Executes the specified asynchronous function for each editor in this container, concurrently.
@@ -70,7 +70,7 @@ public:
      * @param callback
      * @return Returns a promise which is resolved when all the callbacks have called done().
      */
-    QtPromise::QPromise<void> forEachEditorConcurrent(std::function<void (const int tabWidgetId, const int editorId, EditorTabWidget *tabWidget, QSharedPointer<Editor> editor, std::function<void()> done)> callback);
+    QtPromise::QPromise<void> forEachEditorConcurrent(std::function<void(const int tabWidgetId, const int editorId, EditorTabWidget *tabWidget, QSharedPointer<Editor> editor, std::function<void()> done)> callback);
 
     std::vector<QSharedPointer<Editor>> getOpenEditors();
 
@@ -125,7 +125,6 @@ private slots:
     void on_customContextMenuRequested(QPoint point);
     void on_tabCloseRequested(int index);
     void on_editorAdded(int tab);
-
 };
 
 #endif // TOPEDITORCONTAINER_H

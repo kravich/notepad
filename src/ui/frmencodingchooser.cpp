@@ -13,7 +13,8 @@ frmEncodingChooser::frmEncodingChooser(QWidget *parent) :
 
     layout()->setSizeConstraint(QLayout::SetFixedSize);
 
-    for (int mib : QTextCodec::availableMibs()) {
+    for (int mib : QTextCodec::availableMibs())
+    {
         QTextCodec *codec = QTextCodec::codecForMib(mib);
         ui->cmbEncodings->addItem(QString::fromUtf8(codec->name()), codec->mibEnum());
     }
@@ -24,8 +25,10 @@ frmEncodingChooser::frmEncodingChooser(QWidget *parent) :
 void frmEncodingChooser::setEncoding(QTextCodec *codec)
 {
     int mib = codec->mibEnum();
-    for (int i = 0; i < ui->cmbEncodings->count(); i++) {
-        if (mib == ui->cmbEncodings->itemData(i)) {
+    for (int i = 0; i < ui->cmbEncodings->count(); i++)
+    {
+        if (mib == ui->cmbEncodings->itemData(i))
+        {
             ui->cmbEncodings->setCurrentIndex(i);
             break;
         }
@@ -39,9 +42,12 @@ void frmEncodingChooser::setInfoText(const QString &text)
 
 QTextCodec *frmEncodingChooser::selectedCodec() const
 {
-    if (ui->cmbEncodings->currentIndex() >= 0) {
+    if (ui->cmbEncodings->currentIndex() >= 0)
+    {
         return QTextCodec::codecForMib(ui->cmbEncodings->currentData().toInt());
-    } else {
+    }
+    else
+    {
         return QTextCodec::codecForMib(MIB_UTF_8);
     }
 }

@@ -8,8 +8,9 @@
 #include <QDialog>
 #include <QTreeWidgetItem>
 
-namespace Ui {
-class frmPreferences;
+namespace Ui
+{
+    class frmPreferences;
 }
 
 class QAbstractButton;
@@ -68,7 +69,8 @@ private:
      */
     static int s_lastSelectedTab;
 
-    struct LanguageSettings {
+    struct LanguageSettings
+    {
         QString langId;
         int tabSize;
         bool indentWithSpaces;
@@ -78,7 +80,7 @@ private:
 
     KeyGrabber *m_keyGrabber;
 
-    NpSettings& m_settings;
+    NpSettings &m_settings;
     Ui::frmPreferences *ui;
     TopEditorContainer *m_topEditorContainer;
     QSharedPointer<Editor> m_previewEditor;

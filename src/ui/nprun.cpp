@@ -25,19 +25,23 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     QHBoxLayout *h1 = new QHBoxLayout;
     QHBoxLayout *h2 = new QHBoxLayout;
     QHBoxLayout *h3 = new QHBoxLayout;
-    QPushButton *btnOk   = new QPushButton(tr("OK"));
+    QPushButton *btnOk = new QPushButton(tr("OK"));
     QPushButton *btnCancel = new QPushButton(tr("Cancel"));
     RunDelegate *delegate = new RunDelegate(this);
     QShortcut *keyDelete = new QShortcut(QKeySequence("Delete"), this);
 
-    QLabel *info = new QLabel("\
+    QLabel *info = new QLabel(
+    /* clang-format off */
+    "\
     <h3>" + tr("Special placeholders") + "</h3><ul>\
     <li><em>\%url\%</em> - " + tr("Full URL of the currently active file.") + "</li>\
     <li><em>\%path\%</em> - " + tr("Full path of the currently active file.") + "</li>\
     <li><em>\%directory\%</em> - " + tr("Directory of the currently active file.") + "</li>\
     <li><em>\%filename\%</em> - " + tr("Name of the currently active file.") + "</li>\
     <li><em>\%selection\%</em> - " + tr("Currently selected text.") + "</li>\
-    </ul>");
+    </ul>"
+    /* clang-format on */
+    );
 
     m_commands = new QTableWidget(1, 2);
 
@@ -46,7 +50,6 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     vh->sectionResizeMode(QHeaderView::QHeaderView::Fixed);
     vh->setDefaultSectionSize(20);
     hh->setStretchLastSection(true);
-
 
     v1->addWidget(info);
     v1->addWidget(m_commands);
@@ -61,7 +64,7 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     setLayout(v1);
     setMinimumSize(500, 200);
 
-    QMap <QString, QString> cmdData = m_settings.Run.getCommands();
+    QMap<QString, QString> cmdData = m_settings.Run.getCommands();
     QSortFilterProxyModel *pModel = new QSortFilterProxyModel(this);
     pModel->setSourceModel(m_commands->model());
 
@@ -74,7 +77,7 @@ RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
 
     int workRow = 0;
     QMapIterator<QString, QString> it(cmdData);
-    while(it.hasNext())
+    while (it.hasNext())
     {
         it.next();
         QTableWidgetItem *item = new QTableWidgetItem(it.key());
@@ -100,13 +103,16 @@ void RunPreferences::slotOk()
     hide();
     m_settings.Run.resetCommands();
     const int totalCommands = m_commands->rowCount();
-    for (int i = 0; i < totalCommands; ++i) {
-        if (!m_commands->item(i, 0) || !m_commands->item(i, 1)) {
+    for (int i = 0; i < totalCommands; ++i)
+    {
+        if (!m_commands->item(i, 0) || !m_commands->item(i, 1))
+        {
             continue;
         }
         const QString &cmdName = m_commands->item(i, 0)->text();
         const QString &cmdData = m_commands->item(i, 1)->text();
-        if (cmdName.size() && cmdData.size()) {
+        if (cmdName.size() && cmdData.size())
+        {
             m_settings.Run.setCommand(cmdName, cmdData);
         }
     }
@@ -117,29 +123,40 @@ void RunPreferences::slotInitCell(int row, int)
 {
     QTableWidgetItem *iText = m_commands->item(row, 0);
     QTableWidgetItem *iCmd = m_commands->item(row, 1);
-    if (!iText || !iCmd) {
+    if (!iText || !iCmd)
+    {
         return;
     }
 
-    if (m_commands->rowCount() - 1 == row) {
-        if (iText->text().length() && iCmd->text().length()) {
+    if (m_commands->rowCount() - 1 == row)
+    {
+        if (iText->text().length() && iCmd->text().length())
+        {
             m_commands->setRowCount(row + 2);
-        } else if (row == m_commands->rowCount() - 2) {
+        }
+        else if (row == m_commands->rowCount() - 2)
+        {
             m_commands->setRowCount(row + 1);
         }
-    } else if (m_commands->rowCount() - 2 == row) {
+    }
+    else if (m_commands->rowCount() - 2 == row)
+    {
         // Check to see if we can remove the last row safely.
-        if (!iText->text().length() || !iCmd->text().length()) {
+        if (!iText->text().length() || !iCmd->text().length())
+        {
             int rmLast = 0;
             QTableWidgetItem *iLastText = m_commands->item(row + 1, 0);
             QTableWidgetItem *iLastCmd = m_commands->item(row + 1, 1);
-            if (!iLastText || !iLastText->text().length()) {
+            if (!iLastText || !iLastText->text().length())
+            {
                 rmLast++;
             }
-            if (!iLastCmd || !iLastCmd->text().length()) {
+            if (!iLastCmd || !iLastCmd->text().length())
+            {
                 rmLast++;
             }
-            if (rmLast == 2) {
+            if (rmLast == 2)
+            {
                 m_commands->setRowCount(row + 1);
             }
         }
@@ -149,31 +166,36 @@ void RunPreferences::slotInitCell(int row, int)
 void RunPreferences::slotRemove()
 {
     int row = m_commands->currentRow();
-    if (m_commands->rowCount() > 1 && row != m_commands->rowCount() - 1) {
+    if (m_commands->rowCount() > 1 && row != m_commands->rowCount() - 1)
+    {
         m_commands->removeRow(row);
-    } else {
-        if (m_commands->item(row, 0)) {
+    }
+    else
+    {
+        if (m_commands->item(row, 0))
+        {
             m_commands->item(row, 0)->setText("");
         }
-        if (m_commands->item(row, 1)) {
+        if (m_commands->item(row, 1))
+        {
             m_commands->item(row, 1)->setText("");
         }
     }
 }
 
-RunDelegate::RunDelegate(QObject *parent)
-    : QStyledItemDelegate(parent),
-      openIcon(IconProvider::fromTheme("document-open")),
-      rmIcon(IconProvider::fromTheme("edit-delete"))
+RunDelegate::RunDelegate(QObject *parent) :
+    QStyledItemDelegate(parent),
+    openIcon(IconProvider::fromTheme("document-open")),
+    rmIcon(IconProvider::fromTheme("edit-delete"))
 {
 }
 
 void RunDelegate::paint(QPainter *painter,
-        const QStyleOptionViewItem &option,
-        const QModelIndex &index) const
+                        const QStyleOptionViewItem &option,
+                        const QModelIndex &index) const
 {
-
-    if (index.column() == 1) {
+    if (index.column() == 1)
+    {
         painter->save();
         QStyleOptionButton btnOpen;
         QRect r = option.rect;
@@ -189,16 +211,17 @@ void RunDelegate::paint(QPainter *painter,
         // Elide Text
         QFontMetrics fm(option.font);
         QString editText = fm.elidedText(index.data(Qt::EditRole).toString(),
-                Qt::ElideRight,
-                r.width());
+                                         Qt::ElideRight,
+                                         r.width());
 
         QPen oldPen = painter->pen();
-        if (option.state & QStyle::State_Selected) {
+        if (option.state & QStyle::State_Selected)
+        {
             painter->setPen(QPen(QColor(option.palette.highlightedText().color())));
         }
         painter->drawText(r, Qt::AlignLeft | Qt::AlignVCenter, editText);
         painter->setPen(oldPen);
-        option.widget->style()->drawControl (QStyle::CE_PushButtonLabel, &btnOpen, painter);
+        option.widget->style()->drawControl(QStyle::CE_PushButtonLabel, &btnOpen, painter);
 
         QStyleOptionButton btnRm;
         x += 16;
@@ -206,32 +229,38 @@ void RunDelegate::paint(QPainter *painter,
         btnRm.icon = rmIcon;
         btnRm.iconSize = QSize(14, 14);
         btnRm.state = QStyle::State_Enabled;
-        option.widget->style()->drawControl (QStyle::CE_PushButtonLabel, &btnRm, painter);
+        option.widget->style()->drawControl(QStyle::CE_PushButtonLabel, &btnRm, painter);
 
         painter->restore();
-    } else {
+    }
+    else
+    {
         QStyledItemDelegate::paint(painter, option, index);
     }
 }
 
 bool RunDelegate::editorEvent(QEvent *event,
-        QAbstractItemModel *model,
-        const QStyleOptionViewItem &option,
-        const QModelIndex &index)
+                              QAbstractItemModel *model,
+                              const QStyleOptionViewItem &option,
+                              const QModelIndex &index)
 {
-    if (index.column() == 1) {
-        if (event->type() == QEvent::MouseButtonRelease) {
-            QMouseEvent *e = static_cast<QMouseEvent*>(event);
+    if (index.column() == 1)
+    {
+        if (event->type() == QEvent::MouseButtonRelease)
+        {
+            QMouseEvent *e = static_cast<QMouseEvent *>(event);
             int clickX = e->x();
             int clickY = e->y();
             int x, y;
             QRect r = option.rect;
             x = r.left() + r.width() - 32;
             y = r.top();
-            if (clickX > x && clickX < x + 16) {
-                if (clickY > y && clickY < y + 16) {
-                    QString f = QFileDialog::getOpenFileName(qobject_cast<QWidget*>(parent()),
-                            tr("Open File"));
+            if (clickX > x && clickX < x + 16)
+            {
+                if (clickY > y && clickY < y + 16)
+                {
+                    QString f = QFileDialog::getOpenFileName(qobject_cast<QWidget *>(parent()),
+                                                             tr("Open File"));
                     QString oldData = model->data(index, Qt::EditRole).toString();
                     oldData.prepend(f);
                     model->setData(index, oldData, Qt::EditRole);
@@ -241,14 +270,14 @@ bool RunDelegate::editorEvent(QEvent *event,
 
             x = r.left() + r.width() - 16;
             y = r.top();
-            if (clickX > x && clickX < x + 16) {
-                if (clickY > y && clickY < y + 16) {
+            if (clickX > x && clickX < x + 16)
+            {
+                if (clickY > y && clickY < y + 16)
+                {
                     emit needsRemoval();
                     return true;
                 }
             }
-
-
         }
     }
     return false;
@@ -267,14 +296,18 @@ RunDialog::RunDialog(QWidget *parent, Qt::WindowFlags f) :
     QPushButton *btnCancel = new QPushButton(tr("Cancel"));
     QPushButton *btnSave = new QPushButton(tr("Save..."));
 
-    QLabel *info = new QLabel("\
+    QLabel *info = new QLabel(
+    /* clang-format off */
+    "\
     <h3>" + tr("Special placeholders") + "</h3><ul>\
     <li><em>\%url\%</em> - " + tr("Full URL of the currently active file.") + "</li>\
     <li><em>\%path\%</em> - " + tr("Full path of the currently active file.") + "</li>\
     <li><em>\%directory\%</em> - " + tr("Directory of the currently active file.") + "</li>\
     <li><em>\%filename\%</em> - " + tr("Name of the currently active file.") + "</li>\
     <li><em>\%selection\%</em> - " + tr("Currently selected text.") + "</li>\
-    </ul>");
+    </ul>"
+    /* clang-format on */
+    );
 
     m_command = new QLineEdit(this);
     m_status = new QLabel;
@@ -313,12 +346,13 @@ void RunDialog::slotSave()
 {
     bool ok;
     QString name = QInputDialog::getText(this,
-            tr("Choose the name to be displayed in the run menu."),
-            tr("Command Name:"),
-            QLineEdit::Normal,
-            m_command->text(),
-            &ok);
-    if (ok && !name.isEmpty() && !m_command->text().isEmpty()) {
+                                         tr("Choose the name to be displayed in the run menu."),
+                                         tr("Command Name:"),
+                                         QLineEdit::Normal,
+                                         m_command->text(),
+                                         &ok);
+    if (ok && !name.isEmpty() && !m_command->text().isEmpty())
+    {
         m_settings.Run.setCommand(name, m_command->text());
         m_saved = 1;
 
@@ -351,75 +385,113 @@ QString RunDialog::getCommandInput()
     return m_command->text();
 }
 
-QStringList RunDialog::parseCommandString(QString cmd) {
+QStringList RunDialog::parseCommandString(QString cmd)
+{
     QStringList parts;
     const char OUT = '\0';
     char quote = OUT;
     QString curr = "";
-    for (int i = 0; i < cmd.length(); i++) {
-        if (cmd[i] == '"') {
-            if (quote == '"') {
+    for (int i = 0; i < cmd.length(); i++)
+    {
+        if (cmd[i] == '"')
+        {
+            if (quote == '"')
+            {
                 quote = OUT;
                 parts.append(curr);
                 curr = "";
-            } else if (quote == '\'') {
+            }
+            else if (quote == '\'')
+            {
                 curr += '"';
-            } else {
+            }
+            else
+            {
                 quote = '"';
             }
-
-        } else if (cmd[i] == '\'') {
-            if (quote == '\'') {
+        }
+        else if (cmd[i] == '\'')
+        {
+            if (quote == '\'')
+            {
                 quote = OUT;
                 parts.append(curr);
                 curr = "";
-            } else if (quote == '"') {
+            }
+            else if (quote == '"')
+            {
                 curr += '\'';
-            } else {
+            }
+            else
+            {
                 quote = '\'';
             }
-
-        } else if (cmd[i] == '\\') {
-
-            if (i+1 < cmd.length()) {
+        }
+        else if (cmd[i] == '\\')
+        {
+            if (i + 1 < cmd.length())
+            {
                 i++;
-                if (quote == '\'') {
-                    if (cmd[i] == '\'') {
+                if (quote == '\'')
+                {
+                    if (cmd[i] == '\'')
+                    {
                         curr += '\'';
-                    } else {
+                    }
+                    else
+                    {
                         curr += '\\';
                         curr += cmd[i];
                     }
-                } else if (quote == '"') {
-                    if (cmd[i] == '"') {
+                }
+                else if (quote == '"')
+                {
+                    if (cmd[i] == '"')
+                    {
                         curr += '"';
-                    } else if (cmd[i] == '\\') {
+                    }
+                    else if (cmd[i] == '\\')
+                    {
                         curr += '\\';
-                    } else {
+                    }
+                    else
+                    {
                         curr += '\\';
                         curr += cmd[i];
                     }
-                } else {
+                }
+                else
+                {
                     curr += cmd[i];
                 }
-            } else {
+            }
+            else
+            {
                 curr += '\\';
             }
-
-        } else if (cmd[i] == ' ') {
-            if (quote == OUT) {
-                if (curr.length() > 0) {
+        }
+        else if (cmd[i] == ' ')
+        {
+            if (quote == OUT)
+            {
+                if (curr.length() > 0)
+                {
                     parts.append(curr);
                     curr = "";
                 }
-            } else {
+            }
+            else
+            {
                 curr += ' ';
             }
-        } else {
+        }
+        else
+        {
             curr += cmd[i];
         }
     }
-    if (curr.length() > 0) {
+    if (curr.length() > 0)
+    {
         parts.append(curr);
     }
 

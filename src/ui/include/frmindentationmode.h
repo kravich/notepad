@@ -5,8 +5,9 @@
 
 #include <QDialog>
 
-namespace Ui {
-class frmIndentationMode;
+namespace Ui
+{
+    class frmIndentationMode;
 }
 
 class frmIndentationMode : public QDialog

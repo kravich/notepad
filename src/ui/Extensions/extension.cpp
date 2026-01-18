@@ -6,22 +6,26 @@
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QRandomGenerator>
 #include <QTextStream>
 #include <QTime>
-#include <QRandomGenerator>
 
-namespace Extensions {
+namespace Extensions
+{
 
-    Extension::Extension(QString path, QString serverSocketPath) : QObject(0)
+    Extension::Extension(QString path, QString serverSocketPath) :
+        QObject(0)
     {
         m_extensionId = path + "-" + QString::number(QTime::currentTime().msec()) + "-" + QString::number(QRandomGenerator::global()->generate());
 
         QJsonObject manifest = getManifest(path);
 
-        if (!manifest.isEmpty()) {
+        if (!manifest.isEmpty())
+        {
             m_name = manifest.value("name").toString();
 
-            if (m_name.isEmpty()) {
+            if (m_name.isEmpty())
+            {
                 failedToLoadExtension(path, tr("name missing or invalid"));
                 return;
             }
@@ -29,8 +33,8 @@ namespace Extensions {
             m_runtime = manifest.value("runtime").toString().toLower();
             QString main = manifest.value("main").toString();
 
-            if (m_runtime == "nodejs") {
-
+            if (m_runtime == "nodejs")
+            {
                 process = new QProcess();
                 process->setProcessChannelMode(QProcess::ForwardedChannels);
                 process->setWorkingDirectory(path);
@@ -46,10 +50,10 @@ namespace Extensions {
                 connect(process, SIGNAL(error(QProcess::ProcessError)), this, SLOT(on_processError(QProcess::ProcessError)));
 
                 process->start(runtimePath, args);
-
             }
-
-        } else {
+        }
+        else
+        {
             failedToLoadExtension(path, tr("unable to read np-manifest.json"));
             return;
         }
@@ -67,7 +71,8 @@ namespace Extensions {
 
     Extension::~Extension()
     {
-        if (process != nullptr) {
+        if (process != nullptr)
+        {
             process->deleteLater();
         }
     }
@@ -75,7 +80,8 @@ namespace Extensions {
     QJsonObject Extension::getManifest(const QString &extensionPath)
     {
         QFile fManifest(extensionPath + "/np-manifest.json");
-        if (fManifest.open(QFile::ReadOnly | QFile::Text)) {
+        if (fManifest.open(QFile::ReadOnly | QFile::Text))
+        {
             QTextStream in(&fManifest);
             QString content = in.readAll();
             fManifest.close();
@@ -83,22 +89,27 @@ namespace Extensions {
             QJsonParseError err;
             QJsonDocument manifestDoc = QJsonDocument::fromJson(content.toUtf8(), &err);
 
-            if (err.error != QJsonParseError::NoError) {
+            if (err.error != QJsonParseError::NoError)
+            {
                 return QJsonObject();
             }
 
             return manifestDoc.object();
-
-        } else {
+        }
+        else
+        {
             return QJsonObject();
         }
     }
 
     void Extension::on_processError(QProcess::ProcessError error)
     {
-        if (error == QProcess::FailedToStart) {
+        if (error == QProcess::FailedToStart)
+        {
             failedToLoadExtension(m_name, tr("failed to start. Check your runtime: %1").arg(m_runtime));
-        } else if (error == QProcess::Crashed) {
+        }
+        else if (error == QProcess::Crashed)
+        {
             qWarning() << QString("%1 crashed.").arg(m_name).toStdWString().c_str();
         }
     }
@@ -119,4 +130,4 @@ namespace Extensions {
         return m_name;
     }
 
-}
+} //namespace Extensions

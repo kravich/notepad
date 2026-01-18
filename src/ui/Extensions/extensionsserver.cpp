@@ -4,18 +4,17 @@
 #include <QLocalSocket>
 #include <QMessageBox>
 
-namespace Extensions {
+namespace Extensions
+{
 
     ExtensionsServer::ExtensionsServer(QSharedPointer<RuntimeSupport> extensionsRTS, QObject *parent) :
         QObject(parent),
         m_extensionsRTS(extensionsRTS)
     {
-
     }
 
     ExtensionsServer::~ExtensionsServer()
     {
-
     }
 
     bool ExtensionsServer::startServer(QString name)
@@ -23,10 +22,12 @@ namespace Extensions {
         QLocalServer::removeServer(name);
 
         m_server = new QLocalServer(this);
-        if (!m_server->listen(name)) {
-
+        if (!m_server->listen(name))
+        {
             qCritical() << QString("Unable to start extensions server %1. Extensions will not be loaded.")
-                           .arg(name).toStdString().c_str();
+                               .arg(name)
+                               .toStdString()
+                               .c_str();
 
             return false;
         }
@@ -37,9 +38,12 @@ namespace Extensions {
 
     QString ExtensionsServer::socketPath()
     {
-        if (m_server->isListening()) {
+        if (m_server->isListening())
+        {
             return m_server->fullServerName();
-        } else {
+        }
+        else
+        {
             return QString();
         }
     }
@@ -47,7 +51,8 @@ namespace Extensions {
     void ExtensionsServer::on_newConnection()
     {
         QLocalSocket *client = m_server->nextPendingConnection();
-        if (client != nullptr) {
+        if (client != nullptr)
+        {
             m_sockets.append(client);
 
             connect(client, &QLocalSocket::readyRead, this, [=] { on_clientMessage(client); });
@@ -64,7 +69,8 @@ namespace Extensions {
         if (stream.atEnd())
             return;
 
-        while (1) {
+        while (1)
+        {
             QString jsonRequest = stream.readLine();
             if (jsonRequest.isNull())
                 break;
@@ -73,8 +79,8 @@ namespace Extensions {
 
             QJsonObject response = m_extensionsRTS->handleRequest(request.object());
             QString jsonResponse = QString(
-                        QJsonDocument(response).toJson(QJsonDocument::Compact))
-                    .trimmed();
+                                       QJsonDocument(response).toJson(QJsonDocument::Compact))
+                                       .trimmed();
 
             stream << jsonResponse << "\n";
         }
@@ -90,11 +96,13 @@ namespace Extensions {
     void ExtensionsServer::broadcastMessage(const QJsonObject &message)
     {
         QString jsonMessage = QString(
-                    QJsonDocument(message).toJson(QJsonDocument::Compact))
-                .trimmed();
+                                  QJsonDocument(message).toJson(QJsonDocument::Compact))
+                                  .trimmed();
 
-        for (QLocalSocket *socket : m_sockets) {
-            if (socket->isOpen()) {
+        for (QLocalSocket *socket : m_sockets)
+        {
+            if (socket->isOpen())
+            {
                 QTextStream stream(socket);
                 stream << jsonMessage << "\n";
             }
@@ -103,10 +111,11 @@ namespace Extensions {
 
     void ExtensionsServer::sendMessage(QLocalSocket *socket, const QJsonObject &message)
     {
-        if (socket->isOpen()) {
+        if (socket->isOpen())
+        {
             QString jsonMessage = QString(
-                        QJsonDocument(message).toJson(QJsonDocument::Compact))
-                    .trimmed();
+                                      QJsonDocument(message).toJson(QJsonDocument::Compact))
+                                      .trimmed();
 
             QTextStream stream(socket);
             stream << jsonMessage << "\n";
@@ -117,4 +126,4 @@ namespace Extensions {
     {
         return m_extensionsRTS;
     }
-}
+} //namespace Extensions

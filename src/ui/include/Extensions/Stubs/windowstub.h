@@ -6,8 +6,10 @@
 
 #include <QObject>
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
         class WindowStub : public Stub
         {
@@ -22,7 +24,7 @@ namespace Extensions {
             NP_DECLARE_EXTENSION_METHOD(addExtensionMenuItem)
         };
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions
 
 #endif // WINDOWSTUB_H

@@ -33,11 +33,13 @@
 
 #include <functional>
 
-namespace Extensions {
+namespace Extensions
+{
 
     class RuntimeSupport;
 
-    namespace Stubs {
+    namespace Stubs
+    {
 
         class Stub : public QObject
         {
@@ -49,7 +51,8 @@ namespace Extensions {
             explicit Stub(QObject *object, RuntimeSupport *rts);
             virtual ~Stub() = 0;
 
-            enum class ErrorCode {
+            enum class ErrorCode
+            {
                 NONE = 0,
                 INVALID_REQUEST = 1,
                 INVALID_ARGUMENT_NUMBER = 2,
@@ -59,31 +62,44 @@ namespace Extensions {
                 METHOD_NOT_FOUND = 6,
             };
 
-            struct StubReturnValue {
+            struct StubReturnValue
+            {
                 QJsonValue result;
                 ErrorCode error = ErrorCode::NONE;
                 QString errorString;
 
                 StubReturnValue() {}
                 StubReturnValue(const QJsonValue &_result) :
-                    result(_result) {}
+                    result(_result)
+                {
+                }
                 StubReturnValue(const ErrorCode &_error, const QString &_errorString = QString()) :
-                    error(_error), errorString(_errorString) {}
+                    error(_error),
+                    errorString(_errorString)
+                {
+                }
                 StubReturnValue(const QJsonValue &_result, const ErrorCode &_error, const QString &_errorString = QString()) :
-                    result(_result), error(_error), errorString(_errorString) {}
+                    result(_result),
+                    error(_error),
+                    errorString(_errorString)
+                {
+                }
 
-                QJsonObject toJsonObject() {
+                QJsonObject toJsonObject()
+                {
                     QJsonObject ret;
                     ret.insert("result", result.isUndefined() ? QJsonValue() : result);
                     ret.insert("err", static_cast<int>(error));
-                    if (error != ErrorCode::NONE) {
+                    if (error != ErrorCode::NONE)
+                    {
                         ret.insert("errStr", errorString);
                     }
                     return ret;
                 }
             };
 
-            enum class PointerType {
+            enum class PointerType
+            {
                 DETACHED,
                 WEAK_POINTER,
                 SHARED_POINTER,
@@ -109,8 +125,8 @@ namespace Extensions {
 
             QString convertToString(const QJsonValue &value);
 
-            bool operator ==(const Stub &other) const;
-            bool operator !=(const Stub &other) const;
+            bool operator==(const Stub &other) const;
+            bool operator!=(const Stub &other) const;
         signals:
 
         public slots:
@@ -121,7 +137,7 @@ namespace Extensions {
             QObject *objectUnmanagedPtr();
             PointerType pointerType();
 
-            bool registerMethod(const QString &methodName, std::function<StubReturnValue (const QJsonArray &)> method);
+            bool registerMethod(const QString &methodName, std::function<StubReturnValue(const QJsonArray &)> method);
             RuntimeSupport *runtimeSupport();
 
         private:
@@ -130,12 +146,12 @@ namespace Extensions {
             QWeakPointer<QObject> m_weakPointer;
             QSharedPointer<QObject> m_sharedPointer;
             QObject *m_unmanagedPointer = nullptr;
-            QHash<QString, std::function<StubReturnValue (const QJsonArray &)>> m_methods;
+            QHash<QString, std::function<StubReturnValue(const QJsonArray &)>> m_methods;
             QVariant genericCall(QObject *object, QMetaMethod metaMethod, QVariantList args, ErrorCode &error);
             bool invokeOnRealObject(const QString &method, Stub::StubReturnValue &ret, const QJsonArray &args);
         };
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions
 
 #endif // EXTENSIONS_STUBS_STUB_H

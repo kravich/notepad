@@ -7,19 +7,19 @@
 #include <QDirIterator>
 #include <QRandomGenerator>
 
-namespace Extensions {
+namespace Extensions
+{
 
     QSharedPointer<ExtensionsServer> ExtensionsLoader::m_extensionsServer;
     QMap<QString, QSharedPointer<Extension>> ExtensionsLoader::m_extensions;
 
-    ExtensionsLoader::ExtensionsLoader(QObject *parent) : QObject(parent)
+    ExtensionsLoader::ExtensionsLoader(QObject *parent) :
+        QObject(parent)
     {
-
     }
 
     ExtensionsLoader::~ExtensionsLoader()
     {
-
     }
 
     QSharedPointer<Extensions::ExtensionsServer> ExtensionsLoader::startExtensionsServer()
@@ -35,10 +35,10 @@ namespace Extensions {
     QSharedPointer<Extensions::ExtensionsServer> ExtensionsLoader::startExtensionsServer(QString name)
     {
         QSharedPointer<Extensions::RuntimeSupport> rts =
-                QSharedPointer<Extensions::RuntimeSupport>(new Extensions::RuntimeSupport());
+            QSharedPointer<Extensions::RuntimeSupport>(new Extensions::RuntimeSupport());
 
         m_extensionsServer = QSharedPointer<Extensions::ExtensionsServer>(
-                    new Extensions::ExtensionsServer(rts));
+            new Extensions::ExtensionsServer(rts));
 
         m_extensionsServer->startServer(name);
 
@@ -47,16 +47,19 @@ namespace Extensions {
 
     void ExtensionsLoader::loadExtensions(QString path)
     {
-        if (m_extensionsServer.isNull()) {
+        if (m_extensionsServer.isNull())
+        {
             return;
         }
 
         QDirIterator it(path, QDir::Dirs | QDir::NoDotAndDotDot | QDir::Readable, QDirIterator::NoIteratorFlags);
-        while (it.hasNext()) {
+        while (it.hasNext())
+        {
             QString fileName = it.next();
-            if (!fileName.endsWith("%%BACKUP", Qt::CaseInsensitive)) {
+            if (!fileName.endsWith("%%BACKUP", Qt::CaseInsensitive))
+            {
                 QSharedPointer<Extension> ext = QSharedPointer<Extension>(
-                        new Extension(fileName, m_extensionsServer->socketPath()));
+                    new Extension(fileName, m_extensionsServer->socketPath()));
                 m_extensions.insert(ext->id(), ext);
             }
         }
@@ -79,4 +82,4 @@ namespace Extensions {
         return f.exists() && f.isExecutable();
     }
 
-}
+} //namespace Extensions

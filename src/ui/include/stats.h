@@ -12,7 +12,6 @@ public:
     static void init();
 
 private:
-
     /**
      * @brief Send the specified JSON object to the remote server.
      * @param data

@@ -11,7 +11,8 @@
 #include <QProcess>
 #include <QRegularExpression>
 
-namespace Extensions {
+namespace Extensions
+{
 
     InstallExtension::InstallExtension(const QString &extensionFilename, QWidget *parent) :
         QDialog(parent),
@@ -28,11 +29,13 @@ namespace Extensions {
         setWindowFlags((windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowMinMaxButtonsHint);
 
         QString manifestStr = readExtensionManifest(extensionFilename);
-        if (!manifestStr.isNull()) {
+        if (!manifestStr.isNull())
+        {
             QJsonParseError err;
             QJsonDocument manifestDoc = QJsonDocument::fromJson(manifestStr.toUtf8(), &err);
 
-            if (err.error != QJsonParseError::NoError) {
+            if (err.error != QJsonParseError::NoError)
+            {
                 // FIXME Failed to load
                 qDebug() << manifestStr;
                 qCritical() << err.errorString();
@@ -44,23 +47,26 @@ namespace Extensions {
             m_runtime = manifest.value("runtime").toString();
             ui->lblName->setText(manifest.value("name").toString());
             ui->lblVersionAuthor->setText(tr("Version %1, %2")
-                                          .arg(manifest.value("version").toString(tr("unknown version")))
-                                          .arg(manifest.value("author").toString(tr("unknown author"))));
+                                              .arg(manifest.value("version").toString(tr("unknown version")))
+                                              .arg(manifest.value("author").toString(tr("unknown author"))));
             ui->lblDescription->setText(manifest.value("description").toString());
 
             // Tell the user if this is an update
             QString alreadyInstalledPath = getAbsoluteExtensionFolder(Notepad::extensionsPath(), m_uniqueName);
-            if (!alreadyInstalledPath.isNull()) {
+            if (!alreadyInstalledPath.isNull())
+            {
                 QJsonObject manifest = Extension::getManifest(alreadyInstalledPath);
-                if (!manifest.isEmpty()) {
+                if (!manifest.isEmpty())
+                {
                     QString currentVersion = manifest.value("version").toString(tr("unknown version"));
                     ui->lblVersionAuthor->setText(ui->lblVersionAuthor->text() + " " +
                                                   tr("(current version is %1)").arg(currentVersion));
                     ui->btnInstall->setText(tr("Update"));
                 }
             }
-
-        } else {
+        }
+        else
+        {
             // FIXME Error reading manifest from archive
         }
     }
@@ -75,13 +81,13 @@ namespace Extensions {
         if (extensionUniqueName.isEmpty())
             return QString();
 
-        if (!extensionUniqueName.contains(QRegularExpression(R"(^[-_0-9a-z]+(\.[-_0-9a-z]+)+$)"))) {
+        if (!extensionUniqueName.contains(QRegularExpression(R"(^[-_0-9a-z]+(\.[-_0-9a-z]+)+$)")))
+        {
             return QString();
         }
 
         QDir path(extensionsPath);
         return path.absoluteFilePath(extensionUniqueName);
-
     }
 
     void InstallExtension::setUIClean(bool success)
@@ -90,7 +96,6 @@ namespace Extensions {
         ui->progressBar->setMinimum(0);
         ui->progressBar->setMaximum(100);
         ui->progressBar->setValue(success ? 100 : 0);
-
     }
 
     void InstallExtension::installNodejsExtension(const QString &packagePath)
@@ -101,7 +106,7 @@ namespace Extensions {
 
         QProcess *process = new QProcess(this);
 
-        connect(process, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), [=](){
+        connect(process, static_cast<void (QProcess::*)(QProcess::ProcessError)>(&QProcess::errorOccurred), [=]() {
             setUIClean(false);
 
             QMessageBox infoBox;
@@ -111,8 +116,9 @@ namespace Extensions {
             infoBox.exec();
         });
 
-        connect(process, static_cast<void (QProcess::*)(int,QProcess::ExitStatus)>(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus) {
-            if (exitCode == 0) {
+        connect(process, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus) {
+            if (exitCode == 0)
+            {
                 setUIClean(true);
 
                 QMessageBox infoBox;
@@ -123,7 +129,9 @@ namespace Extensions {
                 infoBox.exec();
 
                 accept();
-            } else {
+            }
+            else
+            {
                 setUIClean(false);
 
                 QMessageBox infoBox;
@@ -134,18 +142,15 @@ namespace Extensions {
                 infoBox.exec();
             }
 
-            if (process->isOpen()) {
+            if (process->isOpen())
+            {
                 process->close();
             }
         });
 
         this->setEnabled(false);
         process->setWorkingDirectory(Notepad::extensionToolsPath());
-        process->start(Notepad::nodejsPath(), QStringList()
-                      << "install.js"
-                      << packagePath
-                      << Notepad::extensionsPath()
-                      << Notepad::npmPath());
+        process->start(Notepad::nodejsPath(), QStringList() << "install.js" << packagePath << Notepad::extensionsPath() << Notepad::npmPath());
     }
 
     QString InstallExtension::readExtensionManifest(const QString &archivePath)
@@ -155,8 +160,10 @@ namespace Extensions {
         process.setWorkingDirectory(Notepad::extensionToolsPath());
         process.start(Notepad::nodejsPath(), QStringList() << "readmanifest.js" << archivePath);
 
-        if (process.waitForStarted(20000)) {
-            while (process.waitForReadyRead(30000)) {
+        if (process.waitForStarted(20000))
+        {
+            while (process.waitForReadyRead(30000))
+            {
                 output.append(process.readAllStandardOutput());
             }
 
@@ -166,7 +173,7 @@ namespace Extensions {
         return QString();
     }
 
-}
+} //namespace Extensions
 
 void Extensions::InstallExtension::on_btnCancel_clicked()
 {
@@ -175,11 +182,13 @@ void Extensions::InstallExtension::on_btnCancel_clicked()
 
 void Extensions::InstallExtension::on_btnInstall_clicked()
 {
-    if (m_runtime == "nodejs") {
+    if (m_runtime == "nodejs")
+    {
         installNodejsExtension(m_extensionFilename);
-    } else {
+    }
+    else
+    {
         QMessageBox::critical(this, tr("Error"), tr("Unsupported runtime: %1").arg(m_runtime));
         return;
     }
-
 }

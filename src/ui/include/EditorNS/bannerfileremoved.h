@@ -17,9 +17,8 @@ namespace EditorNS
         void ignore();
 
     public slots:
-
     };
 
-}
+} //namespace EditorNS
 
 #endif // BANNERFILEREMOVED_H

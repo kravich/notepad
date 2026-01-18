@@ -1,21 +1,22 @@
 #include "include/Extensions/Stubs/editorstub.h"
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
-        EditorStub::EditorStub(const QWeakPointer<QObject> &object, RuntimeSupport *rts) : Stub(object, rts)
+        EditorStub::EditorStub(const QWeakPointer<QObject> &object, RuntimeSupport *rts) :
+            Stub(object, rts)
         {
-
         }
 
         EditorStub::~EditorStub()
         {
-
         }
 
         EditorNS::Editor *EditorStub::editor()
         {
-            return static_cast<EditorNS::Editor*>(objectUnmanagedPtr());
+            return static_cast<EditorNS::Editor *>(objectUnmanagedPtr());
         }
 
         NP_DEFINE_EXTENSION_METHOD(EditorStub, setValue, args)
@@ -41,7 +42,8 @@ namespace Extensions {
 
             QStringList strList;
             QJsonArray jsonArr = args.at(0).toArray();
-            for (int i = 0; i < jsonArr.count(); i++) {
+            for (int i = 0; i < jsonArr.count(); i++)
+            {
                 strList.append(convertToString(jsonArr.at(i)));
             }
 
@@ -49,5 +51,5 @@ namespace Extensions {
             return StubReturnValue();
         }
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions

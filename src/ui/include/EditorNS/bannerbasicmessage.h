@@ -15,7 +15,8 @@ namespace EditorNS
     public:
         explicit BannerBasicMessage(QWidget *parent = nullptr);
 
-        enum class Importance {
+        enum class Importance
+        {
             Warning,
             Question
         };
@@ -31,11 +32,12 @@ namespace EditorNS
 
     protected:
         void paintEvent(QPaintEvent *ev);
+
     private:
         QHBoxLayout *m_layout;
         QLabel *m_message;
         QWidget *m_topWidget;
     };
 
-}
+} //namespace EditorNS
 #endif // BANNERBASICMESSAGE_H

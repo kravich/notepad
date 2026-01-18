@@ -11,9 +11,10 @@ void println(QString string);
 void printerr(QString string);
 void printerrln(QString string);
 
-
-namespace PForResult {
-    enum Enum {
+namespace PForResult
+{
+    enum Enum
+    {
         Continue,
         Break
     };
@@ -30,4 +31,3 @@ namespace PForResult {
 QtPromise::QPromise<PForResult::Enum> pFor(int start, int end, std::function<QtPromise::QPromise<PForResult::Enum>(int i, QtPromise::QPromise<PForResult::Enum> _break, QtPromise::QPromise<PForResult::Enum> _continue)> iteration);
 
 #endif // GLOBALS_H
-

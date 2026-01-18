@@ -18,7 +18,8 @@
  *        its search results. On construction, the SearchInstance object will also initiate the
  *        search.
  */
-class SearchInstance : public QObject {
+class SearchInstance : public QObject
+{
     Q_OBJECT
 
 public:
@@ -28,7 +29,7 @@ public:
      *               If it's ScopeCurrentDocument or ScopeAllDocuments, a blocking document search will
      *               be started, but searching documents is fast enough not to visibly block the UI.
      */
-    SearchInstance(const SearchConfig& config);
+    SearchInstance(const SearchConfig &config);
     ~SearchInstance();
 
     /**
@@ -46,9 +47,9 @@ public:
      */
     bool isSearchInProgress() const { return m_isSearchInProgress; }
 
-    QTreeWidget*        getResultTreeWidget() const { return m_treeWidget.data(); }
-    const SearchConfig& getSearchConfig() const { return m_searchConfig; }
-    const SearchResult& getSearchResult() const { return m_searchResult; }
+    QTreeWidget *getResultTreeWidget() const { return m_treeWidget.data(); }
+    const SearchConfig &getSearchConfig() const { return m_searchConfig; }
+    const SearchResult &getSearchResult() const { return m_searchResult; }
 
     /**
      * @brief getFilteredSearchResult Returns a SearchResult object with only those MatchResults whose
@@ -75,7 +76,7 @@ signals:
      * @param result The selected MatchResult. If this is nullptr then the user only selected a DocResult
      * @param type The kind of interaction requested by the user
      */
-    void itemInteracted(const DocResult& doc, const MatchResult* result, SearchUserInteraction type);
+    void itemInteracted(const DocResult &doc, const MatchResult *result, SearchUserInteraction type);
 
 private:
     void onSearchProgress(int processed, int total);
@@ -85,21 +86,20 @@ private:
     bool m_resultsAreExpanded = false;
     bool m_showFullLines = false;
 
-    SearchConfig                m_searchConfig;
+    SearchConfig m_searchConfig;
     QScopedPointer<QTreeWidget> m_treeWidget;
-    SearchResult                m_searchResult;
-    FileSearcher*               m_fileSearcher = nullptr;
+    SearchResult m_searchResult;
+    FileSearcher *m_fileSearcher = nullptr;
 
     // Context menu
-    QMenu*                      m_contextMenu;
-    QAction*                    m_actionCopyLine;
-    QAction*                    m_actionOpenDocument;
-    QAction*                    m_actionOpenFolder;
+    QMenu *m_contextMenu;
+    QAction *m_actionCopyLine;
+    QAction *m_actionOpenDocument;
+    QAction *m_actionOpenFolder;
 
     // These map each QTreeWidget item to their respective MatchResult or DocResult
-    std::map<QTreeWidgetItem*, const MatchResult*>  m_resultMap;
-    std::map<QTreeWidgetItem*, const DocResult*>    m_docMap;
+    std::map<QTreeWidgetItem *, const MatchResult *> m_resultMap;
+    std::map<QTreeWidgetItem *, const DocResult *> m_docMap;
 };
-
 
 #endif // SEARCHINSTANCE_H

@@ -13,22 +13,22 @@
  *        Use prepareAsyncSearch() and run start() on the returned FileSearcher* object to search files
  *        asynchronously. Use searchPlainText() and searchRegExp() to search strings synchronously.
  */
-class FileSearcher : public QThread {
+class FileSearcher : public QThread
+{
     Q_OBJECT
 
 public:
-
     /**
      * @brief prepareAsynchSearch Returns a FileSearcher* object to be used in async file search. Only use this for
      *                            ScopeFileSystem searches. Use the static functions for searching documents or strings.
      */
-    static FileSearcher* prepareAsyncSearch(const SearchConfig& config);
+    static FileSearcher *prepareAsyncSearch(const SearchConfig &config);
 
     /**
      * @brief createRegexFromConfig Creates a RegularExpression based on the given config that can be used
      *                              in conjuncture with searchRegExp()
      */
-    static QRegularExpression createRegexFromConfig(const SearchConfig& config);
+    static QRegularExpression createRegexFromConfig(const SearchConfig &config);
 
     /**
      * @brief searchPlainText Searches a given string (synchronously)
@@ -36,7 +36,7 @@ public:
      * @param content The string to be searched
      * @return A DocResult containing all found matches.
      */
-    static DocResult searchPlainText(const SearchConfig& config, const QString& content);
+    static DocResult searchPlainText(const SearchConfig &config, const QString &content);
 
     /**
      * @brief searchRegExp  Searches a given string via a RegularExpression (synchronously)
@@ -44,7 +44,7 @@ public:
      * @param content The string to be searched
      * @return A DocResult containing all found matches.
      */
-    static DocResult searchRegExp(const QRegularExpression& regex, const QString& content);
+    static DocResult searchRegExp(const QRegularExpression &regex, const QString &content);
 
     /**
      * @brief cancel Orders the FileSearcher to stop searching at the earliest convenience. Won't immediately stop.
@@ -55,7 +55,7 @@ public:
      * @brief getResult Returns a SearchResult item with all found results. Will be empty until the FileSearcher
      *                  completely finished its search and emitted resultReady()
      */
-    const SearchResult& getResult() { return m_searchResult; }
+    const SearchResult &getResult() { return m_searchResult; }
 
 signals:
     /**
@@ -69,7 +69,7 @@ protected:
     void run() override;
 
 private:
-    FileSearcher(const SearchConfig& config);
+    FileSearcher(const SearchConfig &config);
 
     SearchConfig m_searchConfig;
     QRegularExpression m_regex;

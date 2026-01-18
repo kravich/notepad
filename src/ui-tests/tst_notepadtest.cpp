@@ -1,8 +1,9 @@
+#include "include/notepad.h"
+#include "notepad.cpp"
+#include "npsettings.cpp"
+
 #include <QString>
 #include <QtTest>
-#include "include/notepad.h"
-#include "npsettings.cpp"
-#include "notepad.cpp"
 
 class NotepadTest : public QObject
 {

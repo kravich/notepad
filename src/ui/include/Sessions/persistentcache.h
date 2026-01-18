@@ -3,9 +3,9 @@
 
 #include <QDir>
 
-class PersistentCache {
+class PersistentCache
+{
 public:
-
     /**
      * @brief Returns the path to where the session file is/should be located
      *        that contains all tabs when the main Notepad instance is closed.
@@ -18,8 +18,8 @@ public:
     static QString cacheDirPath();
 
     /**
-    * @brief Returns the path to the directory that contains the backup cache.
-    */
+     * @brief Returns the path to the directory that contains the backup cache.
+     */
     static QString backupDirPath();
 
     /**
@@ -28,7 +28,7 @@ public:
      * @param fileName The file name for the file.
      * @return QUrl to a location within the the directory, file guaranteed not to exist yet.
      */
-    static QUrl createValidCacheName(const QDir& parent, const QString& fileName);
+    static QUrl createValidCacheName(const QDir &parent, const QString &fileName);
 };
 
 #endif // PERSISTENTCACHE_H

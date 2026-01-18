@@ -18,6 +18,6 @@ namespace EditorNS
         void useApplicationSettings();
     };
 
-}
+} //namespace EditorNS
 
 #endif // BANNERINDENTATIONDETECTED_H

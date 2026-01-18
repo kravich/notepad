@@ -22,7 +22,6 @@ namespace EditorNS
     Editor::Editor(QWidget *parent) :
         QWidget(parent)
     {
-
         QString themeName = NpSettings::getInstance().Appearance.getColorScheme();
 
         fullConstructor(themeFromName(themeName));
@@ -51,7 +50,7 @@ namespace EditorNS
         QUrl url = QUrl("file://" + Notepad::editorPath());
         url.setQuery(query);
 
-        QWebChannel * channel = new QWebChannel(this);
+        QWebChannel *channel = new QWebChannel(this);
         m_webView->page()->setWebChannel(channel);
         channel->registerObject(QStringLiteral("cpp_ui_driver"), m_jsToCppProxy);
 
@@ -68,9 +67,9 @@ namespace EditorNS
         //m_webView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
 
         QWebEngineSettings *pageSettings = m_webView->page()->settings();
-        #ifdef QT_DEBUG
+#ifdef QT_DEBUG
         //pageSettings->setAttribute(QWebEngineSettings::DeveloperExtrasEnabled, true);
-        #endif
+#endif
         pageSettings->setAttribute(QWebEngineSettings::JavascriptCanAccessClipboard, true);
 
         m_layout = new QVBoxLayout(this);
@@ -92,13 +91,18 @@ namespace EditorNS
     {
         QSharedPointer<Editor> out;
 
-        if (m_editorBuffer.length() == 0) {
+        if (m_editorBuffer.length() == 0)
+        {
             addEditorToBuffer(1);
             out = QSharedPointer<Editor>::create();
-        } else if (m_editorBuffer.length() == 1) {
+        }
+        else if (m_editorBuffer.length() == 1)
+        {
             addEditorToBuffer(1);
             out = m_editorBuffer.dequeue();
-        } else {
+        }
+        else
+        {
             out = m_editorBuffer.dequeue();
         }
 
@@ -119,7 +123,8 @@ namespace EditorNS
 
     void Editor::waitAsyncLoad()
     {
-        if (!m_loaded) {
+        if (!m_loaded)
+        {
             QEventLoop loop;
             connect(this, &Editor::editorReady, &loop, &QEventLoop::quit);
             // Block until a J_EVT_READY message is received
@@ -129,14 +134,14 @@ namespace EditorNS
 
     void Editor::on_proxyMessageReceived(QString msg, QVariant data)
     {
-        QTimer::singleShot(0, [msg,data,this]{
-
+        QTimer::singleShot(0, [msg, data, this] {
             emit messageReceived(msg, data);
 
-            if (msg.startsWith("[ASYNC_REPLY]")) {
+            if (msg.startsWith("[ASYNC_REPLY]"))
+            {
                 QRegExp rgx("\\[ID=(\\d+)\\]$");
 
-                if(rgx.indexIn(msg) == -1)
+                if (rgx.indexIn(msg) == -1)
                     return;
 
                 if (rgx.captureCount() != 1)
@@ -145,16 +150,20 @@ namespace EditorNS
                 unsigned int id = rgx.capturedTexts()[1].toInt();
 
                 // Look into the list of callbacks
-                for (auto it = this->asyncReplies.begin(); it != this->asyncReplies.end(); ++it) {
-                    if (it->id == id) {
+                for (auto it = this->asyncReplies.begin(); it != this->asyncReplies.end(); ++it)
+                {
+                    if (it->id == id)
+                    {
                         AsyncReply r = *it;
-                        if (r.value) {
+                        if (r.value)
+                        {
                             r.value->set_value(data);
                         }
                         this->asyncReplies.erase(it);
 
-                        if (r.callback != nullptr) {
-                            QTimer::singleShot(0, [r,data]{ r.callback(data); });
+                        if (r.callback != nullptr)
+                        {
+                            QTimer::singleShot(0, [r, data] { r.callback(data); });
                         }
 
                         emit asyncReplyReceived(r.id, r.message, data);
@@ -162,18 +171,22 @@ namespace EditorNS
                         break;
                     }
                 }
-
-
-            } else if(msg == "J_EVT_READY") {
+            }
+            else if (msg == "J_EVT_READY")
+            {
                 m_loaded = true;
                 emit editorReady();
-            } else if(msg == "J_EVT_CONTENT_CHANGED")
+            }
+            else if (msg == "J_EVT_CONTENT_CHANGED")
                 emit contentChanged();
-            else if(msg == "J_EVT_CLEAN_CHANGED")
+            else if (msg == "J_EVT_CLEAN_CHANGED")
                 emit cleanChanged(data.toBool());
-            else if (msg == "J_EVT_CURSOR_ACTIVITY") {
+            else if (msg == "J_EVT_CURSOR_ACTIVITY")
+            {
                 emit cursorActivity(data.toMap());
-            } else if (msg == "J_EVT_DOCUMENT_INFO") {
+            }
+            else if (msg == "J_EVT_DOCUMENT_INFO")
+            {
                 emit documentInfoRequested(data.toMap());
             }
         });
@@ -217,7 +230,7 @@ namespace EditorNS
         return m_tabName;
     }
 
-    void Editor::setTabName(const QString& name)
+    void Editor::setTabName(const QString &name)
     {
         m_tabName = name;
     }
@@ -225,7 +238,7 @@ namespace EditorNS
     QtPromise::QPromise<bool> Editor::isCleanP()
     {
         return asyncSendMessageWithResultP("C_FUN_IS_CLEAN", QVariant(0))
-                .then([](QVariant v){ return v.toBool(); });
+            .then([](QVariant v) { return v.toBool(); });
     }
 
     bool Editor::isClean()
@@ -236,60 +249,64 @@ namespace EditorNS
 
     QtPromise::QPromise<void> Editor::markClean()
     {
-        return asyncSendMessageWithResultP("C_CMD_MARK_CLEAN").then([](){})
-                .wait(); // FIXME Remove
+        return asyncSendMessageWithResultP("C_CMD_MARK_CLEAN").then([]() {}).wait(); // FIXME Remove
     }
 
     QtPromise::QPromise<void> Editor::markDirty()
     {
-        return asyncSendMessageWithResultP("C_CMD_MARK_DIRTY").then([](){})
-                .wait(); // FIXME Remove
+        return asyncSendMessageWithResultP("C_CMD_MARK_DIRTY").then([]() {}).wait(); // FIXME Remove
     }
 
     QtPromise::QPromise<int> Editor::getHistoryGeneration()
     {
         return asyncSendMessageWithResultP("C_FUN_GET_HISTORY_GENERATION")
-                .then([](QVariant v){return v.toInt();});
+            .then([](QVariant v) { return v.toInt(); });
     }
 
-    void Editor::setLanguage(const Language* lang)
+    void Editor::setLanguage(const Language *lang)
     {
-        if (lang == nullptr) {
+        if (lang == nullptr)
+        {
             lang = LanguageService::getInstance().lookupById("plaintext");
         }
-        if (m_currentLanguage == lang) {
+        if (m_currentLanguage == lang)
+        {
             return;
         }
-        if (!m_customIndentationMode) {
+        if (!m_customIndentationMode)
+        {
             setIndentationMode(lang);
         }
         m_currentLanguage = lang;
-        asyncSendMessageWithResultP("C_CMD_SET_LANGUAGE", lang->mime.isEmpty() ? lang->mode : lang->mime).then([=](){
+        asyncSendMessageWithResultP("C_CMD_SET_LANGUAGE", lang->mime.isEmpty() ? lang->mode : lang->mime).then([=]() {
             emit currentLanguageChanged(m_currentLanguage->id, m_currentLanguage->name);
         });
     }
 
-    void Editor::setLanguage(const QString& language)
+    void Editor::setLanguage(const QString &language)
     {
-        auto& cache = LanguageService::getInstance();
+        auto &cache = LanguageService::getInstance();
         auto lang = cache.lookupById(language);
-        if (lang != nullptr) {
+        if (lang != nullptr)
+        {
             setLanguage(lang);
         }
     }
 
-    void Editor::setLanguageFromFilePath(const QString& filePath)
+    void Editor::setLanguageFromFilePath(const QString &filePath)
     {
         auto name = QFileInfo(filePath).fileName();
 
-        auto& cache = LanguageService::getInstance();
+        auto &cache = LanguageService::getInstance();
         auto lang = cache.lookupByFileName(name);
-        if (lang != nullptr) {
+        if (lang != nullptr)
+        {
             setLanguage(lang);
             return;
         }
         lang = cache.lookupByExtension(name);
-        if (lang != nullptr) {
+        if (lang != nullptr)
+        {
             setLanguage(lang);
         }
     }
@@ -299,11 +316,11 @@ namespace EditorNS
         setLanguageFromFilePath(filePath().toString());
     }
 
-    QtPromise::QPromise<void> Editor::setIndentationMode(const Language* lang)
+    QtPromise::QPromise<void> Editor::setIndentationMode(const Language *lang)
     {
-        const auto& s = NpSettings::getInstance().Languages;
+        const auto &s = NpSettings::getInstance().Languages;
         const bool useDefaults = s.getUseDefaultSettings(lang->id);
-        const auto& langId = useDefaults ? "default" : lang->id;
+        const auto &langId = useDefaults ? "default" : lang->id;
 
         return setIndentationMode(!s.getIndentWithSpaces(langId), s.getTabSize(langId));
     }
@@ -311,7 +328,8 @@ namespace EditorNS
     QtPromise::QPromise<void> Editor::setIndentationMode(const bool useTabs, const int size)
     {
         return asyncSendMessageWithResultP("C_CMD_SET_INDENTATION_MODE",
-                                           QVariantMap{{"useTabs", useTabs}, {"size", size}}).then([](){});
+                                           QVariantMap{{"useTabs", useTabs}, {"size", size}})
+            .then([]() {});
     }
 
     Editor::IndentationMode Editor::indentationMode()
@@ -325,7 +343,7 @@ namespace EditorNS
 
     QtPromise::QPromise<Editor::IndentationMode> Editor::indentationModeP()
     {
-        return asyncSendMessageWithResultP("C_FUN_GET_INDENTATION_MODE").then([](QVariant result){
+        return asyncSendMessageWithResultP("C_FUN_GET_INDENTATION_MODE").then([](QVariant result) {
             QVariantMap indent = result.toMap();
             IndentationMode out;
             out.useTabs = indent.value("useTabs", true).toBool();
@@ -365,11 +383,11 @@ namespace EditorNS
     QtPromise::QPromise<void> Editor::setValue(const QString &value)
     {
         auto lang = LanguageService::getInstance().lookupByContent(value);
-        if (lang != nullptr) {
+        if (lang != nullptr)
+        {
             setLanguage(lang);
         }
-        return asyncSendMessageWithResultP("C_CMD_SET_VALUE", value).then([](){})
-                .wait(); // FIXME Remove
+        return asyncSendMessageWithResultP("C_CMD_SET_VALUE", value).then([]() {}).wait(); // FIXME Remove
     }
 
     QString Editor::value()
@@ -409,17 +427,16 @@ namespace EditorNS
         unsigned int currentMsgIdentifier = ++messageIdentifier;
 
         QtPromise::QPromise<QVariant> resultPromise = QtPromise::QPromise<QVariant>([&](
-                                                                                        const QtPromise::QPromiseResolve<QVariant>& resolve,
-                                                                                        const QtPromise::QPromiseReject<QVariant>& /* reject */) {
-
+                                                                                        const QtPromise::QPromiseResolve<QVariant> &resolve,
+                                                                                        const QtPromise::QPromiseReject<QVariant> & /* reject */) {
             auto conn = std::make_shared<QMetaObject::Connection>();
-            *conn = QObject::connect(this, &Editor::asyncReplyReceived, this, [=](unsigned int id, QString, QVariant data){
-                if (id == currentMsgIdentifier) {
+            *conn = QObject::connect(this, &Editor::asyncReplyReceived, this, [=](unsigned int id, QString, QVariant data) {
+                if (id == currentMsgIdentifier)
+                {
                     QObject::disconnect(*conn);
                     resolve(data);
                 }
             });
-
         });
 
         // FIXME We can probably remove this->asyncReplies after we've converted everything
@@ -432,13 +449,16 @@ namespace EditorNS
 
         QString message_id = "[ASYNC_REQUEST]" + msg + "[ID=" + QString::number(currentMsgIdentifier) + "]";
 
-        if (m_loaded) {
+        if (m_loaded)
+        {
             // Send it right now
             emit m_jsToCppProxy->messageReceivedByJs(message_id, data);
-        } else {
+        }
+        else
+        {
             // Send it as soon as the editor becomes ready
             auto conn = std::make_shared<QMetaObject::Connection>();
-            *conn = QObject::connect(this, &Editor::editorReady, this, [=](){
+            *conn = QObject::connect(this, &Editor::editorReady, this, [=]() {
                 QObject::disconnect(*conn);
                 m_loaded = true;
                 emit m_jsToCppProxy->messageReceivedByJs(message_id, data);
@@ -472,7 +492,8 @@ namespace EditorNS
 
         std::shared_future<QVariant> fut = resultPromise->get_future().share();
 
-        while (fut.wait_for(std::chrono::seconds(0)) != std::future_status::ready) {
+        while (fut.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
+        {
             QCoreApplication::processEvents(QEventLoop::AllEvents);
             QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
         }
@@ -501,14 +522,18 @@ namespace EditorNS
 
     void Editor::setSelectionsText(const QStringList &texts, SelectMode mode)
     {
-        QVariantMap data {{"text", texts}};
-        switch (mode) {
-            case SelectMode::After:
-                data.insert("select", "after"); break;
-            case SelectMode::Before:
-                data.insert("select", "before"); break;
-            default:
-                data.insert("select", "selected"); break;
+        QVariantMap data{{"text", texts}};
+        switch (mode)
+        {
+        case SelectMode::After:
+            data.insert("select", "after");
+            break;
+        case SelectMode::Before:
+            data.insert("select", "before");
+            break;
+        default:
+            data.insert("select", "selected");
+            break;
         }
         sendMessage("C_CMD_SET_SELECTIONS_TEXT", data);
     }
@@ -525,7 +550,8 @@ namespace EditorNS
 
     void Editor::removeBanner(QWidget *banner)
     {
-        if (banner != m_webView && m_layout->indexOf(banner) >= 0) {
+        if (banner != m_webView && m_layout->indexOf(banner) >= 0)
+        {
             m_layout->removeWidget(banner);
             emit bannerRemoved(banner);
         }
@@ -533,7 +559,8 @@ namespace EditorNS
 
     void Editor::removeBanner(QString objectName)
     {
-        for (auto&& banner : findChildren<QWidget *>(objectName)) {
+        for (auto &&banner : findChildren<QWidget *>(objectName))
+        {
             removeBanner(banner);
         }
     }
@@ -561,11 +588,10 @@ namespace EditorNS
     QtPromise::QPromise<QPair<int, int>> Editor::cursorPositionP()
     {
         return asyncSendMessageWithResultP("C_FUN_GET_CURSOR")
-               .then([](QVariant v){
-             QList<QVariant> cursor = v.toList();
-             return QPair<int, int>(cursor[0].toInt(), cursor[1].toInt());
-        });
-
+            .then([](QVariant v) {
+                QList<QVariant> cursor = v.toList();
+                return QPair<int, int>(cursor[0].toInt(), cursor[1].toInt());
+            });
     }
 
     void Editor::requestDocumentInfo()
@@ -631,7 +657,7 @@ namespace EditorNS
         QMap<QString, QVariant> tmap;
         tmap.insert("family", fontFamily == nullptr ? "" : fontFamily);
         tmap.insert("size", QString::number(fontSize));
-        tmap.insert("lineHeight", QString::number(lineHeight,'f',2));
+        tmap.insert("lineHeight", QString::number(lineHeight, 'f', 2));
         asyncSendMessageWithResultP("C_CMD_SET_FONT", tmap);
     }
 
@@ -680,7 +706,8 @@ namespace EditorNS
         QDir bundledThemesDir(editorPath.absolutePath() + "/libs/codemirror/theme/", "*.css");
 
         QList<Theme> out;
-        for (auto&& theme : bundledThemesDir.entryInfoList()) {
+        for (auto &&theme : bundledThemesDir.entryInfoList())
+        {
             out.append(Theme(theme.completeBaseName(), theme.filePath()));
         }
         return out;
@@ -688,7 +715,7 @@ namespace EditorNS
 
     void Editor::setTheme(Theme theme)
     {
-        sendMessage("C_CMD_SET_THEME", QVariantMap{{"name",theme.name},{"path",theme.path}});
+        sendMessage("C_CMD_SET_THEME", QVariantMap{{"name", theme.name}, {"path", theme.path}});
     }
 
     QList<Editor::Selection> Editor::selections()
@@ -696,7 +723,8 @@ namespace EditorNS
         QList<Selection> out;
 
         QList<QVariant> sels = asyncSendMessageWithResult("C_FUN_GET_SELECTIONS").get().toList();
-        for (int i = 0; i < sels.length(); i++) {
+        for (int i = 0; i < sels.length(); i++)
+        {
             QVariantMap selMap = sels[i].toMap();
             QVariantMap from = selMap.value("anchor").toMap();
             QVariantMap to = selMap.value("head").toMap();
@@ -716,7 +744,7 @@ namespace EditorNS
     QtPromise::QPromise<QStringList> Editor::selectedTexts()
     {
         return asyncSendMessageWithResultP("C_FUN_GET_SELECTIONS_TEXT")
-                .then([](QVariant text){ return text.toStringList(); });
+            .then([](QVariant text) { return text.toStringList(); });
     }
 
     void Editor::setOverwrite(bool overwrite)
@@ -731,13 +759,14 @@ namespace EditorNS
 
     QtPromise::QPromise<std::pair<Editor::IndentationMode, bool>> Editor::detectDocumentIndentation()
     {
-        return asyncSendMessageWithResultP("C_FUN_DETECT_INDENTATION_MODE").then([](QVariant result){
+        return asyncSendMessageWithResultP("C_FUN_DETECT_INDENTATION_MODE").then([](QVariant result) {
             QVariantMap indent = result.toMap();
             IndentationMode out;
 
             bool found = indent.value("found", false).toBool();
 
-            if (found) {
+            if (found)
+            {
                 out.useTabs = indent.value("useTabs", true).toBool();
                 out.size = indent.value("size", 4).toInt();
             }
@@ -753,7 +782,7 @@ namespace EditorNS
          */
     }
 
-    QtPromise::QPromise<QByteArray> Editor::printToPdf(const QPageLayout& pageLayout)
+    QtPromise::QPromise<QByteArray> Editor::printToPdf(const QPageLayout &pageLayout)
     {
         // 1. Set theme to default because dark themes would force the printer to color the entire
         //    document in the background color. Default theme has white background.
@@ -761,8 +790,7 @@ namespace EditorNS
         // 3. Set C_CMD_DISPLAY_PRINT_STYLE to hide UI elements like the gutter.
 
         return QtPromise::QPromise<QByteArray>(
-            [&](const QtPromise::QPromiseResolve<QByteArray>& resolve, const QtPromise::QPromiseReject<QByteArray>& reject) {
-
+            [&](const QtPromise::QPromiseResolve<QByteArray> &resolve, const QtPromise::QPromiseReject<QByteArray> &reject) {
                 QColor prevBackgroundColor = m_webView->page()->backgroundColor();
                 QString prevStylesheet = m_webView->styleSheet();
 
@@ -773,7 +801,7 @@ namespace EditorNS
                 asyncSendMessageWithResultP("C_CMD_DISPLAY_PRINT_STYLE").wait();
 
                 m_webView->page()->printToPdf(
-                    [=](const QByteArray& data) {
+                    [=](const QByteArray &data) {
                         QTimer::singleShot(0, [=]() {
                             asyncSendMessageWithResultP("C_CMD_DISPLAY_NORMAL_STYLE").wait();
                             m_webView->setStyleSheet(prevStylesheet);
@@ -782,9 +810,12 @@ namespace EditorNS
                             this->setLineWrap(NpSettings::getInstance().General.getWordWrap());
                         });
 
-                        if (data.isEmpty() || data.isNull()) {
+                        if (data.isEmpty() || data.isNull())
+                        {
                             reject(QByteArray());
-                        } else {
+                        }
+                        else
+                        {
                             resolve(data);
                         }
                     },
@@ -795,12 +826,12 @@ namespace EditorNS
     QtPromise::QPromise<QString> Editor::getCurrentWord()
     {
         return asyncSendMessageWithResultP("C_FUN_GET_CURRENT_WORD")
-                .then([](QVariant v){ return v.toString(); });
+            .then([](QVariant v) { return v.toString(); });
     }
 
     QtPromise::QPromise<int> Editor::lineCount()
     {
         return asyncSendMessageWithResultP("C_FUN_GET_LINE_COUNT")
-                .then([](QVariant v){ return v.toInt(); });
+            .then([](QVariant v) { return v.toInt(); });
     }
-}
+} //namespace EditorNS

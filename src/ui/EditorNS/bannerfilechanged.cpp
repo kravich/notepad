@@ -20,4 +20,4 @@ namespace EditorNS
         connect(btnIgnore, &QPushButton::clicked, this, &BannerFileChanged::ignore);
     }
 
-}
+} //namespace EditorNS

@@ -1,16 +1,16 @@
 #ifndef AUTOSAVE_H
 #define AUTOSAVE_H
 
+#include <QSharedPointer>
 #include <QString>
 #include <QTimer>
-
-#include <QSharedPointer>
 
 #include <set>
 #include <tuple>
 
-namespace EditorNS{
-class Editor;
+namespace EditorNS
+{
+    class Editor;
 }
 class MainWindow;
 
@@ -19,9 +19,9 @@ class MainWindow;
  *        When this system is used, clearBackupData() should be called at program shutdown.
  *        If, on program start, there is backup data to be found, the system will assume an improper shutdown.
  */
-class BackupService {
+class BackupService
+{
 public:
-
     /**
      * @brief restoreFromAutosave Reads the autosave sessions and recreates
      *        all windows and their tabs.
@@ -69,15 +69,16 @@ private:
      *        compared to the MainWindow's current list of Editor*'s and their history gens
      *        to determine whether the MainWindow has changed since the last save.
      */
-    struct WindowData {
-        MainWindow* ptr;
+    struct WindowData
+    {
+        MainWindow *ptr;
         std::vector<std::pair<QSharedPointer<EditorNS::Editor>, int>> editors;
 
         // Note this is only a shallow comparison. Do deep compares using isFullyEqual().
-        bool operator==(const WindowData& other) const { return ptr == other.ptr; }
-        bool operator<(const WindowData& other) const { return ptr < other.ptr; }
+        bool operator==(const WindowData &other) const { return ptr == other.ptr; }
+        bool operator<(const WindowData &other) const { return ptr < other.ptr; }
 
-        bool isFullyEqual(const WindowData& other) const { return ptr == other.ptr && editors == other.editors; }
+        bool isFullyEqual(const WindowData &other) const { return ptr == other.ptr && editors == other.editors; }
     };
 
     /**
@@ -95,7 +96,7 @@ private:
      * @brief writeBackup Writes a backup of the given MainWindow into a unique location inside the backupCache
      * @return True if the backup was created successfully
      */
-    static bool writeBackup(MainWindow* wnd);
+    static bool writeBackup(MainWindow *wnd);
 };
 
 /**
@@ -103,7 +104,8 @@ private:
  *        The service is automatically resumed as soon as the program exits
  *        the block.
  */
-class BackupServicePauser {
+class BackupServicePauser
+{
 public:
     inline explicit BackupServicePauser() {}
 

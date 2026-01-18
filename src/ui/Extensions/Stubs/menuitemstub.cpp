@@ -2,17 +2,19 @@
 
 #include "include/Extensions/runtimesupport.h"
 
-namespace Extensions {
-    namespace Stubs {
+namespace Extensions
+{
+    namespace Stubs
+    {
 
-        MenuItemStub::MenuItemStub(QAction *object, RuntimeSupport *rts) : Stub(object, rts)
+        MenuItemStub::MenuItemStub(QAction *object, RuntimeSupport *rts) :
+            Stub(object, rts)
         {
             connect(object, &QAction::triggered, this, &MenuItemStub::on_triggered);
         }
 
         MenuItemStub::~MenuItemStub()
         {
-
         }
 
         void MenuItemStub::on_triggered(bool checked)
@@ -32,11 +34,11 @@ namespace Extensions {
 
             Q_ASSERT(args.count() == 1);
 
-            QAction *action = static_cast<QAction*>(objectUnmanagedPtr());
+            QAction *action = static_cast<QAction *>(objectUnmanagedPtr());
             action->setShortcut(QKeySequence::fromString(convertToString(args.at(0))));
 
             return StubReturnValue();
         }
 
-    }
-}
+    } //namespace Stubs
+} //namespace Extensions

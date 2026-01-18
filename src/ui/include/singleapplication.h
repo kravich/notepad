@@ -29,7 +29,7 @@ signals:
 
 #ifdef USE_DBUS
 public slots:
-    Q_SCRIPTABLE void receive(const QString& workingDirectory, const QStringList& arguments);
+    Q_SCRIPTABLE void receive(const QString &workingDirectory, const QStringList &arguments);
 #else
 private:
     QLocalServer *m_localServer = nullptr;

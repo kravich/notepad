@@ -4,16 +4,14 @@
 #include "include/EditorNS/customqwebview.h"
 #include "include/EditorNS/languageservice.h"
 
-#include <QtPromise>
-
 #include <QObject>
+#include <QPrinter>
 #include <QQueue>
 #include <QTextCodec>
 #include <QVBoxLayout>
 #include <QVariant>
 #include <QWheelEvent>
 #include <QtPromise>
-#include <QPrinter>
 
 #include <functional>
 #include <future>
@@ -24,13 +22,13 @@ namespace EditorNS
 {
 
     /**
-         * @brief An Object injectable into the javascript page, that allows
-         *        the javascript code to send messages to an Editor object.
-         *        It also allows the js instance to retrieve message data information.
-         *
-         * Note that this class is only needed for the current Editor
-         * implementation, that uses QWebView.
-         */
+     * @brief An Object injectable into the javascript page, that allows
+     *        the javascript code to send messages to an Editor object.
+     *        It also allows the js instance to retrieve message data information.
+     *
+     * Note that this class is only needed for the current Editor
+     * implementation, that uses QWebView.
+     */
     class JsToCppProxy : public QObject
     {
         Q_OBJECT
@@ -39,44 +37,47 @@ namespace EditorNS
         QVariant m_msgData;
 
     public:
-        JsToCppProxy(QObject *parent) : QObject(parent) { }
+        JsToCppProxy(QObject *parent) :
+            QObject(parent)
+        {
+        }
 
         Q_INVOKABLE void receiveMessage(QString msg, QVariant data) { emit messageReceived(msg, data); }
 
     signals:
         /**
-             * @brief A JavaScript message has been received.
-             * @param msg Message type
-             * @param data Message data
-             */
+         * @brief A JavaScript message has been received.
+         * @param msg Message type
+         * @param data Message data
+         */
         void messageReceived(QString msg, QVariant data);
 
         void messageReceivedByJs(QString msg, QVariant data);
     };
 
-
     /**
-         * @brief Provides a JavaScript CodeMirror instance.
-         *
-         * Communication works by sending messages to the javascript Editor using
-         * the sendMessage() method. On the other side, when a javascript event
-         * occurs, the messageReceived() signal will be emitted.
-         *
-         * In addition to messageReceived(), other signals could be emitted at the
-         * same time, for example currentLineChanged(). This is simply for
-         * convenience, so that the user of this class doesn't need to manually parse
-         * the arguments for pre-defined messages.
-         *
-         */
+     * @brief Provides a JavaScript CodeMirror instance.
+     *
+     * Communication works by sending messages to the javascript Editor using
+     * the sendMessage() method. On the other side, when a javascript event
+     * occurs, the messageReceived() signal will be emitted.
+     *
+     * In addition to messageReceived(), other signals could be emitted at the
+     * same time, for example currentLineChanged(). This is simply for
+     * convenience, so that the user of this class doesn't need to manually parse
+     * the arguments for pre-defined messages.
+     *
+     */
     class Editor : public QWidget
     {
         Q_OBJECT
     public:
-
-        struct Theme {
+        struct Theme
+        {
             QString name;
             QString path;
-            Theme(const QString& name = "default", const QString& path = "") {
+            Theme(const QString &name = "default", const QString &path = "")
+            {
                 this->name = name;
                 this->path = path;
             }
@@ -86,44 +87,52 @@ namespace EditorNS
         explicit Editor(QWidget *parent = nullptr);
 
         /**
-             * @brief Efficiently returns a new Editor object from an internal buffer.
-             * @return
-             */
+         * @brief Efficiently returns a new Editor object from an internal buffer.
+         * @return
+         */
         static QSharedPointer<Editor> getNewEditor(QWidget *parent = nullptr);
 
         static void invalidateEditorBuffer();
 
-        struct Cursor {
+        struct Cursor
+        {
             int line;
             int column;
 
-            bool operator == (const Cursor &x) const {
+            bool operator==(const Cursor &x) const
+            {
                 return line == x.line && column == x.column;
             }
 
-            bool operator < (const Cursor &x) const {
+            bool operator<(const Cursor &x) const
+            {
                 return std::tie(line, column) < std::tie(x.line, x.column);
             }
 
-            bool operator <= (const Cursor &x) const {
+            bool operator<=(const Cursor &x) const
+            {
                 return *this == x || *this < x;
             }
 
-            bool operator > (const Cursor &x) const {
+            bool operator>(const Cursor &x) const
+            {
                 return !(*this <= x);
             }
 
-            bool operator >= (const Cursor &x) const {
+            bool operator>=(const Cursor &x) const
+            {
                 return !(*this < x);
             }
         };
 
-        struct Selection {
+        struct Selection
+        {
             Cursor from;
             Cursor to;
         };
 
-        struct IndentationMode {
+        struct IndentationMode
+        {
             bool useTabs;
             int size;
         };
@@ -136,46 +145,47 @@ namespace EditorNS
         bool isLoading = false;
 
         /**
-             * @brief Adds a new Editor to the internal buffer used by getNewEditor().
-             *        You might want to call this method e.g. as soon as the application
-             *        starts (so that an Editor is ready as soon as it gets required),
-             *        or when the application is idle.
-             * @param howMany specifies how many Editors to add
-             * @return
-             */
+         * @brief Adds a new Editor to the internal buffer used by getNewEditor().
+         *        You might want to call this method e.g. as soon as the application
+         *        starts (so that an Editor is ready as soon as it gets required),
+         *        or when the application is idle.
+         * @param howMany specifies how many Editors to add
+         * @return
+         */
         static void addEditorToBuffer(const int howMany = 1);
 
         /**
-             * @brief Give focus to the editor, so that the user can start
-             *        typing. Note that calling won't automatically switch to
-             *        the tab where the editor is. Use EditorTabWidget::setCurrentIndex()
-             *        and TopEditorContainer::setFocus() for that.
-             */
+         * @brief Give focus to the editor, so that the user can start
+         *        typing. Note that calling won't automatically switch to
+         *        the tab where the editor is. Use EditorTabWidget::setCurrentIndex()
+         *        and TopEditorContainer::setFocus() for that.
+         */
         Q_INVOKABLE void setFocus();
 
         /**
-             * @brief Remove the focus from the editor.
-             *
-             * @param widgetOnly only clear the focus on the actual widget
-             */
+         * @brief Remove the focus from the editor.
+         *
+         * @param widgetOnly only clear the focus on the actual widget
+         */
         Q_INVOKABLE void clearFocus();
 
         /**
-             * @brief Set the file name associated with this editor
-             * @param filename full path of the file
-             */
+         * @brief Set the file name associated with this editor
+         * @param filename full path of the file
+         */
         Q_INVOKABLE void setFilePath(const QUrl &filename);
 
         /**
-             * @brief Get the file name associated with this editor
-             * @return
-             */
+         * @brief Get the file name associated with this editor
+         * @return
+         */
         Q_INVOKABLE QUrl filePath() const;
 
         Q_INVOKABLE bool fileOnDiskChanged() const;
         Q_INVOKABLE void setFileOnDiskChanged(bool fileOnDiskChanged);
 
-        enum class SelectMode {
+        enum class SelectMode
+        {
             Before,
             After,
             Selected
@@ -203,9 +213,9 @@ namespace EditorNS
          *        the default configuration for the specified language.
          * @param language Language id
          */
-        Q_INVOKABLE void setLanguage(const Language* language);
+        Q_INVOKABLE void setLanguage(const Language *language);
         Q_INVOKABLE void setLanguage(const QString &language);
-        Q_INVOKABLE void setLanguageFromFilePath(const QString& filePath);
+        Q_INVOKABLE void setLanguageFromFilePath(const QString &filePath);
         Q_INVOKABLE void setLanguageFromFilePath();
         Q_INVOKABLE QtPromise::QPromise<void> setValue(const QString &value);
         Q_INVOKABLE QString value();
@@ -230,7 +240,7 @@ namespace EditorNS
         Q_INVOKABLE void setZoomFactor(const qreal &factor);
         Q_INVOKABLE void setSelectionsText(const QStringList &texts, SelectMode mode);
         Q_INVOKABLE void setSelectionsText(const QStringList &texts);
-        const Language* getLanguage() { return m_currentLanguage; }
+        const Language *getLanguage() { return m_currentLanguage; }
         Q_INVOKABLE void setLineWrap(const bool wrap);
         Q_INVOKABLE void setEOLVisible(const bool showeol);
         Q_INVOKABLE void setWhitespaceVisible(const bool showspace);
@@ -325,11 +335,12 @@ namespace EditorNS
     private:
         friend class ::EditorTabWidget;
 
-        struct AsyncReply {
+        struct AsyncReply
+        {
             unsigned int id;
             QString message;
             std::shared_ptr<std::promise<QVariant>> value;
-            std::function<void (QVariant)> callback;
+            std::function<void(QVariant)> callback;
         };
 
         std::list<AsyncReply> asyncReplies;
@@ -337,7 +348,7 @@ namespace EditorNS
         // These functions should only be used by EditorTabWidget to manage the tab's title. This works around
         // KDE's habit to automatically modify QTabWidget's tab titles to insert shortcut sequences (like &1).
         QString tabName() const;
-        void setTabName(const QString& name);
+        void setTabName(const QString &name);
 
         static QQueue<QSharedPointer<Editor>> m_editorBuffer;
         QVBoxLayout *m_layout;
@@ -351,13 +362,13 @@ namespace EditorNS
         QTextCodec *m_codec = QTextCodec::codecForName("UTF-8");
         bool m_bom = false;
         bool m_customIndentationMode = false;
-        const Language* m_currentLanguage = nullptr;
+        const Language *m_currentLanguage = nullptr;
         inline void waitAsyncLoad();
 
         void fullConstructor(const Theme &theme);
 
         QtPromise::QPromise<void> setIndentationMode(const bool useTabs, const int size);
-        QtPromise::QPromise<void> setIndentationMode(const Language*);
+        QtPromise::QPromise<void> setIndentationMode(const Language *);
 
     private slots:
         void on_proxyMessageReceived(QString msg, QVariant data);
@@ -378,9 +389,9 @@ namespace EditorNS
         void fileNameChanged(const QUrl &oldFileName, const QUrl &newFileName);
 
         /**
-             * @brief The editor finished loading. There should be
-             *        no need to use this signal outside this class.
-             */
+         * @brief The editor finished loading. There should be
+         *        no need to use this signal outside this class.
+         */
         void editorReady();
 
         void currentLanguageChanged(QString id, QString name);
@@ -391,7 +402,6 @@ namespace EditorNS
         void sendMessage(const QString msg, const QVariant data);
         // [[deprecated]]
         void sendMessage(const QString msg);
-
 
         QtPromise::QPromise<QVariant> asyncSendMessageWithResultP(const QString msg, const QVariant data);
         QtPromise::QPromise<QVariant> asyncSendMessageWithResultP(const QString msg);
@@ -424,6 +434,6 @@ namespace EditorNS
         QtPromise::QPromise<QByteArray> printToPdf(const QPageLayout &pageLayout = QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF()));
     };
 
-}
+} //namespace EditorNS
 
 #endif // EDITOR_H
