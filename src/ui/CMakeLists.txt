@@ -197,6 +197,21 @@ target_link_libraries(notepad
         PkgConfig::uchardet
 )
 
+set(GNU_COMPILE_OPTIONS
+    -Werror=suggest-override
+)
+
+set(CLANG_COMPILE_OPTIONS
+    ${GNU_COMPILE_OPTIONS}
+    -Werror=inconsistent-missing-override
+)
+
+target_compile_options(notepad
+    PRIVATE
+        $<$<CXX_COMPILER_ID:GNU>:${GNU_COMPILE_OPTIONS}>
+        $<$<CXX_COMPILER_ID:Clang>:${CLANG_COMPILE_OPTIONS}>
+)
+
 set(notepad_SUPPORT_FILES ../../support_files)
 
 install(TARGETS notepad)

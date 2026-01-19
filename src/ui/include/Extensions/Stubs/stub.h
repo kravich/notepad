@@ -17,7 +17,7 @@
  */
 #define NP_STUB_NAME(stub_name) \
     inline static QString stubName() { return stub_name; } \
-    inline QString stubName_() const { return stubName(); }
+    inline QString stubName_() const override { return stubName(); }
 
 #ifndef EXTENSIONS_STUBS_STUB_H
 #define EXTENSIONS_STUBS_STUB_H
