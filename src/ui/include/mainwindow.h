@@ -83,11 +83,11 @@ public slots:
     void refreshEditorUiCursorInfo(QMap<QString, QVariant> data);
 
 protected:
-    void closeEvent(QCloseEvent *event);
-    void dragEnterEvent(QDragEnterEvent *e);
-    void dropEvent(QDropEvent *e);
-    void keyPressEvent(QKeyEvent *ev);
-    void changeEvent(QEvent *e);
+    void closeEvent(QCloseEvent *event) override;
+    void dragEnterEvent(QDragEnterEvent *e) override;
+    void dropEvent(QDropEvent *e) override;
+    void keyPressEvent(QKeyEvent *ev) override;
+    void changeEvent(QEvent *e) override;
 
 private slots:
     void runCommand();

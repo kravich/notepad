@@ -16,7 +16,7 @@ signals:
 public slots:
 
 protected:
-    void mousePressEvent(QMouseEvent *);
+    void mousePressEvent(QMouseEvent *) override;
 };
 
 #endif // CLICKABLELABEL_H

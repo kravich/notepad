@@ -67,7 +67,7 @@ public:
     QList<NodeItem> &getAllBindings();
 
 protected:
-    void keyPressEvent(QKeyEvent *key);
+    void keyPressEvent(QKeyEvent *key) override;
 
 public slots:
     void itemChanged(QTreeWidgetItem *item);

@@ -111,8 +111,8 @@ public slots:
     void setSavedIcon(int index, bool saved);
 
 protected:
-    void mouseReleaseEvent(QMouseEvent *ev);
-    void tabRemoved(int);
+    void mouseReleaseEvent(QMouseEvent *ev) override;
+    void tabRemoved(int) override;
 };
 
 #endif // EDITORTABWIDGET_H

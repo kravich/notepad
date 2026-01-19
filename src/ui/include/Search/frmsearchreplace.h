@@ -51,7 +51,7 @@ public:
     void replaceFromUI(bool forward, bool searchFromStart = false);
 
 protected:
-    void keyPressEvent(QKeyEvent *evt);
+    void keyPressEvent(QKeyEvent *evt) override;
 
 signals:
     void toggleAdvancedSearch();
