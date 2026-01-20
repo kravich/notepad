@@ -70,28 +70,29 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
 
     // Context menu initialization
     m_tabContextMenu = new QMenu(this);
+
     QAction *separator = new QAction(this);
     separator->setSeparator(true);
     QAction *separatorBottom = new QAction(this);
     separatorBottom->setSeparator(true);
-    m_tabContextMenuActions.append(ui->actionClose);
-    m_tabContextMenuActions.append(ui->actionClose_All_BUT_Current_Document);
-    m_tabContextMenuActions.append(ui->actionCloseLeft);
-    m_tabContextMenuActions.append(ui->actionCloseRight);
-    m_tabContextMenuActions.append(ui->actionSave);
-    m_tabContextMenuActions.append(ui->actionSave_as);
-    m_tabContextMenuActions.append(ui->actionRename);
-    m_tabContextMenuActions.append(ui->actionPrint);
-    m_tabContextMenuActions.append(separator);
-    m_tabContextMenuActions.append(ui->actionCurrent_Full_File_Path_to_Clipboard);
-    m_tabContextMenuActions.append(ui->actionCurrent_Filename_to_Clipboard);
-    m_tabContextMenuActions.append(ui->actionCurrent_Directory_Path_to_Clipboard);
-    m_tabContextMenuActions.append(separatorBottom);
-    m_tabContextMenuActions.append(ui->actionMove_to_Other_View);
-    m_tabContextMenuActions.append(ui->actionClone_to_Other_View);
-    m_tabContextMenuActions.append(ui->actionMove_to_New_Window);
-    m_tabContextMenuActions.append(ui->actionOpen_in_New_Window);
-    m_tabContextMenu->addActions(m_tabContextMenuActions);
+
+    m_tabContextMenu->addAction(ui->actionClose);
+    m_tabContextMenu->addAction(ui->actionClose_All_BUT_Current_Document);
+    m_tabContextMenu->addAction(ui->actionCloseLeft);
+    m_tabContextMenu->addAction(ui->actionCloseRight);
+    m_tabContextMenu->addAction(ui->actionSave);
+    m_tabContextMenu->addAction(ui->actionSave_as);
+    m_tabContextMenu->addAction(ui->actionRename);
+    m_tabContextMenu->addAction(ui->actionPrint);
+    m_tabContextMenu->addAction(separator);
+    m_tabContextMenu->addAction(ui->actionCurrent_Full_File_Path_to_Clipboard);
+    m_tabContextMenu->addAction(ui->actionCurrent_Filename_to_Clipboard);
+    m_tabContextMenu->addAction(ui->actionCurrent_Directory_Path_to_Clipboard);
+    m_tabContextMenu->addAction(separatorBottom);
+    m_tabContextMenu->addAction(ui->actionMove_to_Other_View);
+    m_tabContextMenu->addAction(ui->actionClone_to_Other_View);
+    m_tabContextMenu->addAction(ui->actionMove_to_New_Window);
+    m_tabContextMenu->addAction(ui->actionOpen_in_New_Window);
 
     fixKeyboardShortcuts();
 

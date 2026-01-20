@@ -209,7 +209,6 @@ private:
     TopEditorContainer *m_topEditorContainer;
     DocEngine *m_docEngine;
     QMenu *m_tabContextMenu;
-    QList<QAction *> m_tabContextMenuActions;
     QLabel *m_sbDocumentInfoLabel;
     QPushButton *m_sbFileFormatBtn;
     QPushButton *m_sbEOLFormatBtn;
