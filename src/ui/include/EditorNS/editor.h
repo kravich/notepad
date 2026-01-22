@@ -351,13 +351,11 @@ private:
     QUrl m_filePath = QUrl();
     QString m_tabName;
     bool m_fileOnDiskChanged = false;
-    bool m_loaded = false;
     QString m_endOfLineSequence = "\n";
     QTextCodec *m_codec = QTextCodec::codecForName("UTF-8");
     bool m_bom = false;
     bool m_customIndentationMode = false;
     const Language *m_currentLanguage = nullptr;
-    inline void waitAsyncLoad();
 
     void fullConstructor(const Theme &theme);
 
@@ -380,12 +378,6 @@ signals:
     void documentInfoRequested(QMap<QString, QVariant> data);
     void cleanChanged(bool isClean);
     void fileNameChanged(const QUrl &oldFileName, const QUrl &newFileName);
-
-        /**
-     * @brief The editor finished loading. There should be
-     *        no need to use this signal outside this class.
-     */
-    void editorReady();
 
     void currentLanguageChanged(QString id, QString name);
 

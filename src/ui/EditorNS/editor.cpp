@@ -120,17 +120,6 @@ void Editor::invalidateEditorBuffer()
     m_editorBuffer.clear();
 }
 
-void Editor::waitAsyncLoad()
-{
-    if (!m_loaded)
-    {
-        QEventLoop loop;
-        connect(this, &Editor::editorReady, &loop, &QEventLoop::quit);
-            // Block until a J_EVT_READY message is received
-        loop.exec();
-    }
-}
-
 void Editor::on_proxyMessageReceived(QString msg, QVariant data)
 {
     QTimer::singleShot(0, [msg, data, this] {
@@ -170,11 +159,6 @@ void Editor::on_proxyMessageReceived(QString msg, QVariant data)
                     break;
                 }
             }
-        }
-        else if (msg == "J_EVT_READY")
-        {
-            m_loaded = true;
-            emit editorReady();
         }
         else if (msg == "J_EVT_CONTENT_CHANGED")
             emit contentChanged();
@@ -384,7 +368,6 @@ void Editor::sendMessage(const QString msg, const QVariant data)
 #ifdef QT_DEBUG
     qDebug() << "Legacy message " << msg << " sent.";
 #endif
-    waitAsyncLoad();
 
     emit m_jsToCppProxy->messageReceivedByJs(msg, data);
 }
