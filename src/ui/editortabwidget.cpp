@@ -56,8 +56,6 @@ void EditorTabWidget::connectEditorSignals(Editor *editor)
 
     connect(editor, &Editor::gotFocus, this, &EditorTabWidget::gotFocus);
 
-    connect(editor, &Editor::mouseWheel, this, &EditorTabWidget::on_editorMouseWheel);
-
     connect(editor, &Editor::fileNameChanged, this, &EditorTabWidget::on_fileNameChanged);
 }
 
@@ -66,8 +64,6 @@ void EditorTabWidget::disconnectEditorSignals(Editor *editor)
     disconnect(editor, &Editor::cleanChanged, this, &EditorTabWidget::on_cleanChanged);
 
     disconnect(editor, &Editor::gotFocus, this, &EditorTabWidget::gotFocus);
-
-    disconnect(editor, &Editor::mouseWheel, this, &EditorTabWidget::on_editorMouseWheel);
 
     disconnect(editor, &Editor::fileNameChanged, this, &EditorTabWidget::on_fileNameChanged);
 }
@@ -322,15 +318,6 @@ void EditorTabWidget::on_cleanChanged(bool isClean)
     int index = indexOf(editor);
     if (index >= 0)
         setSavedIcon(index, isClean);
-}
-
-void EditorTabWidget::on_editorMouseWheel(QWheelEvent *ev)
-{
-    Editor *editor = dynamic_cast<Editor *>(sender());
-    if (!editor)
-        return;
-
-    emit editorMouseWheel(indexOf(editor), ev);
 }
 
 void EditorTabWidget::mouseReleaseEvent(QMouseEvent *ev)

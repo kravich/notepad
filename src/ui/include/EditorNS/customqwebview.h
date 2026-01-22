@@ -14,7 +14,6 @@ public:
     explicit CustomQWebView(QWidget *parent = nullptr);
 
 signals:
-    void mouseWheel(QWheelEvent *ev);
     void urlsDropped(QList<QUrl> urls);
     void gotFocus();
 

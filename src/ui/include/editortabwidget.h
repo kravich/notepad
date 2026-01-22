@@ -99,7 +99,6 @@ private:
 
 private slots:
     void on_cleanChanged(bool isClean);
-    void on_editorMouseWheel(QWheelEvent *ev);
     void on_fileNameChanged(const QUrl &, const QUrl &newFileName);
     void on_currentTabChanged(int index);
 signals:

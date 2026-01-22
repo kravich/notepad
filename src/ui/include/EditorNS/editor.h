@@ -371,7 +371,6 @@ signals:
     void messageReceived(QString msg, QVariant data);
     void asyncReplyReceived(unsigned int id, QString msg, QVariant data);
     void gotFocus();
-    void mouseWheel(QWheelEvent *ev);
     void urlsDropped(QList<QUrl> urls);
     void bannerRemoved(QWidget *banner);
 

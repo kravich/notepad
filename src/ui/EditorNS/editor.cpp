@@ -78,7 +78,6 @@ void Editor::fullConstructor(const Theme &theme)
     m_layout->addWidget(m_webView, 1);
     setLayout(m_layout);
 
-    connect(m_webView, &CustomQWebView::mouseWheel, this, &Editor::mouseWheel);
     connect(m_webView, &CustomQWebView::urlsDropped, this, &Editor::urlsDropped);
     connect(m_webView, &CustomQWebView::gotFocus, this, &Editor::gotFocus);
     setLanguage(nullptr);
