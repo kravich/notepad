@@ -7,7 +7,7 @@
 
 namespace Ui
 {
-    class frmIndentationMode;
+class frmIndentationMode;
 }
 
 class frmIndentationMode : public QDialog

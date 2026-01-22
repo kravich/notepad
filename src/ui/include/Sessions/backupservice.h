@@ -10,7 +10,7 @@
 
 namespace EditorNS
 {
-    class Editor;
+class Editor;
 }
 class MainWindow;
 

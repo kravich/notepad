@@ -10,7 +10,7 @@
 
 namespace Ui
 {
-    class frmPreferences;
+class frmPreferences;
 }
 
 class QAbstractButton;

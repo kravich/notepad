@@ -6,18 +6,18 @@
 namespace EditorNS
 {
 
-    class BannerFileChanged : public BannerBasicMessage
-    {
-        Q_OBJECT
-    public:
-        explicit BannerFileChanged(QWidget *parent = nullptr);
+class BannerFileChanged : public BannerBasicMessage
+{
+    Q_OBJECT
+public:
+    explicit BannerFileChanged(QWidget *parent = nullptr);
 
-    signals:
-        void reload();
-        void ignore();
+signals:
+    void reload();
+    void ignore();
 
-    public slots:
-    };
+public slots:
+};
 
 } //namespace EditorNS
 

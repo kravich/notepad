@@ -12,7 +12,7 @@
 
 namespace Ui
 {
-    class frmSearchReplace;
+class frmSearchReplace;
 }
 
 class frmSearchReplace : public QMainWindow

@@ -7,16 +7,16 @@
 namespace EditorNS
 {
 
-    class BannerIndentationDetected : public BannerBasicMessage
-    {
-        Q_OBJECT
-    public:
-        BannerIndentationDetected(bool mode, Editor::IndentationMode detected, Editor::IndentationMode current, QWidget *parent = nullptr);
+class BannerIndentationDetected : public BannerBasicMessage
+{
+    Q_OBJECT
+public:
+    BannerIndentationDetected(bool mode, Editor::IndentationMode detected, Editor::IndentationMode current, QWidget *parent = nullptr);
 
-    signals:
-        void useDocumentSettings();
-        void useApplicationSettings();
-    };
+signals:
+    void useDocumentSettings();
+    void useApplicationSettings();
+};
 
 } //namespace EditorNS
 

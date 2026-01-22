@@ -8,16 +8,16 @@
 namespace EditorNS
 {
 
-    BannerFileRemoved::BannerFileRemoved(QWidget *parent) :
-        BannerBasicMessage(parent)
-    {
-        setMessage(tr("This file has been deleted from the file system."));
+BannerFileRemoved::BannerFileRemoved(QWidget *parent) :
+    BannerBasicMessage(parent)
+{
+    setMessage(tr("This file has been deleted from the file system."));
 
-        QPushButton *btnReload = addButton(tr("Save"));
-        connect(btnReload, &QPushButton::clicked, this, &BannerFileRemoved::save);
+    QPushButton *btnReload = addButton(tr("Save"));
+    connect(btnReload, &QPushButton::clicked, this, &BannerFileRemoved::save);
 
-        QPushButton *btnIgnore = addButton(tr("Ignore"));
-        connect(btnIgnore, &QPushButton::clicked, this, &BannerFileRemoved::ignore);
-    }
+    QPushButton *btnIgnore = addButton(tr("Ignore"));
+    connect(btnIgnore, &QPushButton::clicked, this, &BannerFileRemoved::ignore);
+}
 
 } //namespace EditorNS

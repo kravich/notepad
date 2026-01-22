@@ -13,60 +13,60 @@
 
 namespace NpRun
 {
-    class RunPreferences : public QDialog
-    {
-        Q_OBJECT
+class RunPreferences : public QDialog
+{
+    Q_OBJECT
 
-    private:
-        NpSettings &m_settings;
-        QTableWidget *m_commands;
+private:
+    NpSettings &m_settings;
+    QTableWidget *m_commands;
 
-    public:
-        RunPreferences(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
-        ~RunPreferences();
+public:
+    RunPreferences(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
+    ~RunPreferences();
 
-    private slots:
-        void slotRemove();
-        void slotOk();
-        void slotInitCell(int row, int column);
-    };
+private slots:
+    void slotRemove();
+    void slotOk();
+    void slotInitCell(int row, int column);
+};
 
-    class RunDelegate : public QStyledItemDelegate
-    {
-        Q_OBJECT
-    public:
-        RunDelegate(QObject *parent = nullptr);
-        void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
-        bool editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index) override;
+class RunDelegate : public QStyledItemDelegate
+{
+    Q_OBJECT
+public:
+    RunDelegate(QObject *parent = nullptr);
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const override;
+    bool editorEvent(QEvent *event, QAbstractItemModel *model, const QStyleOptionViewItem &option, const QModelIndex &index) override;
 
-    private:
-        QIcon openIcon;
-        QIcon rmIcon;
+private:
+    QIcon openIcon;
+    QIcon rmIcon;
 
-    signals:
-        void needsRemoval();
-    };
+signals:
+    void needsRemoval();
+};
 
-    class RunDialog : public QDialog
-    {
-        Q_OBJECT
-    private:
-        NpSettings &m_settings;
-        QLabel *m_status;
-        QLineEdit *m_command;
-        bool m_saved;
+class RunDialog : public QDialog
+{
+    Q_OBJECT
+private:
+    NpSettings &m_settings;
+    QLabel *m_status;
+    QLineEdit *m_command;
+    bool m_saved;
 
-    public:
-        RunDialog(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
-        ~RunDialog();
-        QString getCommandInput();
-        bool saved();
-        static QStringList parseCommandString(QString cmd);
+public:
+    RunDialog(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
+    ~RunDialog();
+    QString getCommandInput();
+    bool saved();
+    static QStringList parseCommandString(QString cmd);
 
-    private slots:
-        void slotSave();
-        void slotHideStatus();
-    };
+private slots:
+    void slotSave();
+    void slotHideStatus();
+};
 
 }; //namespace NpRun
 #endif

@@ -5,7 +5,7 @@
 
 namespace Ui
 {
-    class frmAbout;
+class frmAbout;
 }
 
 class frmAbout : public QDialog

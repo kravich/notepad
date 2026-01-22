@@ -8,23 +8,23 @@
 
 namespace Extensions
 {
-    namespace Stubs
-    {
+namespace Stubs
+{
 
-        class WindowStub : public Stub
-        {
-            Q_OBJECT
-        public:
-            WindowStub(MainWindow *object, RuntimeSupport *rts);
-            ~WindowStub();
+class WindowStub : public Stub
+{
+    Q_OBJECT
+public:
+    WindowStub(MainWindow *object, RuntimeSupport *rts);
+    ~WindowStub();
 
-            NP_STUB_NAME("Window")
-        private:
-            NP_DECLARE_EXTENSION_METHOD(currentEditor)
-            NP_DECLARE_EXTENSION_METHOD(addExtensionMenuItem)
-        };
+    NP_STUB_NAME("Window")
+private:
+    NP_DECLARE_EXTENSION_METHOD(currentEditor)
+    NP_DECLARE_EXTENSION_METHOD(addExtensionMenuItem)
+};
 
-    } //namespace Stubs
+} //namespace Stubs
 } //namespace Extensions
 
 #endif // WINDOWSTUB_H

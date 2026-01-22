@@ -82,7 +82,7 @@ private:
 
 namespace EditorNS
 {
-    class Editor;
+class Editor;
 }
 
 struct DocResult

@@ -13,11 +13,11 @@ void printerrln(QString string);
 
 namespace PForResult
 {
-    enum Enum
-    {
-        Continue,
-        Break
-    };
+enum Enum
+{
+    Continue,
+    Break
+};
 }
 
 /**

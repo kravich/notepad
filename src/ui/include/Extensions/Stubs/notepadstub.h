@@ -6,28 +6,28 @@
 
 namespace Extensions
 {
-    namespace Stubs
-    {
+namespace Stubs
+{
 
-        class NotepadStub : public Stub
-        {
-            Q_OBJECT
-        public:
-            NotepadStub(RuntimeSupport *rts);
-            ~NotepadStub();
+class NotepadStub : public Stub
+{
+    Q_OBJECT
+public:
+    NotepadStub(RuntimeSupport *rts);
+    ~NotepadStub();
 
-            NP_STUB_NAME("Notepad")
+    NP_STUB_NAME("Notepad")
 
-        private:
-            NP_DECLARE_EXTENSION_METHOD(commandLineArguments)
-            NP_DECLARE_EXTENSION_METHOD(version)
-            NP_DECLARE_EXTENSION_METHOD(print)
-            NP_DECLARE_EXTENSION_METHOD(windows)
+private:
+    NP_DECLARE_EXTENSION_METHOD(commandLineArguments)
+    NP_DECLARE_EXTENSION_METHOD(version)
+    NP_DECLARE_EXTENSION_METHOD(print)
+    NP_DECLARE_EXTENSION_METHOD(windows)
 
-            void on_newWindow(MainWindow *window);
-        };
+    void on_newWindow(MainWindow *window);
+};
 
-    } //namespace Stubs
+} //namespace Stubs
 } //namespace Extensions
 
 #endif // EXTENSIONS_STUBS_NOTEPAD_H

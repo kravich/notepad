@@ -8,25 +8,25 @@
 
 namespace Extensions
 {
-    namespace Stubs
-    {
+namespace Stubs
+{
 
-        class MenuItemStub : public Stub
-        {
-            Q_OBJECT
-            void on_triggered(bool checked = false);
+class MenuItemStub : public Stub
+{
+    Q_OBJECT
+    void on_triggered(bool checked = false);
 
-        public:
-            MenuItemStub(QAction *object, RuntimeSupport *rts);
-            ~MenuItemStub();
+public:
+    MenuItemStub(QAction *object, RuntimeSupport *rts);
+    ~MenuItemStub();
 
-            NP_STUB_NAME("MenuItem")
+    NP_STUB_NAME("MenuItem")
 
-        private:
-            NP_DECLARE_EXTENSION_METHOD(setShortcut)
-        };
+private:
+    NP_DECLARE_EXTENSION_METHOD(setShortcut)
+};
 
-    } //namespace Stubs
+} //namespace Stubs
 } //namespace Extensions
 
 #endif // MENUITEMSTUB_H
