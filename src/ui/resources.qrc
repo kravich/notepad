@@ -20,7 +20,6 @@
 		<file alias="scalable/edit-paste.svg">icons/notepad/scalable/edit-paste.svg</file>
 		<file alias="scalable/edit-redo.svg">icons/notepad/scalable/edit-redo.svg</file>
 		<file alias="scalable/edit-undo.svg">icons/notepad/scalable/edit-undo.svg</file>
-		<file alias="scalable/math-rendering.svg">icons/notepad/scalable/math-rendering.svg</file>
 		<file alias="16x16/media-playback-start.png">icons/notepad/16x16/media-playback-start.png</file>
 		<file alias="16x16/media-playback-stop.png">icons/notepad/16x16/media-playback-stop.png</file>
 		<file alias="16x16/media-record.png">icons/notepad/16x16/media-record.png</file>

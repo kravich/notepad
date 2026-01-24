@@ -88,7 +88,6 @@ public:
 
         NP_SETTING(NotepadVersion,               QString,    QString())
         NP_SETTING(SmartIndentation,               bool,       true)
-        NP_SETTING(MathRendering,                  bool,       true)
         NP_SETTING(UseNativeFilePicker,            bool,       true)
         /* clang-format on */
     END_CATEGORY(General)

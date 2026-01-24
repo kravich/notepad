@@ -461,11 +461,6 @@ void Editor::setWhitespaceVisible(const bool showspace)
     m_scintilla->setWhitespaceVisibility(showspace ? CustomScintilla::WsVisible : CustomScintilla::WsInvisible);
 }
 
-void Editor::setMathEnabled(const bool enabled)
-{
-    asyncSendMessageWithResult("C_CMD_ENABLE_MATH", enabled);
-}
-
 void Editor::setIndentGuideVisible(bool showindentguide)
 {
     fprintf(stderr, "FIXME: Implement Editor::setIndentGuideVisible()\n");

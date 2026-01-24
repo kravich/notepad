@@ -215,9 +215,6 @@ void MainWindow::configureUserInterface()
     ui->actionShow_All_Characters->setChecked(showAll);
     emit on_actionShow_All_Characters_toggled(showAll);
 
-    // Restore math rendering
-    ui->actionMath_Rendering->setChecked(m_settings.General.getMathRendering());
-
     // Restore indent guide visibility
     bool showIndentGuide = m_settings.General.getShowIndentGuide();
     ui->actionShow_Indent_Guide->setChecked(showIndentGuide);
@@ -301,7 +298,6 @@ void MainWindow::loadIcons()
     ui->actionZoom_Out->setIcon(IconProvider::fromTheme("zoom-out"));
     ui->actionRestore_Default_Zoom->setIcon(IconProvider::fromTheme("zoom-original"));
     ui->actionWord_wrap->setIcon(IconProvider::fromTheme("word-wrap"));
-    ui->actionMath_Rendering->setIcon(IconProvider::fromTheme("math-rendering"));
     ui->actionFull_Screen->setIcon(IconProvider::fromTheme("view-fullscreen"));
 
     // Settings menu
@@ -834,16 +830,6 @@ void MainWindow::on_actionShow_All_Characters_toggled(bool on)
     m_settings.General.setShowAllSymbols(on);
 }
 
-void MainWindow::on_actionMath_Rendering_toggled(bool on)
-{
-    m_topEditorContainer->forEachEditor([&](const int /*tabWidgetId*/, const int /*editorId*/, EditorTabWidget * /*tabWidget*/, QSharedPointer<Editor> editor) {
-        editor->setMathEnabled(on);
-        return true;
-    });
-
-    m_settings.General.setMathRendering(on);
-}
-
 void MainWindow::on_actionShow_Indent_Guide_triggered(bool on)
 {
     m_topEditorContainer->forEachEditor([&](const int /*tabWidgetId*/, const int /*editorId*/, EditorTabWidget * /*tabWidget*/, QSharedPointer<Editor> editor) {
@@ -1260,7 +1246,6 @@ void MainWindow::on_editorAdded(EditorTabWidget *tabWidget, int tab)
                     m_settings.Appearance.getOverrideLineHeight());
     editor->setLineNumbersVisible(m_settings.Appearance.getShowLineNumbers());
     editor->setSmartIndent(m_settings.General.getSmartIndentation());
-    editor->setMathEnabled(ui->actionMath_Rendering->isChecked());
 }
 
 void MainWindow::on_cursorActivity(QMap<QString, QVariant> data)

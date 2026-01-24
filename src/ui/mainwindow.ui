@@ -204,7 +204,6 @@
     <addaction name="menuZoom"/>
     <addaction name="menuMove_Clone_Current_Document"/>
     <addaction name="actionWord_wrap"/>
-    <addaction name="actionMath_Rendering"/>
     <addaction name="actionToggle_To_Former_Tab"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
@@ -552,14 +551,6 @@
    </property>
    <property name="text">
     <string>&amp;Word wrap</string>
-   </property>
-  </action>
-  <action name="actionMath_Rendering">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Math Rendering</string>
    </property>
   </action>
   <action name="actionCurrent_Full_File_Path_to_Clipboard">
