@@ -9,10 +9,7 @@
 #include <QRegExp>
 #include <QRegularExpression>
 #include <QTimer>
-#include <QUrlQuery>
 #include <QVBoxLayout>
-#include <QWebChannel>
-#include <QWebEngineSettings>
 
 namespace EditorNS
 {
@@ -41,49 +38,18 @@ void Editor::fullConstructor(const Theme &theme)
             this,
             &Editor::on_proxyMessageReceived);
 
-    m_webView = new CustomQWebView(this);
-
-    QUrlQuery query;
-    query.addQueryItem("themePath", theme.path);
-    query.addQueryItem("themeName", theme.name);
-
-    QUrl url = QUrl("file://" + Notepad::editorPath());
-    url.setQuery(query);
-
-    QWebChannel *channel = new QWebChannel(this);
-    m_webView->page()->setWebChannel(channel);
-    channel->registerObject(QStringLiteral("cpp_ui_driver"), m_jsToCppProxy);
-
-    m_webView->page()->setBackgroundColor(qApp->palette().color(QPalette::Window));
-    m_webView->setUrl(url);
-
-        // To load the page in the background (http://stackoverflow.com/a/10520029):
-        // (however, no noticeable improvement here on an i5, september 2014)
-        //QString content = QString("<html><body onload='setTimeout(function() { window.location=\"%1\"; }, 1);'>Loading...</body></html>").arg("file://" + Notepad::editorPath());
-        //m_webView->setContent(content.toUtf8());
-
-    m_webView->pageAction(QWebEnginePage::InspectElement)->setVisible(false);
-
-        //m_webView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
-
-    QWebEngineSettings *pageSettings = m_webView->page()->settings();
-#ifdef QT_DEBUG
-        //pageSettings->setAttribute(QWebEngineSettings::DeveloperExtrasEnabled, true);
-#endif
-    pageSettings->setAttribute(QWebEngineSettings::JavascriptCanAccessClipboard, true);
+    m_scintilla = new CustomScintilla(this);
 
     m_layout = new QVBoxLayout(this);
     m_layout->setContentsMargins(0, 0, 0, 0);
     m_layout->setSpacing(0);
-    m_layout->addWidget(m_webView, 1);
+    m_layout->addWidget(m_scintilla, 1);
     setLayout(m_layout);
 
-    connect(m_webView, &CustomQWebView::urlsDropped, this, &Editor::urlsDropped);
-    connect(m_webView, &CustomQWebView::gotFocus, this, &Editor::gotFocus);
+    connect(m_scintilla, &CustomScintilla::urlsDropped, this, &Editor::urlsDropped);
+    connect(m_scintilla, &CustomScintilla::gotFocus, this, &Editor::gotFocus);
     setLanguage(nullptr);
-        // TODO Display a message if a javascript error gets triggered.
-        // Right now, if there's an error in the javascript code, we
-        // get stuck waiting a J_EVT_READY that will never come.
+    setTheme(theme);
 }
 
 QSharedPointer<Editor> Editor::getNewEditor(QWidget *parent)
@@ -177,12 +143,12 @@ void Editor::on_proxyMessageReceived(QString msg, QVariant data)
 
 void Editor::setFocus()
 {
-    m_webView->setFocus();
+    m_scintilla->setFocus();
 }
 
 void Editor::clearFocus()
 {
-    m_webView->clearFocus();
+    m_scintilla->clearFocus();
 }
 
     /**
@@ -456,7 +422,7 @@ void Editor::insertBanner(QWidget *banner)
 
 void Editor::removeBanner(QWidget *banner)
 {
-    if (banner != m_webView && m_layout->indexOf(banner) >= 0)
+    if (banner != m_scintilla && m_layout->indexOf(banner) >= 0)
     {
         m_layout->removeWidget(banner);
         emit bannerRemoved(banner);

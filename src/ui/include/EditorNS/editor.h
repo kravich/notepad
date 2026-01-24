@@ -1,7 +1,7 @@
 #ifndef EDITOR_H
 #define EDITOR_H
 
-#include "include/EditorNS/customqwebview.h"
+#include "include/EditorNS/customscintilla.h"
 #include "include/EditorNS/languageservice.h"
 
 #include <QObject>
@@ -54,18 +54,8 @@ signals:
     void messageReceivedByJs(QString msg, QVariant data);
 };
 
-    /**
- * @brief Provides a JavaScript CodeMirror instance.
- *
- * Communication works by sending messages to the javascript Editor using
- * the sendMessage() method. On the other side, when a javascript event
- * occurs, the messageReceived() signal will be emitted.
- *
- * In addition to messageReceived(), other signals could be emitted at the
- * same time, for example currentLineChanged(). This is simply for
- * convenience, so that the user of this class doesn't need to manually parse
- * the arguments for pre-defined messages.
- *
+/**
+ * @brief Provides a QScintilla instance.
  */
 class Editor : public QWidget
 {
@@ -346,7 +336,7 @@ private:
 
     static QQueue<QSharedPointer<Editor>> m_editorBuffer;
     QVBoxLayout *m_layout;
-    CustomQWebView *m_webView;
+    CustomScintilla *m_scintilla;
     JsToCppProxy *m_jsToCppProxy;
     QUrl m_filePath = QUrl();
     QString m_tabName;
