@@ -551,7 +551,7 @@ QPair<int, int> Editor::cursorPosition()
 
 void Editor::setCursorPosition(const int line, const int column)
 {
-    asyncSendMessageWithResult("C_CMD_SET_CURSOR", QList<QVariant>{line, column});
+    m_scintilla->setCursorPosition(line, column);
 }
 
 void Editor::setCursorPosition(const QPair<int, int> &position)
