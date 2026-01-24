@@ -58,6 +58,8 @@ void Editor::fullConstructor(const Theme &theme)
     connect(m_scintilla, &CustomScintilla::selectionChanged, this, &Editor::requestDocumentInfo);
     connect(m_scintilla, &CustomScintilla::textChanged, this, &Editor::requestDocumentInfo);
 
+    connect(this, &Editor::documentInfoRequested, this, &Editor::cursorActivity);   // To trigger cursorActivity() also
+
     connect(m_scintilla, &CustomScintilla::textChanged, this, &Editor::contentChanged);
     connect(m_scintilla, &CustomScintilla::modificationChanged, this, [&]() { emit cleanChanged(isClean()); });
     connect(m_scintilla, &CustomScintilla::linesChanged, this, &Editor::refreshMargins);
@@ -146,10 +148,6 @@ void Editor::on_proxyMessageReceived(QString msg, QVariant data)
                     break;
                 }
             }
-        }
-        else if (msg == "J_EVT_CURSOR_ACTIVITY")
-        {
-            emit cursorActivity(data.toMap());
         }
     });
 }
