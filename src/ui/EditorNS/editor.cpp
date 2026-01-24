@@ -314,7 +314,7 @@ bool Editor::isUsingCustomIndentationMode() const
 
 void Editor::setSmartIndent(bool enabled)
 {
-    asyncSendMessageWithResult("C_CMD_SET_SMART_INDENT", enabled);
+    m_scintilla->setAutoIndent(enabled);
 }
 
 void Editor::setValue(const QString &value)
