@@ -48,6 +48,10 @@ void Editor::fullConstructor(const Theme &theme)
 
     connect(m_scintilla, &CustomScintilla::zoomChanged, this, &Editor::zoomChanged);
 
+    connect(m_scintilla, &CustomScintilla::cursorPositionChanged, this, &Editor::requestDocumentInfo);
+    connect(m_scintilla, &CustomScintilla::selectionChanged, this, &Editor::requestDocumentInfo);
+    connect(m_scintilla, &CustomScintilla::textChanged, this, &Editor::requestDocumentInfo);
+
     connect(m_scintilla, &CustomScintilla::modificationChanged, this, [&]() { emit cleanChanged(isClean()); });
 
     connect(m_scintilla, &CustomScintilla::urlsDropped, this, &Editor::urlsDropped);
@@ -140,10 +144,6 @@ void Editor::on_proxyMessageReceived(QString msg, QVariant data)
         else if (msg == "J_EVT_CURSOR_ACTIVITY")
         {
             emit cursorActivity(data.toMap());
-        }
-        else if (msg == "J_EVT_DOCUMENT_INFO")
-        {
-            emit documentInfoRequested(data.toMap());
         }
     });
 }
@@ -473,7 +473,52 @@ void Editor::setIndentGuideVisible(bool showindentguide)
 
 void Editor::requestDocumentInfo()
 {
-    asyncSendMessageWithResult("C_CMD_GET_DOCUMENT_INFO");
+    // Cursor
+    int cursorLine = 0;
+    int cursorIndex = 0;
+
+    m_scintilla->getCursorPosition(&cursorLine, &cursorIndex);
+
+    // Selections
+    int selectedLines = 0;
+    int selectedChars = 0;
+
+    if (m_scintilla->hasSelectedText())
+    {
+        int selectedLineFrom = 0;
+        int selectedIndexFrom = 0;
+        int selectedLineTo = 0;
+        int selectedIndexTo = 0;
+
+        m_scintilla->getSelection(&selectedLineFrom, &selectedIndexFrom, &selectedLineTo, &selectedIndexTo);
+
+        selectedLines = selectedLineTo - selectedLineFrom + 1;
+        selectedChars = m_scintilla->selectedText().length();
+    }
+
+    // Content
+    int linesCount = m_scintilla->lines();
+    int charsCount = m_scintilla->text().length();
+
+    QMap<QString, QVariant> data;
+
+    QList<int> cursorList;
+    cursorList.append(cursorLine);
+    cursorList.append(cursorIndex);
+
+    QList<int> selectionsList;
+    selectionsList.append(selectedLines);
+    selectionsList.append(selectedChars);
+
+    QList<int> contentList;
+    contentList.append(linesCount);
+    contentList.append(charsCount);
+
+    data["cursor"] = QVariant::fromValue(cursorList);
+    data["selections"] = QVariant::fromValue(selectionsList);
+    data["content"] = QVariant::fromValue(contentList);
+
+    emit documentInfoRequested(data);
 }
 
 QPair<int, int> Editor::cursorPosition()
