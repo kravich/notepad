@@ -322,6 +322,14 @@ private:
 
     void refreshMargins();
 
+    QString m_currentFontFamily;
+    int m_currentFontSize = 0;
+    double m_currentLineHeight = 0.0;
+
+    Theme m_currentTheme;
+
+    void refreshAppearance();
+
     bool m_forceModified = false;
 
     void fullConstructor(const Theme &theme);

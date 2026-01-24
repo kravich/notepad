@@ -7,6 +7,7 @@ find_package(Qt6
         PrintSupport
         Network
         DBus
+        Xml
         Core5Compat
         LinguistTools
     REQUIRED
@@ -36,6 +37,7 @@ set(notepad_SRCS
     EditorNS/languageservice.cpp
     EditorNS/nulllexer.cpp
     EditorNS/lexerfactory.cpp
+    EditorNS/scintillatheme.cpp
     clickablelabel.cpp
     frmencodingchooser.cpp
     frmindentationmode.cpp
@@ -75,6 +77,7 @@ set(notepad_HEADERS
     include/EditorNS/customscintilla.h
     include/EditorNS/nulllexer.h
     include/EditorNS/lexerfactory.h
+    include/EditorNS/scintillatheme.h
     include/clickablelabel.h
     include/frmencodingchooser.h
     include/EditorNS/languageservice.h
@@ -167,6 +170,7 @@ target_link_libraries(notepad
         Qt6::PrintSupport
         Qt6::Network
         Qt6::DBus
+        Qt6::Xml
         Qt6::Core5Compat
         QScintilla::QScintilla
         PkgConfig::uchardet
