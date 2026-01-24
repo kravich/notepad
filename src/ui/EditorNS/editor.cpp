@@ -48,6 +48,8 @@ void Editor::fullConstructor(const Theme &theme)
 
     connect(m_scintilla, &CustomScintilla::zoomChanged, this, &Editor::zoomChanged);
 
+    connect(m_scintilla, &CustomScintilla::modificationChanged, this, [&]() { emit cleanChanged(isClean()); });
+
     connect(m_scintilla, &CustomScintilla::urlsDropped, this, &Editor::urlsDropped);
     connect(m_scintilla, &CustomScintilla::gotFocus, this, &Editor::gotFocus);
     setLanguage(nullptr);
@@ -135,8 +137,6 @@ void Editor::on_proxyMessageReceived(QString msg, QVariant data)
         }
         else if (msg == "J_EVT_CONTENT_CHANGED")
             emit contentChanged();
-        else if (msg == "J_EVT_CLEAN_CHANGED")
-            emit cleanChanged(data.toBool());
         else if (msg == "J_EVT_CURSOR_ACTIVITY")
         {
             emit cursorActivity(data.toMap());
@@ -193,18 +193,24 @@ void Editor::setTabName(const QString &name)
 
 bool Editor::isClean()
 {
-    QVariant data(0); // avoid crash on Mac OS X, see issue #702
-    return asyncSendMessageWithResult("C_FUN_IS_CLEAN", data).get().toBool();
+    if (m_forceModified)
+    {
+        return false;
+    }
+
+    return !m_scintilla->isModified();
 }
 
 void Editor::markClean()
 {
-    asyncSendMessageWithResult("C_CMD_MARK_CLEAN");
+    m_forceModified = false;
+    m_scintilla->setModified(false);
 }
 
 void Editor::markDirty()
 {
-    asyncSendMessageWithResult("C_CMD_MARK_DIRTY");
+    m_forceModified = true;
+    emit cleanChanged(isClean());
 }
 
 int Editor::getHistoryGeneration()

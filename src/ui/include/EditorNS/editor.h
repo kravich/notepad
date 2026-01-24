@@ -349,6 +349,8 @@ private:
     bool m_customIndentationMode = false;
     const Language *m_currentLanguage = nullptr;
 
+    bool m_forceModified = false;
+
     void fullConstructor(const Theme &theme);
 
     void setIndentationMode(const bool useTabs, const int size);
