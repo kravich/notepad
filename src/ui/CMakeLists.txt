@@ -36,7 +36,6 @@ set(notepad_SRCS
     EditorNS/languageservice.cpp
     clickablelabel.cpp
     frmencodingchooser.cpp
-    EditorNS/bannerindentationdetected.cpp
     frmindentationmode.cpp
     singleapplication.cpp
     localcommunication.cpp
@@ -74,7 +73,6 @@ set(notepad_HEADERS
     include/EditorNS/customscintilla.h
     include/clickablelabel.h
     include/frmencodingchooser.h
-    include/EditorNS/bannerindentationdetected.h
     include/EditorNS/languageservice.h
     include/frmindentationmode.h
     include/singleapplication.h

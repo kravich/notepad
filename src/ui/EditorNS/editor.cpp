@@ -693,24 +693,6 @@ void Editor::setOverwrite(bool overwrite)
     m_scintilla->setOverwriteMode(overwrite);
 }
 
-std::pair<Editor::IndentationMode, bool> Editor::detectDocumentIndentation()
-{
-    QVariant result = asyncSendMessageWithResult("C_FUN_DETECT_INDENTATION_MODE").get();
-
-    QVariantMap indent = result.toMap();
-    IndentationMode out;
-
-    bool found = indent.value("found", false).toBool();
-
-    if (found)
-    {
-        out.useTabs = indent.value("useTabs", true).toBool();
-        out.size = indent.value("size", 4).toInt();
-    }
-
-    return std::make_pair(out, found);
-}
-
 void Editor::print(std::shared_ptr<QPrinter> printer)
 {
         /*

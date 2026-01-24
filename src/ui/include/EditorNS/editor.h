@@ -304,12 +304,6 @@ public:
 
     void setOverwrite(bool overwrite);
 
-        /**
-     * @brief Detect the indentation mode used within the current document.
-     * @return a pair whose first element is the document indentation, that is
-     *         significative only if the second element ("found") is true.
-     */
-    std::pair<IndentationMode, bool> detectDocumentIndentation();
     Editor::IndentationMode indentationMode();
 
     void setSelection(int fromLine, int fromCol, int toLine, int toCol);

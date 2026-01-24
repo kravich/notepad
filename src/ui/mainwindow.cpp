@@ -2,7 +2,6 @@
 
 #include "include/EditorNS/bannerfilechanged.h"
 #include "include/EditorNS/bannerfileremoved.h"
-#include "include/EditorNS/bannerindentationdetected.h"
 #include "include/EditorNS/editor.h"
 #include "include/Sessions/backupservice.h"
 #include "include/Sessions/persistentcache.h"
@@ -1911,62 +1910,6 @@ void MainWindow::on_documentLoaded(EditorTabWidget *tabWidget, int tab, bool was
         m_settings.General.setRecentDocuments(recentDocs);
 
         updateRecentDocsInMenu();
-    }
-
-    if (!wasAlreadyOpened)
-    {
-        if (m_settings.General.getWarnForDifferentIndentation())
-        {
-            checkIndentationMode(editor);
-        }
-    }
-}
-
-void MainWindow::checkIndentationMode(QSharedPointer<Editor> editor)
-{
-    const std::pair<Editor::IndentationMode, bool> result = editor->detectDocumentIndentation();
-
-    Editor::IndentationMode detected = result.first;
-    bool found = result.second;
-
-    if (found)
-    {
-        Editor::IndentationMode curr = editor->indentationMode();
-
-        bool differentTabSpaces = detected.useTabs != curr.useTabs;
-        bool differentSpaceSize = detected.useTabs == false && curr.useTabs == false && detected.size != curr.size;
-
-        if (differentTabSpaces || differentSpaceSize)
-        {
-            // Show msg
-            BannerIndentationDetected *banner = new BannerIndentationDetected(
-                differentSpaceSize,
-                detected,
-                curr,
-                this);
-            banner->setObjectName("indentationdetected");
-
-            editor->insertBanner(banner);
-
-            connect(banner, &BannerIndentationDetected::useApplicationSettings, this, [=]() {
-                editor->removeBanner(banner);
-                editor->setFocus();
-            });
-
-            connect(banner, &BannerIndentationDetected::useDocumentSettings, this, [=]() {
-                editor->removeBanner(banner);
-                if (detected.useTabs)
-                {
-                    editor->setCustomIndentationMode(true);
-                }
-                else
-                {
-                    editor->setCustomIndentationMode(detected.useTabs, detected.size);
-                }
-                ui->actionIndentation_Custom->setChecked(true);
-                editor->setFocus();
-            });
-        }
     }
 }
 

@@ -64,7 +64,6 @@ public:
     BEGIN_GENERAL_CATEGORY(General)
         /* clang-format off */
         NP_SETTING(Localization,                   QString,    "")
-        NP_SETTING(WarnForDifferentIndentation,    bool,       true)
         NP_SETTING(ExitOnLastTabClose,             bool,       false)
 
         NP_SETTING(CollectStatistics,              bool,       false)

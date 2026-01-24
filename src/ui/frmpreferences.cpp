@@ -50,7 +50,6 @@ frmPreferences::frmPreferences(TopEditorContainer *topEditorContainer, QWidget *
     ui->treeWidget->setCurrentItem(ui->treeWidget->topLevelItem(s_lastSelectedTab));
 
     ui->chkCollectStatistics->setChecked(m_settings.General.getCollectStatistics());
-    ui->chkWarnForDifferentIndentation->setChecked(m_settings.General.getWarnForDifferentIndentation());
     ui->chkRememberSession->setChecked(m_settings.General.getRememberTabsOnExit());
     ui->chkExitOnLastTabClose->setChecked(m_settings.General.getExitOnLastTabClose());
 
@@ -407,7 +406,6 @@ bool frmPreferences::applySettings()
     }
 
     m_settings.General.setCollectStatistics(ui->chkCollectStatistics->isChecked());
-    m_settings.General.setWarnForDifferentIndentation(ui->chkWarnForDifferentIndentation->isChecked());
     m_settings.General.setRememberTabsOnExit(ui->chkRememberSession->isChecked());
     m_settings.General.setExitOnLastTabClose(ui->chkExitOnLastTabClose->isChecked());
 
