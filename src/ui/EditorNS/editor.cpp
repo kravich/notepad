@@ -453,7 +453,7 @@ void Editor::setLineWrap(const bool wrap)
 
 void Editor::setEOLVisible(const bool showeol)
 {
-    asyncSendMessageWithResult("C_CMD_SHOW_END_OF_LINE", showeol);
+    m_scintilla->setEolVisibility(showeol);
 }
 
 void Editor::setWhitespaceVisible(const bool showspace)
