@@ -758,7 +758,6 @@ bool MainWindow::updateSymbols(bool on)
     // one of the other available symbol actions.
     if (!on && ui->actionShow_All_Characters->isChecked())
     {
-        m_settings.General.setTabsVisible(ui->actionShow_Tabs->isChecked());
         m_settings.General.setSpacesVisisble(ui->actionShow_Spaces->isChecked());
         m_settings.General.setShowEOL(ui->actionShow_End_of_Line->isChecked());
         ui->actionShow_All_Characters->blockSignals(true);
@@ -770,27 +769,14 @@ bool MainWindow::updateSymbols(bool on)
     else if (on && !ui->actionShow_All_Characters->isChecked())
     {
         bool showEOL = ui->actionShow_End_of_Line->isChecked();
-        bool showTabs = ui->actionShow_Tabs->isChecked();
         bool showSpaces = ui->actionShow_Spaces->isChecked();
-        if (showEOL && showTabs && showSpaces)
+        if (showEOL && showSpaces)
         {
             ui->actionShow_All_Characters->setChecked(true);
         }
     }
 
     return false;
-}
-
-void MainWindow::on_actionShow_Tabs_triggered(bool on)
-{
-    m_topEditorContainer->forEachEditor([&](const int /*tabWidgetId*/, const int /*editorId*/, EditorTabWidget * /*tabWidget*/, QSharedPointer<Editor> editor) {
-        editor->setTabsVisible(on);
-        return true;
-    });
-    if (!updateSymbols(on))
-    {
-        m_settings.General.setTabsVisible(on);
-    }
 }
 
 void MainWindow::on_actionShow_Spaces_triggered(bool on)
@@ -822,30 +808,25 @@ void MainWindow::on_actionShow_All_Characters_toggled(bool on)
     if (on)
     {
         ui->actionShow_End_of_Line->setChecked(true);
-        ui->actionShow_Tabs->setChecked(true);
         ui->actionShow_Spaces->setChecked(true);
     }
     else
     {
         bool showEOL = m_settings.General.getShowEOL();
-        bool showTabs = m_settings.General.getTabsVisible();
         bool showSpaces = m_settings.General.getSpacesVisisble();
 
-        if (showEOL && showTabs && showSpaces)
+        if (showEOL && showSpaces)
         {
             showEOL = !showEOL;
-            showTabs = !showTabs;
             showSpaces = !showSpaces;
         }
 
         ui->actionShow_End_of_Line->setChecked(showEOL);
-        ui->actionShow_Tabs->setChecked(showTabs);
         ui->actionShow_Spaces->setChecked(showSpaces);
     }
 
     m_topEditorContainer->forEachEditor([&](const int /*tabWidgetId*/, const int /*editorId*/, EditorTabWidget * /*tabWidget*/, QSharedPointer<Editor> editor) {
         editor->setEOLVisible(ui->actionShow_End_of_Line->isChecked());
-        editor->setTabsVisible(ui->actionShow_Tabs->isChecked());
         editor->setWhitespaceVisible(on);
         return true;
     });
@@ -1270,7 +1251,6 @@ void MainWindow::on_editorAdded(EditorTabWidget *tabWidget, int tab)
 
     // Initialize editor with UI settings
     editor->setLineWrap(ui->actionWord_wrap->isChecked());
-    editor->setTabsVisible(ui->actionShow_Tabs->isChecked());
     editor->setEOLVisible(ui->actionShow_End_of_Line->isChecked());
     editor->setWhitespaceVisible(ui->actionShow_Spaces->isChecked());
     editor->setIndentGuideVisible(ui->actionShow_Indent_Guide->isChecked());

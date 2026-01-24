@@ -175,7 +175,6 @@
      <property name="title">
       <string>&amp;Show Symbol</string>
      </property>
-     <addaction name="actionShow_Tabs"/>
      <addaction name="actionShow_Spaces"/>
      <addaction name="actionShow_End_of_Line"/>
      <addaction name="actionShow_All_Characters"/>
@@ -518,14 +517,6 @@
    </property>
    <property name="text">
     <string>Show &amp;End of Line</string>
-   </property>
-  </action>
-  <action name="actionShow_Tabs">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Show Tabs</string>
    </property>
   </action>
   <action name="actionShow_All_Characters">
@@ -897,10 +888,10 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>S&amp;how Spaces</string>
+    <string>S&amp;how Spaces and Tabs</string>
    </property>
    <property name="toolTip">
-    <string>Show Spaces</string>
+    <string>Show Spaces and Tabs</string>
    </property>
   </action>
   <action name="actionToggle_Smart_Indent">

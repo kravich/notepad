@@ -458,7 +458,7 @@ void Editor::setEOLVisible(const bool showeol)
 
 void Editor::setWhitespaceVisible(const bool showspace)
 {
-    asyncSendMessageWithResult("C_CMD_SHOW_WHITESPACE", showspace);
+    m_scintilla->setWhitespaceVisibility(showspace ? CustomScintilla::WsVisible : CustomScintilla::WsInvisible);
 }
 
 void Editor::setMathEnabled(const bool enabled)
@@ -671,11 +671,6 @@ QStringList Editor::selectedTexts()
 void Editor::setOverwrite(bool overwrite)
 {
     asyncSendMessageWithResult("C_CMD_SET_OVERWRITE", overwrite);
-}
-
-void Editor::setTabsVisible(bool visible)
-{
-    asyncSendMessageWithResult("C_CMD_SET_TABS_VISIBLE", visible);
 }
 
 std::pair<Editor::IndentationMode, bool> Editor::detectDocumentIndentation()

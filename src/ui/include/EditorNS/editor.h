@@ -304,7 +304,6 @@ public:
     Q_INVOKABLE QStringList selectedTexts();
 
     void setOverwrite(bool overwrite);
-    void setTabsVisible(bool visible);
 
         /**
      * @brief Detect the indentation mode used within the current document.

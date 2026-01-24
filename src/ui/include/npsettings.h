@@ -75,7 +75,6 @@ public:
         NP_SETTING(Zoom,                           int,        0)
 
         NP_SETTING(ShowAllSymbols,                 bool,       false)
-        NP_SETTING(TabsVisible,                    bool,       false)
         NP_SETTING(SpacesVisisble,                 bool,       false)
         NP_SETTING(ShowEOL,                        bool,       false)
         NP_SETTING(ShowIndentGuide,                bool,       true)
