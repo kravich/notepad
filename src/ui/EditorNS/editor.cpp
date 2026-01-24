@@ -277,15 +277,15 @@ void Editor::setIndentationMode(const Language *lang)
 
 void Editor::setIndentationMode(const bool useTabs, const int size)
 {
-    asyncSendMessageWithResult("C_CMD_SET_INDENTATION_MODE", QVariantMap{{"useTabs", useTabs}, {"size", size}});
+    m_scintilla->setIndentationsUseTabs(useTabs);
+    m_scintilla->setTabWidth(size);
 }
 
 Editor::IndentationMode Editor::indentationMode()
 {
-    QVariantMap indent = asyncSendMessageWithResult("C_FUN_GET_INDENTATION_MODE").get().toMap();
     IndentationMode out;
-    out.useTabs = indent.value("useTabs", true).toBool();
-    out.size = indent.value("size", 4).toInt();
+    out.useTabs = m_scintilla->indentationsUseTabs();
+    out.size = m_scintilla->tabWidth();
     return out;
 }
 
