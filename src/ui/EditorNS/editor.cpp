@@ -572,13 +572,14 @@ void Editor::setSelection(int fromLine, int fromCol, int toLine, int toCol)
 
 QPair<int, int> Editor::scrollPosition()
 {
-    QVariantList scroll = asyncSendMessageWithResult("C_FUN_GET_SCROLL_POS").get().toList();
-    return {scroll[0].toInt(), scroll[1].toInt()};
+    int line = m_scintilla->firstVisibleLine();
+    return {0, line};   // FIXME: Support horizontal scrolling
 }
 
 void Editor::setScrollPosition(const int left, const int top)
 {
-    asyncSendMessageWithResult("C_CMD_SET_SCROLL_POS", QVariantList{left, top});
+    m_scintilla->setXOffset(0); // FIXME: Support horizontal scrolling
+    m_scintilla->setFirstVisibleLine(top);
 }
 
 void Editor::setScrollPosition(const QPair<int, int> &position)
