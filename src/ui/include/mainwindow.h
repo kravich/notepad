@@ -217,6 +217,8 @@ private:
 
     AdvancedSearchDock *m_advSearchDock;
 
+    void onZoomChanged(int zoomFactor);
+
     /**
      * @brief saveTabsToCache Saves tabs to cache. Utilizes the saveSession function and
      *        saves all unsaved progress in the cache.

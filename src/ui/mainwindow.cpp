@@ -236,7 +236,7 @@ void MainWindow::configureUserInterface()
     on_actionToggle_Smart_Indent_toggled(m_settings.General.getSmartIndentation());
 
     // Restore zoom
-    const qreal zoom = m_settings.General.getZoom();
+    const int zoom = m_settings.General.getZoom();
     for (int i = 0; i < m_topEditorContainer->count(); i++)
     {
         m_topEditorContainer->tabWidget(i)->setZoomFactor(zoom);
@@ -1249,6 +1249,7 @@ void MainWindow::on_editorAdded(EditorTabWidget *tabWidget, int tab)
     // created a few lines below).
     disconnect(editor.data(), &Editor::bannerRemoved, 0, 0);
 
+    connect(editor.data(), &Editor::zoomChanged, this, &MainWindow::onZoomChanged);
     connect(editor.data(), &Editor::cursorActivity, this, &MainWindow::on_cursorActivity);
     connect(editor.data(), &Editor::documentInfoRequested, this, &MainWindow::refreshEditorUiCursorInfo);
     connect(editor.data(), &Editor::currentLanguageChanged, this, [=](QString id, QString name) {
@@ -1737,22 +1738,22 @@ void MainWindow::on_actionPlain_text_triggered()
 
 void MainWindow::on_actionRestore_Default_Zoom_triggered()
 {
-    const qreal newZoom = m_settings.General.resetZoom();
+    const int newZoom = m_settings.General.resetZoom();
     m_topEditorContainer->currentTabWidget()->setZoomFactor(newZoom);
 }
 
 void MainWindow::on_actionZoom_In_triggered()
 {
-    qreal curZoom = currentEditor()->zoomFactor();
-    qreal newZoom = curZoom + 0.25;
+    int curZoom = currentEditor()->zoomFactor();
+    int newZoom = curZoom + 1;
     m_topEditorContainer->currentTabWidget()->setZoomFactor(newZoom);
     m_settings.General.setZoom(newZoom);
 }
 
 void MainWindow::on_actionZoom_Out_triggered()
 {
-    qreal curZoom = currentEditor()->zoomFactor();
-    qreal newZoom = curZoom - 0.25;
+    int curZoom = currentEditor()->zoomFactor();
+    int newZoom = curZoom - 1;
     m_topEditorContainer->currentTabWidget()->setZoomFactor(newZoom);
     m_settings.General.setZoom(newZoom);
 }
@@ -1761,12 +1762,11 @@ void MainWindow::on_editorMouseWheel(EditorTabWidget *tabWidget, int tab, QWheel
 {
     if (QApplication::keyboardModifiers() & Qt::ControlModifier)
     {
-        qreal curZoom = tabWidget->editor(tab)->zoomFactor();
-        qreal diff = ev->angleDelta().y() / 120;
-        diff /= 10;
+        int curZoom = tabWidget->editor(tab)->zoomFactor();
+        int diff = ev->angleDelta().y() / 120;
 
-        // Increment/Decrement zoom factor by 0.1 at each step.
-        qreal newZoom = curZoom + diff;
+        // Increment/Decrement zoom factor by 1 point at each step.
+        int newZoom = curZoom + diff;
         tabWidget->setZoomFactor(newZoom);
         m_settings.General.setZoom(newZoom);
     }
@@ -2752,4 +2752,13 @@ void MainWindow::on_actionToggle_To_Former_Tab_triggered()
 {
     EditorTabWidget *curTabWidget = m_topEditorContainer->currentTabWidget();
     curTabWidget->setCurrentIndex(curTabWidget->formerTabIndex());
+}
+
+void MainWindow::onZoomChanged(int zoomFactor)
+{
+    m_topEditorContainer->forEachEditor([&](const int, const int, EditorTabWidget *, QSharedPointer<Editor> editor) {
+        editor->setZoomFactor(zoomFactor);
+        return true;
+    });
+    m_settings.General.setZoom(zoomFactor);
 }

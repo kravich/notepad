@@ -260,12 +260,12 @@ QString EditorTabWidget::tabTextFromEditor(QSharedPointer<EditorNS::Editor> ed)
     return QString();
 }
 
-qreal EditorTabWidget::zoomFactor() const
+int EditorTabWidget::zoomFactor() const
 {
     return m_zoomFactor;
 }
 
-void EditorTabWidget::setZoomFactor(const qreal &zoomFactor)
+void EditorTabWidget::setZoomFactor(int zoomFactor)
 {
     m_zoomFactor = zoomFactor;
 

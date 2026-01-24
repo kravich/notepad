@@ -46,6 +46,8 @@ void Editor::fullConstructor(const Theme &theme)
     m_layout->addWidget(m_scintilla, 1);
     setLayout(m_layout);
 
+    connect(m_scintilla, &CustomScintilla::zoomChanged, this, &Editor::zoomChanged);
+
     connect(m_scintilla, &CustomScintilla::urlsDropped, this, &Editor::urlsDropped);
     connect(m_scintilla, &CustomScintilla::gotFocus, this, &Editor::gotFocus);
     setLanguage(nullptr);
@@ -383,18 +385,14 @@ std::shared_future<QVariant> Editor::asyncSendMessageWithResult(const QString ms
     return this->asyncSendMessageWithResult(msg, 0, callback);
 }
 
-void Editor::setZoomFactor(const qreal &factor)
+void Editor::setZoomFactor(int factor)
 {
-    qreal normFact = factor;
-    if (normFact > 14) normFact = 14;
-    else if (normFact < 0.10) normFact = 0.10;
-
-    m_webView->setZoomFactor(normFact);
+    m_scintilla->zoomTo(factor);
 }
 
-qreal Editor::zoomFactor() const
+int Editor::zoomFactor() const
 {
-    return m_webView->zoomFactor();
+    return m_scintilla->getZoom();
 }
 
 void Editor::setSelectionsText(const QStringList &texts, SelectMode mode)

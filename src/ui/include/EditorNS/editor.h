@@ -225,8 +225,8 @@ public:
     bool isUsingCustomIndentationMode() const;
 
     Q_INVOKABLE void setSmartIndent(bool enabled);
-    Q_INVOKABLE qreal zoomFactor() const;
-    Q_INVOKABLE void setZoomFactor(const qreal &factor);
+    Q_INVOKABLE int zoomFactor() const;
+    Q_INVOKABLE void setZoomFactor(int factor);
     Q_INVOKABLE void setSelectionsText(const QStringList &texts, SelectMode mode);
     Q_INVOKABLE void setSelectionsText(const QStringList &texts);
     const Language *getLanguage() { return m_currentLanguage; }
@@ -370,6 +370,7 @@ signals:
     void documentInfoRequested(QMap<QString, QVariant> data);
     void cleanChanged(bool isClean);
     void fileNameChanged(const QUrl &oldFileName, const QUrl &newFileName);
+    void zoomChanged(int zoomFactor);
 
     void currentLanguageChanged(QString id, QString name);
 

@@ -72,7 +72,7 @@ public:
         NP_SETTING(StatisticsDialogShown,          int,        0)
 
         NP_SETTING(WordWrap,                       bool,       false)
-        NP_SETTING(Zoom,                           qreal,      1.0)
+        NP_SETTING(Zoom,                           int,        0)
 
         NP_SETTING(ShowAllSymbols,                 bool,       false)
         NP_SETTING(TabsVisible,                    bool,       false)
