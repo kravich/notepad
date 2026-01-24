@@ -318,7 +318,7 @@ void Editor::setValue(const QString &value)
     {
         setLanguage(lang);
     }
-    asyncSendMessageWithResult("C_CMD_SET_VALUE", value);
+    m_scintilla->setText(value);
 }
 
 QString Editor::value()
