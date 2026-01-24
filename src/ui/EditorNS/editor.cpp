@@ -541,8 +541,12 @@ void Editor::requestDocumentInfo()
 
 QPair<int, int> Editor::cursorPosition()
 {
-    QList<QVariant> cursor = asyncSendMessageWithResult("C_FUN_GET_CURSOR").get().toList();
-    return {cursor[0].toInt(), cursor[1].toInt()};
+    int cursorLine = 0;
+    int cursorIndex = 0;
+
+    m_scintilla->getCursorPosition(&cursorLine, &cursorIndex);
+
+    return {cursorLine, cursorIndex};
 }
 
 void Editor::setCursorPosition(const int line, const int column)
