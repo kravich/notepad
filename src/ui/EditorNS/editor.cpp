@@ -670,7 +670,7 @@ QStringList Editor::selectedTexts()
 
 void Editor::setOverwrite(bool overwrite)
 {
-    asyncSendMessageWithResult("C_CMD_SET_OVERWRITE", overwrite);
+    m_scintilla->setOverwriteMode(overwrite);
 }
 
 std::pair<Editor::IndentationMode, bool> Editor::detectDocumentIndentation()
