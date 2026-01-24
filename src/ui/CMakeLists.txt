@@ -6,9 +6,6 @@ find_package(Qt6
         Widgets
         PrintSupport
         Network
-        WebEngineWidgets
-        WebChannel
-        WebSockets
         DBus
         Core5Compat
         LinguistTools
@@ -35,7 +32,6 @@ set(notepad_SRCS
     EditorNS/bannerfilechanged.cpp
     EditorNS/bannerbasicmessage.cpp
     EditorNS/bannerfileremoved.cpp
-    EditorNS/customqwebview.cpp
     EditorNS/languageservice.cpp
     clickablelabel.cpp
     frmencodingchooser.cpp
@@ -74,7 +70,6 @@ set(notepad_HEADERS
     include/EditorNS/bannerfilechanged.h
     include/EditorNS/bannerbasicmessage.h
     include/EditorNS/bannerfileremoved.h
-    include/EditorNS/customqwebview.h
     include/clickablelabel.h
     include/frmencodingchooser.h
     include/EditorNS/bannerindentationdetected.h
@@ -167,9 +162,6 @@ target_link_libraries(notepad
         Qt6::Widgets
         Qt6::PrintSupport
         Qt6::Network
-        Qt6::WebEngineWidgets
-        Qt6::WebChannel
-        Qt6::WebSockets
         Qt6::DBus
         Qt6::Core5Compat
         QScintilla::QScintilla

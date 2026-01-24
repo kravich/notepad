@@ -12,9 +12,6 @@ find_package(Qt6
         Widgets
         PrintSupport
         Network
-        WebEngineWidgets
-        WebChannel
-        WebSockets
         DBus
         Core5Compat
         LinguistTools
@@ -50,9 +47,6 @@ target_link_libraries(ui-tests
         Qt6::Widgets
         Qt6::PrintSupport
         Qt6::Network
-        Qt6::WebEngineWidgets
-        Qt6::WebChannel
-        Qt6::WebSockets
         Qt6::DBus
         Qt6::Core5Compat
         QScintilla::QScintilla
