@@ -13,6 +13,7 @@ find_package(Qt6
         PrintSupport
         Network
         DBus
+        Xml
         Core5Compat
         LinguistTools
     REQUIRED
@@ -48,6 +49,7 @@ target_link_libraries(ui-tests
         Qt6::PrintSupport
         Qt6::Network
         Qt6::DBus
+        Qt6::Xml
         Qt6::Core5Compat
         QScintilla::QScintilla
 )

@@ -5,6 +5,9 @@
 
 #include "include/Search/searchstring.h"
 
+#include "include/EditorNS/lexerfactory.h"
+#include "include/EditorNS/scintillatheme.h"
+
 #include <QDir>
 #include <QEventLoop>
 #include <QMessageBox>
@@ -16,10 +19,24 @@
 namespace EditorNS
 {
 
+const QString defaultFontFamily = "Courier New,Monospace";  // Use Courier New if availiable, otherwise fallback to any monospace font
+const int defaultFontSizePt = 12;
+const double defaultLineHeightEm = 1.0;
+
 const int lineNumbersMarginIdx = 0;
 const int foldingMarginIdx = 1;
 
 const int foldingMarginWidthPx = 16;
+
+namespace
+{
+
+int PtToPx(int pt)
+{
+    return pt * 72 / 96;
+}
+
+}
 
 QQueue<QSharedPointer<Editor>> Editor::m_editorBuffer = QQueue<QSharedPointer<Editor>>();
 
@@ -207,7 +224,7 @@ void Editor::setLanguage(const Language *lang)
     m_currentLanguage = lang;
     setIndentationMode(lang);   // Refresh indentation settings
 
-    asyncSendMessageWithResult("C_CMD_SET_LANGUAGE", lang->mime.isEmpty() ? lang->mode : lang->mime);
+    refreshAppearance();
 
     emit currentLanguageChanged(m_currentLanguage->id, m_currentLanguage->name);
 }
@@ -546,11 +563,10 @@ void Editor::setEndOfLineSequence(const QString &newLineSequence)
 
 void Editor::setFont(QString fontFamily, int fontSize, double lineHeight)
 {
-    QMap<QString, QVariant> tmap;
-    tmap.insert("family", fontFamily == nullptr ? "" : fontFamily);
-    tmap.insert("size", QString::number(fontSize));
-    tmap.insert("lineHeight", QString::number(lineHeight, 'f', 2));
-    asyncSendMessageWithResult("C_CMD_SET_FONT", tmap);
+    m_currentFontFamily = fontFamily;
+    m_currentFontSizePt = fontSize;
+    m_currentLineHeightEm = lineHeight;
+    refreshAppearance();
 }
 
 void Editor::setLineNumbersVisible(bool visible)
@@ -585,23 +601,29 @@ Editor::Theme Editor::themeFromName(QString name)
     if (name == "default" || name.isEmpty())
         return Theme();
 
-    QFileInfo editorPath(Notepad::editorPath());
-    QDir bundledThemesDir(editorPath.absolutePath() + "/libs/codemirror/theme/");
+    QFileInfo appDataPathInfo(Notepad::appDataPath());
+    QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/");
 
-    if (bundledThemesDir.exists(name + ".css"))
-        return Theme(name, bundledThemesDir.filePath(name + ".css"));
+    if (bundledThemesDir.exists(name + ".xml"))
+        return Theme(name, bundledThemesDir.filePath(name + ".xml"));
 
     return Theme();
 }
 
 QList<Editor::Theme> Editor::themes()
 {
-    auto editorPath = QFileInfo(Notepad::editorPath());
-    QDir bundledThemesDir(editorPath.absolutePath() + "/libs/codemirror/theme/", "*.css");
+    auto appDataPathInfo = QFileInfo(Notepad::appDataPath());
+    QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/", "*.xml");
 
     QList<Theme> out;
     for (auto &&theme : bundledThemesDir.entryInfoList())
     {
+        if (theme.completeBaseName() == "Default")
+        {
+            // Do not include Default.xml into list
+            continue;
+        }
+
         out.append(Theme(theme.completeBaseName(), theme.filePath()));
     }
     return out;
@@ -609,7 +631,8 @@ QList<Editor::Theme> Editor::themes()
 
 void Editor::setTheme(Theme theme)
 {
-    sendMessage("C_CMD_SET_THEME", QVariantMap{{"name", theme.name}, {"path", theme.path}});
+    m_currentTheme = theme;
+    refreshAppearance();
 }
 
 QList<Editor::Selection> Editor::selections()
@@ -819,6 +842,186 @@ int Editor::replaceAllNoCheckpoint(const QString &string,
     }
 
     return count;
+}
+
+QFont StyleFont(QFont font, int fontStyle)
+{
+    font.setBold(fontStyle & FONT_STYLE_BOLD);
+    font.setItalic(fontStyle & FONT_STYLE_ITALIC);
+    font.setUnderline(fontStyle & FONT_STYLE_UNDERLINE);
+    return font;
+}
+
+void Editor::refreshAppearance()
+{
+    // Lexer part
+    QsciLexer *oldLexer = m_scintilla->lexer();
+
+    QsciLexer *currentLexer = LexerFactory::CreateLexerForId(m_scintilla, getLanguage()->id);
+    m_scintilla->setLexer(currentLexer);
+
+    if (oldLexer)
+    {
+        delete oldLexer;
+    }
+
+    // We expect that lexer will always be available
+    // If there is no language-specific lexer, default NullLexer will be used
+    assert(currentLexer);
+
+    // Font part
+    QString fontFamily = m_currentFontFamily;
+    int fontSizePt = m_currentFontSizePt;
+    double lineHeightEm = m_currentLineHeightEm;
+
+    if (fontFamily.isEmpty())
+    {
+        fontFamily = defaultFontFamily;
+    }
+
+    if (fontSizePt == 0)
+    {
+        fontSizePt = defaultFontSizePt;
+    }
+
+    if (lineHeightEm == 0.0)
+    {
+        lineHeightEm = defaultLineHeightEm;
+    }
+
+    QFont baseFont(fontFamily, fontSizePt);
+
+    if (fontFamily == defaultFontFamily)
+    {
+        baseFont.setStyleHint(QFont::TypeWriter);
+    }
+
+    double descentEm = lineHeightEm - 1.0;
+    int descentPx = PtToPx(round(fontSizePt * descentEm));
+
+    // Style part
+    Theme theme = m_currentTheme;
+
+    if (theme.name == "default")
+    {
+        theme.path = Notepad::appDataPath() + "themes/Default.xml";
+    }
+
+    ScintillaTheme scintillaTheme;
+
+    if (scintillaTheme.LoadFromFile(theme.path) < 0)
+    {
+        fprintf(stderr, "Failed to load theme %s\n", theme.name.toUtf8().data());
+        return;
+    }
+
+    // Reset everything to default in Scintilla (lexer itself is already in default state)
+    m_scintilla->setColor(QColor("black"));
+    m_scintilla->setPaper(QColor("white"));
+    m_scintilla->setCaretLineVisible(false);
+    m_scintilla->setCaretForegroundColor(QColor("black"));
+    m_scintilla->setCaretLineBackgroundColor(QColor("white"));
+    m_scintilla->resetFoldMarginColors();
+    m_scintilla->resetSelectionForegroundColor();
+    m_scintilla->resetSelectionBackgroundColor();
+
+    // Set common scintilla settings
+    m_scintilla->setFont(baseFont);
+    m_scintilla->setMarginsFont(baseFont);
+
+    currentLexer->setDefaultFont(baseFont);
+    currentLexer->setFont(baseFont, -1);
+
+    m_scintilla->setExtraDescent(descentPx);
+
+    // Initialize everything initially with default style
+    // If we have custom global styles for individual elements or lexer styles for current language,
+    // we will re-style everything at the next stages
+    if (scintillaTheme.defaultStyles.contains(globalStyleDefault))
+    {
+        const Style &style = scintillaTheme.defaultStyles[globalStyleDefault];
+
+        QFont font = StyleFont(baseFont, style.fontStyle);
+
+        m_scintilla->setColor(style.fgColor);
+        m_scintilla->setPaper(style.bgColor);
+        m_scintilla->setFont(font);
+
+        m_scintilla->setCaretForegroundColor(style.fgColor);
+        m_scintilla->setCaretLineBackgroundColor(style.bgColor);
+        m_scintilla->setMarginsFont(font);
+
+        // FIXME: Fold markers are colored wiht default style. How to set their color?
+
+        currentLexer->setDefaultColor(style.fgColor);
+        currentLexer->setDefaultPaper(style.bgColor);
+        currentLexer->setDefaultFont(font);
+
+        currentLexer->setColor(style.fgColor, -1);
+        currentLexer->setPaper(style.bgColor, -1);
+        currentLexer->setFont(font, -1);
+    }
+
+    // Style individual interface elements with global styles
+    for (const Style &style : scintillaTheme.defaultStyles)
+    {
+        if (style.name == globalStyleCaretColour)
+        {
+            m_scintilla->setCaretForegroundColor(style.fgColor);
+        }
+        else if (style.name == globalStyleCurrentLineBackgroundColour)
+        {
+            m_scintilla->setCaretLineBackgroundColor(style.bgColor);
+            m_scintilla->setCaretLineVisible(true);
+        }
+        else if (style.name == globalStyleLineNumberMargin)
+        {
+            m_scintilla->setMarginsForegroundColor(style.fgColor);
+            m_scintilla->setMarginsBackgroundColor(style.bgColor); // FIXME: Why it does not work with lineNumbersMarginIdx?
+        }
+        else if (style.name == globalStyleFoldMargin)
+        {
+            m_scintilla->setFoldMarginColors(style.fgColor, style.bgColor);
+        }
+        else if (style.name == globalStyleBraceHightlightStyle)
+        {
+            m_scintilla->setMatchedBraceForegroundColor(style.fgColor);
+            m_scintilla->setMatchedBraceBackgroundColor(style.bgColor);
+        }
+        else if (style.name == globalStyleBadBraceColour)
+        {
+            m_scintilla->setUnmatchedBraceForegroundColor(style.fgColor);
+            m_scintilla->setUnmatchedBraceBackgroundColor(style.bgColor);
+        }
+        else if (style.name == globalStyleSelectedTextColour)
+        {
+            m_scintilla->setSelectionBackgroundColor(style.bgColor);
+        }
+        else if (style.name == globalStyleIndentGuidelineStyle)
+        {
+            m_scintilla->setIndentationGuidesForegroundColor(style.fgColor);
+            m_scintilla->setIndentationGuidesBackgroundColor(style.bgColor);
+        }
+    }
+
+    // Style language tokens with lexer styles if they present
+    const QString languageId = getLanguage()->id;
+    const QString nppLanguageName = MapIdToNppLanguageName(languageId);
+
+    if (scintillaTheme.lexerStyles.contains(nppLanguageName))
+    {
+        for (const Style &style : scintillaTheme.lexerStyles[nppLanguageName])
+        {
+            QFont font = StyleFont(baseFont, style.fontStyle);
+
+            currentLexer->setColor(style.fgColor, style.styleId);
+            currentLexer->setPaper(style.bgColor, style.styleId);
+            currentLexer->setFont(font, style.styleId);
+        }
+    }
+
+    // Margins part
+    refreshMargins();
 }
 
 } //namespace EditorNS
