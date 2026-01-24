@@ -14,6 +14,11 @@
 namespace EditorNS
 {
 
+const int lineNumbersMarginIdx = 0;
+const int foldingMarginIdx = 1;
+
+const int foldingMarginWidthPx = 16;
+
 QQueue<QSharedPointer<Editor>> Editor::m_editorBuffer = QQueue<QSharedPointer<Editor>>();
 
 Editor::Editor(QWidget *parent) :
@@ -47,12 +52,14 @@ void Editor::fullConstructor(const Theme &theme)
     setLayout(m_layout);
 
     connect(m_scintilla, &CustomScintilla::zoomChanged, this, &Editor::zoomChanged);
+    connect(m_scintilla, &CustomScintilla::zoomChanged, this, &Editor::refreshMargins);
 
     connect(m_scintilla, &CustomScintilla::cursorPositionChanged, this, &Editor::requestDocumentInfo);
     connect(m_scintilla, &CustomScintilla::selectionChanged, this, &Editor::requestDocumentInfo);
     connect(m_scintilla, &CustomScintilla::textChanged, this, &Editor::requestDocumentInfo);
 
     connect(m_scintilla, &CustomScintilla::modificationChanged, this, [&]() { emit cleanChanged(isClean()); });
+    connect(m_scintilla, &CustomScintilla::linesChanged, this, &Editor::refreshMargins);
 
     connect(m_scintilla, &CustomScintilla::urlsDropped, this, &Editor::urlsDropped);
     connect(m_scintilla, &CustomScintilla::gotFocus, this, &Editor::gotFocus);
@@ -189,6 +196,25 @@ QString Editor::tabName() const
 void Editor::setTabName(const QString &name)
 {
     m_tabName = name;
+}
+
+void Editor::refreshMargins()
+{
+    m_scintilla->setMarginLineNumbers(lineNumbersMarginIdx, m_lineNumbersVisible);
+    m_scintilla->setFolding(m_lineNumbersVisible ? CustomScintilla::BoxedTreeFoldStyle : CustomScintilla::NoFoldStyle, foldingMarginIdx); // FIXME: Make folding a setting separate from line numbers
+
+    if (m_lineNumbersVisible)
+    {
+        QString lineNumbersMarginWidthString = QString(" ") + QString::number(m_scintilla->lines());
+
+        m_scintilla->setMarginWidth(lineNumbersMarginIdx, lineNumbersMarginWidthString);
+        m_scintilla->setMarginWidth(foldingMarginIdx, foldingMarginWidthPx);
+    }
+    else
+    {
+        m_scintilla->setMarginWidth(lineNumbersMarginIdx, 0);
+        m_scintilla->setMarginWidth(foldingMarginIdx, 0);
+    }
 }
 
 bool Editor::isClean()
@@ -580,7 +606,9 @@ void Editor::setFont(QString fontFamily, int fontSize, double lineHeight)
 
 void Editor::setLineNumbersVisible(bool visible)
 {
-    asyncSendMessageWithResult("C_CMD_SET_LINE_NUMBERS_VISIBLE", visible);
+    m_lineNumbersVisible = visible;
+
+    refreshMargins();
 }
 
 QTextCodec *Editor::codec() const

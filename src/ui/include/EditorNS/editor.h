@@ -347,6 +347,10 @@ private:
     bool m_customIndentationMode = false;
     const Language *m_currentLanguage = nullptr;
 
+    bool m_lineNumbersVisible = false;
+
+    void refreshMargins();
+
     bool m_forceModified = false;
 
     void fullConstructor(const Theme &theme);
