@@ -448,7 +448,7 @@ void Editor::removeBanner(QString objectName)
 
 void Editor::setLineWrap(const bool wrap)
 {
-    asyncSendMessageWithResult("C_CMD_SET_LINE_WRAP", wrap);
+    m_scintilla->setWrapMode(wrap ? CustomScintilla::WrapWord : CustomScintilla::WrapNone);
 }
 
 void Editor::setEOLVisible(const bool showeol)
