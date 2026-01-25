@@ -320,6 +320,8 @@ public:
     void moveCurrentLineUp();
     void moveCurrentLineDown();
 
+    void trimTrailingWhitespaces();
+
 private:
     friend class ::EditorTabWidget;
 

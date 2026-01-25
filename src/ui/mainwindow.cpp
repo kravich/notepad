@@ -2474,7 +2474,7 @@ void MainWindow::on_actionMove_Line_Down_triggered()
 
 void MainWindow::on_actionTrim_Trailing_Space_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_TRIM_TRAILING_SPACE");
+    currentEditor()->trimTrailingWhitespaces();
 }
 
 void MainWindow::on_actionTrim_Leading_Space_triggered()
