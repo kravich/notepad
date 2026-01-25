@@ -249,7 +249,6 @@ public:
      * @return a <line, column> pair.
      */
     QPair<int, int> cursorPosition();
-    QtPromise::QPromise<QPair<int, int>> cursorPositionP();
     void setCursorPosition(const int line, const int column);
     void setCursorPosition(const QPair<int, int> &position);
     void setCursorPosition(const Cursor &cursor);

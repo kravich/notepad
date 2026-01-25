@@ -565,15 +565,6 @@ void Editor::setMathEnabled(const bool enabled)
     asyncSendMessageWithResultP("C_CMD_ENABLE_MATH", enabled);
 }
 
-QtPromise::QPromise<QPair<int, int>> Editor::cursorPositionP()
-{
-    return asyncSendMessageWithResultP("C_FUN_GET_CURSOR")
-        .then([](QVariant v) {
-            QList<QVariant> cursor = v.toList();
-            return QPair<int, int>(cursor[0].toInt(), cursor[1].toInt());
-        });
-}
-
 void Editor::requestDocumentInfo()
 {
     asyncSendMessageWithResultP("C_CMD_GET_DOCUMENT_INFO");
