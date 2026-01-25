@@ -425,7 +425,7 @@ public slots:
      * @param pageLayout
      * @return
      */
-    QtPromise::QPromise<QByteArray> printToPdf(const QPageLayout &pageLayout = QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF()));
+    QByteArray printToPdf(const QPageLayout &pageLayout = QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF()));
 };
 
 } //namespace EditorNS
