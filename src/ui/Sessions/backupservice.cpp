@@ -24,8 +24,7 @@ void BackupService::executeBackup()
         WindowData wd;
         wd.ptr = wnd;
         wnd->topEditorContainer()->forEachEditor([&wd](int, int, EditorTabWidget *, QSharedPointer<Editor> ed) {
-            int gen = -1;
-            ed->getHistoryGeneration().wait().tap([&](int value) { gen = value; });
+            int gen = ed->getHistoryGeneration();
             wd.editors.push_back(std::make_pair(ed, gen));
             return true;
         });

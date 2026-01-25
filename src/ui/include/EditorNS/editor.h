@@ -203,7 +203,7 @@ public:
      * @brief Returns an integer that denotes the editor's history state. Making changes to
      *        the contents increments the integer while reverting changes decrements it again.
      */
-    Q_INVOKABLE QtPromise::QPromise<int> getHistoryGeneration();
+    Q_INVOKABLE int getHistoryGeneration();
 
         /**
      * @brief Set the language to use for the editor.

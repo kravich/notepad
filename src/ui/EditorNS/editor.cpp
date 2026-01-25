@@ -251,10 +251,9 @@ void Editor::markDirty()
     asyncSendMessageWithResult("C_CMD_MARK_DIRTY");
 }
 
-QtPromise::QPromise<int> Editor::getHistoryGeneration()
+int Editor::getHistoryGeneration()
 {
-    return asyncSendMessageWithResultP("C_FUN_GET_HISTORY_GENERATION")
-        .then([](QVariant v) { return v.toInt(); });
+    return asyncSendMessageWithResult("C_FUN_GET_HISTORY_GENERATION").get().toInt();
 }
 
 void Editor::setLanguage(const Language *lang)
