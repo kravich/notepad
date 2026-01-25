@@ -610,8 +610,7 @@ void Editor::setCursorPosition(const Cursor &cursor)
 
 void Editor::setSelection(int fromLine, int fromCol, int toLine, int toCol)
 {
-    QVariantList arg{fromLine, fromCol, toLine, toCol};
-    asyncSendMessageWithResult("C_CMD_SET_SELECTION", QVariant(arg));
+    m_scintilla->setSelection(fromLine, fromCol, toLine, toCol);
 }
 
 QPair<int, int> Editor::scrollPosition()
