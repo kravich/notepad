@@ -604,7 +604,7 @@ QPair<int, int> Editor::scrollPosition()
 
 void Editor::setScrollPosition(const int left, const int top)
 {
-    asyncSendMessageWithResultP("C_CMD_SET_SCROLL_POS", QVariantList{left, top});
+    asyncSendMessageWithResult("C_CMD_SET_SCROLL_POS", QVariantList{left, top});
 }
 
 void Editor::setScrollPosition(const QPair<int, int> &position)
