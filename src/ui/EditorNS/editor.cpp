@@ -593,7 +593,7 @@ void Editor::setCursorPosition(const Cursor &cursor)
 void Editor::setSelection(int fromLine, int fromCol, int toLine, int toCol)
 {
     QVariantList arg{fromLine, fromCol, toLine, toCol};
-    asyncSendMessageWithResultP("C_CMD_SET_SELECTION", QVariant(arg));
+    asyncSendMessageWithResult("C_CMD_SET_SELECTION", QVariant(arg));
 }
 
 QPair<int, int> Editor::scrollPosition()
