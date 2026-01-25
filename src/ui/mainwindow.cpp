@@ -2454,7 +2454,7 @@ void MainWindow::on_actionFind_in_Files_triggered()
 
 void MainWindow::on_actionDelete_Line_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_DELETE_LINE");
+    currentEditor()->deleteCurrentLine();
 }
 
 void MainWindow::on_actionDuplicate_Line_triggered()

@@ -315,6 +315,8 @@ public:
     void undo();
     void redo();
 
+    void deleteCurrentLine();
+
 private:
     friend class ::EditorTabWidget;
 

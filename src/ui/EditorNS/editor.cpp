@@ -729,4 +729,9 @@ void Editor::redo()
     m_scintilla->redo();
 }
 
+void Editor::deleteCurrentLine()
+{
+    m_scintilla->lineDelete();
+}
+
 } //namespace EditorNS
