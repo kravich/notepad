@@ -1981,42 +1981,42 @@ void MainWindow::checkIndentationMode(QSharedPointer<Editor> editor)
 
         if (found)
         {
-            editor->indentationModeP().then([=](Editor::IndentationMode curr) {
-                bool differentTabSpaces = detected.useTabs != curr.useTabs;
-                bool differentSpaceSize = detected.useTabs == false && curr.useTabs == false && detected.size != curr.size;
+            Editor::IndentationMode curr = editor->indentationMode();
 
-                if (differentTabSpaces || differentSpaceSize)
-                {
-                    // Show msg
-                    BannerIndentationDetected *banner = new BannerIndentationDetected(
-                        differentSpaceSize,
-                        detected,
-                        curr,
-                        this);
-                    banner->setObjectName("indentationdetected");
+            bool differentTabSpaces = detected.useTabs != curr.useTabs;
+            bool differentSpaceSize = detected.useTabs == false && curr.useTabs == false && detected.size != curr.size;
 
-                    editor->insertBanner(banner);
+            if (differentTabSpaces || differentSpaceSize)
+            {
+                // Show msg
+                BannerIndentationDetected *banner = new BannerIndentationDetected(
+                    differentSpaceSize,
+                    detected,
+                    curr,
+                    this);
+                banner->setObjectName("indentationdetected");
 
-                    connect(banner, &BannerIndentationDetected::useApplicationSettings, this, [=]() {
-                        editor->removeBanner(banner);
-                        editor->setFocus();
-                    });
+                editor->insertBanner(banner);
 
-                    connect(banner, &BannerIndentationDetected::useDocumentSettings, this, [=]() {
-                        editor->removeBanner(banner);
-                        if (detected.useTabs)
-                        {
-                            editor->setCustomIndentationMode(true);
-                        }
-                        else
-                        {
-                            editor->setCustomIndentationMode(detected.useTabs, detected.size);
-                        }
-                        ui->actionIndentation_Custom->setChecked(true);
-                        editor->setFocus();
-                    });
-                }
-            });
+                connect(banner, &BannerIndentationDetected::useApplicationSettings, this, [=]() {
+                    editor->removeBanner(banner);
+                    editor->setFocus();
+                });
+
+                connect(banner, &BannerIndentationDetected::useDocumentSettings, this, [=]() {
+                    editor->removeBanner(banner);
+                    if (detected.useTabs)
+                    {
+                        editor->setCustomIndentationMode(true);
+                    }
+                    else
+                    {
+                        editor->setCustomIndentationMode(detected.useTabs, detected.size);
+                    }
+                    ui->actionIndentation_Custom->setChecked(true);
+                    editor->setFocus();
+                });
+            }
         }
     });
 }

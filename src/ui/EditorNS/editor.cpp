@@ -332,17 +332,6 @@ Editor::IndentationMode Editor::indentationMode()
     return out;
 }
 
-QtPromise::QPromise<Editor::IndentationMode> Editor::indentationModeP()
-{
-    return asyncSendMessageWithResultP("C_FUN_GET_INDENTATION_MODE").then([](QVariant result) {
-        QVariantMap indent = result.toMap();
-        IndentationMode out;
-        out.useTabs = indent.value("useTabs", true).toBool();
-        out.size = indent.value("size", 4).toInt();
-        return out;
-    });
-}
-
 void Editor::setCustomIndentationMode(const bool useTabs, const int size)
 {
     m_customIndentationMode = true;

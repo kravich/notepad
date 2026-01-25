@@ -322,7 +322,6 @@ public:
      */
     QtPromise::QPromise<std::pair<IndentationMode, bool>> detectDocumentIndentation();
     Editor::IndentationMode indentationMode();
-    QtPromise::QPromise<IndentationMode> indentationModeP();
 
     void setSelection(int fromLine, int fromCol, int toLine, int toCol);
 
