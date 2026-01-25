@@ -861,4 +861,23 @@ void Editor::search(const QString &string,
     searchAndSelect(false, string, searchMode, forward, searchOptions);
 }
 
+void Editor::replace(const QString &string,
+                     SearchHelpers::SearchMode searchMode,
+                     bool forward,
+                     const SearchHelpers::SearchOptions &searchOptions,
+                     const QString &replacement)
+{
+    bool isFoundAndSelected = searchAndSelect(true, string, searchMode, forward, searchOptions);
+
+    if (!isFoundAndSelected)
+    {
+        isFoundAndSelected = searchAndSelect(false, string, searchMode, forward, searchOptions);
+    }
+
+    if (isFoundAndSelected)
+    {
+        m_scintilla->replace(replacement);
+    }
+}
+
 } //namespace EditorNS

@@ -136,7 +136,6 @@ void frmSearchReplace::replace(QString string, QString replacement, SearchHelper
 {
     if (!string.isEmpty())
     {
-        QString rawSearch = SearchString::format(string, searchMode, searchOptions);
         if (searchMode == SearchHelpers::SearchMode::SpecialChars)
         {
             replacement = SearchString::unescape(replacement);
@@ -149,13 +148,7 @@ void frmSearchReplace::replace(QString string, QString replacement, SearchHelper
             editor->setCursorPosition(0, 0);
         }
 
-        QList<QVariant> data = QList<QVariant>();
-        data.append(rawSearch);
-        data.append(regexModifiersFromSearchOptions(searchOptions));
-        data.append(forward);
-        data.append(replacement);
-        data.append(QString::number(static_cast<int>(searchMode)));
-        editor->sendMessage("C_FUN_REPLACE", QVariant::fromValue(data));
+        editor->replace(string, searchMode, forward, searchOptions, replacement);
     }
 }
 
