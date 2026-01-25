@@ -561,7 +561,7 @@ void Editor::setWhitespaceVisible(const bool showspace)
 
 void Editor::setMathEnabled(const bool enabled)
 {
-    asyncSendMessageWithResultP("C_CMD_ENABLE_MATH", enabled);
+    asyncSendMessageWithResult("C_CMD_ENABLE_MATH", enabled);
 }
 
 void Editor::requestDocumentInfo()
