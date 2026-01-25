@@ -1,7 +1,6 @@
 #include "include/docengine.h"
 
 #include "include/Sessions/persistentcache.h"
-#include "include/globals.h"
 #include "include/iconprovider.h"
 #include "include/mainwindow.h"
 #include "include/notepad.h"

@@ -3,7 +3,6 @@
 #include "include/Sessions/backupservice.h"
 #include "include/Sessions/persistentcache.h"
 #include "include/Sessions/sessions.h"
-#include "include/globals.h"
 #include "include/mainwindow.h"
 #include "include/notepad.h"
 #include "include/npsettings.h"
@@ -33,7 +32,7 @@ int main(int argc, char *argv[])
     __aet_timer.start();
     qDebug() << "Start-time benchmark started.";
 
-    printerrln("WARNING: Notepad is running in DEBUG mode.");
+    fprintf(stderr, "WARNING: Notepad is running in DEBUG mode.\n");
 #endif
 
     SingleApplication a(argc, argv);
