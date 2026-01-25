@@ -14,47 +14,10 @@
 #include <QVariant>
 #include <QWheelEvent>
 
-#include <functional>
-#include <future>
-
 class EditorTabWidget;
 
 namespace EditorNS
 {
-
-    /**
- * @brief An Object injectable into the javascript page, that allows
- *        the javascript code to send messages to an Editor object.
- *        It also allows the js instance to retrieve message data information.
- *
- * Note that this class is only needed for the current Editor
- * implementation, that uses QWebView.
- */
-class JsToCppProxy : public QObject
-{
-    Q_OBJECT
-
-private:
-    QVariant m_msgData;
-
-public:
-    JsToCppProxy(QObject *parent) :
-        QObject(parent)
-    {
-    }
-
-    Q_INVOKABLE void receiveMessage(QString msg, QVariant data) { emit messageReceived(msg, data); }
-
-signals:
-        /**
-     * @brief A JavaScript message has been received.
-     * @param msg Message type
-     * @param data Message data
-     */
-    void messageReceived(QString msg, QVariant data);
-
-    void messageReceivedByJs(QString msg, QVariant data);
-};
 
 /**
  * @brief Provides a QScintilla instance.
@@ -338,16 +301,6 @@ public:
 private:
     friend class ::EditorTabWidget;
 
-    struct AsyncReply
-    {
-        unsigned int id;
-        QString message;
-        std::shared_ptr<std::promise<QVariant>> value;
-        std::function<void(QVariant)> callback;
-    };
-
-    std::list<AsyncReply> asyncReplies;
-
         // These functions should only be used by EditorTabWidget to manage the tab's title. This works around
         // KDE's habit to automatically modify QTabWidget's tab titles to insert shortcut sequences (like &1).
     QString tabName() const;
@@ -356,7 +309,6 @@ private:
     static QQueue<QSharedPointer<Editor>> m_editorBuffer;
     QVBoxLayout *m_layout;
     CustomScintilla *m_scintilla;
-    JsToCppProxy *m_jsToCppProxy;
     QUrl m_filePath = QUrl();
     QString m_tabName;
     bool m_fileOnDiskChanged = false;
@@ -383,12 +335,7 @@ private:
     void incrementGeneration();
     int m_generation = 0;
 
-private slots:
-    void on_proxyMessageReceived(QString msg, QVariant data);
-
 signals:
-    void messageReceived(QString msg, QVariant data);
-    void asyncReplyReceived(unsigned int id, QString msg, QVariant data);
     void gotFocus();
     void urlsDropped(QList<QUrl> urls);
     void bannerRemoved(QWidget *banner);
@@ -404,25 +351,6 @@ signals:
     void currentLanguageChanged(QString id, QString name);
 
 public slots:
-
-        // [[deprecated]]
-    void sendMessage(const QString msg, const QVariant data);
-        // [[deprecated]]
-    void sendMessage(const QString msg);
-
-        /**
-     * @brief asyncSendMessageWithResult
-     * @param msg
-     * @param data
-     * @param callback When set, the result is returned asynchronously via the provided function.
-     *                 If set, you should NOT use the return value of this method.
-     * @return
-     */
-        // [[deprecated]]
-    std::shared_future<QVariant> asyncSendMessageWithResult(const QString msg, const QVariant data, std::function<void(QVariant)> callback = nullptr);
-        // [[deprecated]]
-    std::shared_future<QVariant> asyncSendMessageWithResult(const QString msg, std::function<void(QVariant)> callback = nullptr);
-
         /**
      * @brief Print the editor. As of Qt 5.11, it produces low-quality, non-vector graphics with big dimension.
      * @param printer

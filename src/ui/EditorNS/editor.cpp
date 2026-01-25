@@ -39,12 +39,6 @@ Editor::Editor(const Theme &theme, QWidget *parent) :
 
 void Editor::fullConstructor(const Theme &theme)
 {
-    m_jsToCppProxy = new JsToCppProxy(this);
-    connect(m_jsToCppProxy,
-            &JsToCppProxy::messageReceived,
-            this,
-            &Editor::on_proxyMessageReceived);
-
     m_scintilla = new CustomScintilla(this);
 
     m_layout = new QVBoxLayout(this);
@@ -112,49 +106,6 @@ void Editor::insertContextMenuAction(QAction *before, QAction *action)
 void Editor::invalidateEditorBuffer()
 {
     m_editorBuffer.clear();
-}
-
-void Editor::on_proxyMessageReceived(QString msg, QVariant data)
-{
-    QTimer::singleShot(0, [msg, data, this] {
-        emit messageReceived(msg, data);
-
-        if (msg.startsWith("[ASYNC_REPLY]"))
-        {
-            QRegExp rgx("\\[ID=(\\d+)\\]$");
-
-            if (rgx.indexIn(msg) == -1)
-                return;
-
-            if (rgx.captureCount() != 1)
-                return;
-
-            unsigned int id = rgx.capturedTexts()[1].toInt();
-
-                // Look into the list of callbacks
-            for (auto it = this->asyncReplies.begin(); it != this->asyncReplies.end(); ++it)
-            {
-                if (it->id == id)
-                {
-                    AsyncReply r = *it;
-                    if (r.value)
-                    {
-                        r.value->set_value(data);
-                    }
-                    this->asyncReplies.erase(it);
-
-                    if (r.callback != nullptr)
-                    {
-                        QTimer::singleShot(0, [r, data] { r.callback(data); });
-                    }
-
-                    emit asyncReplyReceived(r.id, r.message, data);
-
-                    break;
-                }
-            }
-        }
-    });
 }
 
 void Editor::setFocus()
@@ -420,55 +371,6 @@ bool Editor::fileOnDiskChanged() const
 void Editor::setFileOnDiskChanged(bool fileOnDiskChanged)
 {
     m_fileOnDiskChanged = fileOnDiskChanged;
-}
-
-void Editor::sendMessage(const QString msg, const QVariant data)
-{
-#ifdef QT_DEBUG
-    qDebug() << "Legacy message " << msg << " sent.";
-#endif
-
-    emit m_jsToCppProxy->messageReceivedByJs(msg, data);
-}
-
-void Editor::sendMessage(const QString msg)
-{
-    sendMessage(msg, 0);
-}
-
-unsigned int messageIdentifier = 0;
-
-std::shared_future<QVariant> Editor::asyncSendMessageWithResult(const QString msg, const QVariant data, std::function<void(QVariant)> callback)
-{
-    unsigned int currentMsgIdentifier = ++messageIdentifier;
-
-    std::shared_ptr<std::promise<QVariant>> resultPromise = std::make_shared<std::promise<QVariant>>();
-
-    AsyncReply asyncmsg;
-    asyncmsg.id = currentMsgIdentifier;
-    asyncmsg.message = msg;
-    asyncmsg.value = resultPromise;
-    asyncmsg.callback = callback;
-    this->asyncReplies.push_back((asyncmsg));
-
-    QString message_id = "[ASYNC_REQUEST]" + msg + "[ID=" + QString::number(currentMsgIdentifier) + "]";
-
-    this->sendMessage(message_id, data);
-
-    std::shared_future<QVariant> fut = resultPromise->get_future().share();
-
-    while (fut.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
-    {
-        QCoreApplication::processEvents(QEventLoop::AllEvents);
-        QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
-    }
-
-    return fut;
-}
-
-std::shared_future<QVariant> Editor::asyncSendMessageWithResult(const QString msg, std::function<void(QVariant)> callback)
-{
-    return this->asyncSendMessageWithResult(msg, 0, callback);
 }
 
 void Editor::setZoomFactor(int factor)
