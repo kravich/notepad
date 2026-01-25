@@ -247,8 +247,8 @@ private:
      * @param editor
      * @return fulfilled if successful, rejected otherwise
      */
-    QtPromise::QPromise<void> read(QFile *file, QSharedPointer<Editor> editor);
-    QtPromise::QPromise<void> read(QFile *file, QSharedPointer<Editor> editor, QTextCodec *codec, bool bom);
+    int read(QFile *file, QSharedPointer<Editor> editor);
+    int read(QFile *file, QSharedPointer<Editor> editor, QTextCodec *codec, bool bom);
     // FIXME Separate from reload
 
     /**

@@ -73,20 +73,20 @@ DocEngine::DecodedText DocEngine::readToString(QFile *file, QTextCodec *codec, b
     return decoded;
 }
 
-QtPromise::QPromise<void> DocEngine::read(QFile *file, QSharedPointer<Editor> editor)
+int DocEngine::read(QFile *file, QSharedPointer<Editor> editor)
 {
     return read(file, editor, nullptr, false);
 }
 
-QtPromise::QPromise<void> DocEngine::read(QFile *file, QSharedPointer<Editor> editor, QTextCodec *codec, bool bom)
+int DocEngine::read(QFile *file, QSharedPointer<Editor> editor, QTextCodec *codec, bool bom)
 {
     if (!editor)
-        return QtPromise::QPromise<void>::reject(0);
+        return -1;   // FIXME: Use actual error code
 
     DecodedText decoded = readToString(file, codec, bom);
 
     if (decoded.error)
-        return QtPromise::QPromise<void>::reject(0);
+        return -1;  // FIXME: Use actual error code
 
     editor->setCodec(decoded.codec);
     editor->setBom(decoded.bom);
@@ -102,7 +102,7 @@ QtPromise::QPromise<void> DocEngine::read(QFile *file, QSharedPointer<Editor> ed
     editor->asyncSendMessageWithResult("C_CMD_CLEAR_HISTORY");
     editor->markClean();
 
-    return QtPromise::QPromise<void>::resolve();
+    return 0;
 }
 
 int showFileSizeDialog(const QString docName, long long fileSize, bool multipleFiles)
@@ -310,9 +310,9 @@ QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Edito
                 QFile file(localFileName);
                 if (file.exists())
                 {
-                    QtPromise::QPromise<void> readResult = this->read(&file, editor, codec, bom).wait();
+                    int readResult = this->read(&file, editor, codec, bom);
 
-                    while (readResult.isRejected())
+                    while (readResult < 0)
                     {
                         // Handle error
                         QMessageBox msgBox;
@@ -326,7 +326,7 @@ QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Edito
                         if (ret == QMessageBox::Retry)
                         {
                             // Retry
-                            readResult = this->read(&file, editor, codec, bom).wait();
+                            readResult = this->read(&file, editor, codec, bom);
                         }
                         else if (ret == QMessageBox::Ignore)
                         {
@@ -514,9 +514,9 @@ QtPromise::QPromise<void> DocEngine::loadDocuments(const DocEngine::DocumentLoad
                QFile file(localFileName);
                if (file.exists())
                {
-                   QtPromise::QPromise<void> readResult = this->read(&file, editor, codec, bom).wait(); // FIXME To async!
+                   int readResult = this->read(&file, editor, codec, bom);
 
-                   while (readResult.isRejected())
+                   while (readResult < 0)
                    {
                 // Handle error
                        QMessageBox msgBox;
@@ -535,7 +535,7 @@ QtPromise::QPromise<void> DocEngine::loadDocuments(const DocEngine::DocumentLoad
                        else if (ret == QMessageBox::Retry)
                        {
                     // Retry
-                           readResult = this->read(&file, editor, codec, bom).wait(); // FIXME To async!
+                           readResult = this->read(&file, editor, codec, bom);
                        }
                        else if (ret == QMessageBox::Ignore)
                        {
