@@ -1447,12 +1447,11 @@ void MainWindow::refreshEditorUiInfo(QSharedPointer<Editor> editor)
     }
 
     // Enable / disable menus
-    editor->isCleanP().then([=](bool isClean) {
-        QUrl fileName = editor->filePath();
-        ui->actionRename->setEnabled(!fileName.isEmpty());
-        ui->actionMove_to_New_Window->setEnabled(isClean);
-        ui->actionOpen_in_New_Window->setEnabled(isClean);
-    });
+    bool isClean = editor->isClean();
+    QUrl fileName = editor->filePath();
+    ui->actionRename->setEnabled(!fileName.isEmpty());
+    ui->actionMove_to_New_Window->setEnabled(isClean);
+    ui->actionOpen_in_New_Window->setEnabled(isClean);
 
     bool allowReloading = !editor->filePath().isEmpty();
     ui->actionReload_File_Interpreted_As->setEnabled(allowReloading);

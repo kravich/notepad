@@ -306,8 +306,7 @@ bool saveSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QStr
         for (int j = 0; j < tabCount; j++)
         {
             auto editor = tabWidget->editor(j);
-            bool isClean = true;
-            editor->isCleanP().wait().tap([&](bool _isClean) { isClean = _isClean; });
+            bool isClean = editor->isClean();
             bool isOrphan = editor->filePath().isEmpty();
             Editor::IndentationMode indentInfo = editor->indentationMode();
 
@@ -499,7 +498,7 @@ void loadSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QStr
                                       {
                             // We need to trigger a final call to MainWindow::refreshEditorUiInfo to display the correct info
                             // on start-up. The easiest way is to emit a cleanChanged() event.
-                                          editor->isCleanP().then([=](bool isClean) { emit editor->cleanChanged(isClean); });
+                                          emit editor->cleanChanged(editor->isClean());
                                       }
                                   })
                                   .executeInBackground();

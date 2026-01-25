@@ -235,12 +235,6 @@ void Editor::setTabName(const QString &name)
     m_tabName = name;
 }
 
-QtPromise::QPromise<bool> Editor::isCleanP()
-{
-    return asyncSendMessageWithResultP("C_FUN_IS_CLEAN", QVariant(0))
-        .then([](QVariant v) { return v.toBool(); });
-}
-
 bool Editor::isClean()
 {
     QVariant data(0); // avoid crash on Mac OS X, see issue #702

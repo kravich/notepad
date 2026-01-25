@@ -195,8 +195,6 @@ public:
     void removeBanner(QWidget *banner);
     void removeBanner(QString objectName);
 
-        // Lower-level message wrappers:
-    QtPromise::QPromise<bool> isCleanP();
     Q_INVOKABLE bool isClean();
     Q_INVOKABLE QtPromise::QPromise<void> markClean();
     Q_INVOKABLE QtPromise::QPromise<void> markDirty();
