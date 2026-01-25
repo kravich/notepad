@@ -322,6 +322,7 @@ public:
 
     void trimTrailingWhitespaces();
     void trimLeadingWhitespaces();
+    void trimLeadingAndTrailingWhitespaces();
 
 private:
     friend class ::EditorTabWidget;
