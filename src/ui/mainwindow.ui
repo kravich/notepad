@@ -641,65 +641,6 @@
     <string>&amp;Open in a New Window</string>
    </property>
   </action>
-  <action name="action_Start_Recording">
-   <property name="text">
-    <string>&amp;Start Recording</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="action_Stop_Recording">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Stop Recording</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="action_Playback">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Playback</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionSave_Currently_Recorded_Macro">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>Save Currently Recorded Macro</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionRun_a_Macro_Multiple_Times">
-   <property name="text">
-    <string>Run a Macro Multiple Times...</string>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-  </action>
-  <action name="actionTrim_Trailing_and_save">
-   <property name="text">
-    <string>Trim Trailing and save</string>
-   </property>
-  </action>
-  <action name="actionModify_Shortcut_Delete_Macro">
-   <property name="text">
-    <string>Modify Shortcut/Delete Macro...</string>
-   </property>
-  </action>
   <action name="actionUPPERCASE">
    <property name="text">
     <string>&amp;UPPERCASE</string>
@@ -739,46 +680,6 @@
   <action name="actionRun">
    <property name="text">
     <string>&amp;Run...</string>
-   </property>
-  </action>
-  <action name="actionLaunch_in_Firefox">
-   <property name="text">
-    <string>Launch in Firefox</string>
-   </property>
-  </action>
-  <action name="actionLaunch_in_Chromium">
-   <property name="text">
-    <string>Launch in Chromium</string>
-   </property>
-  </action>
-  <action name="actionGet_php_help">
-   <property name="text">
-    <string>Get PHP help</string>
-   </property>
-  </action>
-  <action name="actionGoogle_Search">
-   <property name="text">
-    <string>Google Search</string>
-   </property>
-  </action>
-  <action name="actionWikipedia_Search">
-   <property name="text">
-    <string>Wikipedia Search</string>
-   </property>
-  </action>
-  <action name="actionOpen_file">
-   <property name="text">
-    <string>Open file(s)</string>
-   </property>
-  </action>
-  <action name="actionOpen_in_another_window">
-   <property name="text">
-    <string>Open file(s) in a new window</string>
-   </property>
-  </action>
-  <action name="actionModify_Shortcut_Delete_Command">
-   <property name="text">
-    <string>Modify Shortcut / Delete Command...</string>
    </property>
   </action>
   <action name="actionPreferences">
@@ -875,11 +776,6 @@
   <action name="actionInterpret_As">
    <property name="text">
     <string>I&amp;nterpret as...</string>
-   </property>
-  </action>
-  <action name="actionLaunch_in_Chrome">
-   <property name="text">
-    <string>Launch in Chrome</string>
    </property>
   </action>
   <action name="actionOpen_a_New_Window">

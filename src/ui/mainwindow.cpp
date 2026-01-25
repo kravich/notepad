@@ -318,13 +318,6 @@ void MainWindow::loadIcons()
     // '?' menu
     ui->actionAbout_Qt->setIcon(IconProvider::fromTheme("help-about"));
     ui->actionAbout_Notepad->setIcon(IconProvider::fromTheme("notepad"));
-
-    // Macros in toolbar
-    ui->action_Start_Recording->setIcon(IconProvider::fromTheme("media-record"));
-    ui->action_Stop_Recording->setIcon(IconProvider::fromTheme("media-playback-stop"));
-    ui->action_Playback->setIcon(IconProvider::fromTheme("media-playback-start"));
-    ui->actionRun_a_Macro_Multiple_Times->setIcon(IconProvider::fromTheme("media-seek-forward"));
-    ui->actionSave_Currently_Recorded_Macro->setIcon(IconProvider::fromTheme("document-save-as"));
 }
 
 void MainWindow::configureStatusBar()
@@ -2586,38 +2579,6 @@ void MainWindow::on_actionMove_to_New_Window_triggered()
         MainWindow *b = new MainWindow(args, 0);
         b->show();
     }
-}
-
-void MainWindow::on_actionOpen_file_triggered()
-{
-    currentWordOrSelections().then([=](QStringList terms) {
-        if (terms.isEmpty())
-            return;
-
-        QList<QUrl> urls;
-        for (QString term : terms)
-        {
-            urls.append(QUrl::fromLocalFile(term));
-        }
-
-        m_docEngine->getDocumentLoader()
-            .setUrls(urls)
-            .setTabWidget(m_topEditorContainer->currentTabWidget())
-            .execute();
-    });
-}
-
-void MainWindow::on_actionOpen_in_another_window_triggered()
-{
-    currentWordOrSelections().then([=](QStringList terms) {
-        if (!terms.isEmpty())
-        {
-            terms.prepend(QApplication::arguments().first());
-
-            MainWindow *b = new MainWindow(terms, 0);
-            b->show();
-        }
-    });
 }
 
 void MainWindow::on_tabBarDoubleClicked(EditorTabWidget *tabWidget, int tab)
