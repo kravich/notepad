@@ -197,7 +197,7 @@ public:
 
     Q_INVOKABLE bool isClean();
     Q_INVOKABLE void markClean();
-    Q_INVOKABLE QtPromise::QPromise<void> markDirty();
+    Q_INVOKABLE void markDirty();
 
         /**
      * @brief Returns an integer that denotes the editor's history state. Making changes to

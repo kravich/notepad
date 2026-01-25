@@ -246,9 +246,9 @@ void Editor::markClean()
     asyncSendMessageWithResult("C_CMD_MARK_CLEAN");
 }
 
-QtPromise::QPromise<void> Editor::markDirty()
+void Editor::markDirty()
 {
-    return asyncSendMessageWithResultP("C_CMD_MARK_DIRTY").then([]() {}).wait(); // FIXME Remove
+    asyncSendMessageWithResult("C_CMD_MARK_DIRTY");
 }
 
 QtPromise::QPromise<int> Editor::getHistoryGeneration()
