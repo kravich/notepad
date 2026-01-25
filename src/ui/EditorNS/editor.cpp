@@ -546,7 +546,7 @@ void Editor::removeBanner(QString objectName)
 
 void Editor::setLineWrap(const bool wrap)
 {
-    asyncSendMessageWithResultP("C_CMD_SET_LINE_WRAP", wrap);
+    asyncSendMessageWithResult("C_CMD_SET_LINE_WRAP", wrap);
 }
 
 void Editor::setEOLVisible(const bool showeol)
