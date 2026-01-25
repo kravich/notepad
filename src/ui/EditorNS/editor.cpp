@@ -782,7 +782,7 @@ QByteArray Editor::printToPdf(const QPageLayout &pageLayout)
 
 int Editor::lineCount()
 {
-    return asyncSendMessageWithResult("C_FUN_GET_LINE_COUNT").get().toInt();
+    return m_scintilla->lines();
 }
 
 void Editor::selectAll()
