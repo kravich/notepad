@@ -276,9 +276,6 @@ private:
     void convertEditorEncoding(QSharedPointer<Editor> editor, QTextCodec *codec, bool bom);
     void toggleOverwrite();
     void checkIndentationMode(QSharedPointer<Editor> editor);
-    QtPromise::QPromise<QStringList> currentWordOrSelections();
-    QtPromise::QPromise<QString> currentWordOrSelection();
-    void currentWordOnlineSearch(const QString &searchUrl);
 
     /**
      * @brief Attempts to open a file from the recent history. Prompts the user if the file does not exist and

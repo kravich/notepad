@@ -2474,47 +2474,6 @@ void MainWindow::on_actionLaunch_in_Chrome_triggered()
     }
 }
 */
-QtPromise::QPromise<QStringList> MainWindow::currentWordOrSelections()
-{
-    auto editor = currentEditor();
-    return editor->selectedTexts().then([=](QStringList selection) {
-        if (selection.isEmpty() || selection.first().isEmpty())
-        {
-            return editor->getCurrentWord().then([](QString word) {
-                return QStringList(word);
-            });
-        }
-        else
-        {
-            return QtPromise::QPromise<QStringList>::resolve(selection);
-        }
-    });
-}
-
-QtPromise::QPromise<QString> MainWindow::currentWordOrSelection()
-{
-    return currentWordOrSelections().then([=](QStringList terms) {
-        if (terms.isEmpty())
-        {
-            return QString();
-        }
-        else
-        {
-            return terms.first();
-        }
-    });
-}
-
-void MainWindow::currentWordOnlineSearch(const QString &searchUrl)
-{
-    currentWordOrSelection().then([=](QString term) {
-        if (!term.isNull() && !term.isEmpty())
-        {
-            QUrl phpHelp = QUrl(searchUrl.arg(QString(QUrl::toPercentEncoding(term))));
-            QDesktopServices::openUrl(phpHelp);
-        }
-    });
-}
 
 void MainWindow::openRecentFileEntry(QUrl url)
 {
