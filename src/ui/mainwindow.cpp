@@ -2464,12 +2464,12 @@ void MainWindow::on_actionDuplicate_Line_triggered()
 
 void MainWindow::on_actionMove_Line_Up_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_MOVE_LINE_UP");
+    currentEditor()->moveCurrentLineUp();
 }
 
 void MainWindow::on_actionMove_Line_Down_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_MOVE_LINE_DOWN");
+    currentEditor()->moveCurrentLineDown();
 }
 
 void MainWindow::on_actionTrim_Trailing_Space_triggered()

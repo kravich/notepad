@@ -317,6 +317,8 @@ public:
 
     void deleteCurrentLine();
     void duplicateCurrentLine();
+    void moveCurrentLineUp();
+    void moveCurrentLineDown();
 
 private:
     friend class ::EditorTabWidget;

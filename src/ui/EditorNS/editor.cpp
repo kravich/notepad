@@ -739,4 +739,14 @@ void Editor::duplicateCurrentLine()
     m_scintilla->lineDuplicate();
 }
 
+void Editor::moveCurrentLineUp()
+{
+    m_scintilla->moveSelectedLinesUp();
+}
+
+void Editor::moveCurrentLineDown()
+{
+    m_scintilla->moveSelectedLinesDown();
+}
+
 } //namespace EditorNS
