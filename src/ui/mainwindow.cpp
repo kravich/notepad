@@ -2459,7 +2459,7 @@ void MainWindow::on_actionDelete_Line_triggered()
 
 void MainWindow::on_actionDuplicate_Line_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_DUPLICATE_LINE");
+    currentEditor()->duplicateCurrentLine();
 }
 
 void MainWindow::on_actionMove_Line_Up_triggered()

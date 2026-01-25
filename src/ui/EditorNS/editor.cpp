@@ -734,4 +734,9 @@ void Editor::deleteCurrentLine()
     m_scintilla->lineDelete();
 }
 
+void Editor::duplicateCurrentLine()
+{
+    m_scintilla->lineDuplicate();
+}
+
 } //namespace EditorNS

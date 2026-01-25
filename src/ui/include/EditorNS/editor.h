@@ -316,6 +316,7 @@ public:
     void redo();
 
     void deleteCurrentLine();
+    void duplicateCurrentLine();
 
 private:
     friend class ::EditorTabWidget;
