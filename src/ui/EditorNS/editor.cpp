@@ -787,4 +787,20 @@ void Editor::convertTabsToSpaces()
     m_scintilla->endUndoAction();
 }
 
+void Editor::convertAllSpacesToTabs()
+{
+    IndentationMode indentation = indentationMode();
+
+    QString regex = QString(" ").repeated(indentation.size);
+
+    m_scintilla->beginUndoAction();
+    replaceAllNoCheckpoint(regex, SearchHelpers::SearchMode::Regex, SearchHelpers::SearchOptions(), "\t");
+    m_scintilla->endUndoAction();
+}
+
+void Editor::convertLeadingSpacesToTabs()
+{
+    fprintf(stderr, "FIXME: Implement Editor::convertLeadingSpacesToTabs()\n");
+}
+
 } //namespace EditorNS

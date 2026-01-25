@@ -249,6 +249,9 @@ void MainWindow::configureUserInterface()
 
     ui->actionEOL_to_Space->setEnabled(false);
     ui->actionEOL_to_Space->setText(ui->actionEOL_to_Space->text() + " (Not implemented)");
+
+    ui->actionSpace_to_TAB_Leading->setEnabled(false);
+    ui->actionSpace_to_TAB_Leading->setText(ui->actionSpace_to_TAB_Leading->text() + " (Not implemented)");
 }
 
 void MainWindow::restoreWindowSettings()
@@ -2502,12 +2505,12 @@ void MainWindow::on_actionTAB_to_Space_triggered()
 
 void MainWindow::on_actionSpace_to_TAB_All_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_SPACE_TO_TAB_ALL");
+    currentEditor()->convertAllSpacesToTabs();
 }
 
 void MainWindow::on_actionSpace_to_TAB_Leading_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_SPACE_TO_TAB_LEADING");
+    currentEditor()->convertLeadingSpacesToTabs();
 }
 
 void MainWindow::on_actionGo_to_Line_triggered()

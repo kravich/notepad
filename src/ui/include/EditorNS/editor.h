@@ -326,6 +326,8 @@ public:
 
     void convertEolToSpace();
     void convertTabsToSpaces();
+    void convertAllSpacesToTabs();
+    void convertLeadingSpacesToTabs();
 
 private:
     friend class ::EditorTabWidget;
