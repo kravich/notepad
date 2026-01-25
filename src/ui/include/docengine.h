@@ -139,10 +139,10 @@ public:
         /**
          * @brief execute Runs the load operation.
          */
-        QtPromise::QPromise<void> execute()
+        void execute()
         {
             Q_ASSERT(tabWidget != nullptr);
-            return docEngine.loadDocuments(*this);
+            docEngine.loadDocuments(*this);
         }
 
         QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> executeInBackground()
@@ -255,7 +255,7 @@ private:
      * @brief loadDocuments Responsible for loading or reloading a number of text files.
      * @param docLoader Contains parameters for document loading. See DocumentLoader class for info.
      */
-    QtPromise::QPromise<void> loadDocuments(const DocumentLoader &docLoader);
+    void loadDocuments(const DocumentLoader &docLoader);
 
     /**
      * @brief Loads documents in background. Experimental API that needs to be integrated
