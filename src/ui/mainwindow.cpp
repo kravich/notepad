@@ -2497,7 +2497,7 @@ void MainWindow::on_actionEOL_to_Space_triggered()
 
 void MainWindow::on_actionTAB_to_Space_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_TAB_TO_SPACE");
+    currentEditor()->convertTabsToSpaces();
 }
 
 void MainWindow::on_actionSpace_to_TAB_All_triggered()

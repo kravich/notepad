@@ -776,4 +776,15 @@ void Editor::convertEolToSpace()
     fprintf(stderr, "FIXME: Implement Editor::convertEolToSpace()\n");
 }
 
+void Editor::convertTabsToSpaces()
+{
+    IndentationMode indentation = indentationMode();
+
+    QString spacesReplacement = QString(" ").repeated(indentation.size);
+
+    m_scintilla->beginUndoAction();
+    replaceAllNoCheckpoint("\\t", SearchHelpers::SearchMode::Regex, SearchHelpers::SearchOptions(), spacesReplacement);
+    m_scintilla->endUndoAction();
+}
+
 } //namespace EditorNS
