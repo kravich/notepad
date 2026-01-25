@@ -2612,14 +2612,13 @@ void MainWindow::on_actionGo_to_Line_triggered()
 {
     auto editor = currentEditor();
     int currentLine = editor->cursorPosition().first;
-    editor->lineCount().then([=](int lines) {
-        frmLineNumberChooser *frm = new frmLineNumberChooser(1, lines, currentLine + 1, this);
-        if (frm->exec() == QDialog::Accepted)
-        {
-            int line = frm->value();
-            editor->setSelection(line - 1, 0, line - 1, 0);
-        }
-    });
+    int lines = editor->lineCount();
+    frmLineNumberChooser *frm = new frmLineNumberChooser(1, lines, currentLine + 1, this);
+    if (frm->exec() == QDialog::Accepted)
+    {
+        int line = frm->value();
+        editor->setSelection(line - 1, 0, line - 1, 0);
+    }
 }
 
 void MainWindow::on_actionInstall_Extension_triggered()

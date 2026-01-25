@@ -11,7 +11,6 @@
 #include <QVBoxLayout>
 #include <QVariant>
 #include <QWheelEvent>
-#include <QtPromise>
 
 #include <functional>
 #include <future>
@@ -324,7 +323,7 @@ public:
 
     void setSelection(int fromLine, int fromCol, int toLine, int toCol);
 
-    QtPromise::QPromise<int> lineCount();
+    int lineCount();
 
 private:
     friend class ::EditorTabWidget;

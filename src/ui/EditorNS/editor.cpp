@@ -792,9 +792,8 @@ QByteArray Editor::printToPdf(const QPageLayout &pageLayout)
     return pdfData;
 }
 
-QtPromise::QPromise<int> Editor::lineCount()
+int Editor::lineCount()
 {
-    return asyncSendMessageWithResultP("C_FUN_GET_LINE_COUNT")
-        .then([](QVariant v) { return v.toInt(); });
+    return asyncSendMessageWithResult("C_FUN_GET_LINE_COUNT").get().toInt();
 }
 } //namespace EditorNS
