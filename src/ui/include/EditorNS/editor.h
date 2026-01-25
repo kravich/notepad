@@ -333,6 +333,7 @@ public:
 
     void search(const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions);
     void replace(const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions, const QString &replacement);
+    int replaceAll(const QString &string, SearchHelpers::SearchMode searchMode, const SearchHelpers::SearchOptions &searchOptions, const QString &replacement);
 
 private:
     friend class ::EditorTabWidget;
@@ -377,6 +378,7 @@ private:
     void setIndentationMode(const Language *);
 
     bool searchAndSelect(bool inSelection, const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions);
+    int replaceAllNoCheckpoint(const QString &string, SearchHelpers::SearchMode searchMode, const SearchHelpers::SearchOptions &searchOptions, const QString &replacement);
 
     void incrementGeneration();
     int m_generation = 0;

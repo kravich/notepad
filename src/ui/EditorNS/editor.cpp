@@ -876,4 +876,32 @@ void Editor::replace(const QString &string,
     }
 }
 
+int Editor::replaceAll(const QString &string,
+                       SearchHelpers::SearchMode searchMode,
+                       const SearchHelpers::SearchOptions &searchOptions,
+                       const QString &replacement)
+{
+    m_scintilla->beginUndoAction();
+    int count = replaceAllNoCheckpoint(string, searchMode, searchOptions, replacement);
+    m_scintilla->endUndoAction();
+
+    return count;
+}
+
+int Editor::replaceAllNoCheckpoint(const QString &string,
+                                   SearchHelpers::SearchMode searchMode,
+                                   const SearchHelpers::SearchOptions &searchOptions,
+                                   const QString &replacement)
+{
+    int count = 0;
+
+    while (searchAndSelect(false, string, searchMode, true, searchOptions))
+    {
+        m_scintilla->replace(replacement);
+        count++;
+    }
+
+    return count;
+}
+
 } //namespace EditorNS

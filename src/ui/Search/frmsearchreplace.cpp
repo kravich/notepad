@@ -154,19 +154,12 @@ void frmSearchReplace::replace(QString string, QString replacement, SearchHelper
 
 int frmSearchReplace::replaceAll(QString string, QString replacement, SearchHelpers::SearchMode searchMode, SearchHelpers::SearchOptions searchOptions)
 {
-    QString rawSearch = SearchString::format(string, searchMode, searchOptions);
     if (searchMode == SearchHelpers::SearchMode::SpecialChars)
     {
         replacement = SearchString::unescape(replacement);
     }
 
-    QList<QVariant> data = QList<QVariant>();
-    data.append(rawSearch);
-    data.append(regexModifiersFromSearchOptions(searchOptions));
-    data.append(replacement);
-    data.append(QString::number(static_cast<int>(searchMode)));
-    QVariant count = currentEditor()->asyncSendMessageWithResult("C_FUN_REPLACE_ALL", QVariant::fromValue(data)).get();
-    return count.toInt();
+    return currentEditor()->replaceAll(string, searchMode, searchOptions, replacement);
 }
 
 int frmSearchReplace::selectAll(QString string, SearchHelpers::SearchMode searchMode, SearchHelpers::SearchOptions searchOptions)
