@@ -363,8 +363,8 @@ private:
 
     void fullConstructor(const Theme &theme);
 
-    QtPromise::QPromise<void> setIndentationMode(const bool useTabs, const int size);
-    QtPromise::QPromise<void> setIndentationMode(const Language *);
+    void setIndentationMode(const bool useTabs, const int size);
+    void setIndentationMode(const Language *);
 
 private slots:
     void on_proxyMessageReceived(QString msg, QVariant data);

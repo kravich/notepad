@@ -309,20 +309,18 @@ void Editor::setLanguageFromFilePath()
     setLanguageFromFilePath(filePath().toString());
 }
 
-QtPromise::QPromise<void> Editor::setIndentationMode(const Language *lang)
+void Editor::setIndentationMode(const Language *lang)
 {
     const auto &s = NpSettings::getInstance().Languages;
     const bool useDefaults = s.getUseDefaultSettings(lang->id);
     const auto &langId = useDefaults ? "default" : lang->id;
 
-    return setIndentationMode(!s.getIndentWithSpaces(langId), s.getTabSize(langId));
+    setIndentationMode(!s.getIndentWithSpaces(langId), s.getTabSize(langId));
 }
 
-QtPromise::QPromise<void> Editor::setIndentationMode(const bool useTabs, const int size)
+void Editor::setIndentationMode(const bool useTabs, const int size)
 {
-    return asyncSendMessageWithResultP("C_CMD_SET_INDENTATION_MODE",
-                                       QVariantMap{{"useTabs", useTabs}, {"size", size}})
-        .then([]() {});
+    asyncSendMessageWithResult("C_CMD_SET_INDENTATION_MODE", QVariantMap{{"useTabs", useTabs}, {"size", size}});
 }
 
 Editor::IndentationMode Editor::indentationMode()
