@@ -12,8 +12,6 @@
 #include <QLabel>
 #include <QMainWindow>
 
-#include <functional>
-
 namespace Ui
 {
 class MainWindow;
