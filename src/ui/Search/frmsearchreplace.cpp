@@ -58,6 +58,10 @@ frmSearchReplace::frmSearchReplace(TopEditorContainer *topEditorContainer, QWidg
     ui->chkShowAdvanced->toggled(ui->chkShowAdvanced->isChecked());
 
     setCurrentTab(TabSearch);
+
+    // FIXME: Support multiple selections
+    ui->btnSelectAll->setEnabled(false);
+    ui->btnSelectAll->setText(ui->btnSelectAll->text() + " (Not implemented)");
 }
 
 frmSearchReplace::~frmSearchReplace()
@@ -164,13 +168,8 @@ int frmSearchReplace::replaceAll(QString string, QString replacement, SearchHelp
 
 int frmSearchReplace::selectAll(QString string, SearchHelpers::SearchMode searchMode, SearchHelpers::SearchOptions searchOptions)
 {
-    QString rawSearch = SearchString::format(string, searchMode, searchOptions);
-
-    QList<QVariant> data = QList<QVariant>();
-    data.append(rawSearch);
-    data.append(regexModifiersFromSearchOptions(searchOptions));
-    QVariant count = currentEditor()->asyncSendMessageWithResult("C_FUN_SEARCH_SELECT_ALL", QVariant::fromValue(data)).get();
-    return count.toInt();
+    fprintf(stderr, "FIXME: QScintilla supports only one selection. Support native Scintilla multiple selections\n");
+    return 0;
 }
 
 SearchHelpers::SearchMode frmSearchReplace::searchModeFromUI()
