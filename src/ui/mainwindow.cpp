@@ -1461,7 +1461,7 @@ void MainWindow::on_actionDelete_triggered()
 
 void MainWindow::on_actionSelect_All_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_SELECT_ALL");
+    currentEditor()->selectAll();
 }
 
 void MainWindow::on_actionAbout_Notepad_triggered()

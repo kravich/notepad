@@ -713,4 +713,10 @@ int Editor::lineCount()
 {
     return asyncSendMessageWithResult("C_FUN_GET_LINE_COUNT").get().toInt();
 }
+
+void Editor::selectAll()
+{
+    m_scintilla->selectAll();
+}
+
 } //namespace EditorNS

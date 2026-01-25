@@ -310,6 +310,8 @@ public:
 
     int lineCount();
 
+    void selectAll();
+
 private:
     friend class ::EditorTabWidget;
 
