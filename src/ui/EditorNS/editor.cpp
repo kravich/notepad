@@ -356,7 +356,7 @@ bool Editor::isUsingCustomIndentationMode() const
 
 void Editor::setSmartIndent(bool enabled)
 {
-    asyncSendMessageWithResultP("C_CMD_SET_SMART_INDENT", enabled);
+    asyncSendMessageWithResult("C_CMD_SET_SMART_INDENT", enabled);
 }
 
 void Editor::setValue(const QString &value)
