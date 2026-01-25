@@ -326,8 +326,6 @@ public:
     Editor::IndentationMode indentationMode();
     QtPromise::QPromise<IndentationMode> indentationModeP();
 
-    QtPromise::QPromise<QString> getCurrentWord();
-
     void setSelection(int fromLine, int fromCol, int toLine, int toCol);
 
     QtPromise::QPromise<int> lineCount();

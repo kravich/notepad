@@ -823,12 +823,6 @@ QtPromise::QPromise<QByteArray> Editor::printToPdf(const QPageLayout &pageLayout
         });
 }
 
-QtPromise::QPromise<QString> Editor::getCurrentWord()
-{
-    return asyncSendMessageWithResultP("C_FUN_GET_CURRENT_WORD")
-        .then([](QVariant v) { return v.toString(); });
-}
-
 QtPromise::QPromise<int> Editor::lineCount()
 {
     return asyncSendMessageWithResultP("C_FUN_GET_LINE_COUNT")
