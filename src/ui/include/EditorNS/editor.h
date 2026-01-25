@@ -196,7 +196,7 @@ public:
     void removeBanner(QString objectName);
 
     Q_INVOKABLE bool isClean();
-    Q_INVOKABLE QtPromise::QPromise<void> markClean();
+    Q_INVOKABLE void markClean();
     Q_INVOKABLE QtPromise::QPromise<void> markDirty();
 
         /**

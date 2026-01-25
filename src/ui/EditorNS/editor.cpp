@@ -241,9 +241,9 @@ bool Editor::isClean()
     return asyncSendMessageWithResult("C_FUN_IS_CLEAN", data).get().toBool();
 }
 
-QtPromise::QPromise<void> Editor::markClean()
+void Editor::markClean()
 {
-    return asyncSendMessageWithResultP("C_CMD_MARK_CLEAN").then([]() {}).wait(); // FIXME Remove
+    asyncSendMessageWithResult("C_CMD_MARK_CLEAN");
 }
 
 QtPromise::QPromise<void> Editor::markDirty()
