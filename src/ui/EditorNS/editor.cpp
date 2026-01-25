@@ -360,14 +360,14 @@ void Editor::setSmartIndent(bool enabled)
     asyncSendMessageWithResultP("C_CMD_SET_SMART_INDENT", enabled);
 }
 
-QtPromise::QPromise<void> Editor::setValue(const QString &value)
+void Editor::setValue(const QString &value)
 {
     auto lang = LanguageService::getInstance().lookupByContent(value);
     if (lang != nullptr)
     {
         setLanguage(lang);
     }
-    return asyncSendMessageWithResultP("C_CMD_SET_VALUE", value).then([]() {}).wait(); // FIXME Remove
+    asyncSendMessageWithResult("C_CMD_SET_VALUE", value);
 }
 
 QString Editor::value()

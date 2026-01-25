@@ -215,7 +215,7 @@ public:
     Q_INVOKABLE void setLanguage(const QString &language);
     Q_INVOKABLE void setLanguageFromFilePath(const QString &filePath);
     Q_INVOKABLE void setLanguageFromFilePath();
-    Q_INVOKABLE QtPromise::QPromise<void> setValue(const QString &value);
+    Q_INVOKABLE void setValue(const QString &value);
     Q_INVOKABLE QString value();
 
         /**

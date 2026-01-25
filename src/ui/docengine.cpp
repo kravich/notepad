@@ -98,10 +98,11 @@ QtPromise::QPromise<void> DocEngine::read(QFile *file, QSharedPointer<Editor> ed
     else if (decoded.text.indexOf("\r") != -1)
         editor->setEndOfLineSequence("\r");
 
-    return editor->setValue(decoded.text)
-        .then([=]() { return editor->asyncSendMessageWithResultP("C_CMD_CLEAR_HISTORY"); })
-        .then([=]() { return editor->markClean(); })
-        .then([=]() {});
+    editor->setValue(decoded.text);
+    editor->asyncSendMessageWithResult("C_CMD_CLEAR_HISTORY");
+    editor->markClean();
+
+    return QtPromise::QPromise<void>::resolve();
 }
 
 int showFileSizeDialog(const QString docName, long long fileSize, bool multipleFiles)
