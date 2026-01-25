@@ -501,7 +501,7 @@ void loadSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QStr
                                           emit editor->cleanChanged(editor->isClean());
                                       }
                                   })
-                                  .executeInBackground();
+                                  .executeWithFeedback();
 
             if (loadedDocs.length() == 0)
             {
@@ -512,7 +512,7 @@ void loadSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QStr
                 // We need to set the correct title as soon as possible, otherwise
                 // the UI will jump around changing the width of the tabs while they
                 // are loading.
-            auto loadingEditor = loadedDocs.first().first;
+            auto loadingEditor = loadedDocs.first();
             QString tabText;
             if (tab.filePath.isEmpty())
             {

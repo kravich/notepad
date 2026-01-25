@@ -143,7 +143,7 @@ int showReloadDialog(const QString docName)
     return msgBox.exec();
 }
 
-QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> DocEngine::loadDocumentsInBackground(const DocEngine::DocumentLoader &docLoader)
+QList<QSharedPointer<Editor>> DocEngine::loadDocumentsWithFeedback(const DocEngine::DocumentLoader &docLoader)
 {
     const auto &fileNames = docLoader.urls;
     const auto &rememberLastSelectedDir = docLoader.rememberLastDir;
@@ -153,17 +153,22 @@ QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Edito
     auto fileSizeAction = std::make_shared<FileSizeAction>(docLoader.fileSizeAction);
 
     if (fileNames.empty())
-        return QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>>();
+        return QList<QSharedPointer<Editor>>();
 
     if (rememberLastSelectedDir)
         NpSettings::getInstance().General.setLastSelectedDir(QFileInfo(fileNames[0].toLocalFile()).absolutePath());
 
-    QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> loadedEditors;
+    QList<QSharedPointer<Editor>> loadedEditors;
 
     bool isFirstDocument = true;
 
     for (int i = 0; i < fileNames.count(); i++)
     {
+        // Run Qt event loop to make UI more responsive
+        // FIXME: Decide if this actually needed
+        QCoreApplication::processEvents(QEventLoop::AllEvents);
+        QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
+
         const QUrl &url = fileNames[i];
 
         if (url.isEmpty())
@@ -260,112 +265,106 @@ QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Edito
             tabWidget->editor(tabIndex)->setFocus();
         }
 
-        auto continuationP = QtPromise::QPromise<QSharedPointer<Editor>>([=](auto resolve, auto reject) {
-            QTimer::singleShot(0, [=]() {
-                // In case of a reload, save cursor, scroll position, language
-                QPair<int, int> scrollPosition;
-                QPair<int, int> cursorPosition;
-                const EditorNS::Language *language;
-                if (isAlreadyOpen)
+        // In case of a reload, save cursor, scroll position, language
+        QPair<int, int> scrollPosition;
+        QPair<int, int> cursorPosition;
+        const EditorNS::Language *language;
+        if (isAlreadyOpen)
+        {
+            scrollPosition = editor->scrollPosition();
+            cursorPosition = editor->cursorPosition();
+            language = editor->getLanguage();
+        }
+
+        if (isAlreadyOpen && reloadAction == DocEngine::ReloadActionAsk && !editor->isClean())
+        {
+            EditorTabWidget *tabW = static_cast<EditorTabWidget *>(m_topEditorContainer->widget(openPos.first));
+            tabW->setCurrentIndex(openPos.second);
+
+            int retVal = showReloadDialog(fi.fileName());
+            if (retVal == QMessageBox::Cancel)
+            {
+                editor->isLoading = false;
+                loadedEditors.append(editor);
+                continue;
+            }
+        }
+
+        QFile file(localFileName);
+        if (file.exists())
+        {
+            int readResult = this->read(&file, editor, codec, bom);
+
+            while (readResult < 0)
+            {
+                // Handle error
+                QMessageBox msgBox;
+                msgBox.setWindowTitle(QCoreApplication::applicationName());
+                msgBox.setText(tr("Error trying to open \"%1\"").arg(fi.fileName()));
+                msgBox.setDetailedText(file.errorString());
+                msgBox.setStandardButtons(QMessageBox::Retry | QMessageBox::Ignore);
+                msgBox.setDefaultButton(QMessageBox::Retry);
+                msgBox.setIcon(QMessageBox::Critical);
+                int ret = msgBox.exec();
+                if (ret == QMessageBox::Retry)
                 {
-                    scrollPosition = editor->scrollPosition();
-                    cursorPosition = editor->cursorPosition();
-                    language = editor->getLanguage();
+                    // Retry
+                    readResult = this->read(&file, editor, codec, bom);
                 }
-
-                if (isAlreadyOpen && reloadAction == DocEngine::ReloadActionAsk && !editor->isClean())
+                else if (ret == QMessageBox::Ignore)
                 {
-                    EditorTabWidget *tabW = static_cast<EditorTabWidget *>(m_topEditorContainer->widget(openPos.first));
-                    tabW->setCurrentIndex(openPos.second);
-
-                    int retVal = showReloadDialog(fi.fileName());
-                    if (retVal == QMessageBox::Cancel)
-                    {
-                        resolve(editor);
-                        return;
-                    }
+                    //tabWidget->removeTab(tabIndex);
+                    //reject(QSharedPointer<Editor>());
+                    editor->isLoading = false;
+                    loadedEditors.append(editor);
+                    continue;
                 }
+            }
+        }
 
-                QFile file(localFileName);
-                if (file.exists())
-                {
-                    int readResult = this->read(&file, editor, codec, bom);
+        if (isAlreadyOpen)
+        {
+            // In case of reload, restore cursor, scroll position, language
+            editor->setScrollPosition(scrollPosition);
+            editor->setCursorPosition(cursorPosition);
+            editor->setLanguage(language);
 
-                    while (readResult < 0)
-                    {
-                        // Handle error
-                        QMessageBox msgBox;
-                        msgBox.setWindowTitle(QCoreApplication::applicationName());
-                        msgBox.setText(tr("Error trying to open \"%1\"").arg(fi.fileName()));
-                        msgBox.setDetailedText(file.errorString());
-                        msgBox.setStandardButtons(QMessageBox::Retry | QMessageBox::Ignore);
-                        msgBox.setDefaultButton(QMessageBox::Retry);
-                        msgBox.setIcon(QMessageBox::Critical);
-                        int ret = msgBox.exec();
-                        if (ret == QMessageBox::Retry)
-                        {
-                            // Retry
-                            readResult = this->read(&file, editor, codec, bom);
-                        }
-                        else if (ret == QMessageBox::Ignore)
-                        {
-                            //tabWidget->removeTab(tabIndex);
-                            //reject(QSharedPointer<Editor>());
-                            resolve(editor);
-                            return;
-                        }
-                    }
-                }
+            editor->setFileOnDiskChanged(false);
 
-                if (isAlreadyOpen)
-                {
-                    // In case of reload, restore cursor, scroll position, language
-                    editor->setScrollPosition(scrollPosition);
-                    editor->setCursorPosition(cursorPosition);
-                    editor->setLanguage(language);
+            if (!file.exists())
+            {
+                // If it's a file that doesn't exists,
+                // set it as if it has changed. This way, if someone
+                // creates that file from outside of notepad,
+                // when the user tries to save over it he gets a warning.
+                editor->setFileOnDiskChanged(true);
+                editor->markDirty();
+             }
 
-                    editor->setFileOnDiskChanged(false);
+            this->monitorDocument(editor);
 
-                    if (!file.exists())
-                    {
-                        // If it's a file that doesn't exists,
-                        // set it as if it has changed. This way, if someone
-                        // creates that file from outside of notepad,
-                        // when the user tries to save over it he gets a warning.
-                        editor->setFileOnDiskChanged(true);
-                        editor->markDirty();
-                     }
+            emit this->documentReloaded(tabWidget, tabIndex);
+        }
+        else
+        {
+            if (docLoader.manualEditorInitialization == nullptr)
+            {
+                editor->setFilePath(url);
+                tabWidget->setTabToolTip(tabIndex, fi.absoluteFilePath());
+                editor->setLanguageFromFilePath();
 
-                    this->monitorDocument(editor);
+                this->monitorDocument(editor);
+            }
+            else
+            {
+                docLoader.manualEditorInitialization(editor, fileNames[i]);
+            }
 
-                    emit this->documentReloaded(tabWidget, tabIndex);
-                }
-                else
-                {
-                    if (docLoader.manualEditorInitialization == nullptr)
-                    {
-                        editor->setFilePath(url);
-                        tabWidget->setTabToolTip(tabIndex, fi.absoluteFilePath());
-                        editor->setLanguageFromFilePath();
+            emit this->documentLoaded(tabWidget, tabIndex, false, rememberLastSelectedDir);
+        }
 
-                        this->monitorDocument(editor);
-                    }
-                    else
-                    {
-                        docLoader.manualEditorInitialization(editor, fileNames[i]);
-                    }
-
-                    emit this->documentLoaded(tabWidget, tabIndex, false, rememberLastSelectedDir);
-                }
-
-                resolve(editor);
-            });
-        }).then([](QSharedPointer<Editor> editor) {
-            editor->isLoading = false;
-            return editor;
-        });
-
-        loadedEditors.append(std::make_pair(editor, continuationP));
+        editor->isLoading = false;
+        loadedEditors.append(editor);
     }
 
     return loadedEditors;

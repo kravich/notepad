@@ -145,10 +145,10 @@ public:
             docEngine.loadDocuments(*this);
         }
 
-        QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> executeInBackground()
+        QList<QSharedPointer<Editor>> executeWithFeedback()
         {
             Q_ASSERT(tabWidget != nullptr);
-            return docEngine.loadDocumentsInBackground(*this);
+            return docEngine.loadDocumentsWithFeedback(*this);
         }
 
         static constexpr int ALL_MINIMUM_PRIORITY = -1;
@@ -263,7 +263,7 @@ private:
      * @param docLoader
      * @return
      */
-    QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Editor>>>> loadDocumentsInBackground(const DocumentLoader &docLoader);
+    QList<QSharedPointer<Editor>> loadDocumentsWithFeedback(const DocumentLoader &docLoader);
 
     void monitorDocument(const QString &fileName);
     void unmonitorDocument(const QString &fileName);
