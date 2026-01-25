@@ -3,6 +3,8 @@
 #include "include/notepad.h"
 #include "include/npsettings.h"
 
+#include "include/Search/searchstring.h"
+
 #include <QDir>
 #include <QEventLoop>
 #include <QMessageBox>
@@ -296,6 +298,53 @@ void Editor::setIndentationMode(const Language *lang)
     const auto &langId = useDefaults ? "default" : lang->id;
 
     setIndentationMode(!s.getIndentWithSpaces(langId), s.getTabSize(langId));
+}
+
+bool Editor::searchAndSelect(bool inSelection,
+                             const QString &string,
+                             SearchHelpers::SearchMode searchMode,
+                             bool forward,
+                             const SearchHelpers::SearchOptions &searchOptions,
+                             bool wrap)
+{
+    QString expr = string;
+
+    bool isRegex = (searchMode == SearchHelpers::SearchMode::Regex);
+    bool isCaseSensitive = searchOptions.MatchCase;
+    bool isWholeWord = searchOptions.MatchWholeWord;
+
+    if (searchMode == SearchHelpers::SearchMode::SpecialChars)
+    {
+        // Implement searching for special characters through regex
+        isRegex = true;
+        expr = SearchString::format(expr, searchMode, searchOptions);   // FIXME: Ensure correctness of formatting
+    }
+
+    bool isFoundAndSelected = false;
+
+    if (inSelection)
+    {
+        isFoundAndSelected = m_scintilla->findFirstInSelection(expr, isRegex, isCaseSensitive, isWholeWord, wrap, forward);
+    }
+    else
+    {
+        int selectionLineFrom = -1;
+        int selectionIndexFrom = -1;
+        int selectionLineTo = -1;
+        int selectionIndexTo = -1;
+
+        m_scintilla->getSelection(&selectionLineFrom, &selectionIndexFrom, &selectionLineTo, &selectionIndexTo);
+
+        // WA: If searching backward, start search from the beginning of selection, not the end.
+        //     This way we won't stuck on already found text
+        // FIXME: Study this in more detail and understand if this is a QScintilla bug or not
+        int line = forward ? selectionLineTo : selectionLineFrom;
+        int index = forward ? selectionIndexTo : selectionIndexFrom;
+
+        isFoundAndSelected = m_scintilla->findFirst(expr, isRegex, isCaseSensitive, isWholeWord, wrap, forward, line, index);
+    }
+
+    return isFoundAndSelected;
 }
 
 void Editor::setIndentationMode(const bool useTabs, const int size)
@@ -815,6 +864,63 @@ void Editor::convertAllSpacesToTabs()
 void Editor::convertLeadingSpacesToTabs()
 {
     fprintf(stderr, "FIXME: Implement Editor::convertLeadingSpacesToTabs()\n");
+}
+
+void Editor::search(const QString &string,
+                    SearchHelpers::SearchMode searchMode,
+                    bool forward,
+                    const SearchHelpers::SearchOptions &searchOptions)
+{
+    searchAndSelect(false, string, searchMode, forward, searchOptions, true);
+}
+
+void Editor::replace(const QString &string,
+                     SearchHelpers::SearchMode searchMode,
+                     bool forward,
+                     const SearchHelpers::SearchOptions &searchOptions,
+                     const QString &replacement)
+{
+    bool isFoundAndSelected = searchAndSelect(true, string, searchMode, forward, searchOptions, true);
+
+    if (!isFoundAndSelected)
+    {
+        isFoundAndSelected = searchAndSelect(false, string, searchMode, forward, searchOptions, true);
+    }
+
+    if (isFoundAndSelected)
+    {
+        m_scintilla->replace(replacement);
+    }
+}
+
+int Editor::replaceAll(const QString &string,
+                       SearchHelpers::SearchMode searchMode,
+                       const SearchHelpers::SearchOptions &searchOptions,
+                       const QString &replacement)
+{
+    m_scintilla->beginUndoAction();
+    int count = replaceAllNoCheckpoint(string, searchMode, searchOptions, replacement);
+    m_scintilla->endUndoAction();
+
+    return count;
+}
+
+int Editor::replaceAllNoCheckpoint(const QString &string,
+                                   SearchHelpers::SearchMode searchMode,
+                                   const SearchHelpers::SearchOptions &searchOptions,
+                                   const QString &replacement)
+{
+    int count = 0;
+
+    m_scintilla->setCursorPosition(0, 0);
+
+    while (searchAndSelect(false, string, searchMode, true, searchOptions, false))
+    {
+        m_scintilla->replace(replacement);
+        count++;
+    }
+
+    return count;
 }
 
 } //namespace EditorNS

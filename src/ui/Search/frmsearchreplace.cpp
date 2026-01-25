@@ -121,8 +121,6 @@ void frmSearchReplace::search(QString string, SearchHelpers::SearchMode searchMo
 {
     if (!string.isEmpty())
     {
-        QString rawSearch = SearchString::format(string, searchMode, searchOptions);
-
         auto editor = currentEditor();
 
         if (searchOptions.SearchFromStart)
@@ -130,11 +128,7 @@ void frmSearchReplace::search(QString string, SearchHelpers::SearchMode searchMo
             editor->setCursorPosition(0, 0);
         }
 
-        QList<QVariant> data = QList<QVariant>();
-        data.append(rawSearch);
-        data.append(regexModifiersFromSearchOptions(searchOptions));
-        data.append(forward);
-        editor->sendMessage("C_FUN_SEARCH", QVariant::fromValue(data));
+        editor->search(string, searchMode, forward, searchOptions);
     }
 }
 
@@ -142,7 +136,6 @@ void frmSearchReplace::replace(QString string, QString replacement, SearchHelper
 {
     if (!string.isEmpty())
     {
-        QString rawSearch = SearchString::format(string, searchMode, searchOptions);
         if (searchMode == SearchHelpers::SearchMode::SpecialChars)
         {
             replacement = SearchString::unescape(replacement);
@@ -155,31 +148,18 @@ void frmSearchReplace::replace(QString string, QString replacement, SearchHelper
             editor->setCursorPosition(0, 0);
         }
 
-        QList<QVariant> data = QList<QVariant>();
-        data.append(rawSearch);
-        data.append(regexModifiersFromSearchOptions(searchOptions));
-        data.append(forward);
-        data.append(replacement);
-        data.append(QString::number(static_cast<int>(searchMode)));
-        editor->sendMessage("C_FUN_REPLACE", QVariant::fromValue(data));
+        editor->replace(string, searchMode, forward, searchOptions, replacement);
     }
 }
 
 int frmSearchReplace::replaceAll(QString string, QString replacement, SearchHelpers::SearchMode searchMode, SearchHelpers::SearchOptions searchOptions)
 {
-    QString rawSearch = SearchString::format(string, searchMode, searchOptions);
     if (searchMode == SearchHelpers::SearchMode::SpecialChars)
     {
         replacement = SearchString::unescape(replacement);
     }
 
-    QList<QVariant> data = QList<QVariant>();
-    data.append(rawSearch);
-    data.append(regexModifiersFromSearchOptions(searchOptions));
-    data.append(replacement);
-    data.append(QString::number(static_cast<int>(searchMode)));
-    QVariant count = currentEditor()->asyncSendMessageWithResult("C_FUN_REPLACE_ALL", QVariant::fromValue(data)).get();
-    return count.toInt();
+    return currentEditor()->replaceAll(string, searchMode, searchOptions, replacement);
 }
 
 int frmSearchReplace::selectAll(QString string, SearchHelpers::SearchMode searchMode, SearchHelpers::SearchOptions searchOptions)

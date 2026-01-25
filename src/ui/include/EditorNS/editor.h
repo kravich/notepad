@@ -4,6 +4,8 @@
 #include "include/EditorNS/customscintilla.h"
 #include "include/EditorNS/languageservice.h"
 
+#include "include/Search/searchhelpers.h"
+
 #include <QObject>
 #include <QPrinter>
 #include <QQueue>
@@ -329,6 +331,10 @@ public:
     void convertAllSpacesToTabs();
     void convertLeadingSpacesToTabs();
 
+    void search(const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions);
+    void replace(const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions, const QString &replacement);
+    int replaceAll(const QString &string, SearchHelpers::SearchMode searchMode, const SearchHelpers::SearchOptions &searchOptions, const QString &replacement);
+
 private:
     friend class ::EditorTabWidget;
 
@@ -370,6 +376,9 @@ private:
 
     void setIndentationMode(const bool useTabs, const int size);
     void setIndentationMode(const Language *);
+
+    bool searchAndSelect(bool inSelection, const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions, bool wrap);
+    int replaceAllNoCheckpoint(const QString &string, SearchHelpers::SearchMode searchMode, const SearchHelpers::SearchOptions &searchOptions, const QString &replacement);
 
 private slots:
     void on_proxyMessageReceived(QString msg, QVariant data);
