@@ -121,8 +121,6 @@ void frmSearchReplace::search(QString string, SearchHelpers::SearchMode searchMo
 {
     if (!string.isEmpty())
     {
-        QString rawSearch = SearchString::format(string, searchMode, searchOptions);
-
         auto editor = currentEditor();
 
         if (searchOptions.SearchFromStart)
@@ -130,11 +128,7 @@ void frmSearchReplace::search(QString string, SearchHelpers::SearchMode searchMo
             editor->setCursorPosition(0, 0);
         }
 
-        QList<QVariant> data = QList<QVariant>();
-        data.append(rawSearch);
-        data.append(regexModifiersFromSearchOptions(searchOptions));
-        data.append(forward);
-        editor->sendMessage("C_FUN_SEARCH", QVariant::fromValue(data));
+        editor->search(string, searchMode, forward, searchOptions);
     }
 }
 

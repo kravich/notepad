@@ -3,6 +3,8 @@
 #include "include/notepad.h"
 #include "include/npsettings.h"
 
+#include "include/Search/searchstring.h"
+
 #include <QDir>
 #include <QEventLoop>
 #include <QMessageBox>
@@ -296,6 +298,40 @@ void Editor::setIndentationMode(const Language *lang)
     const auto &langId = useDefaults ? "default" : lang->id;
 
     setIndentationMode(!s.getIndentWithSpaces(langId), s.getTabSize(langId));
+}
+
+bool Editor::searchAndSelect(bool inSelection,
+                             const QString &string,
+                             SearchHelpers::SearchMode searchMode,
+                             bool forward,
+                             const SearchHelpers::SearchOptions &searchOptions)
+{
+    QString expr = string;
+
+    bool isRegex = (searchMode == SearchHelpers::SearchMode::Regex);
+    bool isCaseSensitive = searchOptions.MatchCase;
+    bool isWholeWord = searchOptions.MatchWholeWord;
+    bool wrap = true;
+
+    if (searchMode == SearchHelpers::SearchMode::SpecialChars)
+    {
+        // Implement searching for special characters through regex
+        isRegex = true;
+        expr = SearchString::format(expr, searchMode, searchOptions);   // FIXME: Ensure correctness of formatting
+    }
+
+    bool isFoundAndSelected = false;
+
+    if (inSelection)
+    {
+        isFoundAndSelected = m_scintilla->findFirstInSelection(expr, isRegex, isCaseSensitive, isWholeWord, wrap, forward);
+    }
+    else
+    {
+        isFoundAndSelected = m_scintilla->findFirst(expr, isRegex, isCaseSensitive, isWholeWord, wrap, forward);
+    }
+
+    return isFoundAndSelected;
 }
 
 void Editor::setIndentationMode(const bool useTabs, const int size)
@@ -815,6 +851,14 @@ void Editor::convertAllSpacesToTabs()
 void Editor::convertLeadingSpacesToTabs()
 {
     fprintf(stderr, "FIXME: Implement Editor::convertLeadingSpacesToTabs()\n");
+}
+
+void Editor::search(const QString &string,
+                    SearchHelpers::SearchMode searchMode,
+                    bool forward,
+                    const SearchHelpers::SearchOptions &searchOptions)
+{
+    searchAndSelect(false, string, searchMode, forward, searchOptions);
 }
 
 } //namespace EditorNS
