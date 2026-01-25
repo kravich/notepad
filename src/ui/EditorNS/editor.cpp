@@ -556,7 +556,7 @@ void Editor::setEOLVisible(const bool showeol)
 
 void Editor::setWhitespaceVisible(const bool showspace)
 {
-    asyncSendMessageWithResultP("C_CMD_SHOW_WHITESPACE", showspace);
+    asyncSendMessageWithResult("C_CMD_SHOW_WHITESPACE", showspace);
 }
 
 void Editor::setMathEnabled(const bool enabled)
