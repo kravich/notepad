@@ -756,4 +756,11 @@ void Editor::trimTrailingWhitespaces()
     m_scintilla->endUndoAction();
 }
 
+void Editor::trimLeadingWhitespaces()
+{
+    m_scintilla->beginUndoAction();
+    replaceAllNoCheckpoint("^\\s+", SearchHelpers::SearchMode::Regex, SearchHelpers::SearchOptions(), "");
+    m_scintilla->endUndoAction();
+}
+
 } //namespace EditorNS

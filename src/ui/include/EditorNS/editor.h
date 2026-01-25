@@ -321,6 +321,7 @@ public:
     void moveCurrentLineDown();
 
     void trimTrailingWhitespaces();
+    void trimLeadingWhitespaces();
 
 private:
     friend class ::EditorTabWidget;

@@ -2479,7 +2479,7 @@ void MainWindow::on_actionTrim_Trailing_Space_triggered()
 
 void MainWindow::on_actionTrim_Leading_Space_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_TRIM_LEADING_SPACE");
+    currentEditor()->trimLeadingWhitespaces();
 }
 
 void MainWindow::on_actionTrim_Leading_and_Trailing_Space_triggered()
