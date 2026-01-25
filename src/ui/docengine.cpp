@@ -98,7 +98,6 @@ int DocEngine::read(QFile *file, QSharedPointer<Editor> editor, QTextCodec *code
         editor->setEndOfLineSequence("\r");
 
     editor->setValue(decoded.text);
-    editor->asyncSendMessageWithResult("C_CMD_CLEAR_HISTORY");
     editor->markClean();
 
     return 0;
