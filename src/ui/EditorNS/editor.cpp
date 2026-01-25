@@ -551,7 +551,7 @@ void Editor::setLineWrap(const bool wrap)
 
 void Editor::setEOLVisible(const bool showeol)
 {
-    asyncSendMessageWithResultP("C_CMD_SHOW_END_OF_LINE", showeol);
+    asyncSendMessageWithResult("C_CMD_SHOW_END_OF_LINE", showeol);
 }
 
 void Editor::setWhitespaceVisible(const bool showspace)
