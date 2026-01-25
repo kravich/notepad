@@ -690,7 +690,17 @@ QList<Editor::Selection> Editor::selections()
 
 QStringList Editor::selectedTexts()
 {
-    return asyncSendMessageWithResult("C_FUN_GET_SELECTIONS_TEXT").get().toStringList();
+    QString selectedText = m_scintilla->selectedText();
+
+    QStringList selectedTextsList;
+
+    if (selectedText.length() > 0)
+    {
+        // FIMXE: Support several selections
+        selectedTextsList.append(selectedText);
+    }
+
+    return selectedTextsList;
 }
 
 void Editor::setOverwrite(bool overwrite)
