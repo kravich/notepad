@@ -727,22 +727,22 @@ void Editor::setTabsVisible(bool visible)
     asyncSendMessageWithResultP("C_CMD_SET_TABS_VISIBLE", visible);
 }
 
-QtPromise::QPromise<std::pair<Editor::IndentationMode, bool>> Editor::detectDocumentIndentation()
+std::pair<Editor::IndentationMode, bool> Editor::detectDocumentIndentation()
 {
-    return asyncSendMessageWithResultP("C_FUN_DETECT_INDENTATION_MODE").then([](QVariant result) {
-        QVariantMap indent = result.toMap();
-        IndentationMode out;
+    QVariant result = asyncSendMessageWithResult("C_FUN_DETECT_INDENTATION_MODE").get();
 
-        bool found = indent.value("found", false).toBool();
+    QVariantMap indent = result.toMap();
+    IndentationMode out;
 
-        if (found)
-        {
-            out.useTabs = indent.value("useTabs", true).toBool();
-            out.size = indent.value("size", 4).toInt();
-        }
+    bool found = indent.value("found", false).toBool();
 
-        return std::make_pair(out, found);
-    });
+    if (found)
+    {
+        out.useTabs = indent.value("useTabs", true).toBool();
+        out.size = indent.value("size", 4).toInt();
+    }
+
+    return std::make_pair(out, found);
 }
 
 void Editor::print(std::shared_ptr<QPrinter> printer)
