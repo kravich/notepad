@@ -628,7 +628,7 @@ void Editor::setFont(QString fontFamily, int fontSize, double lineHeight)
     tmap.insert("family", fontFamily == nullptr ? "" : fontFamily);
     tmap.insert("size", QString::number(fontSize));
     tmap.insert("lineHeight", QString::number(lineHeight, 'f', 2));
-    asyncSendMessageWithResultP("C_CMD_SET_FONT", tmap);
+    asyncSendMessageWithResult("C_CMD_SET_FONT", tmap);
 }
 
 void Editor::setLineNumbersVisible(bool visible)
