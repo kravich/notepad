@@ -718,7 +718,7 @@ QStringList Editor::selectedTexts()
 
 void Editor::setOverwrite(bool overwrite)
 {
-    asyncSendMessageWithResultP("C_CMD_SET_OVERWRITE", overwrite);
+    asyncSendMessageWithResult("C_CMD_SET_OVERWRITE", overwrite);
 }
 
 void Editor::setTabsVisible(bool visible)
