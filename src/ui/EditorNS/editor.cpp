@@ -470,20 +470,9 @@ int Editor::zoomFactor() const
 
 void Editor::setSelectionsText(const QStringList &texts, SelectMode mode)
 {
-    QVariantMap data{{"text", texts}};
-    switch (mode)
-    {
-    case SelectMode::After:
-        data.insert("select", "after");
-        break;
-    case SelectMode::Before:
-        data.insert("select", "before");
-        break;
-    default:
-        data.insert("select", "selected");
-        break;
-    }
-    sendMessage("C_CMD_SET_SELECTIONS_TEXT", data);
+    QString replacement = texts.join("\n");
+    m_scintilla->replaceSelectedText(replacement);
+    fprintf(stderr, "FIXME: support cursor placement according to 'mode' in Editor::setSelectionsText()\n");
 }
 
 void Editor::setSelectionsText(const QStringList &texts)
