@@ -378,6 +378,9 @@ private:
 
     bool searchAndSelect(bool inSelection, const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions);
 
+    void incrementGeneration();
+    int m_generation = 0;
+
 private slots:
     void on_proxyMessageReceived(QString msg, QVariant data);
 
