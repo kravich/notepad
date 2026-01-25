@@ -323,7 +323,7 @@ void Editor::setValue(const QString &value)
 
 QString Editor::value()
 {
-    return asyncSendMessageWithResult("C_FUN_GET_VALUE").get().toString();
+    return m_scintilla->text();
 }
 
 bool Editor::fileOnDiskChanged() const
