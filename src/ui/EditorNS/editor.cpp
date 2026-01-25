@@ -566,7 +566,7 @@ void Editor::setMathEnabled(const bool enabled)
 
 void Editor::requestDocumentInfo()
 {
-    asyncSendMessageWithResultP("C_CMD_GET_DOCUMENT_INFO");
+    asyncSendMessageWithResult("C_CMD_GET_DOCUMENT_INFO");
 }
 
 QPair<int, int> Editor::cursorPosition()
