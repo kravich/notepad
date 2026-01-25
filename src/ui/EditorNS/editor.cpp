@@ -669,20 +669,24 @@ QList<Editor::Selection> Editor::selections()
 {
     QList<Selection> out;
 
-    QList<QVariant> sels = asyncSendMessageWithResult("C_FUN_GET_SELECTIONS").get().toList();
-    for (int i = 0; i < sels.length(); i++)
+    if (m_scintilla->hasSelectedText())
     {
-        QVariantMap selMap = sels[i].toMap();
-        QVariantMap from = selMap.value("anchor").toMap();
-        QVariantMap to = selMap.value("head").toMap();
+        // FIMXE: Support several selections
 
-        Selection sel;
-        sel.from.line = from.value("line").toInt();
-        sel.from.column = from.value("ch").toInt();
-        sel.to.line = to.value("line").toInt();
-        sel.to.column = to.value("ch").toInt();
+        int selectedLineFrom = 0;
+        int selectedIndexFrom = 0;
+        int selectedLineTo = 0;
+        int selectedIndexTo = 0;
 
-        out.append(sel);
+        m_scintilla->getSelection(&selectedLineFrom, &selectedIndexFrom, &selectedLineTo, &selectedIndexTo);
+
+        Editor::Selection selection;
+        selection.from.line = selectedLineFrom;
+        selection.from.column = selectedIndexFrom;
+        selection.to.line = selectedLineTo;
+        selection.to.column = selectedIndexTo;
+
+        out.append(selection);
     }
 
     return out;
