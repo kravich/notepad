@@ -66,6 +66,9 @@ void Editor::fullConstructor(const Theme &theme)
     connect(m_scintilla, &CustomScintilla::modificationChanged, this, [&]() { emit cleanChanged(isClean()); });
     connect(m_scintilla, &CustomScintilla::linesChanged, this, &Editor::refreshMargins);
 
+    connect(m_scintilla, &CustomScintilla::textChanged, this, &Editor::incrementGeneration);
+    // FIXME: Handle undo somehow to decrement generation
+
     connect(m_scintilla, &CustomScintilla::urlsDropped, this, &Editor::urlsDropped);
     connect(m_scintilla, &CustomScintilla::gotFocus, this, &Editor::gotFocus);
     setLanguage(nullptr);
@@ -240,7 +243,7 @@ void Editor::markDirty()
 
 int Editor::getHistoryGeneration()
 {
-    return asyncSendMessageWithResult("C_FUN_GET_HISTORY_GENERATION").get().toInt();
+    return m_generation;
 }
 
 void Editor::setLanguage(const Language *lang)
@@ -345,6 +348,11 @@ bool Editor::searchAndSelect(bool inSelection,
     }
 
     return isFoundAndSelected;
+}
+
+void Editor::incrementGeneration()
+{
+    m_generation++;
 }
 
 void Editor::setIndentationMode(const bool useTabs, const int size)
