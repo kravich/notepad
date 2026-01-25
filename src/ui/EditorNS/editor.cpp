@@ -771,4 +771,9 @@ void Editor::trimLeadingAndTrailingWhitespaces()
     m_scintilla->endUndoAction();
 }
 
+void Editor::convertEolToSpace()
+{
+    fprintf(stderr, "FIXME: Implement Editor::convertEolToSpace()\n");
+}
+
 } //namespace EditorNS

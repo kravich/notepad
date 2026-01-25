@@ -246,6 +246,9 @@ void MainWindow::configureUserInterface()
 
     ui->actionPrint_Now->setEnabled(false);
     ui->actionPrint_Now->setText(ui->actionPrint_Now->text() + " (Not implemented)");
+
+    ui->actionEOL_to_Space->setEnabled(false);
+    ui->actionEOL_to_Space->setText(ui->actionEOL_to_Space->text() + " (Not implemented)");
 }
 
 void MainWindow::restoreWindowSettings()
@@ -2489,7 +2492,7 @@ void MainWindow::on_actionTrim_Leading_and_Trailing_Space_triggered()
 
 void MainWindow::on_actionEOL_to_Space_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_EOL_TO_SPACE");
+    currentEditor()->convertEolToSpace();
 }
 
 void MainWindow::on_actionTAB_to_Space_triggered()
