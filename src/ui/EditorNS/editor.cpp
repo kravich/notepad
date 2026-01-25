@@ -401,57 +401,6 @@ void Editor::sendMessage(const QString msg)
 
 unsigned int messageIdentifier = 0;
 
-QtPromise::QPromise<QVariant> Editor::asyncSendMessageWithResultP(const QString msg, const QVariant data)
-{
-    unsigned int currentMsgIdentifier = ++messageIdentifier;
-
-    QtPromise::QPromise<QVariant> resultPromise = QtPromise::QPromise<QVariant>([&](
-                                                                                    const QtPromise::QPromiseResolve<QVariant> &resolve,
-                                                                                    const QtPromise::QPromiseReject<QVariant> & /* reject */) {
-        auto conn = std::make_shared<QMetaObject::Connection>();
-        *conn = QObject::connect(this, &Editor::asyncReplyReceived, this, [=](unsigned int id, QString, QVariant data) {
-            if (id == currentMsgIdentifier)
-            {
-                QObject::disconnect(*conn);
-                resolve(data);
-            }
-        });
-    });
-
-        // FIXME We can probably remove this->asyncReplies after we've converted everything
-    AsyncReply asyncmsg;
-    asyncmsg.id = currentMsgIdentifier;
-    asyncmsg.message = msg;
-    asyncmsg.value = nullptr;
-    asyncmsg.callback = nullptr;
-    this->asyncReplies.push_back((asyncmsg));
-
-    QString message_id = "[ASYNC_REQUEST]" + msg + "[ID=" + QString::number(currentMsgIdentifier) + "]";
-
-    if (m_loaded)
-    {
-            // Send it right now
-        emit m_jsToCppProxy->messageReceivedByJs(message_id, data);
-    }
-    else
-    {
-            // Send it as soon as the editor becomes ready
-        auto conn = std::make_shared<QMetaObject::Connection>();
-        *conn = QObject::connect(this, &Editor::editorReady, this, [=]() {
-            QObject::disconnect(*conn);
-            m_loaded = true;
-            emit m_jsToCppProxy->messageReceivedByJs(message_id, data);
-        });
-    }
-
-    return resultPromise;
-}
-
-QtPromise::QPromise<QVariant> Editor::asyncSendMessageWithResultP(const QString msg)
-{
-    return this->asyncSendMessageWithResultP(msg, 0);
-}
-
 std::shared_future<QVariant> Editor::asyncSendMessageWithResult(const QString msg, const QVariant data, std::function<void(QVariant)> callback)
 {
     unsigned int currentMsgIdentifier = ++messageIdentifier;

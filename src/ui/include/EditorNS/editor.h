@@ -396,9 +396,6 @@ public slots:
         // [[deprecated]]
     void sendMessage(const QString msg);
 
-    QtPromise::QPromise<QVariant> asyncSendMessageWithResultP(const QString msg, const QVariant data);
-    QtPromise::QPromise<QVariant> asyncSendMessageWithResultP(const QString msg);
-
         /**
      * @brief asyncSendMessageWithResult
      * @param msg
