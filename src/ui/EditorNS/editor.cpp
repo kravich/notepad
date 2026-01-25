@@ -723,7 +723,7 @@ void Editor::setOverwrite(bool overwrite)
 
 void Editor::setTabsVisible(bool visible)
 {
-    asyncSendMessageWithResultP("C_CMD_SET_TABS_VISIBLE", visible);
+    asyncSendMessageWithResult("C_CMD_SET_TABS_VISIBLE", visible);
 }
 
 std::pair<Editor::IndentationMode, bool> Editor::detectDocumentIndentation()
