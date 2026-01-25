@@ -1480,12 +1480,12 @@ void MainWindow::on_actionAbout_Qt_triggered()
 
 void MainWindow::on_actionUndo_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_UNDO");
+    currentEditor()->undo();
 }
 
 void MainWindow::on_actionRedo_triggered()
 {
-    currentEditor()->sendMessage("C_CMD_REDO");
+    currentEditor()->redo();
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)

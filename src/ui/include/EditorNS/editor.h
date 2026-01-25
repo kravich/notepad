@@ -312,6 +312,9 @@ public:
 
     void selectAll();
 
+    void undo();
+    void redo();
+
 private:
     friend class ::EditorTabWidget;
 

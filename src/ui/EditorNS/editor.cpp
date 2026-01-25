@@ -719,4 +719,14 @@ void Editor::selectAll()
     m_scintilla->selectAll();
 }
 
+void Editor::undo()
+{
+    m_scintilla->undo();
+}
+
+void Editor::redo()
+{
+    m_scintilla->redo();
+}
+
 } //namespace EditorNS
