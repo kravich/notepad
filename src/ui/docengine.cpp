@@ -261,27 +261,7 @@ QList<std::pair<QSharedPointer<Editor>, QtPromise::QPromise<QSharedPointer<Edito
         }
 
         auto continuationP = QtPromise::QPromise<QSharedPointer<Editor>>([=](auto resolve, auto reject) {
-            // Compute the ms of delay based on the priority for this URL.
-            constexpr int min_priority_delay = 100;
-            int delay_ms = 0;
-            if (docLoader.priorityIdx >= 0)
-            {
-                delay_ms = docLoader.priorityIdx == i ? 0 : min_priority_delay;
-            }
-            else if (docLoader.priorityIdx == DocumentLoader::ALL_MAXIMUM_PRIORITY)
-            {
-                delay_ms = 0;
-            }
-            else if (docLoader.priorityIdx == DocumentLoader::ALL_MINIMUM_PRIORITY)
-            {
-                delay_ms = min_priority_delay;
-            }
-            else
-            {
-                Q_ASSERT(false); // Should never get here
-            }
-
-            QTimer::singleShot(delay_ms, [=]() {
+            QTimer::singleShot(0, [=]() {
                 // In case of a reload, save cursor, scroll position, language
                 QPair<int, int> scrollPosition;
                 QPair<int, int> cursorPosition;
