@@ -271,9 +271,8 @@ void Editor::setLanguage(const Language *lang)
         setIndentationMode(lang);
     }
     m_currentLanguage = lang;
-    asyncSendMessageWithResultP("C_CMD_SET_LANGUAGE", lang->mime.isEmpty() ? lang->mode : lang->mime).then([=]() {
-        emit currentLanguageChanged(m_currentLanguage->id, m_currentLanguage->name);
-    });
+    asyncSendMessageWithResult("C_CMD_SET_LANGUAGE", lang->mime.isEmpty() ? lang->mode : lang->mime);
+    emit currentLanguageChanged(m_currentLanguage->id, m_currentLanguage->name);
 }
 
 void Editor::setLanguage(const QString &language)
