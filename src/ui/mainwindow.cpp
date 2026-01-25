@@ -40,7 +40,6 @@
 #include <QUrl>
 #include <QtPrintSupport/QPrintDialog>
 #include <QtPrintSupport/QPrintPreviewDialog>
-#include <QtPromise>
 
 QList<MainWindow *> MainWindow::m_instances = QList<MainWindow *>();
 

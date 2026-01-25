@@ -12,7 +12,6 @@
 #include <QCloseEvent>
 #include <QLabel>
 #include <QMainWindow>
-#include <QtPromise>
 
 #include <functional>
 
