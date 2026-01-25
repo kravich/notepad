@@ -221,60 +221,6 @@ void TopEditorContainer::forEachEditor(bool backwardIndexes,
     }
 }
 
-QtPromise::QPromise<void> TopEditorContainer::forEachEditorAsync(bool backwardIndices,
-                                                                 std::function<void(const int tabWidgetId, const int editorId, EditorTabWidget *tabWidget, QSharedPointer<Editor> editor, std::function<void()> goOn, std::function<void()> stop)> callback)
-{
-    return QtPromise::QPromise<void>([=](const auto &resolve, const auto &) {
-        if (backwardIndices)
-        {
-            std::function<std::function<void()>(int, int)> iteration = [=](int i, int j) {
-                return [=]() {
-                    if (i < 0)
-                    {
-                        resolve();
-                        return;
-                    }
-                    if (j < 0)
-                    {
-                        if (i - 1 >= 0)
-                        {
-                            iteration(i - 1, this->tabWidget(i - 1)->count() - 1);
-                        }
-                        return;
-                    }
-
-                    EditorTabWidget *tabW = this->tabWidget(i);
-                    callback(i, j, tabW, tabW->editor(j), iteration(i, j - 1), [resolve]() { resolve(); });
-                };
-            };
-
-            iteration(this->count() - 1, this->tabWidget(0)->count() - 1)();
-        }
-        else
-        {
-            std::function<std::function<void()>(int, int)> iteration = [=](int i, int j) {
-                return [=]() {
-                    if (i >= this->count())
-                    {
-                        resolve();
-                        return;
-                    }
-                    if (j >= this->tabWidget(i)->count())
-                    {
-                        iteration(i + 1, 0);
-                        return;
-                    }
-
-                    EditorTabWidget *tabW = this->tabWidget(i);
-                    callback(i, j, tabW, tabW->editor(j), iteration(i, j + 1), [resolve]() { resolve(); });
-                };
-            };
-
-            iteration(0, 0)();
-        }
-    });
-}
-
 QtPromise::QPromise<void> TopEditorContainer::forEachEditorConcurrent(std::function<void(const int tabWidgetId, const int editorId, EditorTabWidget *tabWidget, QSharedPointer<Editor> editor, std::function<void()> done)> callback)
 {
     return QtPromise::QPromise<void>([=](const auto &resolve, const auto &) {
