@@ -577,7 +577,7 @@ QPair<int, int> Editor::cursorPosition()
 
 void Editor::setCursorPosition(const int line, const int column)
 {
-    asyncSendMessageWithResultP("C_CMD_SET_CURSOR", QList<QVariant>{line, column});
+    asyncSendMessageWithResult("C_CMD_SET_CURSOR", QList<QVariant>{line, column});
 }
 
 void Editor::setCursorPosition(const QPair<int, int> &position)
