@@ -310,7 +310,7 @@ public:
      * @brief Returns the currently selected texts.
      * @return
      */
-    Q_INVOKABLE QtPromise::QPromise<QStringList> selectedTexts();
+    Q_INVOKABLE QStringList selectedTexts();
 
     void setOverwrite(bool overwrite);
     void setTabsVisible(bool visible);

@@ -735,10 +735,9 @@ QList<Editor::Selection> Editor::selections()
     return out;
 }
 
-QtPromise::QPromise<QStringList> Editor::selectedTexts()
+QStringList Editor::selectedTexts()
 {
-    return asyncSendMessageWithResultP("C_FUN_GET_SELECTIONS_TEXT")
-        .then([](QVariant text) { return text.toStringList(); });
+    return asyncSendMessageWithResult("C_FUN_GET_SELECTIONS_TEXT").get().toStringList();
 }
 
 void Editor::setOverwrite(bool overwrite)

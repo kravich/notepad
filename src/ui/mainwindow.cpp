@@ -1216,9 +1216,8 @@ void MainWindow::on_actionSave_a_Copy_As_triggered()
 
 void MainWindow::on_actionCopy_triggered()
 {
-    currentEditor()->selectedTexts().then([](QStringList sel) {
-        QApplication::clipboard()->setText(sel.join("\n"));
-    });
+    QStringList sel = currentEditor()->selectedTexts();
+    QApplication::clipboard()->setText(sel.join("\n"));
 }
 
 void MainWindow::on_actionPaste_triggered()
@@ -1581,15 +1580,15 @@ void MainWindow::on_actionSearch_triggered()
         instantiateFrmSearchReplace();
     }
 
-    currentEditor()->selectedTexts().then([=](QStringList sel) {
-        if (sel.length() > 0 && sel[0].length() > 0)
-        {
-            m_frmSearchReplace->setSearchText(sel[0]);
-        }
+    QStringList sel = currentEditor()->selectedTexts();
 
-        m_frmSearchReplace->show(frmSearchReplace::TabSearch);
-        m_frmSearchReplace->activateWindow();
-    });
+    if (sel.length() > 0 && sel[0].length() > 0)
+    {
+        m_frmSearchReplace->setSearchText(sel[0]);
+    }
+
+    m_frmSearchReplace->show(frmSearchReplace::TabSearch);
+    m_frmSearchReplace->activateWindow();
 }
 
 void MainWindow::on_actionCurrent_Full_File_Path_to_Clipboard_triggered()
@@ -1736,15 +1735,15 @@ void MainWindow::on_actionReplace_triggered()
         instantiateFrmSearchReplace();
     }
 
-    currentEditor()->selectedTexts().then([=](QStringList sel) {
-        if (sel.length() > 0 && sel[0].length() > 0)
-        {
-            m_frmSearchReplace->setSearchText(sel[0]);
-        }
+    QStringList sel = currentEditor()->selectedTexts();
 
-        m_frmSearchReplace->show(frmSearchReplace::TabReplace);
-        m_frmSearchReplace->activateWindow();
-    });
+    if (sel.length() > 0 && sel[0].length() > 0)
+    {
+        m_frmSearchReplace->setSearchText(sel[0]);
+    }
+
+    m_frmSearchReplace->show(frmSearchReplace::TabReplace);
+    m_frmSearchReplace->activateWindow();
 }
 
 void MainWindow::on_actionPlain_text_triggered()
@@ -1792,14 +1791,15 @@ void MainWindow::on_editorMouseWheel(EditorTabWidget *tabWidget, int tab, QWheel
 void MainWindow::transformSelectedText(std::function<QString(const QString &)> func)
 {
     auto editor = currentEditor();
-    editor->selectedTexts().then([=](QStringList sel) {
-        for (int i = 0; i < sel.length(); i++)
-        {
-            sel.replace(i, func(sel.at(i)));
-        }
 
-        editor->setSelectionsText(sel, Editor::SelectMode::Selected);
-    });
+    QStringList sel = editor->selectedTexts();
+
+    for (int i = 0; i < sel.length(); i++)
+    {
+        sel.replace(i, func(sel.at(i)));
+    }
+
+    editor->setSelectionsText(sel, Editor::SelectMode::Selected);
 }
 
 void MainWindow::on_actionUPPERCASE_triggered()
@@ -2399,28 +2399,29 @@ void MainWindow::runCommand()
     auto editor = currentEditor();
 
     QUrl url = currentEditor()->filePath();
-    editor->selectedTexts().then([=](QStringList selection) {
-        QString cmd = command;
-        if (!url.isEmpty())
+
+    QStringList selection = editor->selectedTexts();
+
+    QString cmd = command;
+    if (!url.isEmpty())
+    {
+        cmd.replace("\%url\%", url.toString(QUrl::None));
+        cmd.replace("\%path\%", url.path(QUrl::FullyDecoded));
+        cmd.replace("\%filename\%", url.fileName(QUrl::FullyDecoded));
+        cmd.replace("\%directory\%", QFileInfo(url.toLocalFile()).absolutePath());
+    }
+    if (!selection.first().isEmpty())
+    {
+        cmd.replace("\%selection\%", selection.first());
+    }
+    QStringList args = NpRun::RunDialog::parseCommandString(cmd);
+    if (!args.isEmpty())
+    {
+        cmd = args.takeFirst();
+        if (!QProcess::startDetached(cmd, args))
         {
-            cmd.replace("\%url\%", url.toString(QUrl::None));
-            cmd.replace("\%path\%", url.path(QUrl::FullyDecoded));
-            cmd.replace("\%filename\%", url.fileName(QUrl::FullyDecoded));
-            cmd.replace("\%directory\%", QFileInfo(url.toLocalFile()).absolutePath());
         }
-        if (!selection.first().isEmpty())
-        {
-            cmd.replace("\%selection\%", selection.first());
-        }
-        QStringList args = NpRun::RunDialog::parseCommandString(cmd);
-        if (!args.isEmpty())
-        {
-            cmd = args.takeFirst();
-            if (!QProcess::startDetached(cmd, args))
-            {
-            }
-        }
-    });
+    }
 }
 
 void MainWindow::on_actionPrint_triggered()
