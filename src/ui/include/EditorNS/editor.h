@@ -143,6 +143,8 @@ public:
      */
     static void addEditorToBuffer(const int howMany = 1);
 
+    void insertContextMenuAction(QAction *before, QAction *action);
+
         /**
      * @brief Give focus to the editor, so that the user can start
      *        typing. Note that calling won't automatically switch to

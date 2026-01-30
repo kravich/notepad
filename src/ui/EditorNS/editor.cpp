@@ -81,6 +81,11 @@ void Editor::addEditorToBuffer(const int howMany)
         m_editorBuffer.enqueue(QSharedPointer<Editor>::create());
 }
 
+void Editor::insertContextMenuAction(QAction *before, QAction *action)
+{
+    m_scintilla->insertAction(before, action);
+}
+
 void Editor::invalidateEditorBuffer()
 {
     m_editorBuffer.clear();

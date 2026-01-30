@@ -1261,6 +1261,12 @@ void MainWindow::on_editorAdded(EditorTabWidget *tabWidget, int tab)
     });
     connect(editor.data(), &Editor::urlsDropped, this, &MainWindow::on_editorUrlsDropped);
 
+    // Add context menu actions
+    editor->insertContextMenuAction(nullptr, ui->actionCut);
+    editor->insertContextMenuAction(nullptr, ui->actionCopy);
+    editor->insertContextMenuAction(nullptr, ui->actionPaste);
+    editor->insertContextMenuAction(nullptr, ui->actionSelect_All);
+
     // Initialize editor with UI settings
     editor->setLineWrap(ui->actionWord_wrap->isChecked());
     editor->setTabsVisible(ui->actionShow_Tabs->isChecked());
