@@ -23,6 +23,9 @@ public:
     /* Information */
     int positionFromPoint(const QPoint &pos);
 
+    /* Keyboard commands */
+    void lineDelete();
+
 signals:
     void urlsDropped(QList<QUrl> urls);
     void gotFocus();

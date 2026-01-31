@@ -25,6 +25,13 @@ int CustomScintilla::positionFromPoint(const QPoint &pos)
     return SendScintilla(SCI_POSITIONFROMPOINT, pos.x(), pos.y());
 }
 
+/* Keyboard commands */
+
+void CustomScintilla::lineDelete()
+{
+    SendScintilla(SCI_LINEDELETE);
+}
+
 void CustomScintilla::keyPressEvent(QKeyEvent *ev)
 {
     switch (ev->key())
