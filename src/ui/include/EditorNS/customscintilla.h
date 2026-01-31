@@ -26,6 +26,8 @@ public:
     /* Keyboard commands */
     void lineDelete();
     void lineDuplicate();
+    void moveSelectedLinesUp();
+    void moveSelectedLinesDown();
 
 signals:
     void urlsDropped(QList<QUrl> urls);

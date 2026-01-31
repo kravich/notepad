@@ -37,6 +37,16 @@ void CustomScintilla::lineDuplicate()
     SendScintilla(SCI_LINEDUPLICATE);
 }
 
+void CustomScintilla::moveSelectedLinesUp()
+{
+    SendScintilla(SCI_MOVESELECTEDLINESUP);
+}
+
+void CustomScintilla::moveSelectedLinesDown()
+{
+    SendScintilla(SCI_MOVESELECTEDLINESDOWN);
+}
+
 void CustomScintilla::keyPressEvent(QKeyEvent *ev)
 {
     switch (ev->key())
