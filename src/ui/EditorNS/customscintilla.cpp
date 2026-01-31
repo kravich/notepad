@@ -32,6 +32,11 @@ void CustomScintilla::lineDelete()
     SendScintilla(SCI_LINEDELETE);
 }
 
+void CustomScintilla::lineDuplicate()
+{
+    SendScintilla(SCI_LINEDUPLICATE);
+}
+
 void CustomScintilla::keyPressEvent(QKeyEvent *ev)
 {
     switch (ev->key())
