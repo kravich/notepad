@@ -22,6 +22,8 @@ public:
 
     /* Information */
     int positionFromPoint(const QPoint &pos);
+    int pointXFromPosition(int position);
+    int pointYFromPosition(int position);
 
     /* Scrolling and automatic scrolling */
     int getXOffset();
