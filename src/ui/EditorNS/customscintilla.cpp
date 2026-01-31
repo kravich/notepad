@@ -28,6 +28,18 @@ int CustomScintilla::positionFromPoint(const QPoint &pos)
     return SendScintilla(SCI_POSITIONFROMPOINT, pos.x(), pos.y());
 }
 
+/* Scrolling and automatic scrolling */
+
+int CustomScintilla::getXOffset()
+{
+    return SendScintilla(SCI_GETXOFFSET);
+}
+
+void CustomScintilla::setXOffset(int xOffset)
+{
+    SendScintilla(SCI_SETXOFFSET, xOffset);
+}
+
 /* Keyboard commands */
 
 void CustomScintilla::lineDelete()

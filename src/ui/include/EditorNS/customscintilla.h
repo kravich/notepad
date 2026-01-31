@@ -23,6 +23,10 @@ public:
     /* Information */
     int positionFromPoint(const QPoint &pos);
 
+    /* Scrolling and automatic scrolling */
+    int getXOffset();
+    void setXOffset(int xOffset);
+
     /* Keyboard commands */
     void lineDelete();
     void lineDuplicate();
