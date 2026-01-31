@@ -29,6 +29,9 @@ public:
     void moveSelectedLinesUp();
     void moveSelectedLinesDown();
 
+    /* Zooming */
+    int getZoom();
+
 signals:
     void urlsDropped(QList<QUrl> urls);
     void gotFocus();

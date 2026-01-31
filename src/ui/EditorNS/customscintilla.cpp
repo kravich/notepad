@@ -47,6 +47,13 @@ void CustomScintilla::moveSelectedLinesDown()
     SendScintilla(SCI_MOVESELECTEDLINESDOWN);
 }
 
+/* Zooming */
+
+int CustomScintilla::getZoom()
+{
+    return SendScintilla(SCI_GETZOOM);
+}
+
 void CustomScintilla::keyPressEvent(QKeyEvent *ev)
 {
     switch (ev->key())
