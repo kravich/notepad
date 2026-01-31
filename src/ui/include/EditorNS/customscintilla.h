@@ -49,6 +49,10 @@ protected:
     void dropEvent(QDropEvent *ev) override;
     void focusInEvent(QFocusEvent *event) override;
     void contextMenuEvent(QContextMenuEvent *ev) override;
+
+private:
+    void updateCursorPositionPerContextMenuActivation(const QPoint &cursorPos);
+    bool isPositionWithinSelection(int position);   // FIXME: Transition to SCI_SELECTIONFROMPOINT once available
 };
 
 } // namespace EditorNS
