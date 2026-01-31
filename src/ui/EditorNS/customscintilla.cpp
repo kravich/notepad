@@ -18,6 +18,13 @@ CustomScintilla::CustomScintilla(QWidget *parent) :
     setBraceMatching(SloppyBraceMatch);
 }
 
+/* Information */
+
+int CustomScintilla::positionFromPoint(const QPoint &pos)
+{
+    return SendScintilla(SCI_POSITIONFROMPOINT, pos.x(), pos.y());
+}
+
 void CustomScintilla::keyPressEvent(QKeyEvent *ev)
 {
     switch (ev->key())

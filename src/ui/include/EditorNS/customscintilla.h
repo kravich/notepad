@@ -16,6 +16,13 @@ class CustomScintilla : public QsciScintilla
 public:
     explicit CustomScintilla(QWidget *parent = nullptr);
 
+    /*
+     * Wrappers for messages missing in QScintilla
+     */
+
+    /* Information */
+    int positionFromPoint(const QPoint &pos);
+
 signals:
     void urlsDropped(QList<QUrl> urls);
     void gotFocus();
