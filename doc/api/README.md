@@ -1,1 +1,0 @@
-HTML documentation is generated using [MkDocs](http://www.mkdocs.org/).
