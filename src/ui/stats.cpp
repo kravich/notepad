@@ -1,6 +1,5 @@
 #include "include/stats.h"
 
-#include "include/Extensions/extensionsloader.h"
 #include "include/notepad.h"
 
 #include <QJsonDocument>
@@ -39,8 +38,7 @@ void Stats::init()
         t->deleteLater();
     });
 
-    // Start after 10 seconds: we don't want to take time to the startup sequence,
-    // and we want the extensions to be fully loaded.
+    // Start after 10 seconds: we don't want to take time to the startup sequence
     t->start(10000);
 
     // Also start another timer that will periodically check if a week has passed and
@@ -89,13 +87,6 @@ void Stats::check()
     data["os_version"] = QSysInfo::productVersion();
 #endif
 
-    auto extensions = Extensions::ExtensionsLoader::loadedExtensions();
-    QJsonArray exts;
-    for (const auto &ext : extensions.values()) { exts.append(ext->name()); }
-
-    data["extensions"] = QString(QJsonDocument(exts).toJson(QJsonDocument::Compact));
-    data["extension_count"] = extensions.count();
-
     Stats::remoteApiSend(data);
 }
 
@@ -135,7 +126,7 @@ void Stats::askUserPermission()
             "<p>" + QObject::tr("You can help to improve Notepad by allowing us to collect <b>anonymous statistics</b>.") + "</p>" +
             "<b>" + QObject::tr("What will we collect?") + "</b><br>" +
             QObject::tr(
-                "We will collect information such as the version of Qt, the version of the OS, or the number of extensions.<br>"
+                "We will collect information such as the version of Qt or the version of the OS<br>"
                 "You don't have to trust us: Notepad is open source, so you can %1check by yourself%2 😊").
                       arg("<a href=\"https://github.com/notepad/notepad/blob/master/src/ui/stats.cpp\">").
                       arg("</a>") +

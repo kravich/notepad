@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include "docengine.h"
-#include "include/Extensions/extension.h"
 #include "include/Search/advancedsearchdock.h"
 #include "include/Search/frmsearchreplace.h"
 #include "include/npsettings.h"
@@ -59,8 +58,6 @@ public:
     void openCommandLineProvidedUrls(const QString &workingDirectory, const QStringList &arguments);
 
     QSharedPointer<Editor> currentEditor();
-    QAction *addExtensionMenuItem(QString extensionId, QString text);
-    void showExtensionsMenu(bool show);
 
     /**
      * @brief getDefaultToolBarString
@@ -185,7 +182,6 @@ private slots:
     void on_actionSpace_to_TAB_Leading_triggered();
     void on_editorUrlsDropped(QList<QUrl> urls);
     void on_actionGo_to_Line_triggered();
-    void on_actionInstall_Extension_triggered();
     void on_actionFull_Screen_toggled(bool on);
     void on_actionShow_End_of_Line_triggered(bool on);
     void on_actionShow_All_Characters_toggled(bool on);
@@ -216,7 +212,6 @@ private:
     frmSearchReplace *m_frmSearchReplace = nullptr;
     bool m_overwrite = false; // Overwrite mode vs Insert mode
     QString m_workingDirectory;
-    QMap<QSharedPointer<Extensions::Extension>, QMenu *> m_extensionMenus;
     QPair<int, int> beginSelectPosition;
     bool beginSelectPositionSet = false;
 

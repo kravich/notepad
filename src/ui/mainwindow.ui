@@ -265,13 +265,6 @@
     </property>
     <addaction name="actionOpen_a_New_Window"/>
    </widget>
-   <widget class="QMenu" name="menu_Extensions">
-    <property name="title">
-     <string>E&amp;xtensions</string>
-    </property>
-    <addaction name="actionInstall_Extension"/>
-    <addaction name="separator"/>
-   </widget>
    <addaction name="menu_File"/>
    <addaction name="menu_Edit"/>
    <addaction name="menu_Search"/>
@@ -280,7 +273,6 @@
    <addaction name="menu_Language"/>
    <addaction name="menu_Settings"/>
    <addaction name="menu_Run"/>
-   <addaction name="menu_Extensions"/>
    <addaction name="menu_Window"/>
    <addaction name="menu_Help"/>
   </widget>
@@ -887,11 +879,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
-   </property>
-  </action>
-  <action name="actionInstall_Extension">
-   <property name="text">
-    <string>&amp;Install Extension...</string>
    </property>
   </action>
   <action name="actionFull_Screen">

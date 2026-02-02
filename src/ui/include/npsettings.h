@@ -115,13 +115,6 @@ public:
         /* clang-format on */
     END_CATEGORY(Search)
 
-    BEGIN_CATEGORY(Extensions)
-        /* clang-format off */
-        NP_SETTING(RuntimeNodeJS,  QString, QString())
-        NP_SETTING(RuntimeNpm,     QString, QString())
-        /* clang-format on */
-    END_CATEGORY(Extensions)
-
     BEGIN_CATEGORY(Languages)
         /* clang-format off */
         NP_SETTING_WITH_KEY(IndentWithSpaces,      bool,   false)

@@ -33,10 +33,6 @@ private slots:
     void on_chkLanguages_IndentWithSpaces_toggled(bool checked);
     void on_cmbColorScheme_currentIndexChanged(int index);
     void on_localizationComboBox_activated(int index);
-    void on_btnNodejsBrowse_clicked();
-    void on_btnNpmBrowse_clicked();
-    void on_txtNodejs_textChanged(const QString &);
-    void on_txtNpm_textChanged(const QString &);
     void resetSelectedShortcut();
     void resetAllShortcuts();
     void on_chkOverrideFontFamily_toggled(bool checked);
@@ -102,8 +98,6 @@ private:
      */
     bool applySettings();
 
-    bool extensionBrowseRuntime(QLineEdit *lineEdit);
-    void checkExecutableExists(QLineEdit *path);
     void updatePreviewEditorFont();
 };
 

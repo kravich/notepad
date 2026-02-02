@@ -4,9 +4,6 @@
 #include "include/EditorNS/bannerfileremoved.h"
 #include "include/EditorNS/bannerindentationdetected.h"
 #include "include/EditorNS/editor.h"
-#include "include/Extensions/Stubs/windowstub.h"
-#include "include/Extensions/extensionsloader.h"
-#include "include/Extensions/installextension.h"
 #include "include/Sessions/backupservice.h"
 #include "include/Sessions/persistentcache.h"
 #include "include/Sessions/sessions.h"
@@ -122,8 +119,6 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
     loadToolBar();
 
     setupLanguagesMenu();
-
-    showExtensionsMenu(Extensions::ExtensionsLoader::extensionRuntimePresent());
 
     //Registers all actions so that NpSettings knows their default and current shortcuts.
     const QList<QAction *> allActions = getActions();
@@ -1172,35 +1167,6 @@ QUrl MainWindow::getSaveDialogDefaultFileName(EditorTabWidget *tabWidget, int ta
 QSharedPointer<Editor> MainWindow::currentEditor()
 {
     return m_topEditorContainer->currentTabWidget()->currentEditor();
-}
-
-QAction *MainWindow::addExtensionMenuItem(QString extensionId, QString text)
-{
-    QMap<QString, QSharedPointer<Extensions::Extension>> extensions = Extensions::ExtensionsLoader::loadedExtensions();
-
-    if (extensions.contains(extensionId))
-    {
-        QSharedPointer<Extensions::Extension> extension = extensions.value(extensionId);
-
-        // Create the menu for the extension if it doesn't exist yet.
-        if (!m_extensionMenus.contains(extension))
-        {
-            QMenu *menu = new QMenu(extension->name(), this);
-            ui->menu_Extensions->addMenu(menu);
-            m_extensionMenus.insert(extension, menu);
-        }
-
-        // Create the menu item
-        QAction *action = new QAction(text, this);
-        m_extensionMenus[extension]->addAction(action);
-
-        return action;
-    }
-    else
-    {
-        // Invalid extension id
-        return NULL;
-    }
 }
 
 void MainWindow::on_tabCloseRequested(EditorTabWidget *tabWidget, int tab)
@@ -2631,26 +2597,6 @@ void MainWindow::on_actionGo_to_Line_triggered()
         int line = frm->value();
         editor->setSelection(line - 1, 0, line - 1, 0);
     }
-}
-
-void MainWindow::on_actionInstall_Extension_triggered()
-{
-    // See https://github.com/notepad/notepad/issues/654
-    BackupServicePauser bsp;
-    bsp.pause();
-
-    QString file = QFileDialog::getOpenFileName(this, tr("Extension"), QString(), "Notepad extensions (*.npext)");
-    if (!file.isNull())
-    {
-        Extensions::InstallExtension *installExt = new Extensions::InstallExtension(file, this);
-        installExt->exec();
-        installExt->deleteLater();
-    }
-}
-
-void MainWindow::showExtensionsMenu(bool show)
-{
-    ui->menu_Extensions->menuAction()->setVisible(show);
 }
 
 QString MainWindow::getDefaultToolBarString() const

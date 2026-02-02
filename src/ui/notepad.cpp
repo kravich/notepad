@@ -1,7 +1,5 @@
 #include "include/notepad.h"
 
-#include "include/Extensions/extensionsloader.h"
-#include "include/Extensions/runtimesupport.h"
 #include "include/npsettings.h"
 
 #include <QCheckBox>
@@ -35,23 +33,6 @@ QString Notepad::appDataPath(QString fileName)
     }
 
     return def;
-}
-
-QString Notepad::extensionToolsPath()
-{
-    return appDataPath("extension_tools");
-}
-
-QString Notepad::nodejsPath()
-{
-    NpSettings &s = NpSettings::getInstance();
-    return s.Extensions.getRuntimeNodeJS();
-}
-
-QString Notepad::npmPath()
-{
-    NpSettings &s = NpSettings::getInstance();
-    return s.Extensions.getRuntimeNpm();
 }
 
 QString Notepad::fileNameFromUrl(const QUrl &url)
@@ -107,14 +88,6 @@ QSharedPointer<QCommandLineParser> Notepad::getCommandLineArgumentsParser(const 
     parser->process(arguments);
 
     return parser;
-}
-
-QString Notepad::extensionsPath()
-{
-    QSettings settings;
-
-    QFileInfo f = QFileInfo(settings.fileName());
-    return f.absoluteDir().absoluteFilePath("extensions");
 }
 
 QList<QString> Notepad::translations()

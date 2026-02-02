@@ -44,17 +44,7 @@ set(notepad_SRCS
     Search/frmsearchreplace.cpp
     Search/searchstring.cpp
     Search/advancedsearchdock.cpp
-    Extensions/extension.cpp
     frmlinenumberchooser.cpp
-    Extensions/extensionsserver.cpp
-    Extensions/Stubs/stub.cpp
-    Extensions/runtimesupport.cpp
-    Extensions/Stubs/windowstub.cpp
-    Extensions/Stubs/notepadstub.cpp
-    Extensions/Stubs/editorstub.cpp
-    Extensions/extensionsloader.cpp
-    Extensions/Stubs/menuitemstub.cpp
-    Extensions/installextension.cpp
     keygrabber.cpp
     Sessions/sessions.cpp
     Sessions/persistentcache.cpp
@@ -94,17 +84,7 @@ set(notepad_HEADERS
     include/Search/advancedsearchdock.h
     include/Search/searchhelpers.h
     include/Search/searchstring.h
-    include/Extensions/extension.h
     include/frmlinenumberchooser.h
-    include/Extensions/extensionsserver.h
-    include/Extensions/Stubs/stub.h
-    include/Extensions/runtimesupport.h
-    include/Extensions/Stubs/windowstub.h
-    include/Extensions/Stubs/notepadstub.h
-    include/Extensions/Stubs/editorstub.h
-    include/Extensions/extensionsloader.h
-    include/Extensions/Stubs/menuitemstub.h
-    include/Extensions/installextension.h
     include/keygrabber.h
     include/Sessions/sessions.h
     include/Sessions/persistentcache.h
@@ -128,7 +108,6 @@ set(notepad_FORMS
     Search/dlgsearching.ui
     Search/frmsearchreplace.ui
     frmlinenumberchooser.ui
-    Extensions/installextension.ui
 )
 
 set(notepad_RESOURCES
@@ -230,13 +209,4 @@ install(DIRECTORY ${notepad_SUPPORT_FILES_PATH}/icons
 
 install(FILES ${notepad_SUPPORT_FILES_PATH}/notepad.appdata.xml
     DESTINATION share/metainfo
-)
-
-install(CODE
-    "execute_process(COMMAND rm -rf ${CMAKE_INSTALL_PREFIX}/share/notepad/extension_tools)"
-)
-
-install(CODE
-    "execute_process(COMMAND make DESTDIR=${CMAKE_INSTALL_PREFIX}/share/notepad/extension_tools
-                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/extension_tools)"
 )

@@ -1,7 +1,6 @@
 #include "include/frmpreferences.h"
 
 #include "include/EditorNS/editor.h"
-#include "include/Extensions/extensionsloader.h"
 #include "include/Sessions/backupservice.h"
 #include "include/keygrabber.h"
 #include "include/mainwindow.h"
@@ -66,9 +65,6 @@ frmPreferences::frmPreferences(TopEditorContainer *topEditorContainer, QWidget *
 
     ui->chkSearch_SearchAsIType->setChecked(m_settings.Search.getSearchAsIType());
     ui->chkSearch_SaveHistory->setChecked(m_settings.Search.getSaveHistory());
-
-    ui->txtNodejs->setText(m_settings.Extensions.getRuntimeNodeJS());
-    ui->txtNpm->setText(m_settings.Extensions.getRuntimeNpm());
 }
 
 frmPreferences::~frmPreferences()
@@ -427,9 +423,6 @@ bool frmPreferences::applySettings()
     m_settings.Search.setSearchAsIType(ui->chkSearch_SearchAsIType->isChecked());
     m_settings.Search.setSaveHistory(ui->chkSearch_SaveHistory->isChecked());
 
-    m_settings.Extensions.setRuntimeNodeJS(ui->txtNodejs->text());
-    m_settings.Extensions.setRuntimeNpm(ui->txtNpm->text());
-
     const Editor::Theme &newTheme = Editor::themeFromName(ui->cmbColorScheme->currentData().toString());
     const QString fontFamily = ui->cmbFontFamilies->isEnabled() ? ui->cmbFontFamilies->currentFont().family() : "";
     const int fontSize = ui->spnFontSize->isEnabled() ? ui->spnFontSize->value() : 0;
@@ -439,8 +432,6 @@ bool frmPreferences::applySettings()
     // Apply changes to currently opened editors
     for (MainWindow *w : MainWindow::instances())
     {
-        w->showExtensionsMenu(Extensions::ExtensionsLoader::extensionRuntimePresent());
-
         w->topEditorContainer()->forEachEditor([&](const int, const int, EditorTabWidget *, QSharedPointer<Editor> editor) {
             // Set new theme
             editor->setTheme(newTheme);
@@ -533,47 +524,6 @@ void frmPreferences::on_localizationComboBox_activated(int /*index*/)
     msgBox.setText("<h3>" + QObject::tr("Restart required") + "</h3>");
     msgBox.setInformativeText(QObject::tr("You need to restart Notepad for the localization changes to take effect."));
     msgBox.exec();
-}
-
-bool frmPreferences::extensionBrowseRuntime(QLineEdit *lineEdit)
-{
-    QString fn = QFileDialog::getOpenFileName(this, tr("Browse"), lineEdit->text());
-    if (fn.isNull())
-        return false;
-    lineEdit->setText(fn);
-    return true;
-}
-
-void frmPreferences::checkExecutableExists(QLineEdit *path)
-{
-    QPalette palette;
-    QFileInfo fi(path->text());
-
-    if (!(fi.isFile() && fi.isExecutable()))
-    {
-        palette.setColor(QPalette::ColorRole::Text, Qt::GlobalColor::red);
-    }
-    path->setPalette(palette);
-}
-
-void frmPreferences::on_btnNodejsBrowse_clicked()
-{
-    extensionBrowseRuntime(ui->txtNodejs);
-}
-
-void frmPreferences::on_btnNpmBrowse_clicked()
-{
-    extensionBrowseRuntime(ui->txtNpm);
-}
-
-void frmPreferences::on_txtNodejs_textChanged(const QString &)
-{
-    checkExecutableExists(ui->txtNodejs);
-}
-
-void frmPreferences::on_txtNpm_textChanged(const QString &)
-{
-    checkExecutableExists(ui->txtNpm);
 }
 
 void frmPreferences::on_chkOverrideFontFamily_toggled(bool checked)
