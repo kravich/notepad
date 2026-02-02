@@ -225,6 +225,10 @@ install(CODE
                      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/editor)"
 )
 
+install(FILES ${notepad_SUPPORT_FILES_PATH}/Languages.json
+    DESTINATION share/notepad
+)
+
 install(FILES ${notepad_SUPPORT_FILES_PATH}/shortcuts/notepad.desktop
     DESTINATION share/applications
 )
