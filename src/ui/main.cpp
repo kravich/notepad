@@ -132,13 +132,6 @@ int main(int argc, char *argv[])
     // There are no other instances: start a new server.
     a.startServer();
 
-    QFileInfo finfo(Notepad::editorPath());
-    if (!finfo.isReadable())
-    {
-        qCritical() << "Can't open file: " + finfo.filePath();
-        return EXIT_FAILURE;
-    }
-
     if (Extensions::ExtensionsLoader::extensionRuntimePresent())
     {
         Extensions::ExtensionsLoader::startExtensionsServer();

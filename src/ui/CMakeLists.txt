@@ -216,15 +216,6 @@ add_custom_target(support_files SOURCES ${notepad_SUPPORT_FILES})
 
 install(TARGETS notepad)
 
-install(CODE
-    "execute_process(COMMAND rm -rf ${CMAKE_INSTALL_PREFIX}/share/notepad/editor)"
-)
-
-install(CODE
-    "execute_process(COMMAND make DESTDIR=${CMAKE_INSTALL_PREFIX}/share/notepad/editor
-                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/editor)"
-)
-
 install(FILES ${notepad_SUPPORT_FILES_PATH}/Languages.json
     DESTINATION share/notepad
 )

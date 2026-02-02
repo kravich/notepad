@@ -58,7 +58,6 @@ public:
     static const QString website;
     static QString copyright();
     static QString appDataPath(QString fileName = QString());
-    static QString editorPath();
     static QString extensionToolsPath();
     static QString nodejsPath();
     static QString npmPath();

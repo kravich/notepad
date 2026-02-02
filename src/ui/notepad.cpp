@@ -37,11 +37,6 @@ QString Notepad::appDataPath(QString fileName)
     return def;
 }
 
-QString Notepad::editorPath()
-{
-    return appDataPath("editor/index.html");
-}
-
 QString Notepad::extensionToolsPath()
 {
     return appDataPath("extension_tools");
