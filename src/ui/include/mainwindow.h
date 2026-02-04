@@ -12,7 +12,6 @@
 #include <QCloseEvent>
 #include <QLabel>
 #include <QMainWindow>
-#include <QtPromise>
 
 #include <functional>
 
@@ -171,8 +170,6 @@ private slots:
     void on_actionOpen_a_New_Window_triggered();
     void on_actionOpen_in_New_Window_triggered();
     void on_actionMove_to_New_Window_triggered();
-    void on_actionOpen_file_triggered();
-    void on_actionOpen_in_another_window_triggered();
     void on_tabBarDoubleClicked(EditorTabWidget *tabWidget, int tab);
     void on_actionFind_in_Files_triggered();
     void on_actionDelete_Line_triggered();
@@ -209,7 +206,6 @@ private:
     TopEditorContainer *m_topEditorContainer;
     DocEngine *m_docEngine;
     QMenu *m_tabContextMenu;
-    QList<QAction *> m_tabContextMenuActions;
     QLabel *m_sbDocumentInfoLabel;
     QPushButton *m_sbFileFormatBtn;
     QPushButton *m_sbEOLFormatBtn;
@@ -279,9 +275,6 @@ private:
     void convertEditorEncoding(QSharedPointer<Editor> editor, QTextCodec *codec, bool bom);
     void toggleOverwrite();
     void checkIndentationMode(QSharedPointer<Editor> editor);
-    QtPromise::QPromise<QStringList> currentWordOrSelections();
-    QtPromise::QPromise<QString> currentWordOrSelection();
-    void currentWordOnlineSearch(const QString &searchUrl);
 
     /**
      * @brief Attempts to open a file from the recent history. Prompts the user if the file does not exist and

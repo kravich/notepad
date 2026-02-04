@@ -11,7 +11,6 @@
 #include <QVBoxLayout>
 #include <QVariant>
 #include <QWheelEvent>
-#include <QtPromise>
 
 #include <functional>
 #include <future>
@@ -195,17 +194,15 @@ public:
     void removeBanner(QWidget *banner);
     void removeBanner(QString objectName);
 
-        // Lower-level message wrappers:
-    QtPromise::QPromise<bool> isCleanP();
     Q_INVOKABLE bool isClean();
-    Q_INVOKABLE QtPromise::QPromise<void> markClean();
-    Q_INVOKABLE QtPromise::QPromise<void> markDirty();
+    Q_INVOKABLE void markClean();
+    Q_INVOKABLE void markDirty();
 
         /**
      * @brief Returns an integer that denotes the editor's history state. Making changes to
      *        the contents increments the integer while reverting changes decrements it again.
      */
-    Q_INVOKABLE QtPromise::QPromise<int> getHistoryGeneration();
+    Q_INVOKABLE int getHistoryGeneration();
 
         /**
      * @brief Set the language to use for the editor.
@@ -217,7 +214,7 @@ public:
     Q_INVOKABLE void setLanguage(const QString &language);
     Q_INVOKABLE void setLanguageFromFilePath(const QString &filePath);
     Q_INVOKABLE void setLanguageFromFilePath();
-    Q_INVOKABLE QtPromise::QPromise<void> setValue(const QString &value);
+    Q_INVOKABLE void setValue(const QString &value);
     Q_INVOKABLE QString value();
 
         /**
@@ -251,7 +248,6 @@ public:
      * @return a <line, column> pair.
      */
     QPair<int, int> cursorPosition();
-    QtPromise::QPromise<QPair<int, int>> cursorPositionP();
     void setCursorPosition(const int line, const int column);
     void setCursorPosition(const QPair<int, int> &position);
     void setCursorPosition(const Cursor &cursor);
@@ -312,7 +308,7 @@ public:
      * @brief Returns the currently selected texts.
      * @return
      */
-    Q_INVOKABLE QtPromise::QPromise<QStringList> selectedTexts();
+    Q_INVOKABLE QStringList selectedTexts();
 
     void setOverwrite(bool overwrite);
     void setTabsVisible(bool visible);
@@ -322,15 +318,12 @@ public:
      * @return a pair whose first element is the document indentation, that is
      *         significative only if the second element ("found") is true.
      */
-    QtPromise::QPromise<std::pair<IndentationMode, bool>> detectDocumentIndentation();
+    std::pair<IndentationMode, bool> detectDocumentIndentation();
     Editor::IndentationMode indentationMode();
-    QtPromise::QPromise<IndentationMode> indentationModeP();
-
-    QtPromise::QPromise<QString> getCurrentWord();
 
     void setSelection(int fromLine, int fromCol, int toLine, int toCol);
 
-    QtPromise::QPromise<int> lineCount();
+    int lineCount();
 
 private:
     friend class ::EditorTabWidget;
@@ -367,8 +360,8 @@ private:
 
     void fullConstructor(const Theme &theme);
 
-    QtPromise::QPromise<void> setIndentationMode(const bool useTabs, const int size);
-    QtPromise::QPromise<void> setIndentationMode(const Language *);
+    void setIndentationMode(const bool useTabs, const int size);
+    void setIndentationMode(const Language *);
 
 private slots:
     void on_proxyMessageReceived(QString msg, QVariant data);
@@ -403,9 +396,6 @@ public slots:
         // [[deprecated]]
     void sendMessage(const QString msg);
 
-    QtPromise::QPromise<QVariant> asyncSendMessageWithResultP(const QString msg, const QVariant data);
-    QtPromise::QPromise<QVariant> asyncSendMessageWithResultP(const QString msg);
-
         /**
      * @brief asyncSendMessageWithResult
      * @param msg
@@ -431,7 +421,7 @@ public slots:
      * @param pageLayout
      * @return
      */
-    QtPromise::QPromise<QByteArray> printToPdf(const QPageLayout &pageLayout = QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF()));
+    QByteArray printToPdf(const QPageLayout &pageLayout = QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, QMarginsF()));
 };
 
 } //namespace EditorNS

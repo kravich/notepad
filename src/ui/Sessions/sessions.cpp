@@ -306,8 +306,7 @@ bool saveSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QStr
         for (int j = 0; j < tabCount; j++)
         {
             auto editor = tabWidget->editor(j);
-            bool isClean = true;
-            editor->isCleanP().wait().tap([&](bool _isClean) { isClean = _isClean; });
+            bool isClean = editor->isClean();
             bool isOrphan = editor->filePath().isEmpty();
             Editor::IndentationMode indentInfo = editor->indentationMode();
 
@@ -499,10 +498,10 @@ void loadSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QStr
                                       {
                             // We need to trigger a final call to MainWindow::refreshEditorUiInfo to display the correct info
                             // on start-up. The easiest way is to emit a cleanChanged() event.
-                                          editor->isCleanP().then([=](bool isClean) { emit editor->cleanChanged(isClean); });
+                                          emit editor->cleanChanged(editor->isClean());
                                       }
                                   })
-                                  .executeInBackground();
+                                  .executeWithFeedback();
 
             if (loadedDocs.length() == 0)
             {
@@ -513,7 +512,7 @@ void loadSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QStr
                 // We need to set the correct title as soon as possible, otherwise
                 // the UI will jump around changing the width of the tabs while they
                 // are loading.
-            auto loadingEditor = loadedDocs.first().first;
+            auto loadingEditor = loadedDocs.first();
             QString tabText;
             if (tab.filePath.isEmpty())
             {

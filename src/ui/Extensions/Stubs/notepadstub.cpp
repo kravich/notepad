@@ -2,7 +2,6 @@
 
 #include "include/Extensions/Stubs/windowstub.h"
 #include "include/Extensions/runtimesupport.h"
-#include "include/globals.h"
 #include "include/notepad.h"
 
 #include <QApplication>
@@ -89,7 +88,7 @@ NP_DEFINE_EXTENSION_METHOD(NotepadStub, print, args)
         }
     }
 
-    println(output);
+    printf("%s\n", output.toUtf8().data());
     return StubReturnValue();
 }
 

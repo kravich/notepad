@@ -53,7 +53,6 @@ set(notepad_SRCS
     Extensions/Stubs/notepadstub.cpp
     Extensions/Stubs/editorstub.cpp
     Extensions/extensionsloader.cpp
-    globals.cpp
     Extensions/Stubs/menuitemstub.cpp
     Extensions/installextension.cpp
     keygrabber.cpp
@@ -104,7 +103,6 @@ set(notepad_HEADERS
     include/Extensions/Stubs/notepadstub.h
     include/Extensions/Stubs/editorstub.h
     include/Extensions/extensionsloader.h
-    include/globals.h
     include/Extensions/Stubs/menuitemstub.h
     include/Extensions/installextension.h
     include/keygrabber.h
@@ -178,7 +176,6 @@ set_target_properties(notepad
 target_include_directories(notepad
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
-        libs/qtpromise-0.7.0/include
 )
 
 target_link_libraries(notepad
