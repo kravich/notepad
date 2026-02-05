@@ -198,6 +198,10 @@ install(FILES ${notepad_SUPPORT_FILES_PATH}/Languages.json
     DESTINATION share/notepad
 )
 
+install(DIRECTORY ${notepad_SUPPORT_FILES_PATH}/themes
+    DESTINATION share/notepad
+)
+
 install(FILES ${notepad_SUPPORT_FILES_PATH}/shortcuts/notepad.desktop
     DESTINATION share/applications
 )
