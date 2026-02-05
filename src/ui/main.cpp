@@ -45,7 +45,6 @@ int main(int argc, char *argv[])
 
     QSettings::setDefaultFormat(QSettings::IniFormat);
 
-    NpSettings::ensureBackwardsCompatibility();
     NpSettings &settings = NpSettings::getInstance();
     settings.General.setNotepadVersion(POINTVERSION);
 

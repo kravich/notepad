@@ -238,13 +238,6 @@ public:
 
     END_CATEGORY(Run)
 
-    /**
-     * @brief Some keys have changed since v0.53. To maintain compatibility, this function
-     *        parses through the QSettings file and fixes these entries.
-     *        Should be called once at program initiation, before getInstance() is called.
-     */
-    static void ensureBackwardsCompatibility();
-
     static NpSettings &getInstance();
 
 private:
