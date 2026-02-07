@@ -1,0 +1,19 @@
+Source: notepad
+Maintainer: Evgeny Kravchenk <kravich64@gmail.com>
+Section: editors
+Priority: optional
+Standards-Version: 4.7.2
+Build-Depends:
+  debhelper-compat (= 13),
+  cmake,
+  qt6-base-dev,
+  qt6-svg-dev,
+  qt6-5compat-dev,
+  qt6-l10n-tools,
+  libqscintilla2-qt6-dev,
+  libuchardet-dev
+
+Package: notepad
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Notepad++-like editor
