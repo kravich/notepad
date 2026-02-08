@@ -489,7 +489,7 @@ void Editor::setWhitespaceVisible(const bool showspace)
 
 void Editor::setIndentGuideVisible(bool showindentguide)
 {
-    fprintf(stderr, "FIXME: Implement Editor::setIndentGuideVisible()\n");
+    m_scintilla->setIndentationGuides(showindentguide);
 }
 
 void Editor::requestDocumentInfo()
