@@ -209,7 +209,10 @@ target_compile_options(notepad
         $<$<CXX_COMPILER_ID:Clang>:${CLANG_COMPILE_OPTIONS}>
 )
 
-set(notepad_SUPPORT_FILES ../../support_files)
+set(notepad_SUPPORT_FILES_PATH ../../support_files)
+
+file(GLOB_RECURSE notepad_SUPPORT_FILES ${notepad_SUPPORT_FILES_PATH}/*)
+add_custom_target(support_files SOURCES ${notepad_SUPPORT_FILES})
 
 install(TARGETS notepad)
 
@@ -222,15 +225,15 @@ install(CODE
                      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/editor)"
 )
 
-install(FILES ${notepad_SUPPORT_FILES}/shortcuts/notepad.desktop
+install(FILES ${notepad_SUPPORT_FILES_PATH}/shortcuts/notepad.desktop
     DESTINATION share/applications
 )
 
-install(DIRECTORY ${notepad_SUPPORT_FILES}/icons
+install(DIRECTORY ${notepad_SUPPORT_FILES_PATH}/icons
     DESTINATION share
 )
 
-install(FILES ${notepad_SUPPORT_FILES}/notepad.appdata.xml
+install(FILES ${notepad_SUPPORT_FILES_PATH}/notepad.appdata.xml
     DESTINATION share/metainfo
 )
 
