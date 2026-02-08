@@ -78,6 +78,7 @@ public:
         NP_SETTING(TabsVisible,                    bool,       false)
         NP_SETTING(SpacesVisisble,                 bool,       false)
         NP_SETTING(ShowEOL,                        bool,       false)
+        NP_SETTING(ShowIndentGuide,                bool,       true)
 
         NP_SETTING(RememberTabsOnExit,             bool,       true)
         NP_SETTING(AutosaveInterval,               int,        15)      // In seconds

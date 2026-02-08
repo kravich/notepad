@@ -513,6 +513,11 @@ void Editor::setMathEnabled(const bool enabled)
     asyncSendMessageWithResult("C_CMD_ENABLE_MATH", enabled);
 }
 
+void Editor::setIndentGuideVisible(bool showindentguide)
+{
+    fprintf(stderr, "FIXME: Implement Editor::setIndentGuideVisible()\n");
+}
+
 void Editor::requestDocumentInfo()
 {
     asyncSendMessageWithResult("C_CMD_GET_DOCUMENT_INFO");

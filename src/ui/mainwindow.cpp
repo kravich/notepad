@@ -223,6 +223,10 @@ void MainWindow::configureUserInterface()
     // Restore math rendering
     ui->actionMath_Rendering->setChecked(m_settings.General.getMathRendering());
 
+    // Restore indent guide visibility
+    bool showIndentGuide = m_settings.General.getShowIndentGuide();
+    ui->actionShow_Indent_Guide->setChecked(showIndentGuide);
+
     // Restore full screen
     ui->actionFull_Screen->setChecked(isFullScreen());
 
@@ -864,6 +868,16 @@ void MainWindow::on_actionMath_Rendering_toggled(bool on)
     m_settings.General.setMathRendering(on);
 }
 
+void MainWindow::on_actionShow_Indent_Guide_triggered(bool on)
+{
+    m_topEditorContainer->forEachEditor([&](const int /*tabWidgetId*/, const int /*editorId*/, EditorTabWidget * /*tabWidget*/, QSharedPointer<Editor> editor) {
+        editor->setIndentGuideVisible(on);
+        return true;
+    });
+
+    m_settings.General.setShowIndentGuide(on);
+}
+
 void MainWindow::on_actionMove_to_Other_View_triggered()
 {
     EditorTabWidget *curTabWidget = m_topEditorContainer->currentTabWidget();
@@ -1286,6 +1300,7 @@ void MainWindow::on_editorAdded(EditorTabWidget *tabWidget, int tab)
     editor->setTabsVisible(ui->actionShow_Tabs->isChecked());
     editor->setEOLVisible(ui->actionShow_End_of_Line->isChecked());
     editor->setWhitespaceVisible(ui->actionShow_Spaces->isChecked());
+    editor->setIndentGuideVisible(ui->actionShow_Indent_Guide->isChecked());
     editor->setOverwrite(m_overwrite);
     editor->setFont(m_settings.Appearance.getOverrideFontFamily(),
                     m_settings.Appearance.getOverrideFontSize(),
