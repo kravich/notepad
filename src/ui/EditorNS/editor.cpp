@@ -262,16 +262,12 @@ void Editor::setLanguage(const Language *lang)
     {
         lang = LanguageService::getInstance().lookupById("plaintext");
     }
-    if (m_currentLanguage == lang)
-    {
-        return;
-    }
-    if (!m_customIndentationMode)
-    {
-        setIndentationMode(lang);
-    }
+
     m_currentLanguage = lang;
+    setIndentationMode(lang);   // Refresh indentation settings
+
     asyncSendMessageWithResult("C_CMD_SET_LANGUAGE", lang->mime.isEmpty() ? lang->mode : lang->mime);
+
     emit currentLanguageChanged(m_currentLanguage->id, m_currentLanguage->name);
 }
 
