@@ -33,6 +33,8 @@ public:
     int getZoom();
 
 signals:
+    void zoomChanged(int zoomFactor);
+
     void urlsDropped(QList<QUrl> urls);
     void gotFocus();
 

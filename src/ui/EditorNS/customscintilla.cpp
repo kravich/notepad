@@ -9,6 +9,9 @@ namespace EditorNS
 CustomScintilla::CustomScintilla(QWidget *parent) :
     QsciScintilla(parent)
 {
+    // Connect handlers for notifications
+    connect(this, &CustomScintilla::SCN_ZOOM, this, [this]() { emit zoomChanged(getZoom()); });
+
     // Always use some monospace font by default (if not overriden by lexer)
     QFont font("Monospace");
     font.setStyleHint(QFont::TypeWriter);
