@@ -34,6 +34,7 @@ set(notepad_SRCS
     EditorNS/bannerfileremoved.cpp
     EditorNS/customscintilla.cpp
     EditorNS/languageservice.cpp
+    EditorNS/nulllexer.cpp
     clickablelabel.cpp
     frmencodingchooser.cpp
     frmindentationmode.cpp
@@ -71,6 +72,7 @@ set(notepad_HEADERS
     include/EditorNS/bannerbasicmessage.h
     include/EditorNS/bannerfileremoved.h
     include/EditorNS/customscintilla.h
+    include/EditorNS/nulllexer.h
     include/clickablelabel.h
     include/frmencodingchooser.h
     include/EditorNS/languageservice.h
