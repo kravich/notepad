@@ -239,6 +239,13 @@ void MainWindow::configureUserInterface()
     }
 
     restoreWindowSettings();
+
+    // Disable currently non-implemented actions
+    ui->actionPrint->setEnabled(false);
+    ui->actionPrint->setText(ui->actionPrint->text() + " (Not implemented)");
+
+    ui->actionPrint_Now->setEnabled(false);
+    ui->actionPrint_Now->setText(ui->actionPrint_Now->text() + " (Not implemented)");
 }
 
 void MainWindow::restoreWindowSettings()

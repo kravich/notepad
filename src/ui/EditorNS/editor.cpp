@@ -700,49 +700,13 @@ void Editor::setOverwrite(bool overwrite)
 
 void Editor::print(std::shared_ptr<QPrinter> printer)
 {
-        /*
-     * FIXME: Implement using QScintilla
-     */
+    fprintf(stderr, "FIXME: Implement Editor::print()\n");
 }
 
 QByteArray Editor::printToPdf(const QPageLayout &pageLayout)
 {
-    // 1. Set theme to default because dark themes would force the printer to color the entire
-    //    document in the background color. Default theme has white background.
-    // 2. Set WebView's bg-color to white to prevent visual artifacts when printing less than one page.
-    // 3. Set C_CMD_DISPLAY_PRINT_STYLE to hide UI elements like the gutter.
-
-    QColor prevBackgroundColor = m_webView->page()->backgroundColor();
-    QString prevStylesheet = m_webView->styleSheet();
-
-    this->setLineWrap(true);
-    setTheme(themeFromName("default"));
-    m_webView->page()->setBackgroundColor(Qt::transparent);
-    m_webView->setStyleSheet("background-color: white");
-    asyncSendMessageWithResult("C_CMD_DISPLAY_PRINT_STYLE");
-
-    QByteArray pdfData;
-
-    m_webView->page()->printToPdf(
-        [&](const QByteArray &data) {
-            asyncSendMessageWithResult("C_CMD_DISPLAY_NORMAL_STYLE");
-            m_webView->setStyleSheet(prevStylesheet);
-            m_webView->page()->setBackgroundColor(prevBackgroundColor);
-            setTheme(themeFromName(NpSettings::getInstance().Appearance.getColorScheme()));
-            this->setLineWrap(NpSettings::getInstance().General.getWordWrap());
-
-            if (data.isEmpty() || data.isNull())
-            {
-                pdfData = QByteArray();
-            }
-            else
-            {
-                pdfData = data;
-            }
-        },
-        pageLayout);
-
-    return pdfData;
+    fprintf(stderr, "FIXME: Implement Editor::printToPdf()\n");
+    return QByteArray();
 }
 
 int Editor::lineCount()
