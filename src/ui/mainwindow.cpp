@@ -2085,21 +2085,18 @@ void MainWindow::on_actionUNIX_Format_triggered()
 {
     auto editor = currentEditor();
     editor->setEndOfLineSequence("\n");
-    editor->markDirty();
 }
 
 void MainWindow::on_actionWindows_Format_triggered()
 {
     auto editor = currentEditor();
     editor->setEndOfLineSequence("\r\n");
-    editor->markDirty();
 }
 
 void MainWindow::on_actionMac_Format_triggered()
 {
     auto editor = currentEditor();
     editor->setEndOfLineSequence("\r");
-    editor->markDirty();
 }
 
 void MainWindow::convertEditorEncoding(QSharedPointer<Editor> editor, QTextCodec *codec, bool bom)

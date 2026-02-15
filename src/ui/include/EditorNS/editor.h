@@ -312,7 +312,6 @@ private:
     QUrl m_filePath = QUrl();
     QString m_tabName;
     bool m_fileOnDiskChanged = false;
-    QString m_endOfLineSequence = "\n";
     QTextCodec *m_codec = QTextCodec::codecForName("UTF-8");
     bool m_bom = false;
     bool m_customIndentationMode = false;
