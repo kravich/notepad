@@ -553,12 +553,20 @@ void Editor::setScrollPosition(const QPair<int, int> &position)
 
 QString Editor::endOfLineSequence() const
 {
-    return m_endOfLineSequence;
+    return m_scintilla->eolMode() == CustomScintilla::EolWindows ? "\r\n" :
+           m_scintilla->eolMode() == CustomScintilla::EolUnix    ? "\n" :
+                                                                   "\r";
 }
 
 void Editor::setEndOfLineSequence(const QString &newLineSequence)
 {
-    m_endOfLineSequence = newLineSequence;
+    CustomScintilla::EolMode eolMode = newLineSequence == "\r\n" ? CustomScintilla::EolWindows :
+                                       newLineSequence == "\n"   ? CustomScintilla::EolUnix :
+                                                                   CustomScintilla::EolMac;
+
+    m_scintilla->setEolMode(eolMode);
+    m_scintilla->convertEols(eolMode);
+    m_scintilla->append("");    // Reset history
 }
 
 void Editor::setFont(QString fontFamily, int fontSize, double lineHeight)

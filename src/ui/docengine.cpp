@@ -850,9 +850,7 @@ bool DocEngine::writeFromString(QIODevice *io, const DecodedText &write)
 bool DocEngine::write(QIODevice *io, QSharedPointer<Editor> editor)
 {
     DecodedText info;
-    info.text = editor->value()
-                    .replace("\n", editor->endOfLineSequence());
-
+    info.text = editor->value();
     info.codec = editor->codec();
     info.bom = editor->bom();
 
