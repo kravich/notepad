@@ -12,14 +12,14 @@ find_package(Qt6
         Widgets
         PrintSupport
         Network
-        WebEngineWidgets
-        WebChannel
-        WebSockets
         DBus
+        Xml
         Core5Compat
         LinguistTools
     REQUIRED
 )
+
+find_package(QScintilla REQUIRED)
 
 set(ui-tests_SRCS
     tst_notepadtest.cpp
@@ -48,11 +48,10 @@ target_link_libraries(ui-tests
         Qt6::Widgets
         Qt6::PrintSupport
         Qt6::Network
-        Qt6::WebEngineWidgets
-        Qt6::WebChannel
-        Qt6::WebSockets
         Qt6::DBus
+        Qt6::Xml
         Qt6::Core5Compat
+        QScintilla::QScintilla
 )
 
 set_target_properties(ui-tests

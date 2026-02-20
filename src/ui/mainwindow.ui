@@ -175,7 +175,6 @@
      <property name="title">
       <string>&amp;Show Symbol</string>
      </property>
-     <addaction name="actionShow_Tabs"/>
      <addaction name="actionShow_Spaces"/>
      <addaction name="actionShow_End_of_Line"/>
      <addaction name="actionShow_All_Characters"/>
@@ -205,7 +204,6 @@
     <addaction name="menuZoom"/>
     <addaction name="menuMove_Clone_Current_Document"/>
     <addaction name="actionWord_wrap"/>
-    <addaction name="actionMath_Rendering"/>
     <addaction name="actionToggle_To_Former_Tab"/>
     <addaction name="separator"/>
     <addaction name="separator"/>
@@ -265,13 +263,6 @@
     </property>
     <addaction name="actionOpen_a_New_Window"/>
    </widget>
-   <widget class="QMenu" name="menu_Extensions">
-    <property name="title">
-     <string>E&amp;xtensions</string>
-    </property>
-    <addaction name="actionInstall_Extension"/>
-    <addaction name="separator"/>
-   </widget>
    <addaction name="menu_File"/>
    <addaction name="menu_Edit"/>
    <addaction name="menu_Search"/>
@@ -280,7 +271,6 @@
    <addaction name="menu_Language"/>
    <addaction name="menu_Settings"/>
    <addaction name="menu_Run"/>
-   <addaction name="menu_Extensions"/>
    <addaction name="menu_Window"/>
    <addaction name="menu_Help"/>
   </widget>
@@ -528,14 +518,6 @@
     <string>Show &amp;End of Line</string>
    </property>
   </action>
-  <action name="actionShow_Tabs">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Show Tabs</string>
-   </property>
-  </action>
   <action name="actionShow_All_Characters">
    <property name="checkable">
     <bool>true</bool>
@@ -569,14 +551,6 @@
    </property>
    <property name="text">
     <string>&amp;Word wrap</string>
-   </property>
-  </action>
-  <action name="actionMath_Rendering">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Math Rendering</string>
    </property>
   </action>
   <action name="actionCurrent_Full_File_Path_to_Clipboard">
@@ -889,11 +863,6 @@
     <string>Ctrl+G</string>
    </property>
   </action>
-  <action name="actionInstall_Extension">
-   <property name="text">
-    <string>&amp;Install Extension...</string>
-   </property>
-  </action>
   <action name="actionFull_Screen">
    <property name="checkable">
     <bool>true</bool>
@@ -910,10 +879,10 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>S&amp;how Spaces</string>
+    <string>S&amp;how Spaces and Tabs</string>
    </property>
    <property name="toolTip">
-    <string>Show Spaces</string>
+    <string>Show Spaces and Tabs</string>
    </property>
   </action>
   <action name="actionToggle_Smart_Indent">

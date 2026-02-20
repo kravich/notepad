@@ -3,19 +3,40 @@
 #include "include/notepad.h"
 #include "include/npsettings.h"
 
+#include "include/Search/searchstring.h"
+
+#include "include/EditorNS/lexerfactory.h"
+#include "include/EditorNS/scintillatheme.h"
+
 #include <QDir>
 #include <QEventLoop>
 #include <QMessageBox>
 #include <QRegExp>
 #include <QRegularExpression>
 #include <QTimer>
-#include <QUrlQuery>
 #include <QVBoxLayout>
-#include <QWebChannel>
-#include <QWebEngineSettings>
 
 namespace EditorNS
 {
+
+const QString defaultFontFamily = "Courier New,Monospace";  // Use Courier New if availiable, otherwise fallback to any monospace font
+const int defaultFontSizePt = 12;
+const double defaultLineHeightEm = 1.0;
+
+const int lineNumbersMarginIdx = 0;
+const int foldingMarginIdx = 1;
+
+const int foldingMarginWidthPx = 16;
+
+namespace
+{
+
+int PtToPx(int pt)
+{
+    return pt * 72 / 96;
+}
+
+}
 
 QQueue<QSharedPointer<Editor>> Editor::m_editorBuffer = QQueue<QSharedPointer<Editor>>();
 
@@ -35,56 +56,34 @@ Editor::Editor(const Theme &theme, QWidget *parent) :
 
 void Editor::fullConstructor(const Theme &theme)
 {
-    m_jsToCppProxy = new JsToCppProxy(this);
-    connect(m_jsToCppProxy,
-            &JsToCppProxy::messageReceived,
-            this,
-            &Editor::on_proxyMessageReceived);
-
-    m_webView = new CustomQWebView(this);
-
-    QUrlQuery query;
-    query.addQueryItem("themePath", theme.path);
-    query.addQueryItem("themeName", theme.name);
-
-    QUrl url = QUrl("file://" + Notepad::editorPath());
-    url.setQuery(query);
-
-    QWebChannel *channel = new QWebChannel(this);
-    m_webView->page()->setWebChannel(channel);
-    channel->registerObject(QStringLiteral("cpp_ui_driver"), m_jsToCppProxy);
-
-    m_webView->page()->setBackgroundColor(qApp->palette().color(QPalette::Window));
-    m_webView->setUrl(url);
-
-        // To load the page in the background (http://stackoverflow.com/a/10520029):
-        // (however, no noticeable improvement here on an i5, september 2014)
-        //QString content = QString("<html><body onload='setTimeout(function() { window.location=\"%1\"; }, 1);'>Loading...</body></html>").arg("file://" + Notepad::editorPath());
-        //m_webView->setContent(content.toUtf8());
-
-    m_webView->pageAction(QWebEnginePage::InspectElement)->setVisible(false);
-
-        //m_webView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
-
-    QWebEngineSettings *pageSettings = m_webView->page()->settings();
-#ifdef QT_DEBUG
-        //pageSettings->setAttribute(QWebEngineSettings::DeveloperExtrasEnabled, true);
-#endif
-    pageSettings->setAttribute(QWebEngineSettings::JavascriptCanAccessClipboard, true);
+    m_scintilla = new CustomScintilla(this);
 
     m_layout = new QVBoxLayout(this);
     m_layout->setContentsMargins(0, 0, 0, 0);
     m_layout->setSpacing(0);
-    m_layout->addWidget(m_webView, 1);
+    m_layout->addWidget(m_scintilla, 1);
     setLayout(m_layout);
 
-    connect(m_webView, &CustomQWebView::mouseWheel, this, &Editor::mouseWheel);
-    connect(m_webView, &CustomQWebView::urlsDropped, this, &Editor::urlsDropped);
-    connect(m_webView, &CustomQWebView::gotFocus, this, &Editor::gotFocus);
+    connect(m_scintilla, &CustomScintilla::zoomChanged, this, &Editor::zoomChanged);
+    connect(m_scintilla, &CustomScintilla::zoomChanged, this, &Editor::refreshMargins);
+
+    connect(m_scintilla, &CustomScintilla::cursorPositionChanged, this, &Editor::requestDocumentInfo);
+    connect(m_scintilla, &CustomScintilla::selectionChanged, this, &Editor::requestDocumentInfo);
+    connect(m_scintilla, &CustomScintilla::textChanged, this, &Editor::requestDocumentInfo);
+
+    connect(this, &Editor::documentInfoRequested, this, &Editor::cursorActivity);   // To trigger cursorActivity() also
+
+    connect(m_scintilla, &CustomScintilla::textChanged, this, &Editor::contentChanged);
+    connect(m_scintilla, &CustomScintilla::modificationChanged, this, [&]() { emit cleanChanged(isClean()); });
+    connect(m_scintilla, &CustomScintilla::linesChanged, this, &Editor::refreshMargins);
+
+    connect(m_scintilla, &CustomScintilla::textChanged, this, &Editor::incrementGeneration);
+    // FIXME: Handle undo somehow to decrement generation
+
+    connect(m_scintilla, &CustomScintilla::urlsDropped, this, &Editor::urlsDropped);
+    connect(m_scintilla, &CustomScintilla::gotFocus, this, &Editor::gotFocus);
     setLanguage(nullptr);
-        // TODO Display a message if a javascript error gets triggered.
-        // Right now, if there's an error in the javascript code, we
-        // get stuck waiting a J_EVT_READY that will never come.
+    setTheme(theme);
 }
 
 QSharedPointer<Editor> Editor::getNewEditor(QWidget *parent)
@@ -116,90 +115,24 @@ void Editor::addEditorToBuffer(const int howMany)
         m_editorBuffer.enqueue(QSharedPointer<Editor>::create());
 }
 
+void Editor::insertContextMenuAction(QAction *before, QAction *action)
+{
+    m_scintilla->insertAction(before, action);
+}
+
 void Editor::invalidateEditorBuffer()
 {
     m_editorBuffer.clear();
 }
 
-void Editor::waitAsyncLoad()
-{
-    if (!m_loaded)
-    {
-        QEventLoop loop;
-        connect(this, &Editor::editorReady, &loop, &QEventLoop::quit);
-            // Block until a J_EVT_READY message is received
-        loop.exec();
-    }
-}
-
-void Editor::on_proxyMessageReceived(QString msg, QVariant data)
-{
-    QTimer::singleShot(0, [msg, data, this] {
-        emit messageReceived(msg, data);
-
-        if (msg.startsWith("[ASYNC_REPLY]"))
-        {
-            QRegExp rgx("\\[ID=(\\d+)\\]$");
-
-            if (rgx.indexIn(msg) == -1)
-                return;
-
-            if (rgx.captureCount() != 1)
-                return;
-
-            unsigned int id = rgx.capturedTexts()[1].toInt();
-
-                // Look into the list of callbacks
-            for (auto it = this->asyncReplies.begin(); it != this->asyncReplies.end(); ++it)
-            {
-                if (it->id == id)
-                {
-                    AsyncReply r = *it;
-                    if (r.value)
-                    {
-                        r.value->set_value(data);
-                    }
-                    this->asyncReplies.erase(it);
-
-                    if (r.callback != nullptr)
-                    {
-                        QTimer::singleShot(0, [r, data] { r.callback(data); });
-                    }
-
-                    emit asyncReplyReceived(r.id, r.message, data);
-
-                    break;
-                }
-            }
-        }
-        else if (msg == "J_EVT_READY")
-        {
-            m_loaded = true;
-            emit editorReady();
-        }
-        else if (msg == "J_EVT_CONTENT_CHANGED")
-            emit contentChanged();
-        else if (msg == "J_EVT_CLEAN_CHANGED")
-            emit cleanChanged(data.toBool());
-        else if (msg == "J_EVT_CURSOR_ACTIVITY")
-        {
-            emit cursorActivity(data.toMap());
-        }
-        else if (msg == "J_EVT_DOCUMENT_INFO")
-        {
-            emit documentInfoRequested(data.toMap());
-        }
-    });
-}
-
 void Editor::setFocus()
 {
-    m_webView->setFocus();
+    m_scintilla->setFocus();
 }
 
 void Editor::clearFocus()
 {
-    m_webView->clearFocus();
+    m_scintilla->clearFocus();
 }
 
     /**
@@ -235,25 +168,50 @@ void Editor::setTabName(const QString &name)
     m_tabName = name;
 }
 
+void Editor::refreshMargins()
+{
+    m_scintilla->setMarginLineNumbers(lineNumbersMarginIdx, m_lineNumbersVisible);
+    m_scintilla->setFolding(m_lineNumbersVisible ? CustomScintilla::BoxedTreeFoldStyle : CustomScintilla::NoFoldStyle, foldingMarginIdx); // FIXME: Make folding a setting separate from line numbers
+
+    if (m_lineNumbersVisible)
+    {
+        QString lineNumbersMarginWidthString = QString(" ") + QString::number(m_scintilla->lines());
+
+        m_scintilla->setMarginWidth(lineNumbersMarginIdx, lineNumbersMarginWidthString);
+        m_scintilla->setMarginWidth(foldingMarginIdx, foldingMarginWidthPx);
+    }
+    else
+    {
+        m_scintilla->setMarginWidth(lineNumbersMarginIdx, 0);
+        m_scintilla->setMarginWidth(foldingMarginIdx, 0);
+    }
+}
+
 bool Editor::isClean()
 {
-    QVariant data(0); // avoid crash on Mac OS X, see issue #702
-    return asyncSendMessageWithResult("C_FUN_IS_CLEAN", data).get().toBool();
+    if (m_forceModified)
+    {
+        return false;
+    }
+
+    return !m_scintilla->isModified();
 }
 
 void Editor::markClean()
 {
-    asyncSendMessageWithResult("C_CMD_MARK_CLEAN");
+    m_forceModified = false;
+    m_scintilla->setModified(false);
 }
 
 void Editor::markDirty()
 {
-    asyncSendMessageWithResult("C_CMD_MARK_DIRTY");
+    m_forceModified = true;
+    emit cleanChanged(isClean());
 }
 
 int Editor::getHistoryGeneration()
 {
-    return asyncSendMessageWithResult("C_FUN_GET_HISTORY_GENERATION").get().toInt();
+    return m_generation;
 }
 
 void Editor::setLanguage(const Language *lang)
@@ -262,16 +220,12 @@ void Editor::setLanguage(const Language *lang)
     {
         lang = LanguageService::getInstance().lookupById("plaintext");
     }
-    if (m_currentLanguage == lang)
-    {
-        return;
-    }
-    if (!m_customIndentationMode)
-    {
-        setIndentationMode(lang);
-    }
+
     m_currentLanguage = lang;
-    asyncSendMessageWithResult("C_CMD_SET_LANGUAGE", lang->mime.isEmpty() ? lang->mode : lang->mime);
+    setIndentationMode(lang);   // Refresh indentation settings
+
+    refreshAppearance();
+
     emit currentLanguageChanged(m_currentLanguage->id, m_currentLanguage->name);
 }
 
@@ -317,17 +271,69 @@ void Editor::setIndentationMode(const Language *lang)
     setIndentationMode(!s.getIndentWithSpaces(langId), s.getTabSize(langId));
 }
 
+bool Editor::searchAndSelect(bool inSelection,
+                             const QString &string,
+                             SearchHelpers::SearchMode searchMode,
+                             bool forward,
+                             const SearchHelpers::SearchOptions &searchOptions,
+                             bool wrap)
+{
+    QString expr = string;
+
+    bool isRegex = (searchMode == SearchHelpers::SearchMode::Regex);
+    bool isCaseSensitive = searchOptions.MatchCase;
+    bool isWholeWord = searchOptions.MatchWholeWord;
+
+    if (searchMode == SearchHelpers::SearchMode::SpecialChars)
+    {
+        // Implement searching for special characters through regex
+        isRegex = true;
+        expr = SearchString::format(expr, searchMode, searchOptions);   // FIXME: Ensure correctness of formatting
+    }
+
+    bool isFoundAndSelected = false;
+
+    if (inSelection)
+    {
+        isFoundAndSelected = m_scintilla->findFirstInSelection(expr, isRegex, isCaseSensitive, isWholeWord, wrap, forward);
+    }
+    else
+    {
+        int selectionLineFrom = -1;
+        int selectionIndexFrom = -1;
+        int selectionLineTo = -1;
+        int selectionIndexTo = -1;
+
+        m_scintilla->getSelection(&selectionLineFrom, &selectionIndexFrom, &selectionLineTo, &selectionIndexTo);
+
+        // WA: If searching backward, start search from the beginning of selection, not the end.
+        //     This way we won't stuck on already found text
+        // FIXME: Study this in more detail and understand if this is a QScintilla bug or not
+        int line = forward ? selectionLineTo : selectionLineFrom;
+        int index = forward ? selectionIndexTo : selectionIndexFrom;
+
+        isFoundAndSelected = m_scintilla->findFirst(expr, isRegex, isCaseSensitive, isWholeWord, wrap, forward, line, index);
+    }
+
+    return isFoundAndSelected;
+}
+
+void Editor::incrementGeneration()
+{
+    m_generation++;
+}
+
 void Editor::setIndentationMode(const bool useTabs, const int size)
 {
-    asyncSendMessageWithResult("C_CMD_SET_INDENTATION_MODE", QVariantMap{{"useTabs", useTabs}, {"size", size}});
+    m_scintilla->setIndentationsUseTabs(useTabs);
+    m_scintilla->setTabWidth(size);
 }
 
 Editor::IndentationMode Editor::indentationMode()
 {
-    QVariantMap indent = asyncSendMessageWithResult("C_FUN_GET_INDENTATION_MODE").get().toMap();
     IndentationMode out;
-    out.useTabs = indent.value("useTabs", true).toBool();
-    out.size = indent.value("size", 4).toInt();
+    out.useTabs = m_scintilla->indentationsUseTabs();
+    out.size = m_scintilla->tabWidth();
     return out;
 }
 
@@ -356,7 +362,7 @@ bool Editor::isUsingCustomIndentationMode() const
 
 void Editor::setSmartIndent(bool enabled)
 {
-    asyncSendMessageWithResult("C_CMD_SET_SMART_INDENT", enabled);
+    m_scintilla->setAutoIndent(enabled);
 }
 
 void Editor::setValue(const QString &value)
@@ -366,12 +372,12 @@ void Editor::setValue(const QString &value)
     {
         setLanguage(lang);
     }
-    asyncSendMessageWithResult("C_CMD_SET_VALUE", value);
+    m_scintilla->setText(value);
 }
 
 QString Editor::value()
 {
-    return asyncSendMessageWithResult("C_FUN_GET_VALUE").get().toString();
+    return m_scintilla->text();
 }
 
 bool Editor::fileOnDiskChanged() const
@@ -384,86 +390,21 @@ void Editor::setFileOnDiskChanged(bool fileOnDiskChanged)
     m_fileOnDiskChanged = fileOnDiskChanged;
 }
 
-void Editor::sendMessage(const QString msg, const QVariant data)
+void Editor::setZoomFactor(int factor)
 {
-#ifdef QT_DEBUG
-    qDebug() << "Legacy message " << msg << " sent.";
-#endif
-    waitAsyncLoad();
-
-    emit m_jsToCppProxy->messageReceivedByJs(msg, data);
+    m_scintilla->zoomTo(factor);
 }
 
-void Editor::sendMessage(const QString msg)
+int Editor::zoomFactor() const
 {
-    sendMessage(msg, 0);
-}
-
-unsigned int messageIdentifier = 0;
-
-std::shared_future<QVariant> Editor::asyncSendMessageWithResult(const QString msg, const QVariant data, std::function<void(QVariant)> callback)
-{
-    unsigned int currentMsgIdentifier = ++messageIdentifier;
-
-    std::shared_ptr<std::promise<QVariant>> resultPromise = std::make_shared<std::promise<QVariant>>();
-
-    AsyncReply asyncmsg;
-    asyncmsg.id = currentMsgIdentifier;
-    asyncmsg.message = msg;
-    asyncmsg.value = resultPromise;
-    asyncmsg.callback = callback;
-    this->asyncReplies.push_back((asyncmsg));
-
-    QString message_id = "[ASYNC_REQUEST]" + msg + "[ID=" + QString::number(currentMsgIdentifier) + "]";
-
-    this->sendMessage(message_id, data);
-
-    std::shared_future<QVariant> fut = resultPromise->get_future().share();
-
-    while (fut.wait_for(std::chrono::seconds(0)) != std::future_status::ready)
-    {
-        QCoreApplication::processEvents(QEventLoop::AllEvents);
-        QCoreApplication::sendPostedEvents(nullptr, QEvent::DeferredDelete);
-    }
-
-    return fut;
-}
-
-std::shared_future<QVariant> Editor::asyncSendMessageWithResult(const QString msg, std::function<void(QVariant)> callback)
-{
-    return this->asyncSendMessageWithResult(msg, 0, callback);
-}
-
-void Editor::setZoomFactor(const qreal &factor)
-{
-    qreal normFact = factor;
-    if (normFact > 14) normFact = 14;
-    else if (normFact < 0.10) normFact = 0.10;
-
-    m_webView->setZoomFactor(normFact);
-}
-
-qreal Editor::zoomFactor() const
-{
-    return m_webView->zoomFactor();
+    return m_scintilla->getZoom();
 }
 
 void Editor::setSelectionsText(const QStringList &texts, SelectMode mode)
 {
-    QVariantMap data{{"text", texts}};
-    switch (mode)
-    {
-    case SelectMode::After:
-        data.insert("select", "after");
-        break;
-    case SelectMode::Before:
-        data.insert("select", "before");
-        break;
-    default:
-        data.insert("select", "selected");
-        break;
-    }
-    sendMessage("C_CMD_SET_SELECTIONS_TEXT", data);
+    QString replacement = texts.join("\n");
+    m_scintilla->replaceSelectedText(replacement);
+    fprintf(stderr, "FIXME: support cursor placement according to 'mode' in Editor::setSelectionsText()\n");
 }
 
 void Editor::setSelectionsText(const QStringList &texts)
@@ -478,7 +419,7 @@ void Editor::insertBanner(QWidget *banner)
 
 void Editor::removeBanner(QWidget *banner)
 {
-    if (banner != m_webView && m_layout->indexOf(banner) >= 0)
+    if (banner != m_scintilla && m_layout->indexOf(banner) >= 0)
     {
         m_layout->removeWidget(banner);
         emit bannerRemoved(banner);
@@ -495,43 +436,87 @@ void Editor::removeBanner(QString objectName)
 
 void Editor::setLineWrap(const bool wrap)
 {
-    asyncSendMessageWithResult("C_CMD_SET_LINE_WRAP", wrap);
+    m_scintilla->setWrapMode(wrap ? CustomScintilla::WrapWord : CustomScintilla::WrapNone);
 }
 
 void Editor::setEOLVisible(const bool showeol)
 {
-    asyncSendMessageWithResult("C_CMD_SHOW_END_OF_LINE", showeol);
+    m_scintilla->setEolVisibility(showeol);
 }
 
 void Editor::setWhitespaceVisible(const bool showspace)
 {
-    asyncSendMessageWithResult("C_CMD_SHOW_WHITESPACE", showspace);
-}
-
-void Editor::setMathEnabled(const bool enabled)
-{
-    asyncSendMessageWithResult("C_CMD_ENABLE_MATH", enabled);
+    m_scintilla->setWhitespaceVisibility(showspace ? CustomScintilla::WsVisible : CustomScintilla::WsInvisible);
 }
 
 void Editor::setIndentGuideVisible(bool showindentguide)
 {
-    fprintf(stderr, "FIXME: Implement Editor::setIndentGuideVisible()\n");
+    m_scintilla->setIndentationGuides(showindentguide);
 }
 
 void Editor::requestDocumentInfo()
 {
-    asyncSendMessageWithResult("C_CMD_GET_DOCUMENT_INFO");
+    // Cursor
+    int cursorLine = 0;
+    int cursorIndex = 0;
+
+    m_scintilla->getCursorPosition(&cursorLine, &cursorIndex);
+
+    // Selections
+    int selectedLines = 0;
+    int selectedChars = 0;
+
+    if (m_scintilla->hasSelectedText())
+    {
+        int selectedLineFrom = 0;
+        int selectedIndexFrom = 0;
+        int selectedLineTo = 0;
+        int selectedIndexTo = 0;
+
+        m_scintilla->getSelection(&selectedLineFrom, &selectedIndexFrom, &selectedLineTo, &selectedIndexTo);
+
+        selectedLines = selectedLineTo - selectedLineFrom + 1;
+        selectedChars = m_scintilla->selectedText().length();
+    }
+
+    // Content
+    int linesCount = m_scintilla->lines();
+    int charsCount = m_scintilla->text().length();
+
+    QMap<QString, QVariant> data;
+
+    QList<int> cursorList;
+    cursorList.append(cursorLine);
+    cursorList.append(cursorIndex);
+
+    QList<int> selectionsList;
+    selectionsList.append(selectedLines);
+    selectionsList.append(selectedChars);
+
+    QList<int> contentList;
+    contentList.append(linesCount);
+    contentList.append(charsCount);
+
+    data["cursor"] = QVariant::fromValue(cursorList);
+    data["selections"] = QVariant::fromValue(selectionsList);
+    data["content"] = QVariant::fromValue(contentList);
+
+    emit documentInfoRequested(data);
 }
 
 QPair<int, int> Editor::cursorPosition()
 {
-    QList<QVariant> cursor = asyncSendMessageWithResult("C_FUN_GET_CURSOR").get().toList();
-    return {cursor[0].toInt(), cursor[1].toInt()};
+    int cursorLine = 0;
+    int cursorIndex = 0;
+
+    m_scintilla->getCursorPosition(&cursorLine, &cursorIndex);
+
+    return {cursorLine, cursorIndex};
 }
 
 void Editor::setCursorPosition(const int line, const int column)
 {
-    asyncSendMessageWithResult("C_CMD_SET_CURSOR", QList<QVariant>{line, column});
+    m_scintilla->setCursorPosition(line, column);
 }
 
 void Editor::setCursorPosition(const QPair<int, int> &position)
@@ -546,19 +531,19 @@ void Editor::setCursorPosition(const Cursor &cursor)
 
 void Editor::setSelection(int fromLine, int fromCol, int toLine, int toCol)
 {
-    QVariantList arg{fromLine, fromCol, toLine, toCol};
-    asyncSendMessageWithResult("C_CMD_SET_SELECTION", QVariant(arg));
+    m_scintilla->setSelection(fromLine, fromCol, toLine, toCol);
 }
 
 QPair<int, int> Editor::scrollPosition()
 {
-    QVariantList scroll = asyncSendMessageWithResult("C_FUN_GET_SCROLL_POS").get().toList();
-    return {scroll[0].toInt(), scroll[1].toInt()};
+    int line = m_scintilla->firstVisibleLine();
+    return {0, line};   // FIXME: Support horizontal scrolling
 }
 
 void Editor::setScrollPosition(const int left, const int top)
 {
-    asyncSendMessageWithResult("C_CMD_SET_SCROLL_POS", QVariantList{left, top});
+    m_scintilla->setXOffset(0); // FIXME: Support horizontal scrolling
+    m_scintilla->setFirstVisibleLine(top);
 }
 
 void Editor::setScrollPosition(const QPair<int, int> &position)
@@ -568,26 +553,35 @@ void Editor::setScrollPosition(const QPair<int, int> &position)
 
 QString Editor::endOfLineSequence() const
 {
-    return m_endOfLineSequence;
+    return m_scintilla->eolMode() == CustomScintilla::EolWindows ? "\r\n" :
+           m_scintilla->eolMode() == CustomScintilla::EolUnix    ? "\n" :
+                                                                   "\r";
 }
 
 void Editor::setEndOfLineSequence(const QString &newLineSequence)
 {
-    m_endOfLineSequence = newLineSequence;
+    CustomScintilla::EolMode eolMode = newLineSequence == "\r\n" ? CustomScintilla::EolWindows :
+                                       newLineSequence == "\n"   ? CustomScintilla::EolUnix :
+                                                                   CustomScintilla::EolMac;
+
+    m_scintilla->setEolMode(eolMode);
+    m_scintilla->convertEols(eolMode);
+    m_scintilla->append("");    // Reset history
 }
 
 void Editor::setFont(QString fontFamily, int fontSize, double lineHeight)
 {
-    QMap<QString, QVariant> tmap;
-    tmap.insert("family", fontFamily == nullptr ? "" : fontFamily);
-    tmap.insert("size", QString::number(fontSize));
-    tmap.insert("lineHeight", QString::number(lineHeight, 'f', 2));
-    asyncSendMessageWithResult("C_CMD_SET_FONT", tmap);
+    m_currentFontFamily = fontFamily;
+    m_currentFontSizePt = fontSize;
+    m_currentLineHeightEm = lineHeight;
+    refreshAppearance();
 }
 
 void Editor::setLineNumbersVisible(bool visible)
 {
-    asyncSendMessageWithResult("C_CMD_SET_LINE_NUMBERS_VISIBLE", visible);
+    m_lineNumbersVisible = visible;
+
+    refreshMargins();
 }
 
 QTextCodec *Editor::codec() const
@@ -615,23 +609,29 @@ Editor::Theme Editor::themeFromName(QString name)
     if (name == "default" || name.isEmpty())
         return Theme();
 
-    QFileInfo editorPath(Notepad::editorPath());
-    QDir bundledThemesDir(editorPath.absolutePath() + "/libs/codemirror/theme/");
+    QFileInfo appDataPathInfo(Notepad::appDataPath());
+    QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/");
 
-    if (bundledThemesDir.exists(name + ".css"))
-        return Theme(name, bundledThemesDir.filePath(name + ".css"));
+    if (bundledThemesDir.exists(name + ".xml"))
+        return Theme(name, bundledThemesDir.filePath(name + ".xml"));
 
     return Theme();
 }
 
 QList<Editor::Theme> Editor::themes()
 {
-    auto editorPath = QFileInfo(Notepad::editorPath());
-    QDir bundledThemesDir(editorPath.absolutePath() + "/libs/codemirror/theme/", "*.css");
+    auto appDataPathInfo = QFileInfo(Notepad::appDataPath());
+    QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/", "*.xml");
 
     QList<Theme> out;
     for (auto &&theme : bundledThemesDir.entryInfoList())
     {
+        if (theme.completeBaseName() == "Default")
+        {
+            // Do not include Default.xml into list
+            continue;
+        }
+
         out.append(Theme(theme.completeBaseName(), theme.filePath()));
     }
     return out;
@@ -639,27 +639,32 @@ QList<Editor::Theme> Editor::themes()
 
 void Editor::setTheme(Theme theme)
 {
-    sendMessage("C_CMD_SET_THEME", QVariantMap{{"name", theme.name}, {"path", theme.path}});
+    m_currentTheme = theme;
+    refreshAppearance();
 }
 
 QList<Editor::Selection> Editor::selections()
 {
     QList<Selection> out;
 
-    QList<QVariant> sels = asyncSendMessageWithResult("C_FUN_GET_SELECTIONS").get().toList();
-    for (int i = 0; i < sels.length(); i++)
+    if (m_scintilla->hasSelectedText())
     {
-        QVariantMap selMap = sels[i].toMap();
-        QVariantMap from = selMap.value("anchor").toMap();
-        QVariantMap to = selMap.value("head").toMap();
+        // FIMXE: Support several selections
 
-        Selection sel;
-        sel.from.line = from.value("line").toInt();
-        sel.from.column = from.value("ch").toInt();
-        sel.to.line = to.value("line").toInt();
-        sel.to.column = to.value("ch").toInt();
+        int selectedLineFrom = 0;
+        int selectedIndexFrom = 0;
+        int selectedLineTo = 0;
+        int selectedIndexTo = 0;
 
-        out.append(sel);
+        m_scintilla->getSelection(&selectedLineFrom, &selectedIndexFrom, &selectedLineTo, &selectedIndexTo);
+
+        Editor::Selection selection;
+        selection.from.line = selectedLineFrom;
+        selection.from.column = selectedIndexFrom;
+        selection.to.line = selectedLineTo;
+        selection.to.column = selectedIndexTo;
+
+        out.append(selection);
     }
 
     return out;
@@ -667,86 +672,364 @@ QList<Editor::Selection> Editor::selections()
 
 QStringList Editor::selectedTexts()
 {
-    return asyncSendMessageWithResult("C_FUN_GET_SELECTIONS_TEXT").get().toStringList();
+    QString selectedText = m_scintilla->selectedText();
+
+    QStringList selectedTextsList;
+
+    if (selectedText.length() > 0)
+    {
+        // FIMXE: Support several selections
+        selectedTextsList.append(selectedText);
+    }
+
+    return selectedTextsList;
 }
 
 void Editor::setOverwrite(bool overwrite)
 {
-    asyncSendMessageWithResult("C_CMD_SET_OVERWRITE", overwrite);
-}
-
-void Editor::setTabsVisible(bool visible)
-{
-    asyncSendMessageWithResult("C_CMD_SET_TABS_VISIBLE", visible);
-}
-
-std::pair<Editor::IndentationMode, bool> Editor::detectDocumentIndentation()
-{
-    QVariant result = asyncSendMessageWithResult("C_FUN_DETECT_INDENTATION_MODE").get();
-
-    QVariantMap indent = result.toMap();
-    IndentationMode out;
-
-    bool found = indent.value("found", false).toBool();
-
-    if (found)
-    {
-        out.useTabs = indent.value("useTabs", true).toBool();
-        out.size = indent.value("size", 4).toInt();
-    }
-
-    return std::make_pair(out, found);
+    m_scintilla->setOverwriteMode(overwrite);
 }
 
 void Editor::print(std::shared_ptr<QPrinter> printer)
 {
-        /*
-     * FIXME: Implement using QScintilla
-     */
+    fprintf(stderr, "FIXME: Implement Editor::print()\n");
 }
 
 QByteArray Editor::printToPdf(const QPageLayout &pageLayout)
 {
-    // 1. Set theme to default because dark themes would force the printer to color the entire
-    //    document in the background color. Default theme has white background.
-    // 2. Set WebView's bg-color to white to prevent visual artifacts when printing less than one page.
-    // 3. Set C_CMD_DISPLAY_PRINT_STYLE to hide UI elements like the gutter.
-
-    QColor prevBackgroundColor = m_webView->page()->backgroundColor();
-    QString prevStylesheet = m_webView->styleSheet();
-
-    this->setLineWrap(true);
-    setTheme(themeFromName("default"));
-    m_webView->page()->setBackgroundColor(Qt::transparent);
-    m_webView->setStyleSheet("background-color: white");
-    asyncSendMessageWithResult("C_CMD_DISPLAY_PRINT_STYLE");
-
-    QByteArray pdfData;
-
-    m_webView->page()->printToPdf(
-        [&](const QByteArray &data) {
-            asyncSendMessageWithResult("C_CMD_DISPLAY_NORMAL_STYLE");
-            m_webView->setStyleSheet(prevStylesheet);
-            m_webView->page()->setBackgroundColor(prevBackgroundColor);
-            setTheme(themeFromName(NpSettings::getInstance().Appearance.getColorScheme()));
-            this->setLineWrap(NpSettings::getInstance().General.getWordWrap());
-
-            if (data.isEmpty() || data.isNull())
-            {
-                pdfData = QByteArray();
-            }
-            else
-            {
-                pdfData = data;
-            }
-        },
-        pageLayout);
-
-    return pdfData;
+    fprintf(stderr, "FIXME: Implement Editor::printToPdf()\n");
+    return QByteArray();
 }
 
 int Editor::lineCount()
 {
-    return asyncSendMessageWithResult("C_FUN_GET_LINE_COUNT").get().toInt();
+    return m_scintilla->lines();
 }
+
+void Editor::selectAll()
+{
+    m_scintilla->selectAll();
+}
+
+void Editor::undo()
+{
+    m_scintilla->undo();
+}
+
+void Editor::redo()
+{
+    m_scintilla->redo();
+}
+
+void Editor::deleteCurrentLine()
+{
+    m_scintilla->lineDelete();
+}
+
+void Editor::duplicateCurrentLine()
+{
+    m_scintilla->lineDuplicate();
+}
+
+void Editor::moveCurrentLineUp()
+{
+    m_scintilla->moveSelectedLinesUp();
+}
+
+void Editor::moveCurrentLineDown()
+{
+    m_scintilla->moveSelectedLinesDown();
+}
+
+void Editor::trimTrailingWhitespaces()
+{
+    m_scintilla->beginUndoAction();
+    replaceAllNoCheckpoint("\\s+$", SearchHelpers::SearchMode::Regex, SearchHelpers::SearchOptions(), "");
+    m_scintilla->endUndoAction();
+}
+
+void Editor::trimLeadingWhitespaces()
+{
+    m_scintilla->beginUndoAction();
+    replaceAllNoCheckpoint("^\\s+", SearchHelpers::SearchMode::Regex, SearchHelpers::SearchOptions(), "");
+    m_scintilla->endUndoAction();
+}
+
+void Editor::trimLeadingAndTrailingWhitespaces()
+{
+    m_scintilla->beginUndoAction();
+    replaceAllNoCheckpoint("^\\s+", SearchHelpers::SearchMode::Regex, SearchHelpers::SearchOptions(), "");
+    replaceAllNoCheckpoint("\\s+$", SearchHelpers::SearchMode::Regex, SearchHelpers::SearchOptions(), "");
+    m_scintilla->endUndoAction();
+}
+
+void Editor::convertEolToSpace()
+{
+    fprintf(stderr, "FIXME: Implement Editor::convertEolToSpace()\n");
+}
+
+void Editor::convertTabsToSpaces()
+{
+    IndentationMode indentation = indentationMode();
+
+    QString spacesReplacement = QString(" ").repeated(indentation.size);
+
+    m_scintilla->beginUndoAction();
+    replaceAllNoCheckpoint("\\t", SearchHelpers::SearchMode::Regex, SearchHelpers::SearchOptions(), spacesReplacement);
+    m_scintilla->endUndoAction();
+}
+
+void Editor::convertAllSpacesToTabs()
+{
+    IndentationMode indentation = indentationMode();
+
+    QString regex = QString(" ").repeated(indentation.size);
+
+    m_scintilla->beginUndoAction();
+    replaceAllNoCheckpoint(regex, SearchHelpers::SearchMode::Regex, SearchHelpers::SearchOptions(), "\t");
+    m_scintilla->endUndoAction();
+}
+
+void Editor::convertLeadingSpacesToTabs()
+{
+    fprintf(stderr, "FIXME: Implement Editor::convertLeadingSpacesToTabs()\n");
+}
+
+void Editor::search(const QString &string,
+                    SearchHelpers::SearchMode searchMode,
+                    bool forward,
+                    const SearchHelpers::SearchOptions &searchOptions)
+{
+    searchAndSelect(false, string, searchMode, forward, searchOptions, true);
+}
+
+void Editor::replace(const QString &string,
+                     SearchHelpers::SearchMode searchMode,
+                     bool forward,
+                     const SearchHelpers::SearchOptions &searchOptions,
+                     const QString &replacement)
+{
+    bool isFoundAndSelected = searchAndSelect(true, string, searchMode, forward, searchOptions, true);
+
+    if (!isFoundAndSelected)
+    {
+        isFoundAndSelected = searchAndSelect(false, string, searchMode, forward, searchOptions, true);
+    }
+
+    if (isFoundAndSelected)
+    {
+        m_scintilla->replace(replacement);
+    }
+}
+
+int Editor::replaceAll(const QString &string,
+                       SearchHelpers::SearchMode searchMode,
+                       const SearchHelpers::SearchOptions &searchOptions,
+                       const QString &replacement)
+{
+    m_scintilla->beginUndoAction();
+    int count = replaceAllNoCheckpoint(string, searchMode, searchOptions, replacement);
+    m_scintilla->endUndoAction();
+
+    return count;
+}
+
+int Editor::replaceAllNoCheckpoint(const QString &string,
+                                   SearchHelpers::SearchMode searchMode,
+                                   const SearchHelpers::SearchOptions &searchOptions,
+                                   const QString &replacement)
+{
+    int count = 0;
+
+    m_scintilla->setCursorPosition(0, 0);
+
+    while (searchAndSelect(false, string, searchMode, true, searchOptions, false))
+    {
+        m_scintilla->replace(replacement);
+        count++;
+    }
+
+    return count;
+}
+
+QFont StyleFont(QFont font, int fontStyle)
+{
+    font.setBold(fontStyle & FONT_STYLE_BOLD);
+    font.setItalic(fontStyle & FONT_STYLE_ITALIC);
+    font.setUnderline(fontStyle & FONT_STYLE_UNDERLINE);
+    return font;
+}
+
+void Editor::refreshAppearance()
+{
+    // Lexer part
+    QsciLexer *oldLexer = m_scintilla->lexer();
+
+    QsciLexer *currentLexer = LexerFactory::CreateLexerForId(m_scintilla, getLanguage()->id);
+    m_scintilla->setLexer(currentLexer);
+
+    if (oldLexer)
+    {
+        delete oldLexer;
+    }
+
+    // We expect that lexer will always be available
+    // If there is no language-specific lexer, default NullLexer will be used
+    assert(currentLexer);
+
+    // Font part
+    QString fontFamily = m_currentFontFamily;
+    int fontSizePt = m_currentFontSizePt;
+    double lineHeightEm = m_currentLineHeightEm;
+
+    if (fontFamily.isEmpty())
+    {
+        fontFamily = defaultFontFamily;
+    }
+
+    if (fontSizePt == 0)
+    {
+        fontSizePt = defaultFontSizePt;
+    }
+
+    if (lineHeightEm == 0.0)
+    {
+        lineHeightEm = defaultLineHeightEm;
+    }
+
+    QFont baseFont(fontFamily, fontSizePt);
+
+    if (fontFamily == defaultFontFamily)
+    {
+        baseFont.setStyleHint(QFont::TypeWriter);
+    }
+
+    double descentEm = lineHeightEm - 1.0;
+    int descentPx = PtToPx(round(fontSizePt * descentEm));
+
+    // Style part
+    Theme theme = m_currentTheme;
+
+    if (theme.name == "default")
+    {
+        theme.path = Notepad::appDataPath() + "themes/Default.xml";
+    }
+
+    ScintillaTheme scintillaTheme;
+
+    if (scintillaTheme.LoadFromFile(theme.path) < 0)
+    {
+        fprintf(stderr, "Failed to load theme %s\n", theme.name.toUtf8().data());
+        return;
+    }
+
+    // Reset everything to default in Scintilla (lexer itself is already in default state)
+    m_scintilla->setColor(QColor("black"));
+    m_scintilla->setPaper(QColor("white"));
+    m_scintilla->setCaretLineVisible(false);
+    m_scintilla->setCaretForegroundColor(QColor("black"));
+    m_scintilla->setCaretLineBackgroundColor(QColor("white"));
+    m_scintilla->resetFoldMarginColors();
+    m_scintilla->resetSelectionForegroundColor();
+    m_scintilla->resetSelectionBackgroundColor();
+
+    // Set common scintilla settings
+    m_scintilla->setFont(baseFont);
+    m_scintilla->setMarginsFont(baseFont);
+
+    currentLexer->setDefaultFont(baseFont);
+    currentLexer->setFont(baseFont, -1);
+
+    m_scintilla->setExtraDescent(descentPx);
+
+    // Initialize everything initially with default style
+    // If we have custom global styles for individual elements or lexer styles for current language,
+    // we will re-style everything at the next stages
+    if (scintillaTheme.defaultStyles.contains(globalStyleDefault))
+    {
+        const Style &style = scintillaTheme.defaultStyles[globalStyleDefault];
+
+        QFont font = StyleFont(baseFont, style.fontStyle);
+
+        m_scintilla->setColor(style.fgColor);
+        m_scintilla->setPaper(style.bgColor);
+        m_scintilla->setFont(font);
+
+        m_scintilla->setCaretForegroundColor(style.fgColor);
+        m_scintilla->setCaretLineBackgroundColor(style.bgColor);
+        m_scintilla->setMarginsFont(font);
+
+        // FIXME: Fold markers are colored wiht default style. How to set their color?
+
+        currentLexer->setDefaultColor(style.fgColor);
+        currentLexer->setDefaultPaper(style.bgColor);
+        currentLexer->setDefaultFont(font);
+
+        currentLexer->setColor(style.fgColor, -1);
+        currentLexer->setPaper(style.bgColor, -1);
+        currentLexer->setFont(font, -1);
+    }
+
+    // Style individual interface elements with global styles
+    for (const Style &style : scintillaTheme.defaultStyles)
+    {
+        if (style.name == globalStyleCaretColour)
+        {
+            m_scintilla->setCaretForegroundColor(style.fgColor);
+        }
+        else if (style.name == globalStyleCurrentLineBackgroundColour)
+        {
+            m_scintilla->setCaretLineBackgroundColor(style.bgColor);
+            m_scintilla->setCaretLineVisible(true);
+        }
+        else if (style.name == globalStyleLineNumberMargin)
+        {
+            m_scintilla->setMarginsForegroundColor(style.fgColor);
+            m_scintilla->setMarginsBackgroundColor(style.bgColor); // FIXME: Why it does not work with lineNumbersMarginIdx?
+        }
+        else if (style.name == globalStyleFoldMargin)
+        {
+            m_scintilla->setFoldMarginColors(style.fgColor, style.bgColor);
+        }
+        else if (style.name == globalStyleBraceHightlightStyle)
+        {
+            m_scintilla->setMatchedBraceForegroundColor(style.fgColor);
+            m_scintilla->setMatchedBraceBackgroundColor(style.bgColor);
+        }
+        else if (style.name == globalStyleBadBraceColour)
+        {
+            m_scintilla->setUnmatchedBraceForegroundColor(style.fgColor);
+            m_scintilla->setUnmatchedBraceBackgroundColor(style.bgColor);
+        }
+        else if (style.name == globalStyleSelectedTextColour)
+        {
+            m_scintilla->setSelectionBackgroundColor(style.bgColor);
+        }
+        else if (style.name == globalStyleIndentGuidelineStyle)
+        {
+            m_scintilla->setIndentationGuidesForegroundColor(style.fgColor);
+            m_scintilla->setIndentationGuidesBackgroundColor(style.bgColor);
+        }
+    }
+
+    // Style language tokens with lexer styles if they present
+    const QString languageId = getLanguage()->id;
+    const QString nppLanguageName = MapIdToNppLanguageName(languageId);
+
+    if (scintillaTheme.lexerStyles.contains(nppLanguageName))
+    {
+        for (const Style &style : scintillaTheme.lexerStyles[nppLanguageName])
+        {
+            QFont font = StyleFont(baseFont, style.fontStyle);
+
+            currentLexer->setColor(style.fgColor, style.styleId);
+            currentLexer->setPaper(style.bgColor, style.styleId);
+            currentLexer->setFont(font, style.styleId);
+        }
+    }
+
+    // Margins part
+    refreshMargins();
+}
+
 } //namespace EditorNS

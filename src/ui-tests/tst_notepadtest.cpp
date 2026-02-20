@@ -13,17 +13,11 @@ public:
     NotepadTest();
 
 private Q_SLOTS:
-    void editorPathIsHtml();
 };
 
 NotepadTest::NotepadTest()
 {
     //QApplication a();
-}
-
-void NotepadTest::editorPathIsHtml()
-{
-    QVERIFY(Notepad::editorPath().endsWith(".html"));
 }
 
 QTEST_GUILESS_MAIN(NotepadTest)

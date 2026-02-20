@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include "docengine.h"
-#include "include/Extensions/extension.h"
 #include "include/Search/advancedsearchdock.h"
 #include "include/Search/frmsearchreplace.h"
 #include "include/npsettings.h"
@@ -12,8 +11,6 @@
 #include <QCloseEvent>
 #include <QLabel>
 #include <QMainWindow>
-
-#include <functional>
 
 namespace Ui
 {
@@ -59,8 +56,6 @@ public:
     void openCommandLineProvidedUrls(const QString &workingDirectory, const QStringList &arguments);
 
     QSharedPointer<Editor> currentEditor();
-    QAction *addExtensionMenuItem(QString extensionId, QString text);
-    void showExtensionsMenu(bool show);
 
     /**
      * @brief getDefaultToolBarString
@@ -159,7 +154,6 @@ private slots:
     void on_actionInterpret_as_UTF_8_without_BOM_triggered();
     void on_actionInterpret_as_UTF_16BE_UCS_2_Big_Endian_triggered();
     void on_actionInterpret_as_UTF_16LE_UCS_2_Little_Endian_triggered();
-    void on_actionShow_Tabs_triggered(bool on);
     void on_actionConvert_to_triggered();
     void on_actionIndentation_Default_Settings_triggered();
     void on_actionIndentation_Custom_triggered();
@@ -185,7 +179,6 @@ private slots:
     void on_actionSpace_to_TAB_Leading_triggered();
     void on_editorUrlsDropped(QList<QUrl> urls);
     void on_actionGo_to_Line_triggered();
-    void on_actionInstall_Extension_triggered();
     void on_actionFull_Screen_toggled(bool on);
     void on_actionShow_End_of_Line_triggered(bool on);
     void on_actionShow_All_Characters_toggled(bool on);
@@ -196,7 +189,6 @@ private slots:
     void on_actionSave_Session_triggered();
     void on_actionShow_Menubar_toggled(bool arg1);
     void on_actionShow_Toolbar_toggled(bool arg1);
-    void on_actionMath_Rendering_toggled(bool on);
     void on_actionToggle_To_Former_Tab_triggered();
 
 private:
@@ -216,11 +208,12 @@ private:
     frmSearchReplace *m_frmSearchReplace = nullptr;
     bool m_overwrite = false; // Overwrite mode vs Insert mode
     QString m_workingDirectory;
-    QMap<QSharedPointer<Extensions::Extension>, QMenu *> m_extensionMenus;
     QPair<int, int> beginSelectPosition;
     bool beginSelectPositionSet = false;
 
     AdvancedSearchDock *m_advSearchDock;
+
+    void onZoomChanged(int zoomFactor);
 
     /**
      * @brief saveTabsToCache Saves tabs to cache. Utilizes the saveSession function and

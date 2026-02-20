@@ -64,7 +64,6 @@ public:
     BEGIN_GENERAL_CATEGORY(General)
         /* clang-format off */
         NP_SETTING(Localization,                   QString,    "")
-        NP_SETTING(WarnForDifferentIndentation,    bool,       true)
         NP_SETTING(ExitOnLastTabClose,             bool,       false)
 
         NP_SETTING(CollectStatistics,              bool,       false)
@@ -72,10 +71,9 @@ public:
         NP_SETTING(StatisticsDialogShown,          int,        0)
 
         NP_SETTING(WordWrap,                       bool,       false)
-        NP_SETTING(Zoom,                           qreal,      1.0)
+        NP_SETTING(Zoom,                           int,        0)
 
         NP_SETTING(ShowAllSymbols,                 bool,       false)
-        NP_SETTING(TabsVisible,                    bool,       false)
         NP_SETTING(SpacesVisisble,                 bool,       false)
         NP_SETTING(ShowEOL,                        bool,       false)
         NP_SETTING(ShowIndentGuide,                bool,       true)
@@ -89,7 +87,6 @@ public:
 
         NP_SETTING(NotepadVersion,               QString,    QString())
         NP_SETTING(SmartIndentation,               bool,       true)
-        NP_SETTING(MathRendering,                  bool,       true)
         NP_SETTING(UseNativeFilePicker,            bool,       true)
         /* clang-format on */
     END_CATEGORY(General)
@@ -114,13 +111,6 @@ public:
         NP_SETTING(FilterHistory,  QStringList,    QStringList())
         /* clang-format on */
     END_CATEGORY(Search)
-
-    BEGIN_CATEGORY(Extensions)
-        /* clang-format off */
-        NP_SETTING(RuntimeNodeJS,  QString, QString())
-        NP_SETTING(RuntimeNpm,     QString, QString())
-        /* clang-format on */
-    END_CATEGORY(Extensions)
 
     BEGIN_CATEGORY(Languages)
         /* clang-format off */

@@ -1,8 +1,10 @@
 #ifndef EDITOR_H
 #define EDITOR_H
 
-#include "include/EditorNS/customqwebview.h"
+#include "include/EditorNS/customscintilla.h"
 #include "include/EditorNS/languageservice.h"
+
+#include "include/Search/searchhelpers.h"
 
 #include <QObject>
 #include <QPrinter>
@@ -12,60 +14,13 @@
 #include <QVariant>
 #include <QWheelEvent>
 
-#include <functional>
-#include <future>
-
 class EditorTabWidget;
 
 namespace EditorNS
 {
 
-    /**
- * @brief An Object injectable into the javascript page, that allows
- *        the javascript code to send messages to an Editor object.
- *        It also allows the js instance to retrieve message data information.
- *
- * Note that this class is only needed for the current Editor
- * implementation, that uses QWebView.
- */
-class JsToCppProxy : public QObject
-{
-    Q_OBJECT
-
-private:
-    QVariant m_msgData;
-
-public:
-    JsToCppProxy(QObject *parent) :
-        QObject(parent)
-    {
-    }
-
-    Q_INVOKABLE void receiveMessage(QString msg, QVariant data) { emit messageReceived(msg, data); }
-
-signals:
-        /**
-     * @brief A JavaScript message has been received.
-     * @param msg Message type
-     * @param data Message data
-     */
-    void messageReceived(QString msg, QVariant data);
-
-    void messageReceivedByJs(QString msg, QVariant data);
-};
-
-    /**
- * @brief Provides a JavaScript CodeMirror instance.
- *
- * Communication works by sending messages to the javascript Editor using
- * the sendMessage() method. On the other side, when a javascript event
- * occurs, the messageReceived() signal will be emitted.
- *
- * In addition to messageReceived(), other signals could be emitted at the
- * same time, for example currentLineChanged(). This is simply for
- * convenience, so that the user of this class doesn't need to manually parse
- * the arguments for pre-defined messages.
- *
+/**
+ * @brief Provides a QScintilla instance.
  */
 class Editor : public QWidget
 {
@@ -153,6 +108,8 @@ public:
      */
     static void addEditorToBuffer(const int howMany = 1);
 
+    void insertContextMenuAction(QAction *before, QAction *action);
+
         /**
      * @brief Give focus to the editor, so that the user can start
      *        typing. Note that calling won't automatically switch to
@@ -233,15 +190,14 @@ public:
     bool isUsingCustomIndentationMode() const;
 
     Q_INVOKABLE void setSmartIndent(bool enabled);
-    Q_INVOKABLE qreal zoomFactor() const;
-    Q_INVOKABLE void setZoomFactor(const qreal &factor);
+    Q_INVOKABLE int zoomFactor() const;
+    Q_INVOKABLE void setZoomFactor(int factor);
     Q_INVOKABLE void setSelectionsText(const QStringList &texts, SelectMode mode);
     Q_INVOKABLE void setSelectionsText(const QStringList &texts);
     const Language *getLanguage() { return m_currentLanguage; }
     Q_INVOKABLE void setLineWrap(const bool wrap);
     Q_INVOKABLE void setEOLVisible(const bool showeol);
     Q_INVOKABLE void setWhitespaceVisible(const bool showspace);
-    Q_INVOKABLE void setMathEnabled(const bool enabled);
     void setIndentGuideVisible(bool showindentguide);
 
         /**
@@ -312,32 +268,38 @@ public:
     Q_INVOKABLE QStringList selectedTexts();
 
     void setOverwrite(bool overwrite);
-    void setTabsVisible(bool visible);
 
-        /**
-     * @brief Detect the indentation mode used within the current document.
-     * @return a pair whose first element is the document indentation, that is
-     *         significative only if the second element ("found") is true.
-     */
-    std::pair<IndentationMode, bool> detectDocumentIndentation();
     Editor::IndentationMode indentationMode();
 
     void setSelection(int fromLine, int fromCol, int toLine, int toCol);
 
     int lineCount();
 
+    void selectAll();
+
+    void undo();
+    void redo();
+
+    void deleteCurrentLine();
+    void duplicateCurrentLine();
+    void moveCurrentLineUp();
+    void moveCurrentLineDown();
+
+    void trimTrailingWhitespaces();
+    void trimLeadingWhitespaces();
+    void trimLeadingAndTrailingWhitespaces();
+
+    void convertEolToSpace();
+    void convertTabsToSpaces();
+    void convertAllSpacesToTabs();
+    void convertLeadingSpacesToTabs();
+
+    void search(const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions);
+    void replace(const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions, const QString &replacement);
+    int replaceAll(const QString &string, SearchHelpers::SearchMode searchMode, const SearchHelpers::SearchOptions &searchOptions, const QString &replacement);
+
 private:
     friend class ::EditorTabWidget;
-
-    struct AsyncReply
-    {
-        unsigned int id;
-        QString message;
-        std::shared_ptr<std::promise<QVariant>> value;
-        std::function<void(QVariant)> callback;
-    };
-
-    std::list<AsyncReply> asyncReplies;
 
         // These functions should only be used by EditorTabWidget to manage the tab's title. This works around
         // KDE's habit to automatically modify QTabWidget's tab titles to insert shortcut sequences (like &1).
@@ -346,32 +308,42 @@ private:
 
     static QQueue<QSharedPointer<Editor>> m_editorBuffer;
     QVBoxLayout *m_layout;
-    CustomQWebView *m_webView;
-    JsToCppProxy *m_jsToCppProxy;
+    CustomScintilla *m_scintilla;
     QUrl m_filePath = QUrl();
     QString m_tabName;
     bool m_fileOnDiskChanged = false;
-    bool m_loaded = false;
-    QString m_endOfLineSequence = "\n";
     QTextCodec *m_codec = QTextCodec::codecForName("UTF-8");
     bool m_bom = false;
     bool m_customIndentationMode = false;
     const Language *m_currentLanguage = nullptr;
-    inline void waitAsyncLoad();
+
+    bool m_lineNumbersVisible = false;
+
+    void refreshMargins();
+
+    QString m_currentFontFamily;
+    int m_currentFontSizePt = 0;
+    double m_currentLineHeightEm = 0.0;
+
+    Theme m_currentTheme;
+
+    void refreshAppearance();
+
+    bool m_forceModified = false;
 
     void fullConstructor(const Theme &theme);
 
     void setIndentationMode(const bool useTabs, const int size);
     void setIndentationMode(const Language *);
 
-private slots:
-    void on_proxyMessageReceived(QString msg, QVariant data);
+    bool searchAndSelect(bool inSelection, const QString &string, SearchHelpers::SearchMode searchMode, bool forward, const SearchHelpers::SearchOptions &searchOptions, bool wrap);
+    int replaceAllNoCheckpoint(const QString &string, SearchHelpers::SearchMode searchMode, const SearchHelpers::SearchOptions &searchOptions, const QString &replacement);
+
+    void incrementGeneration();
+    int m_generation = 0;
 
 signals:
-    void messageReceived(QString msg, QVariant data);
-    void asyncReplyReceived(unsigned int id, QString msg, QVariant data);
     void gotFocus();
-    void mouseWheel(QWheelEvent *ev);
     void urlsDropped(QList<QUrl> urls);
     void bannerRemoved(QWidget *banner);
 
@@ -381,35 +353,11 @@ signals:
     void documentInfoRequested(QMap<QString, QVariant> data);
     void cleanChanged(bool isClean);
     void fileNameChanged(const QUrl &oldFileName, const QUrl &newFileName);
-
-        /**
-     * @brief The editor finished loading. There should be
-     *        no need to use this signal outside this class.
-     */
-    void editorReady();
+    void zoomChanged(int zoomFactor);
 
     void currentLanguageChanged(QString id, QString name);
 
 public slots:
-
-        // [[deprecated]]
-    void sendMessage(const QString msg, const QVariant data);
-        // [[deprecated]]
-    void sendMessage(const QString msg);
-
-        /**
-     * @brief asyncSendMessageWithResult
-     * @param msg
-     * @param data
-     * @param callback When set, the result is returned asynchronously via the provided function.
-     *                 If set, you should NOT use the return value of this method.
-     * @return
-     */
-        // [[deprecated]]
-    std::shared_future<QVariant> asyncSendMessageWithResult(const QString msg, const QVariant data, std::function<void(QVariant)> callback = nullptr);
-        // [[deprecated]]
-    std::shared_future<QVariant> asyncSendMessageWithResult(const QString msg, std::function<void(QVariant)> callback = nullptr);
-
         /**
      * @brief Print the editor. As of Qt 5.11, it produces low-quality, non-vector graphics with big dimension.
      * @param printer

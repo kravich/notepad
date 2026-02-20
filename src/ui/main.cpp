@@ -1,5 +1,4 @@
 #include "include/EditorNS/editor.h"
-#include "include/Extensions/extensionsloader.h"
 #include "include/Sessions/backupservice.h"
 #include "include/Sessions/persistentcache.h"
 #include "include/Sessions/sessions.h"
@@ -22,7 +21,6 @@
 #endif
 
 void forceDefaultSettings();
-void loadExtensions();
 
 int main(int argc, char *argv[])
 {
@@ -131,25 +129,6 @@ int main(int argc, char *argv[])
 
     // There are no other instances: start a new server.
     a.startServer();
-
-    QFileInfo finfo(Notepad::editorPath());
-    if (!finfo.isReadable())
-    {
-        qCritical() << "Can't open file: " + finfo.filePath();
-        return EXIT_FAILURE;
-    }
-
-    if (Extensions::ExtensionsLoader::extensionRuntimePresent())
-    {
-        Extensions::ExtensionsLoader::startExtensionsServer();
-        Extensions::ExtensionsLoader::loadExtensions(Notepad::extensionsPath());
-    }
-    else
-    {
-#ifdef QT_DEBUG
-        qDebug() << "Extension support is not installed.";
-#endif
-    }
 
     // Check whether Np was properly shut down. If not, attempt to restore from the last autosave backup if enabled.
     const bool wantToRestore = settings.General.getAutosaveInterval() > 0 && BackupService::detectImproperShutdown();

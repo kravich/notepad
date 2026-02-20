@@ -43,8 +43,8 @@ public:
      */
     QString tabTextFromEditor(QSharedPointer<Editor> editor);
 
-    qreal zoomFactor() const;
-    void setZoomFactor(const qreal &zoomFactor);
+    int zoomFactor() const;
+    void setZoomFactor(int zoomFactor);
 
     /**
      * @brief deleteIfEmpty Deletes the TabWidget if it has no tabs.
@@ -77,7 +77,7 @@ private:
     // Smart pointers to the editors within this TabWidget
     QHash<Editor *, QSharedPointer<Editor>> m_editorPointers;
 
-    qreal m_zoomFactor = 1;
+    int m_zoomFactor = 0;
 
     int m_formerTabIndex = 0;
     int m_mostRecentTabIndex = 0;
@@ -99,7 +99,6 @@ private:
 
 private slots:
     void on_cleanChanged(bool isClean);
-    void on_editorMouseWheel(QWheelEvent *ev);
     void on_fileNameChanged(const QUrl &, const QUrl &newFileName);
     void on_currentTabChanged(int index);
 signals:

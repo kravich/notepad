@@ -6,14 +6,14 @@ find_package(Qt6
         Widgets
         PrintSupport
         Network
-        WebEngineWidgets
-        WebChannel
-        WebSockets
         DBus
+        Xml
         Core5Compat
         LinguistTools
     REQUIRED
 )
+
+find_package(QScintilla REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 
@@ -33,28 +33,20 @@ set(notepad_SRCS
     EditorNS/bannerfilechanged.cpp
     EditorNS/bannerbasicmessage.cpp
     EditorNS/bannerfileremoved.cpp
-    EditorNS/customqwebview.cpp
+    EditorNS/customscintilla.cpp
     EditorNS/languageservice.cpp
+    EditorNS/nulllexer.cpp
+    EditorNS/lexerfactory.cpp
+    EditorNS/scintillatheme.cpp
     clickablelabel.cpp
     frmencodingchooser.cpp
-    EditorNS/bannerindentationdetected.cpp
     frmindentationmode.cpp
     singleapplication.cpp
     localcommunication.cpp
     Search/frmsearchreplace.cpp
     Search/searchstring.cpp
     Search/advancedsearchdock.cpp
-    Extensions/extension.cpp
     frmlinenumberchooser.cpp
-    Extensions/extensionsserver.cpp
-    Extensions/Stubs/stub.cpp
-    Extensions/runtimesupport.cpp
-    Extensions/Stubs/windowstub.cpp
-    Extensions/Stubs/notepadstub.cpp
-    Extensions/Stubs/editorstub.cpp
-    Extensions/extensionsloader.cpp
-    Extensions/Stubs/menuitemstub.cpp
-    Extensions/installextension.cpp
     keygrabber.cpp
     Sessions/sessions.cpp
     Sessions/persistentcache.cpp
@@ -82,10 +74,12 @@ set(notepad_HEADERS
     include/EditorNS/bannerfilechanged.h
     include/EditorNS/bannerbasicmessage.h
     include/EditorNS/bannerfileremoved.h
-    include/EditorNS/customqwebview.h
+    include/EditorNS/customscintilla.h
+    include/EditorNS/nulllexer.h
+    include/EditorNS/lexerfactory.h
+    include/EditorNS/scintillatheme.h
     include/clickablelabel.h
     include/frmencodingchooser.h
-    include/EditorNS/bannerindentationdetected.h
     include/EditorNS/languageservice.h
     include/frmindentationmode.h
     include/singleapplication.h
@@ -94,17 +88,7 @@ set(notepad_HEADERS
     include/Search/advancedsearchdock.h
     include/Search/searchhelpers.h
     include/Search/searchstring.h
-    include/Extensions/extension.h
     include/frmlinenumberchooser.h
-    include/Extensions/extensionsserver.h
-    include/Extensions/Stubs/stub.h
-    include/Extensions/runtimesupport.h
-    include/Extensions/Stubs/windowstub.h
-    include/Extensions/Stubs/notepadstub.h
-    include/Extensions/Stubs/editorstub.h
-    include/Extensions/extensionsloader.h
-    include/Extensions/Stubs/menuitemstub.h
-    include/Extensions/installextension.h
     include/keygrabber.h
     include/Sessions/sessions.h
     include/Sessions/persistentcache.h
@@ -128,7 +112,6 @@ set(notepad_FORMS
     Search/dlgsearching.ui
     Search/frmsearchreplace.ui
     frmlinenumberchooser.ui
-    Extensions/installextension.ui
 )
 
 set(notepad_RESOURCES
@@ -186,11 +169,10 @@ target_link_libraries(notepad
         Qt6::Widgets
         Qt6::PrintSupport
         Qt6::Network
-        Qt6::WebEngineWidgets
-        Qt6::WebChannel
-        Qt6::WebSockets
         Qt6::DBus
+        Qt6::Xml
         Qt6::Core5Compat
+        QScintilla::QScintilla
         PkgConfig::uchardet
 )
 
@@ -216,13 +198,12 @@ add_custom_target(support_files SOURCES ${notepad_SUPPORT_FILES})
 
 install(TARGETS notepad)
 
-install(CODE
-    "execute_process(COMMAND rm -rf ${CMAKE_INSTALL_PREFIX}/share/notepad/editor)"
+install(FILES ${notepad_SUPPORT_FILES_PATH}/Languages.json
+    DESTINATION share/notepad
 )
 
-install(CODE
-    "execute_process(COMMAND make DESTDIR=${CMAKE_INSTALL_PREFIX}/share/notepad/editor
-                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/editor)"
+install(DIRECTORY ${notepad_SUPPORT_FILES_PATH}/themes
+    DESTINATION share/notepad
 )
 
 install(FILES ${notepad_SUPPORT_FILES_PATH}/shortcuts/notepad.desktop
@@ -235,13 +216,4 @@ install(DIRECTORY ${notepad_SUPPORT_FILES_PATH}/icons
 
 install(FILES ${notepad_SUPPORT_FILES_PATH}/notepad.appdata.xml
     DESTINATION share/metainfo
-)
-
-install(CODE
-    "execute_process(COMMAND rm -rf ${CMAKE_INSTALL_PREFIX}/share/notepad/extension_tools)"
-)
-
-install(CODE
-    "execute_process(COMMAND make DESTDIR=${CMAKE_INSTALL_PREFIX}/share/notepad/extension_tools
-                     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/extension_tools)"
 )
