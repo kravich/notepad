@@ -1,5 +1,5 @@
-#include "include/notepad.h"
-#include "notepad.cpp"
+#include "include/notepadng.h"
+#include "notepadng.cpp"
 #include "npsettings.cpp"
 
 #include <QString>
@@ -22,4 +22,4 @@ NotepadTest::NotepadTest()
 
 QTEST_GUILESS_MAIN(NotepadTest)
 
-#include "tst_notepadtest.moc"
+#include "tst_notepadngtest.moc"

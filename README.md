@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/4319621/36906314-e3f99680-1e35-11e8-90fd-f959c9641f36.png" alt="Notepad" width="32" height="32" /> Notepad [![Build Status](https://travis-ci.com/notepad/notepad.svg?branch=master)](https://travis-ci.com/notepad/notepad) [![notepad](https://snapcraft.io/notepad/badge.svg)](https://snapcraft.io/notepad)
+# <img src="https://user-images.githubusercontent.com/4319621/36906314-e3f99680-1e35-11e8-90fd-f959c9641f36.png" alt="Notepad" width="32" height="32" /> Notepad [![Build Status](https://travis-ci.com/notepadng/notepadng.svg?branch=master)](https://travis-ci.com/notepadng/notepadng) [![notepadng](https://snapcraft.io/notepadng/badge.svg)](https://snapcraft.io/notepadng)
 
 > [!WARNING]  
 > This project is not actively maintained anymore. New maintainers are welcome.
@@ -17,9 +17,9 @@
 
 Notepad is a text editor designed by developers, for developers. 
 
-![screenshot_20180302_163505](https://notepad.com/s/images/snapshot1.png)
+![screenshot_20180302_163505](https://notepadng.com/s/images/snapshot1.png)
 
-Please visit our [Wiki](https://github.com/notepad/notepad/wiki) for more screenshots and details.
+Please visit our [Wiki](https://github.com/notepadng/notepadng/wiki) for more screenshots and details.
 
 Build it yourself
 -----
@@ -36,13 +36,13 @@ Build it yourself
 
 #### Get the source
 
-    $ git clone --recursive https://github.com/notepad/notepad.git
-    $ cd notepad
+    $ git clone --recursive https://github.com/notepadng/notepadng.git
+    $ cd notepadng
 
 #### Build
 
-    notepad$ ./configure --prefix /usr
-    notepad$ make
+    notepadng$ ./configure --prefix /usr
+    notepadng$ make
 
 If you encounter errors make sure to have the necessary libraries installed. For Ubuntu you can do that using apt-get:
 
@@ -54,10 +54,10 @@ For CentOS:
 
 #### Install
 
-You can run notepad from its build output folder. If however you want to install it, first build it
+You can run notepadng from its build output folder. If however you want to install it, first build it
 by following the above steps, then run:
 
-    notepad$ sudo make install
+    notepadng$ sudo make install
 
 #### Qt
 
@@ -68,40 +68,40 @@ Distribution Packages
 
 #### Ubuntu, Debian, and others:
 
-    sudo apt install notepad
+    sudo apt install notepadng
 
 #### Snap
 
 To install the latest stable version:
 
-    sudo snap install notepad
+    sudo snap install notepadng
 
 You don't have the `snap` command? Follow the instructions at https://docs.snapcraft.io/core/install and then install Notepad as shown above.
 
 You can follow the unstable development releases from the "edge" channel.
 
 #### Arch Linux (community-maintained)
-Notepad is available from Arch's [community repositories](https://www.archlinux.org/packages/community/x86_64/notepad/). To install using pacman:
+Notepad is available from Arch's [community repositories](https://www.archlinux.org/packages/community/x86_64/notepadng/). To install using pacman:
 
-    sudo pacman -S notepad
+    sudo pacman -S notepadng
 
 Alternatively it can be found in the AUR:
 
- * Development (git version): [notepad-git](https://aur.archlinux.org/packages/notepad-git/)
+ * Development (git version): [notepadng-git](https://aur.archlinux.org/packages/notepadng-git/)
 
 #### OpenSUSE (community-maintained)
 Notepad is avilable in OpenSUSE's main repository:
 
-     sudo zypper in notepad
+     sudo zypper in notepadng
 
 #### Solus (community-maintained)
 Notepad is available in the `shannon` (stable) repository:
 
-     sudo eopkg it notepad
+     sudo eopkg it notepadng
 
 #### Others
-Use a package for a compatible distribution, or build from [source](https://github.com/notepad/notepad.git).
-If you want to submit a package: https://github.com/notepad/notepad-packaging
+Use a package for a compatible distribution, or build from [source](https://github.com/notepadng/notepadng.git).
+If you want to submit a package: https://github.com/notepadng/notepadng-packaging
 
 #### Compiling on macOS
-Instructions can be found [here](https://github.com/notepad/notepad/wiki/Compiling-Notepad-on-macOS).
+Instructions can be found [here](https://github.com/notepadng/notepadng/wiki/Compiling-Notepad-on-macOS).

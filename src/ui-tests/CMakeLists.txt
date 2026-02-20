@@ -22,7 +22,7 @@ find_package(Qt6
 find_package(QScintilla REQUIRED)
 
 set(ui-tests_SRCS
-    tst_notepadtest.cpp
+    tst_notepadngtest.cpp
 )
 
 add_executable(ui-tests

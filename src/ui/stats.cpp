@@ -1,6 +1,6 @@
 #include "include/stats.h"
 
-#include "include/notepad.h"
+#include "include/notepadng.h"
 
 #include <QJsonDocument>
 #include <QNetworkAccessManager>
@@ -92,7 +92,7 @@ void Stats::check()
 
 void Stats::remoteApiSend(const QJsonObject &data)
 {
-    QUrl url("https://notepad.com/api/stat/post.php");
+    QUrl url("https://notepadng.com/api/stat/post.php");
     QNetworkRequest request(url);
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/javascript");
@@ -128,7 +128,7 @@ void Stats::askUserPermission()
             QObject::tr(
                 "We will collect information such as the version of Qt or the version of the OS<br>"
                 "You don't have to trust us: Notepad is open source, so you can %1check by yourself%2 😊").
-                      arg("<a href=\"https://github.com/notepad/notepad/blob/master/src/ui/stats.cpp\">").
+                      arg("<a href=\"https://github.com/notepadng/notepadng/blob/master/src/ui/stats.cpp\">").
                       arg("</a>") +
             "</body></html>"
             /* clang-format on */

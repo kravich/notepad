@@ -12,12 +12,12 @@ Thumbs.db
 
 /Makefile
 /src/ui/Makefile
-build-notepadqq-Desktop*
+build-notepadng-Desktop*
 
 /out
 /src/ui/ui.pro.user
 /src/ui/ui.pro.user.*
-/notepadqq.pro.user
+/notepadng.pro.user
 
 /.qmake.stash
 /src/ui-tests/moc_predefs.h

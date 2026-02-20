@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>notepad.desktop</id>
+  <id>notepadng.desktop</id>
   <metadata_license>MIT</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>Notepad</name>
@@ -9,24 +9,24 @@
     <p>Notepad is an advanced text editor designed to make life easier for developers.</p>
     <p>It includes real-time syntax highlighting for over one hundred languages, regular expression searches, and text manipulation with multiple cursors.</p>
   </description>
-  <launchable type="desktop-id">notepad.desktop</launchable>
+  <launchable type="desktop-id">notepadng.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://notepad.com/s/images/snapshot1.png</image>
+      <image>https://notepadng.com/s/images/snapshot1.png</image>
     </screenshot>
   </screenshots>
   <developer_name>The Notepad Team</developer_name>
-  <url type="homepage">https://notepad.com</url>
-  <url type="bugtracker">https://github.com/notepad/notepad/issues</url>
-  <url type="faq">https://notepad.com/wp/faq</url>
-  <url type="help">https://github.com/notepad/notepad/wiki</url>
-  <url type="donation">https://notepad.com/wp/donations</url>
-  <url type="translate">https://github.com/notepad/notepad/wiki/Translate-Notepad</url>
+  <url type="homepage">https://notepadng.com</url>
+  <url type="bugtracker">https://github.com/notepadng/notepadng/issues</url>
+  <url type="faq">https://notepadng.com/wp/faq</url>
+  <url type="help">https://github.com/notepadng/notepadng/wiki</url>
+  <url type="donation">https://notepadng.com/wp/donations</url>
+  <url type="translate">https://github.com/notepadng/notepadng/wiki/Translate-Notepad</url>
   <content_rating type="oars-1.0">
     <content_attribute id="social-info">moderate</content_attribute>
   </content_rating>
   <provides>
-    <binary>notepad</binary>
+    <binary>notepadng</binary>
   </provides>
   <releases>
     <release version="0.0.99" date="2026-01-10" type="development"/>

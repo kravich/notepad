@@ -1692,37 +1692,37 @@ Biztosan menteni szeretné?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepad.cpp" line="18"/>
+        <location filename="../ui/notepadng.cpp" line="18"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Szerzői jog © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="87"/>
+        <location filename="../ui/notepadng.cpp" line="87"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>%1 meglévő példányának megnyitása új ablakban.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="92"/>
+        <location filename="../ui/notepadng.cpp" line="92"/>
         <source>Open file at specified line.</source>
         <translation>Fájl megnyitása a meghatározott sorban.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="98"/>
+        <location filename="../ui/notepadng.cpp" line="98"/>
         <source>Open file at specified column.</source>
         <translation>Fájl megnyitása a meghatározott oszlopban.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="103"/>
+        <location filename="../ui/notepadng.cpp" line="103"/>
         <source>Allows Notepad to be run as root.</source>
         <translation>A Notepad rootként való futtatásának engedélyezése.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="106"/>
+        <location filename="../ui/notepadng.cpp" line="106"/>
         <source>Print system information for debugging.</source>
         <translation>Rendszeradatok megjelenítése hibakereséshez.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="110"/>
+        <location filename="../ui/notepadng.cpp" line="110"/>
         <source>Files to open.</source>
         <translation>Megnyitandó fájlok.</translation>
     </message>

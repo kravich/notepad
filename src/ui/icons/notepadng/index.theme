@@ -1,6 +1,6 @@
 [Icon Theme]
-Name=notepad
-Comment=Default theme for notepad
+Name=notepadng
+Comment=Default theme for notepadng
 Inherits=default
 Directories=16x16,64x64,128x128,scalable
  

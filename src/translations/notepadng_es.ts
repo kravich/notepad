@@ -1692,37 +1692,37 @@ Do you want to save it anyway?</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepad.cpp" line="18"/>
+        <location filename="../ui/notepadng.cpp" line="18"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="87"/>
+        <location filename="../ui/notepadng.cpp" line="87"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>Abrir una ventana nueva en una instancia existente de %1.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="92"/>
+        <location filename="../ui/notepadng.cpp" line="92"/>
         <source>Open file at specified line.</source>
         <translation>Abrir archivo en la línea especificada.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="98"/>
+        <location filename="../ui/notepadng.cpp" line="98"/>
         <source>Open file at specified column.</source>
         <translation>Abrir archivo en la columna especificada.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="103"/>
+        <location filename="../ui/notepadng.cpp" line="103"/>
         <source>Allows Notepad to be run as root.</source>
         <translation>Permite ejecutar Notepad como root.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="106"/>
+        <location filename="../ui/notepadng.cpp" line="106"/>
         <source>Print system information for debugging.</source>
         <translation>Imprimir la información del sistema para depuración.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="110"/>
+        <location filename="../ui/notepadng.cpp" line="110"/>
         <source>Files to open.</source>
         <translation>Archivos para abrir.</translation>
     </message>

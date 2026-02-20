@@ -1,6 +1,6 @@
 #include "include/npsettings.h"
 
-#include "include/notepad.h"
+#include "include/notepadng.h"
 
 #ifdef QT_DEBUG
 #include <QDebug>

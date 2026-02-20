@@ -33,9 +33,9 @@ jobs:
         provider: releases
         edge: true  # https://docs.travis-ci.com/user/deployment-v2
         file:
-          - "out/release/notepad-${NP_VERSION}.dmg"
+          - "out/release/notepadng-${NP_VERSION}.dmg"
         skip_cleanup: true
         draft: true
         on:
-          repo: notepad/notepad
+          repo: notepadng/notepadng
           tags: true

@@ -1308,37 +1308,37 @@ Voulez-vous tout de même l&apos;enregistrer ?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepad.cpp" line="17"/>
+        <location filename="../ui/notepadng.cpp" line="17"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="81"/>
+        <location filename="../ui/notepadng.cpp" line="81"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>Ouvrir une nouvelle fenêtre dans l&apos;instance existante de %1.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="86"/>
+        <location filename="../ui/notepadng.cpp" line="86"/>
         <source>Files to open.</source>
         <translation>Fichiers à ouvrir.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="113"/>
+        <location filename="../ui/notepadng.cpp" line="113"/>
         <source>You are using an old version of Qt (%1)</source>
         <translation>Vous utilisez une ancienne version de Qt (%1)</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="115"/>
+        <location filename="../ui/notepadng.cpp" line="115"/>
         <source>Notepad will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
         <translation>Notepad va essayer de faire de son mieux, mais &lt;b&gt;certaines choses peuvent dysfonctionner&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="116"/>
+        <location filename="../ui/notepadng.cpp" line="116"/>
         <source>Install a newer Qt version (&amp;ge; %1) from the official repositories of your distribution.&lt;br&gt;&lt;br&gt;If it&apos;s not available, download Qt (&amp;ge; %1) from %2 and install it to &quot;%3&quot; or to &quot;%4&quot;.</source>
         <translation>Installez une nouvelle version de Qt (&amp;ge; %1) depuis les dépôts officiels de votre distribution.&lt;br&gt;&lt;br&gt;Si ce n&apos;est pas disponible, télécharger Qt (&amp;ge; %1) depuis %2 et installez-le dans &quot;%3&quot; ou dans &quot;%4&quot;.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="130"/>
+        <location filename="../ui/notepadng.cpp" line="130"/>
         <source>Don&apos;t show me this warning again</source>
         <translation>Ne plus m&apos;afficher cet avertissement</translation>
     </message>

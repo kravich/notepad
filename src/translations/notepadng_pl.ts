@@ -1695,32 +1695,32 @@ Czy chcesz go zapisać mimo to?</translation>
         <translation>Musisz zrestartować Notepad, by były widoczne efekty zmiany lokalizacji.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="18"/>
+        <location filename="../ui/notepadng.cpp" line="18"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="87"/>
+        <location filename="../ui/notepadng.cpp" line="87"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>Otwórz nowe okno w istniejącej instancji %1.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="92"/>
+        <location filename="../ui/notepadng.cpp" line="92"/>
         <source>Open file at specified line.</source>
         <translation>Otwórz plik na wybranej linii.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="98"/>
+        <location filename="../ui/notepadng.cpp" line="98"/>
         <source>Open file at specified column.</source>
         <translation>Otwórz plik na wybranej kolumnie.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="103"/>
+        <location filename="../ui/notepadng.cpp" line="103"/>
         <source>Allows Notepad to be run as root.</source>
         <translation>Pozwala Notepad być uruchomionym jako root.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="107"/>
+        <location filename="../ui/notepadng.cpp" line="107"/>
         <source>Files to open.</source>
         <translation>Pliki do otwarcia.</translation>
     </message>

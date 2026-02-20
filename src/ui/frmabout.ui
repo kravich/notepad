@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/icons/notepad/scalable/notepad.svg</normaloff>:/icons/notepad/scalable/notepad.svg</iconset>
+    <normaloff>:/icons/notepadng/scalable/notepadng.svg</normaloff>:/icons/notepadng/scalable/notepadng.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog { background-color: rgb(255, 255, 255); }</string>

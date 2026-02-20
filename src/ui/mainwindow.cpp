@@ -14,7 +14,7 @@
 #include "include/frmlinenumberchooser.h"
 #include "include/frmpreferences.h"
 #include "include/iconprovider.h"
-#include "include/notepad.h"
+#include "include/notepadng.h"
 #include "include/nprun.h"
 #include "ui_mainwindow.h"
 
@@ -323,7 +323,7 @@ void MainWindow::loadIcons()
 
     // '?' menu
     ui->actionAbout_Qt->setIcon(IconProvider::fromTheme("help-about"));
-    ui->actionAbout_Notepad->setIcon(IconProvider::fromTheme("notepad"));
+    ui->actionAbout_Notepad->setIcon(IconProvider::fromTheme("notepadng"));
 }
 
 void MainWindow::configureStatusBar()
@@ -876,7 +876,7 @@ void MainWindow::on_actionOpen_triggered()
     if (defaultUrl.isEmpty())
         defaultUrl = QUrl::fromLocalFile(m_settings.General.getLastSelectedDir());
 
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 
@@ -901,7 +901,7 @@ void MainWindow::on_actionOpen_Folder_triggered()
     if (defaultUrl.isEmpty())
         defaultUrl = QUrl::fromLocalFile(m_settings.General.getLastSelectedDir());
 
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 
@@ -1097,7 +1097,7 @@ int MainWindow::save(EditorTabWidget *tabWidget, int tab)
 
 int MainWindow::saveAs(EditorTabWidget *tabWidget, int tab, bool copy)
 {
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 
@@ -2339,7 +2339,7 @@ void MainWindow::on_actionPrint_triggered()
     {
         QByteArray data = currentEditor()->printToPdf(dlg.printer()->pageLayout());
 
-        QFile file(QDir::tempPath() + "/notepad.print." +
+        QFile file(QDir::tempPath() + "/notepadng.print." +
                    QString::number(QDateTime::currentMSecsSinceEpoch(), 16) + ".pdf");
 
         if (file.open(QIODevice::WriteOnly))
@@ -2588,7 +2588,7 @@ void MainWindow::on_actionToggle_Smart_Indent_toggled(bool on)
 
 void MainWindow::on_actionLoad_Session_triggered()
 {
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 
@@ -2612,7 +2612,7 @@ void MainWindow::on_actionLoad_Session_triggered()
 
 void MainWindow::on_actionSave_Session_triggered()
 {
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 

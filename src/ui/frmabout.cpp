@@ -1,7 +1,7 @@
 #include "include/frmabout.h"
 
 #include "include/iconprovider.h"
-#include "include/notepad.h"
+#include "include/notepadng.h"
 #include "ui_frmabout.h"
 
 #include <QDesktopServices>
@@ -14,7 +14,7 @@ frmAbout::frmAbout(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->lblIcon->setPixmap(IconProvider::fromTheme("notepad")
+    ui->lblIcon->setPixmap(IconProvider::fromTheme("notepadng")
                                .pixmap(ui->lblIcon->width(),
                                        ui->lblIcon->height()));
 

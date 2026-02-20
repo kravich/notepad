@@ -1,4 +1,4 @@
-#include "include/notepad.h"
+#include "include/notepadng.h"
 
 #include "include/npsettings.h"
 
@@ -8,8 +8,8 @@
 #include <QMessageBox>
 
 const QString Notepad::version = POINTVERSION;
-const QString Notepad::contributorsUrl = "https://github.com/notepad/notepad/graphs/contributors";
-const QString Notepad::website = "https://notepad.com";
+const QString Notepad::contributorsUrl = "https://github.com/notepadng/notepadng/graphs/contributors";
+const QString Notepad::website = "https://notepadng.com";
 
 QString Notepad::copyright()
 {
@@ -95,7 +95,7 @@ QList<QString> Notepad::translations()
     QList<QString> out;
 
     QDir dir(":/translations");
-    QStringList fileNames = dir.entryList(QStringList("notepad_*.qm"));
+    QStringList fileNames = dir.entryList(QStringList("notepadng_*.qm"));
 
     // FIXME this can be removed if we create a .qm file for English too, which should exist for consistency purposes
     out.append("en");
@@ -104,8 +104,8 @@ QList<QString> Notepad::translations()
     {
         // get locale extracted by filename
         QString langCode;
-        langCode = fileNames[i]; // "notepad_de.qm"
-        langCode.truncate(langCode.lastIndexOf('.')); // "notepad_de"
+        langCode = fileNames[i]; // "notepadng_de.qm"
+        langCode.truncate(langCode.lastIndexOf('.')); // "notepadng_de"
         langCode.remove(0, langCode.indexOf('_') + 1); // "de"
 
         out.append(langCode);

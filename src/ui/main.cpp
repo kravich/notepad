@@ -3,7 +3,7 @@
 #include "include/Sessions/persistentcache.h"
 #include "include/Sessions/sessions.h"
 #include "include/mainwindow.h"
-#include "include/notepad.h"
+#include "include/notepadng.h"
 #include "include/npsettings.h"
 #include "include/singleapplication.h"
 #include "include/stats.h"
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("Notepad");
     QCoreApplication::setApplicationVersion(Notepad::version);
 
-    QGuiApplication::setDesktopFileName("notepad");
+    QGuiApplication::setDesktopFileName("notepadng");
 
     QSettings::setDefaultFormat(QSettings::IniFormat);
 

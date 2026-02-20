@@ -3,7 +3,7 @@
 #include "include/Sessions/persistentcache.h"
 #include "include/iconprovider.h"
 #include "include/mainwindow.h"
-#include "include/notepad.h"
+#include "include/notepadng.h"
 #include "include/npsettings.h"
 
 #include <QCoreApplication>
@@ -334,7 +334,7 @@ QList<QSharedPointer<Editor>> DocEngine::loadDocumentsWithFeedback(const DocEngi
             {
                 // If it's a file that doesn't exists,
                 // set it as if it has changed. This way, if someone
-                // creates that file from outside of notepad,
+                // creates that file from outside of notepadng,
                 // when the user tries to save over it he gets a warning.
                 editor->setFileOnDiskChanged(true);
                 editor->markDirty();
@@ -551,7 +551,7 @@ void DocEngine::loadDocuments(const DocEngine::DocumentLoader &docLoader)
         {
             // If it's a file that doesn't exists,
             // set it as if it has changed. This way, if someone
-            // creates that file from outside of notepad,
+            // creates that file from outside of notepadng,
             // when the user tries to save over it he gets a warning.
             editor->setFileOnDiskChanged(true);
             editor->markDirty();
@@ -721,7 +721,7 @@ void DocEngine::loadDocuments(const DocEngine::DocumentLoader &docLoader)
         if (!file.exists()) {
             // If it's a file that doesn't exists,
             // set it as if it has changed. This way, if someone
-            // creates that file from outside of notepad,
+            // creates that file from outside of notepadng,
             // when the user tries to save over it he gets a warning.
             editor->setFileOnDiskChanged(true);
             editor->markDirty();

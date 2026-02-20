@@ -1305,37 +1305,37 @@ Ali želite spremembe vseeno shraniti?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepad.cpp" line="17"/>
+        <location filename="../ui/notepadng.cpp" line="17"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Avtorske pravice © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="81"/>
+        <location filename="../ui/notepadng.cpp" line="81"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>Odpri novo okno v obstoječem primerku %1.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="86"/>
+        <location filename="../ui/notepadng.cpp" line="86"/>
         <source>Files to open.</source>
         <translation>Datoteke za odpiranje</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="113"/>
+        <location filename="../ui/notepadng.cpp" line="113"/>
         <source>You are using an old version of Qt (%1)</source>
         <translation>V uporabi je stara različica okolja Qt (%1)</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="115"/>
+        <location filename="../ui/notepadng.cpp" line="115"/>
         <source>Notepad will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
         <translation>Zaradi razlik z najnovejšo nekatere zmožnosti morda &lt;b&gt;ne bodo delovale&lt;/b&gt; po pričakovanjih.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="116"/>
+        <location filename="../ui/notepadng.cpp" line="116"/>
         <source>Install a newer Qt version (&amp;ge; %1) from the official repositories of your distribution.&lt;br&gt;&lt;br&gt;If it&apos;s not available, download Qt (&amp;ge; %1) from %2 and install it to &quot;%3&quot; or to &quot;%4&quot;.</source>
         <translation>Priporočljivo je namestiti novejšo različico Qt (&amp;ge; %1) prek uradnega skladišča distribucije.&lt;br&gt;&lt;br&gt;Če ta ni na voljo, prejmite namestitvene datoteke Qt (&amp;ge; %1) prek %2 in n jih namestit v &quot;%3&quot; ali &quot;%4&quot;.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="130"/>
+        <location filename="../ui/notepadng.cpp" line="130"/>
         <source>Don&apos;t show me this warning again</source>
         <translation>Ne pokaži več tega opozorila</translation>
     </message>

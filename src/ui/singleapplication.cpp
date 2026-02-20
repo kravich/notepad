@@ -28,7 +28,7 @@ SingleApplication::SingleApplication(int &argc, char **argv) :
 
 #include <QtCore/QCoreApplication>
 #include <QtDBus/QtDBus>
-#define SERVICE_NAME "com.notepad.Notepad"
+#define SERVICE_NAME "com.notepadng.Notepad"
 
 void SingleApplication::startServer()
 {
@@ -158,7 +158,7 @@ void SingleApplication::newConnection()
 
 QString SingleApplication::socketNameForUser()
 {
-    QString id = "notepad";
+    QString id = "notepadng";
     QString prefix = id;
     if (id.isEmpty())
     {

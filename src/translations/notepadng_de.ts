@@ -1683,52 +1683,52 @@ Wollen Sie dennoch speichern?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../ui/notepad.cpp" line="17"/>
+        <location filename="../ui/notepadng.cpp" line="17"/>
         <source>Copyright © 2010-%1, Daniele Di Sarli</source>
         <translation>Copyright © 2010-%1, Daniele Di Sarli</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="86"/>
+        <location filename="../ui/notepadng.cpp" line="86"/>
         <source>Open a new window in an existing instance of %1.</source>
         <translation>Öffne neues Fenster in vorhandener Instanz von %1.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="91"/>
+        <location filename="../ui/notepadng.cpp" line="91"/>
         <source>Open file at specified line.</source>
         <translation>Öffne Datei bei bestimmter Zeile.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="97"/>
+        <location filename="../ui/notepadng.cpp" line="97"/>
         <source>Open file at specified column.</source>
         <translation>Öffne Datei bei bestimmter Spalte.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="102"/>
+        <location filename="../ui/notepadng.cpp" line="102"/>
         <source>Allows Notepad to be run as root.</source>
         <translation>Ermöglicht es Notepad als Root auszuführen.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="106"/>
+        <location filename="../ui/notepadng.cpp" line="106"/>
         <source>Files to open.</source>
         <translation>Zu öffnende Dateien.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="133"/>
+        <location filename="../ui/notepadng.cpp" line="133"/>
         <source>You are using an old version of Qt (%1)</source>
         <translation>Sie verwenden eine alte Version von Qt (%1)</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="135"/>
+        <location filename="../ui/notepadng.cpp" line="135"/>
         <source>Notepad will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
         <translation>Notepad wird sein Bestes versuchen, dennoch könnte &lt;b&gt;nicht alles reibungslos funktionieren&lt;/b&gt;.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="136"/>
+        <location filename="../ui/notepadng.cpp" line="136"/>
         <source>Install a newer Qt version (&amp;ge; %1) from the official repositories of your distribution.&lt;br&gt;&lt;br&gt;If it&apos;s not available, download Qt (&amp;ge; %1) from %2 and install it to &quot;%3&quot; or to &quot;%4&quot;.</source>
         <translation>Installieren Sie eine neuere Version von Qt (&amp;ge; %1) aus den offiziellen Paketquellen Ihrer Distribution.&lt;br&gt;&lt;br&gt;Falls nicht verfügbar, laden Sie Qt (&amp;ge; %1) von %2 und installieren Sie es nach &quot;%3&quot; oder &quot;%4&quot;.</translation>
     </message>
     <message>
-        <location filename="../ui/notepad.cpp" line="150"/>
+        <location filename="../ui/notepadng.cpp" line="150"/>
         <source>Don&apos;t show me this warning again</source>
         <translation>Warnung nicht erneut anzeigen</translation>
     </message>
