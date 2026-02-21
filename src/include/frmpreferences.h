@@ -1,9 +1,9 @@
 #ifndef FRMPREFERENCES_H
 #define FRMPREFERENCES_H
 
-#include "include/keygrabber.h"
-#include "include/nngsettings.h"
-#include "include/topeditorcontainer.h"
+#include "keygrabber.h"
+#include "nngsettings.h"
+#include "topeditorcontainer.h"
 
 #include <QDialog>
 #include <QTreeWidgetItem>

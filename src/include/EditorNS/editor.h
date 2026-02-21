@@ -1,10 +1,10 @@
 #ifndef EDITOR_H
 #define EDITOR_H
 
-#include "include/EditorNS/customscintilla.h"
-#include "include/EditorNS/languageservice.h"
+#include "EditorNS/customscintilla.h"
+#include "EditorNS/languageservice.h"
 
-#include "include/Search/searchhelpers.h"
+#include "Search/searchhelpers.h"
 
 #include <QObject>
 #include <QPrinter>

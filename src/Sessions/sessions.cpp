@@ -1,8 +1,8 @@
-#include "include/Sessions/sessions.h"
+#include "Sessions/sessions.h"
 
-#include "include/Sessions/persistentcache.h"
-#include "include/docengine.h"
-#include "include/topeditorcontainer.h"
+#include "Sessions/persistentcache.h"
+#include "docengine.h"
+#include "topeditorcontainer.h"
 
 #include <QDateTime>
 #include <QFile>

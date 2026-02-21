@@ -1,12 +1,12 @@
-#include "include/EditorNS/editor.h"
+#include "EditorNS/editor.h"
 
-#include "include/notepadng.h"
-#include "include/nngsettings.h"
+#include "notepadng.h"
+#include "nngsettings.h"
 
-#include "include/Search/searchstring.h"
+#include "Search/searchstring.h"
 
-#include "include/EditorNS/lexerfactory.h"
-#include "include/EditorNS/scintillatheme.h"
+#include "EditorNS/lexerfactory.h"
+#include "EditorNS/scintillatheme.h"
 
 #include <QDir>
 #include <QEventLoop>

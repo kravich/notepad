@@ -1,8 +1,8 @@
-#include "include/Sessions/backupservice.h"
+#include "Sessions/backupservice.h"
 
-#include "include/Sessions/persistentcache.h"
-#include "include/Sessions/sessions.h"
-#include "include/mainwindow.h"
+#include "Sessions/persistentcache.h"
+#include "Sessions/sessions.h"
+#include "mainwindow.h"
 
 #include <QApplication>
 

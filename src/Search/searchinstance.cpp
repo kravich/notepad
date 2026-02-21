@@ -1,7 +1,7 @@
-#include "include/Search/searchinstance.h"
+#include "Search/searchinstance.h"
 
-#include "include/EditorNS/editor.h"
-#include "include/mainwindow.h"
+#include "EditorNS/editor.h"
+#include "mainwindow.h"
 
 #include <QAbstractTextDocumentLayout>
 #include <QApplication>

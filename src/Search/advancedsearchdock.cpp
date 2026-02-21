@@ -1,11 +1,11 @@
-#include "include/Search/advancedsearchdock.h"
+#include "Search/advancedsearchdock.h"
 
-#include "include/EditorNS/editor.h"
-#include "include/Search/filereplacer.h"
-#include "include/Search/searchstring.h"
-#include "include/iconprovider.h"
-#include "include/mainwindow.h"
-#include "include/nngsettings.h"
+#include "EditorNS/editor.h"
+#include "Search/filereplacer.h"
+#include "Search/searchstring.h"
+#include "iconprovider.h"
+#include "mainwindow.h"
+#include "nngsettings.h"
 
 #include <QApplication>
 #include <QCheckBox>

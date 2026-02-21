@@ -1,6 +1,6 @@
-#include "include/EditorNS/lexerfactory.h"
+#include "EditorNS/lexerfactory.h"
 
-#include "include/EditorNS/nulllexer.h"
+#include "EditorNS/nulllexer.h"
 
 #include <Qsci/qscilexerasm.h>
 #include <Qsci/qscilexeravs.h>

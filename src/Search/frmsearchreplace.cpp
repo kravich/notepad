@@ -1,8 +1,8 @@
-#include "include/Search/frmsearchreplace.h"
+#include "Search/frmsearchreplace.h"
 
-#include "include/Search/searchstring.h"
-#include "include/iconprovider.h"
-#include "include/nngsettings.h"
+#include "Search/searchstring.h"
+#include "iconprovider.h"
+#include "nngsettings.h"
 #include "ui_frmsearchreplace.h"
 
 #include <QActionGroup>

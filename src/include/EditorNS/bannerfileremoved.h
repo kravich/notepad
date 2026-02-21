@@ -1,7 +1,7 @@
 #ifndef BANNERFILEREMOVED_H
 #define BANNERFILEREMOVED_H
 
-#include "include/EditorNS/bannerbasicmessage.h"
+#include "EditorNS/bannerbasicmessage.h"
 
 namespace EditorNS
 {

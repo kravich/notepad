@@ -23,7 +23,7 @@
 #ifndef NOTEPAD_H
 #define NOTEPAD_H
 
-#include "include/mainwindow.h"
+#include "mainwindow.h"
 
 #include <QApplication>
 #include <QCommandLineParser>

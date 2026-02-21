@@ -1,4 +1,4 @@
-#include "include/EditorNS/bannerfileremoved.h"
+#include "EditorNS/bannerfileremoved.h"
 
 #include <QLabel>
 #include <QPainter>

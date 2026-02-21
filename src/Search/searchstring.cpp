@@ -1,4 +1,4 @@
-#include "include/Search/searchstring.h"
+#include "Search/searchstring.h"
 
 #include <QRegularExpression>
 

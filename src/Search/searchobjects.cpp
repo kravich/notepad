@@ -1,4 +1,4 @@
-#include "include/Search/searchobjects.h"
+#include "Search/searchobjects.h"
 
 void SearchConfig::setScopeFromInt(int scopeAsInt)
 {

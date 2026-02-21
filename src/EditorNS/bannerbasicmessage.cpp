@@ -1,4 +1,4 @@
-#include "include/EditorNS/bannerbasicmessage.h"
+#include "EditorNS/bannerbasicmessage.h"
 
 #include <QPainter>
 #include <QStyleOption>

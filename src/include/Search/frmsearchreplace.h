@@ -1,8 +1,8 @@
 #ifndef FRMSEARCHREPLACE_H
 #define FRMSEARCHREPLACE_H
 
-#include "include/Search/searchhelpers.h"
-#include "include/topeditorcontainer.h"
+#include "Search/searchhelpers.h"
+#include "topeditorcontainer.h"
 
 #include <QComboBox>
 #include <QDialog>

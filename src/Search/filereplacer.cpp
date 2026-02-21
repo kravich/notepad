@@ -1,6 +1,6 @@
-#include "include/Search/filereplacer.h"
+#include "Search/filereplacer.h"
 
-#include "include/docengine.h"
+#include "docengine.h"
 
 #include <QFile>
 #include <QStringRef>

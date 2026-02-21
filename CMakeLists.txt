@@ -164,7 +164,7 @@ set_target_properties(notepadng
 
 target_include_directories(notepadng
     PRIVATE
-        src
+        src/include
 )
 
 target_link_libraries(notepadng

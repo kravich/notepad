@@ -1,7 +1,7 @@
 #ifndef BANNERFILECHANGED_H
 #define BANNERFILECHANGED_H
 
-#include "include/EditorNS/bannerbasicmessage.h"
+#include "EditorNS/bannerbasicmessage.h"
 
 namespace EditorNS
 {

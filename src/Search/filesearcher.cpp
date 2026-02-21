@@ -1,7 +1,7 @@
-#include "include/Search/filesearcher.h"
+#include "Search/filesearcher.h"
 
-#include "include/Search/searchstring.h"
-#include "include/docengine.h"
+#include "Search/searchstring.h"
+#include "docengine.h"
 
 #include <QDirIterator>
 

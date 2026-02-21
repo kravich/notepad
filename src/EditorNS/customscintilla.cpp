@@ -1,4 +1,4 @@
-#include "include/EditorNS/customscintilla.h"
+#include "EditorNS/customscintilla.h"
 
 #include <QMimeData>
 #include <QMenu>

@@ -1,4 +1,4 @@
-#include "include/EditorNS/scintillatheme.h"
+#include "EditorNS/scintillatheme.h"
 
 #include <QDomDocument>
 #include <QFile>
