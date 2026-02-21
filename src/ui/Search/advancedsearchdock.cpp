@@ -5,7 +5,7 @@
 #include "include/Search/searchstring.h"
 #include "include/iconprovider.h"
 #include "include/mainwindow.h"
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 
 #include <QApplication>
 #include <QCheckBox>

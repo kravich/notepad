@@ -1,7 +1,7 @@
 #ifndef _NNGRUN_H_
 #define _NNGRUN_H_
 
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 
 #include <QDialog>
 #include <QLabel>

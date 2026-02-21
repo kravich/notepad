@@ -4,7 +4,7 @@
 #include "include/Sessions/sessions.h"
 #include "include/mainwindow.h"
 #include "include/notepadng.h"
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 #include "include/singleapplication.h"
 #include "include/stats.h"
 

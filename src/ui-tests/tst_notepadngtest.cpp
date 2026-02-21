@@ -1,6 +1,6 @@
 #include "include/notepadng.h"
 #include "notepadng.cpp"
-#include "npsettings.cpp"
+#include "nngsettings.cpp"
 
 #include <QString>
 #include <QtTest>

@@ -1,6 +1,6 @@
 #include "include/notepadng.h"
 
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 
 #include <QCheckBox>
 #include <QDir>

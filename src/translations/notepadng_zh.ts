@@ -391,8 +391,8 @@
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="52"/>
-        <source>unable to read np-manifest.json</source>
-        <translation>无法读取np-manifest.json</translation>
+        <source>unable to read nng-manifest.json</source>
+        <translation>无法读取nng-manifest.json</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="99"/>
@@ -1542,7 +1542,7 @@ Do you want to save it anyway?</source>
 <context>
     <name>NngRun::RunDelegate</name>
     <message>
-        <location filename="../ui/nprun.cpp" line="234"/>
+        <location filename="../ui/nngrun.cpp" line="234"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
@@ -1550,62 +1550,62 @@ Do you want to save it anyway?</source>
 <context>
     <name>NngRun::RunDialog</name>
     <message>
-        <location filename="../ui/nprun.cpp" line="266"/>
+        <location filename="../ui/nngrun.cpp" line="266"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="267"/>
+        <location filename="../ui/nngrun.cpp" line="267"/>
         <source>Cancel</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="268"/>
+        <location filename="../ui/nngrun.cpp" line="268"/>
         <source>Save...</source>
         <translation>保存...</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="271"/>
+        <location filename="../ui/nngrun.cpp" line="271"/>
         <source>Special placeholders</source>
         <translation>特殊占位符</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="272"/>
+        <location filename="../ui/nngrun.cpp" line="272"/>
         <source>Full URL of the currently active file.</source>
         <translation>当前活动文件的完整链接。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="273"/>
+        <location filename="../ui/nngrun.cpp" line="273"/>
         <source>Full path of the currently active file.</source>
         <translation>当前活动文件的完整路径。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="274"/>
+        <location filename="../ui/nngrun.cpp" line="274"/>
         <source>Directory of the currently active file.</source>
         <translation>当前活动文件的目录。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="275"/>
+        <location filename="../ui/nngrun.cpp" line="275"/>
         <source>Name of the currently active file.</source>
         <translation>当前活动文件名。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="276"/>
+        <location filename="../ui/nngrun.cpp" line="276"/>
         <source>Currently selected text.</source>
         <translation>当前所选文档。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="316"/>
+        <location filename="../ui/nngrun.cpp" line="316"/>
         <source>Choose the name to be displayed in the run menu.</source>
         <translation>选择将要显示在运行菜单中的名称。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="317"/>
+        <location filename="../ui/nngrun.cpp" line="317"/>
         <source>Command Name:</source>
         <translation>命令名：</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="326"/>
+        <location filename="../ui/nngrun.cpp" line="326"/>
         <source>Command saved...</source>
         <translation>命令保存为...</translation>
     </message>
@@ -1613,52 +1613,52 @@ Do you want to save it anyway?</source>
 <context>
     <name>NngRun::RunPreferences</name>
     <message>
-        <location filename="../ui/nprun.cpp" line="28"/>
+        <location filename="../ui/nngrun.cpp" line="28"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="29"/>
+        <location filename="../ui/nngrun.cpp" line="29"/>
         <source>Cancel</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="34"/>
+        <location filename="../ui/nngrun.cpp" line="34"/>
         <source>Special placeholders</source>
         <translation>特殊占位符</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="35"/>
+        <location filename="../ui/nngrun.cpp" line="35"/>
         <source>Full URL of the currently active file.</source>
         <translation>当前活动文件的完整链接。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="36"/>
+        <location filename="../ui/nngrun.cpp" line="36"/>
         <source>Full path of the currently active file.</source>
         <translation>当前活动文件的完整路径。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="37"/>
+        <location filename="../ui/nngrun.cpp" line="37"/>
         <source>Directory of the currently active file.</source>
         <translation>当前活动文件的目录。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="38"/>
+        <location filename="../ui/nngrun.cpp" line="38"/>
         <source>Name of the currently active file.</source>
         <translation>当前活动文件名。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="39"/>
+        <location filename="../ui/nngrun.cpp" line="39"/>
         <source>Currently selected text.</source>
         <translation>当前所选文档。</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="70"/>
+        <location filename="../ui/nngrun.cpp" line="70"/>
         <source>Text</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="70"/>
+        <location filename="../ui/nngrun.cpp" line="70"/>
         <source>Command</source>
         <translation>命令</translation>
     </message>

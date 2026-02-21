@@ -397,8 +397,8 @@
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="50"/>
-        <source>unable to read np-manifest.json</source>
-        <translation>kann np-manifest.json nicht lesen</translation>
+        <source>unable to read nng-manifest.json</source>
+        <translation>kann nng-manifest.json nicht lesen</translation>
     </message>
     <message>
         <location filename="../ui/Extensions/extension.cpp" line="97"/>
@@ -992,7 +992,7 @@
     <message>
         <location filename="../ui/mainwindow.ui" line="857"/>
         <source>&amp;Custom...</source>
-        <translation>&amp;Anpassen...</translation>
+        <translation>&amp;Anngassen...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="862"/>
@@ -1559,7 +1559,7 @@ Wollen Sie dennoch speichern?</translation>
 <context>
     <name>NngRun::RunDelegate</name>
     <message>
-        <location filename="../ui/nprun.cpp" line="232"/>
+        <location filename="../ui/nngrun.cpp" line="232"/>
         <source>Open File</source>
         <translation>Datei öffnen</translation>
     </message>
@@ -1567,62 +1567,62 @@ Wollen Sie dennoch speichern?</translation>
 <context>
     <name>NngRun::RunDialog</name>
     <message>
-        <location filename="../ui/nprun.cpp" line="264"/>
+        <location filename="../ui/nngrun.cpp" line="264"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="265"/>
+        <location filename="../ui/nngrun.cpp" line="265"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="266"/>
+        <location filename="../ui/nngrun.cpp" line="266"/>
         <source>Save...</source>
         <translation>Speichern...</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="269"/>
+        <location filename="../ui/nngrun.cpp" line="269"/>
         <source>Special placeholders</source>
         <translation>Spezielle Platzhalter</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="270"/>
+        <location filename="../ui/nngrun.cpp" line="270"/>
         <source>Full URL of the currently active file.</source>
         <translation>Vollständige URL zur aktuellen Datei.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="271"/>
+        <location filename="../ui/nngrun.cpp" line="271"/>
         <source>Full path of the currently active file.</source>
         <translation>Vollständiger Pfad zur aktuellen Datei.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="272"/>
+        <location filename="../ui/nngrun.cpp" line="272"/>
         <source>Directory of the currently active file.</source>
         <translation>Verzeichnis der aktuellen Datei.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="273"/>
+        <location filename="../ui/nngrun.cpp" line="273"/>
         <source>Name of the currently active file.</source>
         <translation>Name der aktuellen Datei.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="274"/>
+        <location filename="../ui/nngrun.cpp" line="274"/>
         <source>Currently selected text.</source>
         <translation>Momentan markierter Text.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="314"/>
+        <location filename="../ui/nngrun.cpp" line="314"/>
         <source>Choose the name to be displayed in the run menu.</source>
         <translation>Wählen Sie einen Namen der im Menü angezeigt werden soll.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="315"/>
+        <location filename="../ui/nngrun.cpp" line="315"/>
         <source>Command Name:</source>
         <translation>Name des Befehls:</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="324"/>
+        <location filename="../ui/nngrun.cpp" line="324"/>
         <source>Command saved...</source>
         <translation>Befehl gespeichert...</translation>
     </message>
@@ -1630,52 +1630,52 @@ Wollen Sie dennoch speichern?</translation>
 <context>
     <name>NngRun::RunPreferences</name>
     <message>
-        <location filename="../ui/nprun.cpp" line="26"/>
+        <location filename="../ui/nngrun.cpp" line="26"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="27"/>
+        <location filename="../ui/nngrun.cpp" line="27"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="32"/>
+        <location filename="../ui/nngrun.cpp" line="32"/>
         <source>Special placeholders</source>
         <translation>Spezielle Platzhalter</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="33"/>
+        <location filename="../ui/nngrun.cpp" line="33"/>
         <source>Full URL of the currently active file.</source>
         <translation>Vollständige URL zur aktuellen Datei.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="34"/>
+        <location filename="../ui/nngrun.cpp" line="34"/>
         <source>Full path of the currently active file.</source>
         <translation>Vollständiger Pfad zur aktuellen Datei.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="35"/>
+        <location filename="../ui/nngrun.cpp" line="35"/>
         <source>Directory of the currently active file.</source>
         <translation>Verzeichnis der aktuellen Datei.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="36"/>
+        <location filename="../ui/nngrun.cpp" line="36"/>
         <source>Name of the currently active file.</source>
         <translation>Name der aktuellen Datei.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="37"/>
+        <location filename="../ui/nngrun.cpp" line="37"/>
         <source>Currently selected text.</source>
         <translation>Momentan markierter Text.</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="68"/>
+        <location filename="../ui/nngrun.cpp" line="68"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../ui/nprun.cpp" line="68"/>
+        <location filename="../ui/nngrun.cpp" line="68"/>
         <source>Command</source>
         <translation>Befehl</translation>
     </message>

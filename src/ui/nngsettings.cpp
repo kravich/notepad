@@ -1,4 +1,4 @@
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 
 #include "include/notepadng.h"
 

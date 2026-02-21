@@ -15,7 +15,7 @@
 #include "include/frmpreferences.h"
 #include "include/iconprovider.h"
 #include "include/notepadng.h"
-#include "include/nprun.h"
+#include "include/nngrun.h"
 #include "ui_mainwindow.h"
 
 #include <QActionGroup>

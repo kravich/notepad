@@ -1,7 +1,7 @@
 #include "include/EditorNS/editor.h"
 
 #include "include/notepadng.h"
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 
 #include "include/Search/searchstring.h"
 

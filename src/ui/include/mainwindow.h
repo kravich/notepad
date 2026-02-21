@@ -4,7 +4,7 @@
 #include "docengine.h"
 #include "include/Search/advancedsearchdock.h"
 #include "include/Search/frmsearchreplace.h"
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 #include "include/topeditorcontainer.h"
 
 #include "QtPrintSupport/QPrinter"

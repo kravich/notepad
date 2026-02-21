@@ -2,7 +2,7 @@
 
 #include "include/Search/searchstring.h"
 #include "include/iconprovider.h"
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 #include "ui_frmsearchreplace.h"
 
 #include <QActionGroup>
