@@ -1,107 +1,51 @@
-# <img src="https://user-images.githubusercontent.com/4319621/36906314-e3f99680-1e35-11e8-90fd-f959c9641f36.png" alt="Notepadng" width="32" height="32" /> Notepadng [![Build Status](https://travis-ci.com/notepadng/notepadng.svg?branch=master)](https://travis-ci.com/notepadng/notepadng) [![notepadng](https://snapcraft.io/notepadng/badge.svg)](https://snapcraft.io/notepadng)
+# ![Notepadng](images/notepadng.svg "Notepad") Notepadng
 
-> [!WARNING]  
-> This project is not actively maintained anymore. New maintainers are welcome.
->
-> It has been reported that with the most recent OS/Qt versions, the program can crash unexpectedly. Use this at your own risk.
-> 
->  -- Daniele
+Notepadng is a Notepad++-like editor for programmers and power users.
 
-### Links
+It does it's best by replicating Notepad++ look and feel and is compatible with its color themes.
 
-* [What is it?](#what-is-it)
-* [Build it yourself](#build-it-yourself)
-* [Download it](#distribution-packages)
+Notepadng a fork of a [Notepadqq](https://github.com/notepadqq/notepadqq) editor with Web-based editor component replaced by Scintilla for better user experience, stability and maintainability
 
-#### What is it?
+## Manual build
 
-Notepadng is a text editor designed by developers, for developers. 
+| Dependency            | Debian/Ubuntu package  |
+|-----------------------|------------------------|
+| CMake                 | cmake                  |
+| pkg-config            | pkgconf                |
+| Qt6 Core              | qt6-base-dev           |
+| Qt6 Gui               |                        |
+| Qt6 Widgets           |                        |
+| Qt6 PrintSupport      |                        |
+| Qt6 DBus              |                        |
+| Qt6 Network           |                        |
+| Qt6 Xml               |                        |
+| Qt6 Svg               | qt6-svg-dev            |
+| Qt6 Core5Compat       | qt6-5compat-dev        |
+| Qt6 LinguistTools     | qt6-l10n-tools         |
+| QScintilla            | libqscintilla2-qt6-dev |
+| uchardet              | libuchardet-dev        |
 
-![screenshot_20180302_163505](https://notepadng.com/s/images/snapshot1.png)
+### Get the source
 
-Please visit our [Wiki](https://github.com/notepadng/notepadng/wiki) for more screenshots and details.
-
-Build it yourself
------
-
-| Build dependencies    | Dependencies      |
-|-----------------------|-------------------|
-| Qt 5.6 or higher      | Qt 5.6 or higher  |
-| qtwebengine5-dev      | qtwebengine5      |
-| libqt5websockets5-dev | libqt5websockets5 |
-| libqt5svg5-dev        | libqt5svg5        |
-| qttools5-dev-tools    | coreutils         |
-| libuchardet-dev       | libuchardet       |
-| pkg-config            |                   |
-
-#### Get the source
-
-    $ git clone --recursive https://github.com/notepadng/notepadng.git
+    $ git clone https://github.com/kravich/notepadng.git
     $ cd notepadng
 
-#### Build
+### Build
 
-    notepadng$ ./configure --prefix /usr
+    notepadng$ cmake -DCMAKE_INSTALL_PREFIX=/usr .
     notepadng$ make
 
-If you encounter errors make sure to have the necessary libraries installed. For Ubuntu you can do that using apt-get:
+If you encounter errors make sure to have the necessary libraries installed. For Ubuntu you can do that using apt:
 
-    sudo apt-get install qttools5-dev-tools qtwebengine5-dev libqt5websockets5-dev libqt5svg5 libqt5svg5-dev libuchardet-dev pkg-config
+    sudo apt install cmake qt6-base-dev qt6-svg-dev qt6-5compat-dev qt6-l10n-tools libqscintilla2-qt6-dev libuchardet-dev
 
-For CentOS:
-
-    sudo yum install -y qt5-qtbase-devel qt5-qttools-devel qt5-qtwebengine-devel qt5-qtwebsockets-devel qt5-qtsvg-devel uchardet qt5-qtwebchannel-devel pkgconfig
-
-#### Install
+### Install
 
 You can run notepadng from its build output folder. If however you want to install it, first build it
 by following the above steps, then run:
 
     notepadng$ sudo make install
 
-#### Qt
+## Distribution Packages
 
-If the newest version of Qt isn't available on your distribution, you can use the [online installer](http://www.qt.io/download-open-source) to get the latest libraries and install them into your home directory (`$HOME/Qt`). Notepadng will automatically use them.
-
-Distribution Packages
----------------------
-
-#### Ubuntu, Debian, and others:
-
-    sudo apt install notepadng
-
-#### Snap
-
-To install the latest stable version:
-
-    sudo snap install notepadng
-
-You don't have the `snap` command? Follow the instructions at https://docs.snapcraft.io/core/install and then install Notepadng as shown above.
-
-You can follow the unstable development releases from the "edge" channel.
-
-#### Arch Linux (community-maintained)
-Notepadng is available from Arch's [community repositories](https://www.archlinux.org/packages/community/x86_64/notepadng/). To install using pacman:
-
-    sudo pacman -S notepadng
-
-Alternatively it can be found in the AUR:
-
- * Development (git version): [notepadng-git](https://aur.archlinux.org/packages/notepadng-git/)
-
-#### OpenSUSE (community-maintained)
-Notepadng is avilable in OpenSUSE's main repository:
-
-     sudo zypper in notepadng
-
-#### Solus (community-maintained)
-Notepadng is available in the `shannon` (stable) repository:
-
-     sudo eopkg it notepadng
-
-#### Others
-Use a package for a compatible distribution, or build from [source](https://github.com/notepadng/notepadng.git).
-If you want to submit a package: https://github.com/notepadng/notepadng-packaging
-
-#### Compiling on macOS
-Instructions can be found [here](https://github.com/notepadng/notepadng/wiki/Compiling-Notepadng-on-macOS).
+> Not yet available. The plans are to provide native Ubuntu, Debian and Arch packages as well as Snap and Flatpack distributions
