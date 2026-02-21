@@ -197,30 +197,30 @@ target_compile_options(notepadng
         $<$<CXX_COMPILER_ID:Clang>:${CLANG_COMPILE_OPTIONS}>
 )
 
-set(notepadng_SUPPORT_FILES_PATH support_files)
+set(notepadng_DIST_PATH dist)
 
-file(GLOB_RECURSE notepadng_SUPPORT_FILES ${notepadng_SUPPORT_FILES_PATH}/*)
-add_custom_target(support_files SOURCES ${notepadng_SUPPORT_FILES})
+file(GLOB_RECURSE notepadng_DIST ${notepadng_DIST_PATH}/*)
+add_custom_target(dist SOURCES ${notepadng_DIST})
 
 install(TARGETS notepadng)
 
-install(FILES ${notepadng_SUPPORT_FILES_PATH}/Languages.json
+install(FILES ${notepadng_DIST_PATH}/Languages.json
     DESTINATION share/notepadng
 )
 
-install(DIRECTORY ${notepadng_SUPPORT_FILES_PATH}/themes
+install(DIRECTORY ${notepadng_DIST_PATH}/themes
     DESTINATION share/notepadng
 )
 
-install(FILES ${notepadng_SUPPORT_FILES_PATH}/shortcuts/notepadng.desktop
+install(FILES ${notepadng_DIST_PATH}/shortcuts/notepadng.desktop
     DESTINATION share/applications
 )
 
-install(DIRECTORY ${notepadng_SUPPORT_FILES_PATH}/icons
+install(DIRECTORY ${notepadng_DIST_PATH}/icons
     DESTINATION share
 )
 
-install(FILES ${notepadng_SUPPORT_FILES_PATH}/notepadng.appdata.xml
+install(FILES ${notepadng_DIST_PATH}/notepadng.appdata.xml
     DESTINATION share/metainfo
 )
 
