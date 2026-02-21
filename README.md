@@ -2,9 +2,8 @@
 
 Notepadng is a Notepad++-like editor for programmers and power users.
 
-It does it's best by replicating Notepad++ look and feel and is compatible with its color themes.
-
-Notepadng a fork of a [Notepadqq](https://github.com/notepadqq/notepadqq) editor with Web-based editor component replaced by Scintilla for better user experience, stability and maintainability
+Notepadng is fork of a [Notepadqq](https://github.com/notepadqq/notepadqq) editor with Web-based editor component replaced by Scintilla for better user experience, stability and maintainability.
+It also incorporates original color themes from [Notepad++](github.com/notepad-plus-plus/notepad-plus-plus) itself to replicate brand Notepad++ look and feel.
 
 ## Manual build
 
