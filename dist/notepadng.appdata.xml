@@ -4,24 +4,23 @@
   <metadata_license>MIT</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>Notepadng</name>
-  <summary>An advanced text editor</summary>
+  <summary>Notepad++-like editor</summary>
   <description>
-    <p>Notepadng is an advanced text editor designed to make life easier for developers.</p>
-    <p>It includes real-time syntax highlighting for over one hundred languages, regular expression searches, and text manipulation with multiple cursors.</p>
+    <p>Notepadng is a Notepad++-like editor for programmers and power users.</p>
+    <p>It does it's best by replicating Notepad++ look and feel and is compatible with its color themes.</p>
   </description>
   <launchable type="desktop-id">notepadng.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://notepadng.com/s/images/snapshot1.png</image>
+      <!-- FIXME: Provide screenshot -->
+      <image>https://notepadng.github.io/screenshot1.png</image>
     </screenshot>
   </screenshots>
   <developer_name>The Notepadng Team</developer_name>
-  <url type="homepage">https://notepadng.com</url>
-  <url type="bugtracker">https://github.com/notepadng/notepadng/issues</url>
-  <url type="faq">https://notepadng.com/wp/faq</url>
-  <url type="help">https://github.com/notepadng/notepadng/wiki</url>
-  <url type="donation">https://notepadng.com/wp/donations</url>
-  <url type="translate">https://github.com/notepadng/notepadng/wiki/Translate-Notepadng</url>
+  <!-- FIXME: Create home page -->
+  <url type="homepage">https://notepadng.github.io</url>
+  <url type="bugtracker">https://github.com/kravich/notepadng/issues</url>
+  <url type="help">https://github.com/kravich/notepadng/wiki</url>
   <content_rating type="oars-1.0">
     <content_attribute id="social-info">moderate</content_attribute>
   </content_rating>
