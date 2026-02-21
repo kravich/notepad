@@ -110,7 +110,7 @@ private:
     void onSearchHistorySizeChange();
 
     /**
-     * @brief Adds the given item to one of the history lists stored in NpSettings, also updates the
+     * @brief Adds the given item to one of the history lists stored in NngSettings, also updates the
      *        corresponding QComboBox with the new history list.
      */
     void updateSearchHistory(const QString &item);

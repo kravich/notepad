@@ -14,7 +14,7 @@
 
 /* Session XML structure:
  *
- * <Notepad>
+ * <Notepadng>
  *      <View>
  *          <Tab filePath="xxx" .../>
  *          <Tab filePath="xxx" .../>
@@ -23,7 +23,7 @@
  *          ...
  *      </View>
  *      ...
- * <Notepad>
+ * <Notepadng>
  *
  *
  * All currently available attributes for <Tab>:
@@ -130,7 +130,7 @@ std::vector<ViewData> SessionReader::readData(bool *outSuccess)
 
     if (m_reader.readNextStartElement())
     {
-        if (m_reader.name() == "Notepad")
+        if (m_reader.name() == "Notepadng")
         {
             result = readViewData();
         }
@@ -209,7 +209,7 @@ SessionWriter::SessionWriter(QFile &destination) :
     m_writer.setAutoFormatting(true);
 
     m_writer.writeStartDocument();
-    m_writer.writeStartElement("Notepad");
+    m_writer.writeStartElement("Notepadng");
 }
 
 SessionWriter::~SessionWriter()
@@ -354,7 +354,7 @@ bool saveSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QStr
                 td.tabSize = indentInfo.size;
             }
                 // If we're caching and there's a file opened in the tab we want to inform the
-                // user whether the file's contents have changed since Np was last opened.
+                // user whether the file's contents have changed since Nng was last opened.
                 // For this we save and later compare the modification date.
             if (!isOrphan && cacheModifiedFiles)
             {
@@ -470,7 +470,7 @@ void loadSession(DocEngine *docEngine, TopEditorContainer *editorContainer, QStr
                                       }
 
                         // If we're loading an existing file from cache we want to inform the user whether
-                        // the file has changed since Np was last closed. For this we can compare the
+                        // the file has changed since Nng was last closed. For this we can compare the
                         // file's last modification date.
                                       if (fileExists && cacheFileExists && tab.lastModified != 0)
                                       {

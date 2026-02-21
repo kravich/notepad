@@ -5,7 +5,7 @@
 #include "include/Search/searchstring.h"
 #include "include/iconprovider.h"
 #include "include/mainwindow.h"
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -146,7 +146,7 @@ void showRegexInfo()
 
     /* clang-format off */
     str =
-    QObject::tr("Notepad supports most of the <a href='http://perldoc.perl.org/perlre.html'>Perl Regular Expression</a> syntax when 'Use Regular Expressions' is checked.") + "<br>" +
+    QObject::tr("Notepadng supports most of the <a href='http://perldoc.perl.org/perlre.html'>Perl Regular Expression</a> syntax when 'Use Regular Expressions' is checked.") + "<br>" +
     QObject::tr("Here is a quick reference:") + "<br>"
     "<table>"
     "<tr><td width=20%><b>\\w</b></td><td>" + QObject::tr("Matches a word character") + "</td></tr>"
@@ -248,7 +248,7 @@ QLayout *AdvancedSearchDock::buildUpperTitlebarLayout()
 
 QLayout *AdvancedSearchDock::buildReplaceOptionsLayout()
 {
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
 
     m_replaceOptionsLayout = new QVBoxLayout;
 
@@ -302,7 +302,7 @@ QWidget *AdvancedSearchDock::buildTitlebarWidget()
 
 QWidget *AdvancedSearchDock::buildSearchPanelWidget()
 {
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
 
     QGridLayout *gl = new QGridLayout;
 
@@ -735,7 +735,7 @@ AdvancedSearchDock::AdvancedSearchDock(MainWindow *mainWindow) :
         QString defaultDir = m_cmbSearchDirectory->currentText();
         if (defaultDir.isEmpty())
         {
-            defaultDir = NpSettings::getInstance().General.getLastSelectedDir();
+            defaultDir = NngSettings::getInstance().General.getLastSelectedDir();
         }
 
         QString dir = QFileDialog::getExistingDirectory(QApplication::activeWindow(),
@@ -819,7 +819,7 @@ void AdvancedSearchDock::updateSearchHistory(const QString &item)
 {
     if (item.isEmpty()) return;
 
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
     const QStringList &currHistory = settings.Search.getSaveHistory() ? settings.Search.getSearchHistory() : getComboBoxContents(m_cmbSearchTerm);
 
     const QStringList newHistory = addUniqueToList(currHistory, item);
@@ -834,7 +834,7 @@ void AdvancedSearchDock::updateReplaceHistory(const QString &item)
 {
     if (item.isEmpty()) return;
 
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
     const QStringList &currHistory = settings.Search.getSaveHistory() ? settings.Search.getReplaceHistory() : getComboBoxContents(m_cmbReplaceText);
 
     const QStringList newHistory = addUniqueToList(currHistory, item);
@@ -849,7 +849,7 @@ void AdvancedSearchDock::updateDirectoryhHistory(const QString &item)
 {
     if (item.isEmpty()) return;
 
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
     const QStringList &currHistory = settings.Search.getSaveHistory() ? settings.Search.getFileHistory() : getComboBoxContents(m_cmbSearchDirectory);
 
     const QStringList newHistory = addUniqueToList(currHistory, item);
@@ -862,7 +862,7 @@ void AdvancedSearchDock::updateDirectoryhHistory(const QString &item)
 
 void AdvancedSearchDock::updateFilterHistory(const QString &item)
 {
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
     const QStringList &currHistory = settings.Search.getSaveHistory() ? settings.Search.getFilterHistory() : getComboBoxContents(m_cmbSearchPattern);
 
     const QStringList newHistory = addUniqueToList(currHistory, item);

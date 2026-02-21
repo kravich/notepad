@@ -19,14 +19,14 @@ find_package(PkgConfig REQUIRED)
 
 pkg_check_modules(uchardet REQUIRED IMPORTED_TARGET uchardet)
 
-set(notepad_SRCS
+set(notepadng_SRCS
     main.cpp
     mainwindow.cpp
     topeditorcontainer.cpp
     editortabwidget.cpp
     docengine.cpp
     frmabout.cpp
-    notepad.cpp
+    notepadng.cpp
     frmpreferences.cpp
     iconprovider.cpp
     EditorNS/editor.cpp
@@ -50,8 +50,8 @@ set(notepad_SRCS
     keygrabber.cpp
     Sessions/sessions.cpp
     Sessions/persistentcache.cpp
-    npsettings.cpp
-    nprun.cpp
+    nngsettings.cpp
+    nngrun.cpp
     Search/filesearcher.cpp
     Search/filereplacer.cpp
     Search/searchobjects.cpp
@@ -61,13 +61,13 @@ set(notepad_SRCS
     svgiconengine.cpp
 )
 
-set(notepad_HEADERS
+set(notepadng_HEADERS
     include/mainwindow.h
     include/topeditorcontainer.h
     include/editortabwidget.h
     include/docengine.h
     include/frmabout.h
-    include/notepad.h
+    include/notepadng.h
     include/frmpreferences.h
     include/iconprovider.h
     include/EditorNS/editor.h
@@ -92,8 +92,8 @@ set(notepad_HEADERS
     include/keygrabber.h
     include/Sessions/sessions.h
     include/Sessions/persistentcache.h
-    include/npsettings.h
-    include/nprun.h
+    include/nngsettings.h
+    include/nngrun.h
     include/Search/filesearcher.h
     include/Search/searchobjects.h
     include/Search/filereplacer.h
@@ -103,7 +103,7 @@ set(notepad_HEADERS
     include/svgiconengine.h
 )
 
-set(notepad_FORMS
+set(notepadng_FORMS
     mainwindow.ui
     frmabout.ui
     frmpreferences.ui
@@ -114,54 +114,54 @@ set(notepad_FORMS
     frmlinenumberchooser.ui
 )
 
-set(notepad_RESOURCES
+set(notepadng_RESOURCES
     resources.qrc
 )
 
-set(notepad_ICON
-    ../../images/notepad.icns
+set(notepadng_ICON
+    ../../images/notepadng.icns
 )
 
-set(notepad_TRANSLATIONS
-    ../translations/notepad_de.ts
-    ../translations/notepad_es.ts
-    ../translations/notepad_fr.ts
-    ../translations/notepad_hu.ts
-    ../translations/notepad_it.ts
-    ../translations/notepad_ja.ts
-    ../translations/notepad_pl.ts
-    ../translations/notepad_pt.ts
-    ../translations/notepad_ru.ts
-    ../translations/notepad_sl.ts
-    ../translations/notepad_sv.ts
-    ../translations/notepad_uk.ts
-    ../translations/notepad_zh.ts
+set(notepadng_TRANSLATIONS
+    ../translations/notepadng_de.ts
+    ../translations/notepadng_es.ts
+    ../translations/notepadng_fr.ts
+    ../translations/notepadng_hu.ts
+    ../translations/notepadng_it.ts
+    ../translations/notepadng_ja.ts
+    ../translations/notepadng_pl.ts
+    ../translations/notepadng_pt.ts
+    ../translations/notepadng_ru.ts
+    ../translations/notepadng_sl.ts
+    ../translations/notepadng_sv.ts
+    ../translations/notepadng_uk.ts
+    ../translations/notepadng_zh.ts
 )
 
-qt_add_translation(notepad_QMS ${notepad_TRANSLATIONS})
+qt_add_translation(notepadng_QMS ${notepadng_TRANSLATIONS})
 
-add_executable(notepad
-    ${notepad_SRCS}
-    ${notepad_HEADERS}
-    ${notepad_FORMS}
-    ${notepad_RESOURCES}
-    ${notepad_ICON}
-    ${notepad_QMS}
+add_executable(notepadng
+    ${notepadng_SRCS}
+    ${notepadng_HEADERS}
+    ${notepadng_FORMS}
+    ${notepadng_RESOURCES}
+    ${notepadng_ICON}
+    ${notepadng_QMS}
 )
 
-set_target_properties(notepad
+set_target_properties(notepadng
     PROPERTIES
         AUTOMOC ON
         AUTORCC ON
         AUTOUIC ON
 )
 
-target_include_directories(notepad
+target_include_directories(notepadng
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(notepad
+target_link_libraries(notepadng
     PRIVATE
         Qt6::Core
         Qt6::Gui
@@ -185,35 +185,35 @@ set(CLANG_COMPILE_OPTIONS
     -Werror=inconsistent-missing-override
 )
 
-target_compile_options(notepad
+target_compile_options(notepadng
     PRIVATE
         $<$<CXX_COMPILER_ID:GNU>:${GNU_COMPILE_OPTIONS}>
         $<$<CXX_COMPILER_ID:Clang>:${CLANG_COMPILE_OPTIONS}>
 )
 
-set(notepad_SUPPORT_FILES_PATH ../../support_files)
+set(notepadng_SUPPORT_FILES_PATH ../../support_files)
 
-file(GLOB_RECURSE notepad_SUPPORT_FILES ${notepad_SUPPORT_FILES_PATH}/*)
-add_custom_target(support_files SOURCES ${notepad_SUPPORT_FILES})
+file(GLOB_RECURSE notepadng_SUPPORT_FILES ${notepadng_SUPPORT_FILES_PATH}/*)
+add_custom_target(support_files SOURCES ${notepadng_SUPPORT_FILES})
 
-install(TARGETS notepad)
+install(TARGETS notepadng)
 
-install(FILES ${notepad_SUPPORT_FILES_PATH}/Languages.json
-    DESTINATION share/notepad
+install(FILES ${notepadng_SUPPORT_FILES_PATH}/Languages.json
+    DESTINATION share/notepadng
 )
 
-install(DIRECTORY ${notepad_SUPPORT_FILES_PATH}/themes
-    DESTINATION share/notepad
+install(DIRECTORY ${notepadng_SUPPORT_FILES_PATH}/themes
+    DESTINATION share/notepadng
 )
 
-install(FILES ${notepad_SUPPORT_FILES_PATH}/shortcuts/notepad.desktop
+install(FILES ${notepadng_SUPPORT_FILES_PATH}/shortcuts/notepadng.desktop
     DESTINATION share/applications
 )
 
-install(DIRECTORY ${notepad_SUPPORT_FILES_PATH}/icons
+install(DIRECTORY ${notepadng_SUPPORT_FILES_PATH}/icons
     DESTINATION share
 )
 
-install(FILES ${notepad_SUPPORT_FILES_PATH}/notepad.appdata.xml
+install(FILES ${notepadng_SUPPORT_FILES_PATH}/notepadng.appdata.xml
     DESTINATION share/metainfo
 )

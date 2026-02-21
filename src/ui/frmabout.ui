@@ -17,11 +17,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Notepad</string>
+   <string>Notepadng</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/icons/notepad/scalable/notepad.svg</normaloff>:/icons/notepad/scalable/notepad.svg</iconset>
+    <normaloff>:/icons/notepadng/scalable/notepadng.svg</normaloff>:/icons/notepadng/scalable/notepadng.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog { background-color: rgb(255, 255, 255); }</string>
@@ -98,7 +98,7 @@
     <string notr="true">color: rgb(26, 26, 26);</string>
    </property>
    <property name="text">
-    <string notr="true">Notepad</string>
+    <string notr="true">Notepadng</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnLicense">

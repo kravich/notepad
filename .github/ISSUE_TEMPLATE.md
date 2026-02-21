@@ -6,7 +6,7 @@ PLEASE FILL THE FOLLOWING INFORMATION
 ```
 [ ] bug report => search github for a similar issue or PR before submitting
 [ ] feature request
-[ ] support request => Please do not submit support request here, instead see https://github.com/notepadqq/notepadqq/blob/master/CONTRIBUTING.md#question
+[ ] support request => Please do not submit support request here, instead see https://github.com/notepadng/notepadng/blob/master/CONTRIBUTING.md#question
 ```
 
 **Current behavior**
@@ -22,4 +22,4 @@ please provide the *STEPS TO REPRODUCE* and, in case of graphical issues, a scre
 -->
 
 **Please tell us about your environment:**
-<!-- Operating system, Qt version, Notepadqq version, ... -->
+<!-- Operating system, Qt version, Notepadng version, ... -->

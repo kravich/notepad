@@ -3,8 +3,8 @@
 #include "include/Sessions/persistentcache.h"
 #include "include/iconprovider.h"
 #include "include/mainwindow.h"
-#include "include/notepad.h"
-#include "include/npsettings.h"
+#include "include/notepadng.h"
+#include "include/nngsettings.h"
 
 #include <QCoreApplication>
 #include <QFileInfo>
@@ -155,7 +155,7 @@ QList<QSharedPointer<Editor>> DocEngine::loadDocumentsWithFeedback(const DocEngi
         return QList<QSharedPointer<Editor>>();
 
     if (rememberLastSelectedDir)
-        NpSettings::getInstance().General.setLastSelectedDir(QFileInfo(fileNames[0].toLocalFile()).absolutePath());
+        NngSettings::getInstance().General.setLastSelectedDir(QFileInfo(fileNames[0].toLocalFile()).absolutePath());
 
     QList<QSharedPointer<Editor>> loadedEditors;
 
@@ -202,7 +202,7 @@ QList<QSharedPointer<Editor>> DocEngine::loadDocumentsWithFeedback(const DocEngi
             continue;
         }
 
-        const int warnAtSize = NpSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
+        const int warnAtSize = NngSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
         const auto fileSize = fi.size();
 
         // Only warn if warnAtSize is at least 1. Otherwise the warning is disabled.
@@ -334,7 +334,7 @@ QList<QSharedPointer<Editor>> DocEngine::loadDocumentsWithFeedback(const DocEngi
             {
                 // If it's a file that doesn't exists,
                 // set it as if it has changed. This way, if someone
-                // creates that file from outside of notepad,
+                // creates that file from outside of notepadng,
                 // when the user tries to save over it he gets a warning.
                 editor->setFileOnDiskChanged(true);
                 editor->markDirty();
@@ -382,7 +382,7 @@ void DocEngine::loadDocuments(const DocEngine::DocumentLoader &docLoader)
         return;
 
     if (rememberLastSelectedDir)
-        NpSettings::getInstance().General.setLastSelectedDir(QFileInfo(fileNames[0].toLocalFile()).absolutePath());
+        NngSettings::getInstance().General.setLastSelectedDir(QFileInfo(fileNames[0].toLocalFile()).absolutePath());
 
     // Used to know if the document that we're loading is
     // the first one in the list.
@@ -429,7 +429,7 @@ void DocEngine::loadDocuments(const DocEngine::DocumentLoader &docLoader)
            continue;
         }
 
-        const int warnAtSize = NpSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
+        const int warnAtSize = NngSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
         const auto fileSize = fi.size();
 
         // Only warn if warnAtSize is at least 1. Otherwise the warning is disabled.
@@ -551,7 +551,7 @@ void DocEngine::loadDocuments(const DocEngine::DocumentLoader &docLoader)
         {
             // If it's a file that doesn't exists,
             // set it as if it has changed. This way, if someone
-            // creates that file from outside of notepad,
+            // creates that file from outside of notepadng,
             // when the user tries to save over it he gets a warning.
             editor->setFileOnDiskChanged(true);
             editor->markDirty();
@@ -632,7 +632,7 @@ void DocEngine::loadDocuments(const DocEngine::DocumentLoader &docLoader)
             continue;
         }
 
-        const int warnAtSize = NpSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
+        const int warnAtSize = NngSettings::getInstance().General.getWarnIfFileLargerThan() * 1024 * 1024;
         const auto fileSize = fi.size();
 
         // Only warn if warnAtSize is at least 1. Otherwise the warning is disabled.
@@ -721,7 +721,7 @@ void DocEngine::loadDocuments(const DocEngine::DocumentLoader &docLoader)
         if (!file.exists()) {
             // If it's a file that doesn't exists,
             // set it as if it has changed. This way, if someone
-            // creates that file from outside of notepad,
+            // creates that file from outside of notepadng,
             // when the user tries to save over it he gets a warning.
             editor->setFileOnDiskChanged(true);
             editor->markDirty();
@@ -954,7 +954,7 @@ bool DocEngine::trySudoSave(QString sudoProgram, QUrl outFileName, QSharedPointe
     {
         arguments = QStringList({"-S",
                                  "-m",
-                                 tr("Notepad asks permission to overwrite the following file:\n\n%1").arg(outFileName.toLocalFile())});
+                                 tr("Notepadng asks permission to overwrite the following file:\n\n%1").arg(outFileName.toLocalFile())});
     }
     arguments.append({"cp", filePath, outFileName.toLocalFile()});
 

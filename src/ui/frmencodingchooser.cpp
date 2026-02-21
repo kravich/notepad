@@ -1,6 +1,6 @@
 #include "include/frmencodingchooser.h"
 
-#include "include/notepad.h"
+#include "include/notepadng.h"
 #include "ui_frmencodingchooser.h"
 
 #include <QTextCodec>

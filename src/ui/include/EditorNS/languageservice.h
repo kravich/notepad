@@ -7,7 +7,7 @@
 #include <QVector>
 
 /**
- * @brief Fast and efficient language cache/lookup for Notepad
+ * @brief Fast and efficient language cache/lookup for Notepadng
  */
 namespace EditorNS
 {

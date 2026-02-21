@@ -1,6 +1,6 @@
 #include "include/stats.h"
 
-#include "include/notepad.h"
+#include "include/notepadng.h"
 
 #include <QJsonDocument>
 #include <QNetworkAccessManager>
@@ -12,7 +12,7 @@
 #include <QUrl>
 
 bool Stats::m_longTimerRunning = false;
-bool Stats::m_isFirstNotepadRun = false;
+bool Stats::m_isFirstNotepadngRun = false;
 
 #define DIALOG_NEVER_SHOWN 0
 #define DIALOG_ALREADY_SHOWN 1
@@ -20,7 +20,7 @@ bool Stats::m_isFirstNotepadRun = false;
 
 void Stats::init()
 {
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
 
     Stats::askUserPermission();
 
@@ -60,7 +60,7 @@ void Stats::init()
 void Stats::check()
 {
     // Check whether the user wants us to collect stats. If not, return.
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
     if (!settings.General.getCollectStatistics())
     {
         return;
@@ -92,7 +92,7 @@ void Stats::check()
 
 void Stats::remoteApiSend(const QJsonObject &data)
 {
-    QUrl url("https://notepad.com/api/stat/post.php");
+    QUrl url("https://notepadng.com/api/stat/post.php");
     QNetworkRequest request(url);
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/javascript");
@@ -111,10 +111,10 @@ void Stats::remoteApiSend(const QJsonObject &data)
 
 void Stats::askUserPermission()
 {
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
     int dialogShown = settings.General.getStatisticsDialogShown();
 
-    if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadRun)
+    if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadngRun)
     {
         QMessageBox msgBox;
         msgBox.setWindowTitle(QCoreApplication::applicationName());
@@ -123,12 +123,12 @@ void Stats::askUserPermission()
         msgBox.setInformativeText(
             /* clang-format off */
             "<html><body>"
-            "<p>" + QObject::tr("You can help to improve Notepad by allowing us to collect <b>anonymous statistics</b>.") + "</p>" +
+            "<p>" + QObject::tr("You can help to improve Notepadng by allowing us to collect <b>anonymous statistics</b>.") + "</p>" +
             "<b>" + QObject::tr("What will we collect?") + "</b><br>" +
             QObject::tr(
                 "We will collect information such as the version of Qt or the version of the OS<br>"
-                "You don't have to trust us: Notepad is open source, so you can %1check by yourself%2 😊").
-                      arg("<a href=\"https://github.com/notepad/notepad/blob/master/src/ui/stats.cpp\">").
+                "You don't have to trust us: Notepadng is open source, so you can %1check by yourself%2 😊").
+                      arg("<a href=\"https://github.com/notepadng/notepadng/blob/master/src/ui/stats.cpp\">").
                       arg("</a>") +
             "</body></html>"
             /* clang-format on */
@@ -152,17 +152,17 @@ void Stats::askUserPermission()
     }
     else if (dialogShown == DIALOG_NEVER_SHOWN)
     {
-        // Set m_isFirstNotepadRun to true, so that next executions of this method within
+        // Set m_isFirstNotepadngRun to true, so that next executions of this method within
         // the current process won't show the dialog even if we're setting
         // statisticsDialogShown = DIALOG_FIRST_TIME_IGNORED.
-        m_isFirstNotepadRun = true;
+        m_isFirstNotepadngRun = true;
         settings.General.setStatisticsDialogShown(DIALOG_FIRST_TIME_IGNORED);
     }
 }
 
 bool Stats::isTimeToSendStats()
 {
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
     return (currentUnixTimestamp() - settings.General.getLastStatisticTransmissionTime()) >= 7 * 24 * 60 * 60 * 1000;
 }
 

@@ -103,7 +103,7 @@ bool BackupService::restoreFromBackup()
 
     auto ret = QMessageBox::question(nullptr,
                                      "",
-                                     QObject::tr("Notepad was not closed properly. Do you want to recover unsaved changes?"),
+                                     QObject::tr("Notepadng was not closed properly. Do you want to recover unsaved changes?"),
                                      QMessageBox::Yes | QMessageBox::No,
                                      QMessageBox::Yes);
 

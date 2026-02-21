@@ -32,12 +32,12 @@ private:
     static bool m_longTimerRunning;
 
     /**
-     * @brief The first time the user opens np we don't want to bother him with
+     * @brief The first time the user opens nng we don't want to bother him with
      *        the Stats permission dialog. For this reason, we want to defer it
      *        to the second run. This variable is set to true and *stays true*
-     *        iff the user never opened np before.
+     *        iff the user never opened nng before.
      */
-    static bool m_isFirstNotepadRun;
+    static bool m_isFirstNotepadngRun;
 };
 
 #endif // STATS_H

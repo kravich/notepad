@@ -1,6 +1,6 @@
 #include "include/EditorNS/languageservice.h"
 
-#include "include/notepad.h"
+#include "include/notepadng.h"
 
 #include <QFileInfo>
 #include <QJsonDocument>
@@ -13,7 +13,7 @@ namespace EditorNS
 
 LanguageService::LanguageService()
 {
-    QFileInfo fileInfo(Notepad::appDataPath());
+    QFileInfo fileInfo(Notepadng::appDataPath());
     QString fileName = fileInfo.absolutePath() + "/Languages.json";
     QFile scriptFile(fileName);
     scriptFile.open(QIODevice::ReadOnly | QIODevice::Text);

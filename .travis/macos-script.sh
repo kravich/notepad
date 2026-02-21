@@ -17,23 +17,23 @@ deploy()
     compile || return 1
 
     cd out/release
-    #macdeployqt notepad.app  # <-- this would be easy, but it is broken with QtWebEngine
+    #macdeployqt notepadng.app  # <-- this would be easy, but it is broken with QtWebEngine
 
-    macdeployqt notepad.app -executable=notepad.app/Contents/MacOS/notepad || return 1
-    macdeployqt notepad.app -executable=notepad.app/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess || return 1
+    macdeployqt notepadng.app -executable=notepadng.app/Contents/MacOS/notepadng || return 1
+    macdeployqt notepadng.app -executable=notepadng.app/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess || return 1
 
     MAC_DEPLOY_FIX='../../.travis/tools/macdeployqtfix/macdeployqtfix.py'
-    python2.7 $MAC_DEPLOY_FIX notepad.app/Contents/MacOS/notepad /usr/local/Cellar/qt/5.* || return 1
-    python2.7 $MAC_DEPLOY_FIX notepad.app/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess /usr/local/Cellar/qt/5.* || return 1
+    python2.7 $MAC_DEPLOY_FIX notepadng.app/Contents/MacOS/notepadng /usr/local/Cellar/qt/5.* || return 1
+    python2.7 $MAC_DEPLOY_FIX notepadng.app/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess /usr/local/Cellar/qt/5.* || return 1
 
     # Manually create the DMG
     mkdir dmgfolder
-    mv notepad.app dmgfolder
+    mv notepadng.app dmgfolder
     ln -s /Applications ./dmgfolder/Applications
-    hdiutil create -fs HFS+ -format UDBZ -srcfolder ./dmgfolder -volname Notepad notepad-${NP_VERSION}.dmg || return 1
+    hdiutil create -fs HFS+ -format UDBZ -srcfolder ./dmgfolder -volname Notepadng notepadng-${NNG_VERSION}.dmg || return 1
 }
 
-if [ "$NP_BUILD_TYPE" == "DEPLOY" ]; then
+if [ "$NNG_BUILD_TYPE" == "DEPLOY" ]; then
     deploy
 else
     compile

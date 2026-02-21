@@ -1,7 +1,7 @@
 #include "include/EditorNS/editor.h"
 
-#include "include/notepad.h"
-#include "include/npsettings.h"
+#include "include/notepadng.h"
+#include "include/nngsettings.h"
 
 #include "include/Search/searchstring.h"
 
@@ -43,7 +43,7 @@ QQueue<QSharedPointer<Editor>> Editor::m_editorBuffer = QQueue<QSharedPointer<Ed
 Editor::Editor(QWidget *parent) :
     QWidget(parent)
 {
-    QString themeName = NpSettings::getInstance().Appearance.getColorScheme();
+    QString themeName = NngSettings::getInstance().Appearance.getColorScheme();
 
     fullConstructor(themeFromName(themeName));
 }
@@ -264,7 +264,7 @@ void Editor::setLanguageFromFilePath()
 
 void Editor::setIndentationMode(const Language *lang)
 {
-    const auto &s = NpSettings::getInstance().Languages;
+    const auto &s = NngSettings::getInstance().Languages;
     const bool useDefaults = s.getUseDefaultSettings(lang->id);
     const auto &langId = useDefaults ? "default" : lang->id;
 
@@ -609,7 +609,7 @@ Editor::Theme Editor::themeFromName(QString name)
     if (name == "default" || name.isEmpty())
         return Theme();
 
-    QFileInfo appDataPathInfo(Notepad::appDataPath());
+    QFileInfo appDataPathInfo(Notepadng::appDataPath());
     QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/");
 
     if (bundledThemesDir.exists(name + ".xml"))
@@ -620,7 +620,7 @@ Editor::Theme Editor::themeFromName(QString name)
 
 QList<Editor::Theme> Editor::themes()
 {
-    auto appDataPathInfo = QFileInfo(Notepad::appDataPath());
+    auto appDataPathInfo = QFileInfo(Notepadng::appDataPath());
     QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/", "*.xml");
 
     QList<Theme> out;
@@ -912,7 +912,7 @@ void Editor::refreshAppearance()
 
     if (theme.name == "default")
     {
-        theme.path = Notepad::appDataPath() + "themes/Default.xml";
+        theme.path = Notepadng::appDataPath() + "themes/Default.xml";
     }
 
     ScintillaTheme scintillaTheme;

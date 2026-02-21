@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/icons/notepad/scalable/notepad.svg</normaloff>:/icons/notepad/scalable/notepad.svg</iconset>
+    <normaloff>:/icons/notepadng/scalable/notepadng.svg</normaloff>:/icons/notepadng/scalable/notepadng.svg</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>

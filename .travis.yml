@@ -6,7 +6,7 @@ jobs:
     - stage: build
       if: type = pull_request
       os: linux
-      env: NP_BUILD_TYPE=FORMAT
+      env: NNG_BUILD_TYPE=FORMAT
       script: .travis/script.sh
       addons:
         apt:
@@ -17,7 +17,7 @@ jobs:
             - clang-format-6.0
     - stage: build
       os: linux
-      env: NP_BUILD_TYPE=COMPILE
+      env: NNG_BUILD_TYPE=COMPILE
       sudo: true
       script: .travis/script.sh
       services:
@@ -26,16 +26,16 @@ jobs:
       os: osx
       osx_image: xcode11
       env:
-        - NP_BUILD_TYPE=DEPLOY
-        - NP_VERSION=${TRAVIS_TAG:-${TRAVIS_COMMIT}}
+        - NNG_BUILD_TYPE=DEPLOY
+        - NNG_VERSION=${TRAVIS_TAG:-${TRAVIS_COMMIT}}
       script: .travis/macos-script.sh
       deploy:
         provider: releases
         edge: true  # https://docs.travis-ci.com/user/deployment-v2
         file:
-          - "out/release/notepad-${NP_VERSION}.dmg"
+          - "out/release/notepadng-${NNG_VERSION}.dmg"
         skip_cleanup: true
         draft: true
         on:
-          repo: notepad/notepad
+          repo: notepadng/notepadng
           tags: true

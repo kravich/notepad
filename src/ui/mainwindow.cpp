@@ -14,8 +14,8 @@
 #include "include/frmlinenumberchooser.h"
 #include "include/frmpreferences.h"
 #include "include/iconprovider.h"
-#include "include/notepad.h"
-#include "include/nprun.h"
+#include "include/notepadng.h"
+#include "include/nngrun.h"
 #include "ui_mainwindow.h"
 
 #include <QActionGroup>
@@ -43,7 +43,7 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_topEditorContainer(new TopEditorContainer(this)),
-    m_settings(NpSettings::getInstance()),
+    m_settings(NngSettings::getInstance()),
     m_workingDirectory(workingDirectory),
     m_advSearchDock(new AdvancedSearchDock(this))
 {
@@ -119,7 +119,7 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
 
     setupLanguagesMenu();
 
-    //Registers all actions so that NpSettings knows their default and current shortcuts.
+    //Registers all actions so that NngSettings knows their default and current shortcuts.
     const QList<QAction *> allActions = getActions();
 
     m_settings.Shortcuts.initShortcuts(allActions);
@@ -137,7 +137,7 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
     }
 
     //Register our meta types for signal/slot calls here.
-    emit Notepad::getInstance().newWindow(this);
+    emit Notepadng::getInstance().newWindow(this);
 }
 
 MainWindow::MainWindow(const QStringList &arguments, QWidget *parent) :
@@ -323,7 +323,7 @@ void MainWindow::loadIcons()
 
     // '?' menu
     ui->actionAbout_Qt->setIcon(IconProvider::fromTheme("help-about"));
-    ui->actionAbout_Notepad->setIcon(IconProvider::fromTheme("notepad"));
+    ui->actionAbout_Notepadng->setIcon(IconProvider::fromTheme("notepadng"));
 }
 
 void MainWindow::configureStatusBar()
@@ -538,7 +538,7 @@ void MainWindow::openCommandLineProvidedUrls(const QString &workingDirectory, co
         return;
     }
 
-    QSharedPointer<QCommandLineParser> parser = Notepad::getCommandLineArgumentsParser(arguments);
+    QSharedPointer<QCommandLineParser> parser = Notepadng::getCommandLineArgumentsParser(arguments);
 
     QStringList rawUrls = parser->positionalArguments();
 
@@ -876,7 +876,7 @@ void MainWindow::on_actionOpen_triggered()
     if (defaultUrl.isEmpty())
         defaultUrl = QUrl::fromLocalFile(m_settings.General.getLastSelectedDir());
 
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 
@@ -901,7 +901,7 @@ void MainWindow::on_actionOpen_Folder_triggered()
     if (defaultUrl.isEmpty())
         defaultUrl = QUrl::fromLocalFile(m_settings.General.getLastSelectedDir());
 
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 
@@ -979,7 +979,7 @@ int MainWindow::closeTab(EditorTabWidget *tabWidget, int tab, bool remove, bool 
     if (m_topEditorContainer->count() == 1 && tabWidget->count() == 1 &&
         editor->filePath().isEmpty() && editor->value().isEmpty())
     {
-        // If user tried to close last open (clean) tab, check if Np should just quit.
+        // If user tried to close last open (clean) tab, check if Nng should just quit.
         if (m_settings.General.getExitOnLastTabClose())
             close();
 
@@ -1097,7 +1097,7 @@ int MainWindow::save(EditorTabWidget *tabWidget, int tab)
 
 int MainWindow::saveAs(EditorTabWidget *tabWidget, int tab, bool copy)
 {
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 
@@ -1396,7 +1396,7 @@ void MainWindow::refreshEditorUiInfo(QSharedPointer<Editor> editor)
                                            QUrl::StripTrailingSlash);
 
         newTitle = QString("%1%2 (%3) - %4")
-                       .arg(Notepad::fileNameFromUrl(editor->filePath()))
+                       .arg(Notepadng::fileNameFromUrl(editor->filePath()))
                        .arg(editor->isClean() ? "" : "*")
                        .arg(path)
                        .arg(QApplication::applicationName());
@@ -1470,7 +1470,7 @@ void MainWindow::on_actionSelect_All_triggered()
     currentEditor()->selectAll();
 }
 
-void MainWindow::on_actionAbout_Notepad_triggered()
+void MainWindow::on_actionAbout_Notepadng_triggered()
 {
     frmAbout *_about;
     _about = new frmAbout(this);
@@ -1579,7 +1579,7 @@ void MainWindow::on_actionCurrent_Filename_to_Clipboard_triggered()
     }
     else
     {
-        QApplication::clipboard()->setText(Notepad::fileNameFromUrl(editor->filePath()));
+        QApplication::clipboard()->setText(Notepadng::fileNameFromUrl(editor->filePath()));
     }
 }
 
@@ -1936,7 +1936,7 @@ void MainWindow::updateRecentDocsInMenu()
     for (QVariant recentDoc : recentDocs)
     {
         QUrl url = recentDoc.toUrl();
-        QAction *action = new QAction(Notepad::fileNameFromUrl(url), this);
+        QAction *action = new QAction(Notepadng::fileNameFromUrl(url), this);
         connect(action, &QAction::triggered, this, [this, url]() {
             openRecentFileEntry(url);
         });
@@ -2264,7 +2264,7 @@ void MainWindow::generateRunMenu()
 
 void MainWindow::modifyRunCommands()
 {
-    NpRun::RunPreferences p;
+    NngRun::RunPreferences p;
     if (p.exec() == 1)
     {
         generateRunMenu();
@@ -2282,7 +2282,7 @@ void MainWindow::runCommand()
     }
     else
     {
-        NpRun::RunDialog rd;
+        NngRun::RunDialog rd;
         int ok = rd.exec();
 
         if (rd.saved())
@@ -2316,7 +2316,7 @@ void MainWindow::runCommand()
     {
         cmd.replace("\%selection\%", selection.first());
     }
-    QStringList args = NpRun::RunDialog::parseCommandString(cmd);
+    QStringList args = NngRun::RunDialog::parseCommandString(cmd);
     if (!args.isEmpty())
     {
         cmd = args.takeFirst();
@@ -2339,7 +2339,7 @@ void MainWindow::on_actionPrint_triggered()
     {
         QByteArray data = currentEditor()->printToPdf(dlg.printer()->pageLayout());
 
-        QFile file(QDir::tempPath() + "/notepad.print." +
+        QFile file(QDir::tempPath() + "/notepadng.print." +
                    QString::number(QDateTime::currentMSecsSinceEpoch(), 16) + ".pdf");
 
         if (file.open(QIODevice::WriteOnly))
@@ -2588,7 +2588,7 @@ void MainWindow::on_actionToggle_Smart_Indent_toggled(bool on)
 
 void MainWindow::on_actionLoad_Session_triggered()
 {
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 
@@ -2612,7 +2612,7 @@ void MainWindow::on_actionLoad_Session_triggered()
 
 void MainWindow::on_actionSave_Session_triggered()
 {
-    // See https://github.com/notepad/notepad/issues/654
+    // See https://github.com/notepadng/notepadng/issues/654
     BackupServicePauser bsp;
     bsp.pause();
 

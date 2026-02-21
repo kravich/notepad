@@ -4,7 +4,7 @@
 #include "docengine.h"
 #include "include/Search/advancedsearchdock.h"
 #include "include/Search/frmsearchreplace.h"
-#include "include/npsettings.h"
+#include "include/nngsettings.h"
 #include "include/topeditorcontainer.h"
 
 #include "QtPrintSupport/QPrinter"
@@ -105,7 +105,7 @@ private slots:
     void on_cursorActivity(QMap<QString, QVariant> data);
     void on_actionDelete_triggered();
     void on_actionSelect_All_triggered();
-    void on_actionAbout_Notepad_triggered();
+    void on_actionAbout_Notepadng_triggered();
     void on_actionAbout_Qt_triggered();
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
@@ -204,7 +204,7 @@ private:
     QPushButton *m_sbEOLFormatBtn;
     QPushButton *m_sbTextFormatBtn;
     QPushButton *m_sbOvertypeBtn;
-    NpSettings &m_settings;
+    NngSettings &m_settings;
     frmSearchReplace *m_frmSearchReplace = nullptr;
     bool m_overwrite = false; // Overwrite mode vs Insert mode
     QString m_workingDirectory;

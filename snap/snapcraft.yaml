@@ -1,21 +1,21 @@
-name: notepad
+name: notepadng
 version: '0.0.99'
-summary: A Notepad++-like editor for Linux.
+summary: A Notepadng++-like editor for Linux.
 description: |
   It helps developers by providing all you can expect from a general purpose text editor, such as syntax highlighting for more than 100 different languages, code folding, color schemes, file monitoring, multiple selection and much more.
   You can search text using the power of regular expressions. You can organize documents side by side. You can use real-time highlighting to find near identifiers in no time.
 grade: stable
 confinement: classic
-icon: support_files/icons/hicolor/scalable/apps/notepad.svg
+icon: support_files/icons/hicolor/scalable/apps/notepadng.svg
 base: core18
 
 apps:
-  notepad:
-    command: bin/desktop-launch $SNAP/usr/local/lib/notepad/notepad-bin
+  notepadng:
+    command: bin/desktop-launch $SNAP/usr/local/lib/notepadng/notepadng-bin
     environment:
-      DISABLE_WAYLAND: 1  # See https://github.com/notepad/notepad/issues/806
+      DISABLE_WAYLAND: 1  # See https://github.com/notepadng/notepadng/issues/806
       QT_XCB_FORCE_SOFTWARE_OPENGL: 1  # For bug in Qt 5.9 + Nouveau. See https://bugreports.qt.io/browse/QTBUG-41242
-    desktop: usr/local/share/applications/notepad.desktop
+    desktop: usr/local/share/applications/notepadng.desktop
 #   plugs:  # Plugs are not needed for classic confinement
 #     - browser-support
 #     - desktop
@@ -62,13 +62,13 @@ parts:
     plugin: nil
     after: [my-part]
     override-build: |
-      sed -i 's|Icon=notepad|Icon=/usr/local/share/icons/hicolor/scalable/apps/notepad\.svg|' $SNAPCRAFT_STAGE/usr/local/share/applications/notepad.desktop
+      sed -i 's|Icon=notepadng|Icon=/usr/local/share/icons/hicolor/scalable/apps/notepadng\.svg|' $SNAPCRAFT_STAGE/usr/local/share/applications/notepadng.desktop
 
   qtconf:
     plugin: dump
     source: snap/local
     organize:
-      qt.conf: usr/local/lib/notepad/qt.conf
+      qt.conf: usr/local/lib/notepadng/qt.conf
       qt.WebEngineProcess.conf: usr/lib/$SNAPCRAFT_ARCH_TRIPLET/qt5/libexec/qt.conf
     override-build: |
       sed -i "s|__ARCH_TRIPLET__|$SNAPCRAFT_ARCH_TRIPLET|" qt.conf qt.WebEngineProcess.conf
