@@ -47,19 +47,4 @@
 		<file alias="scalable/view-fullscreen.svg">icons/notepadng/scalable/view-fullscreen.svg</file>
 		<file alias="scalable/view-refresh.svg">icons/notepadng/scalable/view-refresh.svg</file>
     </qresource>
-    <qresource prefix="/translations">
-        <file alias="notepadng_de.qm">../translations/notepadng_de.qm</file>
-        <file alias="notepadng_es.qm">../translations/notepadng_es.qm</file>
-        <file alias="notepadng_fr.qm">../translations/notepadng_fr.qm</file>
-        <file alias="notepadng_hu.qm">../translations/notepadng_hu.qm</file>
-        <file alias="notepadng_it.qm">../translations/notepadng_it.qm</file>
-        <file alias="notepadng_ja.qm">../translations/notepadng_ja.qm</file>
-        <file alias="notepadng_pl.qm">../translations/notepadng_pl.qm</file>
-        <file alias="notepadng_pt.qm">../translations/notepadng_pt.qm</file>
-        <file alias="notepadng_ru.qm">../translations/notepadng_ru.qm</file>
-        <file alias="notepadng_sl.qm">../translations/notepadng_sl.qm</file>
-        <file alias="notepadng_sv.qm">../translations/notepadng_sv.qm</file>
-        <file alias="notepadng_uk.qm">../translations/notepadng_uk.qm</file>
-        <file alias="notepadng_zh.qm">../translations/notepadng_zh.qm</file>
-    </qresource>
 </RCC>

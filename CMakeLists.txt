@@ -19,6 +19,8 @@ find_package(Qt6
     REQUIRED
 )
 
+qt_standard_project_setup()
+
 find_package(QScintilla REQUIRED)
 
 find_package(PkgConfig REQUIRED)
@@ -128,24 +130,6 @@ set(notepadng_ICON
     images/notepadng.icns
 )
 
-set(notepadng_TRANSLATIONS
-    translations/notepadng_de.ts
-    translations/notepadng_es.ts
-    translations/notepadng_fr.ts
-    translations/notepadng_hu.ts
-    translations/notepadng_it.ts
-    translations/notepadng_ja.ts
-    translations/notepadng_pl.ts
-    translations/notepadng_pt.ts
-    translations/notepadng_ru.ts
-    translations/notepadng_sl.ts
-    translations/notepadng_sv.ts
-    translations/notepadng_uk.ts
-    translations/notepadng_zh.ts
-)
-
-qt_add_translation(notepadng_QMS ${notepadng_TRANSLATIONS})
-
 add_executable(notepadng
     ${notepadng_SRCS}
     ${notepadng_HEADERS}
@@ -155,11 +139,10 @@ add_executable(notepadng
     ${notepadng_QMS}
 )
 
+# Enable AUTORCC as qt_standard_project_setup() doesn't do it automatically
 set_target_properties(notepadng
     PROPERTIES
-        AUTOMOC ON
         AUTORCC ON
-        AUTOUIC ON
 )
 
 target_include_directories(notepadng
@@ -180,6 +163,16 @@ target_link_libraries(notepadng
         Qt6::Core5Compat
         QScintilla::QScintilla
         PkgConfig::uchardet
+)
+
+set(QT_I18N_TRANSLATED_LANGUAGES
+    de es fr hu it ja pl pt ru sl sv uk zh
+)
+
+qt_add_translations(notepadng
+    TS_OUTPUT_DIRECTORY translations
+    RESOURCE_PREFIX "/translations"
+    NO_GENERATE_PLURALS_TS_FILE
 )
 
 set(GNU_COMPILE_OPTIONS
