@@ -249,8 +249,8 @@ bool RunDelegate::editorEvent(QEvent *event,
         if (event->type() == QEvent::MouseButtonRelease)
         {
             QMouseEvent *e = static_cast<QMouseEvent *>(event);
-            int clickX = e->x();
-            int clickY = e->y();
+            int clickX = qRound(e->position().x());
+            int clickY = qRound(e->position().y());
             int x, y;
             QRect r = option.rect;
             x = r.left() + r.width() - 32;
