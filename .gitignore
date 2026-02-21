@@ -10,18 +10,5 @@ Thumbs.db
 *.bak
 *.old
 
-/Makefile
-/src/ui/Makefile
-build-notepadng-Desktop*
-
-/out
-/src/ui/ui.pro.user
-/src/ui/ui.pro.user.*
-/notepadng.pro.user
-
-/.qmake.stash
-/src/ui-tests/moc_predefs.h
-
-/src/translations/*.qm
-
+# CMake test file
 *.user
