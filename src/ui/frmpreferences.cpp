@@ -18,7 +18,7 @@ int frmPreferences::s_lastSelectedTab = 0;
 
 frmPreferences::frmPreferences(TopEditorContainer *topEditorContainer, QWidget *parent) :
     QDialog(parent),
-    m_settings(NpSettings::getInstance()),
+    m_settings(NngSettings::getInstance()),
     ui(new Ui::frmPreferences),
     m_topEditorContainer(topEditorContainer)
 {

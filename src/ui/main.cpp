@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 
     QSettings::setDefaultFormat(QSettings::IniFormat);
 
-    NpSettings &settings = NpSettings::getInstance();
+    NngSettings &settings = NngSettings::getInstance();
     settings.General.setNotepadngVersion(POINTVERSION);
 
     forceDefaultSettings();
@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
     // There are no other instances: start a new server.
     a.startServer();
 
-    // Check whether Np was properly shut down. If not, attempt to restore from the last autosave backup if enabled.
+    // Check whether Nng was properly shut down. If not, attempt to restore from the last autosave backup if enabled.
     const bool wantToRestore = settings.General.getAutosaveInterval() > 0 && BackupService::detectImproperShutdown();
     if (wantToRestore)
     {
@@ -178,7 +178,7 @@ int main(int argc, char *argv[])
 
 void forceDefaultSettings()
 {
-    NpSettings &s = NpSettings::getInstance();
+    NngSettings &s = NngSettings::getInstance();
 
     // Use tabs to indent makefile by default
     if (!s.Languages.hasUseDefaultSettings("makefile"))

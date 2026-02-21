@@ -43,7 +43,7 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_topEditorContainer(new TopEditorContainer(this)),
-    m_settings(NpSettings::getInstance()),
+    m_settings(NngSettings::getInstance()),
     m_workingDirectory(workingDirectory),
     m_advSearchDock(new AdvancedSearchDock(this))
 {
@@ -119,7 +119,7 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
 
     setupLanguagesMenu();
 
-    //Registers all actions so that NpSettings knows their default and current shortcuts.
+    //Registers all actions so that NngSettings knows their default and current shortcuts.
     const QList<QAction *> allActions = getActions();
 
     m_settings.Shortcuts.initShortcuts(allActions);
@@ -979,7 +979,7 @@ int MainWindow::closeTab(EditorTabWidget *tabWidget, int tab, bool remove, bool 
     if (m_topEditorContainer->count() == 1 && tabWidget->count() == 1 &&
         editor->filePath().isEmpty() && editor->value().isEmpty())
     {
-        // If user tried to close last open (clean) tab, check if Np should just quit.
+        // If user tried to close last open (clean) tab, check if Nng should just quit.
         if (m_settings.General.getExitOnLastTabClose())
             close();
 
@@ -2264,7 +2264,7 @@ void MainWindow::generateRunMenu()
 
 void MainWindow::modifyRunCommands()
 {
-    NpRun::RunPreferences p;
+    NngRun::RunPreferences p;
     if (p.exec() == 1)
     {
         generateRunMenu();
@@ -2282,7 +2282,7 @@ void MainWindow::runCommand()
     }
     else
     {
-        NpRun::RunDialog rd;
+        NngRun::RunDialog rd;
         int ok = rd.exec();
 
         if (rd.saved())
@@ -2316,7 +2316,7 @@ void MainWindow::runCommand()
     {
         cmd.replace("\%selection\%", selection.first());
     }
-    QStringList args = NpRun::RunDialog::parseCommandString(cmd);
+    QStringList args = NngRun::RunDialog::parseCommandString(cmd);
     if (!args.isEmpty())
     {
         cmd = args.takeFirst();

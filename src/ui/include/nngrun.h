@@ -11,14 +11,14 @@
 #include <QStyledItemDelegate>
 #include <QTableWidget>
 
-namespace NpRun
+namespace NngRun
 {
 class RunPreferences : public QDialog
 {
     Q_OBJECT
 
 private:
-    NpSettings &m_settings;
+    NngSettings &m_settings;
     QTableWidget *m_commands;
 
 public:
@@ -51,7 +51,7 @@ class RunDialog : public QDialog
 {
     Q_OBJECT
 private:
-    NpSettings &m_settings;
+    NngSettings &m_settings;
     QLabel *m_status;
     QLineEdit *m_command;
     bool m_saved;
@@ -68,5 +68,5 @@ private slots:
     void slotHideStatus();
 };
 
-}; //namespace NpRun
+}; //namespace NngRun
 #endif

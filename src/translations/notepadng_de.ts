@@ -1557,7 +1557,7 @@ Wollen Sie dennoch speichern?</translation>
     </message>
 </context>
 <context>
-    <name>NpRun::RunDelegate</name>
+    <name>NngRun::RunDelegate</name>
     <message>
         <location filename="../ui/nprun.cpp" line="232"/>
         <source>Open File</source>
@@ -1565,7 +1565,7 @@ Wollen Sie dennoch speichern?</translation>
     </message>
 </context>
 <context>
-    <name>NpRun::RunDialog</name>
+    <name>NngRun::RunDialog</name>
     <message>
         <location filename="../ui/nprun.cpp" line="264"/>
         <source>OK</source>
@@ -1628,7 +1628,7 @@ Wollen Sie dennoch speichern?</translation>
     </message>
 </context>
 <context>
-    <name>NpRun::RunPreferences</name>
+    <name>NngRun::RunPreferences</name>
     <message>
         <location filename="../ui/nprun.cpp" line="26"/>
         <source>OK</source>

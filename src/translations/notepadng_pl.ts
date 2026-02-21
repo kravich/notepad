@@ -1559,7 +1559,7 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
 </context>
 <context>
-    <name>NpRun::RunDelegate</name>
+    <name>NngRun::RunDelegate</name>
     <message>
         <location filename="../ui/nprun.cpp" line="234"/>
         <source>Open File</source>
@@ -1567,7 +1567,7 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
 </context>
 <context>
-    <name>NpRun::RunDialog</name>
+    <name>NngRun::RunDialog</name>
     <message>
         <location filename="../ui/nprun.cpp" line="266"/>
         <source>OK</source>
@@ -1630,7 +1630,7 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
 </context>
 <context>
-    <name>NpRun::RunPreferences</name>
+    <name>NngRun::RunPreferences</name>
     <message>
         <location filename="../ui/nprun.cpp" line="28"/>
         <source>OK</source>

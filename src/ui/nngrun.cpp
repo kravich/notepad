@@ -15,11 +15,11 @@
 #include <QSortFilterProxyModel>
 #include <QVBoxLayout>
 
-using namespace NpRun;
+using namespace NngRun;
 
 RunPreferences::RunPreferences(QWidget *parent, Qt::WindowFlags f) :
     QDialog(parent, f),
-    m_settings(NpSettings::getInstance())
+    m_settings(NngSettings::getInstance())
 {
     QVBoxLayout *v1 = new QVBoxLayout;
     QHBoxLayout *h1 = new QHBoxLayout;
@@ -285,7 +285,7 @@ bool RunDelegate::editorEvent(QEvent *event,
 
 RunDialog::RunDialog(QWidget *parent, Qt::WindowFlags f) :
     QDialog(parent, f),
-    m_settings(NpSettings::getInstance()),
+    m_settings(NngSettings::getInstance()),
     m_saved(false)
 {
     QVBoxLayout *v1 = new QVBoxLayout;

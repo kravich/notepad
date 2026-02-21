@@ -43,7 +43,7 @@ QQueue<QSharedPointer<Editor>> Editor::m_editorBuffer = QQueue<QSharedPointer<Ed
 Editor::Editor(QWidget *parent) :
     QWidget(parent)
 {
-    QString themeName = NpSettings::getInstance().Appearance.getColorScheme();
+    QString themeName = NngSettings::getInstance().Appearance.getColorScheme();
 
     fullConstructor(themeFromName(themeName));
 }
@@ -264,7 +264,7 @@ void Editor::setLanguageFromFilePath()
 
 void Editor::setIndentationMode(const Language *lang)
 {
-    const auto &s = NpSettings::getInstance().Languages;
+    const auto &s = NngSettings::getInstance().Languages;
     const bool useDefaults = s.getUseDefaultSettings(lang->id);
     const auto &langId = useDefaults ? "default" : lang->id;
 

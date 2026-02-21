@@ -6,8 +6,8 @@
 #include <QDebug>
 #endif
 
-NpSettings &NpSettings::getInstance()
+NngSettings &NngSettings::getInstance()
 {
-    static NpSettings settings;
+    static NngSettings settings;
     return settings;
 }

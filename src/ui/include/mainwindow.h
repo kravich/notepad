@@ -204,7 +204,7 @@ private:
     QPushButton *m_sbEOLFormatBtn;
     QPushButton *m_sbTextFormatBtn;
     QPushButton *m_sbOvertypeBtn;
-    NpSettings &m_settings;
+    NngSettings &m_settings;
     frmSearchReplace *m_frmSearchReplace = nullptr;
     bool m_overwrite = false; // Overwrite mode vs Insert mode
     QString m_workingDirectory;

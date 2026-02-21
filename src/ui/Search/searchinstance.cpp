@@ -202,7 +202,7 @@ SearchInstance::SearchInstance(const SearchConfig &config) :
     if (config.searchScope == SearchConfig::ScopeCurrentDocument ||
         config.searchScope == SearchConfig::ScopeAllOpenDocuments)
     {
-        // This is a mess because Np's Editor management is a mess.
+        // This is a mess because Nng's Editor management is a mess.
         // We'll grab all Editors that want to be searched, then search them one-by-one and add the results
         // to our SearchResult instance.
         std::vector<QSharedPointer<Editor>> editorsToSearch;

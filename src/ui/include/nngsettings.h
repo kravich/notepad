@@ -21,7 +21,7 @@
  *
  * The BEGIN_CATEGORY macro automagically generates two member variables:
  * [const QString _m_category] is the name of the category given to the macro.
- * [QSettings _m_settings] is the QSettings objects from NpSettings.
+ * [QSettings _m_settings] is the QSettings objects from NngSettings.
  * It is a good idea to prefix all private members with _ when creating custom categories.
  * This way they will be moved to the very bottom of the auto-complete list.
  *
@@ -58,7 +58,7 @@
 #define END_CATEGORY(Name) \
     }; _Category##Name Name = _Category##Name(_m_settings);
 
-class NpSettings
+class NngSettings
 {
 public:
     BEGIN_GENERAL_CATEGORY(General)
@@ -229,13 +229,13 @@ public:
 
     END_CATEGORY(Run)
 
-    static NpSettings &getInstance();
+    static NngSettings &getInstance();
 
 private:
     QSettings _m_settings;
 
-    NpSettings() {}
-    NpSettings &operator=(NpSettings &) = delete;
+    NngSettings() {}
+    NngSettings &operator=(NngSettings &) = delete;
 };
 
 #endif // NNGSETTINGS_H

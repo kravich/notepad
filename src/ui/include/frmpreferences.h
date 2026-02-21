@@ -76,7 +76,7 @@ private:
 
     KeyGrabber *m_keyGrabber;
 
-    NpSettings &m_settings;
+    NngSettings &m_settings;
     Ui::frmPreferences *ui;
     TopEditorContainer *m_topEditorContainer;
     QSharedPointer<Editor> m_previewEditor;
