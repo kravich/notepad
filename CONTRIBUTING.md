@@ -2,15 +2,10 @@
 
 Thanks for helping to make Notepadng better! As a contributor, here are the guidelines we would like you to follow:
 
- - [Question or Problem?](#question)
  - [Issues and Bugs](#issue)
  - [Feature Requests](#feature)
  - [Submission Guidelines](#submit)
  - [Coding Rules](#rules)
-
-## <a name="question"></a> Got a Question or Problem?
-
-Please, do not open issues for the general support questions as we want to keep GitHub issues for bug reports and feature requests. You've got much better chances of getting your question answered on our [Facebook group](https://www.facebook.com/groups/notepadng/).
 
 ## <a name="issue"></a> Found a Bug?
 If you find a bug in the source code, you can help us by
@@ -40,13 +35,13 @@ We want to fix all the issues as soon as possible, but before fixing a bug we ne
 - version of Qt (menu `? -> About Qt...`)
 - version of Notepadng (menu `? -> About Notepadng...`)
 
-You can file new issues by filling out our [new issue form](https://github.com/notepadng/notepadng/issues/new).
+You can file new issues by filling out our [new issue form](https://github.com/kravich/notepadng/issues/new).
 
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
 Before you submit your Pull Request (PR) consider the following guidelines:
 
-* Search [GitHub](https://github.com/notepadng/notepadng/pulls) for an open or closed PR
+* Search [GitHub](https://github.com/kravich/notepadng/pulls) for an open or closed PR
   that relates to your submission. You don't want to duplicate effort.
 * Create a new git branch in which you'll make your changes:
 
@@ -123,6 +118,7 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
  * Make sure your pull request doesn't contain trivial, unwanted changes. For example, if you're working on a big feature
    and you happen to open Qt Designer and it increases the height of the window by 1px, please keep that out of the pull request.
    In general, keep the number of changes at the minimum necessary.
+ * AI-generated pull requests are not allowed.
 
 
-[github]: https://github.com/notepadng/notepadng
+[github]: https://github.com/kravich/notepadng
