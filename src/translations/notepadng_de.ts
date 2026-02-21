@@ -257,8 +257,8 @@
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="13"/>
-        <source>This file has been changed outside of Notepad.</source>
-        <translation>Die Datei wurde außerhalb von Notepad verändert.</translation>
+        <source>This file has been changed outside of Notepadng.</source>
+        <translation>Die Datei wurde außerhalb von Notepadng verändert.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="15"/>
@@ -375,10 +375,10 @@
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="441"/>
-        <source>Notepad asks permission to overwrite the following file:
+        <source>Notepadng asks permission to overwrite the following file:
 
 %1</source>
-        <translation>Notepad möchte die folgende Datei überschreiben:
+        <translation>Notepadng möchte die folgende Datei überschreiben:
 
 %1</translation>
     </message>
@@ -501,8 +501,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="53"/>
@@ -816,8 +816,8 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="473"/>
-        <source>About &amp;Notepad...</source>
-        <translation>Über &amp;Notepad...</translation>
+        <source>About &amp;Notepadng...</source>
+        <translation>Über &amp;Notepadng...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="481"/>
@@ -1704,8 +1704,8 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="102"/>
-        <source>Allows Notepad to be run as root.</source>
-        <translation>Ermöglicht es Notepad als Root auszuführen.</translation>
+        <source>Allows Notepadng to be run as root.</source>
+        <translation>Ermöglicht es Notepadng als Root auszuführen.</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="106"/>
@@ -1719,8 +1719,8 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="135"/>
-        <source>Notepad will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
-        <translation>Notepad wird sein Bestes versuchen, dennoch könnte &lt;b&gt;nicht alles reibungslos funktionieren&lt;/b&gt;.</translation>
+        <source>Notepadng will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
+        <translation>Notepadng wird sein Bestes versuchen, dennoch könnte &lt;b&gt;nicht alles reibungslos funktionieren&lt;/b&gt;.</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="136"/>
@@ -1739,8 +1739,8 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="502"/>
-        <source>You need to restart Notepad for the localization changes to take effect.</source>
-        <translation>Sie müssen Notepad neustarten um die Einstellungen zu übernehmen.</translation>
+        <source>You need to restart Notepadng for the localization changes to take effect.</source>
+        <translation>Sie müssen Notepadng neustarten um die Einstellungen zu übernehmen.</translation>
     </message>
     <message>
         <location filename="../ui/Sessions/sessions.cpp" line="130"/>
@@ -1759,8 +1759,8 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="144"/>
-        <source>Notepad supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
-        <translation>Notepad unterstützt die meisten regulären Ausdrücke aus &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl&lt;/a&gt;, sofern &apos;Reguläre Ausdrücke verwenden&apos; gewählt wurde.</translation>
+        <source>Notepadng supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
+        <translation>Notepadng unterstützt die meisten regulären Ausdrücke aus &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl&lt;/a&gt;, sofern &apos;Reguläre Ausdrücke verwenden&apos; gewählt wurde.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="145"/>
@@ -1839,13 +1839,13 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/Sessions/backupservice.cpp" line="105"/>
-        <source>Notepad was not closed properly. Do you want to recover unsaved changes?</source>
-        <translation>Notepad wurde nicht ordnungsgemäß beendet. Ungesicherte Änderungen wiederherstellen?</translation>
+        <source>Notepadng was not closed properly. Do you want to recover unsaved changes?</source>
+        <translation>Notepadng wurde nicht ordnungsgemäß beendet. Ungesicherte Änderungen wiederherstellen?</translation>
     </message>
     <message>
         <location filename="../ui/main.cpp" line="88"/>
-        <source>Running Notepad as root is not recommended. Use --allow-root if you really want to.</source>
-        <translation>Es wird nicht empfohlen Notepad als Root auszuführen. Verwenden Sie --allow-root falls Sie das wirklich wollen.</translation>
+        <source>Running Notepadng as root is not recommended. Use --allow-root if you really want to.</source>
+        <translation>Es wird nicht empfohlen Notepadng als Root auszuführen. Verwenden Sie --allow-root falls Sie das wirklich wollen.</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="120"/>
@@ -1854,8 +1854,8 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="122"/>
-        <source>You can help to improve Notepad by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
-        <translation>Sie können uns helfen Notepad zu verbessern, indem Sie uns erlauben &lt;b&gt;anonyme Statistiken&lt;/b&gt; zu sammeln.</translation>
+        <source>You can help to improve Notepadng by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
+        <translation>Sie können uns helfen Notepadng zu verbessern, indem Sie uns erlauben &lt;b&gt;anonyme Statistiken&lt;/b&gt; zu sammeln.</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="123"/>
@@ -1864,8 +1864,8 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="124"/>
-        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepad is open source, so you can %1check by yourself%2 :)</source>
-        <translation>Wir sammeln Informationen wie die Version von Qt, das Betriebssystem oder die Anzahl der Erweiterungen.&lt;br&gt;Sie müssen uns nicht vertrauen: Notepad ist Quelloffen, überzeugen Sie %1sich selbst%2 :)</translation>
+        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepadng is open source, so you can %1check by yourself%2 :)</source>
+        <translation>Wir sammeln Informationen wie die Version von Qt, das Betriebssystem oder die Anzahl der Erweiterungen.&lt;br&gt;Sie müssen uns nicht vertrauen: Notepadng ist Quelloffen, überzeugen Sie %1sich selbst%2 :)</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="131"/>
@@ -1938,8 +1938,8 @@ Wollen Sie dennoch speichern?</translation>
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="17"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="39"/>
@@ -2067,8 +2067,8 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="117"/>
-        <source>Collect and transmit anonymous statistics to improve Notepad</source>
-        <translation>Sammle und übermittle anonyme Statistiken zur Verbesserung von Notepad</translation>
+        <source>Collect and transmit anonymous statistics to improve Notepadng</source>
+        <translation>Sammle und übermittle anonyme Statistiken zur Verbesserung von Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="124"/>
@@ -2077,13 +2077,13 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="131"/>
-        <source>Remember open tabs when closing Notepad</source>
-        <translatorcomment>Geöffnete Reiter beim Schließen [von Notepad] merken</translatorcomment>
+        <source>Remember open tabs when closing Notepadng</source>
+        <translatorcomment>Geöffnete Reiter beim Schließen [von Notepadng] merken</translatorcomment>
         <translation>Sitzung beim nächsten Mal wiederherstellen</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="140"/>
-        <source>This option allows Notepad to recover your documents after a crash even if they were not explicitly saved.</source>
+        <source>This option allows Notepadng to recover your documents after a crash even if they were not explicitly saved.</source>
         <translation>Hilft dabei Dokumente nach einem Absturz wieder herzustellen, auch ohne diese vorher explizit zu sichern.</translation>
     </message>
     <message>
@@ -2098,8 +2098,8 @@ Wollen Sie dennoch speichern?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="178"/>
-        <source>Exit Notepad when closing the last Tab</source>
-        <translation>Beende Notepad beim schließen der letzen Registerkarte</translation>
+        <source>Exit Notepadng when closing the last Tab</source>
+        <translation>Beende Notepadng beim schließen der letzen Registerkarte</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="187"/>

@@ -22,4 +22,4 @@ please provide the *STEPS TO REPRODUCE* and, in case of graphical issues, a scre
 -->
 
 **Please tell us about your environment:**
-<!-- Operating system, Qt version, Notepadqq version, ... -->
+<!-- Operating system, Qt version, Notepadng version, ... -->

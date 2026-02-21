@@ -5,8 +5,8 @@
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="13"/>
-        <source>This file has been changed outside of Notepad.</source>
-        <translation>Datoteka je bila spremenjena izven programa Notepad.</translation>
+        <source>This file has been changed outside of Notepadng.</source>
+        <translation>Datoteka je bila spremenjena izven programa Notepadng.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="15"/>
@@ -227,8 +227,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="50"/>
@@ -552,7 +552,7 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="528"/>
-        <source>About Notepad...</source>
+        <source>About Notepadng...</source>
         <translation>O programu ...</translation>
     </message>
     <message>
@@ -1326,7 +1326,7 @@ Ali želite spremembe vseeno shraniti?</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="115"/>
-        <source>Notepad will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
+        <source>Notepadng will try to do its best, but &lt;b&gt;some things will not work properly&lt;/b&gt;.</source>
         <translation>Zaradi razlik z najnovejšo nekatere zmožnosti morda &lt;b&gt;ne bodo delovale&lt;/b&gt; po pričakovanjih.</translation>
     </message>
     <message>
@@ -1351,7 +1351,7 @@ Ali želite spremembe vseeno shraniti?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="382"/>
-        <source>You need to restart Notepad for the localization changes to take effect.</source>
+        <source>You need to restart Notepadng for the localization changes to take effect.</source>
         <translation>Za uveljavitev nastavitve je treba program ponovno zagnati.</translation>
     </message>
 </context>
@@ -1393,8 +1393,8 @@ Ali želite spremembe vseeno shraniti?</translation>
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="17"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="39"/>
@@ -1521,7 +1521,7 @@ Ali želite spremembe vseeno shraniti?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="119"/>
-        <source>Remember open tabs when closing Notepad</source>
+        <source>Remember open tabs when closing Notepadng</source>
         <translation>Zapomni si na zadnje odprte zavihke</translation>
     </message>
     <message>

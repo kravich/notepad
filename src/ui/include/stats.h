@@ -37,7 +37,7 @@ private:
      *        to the second run. This variable is set to true and *stays true*
      *        iff the user never opened np before.
      */
-    static bool m_isFirstNotepadRun;
+    static bool m_isFirstNotepadngRun;
 };
 
 #endif // STATS_H

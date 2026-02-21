@@ -105,7 +105,7 @@ private slots:
     void on_cursorActivity(QMap<QString, QVariant> data);
     void on_actionDelete_triggered();
     void on_actionSelect_All_triggered();
-    void on_actionAbout_Notepad_triggered();
+    void on_actionAbout_Notepadng_triggered();
     void on_actionAbout_Qt_triggered();
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();

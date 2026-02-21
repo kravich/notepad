@@ -30,7 +30,7 @@ deploy()
     mkdir dmgfolder
     mv notepadng.app dmgfolder
     ln -s /Applications ./dmgfolder/Applications
-    hdiutil create -fs HFS+ -format UDBZ -srcfolder ./dmgfolder -volname Notepad notepadng-${NP_VERSION}.dmg || return 1
+    hdiutil create -fs HFS+ -format UDBZ -srcfolder ./dmgfolder -volname Notepadng notepadng-${NP_VERSION}.dmg || return 1
 }
 
 if [ "$NP_BUILD_TYPE" == "DEPLOY" ]; then

@@ -24,7 +24,7 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. Ubuntu 18.04]
  - Installation type [e.g. snap, git, distro packages, other]
  - Qt version [find it from the menu "? -> About Qt..."]
- - Notepadqq version [find it from the menu "? -> About Notepadqq..."]
+ - Notepadng version [find it from the menu "? -> About Notepadng..."]
 
 **Additional context**
 Add any other context about the problem here.

@@ -1,9 +1,9 @@
 /*
  *
- * This file is part of the Notepad text editor.
+ * This file is part of the Notepadng text editor.
  *
- * Copyright(c) 2010 Notepad team.
- * http://notepad.sourceforge.net/
+ * Copyright(c) 2010 Notepadqq team.
+ * http://notepadqq.sourceforge.net/
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,13 +43,13 @@
 /**
  * @brief Global information and utility functions.
  */
-class Notepad : public QObject
+class Notepadng : public QObject
 {
     Q_OBJECT
 public:
-    static Notepad &getInstance()
+    static Notepadng &getInstance()
     {
-        static Notepad instance;
+        static Notepadng instance;
         return instance;
     }
 
@@ -76,9 +76,9 @@ signals:
     void newWindow(MainWindow *window);
 
 private:
-    Notepad() {}
-    Notepad(Notepad const &);      // Don't implement
-    void operator=(Notepad const &); // Don't implement
+    Notepadng() {}
+    Notepadng(Notepadng const &);      // Don't implement
+    void operator=(Notepadng const &); // Don't implement
 };
 
 #endif // NOTEPAD_H

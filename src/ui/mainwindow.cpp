@@ -137,7 +137,7 @@ MainWindow::MainWindow(const QString &workingDirectory, const QStringList &argum
     }
 
     //Register our meta types for signal/slot calls here.
-    emit Notepad::getInstance().newWindow(this);
+    emit Notepadng::getInstance().newWindow(this);
 }
 
 MainWindow::MainWindow(const QStringList &arguments, QWidget *parent) :
@@ -323,7 +323,7 @@ void MainWindow::loadIcons()
 
     // '?' menu
     ui->actionAbout_Qt->setIcon(IconProvider::fromTheme("help-about"));
-    ui->actionAbout_Notepad->setIcon(IconProvider::fromTheme("notepadng"));
+    ui->actionAbout_Notepadng->setIcon(IconProvider::fromTheme("notepadng"));
 }
 
 void MainWindow::configureStatusBar()
@@ -538,7 +538,7 @@ void MainWindow::openCommandLineProvidedUrls(const QString &workingDirectory, co
         return;
     }
 
-    QSharedPointer<QCommandLineParser> parser = Notepad::getCommandLineArgumentsParser(arguments);
+    QSharedPointer<QCommandLineParser> parser = Notepadng::getCommandLineArgumentsParser(arguments);
 
     QStringList rawUrls = parser->positionalArguments();
 
@@ -1396,7 +1396,7 @@ void MainWindow::refreshEditorUiInfo(QSharedPointer<Editor> editor)
                                            QUrl::StripTrailingSlash);
 
         newTitle = QString("%1%2 (%3) - %4")
-                       .arg(Notepad::fileNameFromUrl(editor->filePath()))
+                       .arg(Notepadng::fileNameFromUrl(editor->filePath()))
                        .arg(editor->isClean() ? "" : "*")
                        .arg(path)
                        .arg(QApplication::applicationName());
@@ -1470,7 +1470,7 @@ void MainWindow::on_actionSelect_All_triggered()
     currentEditor()->selectAll();
 }
 
-void MainWindow::on_actionAbout_Notepad_triggered()
+void MainWindow::on_actionAbout_Notepadng_triggered()
 {
     frmAbout *_about;
     _about = new frmAbout(this);
@@ -1579,7 +1579,7 @@ void MainWindow::on_actionCurrent_Filename_to_Clipboard_triggered()
     }
     else
     {
-        QApplication::clipboard()->setText(Notepad::fileNameFromUrl(editor->filePath()));
+        QApplication::clipboard()->setText(Notepadng::fileNameFromUrl(editor->filePath()));
     }
 }
 
@@ -1936,7 +1936,7 @@ void MainWindow::updateRecentDocsInMenu()
     for (QVariant recentDoc : recentDocs)
     {
         QUrl url = recentDoc.toUrl();
-        QAction *action = new QAction(Notepad::fileNameFromUrl(url), this);
+        QAction *action = new QAction(Notepadng::fileNameFromUrl(url), this);
         connect(action, &QAction::triggered, this, [this, url]() {
             openRecentFileEntry(url);
         });

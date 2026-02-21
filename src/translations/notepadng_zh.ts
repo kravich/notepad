@@ -257,8 +257,8 @@
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="14"/>
-        <source>This file has been changed outside of Notepad.</source>
-        <translation>此文件已在Notepad之外更改。</translation>
+        <source>This file has been changed outside of Notepadng.</source>
+        <translation>此文件已在Notepadng之外更改。</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="16"/>
@@ -354,10 +354,10 @@
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="657"/>
-        <source>Notepad asks permission to overwrite the following file:
+        <source>Notepadng asks permission to overwrite the following file:
 
 %1</source>
-        <translation>Notepad请求权限以覆盖以下文件：
+        <translation>Notepadng请求权限以覆盖以下文件：
 
 %1</translation>
     </message>
@@ -495,8 +495,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="53"/>
@@ -810,8 +810,8 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="473"/>
-        <source>About &amp;Notepad...</source>
-        <translation>关于&amp;Notepad...</translation>
+        <source>About &amp;Notepadng...</source>
+        <translation>关于&amp;Notepadng...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="476"/>
@@ -1677,8 +1677,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="498"/>
-        <source>You need to restart Notepad for the localization changes to take effect.</source>
-        <translation>你需要重启Notepad以使本地化更改生效。</translation>
+        <source>You need to restart Notepadng for the localization changes to take effect.</source>
+        <translation>你需要重启Notepadng以使本地化更改生效。</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="18"/>
@@ -1702,8 +1702,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="103"/>
-        <source>Allows Notepad to be run as root.</source>
-        <translation>允许Notepad在root下运行。</translation>
+        <source>Allows Notepadng to be run as root.</source>
+        <translation>允许Notepadng在root下运行。</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="107"/>
@@ -1722,8 +1722,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="143"/>
-        <source>Notepad supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
-        <translation>当选中“使用正则表达式”时，Notepadq支持大部分&lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl正则表达式&lt;/a&gt;语法。</translation>
+        <source>Notepadng supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
+        <translation>当选中“使用正则表达式”时，Notepadngq支持大部分&lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl正则表达式&lt;/a&gt;语法。</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="144"/>
@@ -1802,8 +1802,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/Sessions/backupservice.cpp" line="107"/>
-        <source>Notepad was not closed properly. Do you want to recover unsaved changes?</source>
-        <translation>Notepad没有正确关闭。 你是否想恢复未保存的更改？</translation>
+        <source>Notepadng was not closed properly. Do you want to recover unsaved changes?</source>
+        <translation>Notepadng没有正确关闭。 你是否想恢复未保存的更改？</translation>
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="111"/>
@@ -1822,8 +1822,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/main.cpp" line="92"/>
-        <source>Notepad will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepad as root is not recommended. Use --allow-root if you really want to.</source>
-        <translation>如果安装了&apos;kdesu&apos;或&apos;gksu&apos;，Notepad将在需要时申请root权限。不推荐以root身份运行Notepad。如果你真的想以root权限启动请使用--allow-root。</translation>
+        <source>Notepadng will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepadng as root is not recommended. Use --allow-root if you really want to.</source>
+        <translation>如果安装了&apos;kdesu&apos;或&apos;gksu&apos;，Notepadng将在需要时申请root权限。不推荐以root身份运行Notepadng。如果你真的想以root权限启动请使用--allow-root。</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="122"/>
@@ -1832,8 +1832,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="124"/>
-        <source>You can help to improve Notepad by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
-        <translation>通过允许我们收集&lt;b&gt;匿名统计信息&lt;/b&gt;，您可以帮助改进Notepad。</translation>
+        <source>You can help to improve Notepadng by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
+        <translation>通过允许我们收集&lt;b&gt;匿名统计信息&lt;/b&gt;，您可以帮助改进Notepadng。</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="125"/>
@@ -1842,8 +1842,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="126"/>
-        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepad is open source, so you can %1check by yourself%2 :)</source>
-        <translation>我们将收集的信息包括Qt版本，操作系统版本，或扩展的数量的版本。&lt;br&gt;你不必信任我们：Notepad是开源的，所以你可以通过%1自己检查%2 :)</translation>
+        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepadng is open source, so you can %1check by yourself%2 :)</source>
+        <translation>我们将收集的信息包括Qt版本，操作系统版本，或扩展的数量的版本。&lt;br&gt;你不必信任我们：Notepadng是开源的，所以你可以通过%1自己检查%2 :)</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="133"/>
@@ -1916,8 +1916,8 @@ Do you want to save it anyway?</source>
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="17"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="39"/>
@@ -2039,8 +2039,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="110"/>
-        <source>Collect and transmit anonymous statistics to improve Notepad</source>
-        <translation>收集并传输匿名统计信息以改善Notepad</translation>
+        <source>Collect and transmit anonymous statistics to improve Notepadng</source>
+        <translation>收集并传输匿名统计信息以改善Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="117"/>
@@ -2049,13 +2049,13 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="124"/>
-        <source>Remember open tabs when closing Notepad</source>
-        <translation>关闭Notepad前记住打开的标签</translation>
+        <source>Remember open tabs when closing Notepadng</source>
+        <translation>关闭Notepadng前记住打开的标签</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="133"/>
-        <source>This option allows Notepad to recover your documents after a crash even if they were not explicitly saved.</source>
-        <translation>该选项允许Notepad在崩溃后恢复文档，即使它们没有被明确保存。</translation>
+        <source>This option allows Notepadng to recover your documents after a crash even if they were not explicitly saved.</source>
+        <translation>该选项允许Notepadng在崩溃后恢复文档，即使它们没有被明确保存。</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="136"/>
@@ -2069,8 +2069,8 @@ Do you want to save it anyway?</source>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="171"/>
-        <source>Exit Notepad when closing the last Tab</source>
-        <translation>关闭最后一个标签时退出Notepad</translation>
+        <source>Exit Notepadng when closing the last Tab</source>
+        <translation>关闭最后一个标签时退出Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="180"/>

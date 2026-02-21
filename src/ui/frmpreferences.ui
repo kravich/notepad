@@ -102,14 +102,14 @@
          <item>
           <widget class="QCheckBox" name="chkCollectStatistics">
            <property name="text">
-            <string>Collect and transmit anonymous statistics to improve Notepad</string>
+            <string>Collect and transmit anonymous statistics to improve Notepadng</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="chkRememberSession">
            <property name="text">
-            <string>Remember open tabs when closing Notepad</string>
+            <string>Remember open tabs when closing Notepadng</string>
            </property>
           </widget>
          </item>
@@ -118,7 +118,7 @@
            <item>
             <widget class="QCheckBox" name="chkAutosave">
              <property name="toolTip">
-              <string>This option allows Notepad to recover your documents after a crash even if they were not explicitly saved.</string>
+              <string>This option allows Notepadng to recover your documents after a crash even if they were not explicitly saved.</string>
              </property>
              <property name="text">
               <string>Backup open documents every</string>
@@ -156,7 +156,7 @@
          <item>
           <widget class="QCheckBox" name="chkExitOnLastTabClose">
            <property name="text">
-            <string>Exit Notepad when closing the last Tab</string>
+            <string>Exit Notepadng when closing the last Tab</string>
            </property>
           </widget>
          </item>

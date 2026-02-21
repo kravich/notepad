@@ -1,6 +1,6 @@
-# Contributing to Notepad
+# Contributing to Notepadng
 
-Thanks for helping to make Notepad better! As a contributor, here are the guidelines we would like you to follow:
+Thanks for helping to make Notepadng better! As a contributor, here are the guidelines we would like you to follow:
 
  - [Question or Problem?](#question)
  - [Issues and Bugs](#issue)
@@ -38,7 +38,7 @@ We want to fix all the issues as soon as possible, but before fixing a bug we ne
 
 - version of your operating system
 - version of Qt (menu `? -> About Qt...`)
-- version of Notepad (menu `? -> About Notepad...`)
+- version of Notepadng (menu `? -> About Notepadng...`)
 
 You can file new issues by filling out our [new issue form](https://github.com/notepadng/notepadng/issues/new).
 

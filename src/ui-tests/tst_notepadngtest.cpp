@@ -5,21 +5,21 @@
 #include <QString>
 #include <QtTest>
 
-class NotepadTest : public QObject
+class NotepadngTest : public QObject
 {
     Q_OBJECT
 
 public:
-    NotepadTest();
+    NotepadngTest();
 
 private Q_SLOTS:
 };
 
-NotepadTest::NotepadTest()
+NotepadngTest::NotepadngTest()
 {
     //QApplication a();
 }
 
-QTEST_GUILESS_MAIN(NotepadTest)
+QTEST_GUILESS_MAIN(NotepadngTest)
 
 #include "tst_notepadngtest.moc"

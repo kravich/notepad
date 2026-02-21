@@ -28,7 +28,7 @@ SingleApplication::SingleApplication(int &argc, char **argv) :
 
 #include <QtCore/QCoreApplication>
 #include <QtDBus/QtDBus>
-#define SERVICE_NAME "com.notepadng.Notepad"
+#define SERVICE_NAME "com.notepadng.Notepadng"
 
 void SingleApplication::startServer()
 {

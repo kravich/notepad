@@ -954,7 +954,7 @@ bool DocEngine::trySudoSave(QString sudoProgram, QUrl outFileName, QSharedPointe
     {
         arguments = QStringList({"-S",
                                  "-m",
-                                 tr("Notepad asks permission to overwrite the following file:\n\n%1").arg(outFileName.toLocalFile())});
+                                 tr("Notepadng asks permission to overwrite the following file:\n\n%1").arg(outFileName.toLocalFile())});
     }
     arguments.append({"cp", filePath, outFileName.toLocalFile()});
 

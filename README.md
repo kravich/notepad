@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/4319621/36906314-e3f99680-1e35-11e8-90fd-f959c9641f36.png" alt="Notepad" width="32" height="32" /> Notepad [![Build Status](https://travis-ci.com/notepadng/notepadng.svg?branch=master)](https://travis-ci.com/notepadng/notepadng) [![notepadng](https://snapcraft.io/notepadng/badge.svg)](https://snapcraft.io/notepadng)
+# <img src="https://user-images.githubusercontent.com/4319621/36906314-e3f99680-1e35-11e8-90fd-f959c9641f36.png" alt="Notepadng" width="32" height="32" /> Notepadng [![Build Status](https://travis-ci.com/notepadng/notepadng.svg?branch=master)](https://travis-ci.com/notepadng/notepadng) [![notepadng](https://snapcraft.io/notepadng/badge.svg)](https://snapcraft.io/notepadng)
 
 > [!WARNING]  
 > This project is not actively maintained anymore. New maintainers are welcome.
@@ -15,7 +15,7 @@
 
 #### What is it?
 
-Notepad is a text editor designed by developers, for developers. 
+Notepadng is a text editor designed by developers, for developers. 
 
 ![screenshot_20180302_163505](https://notepadng.com/s/images/snapshot1.png)
 
@@ -61,7 +61,7 @@ by following the above steps, then run:
 
 #### Qt
 
-If the newest version of Qt isn't available on your distribution, you can use the [online installer](http://www.qt.io/download-open-source) to get the latest libraries and install them into your home directory (`$HOME/Qt`). Notepad will automatically use them.
+If the newest version of Qt isn't available on your distribution, you can use the [online installer](http://www.qt.io/download-open-source) to get the latest libraries and install them into your home directory (`$HOME/Qt`). Notepadng will automatically use them.
 
 Distribution Packages
 ---------------------
@@ -76,12 +76,12 @@ To install the latest stable version:
 
     sudo snap install notepadng
 
-You don't have the `snap` command? Follow the instructions at https://docs.snapcraft.io/core/install and then install Notepad as shown above.
+You don't have the `snap` command? Follow the instructions at https://docs.snapcraft.io/core/install and then install Notepadng as shown above.
 
 You can follow the unstable development releases from the "edge" channel.
 
 #### Arch Linux (community-maintained)
-Notepad is available from Arch's [community repositories](https://www.archlinux.org/packages/community/x86_64/notepadng/). To install using pacman:
+Notepadng is available from Arch's [community repositories](https://www.archlinux.org/packages/community/x86_64/notepadng/). To install using pacman:
 
     sudo pacman -S notepadng
 
@@ -90,12 +90,12 @@ Alternatively it can be found in the AUR:
  * Development (git version): [notepadng-git](https://aur.archlinux.org/packages/notepadng-git/)
 
 #### OpenSUSE (community-maintained)
-Notepad is avilable in OpenSUSE's main repository:
+Notepadng is avilable in OpenSUSE's main repository:
 
      sudo zypper in notepadng
 
 #### Solus (community-maintained)
-Notepad is available in the `shannon` (stable) repository:
+Notepadng is available in the `shannon` (stable) repository:
 
      sudo eopkg it notepadng
 
@@ -104,4 +104,4 @@ Use a package for a compatible distribution, or build from [source](https://gith
 If you want to submit a package: https://github.com/notepadng/notepadng-packaging
 
 #### Compiling on macOS
-Instructions can be found [here](https://github.com/notepadng/notepadng/wiki/Compiling-Notepad-on-macOS).
+Instructions can be found [here](https://github.com/notepadng/notepadng/wiki/Compiling-Notepadng-on-macOS).

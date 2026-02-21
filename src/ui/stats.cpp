@@ -12,7 +12,7 @@
 #include <QUrl>
 
 bool Stats::m_longTimerRunning = false;
-bool Stats::m_isFirstNotepadRun = false;
+bool Stats::m_isFirstNotepadngRun = false;
 
 #define DIALOG_NEVER_SHOWN 0
 #define DIALOG_ALREADY_SHOWN 1
@@ -114,7 +114,7 @@ void Stats::askUserPermission()
     NpSettings &settings = NpSettings::getInstance();
     int dialogShown = settings.General.getStatisticsDialogShown();
 
-    if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadRun)
+    if (dialogShown == DIALOG_FIRST_TIME_IGNORED && !m_isFirstNotepadngRun)
     {
         QMessageBox msgBox;
         msgBox.setWindowTitle(QCoreApplication::applicationName());
@@ -123,11 +123,11 @@ void Stats::askUserPermission()
         msgBox.setInformativeText(
             /* clang-format off */
             "<html><body>"
-            "<p>" + QObject::tr("You can help to improve Notepad by allowing us to collect <b>anonymous statistics</b>.") + "</p>" +
+            "<p>" + QObject::tr("You can help to improve Notepadng by allowing us to collect <b>anonymous statistics</b>.") + "</p>" +
             "<b>" + QObject::tr("What will we collect?") + "</b><br>" +
             QObject::tr(
                 "We will collect information such as the version of Qt or the version of the OS<br>"
-                "You don't have to trust us: Notepad is open source, so you can %1check by yourself%2 😊").
+                "You don't have to trust us: Notepadng is open source, so you can %1check by yourself%2 😊").
                       arg("<a href=\"https://github.com/notepadng/notepadng/blob/master/src/ui/stats.cpp\">").
                       arg("</a>") +
             "</body></html>"
@@ -152,10 +152,10 @@ void Stats::askUserPermission()
     }
     else if (dialogShown == DIALOG_NEVER_SHOWN)
     {
-        // Set m_isFirstNotepadRun to true, so that next executions of this method within
+        // Set m_isFirstNotepadngRun to true, so that next executions of this method within
         // the current process won't show the dialog even if we're setting
         // statisticsDialogShown = DIALOG_FIRST_TIME_IGNORED.
-        m_isFirstNotepadRun = true;
+        m_isFirstNotepadngRun = true;
         settings.General.setStatisticsDialogShown(DIALOG_FIRST_TIME_IGNORED);
     }
 }

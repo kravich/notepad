@@ -85,7 +85,7 @@ public:
         NP_SETTING(RecentDocuments,                QList<QVariant>, QList<QVariant>())
         NP_SETTING(WarnIfFileLargerThan,           int,        1)
 
-        NP_SETTING(NotepadVersion,               QString,    QString())
+        NP_SETTING(NotepadngVersion,               QString,    QString())
         NP_SETTING(SmartIndentation,               bool,       true)
         NP_SETTING(UseNativeFilePicker,            bool,       true)
         /* clang-format on */

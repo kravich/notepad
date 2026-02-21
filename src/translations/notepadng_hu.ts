@@ -257,8 +257,8 @@
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="14"/>
-        <source>This file has been changed outside of Notepad.</source>
-        <translation>Ez a fájl a Notepad-n kívül megváltozott.</translation>
+        <source>This file has been changed outside of Notepadng.</source>
+        <translation>Ez a fájl a Notepadng-n kívül megváltozott.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="16"/>
@@ -354,10 +354,10 @@
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="667"/>
-        <source>Notepad asks permission to overwrite the following file:
+        <source>Notepadng asks permission to overwrite the following file:
 
 %1</source>
-        <translation>A Notepad engedélyt kér a következő fájl felülírására:
+        <translation>A Notepadng engedélyt kér a következő fájl felülírására:
 
 %1</translation>
     </message>
@@ -495,8 +495,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="53"/>
@@ -810,8 +810,8 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="475"/>
-        <source>About &amp;Notepad...</source>
-        <translation>&amp;Notepad névjegye...</translation>
+        <source>About &amp;Notepadng...</source>
+        <translation>&amp;Notepadng névjegye...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="483"/>
@@ -1713,8 +1713,8 @@ Biztosan menteni szeretné?</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="103"/>
-        <source>Allows Notepad to be run as root.</source>
-        <translation>A Notepad rootként való futtatásának engedélyezése.</translation>
+        <source>Allows Notepadng to be run as root.</source>
+        <translation>A Notepadng rootként való futtatásának engedélyezése.</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="106"/>
@@ -1733,8 +1733,8 @@ Biztosan menteni szeretné?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="498"/>
-        <source>You need to restart Notepad for the localization changes to take effect.</source>
-        <translation>A nyelvváltoztatás érvénybe lépéséhez újra kell indítani a Notepad-t.</translation>
+        <source>You need to restart Notepadng for the localization changes to take effect.</source>
+        <translation>A nyelvváltoztatás érvénybe lépéséhez újra kell indítani a Notepadng-t.</translation>
     </message>
     <message>
         <location filename="../ui/Sessions/sessions.cpp" line="130"/>
@@ -1753,8 +1753,8 @@ Biztosan menteni szeretné?</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="143"/>
-        <source>Notepad supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
-        <translation>A Notepad a &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl  Reguláris kifejezések&lt;/a&gt; szintaxisának többségét támogatja, ha a &apos;Reguláris kifejezések használata&apos; jelölőnégyzet be van jelölve.</translation>
+        <source>Notepadng supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
+        <translation>A Notepadng a &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl  Reguláris kifejezések&lt;/a&gt; szintaxisának többségét támogatja, ha a &apos;Reguláris kifejezések használata&apos; jelölőnégyzet be van jelölve.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="144"/>
@@ -1838,8 +1838,8 @@ Biztosan menteni szeretné?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="128"/>
-        <source>You can help to improve Notepad by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
-        <translation>Segíthet a Notepad fejlesztésében, ha engedélyezi nekünk a &lt;b&gt;névtelen statisztikák&lt;/b&gt; gyűjtését.</translation>
+        <source>You can help to improve Notepadng by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
+        <translation>Segíthet a Notepadng fejlesztésében, ha engedélyezi nekünk a &lt;b&gt;névtelen statisztikák&lt;/b&gt; gyűjtését.</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="129"/>
@@ -1848,8 +1848,8 @@ Biztosan menteni szeretné?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="130"/>
-        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepad is open source, so you can %1check by yourself%2 😊</source>
-        <translation>Információkat fogunk gyűjteni például a Qt verziójáról, az operációs rendszer verziójáról vagy a bővítmények számáról.&lt;br&gt;Ha nem bízik meg bennünk: a Notepad nyílt forráskódú, így %1saját maga is ellenőrizheti%2 :)</translation>
+        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepadng is open source, so you can %1check by yourself%2 😊</source>
+        <translation>Információkat fogunk gyűjteni például a Qt verziójáról, az operációs rendszer verziójáról vagy a bővítmények számáról.&lt;br&gt;Ha nem bízik meg bennünk: a Notepadng nyílt forráskódú, így %1saját maga is ellenőrizheti%2 :)</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="137"/>
@@ -1863,8 +1863,8 @@ Biztosan menteni szeretné?</translation>
     </message>
     <message>
         <location filename="../ui/Sessions/backupservice.cpp" line="107"/>
-        <source>Notepad was not closed properly. Do you want to recover unsaved changes?</source>
-        <translation>A Notepad bezárása nem megfelelően ment végbe. Szeretné visszaállítani a nem mentett változásokat?</translation>
+        <source>Notepadng was not closed properly. Do you want to recover unsaved changes?</source>
+        <translation>A Notepadng bezárása nem megfelelően ment végbe. Szeretné visszaállítani a nem mentett változásokat?</translation>
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="114"/>
@@ -1883,9 +1883,9 @@ Biztosan menteni szeretné?</translation>
     </message>
     <message>
         <location filename="../ui/main.cpp" line="97"/>
-        <source>Notepad will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepad as root is not recommended. Use --allow-root if you really want to.</source>
-        <translation>Notepad szükség estén root jogosultságokat fog kérni, ha „kdesu” vagy „gksu” telepítve van.
-A Notepad rootként való futtatása nem ajánlott. Ha mindenképpen szükséges, akkor használja a --allow-root opciót.</translation>
+        <source>Notepadng will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepadng as root is not recommended. Use --allow-root if you really want to.</source>
+        <translation>Notepadng szükség estén root jogosultságokat fog kérni, ha „kdesu” vagy „gksu” telepítve van.
+A Notepadng rootként való futtatása nem ajánlott. Ha mindenképpen szükséges, akkor használja a --allow-root opciót.</translation>
     </message>
 </context>
 <context>
@@ -1949,8 +1949,8 @@ A Notepad rootként való futtatása nem ajánlott. Ha mindenképpen szükséges
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="20"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="42"/>
@@ -2072,8 +2072,8 @@ A Notepad rootként való futtatása nem ajánlott. Ha mindenképpen szükséges
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="110"/>
-        <source>Collect and transmit anonymous statistics to improve Notepad</source>
-        <translation>Névtelen statisztikák gyűjtése és továbbítása a Notepad javítása érdekében</translation>
+        <source>Collect and transmit anonymous statistics to improve Notepadng</source>
+        <translation>Névtelen statisztikák gyűjtése és továbbítása a Notepadng javítása érdekében</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="117"/>
@@ -2082,13 +2082,13 @@ A Notepad rootként való futtatása nem ajánlott. Ha mindenképpen szükséges
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="124"/>
-        <source>Remember open tabs when closing Notepad</source>
-        <translation>Nyitott lapok megjegyzése a Notepad bezárásakor</translation>
+        <source>Remember open tabs when closing Notepadng</source>
+        <translation>Nyitott lapok megjegyzése a Notepadng bezárásakor</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="133"/>
-        <source>This option allows Notepad to recover your documents after a crash even if they were not explicitly saved.</source>
-        <translation>Ez az opció lehetővé teszi a Notepad számára, hogy egy összeomlást követően helyreállítsa a dokumentumokat, még akkor is, ha azok nem lettek elmentetve.</translation>
+        <source>This option allows Notepadng to recover your documents after a crash even if they were not explicitly saved.</source>
+        <translation>Ez az opció lehetővé teszi a Notepadng számára, hogy egy összeomlást követően helyreállítsa a dokumentumokat, még akkor is, ha azok nem lettek elmentetve.</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="136"/>
@@ -2102,8 +2102,8 @@ A Notepad rootként való futtatása nem ajánlott. Ha mindenképpen szükséges
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="171"/>
-        <source>Exit Notepad when closing the last Tab</source>
-        <translation>Az utolsó lapfül bezárásakor kilépés a Notepadból</translation>
+        <source>Exit Notepadng when closing the last Tab</source>
+        <translation>Az utolsó lapfül bezárásakor kilépés a Notepadngból</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="180"/>

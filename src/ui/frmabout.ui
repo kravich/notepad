@@ -17,7 +17,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Notepad</string>
+   <string>Notepadng</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
@@ -98,7 +98,7 @@
     <string notr="true">color: rgb(26, 26, 26);</string>
    </property>
    <property name="text">
-    <string notr="true">Notepad</string>
+    <string notr="true">Notepadng</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnLicense">

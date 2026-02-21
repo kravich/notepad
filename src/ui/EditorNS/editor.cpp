@@ -609,7 +609,7 @@ Editor::Theme Editor::themeFromName(QString name)
     if (name == "default" || name.isEmpty())
         return Theme();
 
-    QFileInfo appDataPathInfo(Notepad::appDataPath());
+    QFileInfo appDataPathInfo(Notepadng::appDataPath());
     QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/");
 
     if (bundledThemesDir.exists(name + ".xml"))
@@ -620,7 +620,7 @@ Editor::Theme Editor::themeFromName(QString name)
 
 QList<Editor::Theme> Editor::themes()
 {
-    auto appDataPathInfo = QFileInfo(Notepad::appDataPath());
+    auto appDataPathInfo = QFileInfo(Notepadng::appDataPath());
     QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/", "*.xml");
 
     QList<Theme> out;
@@ -912,7 +912,7 @@ void Editor::refreshAppearance()
 
     if (theme.name == "default")
     {
-        theme.path = Notepad::appDataPath() + "themes/Default.xml";
+        theme.path = Notepadng::appDataPath() + "themes/Default.xml";
     }
 
     ScintillaTheme scintillaTheme;

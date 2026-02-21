@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Notepad</string>
+   <string>Notepadng</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
@@ -248,7 +248,7 @@
      <string>&amp;?</string>
     </property>
     <addaction name="actionAbout_Qt"/>
-    <addaction name="actionAbout_Notepad"/>
+    <addaction name="actionAbout_Notepadng"/>
    </widget>
    <widget class="QMenu" name="menu_Run">
     <property name="title">
@@ -470,9 +470,9 @@
     <string>Ctrl+A</string>
    </property>
   </action>
-  <action name="actionAbout_Notepad">
+  <action name="actionAbout_Notepadng">
    <property name="text">
-    <string>About &amp;Notepad...</string>
+    <string>About &amp;Notepadng...</string>
    </property>
    <property name="shortcut">
     <string>F1</string>

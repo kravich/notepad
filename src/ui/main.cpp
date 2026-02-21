@@ -30,21 +30,21 @@ int main(int argc, char *argv[])
     __aet_timer.start();
     qDebug() << "Start-time benchmark started.";
 
-    fprintf(stderr, "WARNING: Notepad is running in DEBUG mode.\n");
+    fprintf(stderr, "WARNING: Notepadng is running in DEBUG mode.\n");
 #endif
 
     SingleApplication a(argc, argv);
 
-    QCoreApplication::setOrganizationName("Notepad");
-    QCoreApplication::setApplicationName("Notepad");
-    QCoreApplication::setApplicationVersion(Notepad::version);
+    QCoreApplication::setOrganizationName("Notepadng");
+    QCoreApplication::setApplicationName("Notepadng");
+    QCoreApplication::setApplicationVersion(Notepadng::version);
 
     QGuiApplication::setDesktopFileName("notepadng");
 
     QSettings::setDefaultFormat(QSettings::IniFormat);
 
     NpSettings &settings = NpSettings::getInstance();
-    settings.General.setNotepadVersion(POINTVERSION);
+    settings.General.setNotepadngVersion(POINTVERSION);
 
     forceDefaultSettings();
 
@@ -77,11 +77,11 @@ int main(int argc, char *argv[])
         settings.General.setLocalization("en");
     }
     // Check for "run-and-exit" options like -h or -v
-    const auto parser = Notepad::getCommandLineArgumentsParser(QApplication::arguments());
+    const auto parser = Notepadng::getCommandLineArgumentsParser(QApplication::arguments());
 
     if (parser->isSet("print-debug-info"))
     {
-        Notepad::printEnvironmentInfo();
+        Notepadng::printEnvironmentInfo();
         return EXIT_SUCCESS;
     }
 
@@ -89,8 +89,8 @@ int main(int argc, char *argv[])
     if (getuid() == 0 && !parser->isSet("allow-root"))
     {
         qWarning() << QObject::tr(
-            "Notepad will ask for root privileges whenever they are needed if either 'kdesu' or 'gksu' are installed."
-            " Running Notepad as root is not recommended. Use --allow-root if you really want to.");
+            "Notepadng will ask for root privileges whenever they are needed if either 'kdesu' or 'gksu' are installed."
+            " Running Notepadng as root is not recommended. Use --allow-root if you really want to.");
 
         return EXIT_SUCCESS;
     }
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 
     // Arguments received from another instance
     QObject::connect(&a, &SingleApplication::receivedArguments, &a, [=](const QString &workingDirectory, const QStringList &arguments) {
-        QSharedPointer<QCommandLineParser> parser = Notepad::getCommandLineArgumentsParser(arguments);
+        QSharedPointer<QCommandLineParser> parser = Notepadng::getCommandLineArgumentsParser(arguments);
         if (parser->isSet("new-window"))
         {
             // Open a new window

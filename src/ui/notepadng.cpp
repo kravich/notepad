@@ -7,16 +7,16 @@
 #include <QFileInfo>
 #include <QMessageBox>
 
-const QString Notepad::version = POINTVERSION;
-const QString Notepad::contributorsUrl = "https://github.com/notepadng/notepadng/graphs/contributors";
-const QString Notepad::website = "https://notepadng.com";
+const QString Notepadng::version = POINTVERSION;
+const QString Notepadng::contributorsUrl = "https://github.com/notepadng/notepadng/graphs/contributors";
+const QString Notepadng::website = "https://notepadng.com";
 
-QString Notepad::copyright()
+QString Notepadng::copyright()
 {
     return QString::fromUtf8("Copyright © 2010-%1, Daniele Di Sarli").arg(COPYRIGHT_YEAR);
 }
 
-QString Notepad::appDataPath(QString fileName)
+QString Notepadng::appDataPath(QString fileName)
 {
 #ifdef Q_OS_MACX
     QString def = QString("%1/../Resources/").arg(qApp->applicationDirPath());
@@ -35,7 +35,7 @@ QString Notepad::appDataPath(QString fileName)
     return def;
 }
 
-QString Notepad::fileNameFromUrl(const QUrl &url)
+QString Notepadng::fileNameFromUrl(const QUrl &url)
 {
     return QFileInfo(url.toDisplayString(
                          QUrl::RemoveScheme |
@@ -49,7 +49,7 @@ QString Notepad::fileNameFromUrl(const QUrl &url)
         .fileName();
 }
 
-QSharedPointer<QCommandLineParser> Notepad::getCommandLineArgumentsParser(const QStringList &arguments)
+QSharedPointer<QCommandLineParser> Notepadng::getCommandLineArgumentsParser(const QStringList &arguments)
 {
     QSharedPointer<QCommandLineParser> parser =
         QSharedPointer<QCommandLineParser>(new QCommandLineParser());
@@ -75,7 +75,7 @@ QSharedPointer<QCommandLineParser> Notepad::getCommandLineArgumentsParser(const 
                               "0");
     parser->addOption(setCol);
 
-    QCommandLineOption allowRootOption("allow-root", QObject::tr("Allows Notepad to be run as root."));
+    QCommandLineOption allowRootOption("allow-root", QObject::tr("Allows Notepadng to be run as root."));
     parser->addOption(allowRootOption);
 
     QCommandLineOption printDebugOption("print-debug-info", QObject::tr("Print system information for debugging."));
@@ -90,7 +90,7 @@ QSharedPointer<QCommandLineParser> Notepad::getCommandLineArgumentsParser(const 
     return parser;
 }
 
-QList<QString> Notepad::translations()
+QList<QString> Notepadng::translations()
 {
     QList<QString> out;
 
@@ -114,9 +114,9 @@ QList<QString> Notepad::translations()
     return out;
 }
 
-void Notepad::printEnvironmentInfo()
+void Notepadng::printEnvironmentInfo()
 {
-    qDebug() << QString("Notepad: %1").arg(POINTVERSION).toStdString().c_str();
+    qDebug() << QString("Notepadng: %1").arg(POINTVERSION).toStdString().c_str();
 #ifdef BUILD_SNAP
     qDebug() << "Snap build: yes";
 #else

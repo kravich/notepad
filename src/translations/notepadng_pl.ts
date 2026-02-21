@@ -257,8 +257,8 @@
     <name>BannerFileChanged</name>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="14"/>
-        <source>This file has been changed outside of Notepad.</source>
-        <translation>Ten plik został zmieniony poza Notepad.</translation>
+        <source>This file has been changed outside of Notepadng.</source>
+        <translation>Ten plik został zmieniony poza Notepadng.</translation>
     </message>
     <message>
         <location filename="../ui/EditorNS/bannerfilechanged.cpp" line="16"/>
@@ -354,10 +354,10 @@
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="661"/>
-        <source>Notepad asks permission to overwrite the following file:
+        <source>Notepadng asks permission to overwrite the following file:
 
 %1</source>
-        <translation>Notepad prosi o pozwolenie, by nadpisać następujący plik:
+        <translation>Notepadng prosi o pozwolenie, by nadpisać następujący plik:
 
 %1</translation>
     </message>
@@ -495,8 +495,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="53"/>
@@ -810,8 +810,8 @@
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="475"/>
-        <source>About &amp;Notepad...</source>
-        <translation>O &amp;Notepad...</translation>
+        <source>About &amp;Notepadng...</source>
+        <translation>O &amp;Notepadng...</translation>
     </message>
     <message>
         <location filename="../ui/mainwindow.ui" line="483"/>
@@ -1691,8 +1691,8 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.cpp" line="498"/>
-        <source>You need to restart Notepad for the localization changes to take effect.</source>
-        <translation>Musisz zrestartować Notepad, by były widoczne efekty zmiany lokalizacji.</translation>
+        <source>You need to restart Notepadng for the localization changes to take effect.</source>
+        <translation>Musisz zrestartować Notepadng, by były widoczne efekty zmiany lokalizacji.</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="18"/>
@@ -1716,8 +1716,8 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="103"/>
-        <source>Allows Notepad to be run as root.</source>
-        <translation>Pozwala Notepad być uruchomionym jako root.</translation>
+        <source>Allows Notepadng to be run as root.</source>
+        <translation>Pozwala Notepadng być uruchomionym jako root.</translation>
     </message>
     <message>
         <location filename="../ui/notepadng.cpp" line="107"/>
@@ -1741,8 +1741,8 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="143"/>
-        <source>Notepad supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
-        <translation>Notepad wspiera większość składni &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;wyrażeń regularnych Perla&lt;/a&gt; kiedy &apos;Użyj wyrażeń regularnych&apos; jest zaznaczone.</translation>
+        <source>Notepadng supports most of the &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;Perl Regular Expression&lt;/a&gt; syntax when &apos;Use Regular Expressions&apos; is checked.</source>
+        <translation>Notepadng wspiera większość składni &lt;a href=&apos;http://perldoc.perl.org/perlre.html&apos;&gt;wyrażeń regularnych Perla&lt;/a&gt; kiedy &apos;Użyj wyrażeń regularnych&apos; jest zaznaczone.</translation>
     </message>
     <message>
         <location filename="../ui/Search/advancedsearchdock.cpp" line="144"/>
@@ -1821,8 +1821,8 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/Sessions/backupservice.cpp" line="107"/>
-        <source>Notepad was not closed properly. Do you want to recover unsaved changes?</source>
-        <translation>Notepad nie został zamknięty poprawnie. Czy chcesz odzyskać niezapisane zmiany?</translation>
+        <source>Notepadng was not closed properly. Do you want to recover unsaved changes?</source>
+        <translation>Notepadng nie został zamknięty poprawnie. Czy chcesz odzyskać niezapisane zmiany?</translation>
     </message>
     <message>
         <location filename="../ui/docengine.cpp" line="111"/>
@@ -1841,8 +1841,8 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/main.cpp" line="92"/>
-        <source>Notepad will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepad as root is not recommended. Use --allow-root if you really want to.</source>
-        <translation>Notepad poprosi o uprawnienia roota, jeśli będą potrzebne i jeśli zainstalowano &apos;kdesu&apos; lub &apos;gksu&apos;. Używanie Notepad jako root nie jest wskazane. Użyj &apos;--allow-root&apos; jeśli naprawdę tego chcesz.</translation>
+        <source>Notepadng will ask for root privileges whenever they are needed if either &apos;kdesu&apos; or &apos;gksu&apos; are installed. Running Notepadng as root is not recommended. Use --allow-root if you really want to.</source>
+        <translation>Notepadng poprosi o uprawnienia roota, jeśli będą potrzebne i jeśli zainstalowano &apos;kdesu&apos; lub &apos;gksu&apos;. Używanie Notepadng jako root nie jest wskazane. Użyj &apos;--allow-root&apos; jeśli naprawdę tego chcesz.</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="126"/>
@@ -1851,8 +1851,8 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="128"/>
-        <source>You can help to improve Notepad by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
-        <translation>Możesz pomóc poprawić Notepad pozwalając nam zebrać &lt;b&gt;anonimowe statystyki&lt;/b&gt;.</translation>
+        <source>You can help to improve Notepadng by allowing us to collect &lt;b&gt;anonymous statistics&lt;/b&gt;.</source>
+        <translation>Możesz pomóc poprawić Notepadng pozwalając nam zebrać &lt;b&gt;anonimowe statystyki&lt;/b&gt;.</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="129"/>
@@ -1861,8 +1861,8 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="130"/>
-        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepad is open source, so you can %1check by yourself%2 :)</source>
-        <translation>Zbierzemy takie informacje jak wersja Qt, wersja systemu operacyjnego czy liczbę rozszerzeń.&lt;br&gt;Nie musisz nam ufać: Notepad jest open source, więc możesz %1sprawdzić sam%2 :)</translation>
+        <source>We will collect information such as the version of Qt, the version of the OS, or the number of extensions.&lt;br&gt;You don&apos;t have to trust us: Notepadng is open source, so you can %1check by yourself%2 :)</source>
+        <translation>Zbierzemy takie informacje jak wersja Qt, wersja systemu operacyjnego czy liczbę rozszerzeń.&lt;br&gt;Nie musisz nam ufać: Notepadng jest open source, więc możesz %1sprawdzić sam%2 :)</translation>
     </message>
     <message>
         <location filename="../ui/stats.cpp" line="137"/>
@@ -1935,8 +1935,8 @@ Czy chcesz go zapisać mimo to?</translation>
     <name>frmAbout</name>
     <message>
         <location filename="../ui/frmabout.ui" line="20"/>
-        <source>Notepad</source>
-        <translation>Notepad</translation>
+        <source>Notepadng</source>
+        <translation>Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmabout.ui" line="42"/>
@@ -2058,8 +2058,8 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="110"/>
-        <source>Collect and transmit anonymous statistics to improve Notepad</source>
-        <translation>Zbieraj i przesyłaj anonimowe statystyki w celu poprawy Notepad</translation>
+        <source>Collect and transmit anonymous statistics to improve Notepadng</source>
+        <translation>Zbieraj i przesyłaj anonimowe statystyki w celu poprawy Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="117"/>
@@ -2068,13 +2068,13 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="124"/>
-        <source>Remember open tabs when closing Notepad</source>
-        <translation>Pamiętaj otwierane karty przy zamykaniu Notepad</translation>
+        <source>Remember open tabs when closing Notepadng</source>
+        <translation>Pamiętaj otwierane karty przy zamykaniu Notepadng</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="133"/>
-        <source>This option allows Notepad to recover your documents after a crash even if they were not explicitly saved.</source>
-        <translation>Ta opcja pozwala Notepad na odzyskanie dokumentów po awarii, nawet jeśli nie zostały zapisane.</translation>
+        <source>This option allows Notepadng to recover your documents after a crash even if they were not explicitly saved.</source>
+        <translation>Ta opcja pozwala Notepadng na odzyskanie dokumentów po awarii, nawet jeśli nie zostały zapisane.</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="136"/>
@@ -2088,8 +2088,8 @@ Czy chcesz go zapisać mimo to?</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="171"/>
-        <source>Exit Notepad when closing the last Tab</source>
-        <translation>Zamknij Notepad po zamknięciu ostatniej karty</translation>
+        <source>Exit Notepadng when closing the last Tab</source>
+        <translation>Zamknij Notepadng po zamknięciu ostatniej karty</translation>
     </message>
     <message>
         <location filename="../ui/frmpreferences.ui" line="180"/>
