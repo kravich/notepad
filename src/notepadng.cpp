@@ -8,12 +8,12 @@
 #include <QMessageBox>
 
 const QString Notepadng::version = POINTVERSION;
-const QString Notepadng::contributorsUrl = "https://github.com/notepadng/notepadng/graphs/contributors";
-const QString Notepadng::website = "https://notepadng.com";
+const QString Notepadng::contributorsUrl = "https://github.com/kravich/notepadng/graphs/contributors";
+const QString Notepadng::website = "https://notepadng.github.io";
 
 QString Notepadng::copyright()
 {
-    return QString::fromUtf8("Copyright © 2010-%1, Daniele Di Sarli").arg(COPYRIGHT_YEAR);
+    return QString::fromUtf8("Copyright © %1, Evgeny Kravchenko\nCopyright © 2010-2025, Daniele Di Sarli").arg(COPYRIGHT_YEAR);
 }
 
 QString Notepadng::appDataPath(QString fileName)

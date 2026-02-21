@@ -64,6 +64,11 @@ frmPreferences::frmPreferences(TopEditorContainer *topEditorContainer, QWidget *
 
     ui->chkSearch_SearchAsIType->setChecked(m_settings.Search.getSearchAsIType());
     ui->chkSearch_SaveHistory->setChecked(m_settings.Search.getSaveHistory());
+
+    // Disable and hide 'Collect statistics' checkbox for now
+    // FIXME: Deside if statistics gathering is actually needed
+    ui->chkCollectStatistics->setEnabled(false);
+    ui->chkCollectStatistics->setVisible(false);
 }
 
 frmPreferences::~frmPreferences()

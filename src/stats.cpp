@@ -20,6 +20,9 @@ bool Stats::m_isFirstNotepadngRun = false;
 
 void Stats::init()
 {
+    // Disable stats gathering until decided if it's actually needed
+    return;
+
     NngSettings &settings = NngSettings::getInstance();
 
     Stats::askUserPermission();
@@ -128,7 +131,7 @@ void Stats::askUserPermission()
             QObject::tr(
                 "We will collect information such as the version of Qt or the version of the OS<br>"
                 "You don't have to trust us: Notepadng is open source, so you can %1check by yourself%2 😊").
-                      arg("<a href=\"https://github.com/notepadng/notepadng/blob/master/src/ui/stats.cpp\">").
+                      arg("<a href=\"https://github.com/kravich/notepadng/blob/master/src/stats.cpp\">").
                       arg("</a>") +
             "</body></html>"
             /* clang-format on */
