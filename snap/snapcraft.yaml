@@ -1,20 +1,17 @@
 name: notepadng
 version: '0.0.99'
-summary: A Notepadng++-like editor for Linux.
+summary: A Notepadng++-like editor
 description: |
-  It helps developers by providing all you can expect from a general purpose text editor, such as syntax highlighting for more than 100 different languages, code folding, color schemes, file monitoring, multiple selection and much more.
-  You can search text using the power of regular expressions. You can organize documents side by side. You can use real-time highlighting to find near identifiers in no time.
+  Notepadng is a Notepad++-like editor for programmers and power users.
+  It does it's best by replicating Notepad++ look and feel and is compatible with its color themes.
 grade: stable
 confinement: classic
-icon: support_files/icons/hicolor/scalable/apps/notepadng.svg
+icon: dist/icons/hicolor/scalable/apps/notepadng.svg
 base: core18
 
 apps:
   notepadng:
     command: bin/desktop-launch $SNAP/usr/local/lib/notepadng/notepadng-bin
-    environment:
-      DISABLE_WAYLAND: 1  # See https://github.com/notepadng/notepadng/issues/806
-      QT_XCB_FORCE_SOFTWARE_OPENGL: 1  # For bug in Qt 5.9 + Nouveau. See https://bugreports.qt.io/browse/QTBUG-41242
     desktop: usr/local/share/applications/notepadng.desktop
 #   plugs:  # Plugs are not needed for classic confinement
 #     - browser-support
