@@ -7,6 +7,7 @@ It also incorporates original color themes from [Notepad++](https://github.com/n
 
 For better experience, it's suggested to install Courier New font, which is proprietary but free for personal use. Notepadng will make use of it automatically with default settings.
 On Debian/Ubuntu this could be achieved by:
+
     sudo apt install ttf-mscorefonts-installer
 
 ## Manual build
