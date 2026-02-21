@@ -1,4 +1,4 @@
-# ![Notepadng](images/notepadng.svg "Notepad") Notepadng
+# <img src="https://raw.githubusercontent.com/kravich/notepadng/master/images/notepadng.svg" alt="Notepadng" width="32" height="32" /> Notepadng
 
 Notepadng is a Notepad++-like editor for programmers and power users.
 
