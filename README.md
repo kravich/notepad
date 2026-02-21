@@ -6,6 +6,7 @@ Notepadng is a fork of a [Notepadqq](https://github.com/notepadqq/notepadqq) edi
 It also incorporates original color themes from [Notepad++](https://github.com/notepad-plus-plus/notepad-plus-plus) itself to replicate brand Notepad++ look and feel.
 
 For better experience, it's suggested to install Courier New font, which is proprietary but free for personal use. Notepadng will make use of it automatically with default settings.
+
 On Debian/Ubuntu this could be achieved by:
 
     sudo apt install ttf-mscorefonts-installer
