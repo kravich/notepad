@@ -4,7 +4,7 @@ project(notepadng)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Modules")
 
-add_subdirectory(src/ui)
+add_subdirectory(src)
 
 include(CTest)
 

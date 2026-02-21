@@ -119,7 +119,7 @@ set(notepadng_RESOURCES
 )
 
 set(notepadng_ICON
-    ../../images/notepadng.icns
+    ../images/notepadng.icns
 )
 
 set(notepadng_TRANSLATIONS
@@ -191,7 +191,7 @@ target_compile_options(notepadng
         $<$<CXX_COMPILER_ID:Clang>:${CLANG_COMPILE_OPTIONS}>
 )
 
-set(notepadng_SUPPORT_FILES_PATH ../../support_files)
+set(notepadng_SUPPORT_FILES_PATH ../support_files)
 
 file(GLOB_RECURSE notepadng_SUPPORT_FILES ${notepadng_SUPPORT_FILES_PATH}/*)
 add_custom_target(support_files SOURCES ${notepadng_SUPPORT_FILES})
