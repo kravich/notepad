@@ -609,6 +609,12 @@ Editor::Theme Editor::themeFromName(QString name)
     if (name == "default" || name.isEmpty())
         return Theme();
 
+    QFileInfo configDirPathInfo = QFileInfo(Notepadng::configDirPath());
+    QDir userThemesDir(configDirPathInfo.absolutePath() + "/themes/");
+
+    if (userThemesDir.exists(name + ".xml"))
+        return Theme(name, userThemesDir.filePath(name + ".xml"));
+
     QFileInfo appDataPathInfo(Notepadng::appDataPath());
     QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/");
 
@@ -620,10 +626,27 @@ Editor::Theme Editor::themeFromName(QString name)
 
 QList<Editor::Theme> Editor::themes()
 {
+    QList<Theme> out;
+
+    // Load user themes
+    QFileInfo configDirPathInfo = QFileInfo(Notepadng::configDirPath());
+    QDir userThemesDir(configDirPathInfo.absolutePath() + "/themes/", "*.xml");
+
+    for (auto &&theme : userThemesDir.entryInfoList())
+    {
+        if (theme.completeBaseName() == "Default")
+        {
+            // Do not include Default.xml into list
+            continue;
+        }
+
+        out.append(Theme(theme.completeBaseName(), theme.filePath()));
+    }
+
+    // Load system-wide themes
     auto appDataPathInfo = QFileInfo(Notepadng::appDataPath());
     QDir bundledThemesDir(appDataPathInfo.absolutePath() + "/themes/", "*.xml");
 
-    QList<Theme> out;
     for (auto &&theme : bundledThemesDir.entryInfoList())
     {
         if (theme.completeBaseName() == "Default")
@@ -634,6 +657,7 @@ QList<Editor::Theme> Editor::themes()
 
         out.append(Theme(theme.completeBaseName(), theme.filePath()));
     }
+
     return out;
 }
 
