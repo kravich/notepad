@@ -40,15 +40,6 @@ public:
         tabCloseResult_Canceled,     /** The close process was canceled */
     };
 
-    /**
-     * Reasons for asking to save changes
-     */
-    enum askToSaveChangesReason
-    {
-        askToSaveChangesReason_tabClosing,  /** The tab is closing */
-        askToSaveChangesReason_generic,     /** Generic reason */
-    };
-
     TopEditorContainer *topEditorContainer();
 
     void removeTabWidgetIfEmpty(EditorTabWidget *tabWidget);
@@ -230,7 +221,7 @@ private:
      */
     bool finalizeAllTabs();
 
-    int askIfWantToSave(EditorTabWidget *tabWidget, int tab, int reason);
+    int askIfWantToSave(EditorTabWidget *tabWidget, int tab);
 
     /**
      * @brief Removes the specified tab. Doesn't remove the tab if it's the

@@ -937,7 +937,7 @@ void MainWindow::on_actionOpen_Folder_triggered()
         .execute();
 }
 
-int MainWindow::askIfWantToSave(EditorTabWidget *tabWidget, int tab, int reason)
+int MainWindow::askIfWantToSave(EditorTabWidget *tabWidget, int tab)
 {
     QMessageBox msgBox(this);
     QString name = tabWidget->tabText(tab).toHtmlEscaped();
@@ -946,16 +946,7 @@ int MainWindow::askIfWantToSave(EditorTabWidget *tabWidget, int tab, int reason)
 
     msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
 
-    switch (reason)
-    {
-    case askToSaveChangesReason_generic:
-        msgBox.setText("<h3>" + tr("Do you want to save changes to «%1»?").arg(name) + "</h3>");
-        msgBox.setButtonText(QMessageBox::Discard, tr("Don't Save"));
-        break;
-    case askToSaveChangesReason_tabClosing:
-        msgBox.setText("<h3>" + tr("Do you want to save changes to «%1» before closing?").arg(name) + "</h3>");
-        break;
-    }
+    msgBox.setText("<h3>" + tr("Do you want to save changes to «%1» before closing?").arg(name) + "</h3>");
 
     msgBox.setInformativeText(tr("If you don't save the changes you made, you'll lose them forever."));
     msgBox.setDefaultButton(QMessageBox::Save);
@@ -994,7 +985,7 @@ int MainWindow::closeTab(EditorTabWidget *tabWidget, int tab, bool remove, bool 
 
     // Ask the user to choose what to do with the modified contents.
     tabWidget->setCurrentIndex(tab);
-    switch (askIfWantToSave(tabWidget, tab, askToSaveChangesReason_tabClosing))
+    switch (askIfWantToSave(tabWidget, tab))
     {
     case QMessageBox::Save: {
         switch (save(tabWidget, tab))
