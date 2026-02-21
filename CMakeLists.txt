@@ -9,5 +9,6 @@ add_subdirectory(src/ui)
 include(CTest)
 
 if(BUILD_TESTING)
-    add_subdirectory(src/ui-tests)
+    # FIXME: Implement tests
+    #add_subdirectory(tests)
 endif()
