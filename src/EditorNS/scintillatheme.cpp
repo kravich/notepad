@@ -26,7 +26,7 @@ int ScintillaTheme::LoadFromFile(const QString &themePath)
 
     if (!parseResult)
     {
-        fprintf(stderr, "Failed to parse %s\n", themePath.toUtf8().data());
+        fprintf(stderr, "Failed to parse %s(%lld:%lld): %s\n", themePath.toUtf8().data(), parseResult.errorLine, parseResult.errorColumn, parseResult.errorMessage.toUtf8().data());
         return -1;
     }
 

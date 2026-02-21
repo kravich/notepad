@@ -6,6 +6,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QMessageBox>
+#include <QStandardPaths>
 
 const QString Notepadng::version = POINTVERSION;
 const QString Notepadng::contributorsUrl = "https://github.com/kravich/notepadng/graphs/contributors";
@@ -33,6 +34,12 @@ QString Notepadng::appDataPath(QString fileName)
     }
 
     return def;
+}
+
+QString Notepadng::configDirPath()
+{
+    QStringList appConfigLocations = QStandardPaths::standardLocations(QStandardPaths::AppConfigLocation);
+    return appConfigLocations.first();
 }
 
 QString Notepadng::fileNameFromUrl(const QUrl &url)
