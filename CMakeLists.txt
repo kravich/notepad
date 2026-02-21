@@ -126,16 +126,11 @@ set(notepadng_RESOURCES
     src/resources.qrc
 )
 
-set(notepadng_ICON
-    images/notepadng.icns
-)
-
 add_executable(notepadng
     ${notepadng_SRCS}
     ${notepadng_HEADERS}
     ${notepadng_FORMS}
     ${notepadng_RESOURCES}
-    ${notepadng_ICON}
     ${notepadng_QMS}
 )
 
