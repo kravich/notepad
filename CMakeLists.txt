@@ -117,7 +117,6 @@ set(notepadng_FORMS
     src/frmpreferences.ui
     src/frmencodingchooser.ui
     src/frmindentationmode.ui
-    src/Search/dlgsearching.ui
     src/Search/frmsearchreplace.ui
     src/frmlinenumberchooser.ui
 )
@@ -126,16 +125,11 @@ set(notepadng_RESOURCES
     src/resources.qrc
 )
 
-set(notepadng_ICON
-    images/notepadng.icns
-)
-
 add_executable(notepadng
     ${notepadng_SRCS}
     ${notepadng_HEADERS}
     ${notepadng_FORMS}
     ${notepadng_RESOURCES}
-    ${notepadng_ICON}
     ${notepadng_QMS}
 )
 
@@ -211,6 +205,10 @@ install(FILES ${notepadng_DIST_PATH}/shortcuts/notepadng.desktop
 
 install(DIRECTORY ${notepadng_DIST_PATH}/icons
     DESTINATION share
+)
+
+install(FILES ${notepadng_DIST_PATH}/manpage/notepadng.1
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man1
 )
 
 install(FILES ${notepadng_DIST_PATH}/notepadng.appdata.xml

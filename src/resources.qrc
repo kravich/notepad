@@ -20,10 +20,6 @@
 		<file alias="scalable/edit-paste.svg">icons/notepadng/scalable/edit-paste.svg</file>
 		<file alias="scalable/edit-redo.svg">icons/notepadng/scalable/edit-redo.svg</file>
 		<file alias="scalable/edit-undo.svg">icons/notepadng/scalable/edit-undo.svg</file>
-		<file alias="16x16/media-playback-start.png">icons/notepadng/16x16/media-playback-start.png</file>
-		<file alias="16x16/media-playback-stop.png">icons/notepadng/16x16/media-playback-stop.png</file>
-		<file alias="16x16/media-record.png">icons/notepadng/16x16/media-record.png</file>
-		<file alias="16x16/media-seek-forward.png">icons/notepadng/16x16/media-seek-forward.png</file>
 		<file alias="scalable/notepadng.svg">icons/notepadng/scalable/notepadng.svg</file>
 		<file alias="scalable/document-saved.svg">icons/notepadng/scalable/document-saved.svg</file>
 		<file alias="scalable/document-unsaved.svg">icons/notepadng/scalable/document-unsaved.svg</file>

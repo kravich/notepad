@@ -20,8 +20,8 @@
  *
  */
 
-#ifndef NOTEPAD_H
-#define NOTEPAD_H
+#ifndef NOTEPADNG_H
+#define NOTEPADNG_H
 
 #include "mainwindow.h"
 
@@ -81,4 +81,4 @@ private:
     void operator=(Notepadng const &); // Don't implement
 };
 
-#endif // NOTEPAD_H
+#endif // NOTEPADNG_H
