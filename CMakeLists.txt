@@ -117,7 +117,6 @@ set(notepadng_FORMS
     src/frmpreferences.ui
     src/frmencodingchooser.ui
     src/frmindentationmode.ui
-    src/Search/dlgsearching.ui
     src/Search/frmsearchreplace.ui
     src/frmlinenumberchooser.ui
 )
