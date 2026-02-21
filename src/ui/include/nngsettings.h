@@ -1,5 +1,5 @@
-#ifndef NPSETTINGS_H
-#define NPSETTINGS_H
+#ifndef NNGSETTINGS_H
+#define NNGSETTINGS_H
 
 #include <QAction>
 #include <QList>
@@ -7,12 +7,12 @@
 #include <QString>
 
 /*
- * The use of NP_SETTING creates several functions:
+ * The use of NNG_SETTING creates several functions:
  * getXXX(), setXXX(value), resetXXX(), hasXXX()
  *
  * hasXXX() returns whether the setting exists or not.
  *
- * NP_SETTING_WITH_KEY creates the same functions, but inserts an additional key param.
+ * NNG_SETTING_WITH_KEY creates the same functions, but inserts an additional key param.
  * This is useful when there are a variable number of settings.
  *
  * BEGIN_CATEGORY and END_CATEGORY create a nested class that is used to group settings
@@ -27,13 +27,13 @@
  *
  * */
 
-#define NP_SETTING(Name, Type, Default) \
+#define NNG_SETTING(Name, Type, Default) \
     Type get##Name() const { return _m_settings.value(_m_category+#Name,Default).value<Type>(); } \
     void set##Name(const Type& newValue) { _m_settings.setValue(_m_category+#Name, newValue); } \
     Type reset##Name() { _m_settings.setValue(_m_category+#Name,Default); return Default; } \
     bool has##Name() const { return _m_settings.contains(_m_category+#Name); }
 
-#define NP_SETTING_WITH_KEY(Name, Type, Default) \
+#define NNG_SETTING_WITH_KEY(Name, Type, Default) \
     Type get##Name(const QString& key) const { return _m_settings.value(_m_category+key+"/"#Name,Default).value<Type>(); } \
     void set##Name(const QString& key, const Type& newValue) { _m_settings.setValue(_m_category+key+"/"#Name, newValue); } \
     Type reset##Name(const QString& key) { _m_settings.setValue(_m_category+key+"/"#Name,Default); return Default; } \
@@ -63,69 +63,69 @@ class NpSettings
 public:
     BEGIN_GENERAL_CATEGORY(General)
         /* clang-format off */
-        NP_SETTING(Localization,                   QString,    "")
-        NP_SETTING(ExitOnLastTabClose,             bool,       false)
+        NNG_SETTING(Localization,                   QString,    "")
+        NNG_SETTING(ExitOnLastTabClose,             bool,       false)
 
-        NP_SETTING(CollectStatistics,              bool,       false)
-        NP_SETTING(LastStatisticTransmissionTime,  qint64,     0)
-        NP_SETTING(StatisticsDialogShown,          int,        0)
+        NNG_SETTING(CollectStatistics,              bool,       false)
+        NNG_SETTING(LastStatisticTransmissionTime,  qint64,     0)
+        NNG_SETTING(StatisticsDialogShown,          int,        0)
 
-        NP_SETTING(WordWrap,                       bool,       false)
-        NP_SETTING(Zoom,                           int,        0)
+        NNG_SETTING(WordWrap,                       bool,       false)
+        NNG_SETTING(Zoom,                           int,        0)
 
-        NP_SETTING(ShowAllSymbols,                 bool,       false)
-        NP_SETTING(SpacesVisisble,                 bool,       false)
-        NP_SETTING(ShowEOL,                        bool,       false)
-        NP_SETTING(ShowIndentGuide,                bool,       true)
+        NNG_SETTING(ShowAllSymbols,                 bool,       false)
+        NNG_SETTING(SpacesVisisble,                 bool,       false)
+        NNG_SETTING(ShowEOL,                        bool,       false)
+        NNG_SETTING(ShowIndentGuide,                bool,       true)
 
-        NP_SETTING(RememberTabsOnExit,             bool,       true)
-        NP_SETTING(AutosaveInterval,               int,        15)      // In seconds
-        NP_SETTING(LastSelectedDir,                QString,    ".")
-        NP_SETTING(LastSelectedSessionDir,         QString,    QString())
-        NP_SETTING(RecentDocuments,                QList<QVariant>, QList<QVariant>())
-        NP_SETTING(WarnIfFileLargerThan,           int,        1)
+        NNG_SETTING(RememberTabsOnExit,             bool,       true)
+        NNG_SETTING(AutosaveInterval,               int,        15)      // In seconds
+        NNG_SETTING(LastSelectedDir,                QString,    ".")
+        NNG_SETTING(LastSelectedSessionDir,         QString,    QString())
+        NNG_SETTING(RecentDocuments,                QList<QVariant>, QList<QVariant>())
+        NNG_SETTING(WarnIfFileLargerThan,           int,        1)
 
-        NP_SETTING(NotepadngVersion,               QString,    QString())
-        NP_SETTING(SmartIndentation,               bool,       true)
-        NP_SETTING(UseNativeFilePicker,            bool,       true)
+        NNG_SETTING(NotepadngVersion,               QString,    QString())
+        NNG_SETTING(SmartIndentation,               bool,       true)
+        NNG_SETTING(UseNativeFilePicker,            bool,       true)
         /* clang-format on */
     END_CATEGORY(General)
 
     BEGIN_CATEGORY(Appearance)
         /* clang-format off */
-        NP_SETTING(ColorScheme,        QString,    "")
-        NP_SETTING(OverrideFontFamily, QString,    "")
-        NP_SETTING(OverrideFontSize,   int,        0)
-        NP_SETTING(OverrideLineHeight, double,     0)
-        NP_SETTING(ShowLineNumbers, bool,       true)
+        NNG_SETTING(ColorScheme,        QString,    "")
+        NNG_SETTING(OverrideFontFamily, QString,    "")
+        NNG_SETTING(OverrideFontSize,   int,        0)
+        NNG_SETTING(OverrideLineHeight, double,     0)
+        NNG_SETTING(ShowLineNumbers, bool,       true)
         /* clang-format on */
     END_CATEGORY(Appearance)
 
     BEGIN_CATEGORY(Search)
         /* clang-format off */
-        NP_SETTING(SearchAsIType,  bool,           true)
-        NP_SETTING(SaveHistory,    bool,           true)
-        NP_SETTING(SearchHistory,  QStringList,    QStringList())
-        NP_SETTING(ReplaceHistory, QStringList,    QStringList())
-        NP_SETTING(FileHistory,    QStringList,    QStringList())
-        NP_SETTING(FilterHistory,  QStringList,    QStringList())
+        NNG_SETTING(SearchAsIType,  bool,           true)
+        NNG_SETTING(SaveHistory,    bool,           true)
+        NNG_SETTING(SearchHistory,  QStringList,    QStringList())
+        NNG_SETTING(ReplaceHistory, QStringList,    QStringList())
+        NNG_SETTING(FileHistory,    QStringList,    QStringList())
+        NNG_SETTING(FilterHistory,  QStringList,    QStringList())
         /* clang-format on */
     END_CATEGORY(Search)
 
     BEGIN_CATEGORY(Languages)
         /* clang-format off */
-        NP_SETTING_WITH_KEY(IndentWithSpaces,      bool,   false)
-        NP_SETTING_WITH_KEY(TabSize,               int,    4)
-        NP_SETTING_WITH_KEY(UseDefaultSettings,    bool,   true)
+        NNG_SETTING_WITH_KEY(IndentWithSpaces,      bool,   false)
+        NNG_SETTING_WITH_KEY(TabSize,               int,    4)
+        NNG_SETTING_WITH_KEY(UseDefaultSettings,    bool,   true)
         /* clang-format on */
     END_CATEGORY(Languages)
 
     BEGIN_CATEGORY(MainWindow)
         /* clang-format off */
-        NP_SETTING(Geometry,       QByteArray, QByteArray())
-        NP_SETTING(WindowState,    QByteArray, QByteArray())
-        NP_SETTING(MenuBarVisible, bool,       true)
-        NP_SETTING(ToolBarItems,   QString,    QString())
+        NNG_SETTING(Geometry,       QByteArray, QByteArray())
+        NNG_SETTING(WindowState,    QByteArray, QByteArray())
+        NNG_SETTING(MenuBarVisible, bool,       true)
+        NNG_SETTING(ToolBarItems,   QString,    QString())
         /* clang-format on */
     END_CATEGORY(MainWindow)
 
@@ -238,4 +238,4 @@ private:
     NpSettings &operator=(NpSettings &) = delete;
 };
 
-#endif // NPSETTINGS_H
+#endif // NNGSETTINGS_H

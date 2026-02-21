@@ -1,5 +1,5 @@
-#ifndef _NPRUN_H_
-#define _NPRUN_H_
+#ifndef _NNGRUN_H_
+#define _NNGRUN_H_
 
 #include "include/npsettings.h"
 
