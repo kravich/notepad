@@ -1,3 +1,0 @@
-doc/* linguist-documentation
-src/*/libs/* linguist-vendored
-src/*/node_modules/* linguist-vendored
